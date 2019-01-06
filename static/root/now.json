@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "alias": ["leerob.io", "www.leerob.io"],
     "name": "leerob",
     "static": {
