@@ -1,6 +1,6 @@
 export default [
     {
-        date: 'January 08, 2019',
+        date: 'January 06, 2019',
         slug: 'why-i-create-open-source-software',
         title: 'Why I Create Open-Source Software'
     },
