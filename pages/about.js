@@ -33,7 +33,7 @@ const Index = () => (
             <p>
                 {'I enjoy all things technology, videography, and music. '}
                 {'For a closer look at the professional work I’ve done, check out my '}
-                <A href="/static/LeeRobinson.pdf">{'resume.'}</A>
+                <A href="/LeeRobinson.pdf">{'resume.'}</A>
                 {' If you’re interested in reaching out to me, feel free to '}
                 <A href="mailto:lrobinson2011@gmail.com">{'email me.'}</A>
             </p>
