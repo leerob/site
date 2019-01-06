@@ -26,7 +26,7 @@ const tasks = new Listr([
         title: 'Copying static files to root'
     },
     {
-        task: () => mv(`${exportDirectory}/_error/index.html`, `${exportDirectory}/404.html`),
+        task: () => mv(`${exportDirectory}/404/index.html`, `${exportDirectory}/404.html`),
         title: 'Moving 404 page to root'
     },
     {
@@ -34,8 +34,8 @@ const tasks = new Listr([
         title: 'Removing index directory'
     },
     {
-        task: () => rm('-rf', `${exportDirectory}/_error`),
-        title: 'Removing _error directory'
+        task: () => rm('-rf', `${exportDirectory}/404`),
+        title: 'Removing 404 directory'
     },
     {
         task: () => rm('-rf', `${exportDirectory}/static/root`),
