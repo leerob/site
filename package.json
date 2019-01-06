@@ -1,0 +1,97 @@
+{
+    "name": "leerob.io",
+    "description": "My personal website.",
+    "version": "0.0.0",
+    "author": {
+        "name": "Lee Robinson",
+        "email": "lrobinson2011@gmail.com",
+        "url": "https://leerob.io"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/leerob/leerob.io.git"
+    },
+    "files": [
+        "components",
+        "data",
+        "icons",
+        "pages",
+        "static",
+        "styles",
+        "utils"
+    ],
+    "scripts": {
+        "analyze": "cross-env ANALYZE=true next build",
+        "dev": "next",
+        "deploy": "node scripts/deploy.js",
+        "export": "node scripts/export.js",
+        "imageoptim": "yarn imageoptim:gif && yarn imageoptim:jpg && yarn imageoptim:png",
+        "imageoptim:gif": "imageoptim \"static/**/*.gif\"",
+        "imageoptim:jpg": "imageoptim \"static/**/*.jpg\"",
+        "imageoptim:png": "imageoptim --no-imageoptim --imagealpha \"static/**/*.png\"",
+        "lint": "eslint . --ext .json --ext .js",
+        "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
+        "release": "now alias https://leerob.now.sh leerob.io",
+        "start": "yarn export && serve out",
+        "test": "yarn lint"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{html,js,json,md,mdx,mjs,yml}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.gif": [
+            "imageoptim",
+            "git add"
+        ],
+        "*.jpg": [
+            "imageoptim",
+            "git add"
+        ],
+        "*.png": [
+            "imageoptim --no-imageoptim --imagealpha",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "@mdx-js/mdx": "0.16.6",
+        "@mdx-js/tag": "0.16.6",
+        "date-fns": "1.30.1",
+        "next": "7.0.2",
+        "next-ga": "2.3.4",
+        "react": "16.6.3",
+        "styled-components": "4.1.2",
+        "styled-reset": "1.6.2",
+        "title": "3.4.0"
+    },
+    "devDependencies": {
+        "@zeit/next-mdx": "1.2.0",
+        "babel-plugin-inline-react-svg": "1.0.1",
+        "babel-plugin-styled-components": "1.9.4",
+        "cross-env": "5.2.0",
+        "eslint": "4.19.1",
+        "eslint-config-get-off-my-lawn-prettier": "1.0.0",
+        "execa": "1.0.0",
+        "execa-output": "2.0.0",
+        "globby": "8.0.1",
+        "husky": "1.2.0",
+        "imageoptim-cli": "2.0.4",
+        "lint-staged": "8.1.0",
+        "listr": "0.14.3",
+        "prettier": "1.15.3",
+        "prettify-xml": "1.2.0",
+        "react-dom": "16.6.3",
+        "serve": "10.1.1",
+        "shelljs": "0.8.3",
+        "webpack-bundle-analyzer": "3.0.3"
+    },
+    "resolutions": {
+        "@mdx-js/mdx": "0.16.6"
+    }
+}
