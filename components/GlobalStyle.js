@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Fira Sans";
         src: url("/static/fonts/FiraSans-Bold.ttf");
         font-weight: bold;
+        font-display: auto;
 	    font-style: normal;
     }
     
@@ -25,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Fira Sans";
         src: url("/static/fonts/FiraSans-Italic.ttf");
         font-weight: normal;
+        font-display: auto;
 	    font-style: italic;
     }
 
@@ -32,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Fira Sans";
         src: url("/static/fonts/FiraSans-Regular.ttf");
         font-weight: normal;
+        font-display: auto;
 	    font-style: normal;
     }
 
