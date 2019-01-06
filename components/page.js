@@ -38,6 +38,7 @@ const Page = ({children, date, description, image, title = 'Lee Robinson', keywo
                 <meta content={formattedTitle} property="og:title" />
                 <meta content={description} property="og:description" />
                 <meta content={url} property="og:url" />
+                <meta content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw" name="google-site-verification" />
                 {featuredImage && (
                     <>
                         <meta content={featuredImage} property="og:image" />
