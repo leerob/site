@@ -1,5 +1,6 @@
 import Date from '../../components/date'
 import Post from '../../components/post'
+import Link from '../../components/link'
 
 export const meta = {
 date: '2017-11-04',
@@ -16,7 +17,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 ![CSS Animations](/static/images/learning-css-animations-by-example/banner.png)
 
-I'm constantly inspired by innovative website designs. In my opinion, no one does a better job than [Stripe](/blog/how-stripe-designs-beautiful-websites). After reading their article about how they redesigned [Connect](https://stripe.com/blog/connect-front-end-experience), I was determined to learn more about creating animations using only CSS.
+I'm constantly inspired by innovative website designs. In my opinion, no one does a better job than <Link slug="blog/how-stripe-designs-beautiful-websites" title="How Stripe Designs Beautiful Websites" underline={true}>Stripe</Link>. After reading their article about how they redesigned [Connect](https://stripe.com/blog/connect-front-end-experience), I was determined to learn more about creating animations using only CSS.
 
 I've found I learn best by doing - creating tangible examples where I have to apply the skills I've studied. My mission was to learn more about CSS animations. To achieve that goal, I came up with a fun idea to make an Iowa State logo animated to swirl like a tornado.
 
