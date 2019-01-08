@@ -32,7 +32,7 @@
         "imageoptim:png": "imageoptim --no-imageoptim --imagealpha \"static/**/*.png\"",
         "lint": "eslint . --ext .json --ext .js",
         "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
-        "release": "now alias https://leerob.now.sh leerob.io",
+        "release": "now alias https://leerob.now.sh leerob.io && now alias https://leerob.now.sh www.leerob.io",
         "start": "yarn export && serve out",
         "test": "yarn lint"
     },
