@@ -7,7 +7,7 @@ import Nav from '../components/nav';
 import Page from '../components/page';
 
 const Index = () => (
-    <Page description={'Blog'} title={'Lee Robinson - Blog'}>
+    <Page description={'Blog'} image={'/static/images/avatar.jpg'} title={'Lee Robinson - Blog'}>
         <Nav />
         <Main>
             <Articles />

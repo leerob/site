@@ -112,7 +112,7 @@ const ActionLink = styled(Link)`
 const description = 'Curious mind, developer, and writer.';
 
 const Index = () => (
-    <Page description={description} title={`Lee Robinson - ${description}`}>
+    <Page description={description} image={'/static/images/avatar.jpg'} title={`Lee Robinson - ${description}`}>
         <Main>
             <Content>
                 <Container>

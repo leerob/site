@@ -21,7 +21,7 @@ const description =
     'Front-end engineer with experience in scalability, best practices and design. Currently inventing the future of Grocery at Hy-Vee.';
 
 const Index = () => (
-    <Page description={description} title={'Lee Robinson - About Me'}>
+    <Page description={description} image={'/static/images/avatar.jpg'} title={'Lee Robinson - About Me'}>
         <Nav />
         <Main>
             <AboutTitle>{'About Me'}</AboutTitle>
