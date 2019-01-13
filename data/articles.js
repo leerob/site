@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'January 13, 2019',
+        slug: 'using-mapbox-with-next-js',
+        title: 'Using Mapbox with Next.js (Instead of Google Maps)'
+    },
+    {
         date: 'January 06, 2019',
         slug: 'why-i-create-open-source-software',
         title: 'Why I Create Open-Source Software'
