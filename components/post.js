@@ -8,17 +8,18 @@ import {spacing} from '../styles/vars';
 import A from './elements/a';
 import Blockquote from './elements/blockquote';
 import Em from './elements/em';
+import Footer from './footer';
 import H1 from './elements/h1';
 import H2 from './elements/h2';
 import H3 from './elements/h3';
 import Img from './elements/img';
 import Li from './elements/li';
-import Ol from './elements/ol';
-import Strong from './elements/strong';
-import Ul from './elements/ul';
-import Footer from './footer';
-import Page from './page';
 import Nav from './nav';
+import Ol from './elements/ol';
+import Page from './page';
+import Strong from './elements/strong';
+import Subscribe from './subscribe';
+import Ul from './elements/ul';
 
 const components = {
     a: A,
@@ -43,17 +44,14 @@ const Main = styled.main`
     }
 `;
 
-const MarkdownWrapper = styled.article`
-    padding-bottom: ${spacing.large};
-`;
-
 const Post = ({children, meta}) => (
     <Page date={meta.date} description={meta.description} image={meta.image} title={`${meta.title} - Lee Robinson`}>
         <Nav />
         <Main>
             <MDXProvider components={components}>
-                <MarkdownWrapper>{children}</MarkdownWrapper>
+                <article>{children}</article>
             </MDXProvider>
+            <Subscribe />
         </Main>
         <Footer />
     </Page>
