@@ -10,6 +10,7 @@ import Main from '../components/main';
 import Nav from '../components/nav';
 import Page from '../components/page';
 import Social from '../components/socials/social';
+import MusicGrid from '../components/music/album';
 
 const AboutTitle = styled.h3`
     ${heading} color: #2e2e2e;
@@ -39,6 +40,9 @@ const Index = () => (
             </p>
             <H3>{'Contact'}</H3>
             <Social />
+            <H3>{'Music'}</H3>
+            <p>{'Some of my favorite albums that have been on repeat lately 🎶'}</p>
+            <MusicGrid />
             <H3>{'Travel Map'}</H3>
             <p>{' Check out the map below to see every place I’ve traveled to ✈️ '}</p>
             <iframe
