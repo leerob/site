@@ -20,7 +20,7 @@ export default [
         url: 'https://open.spotify.com/album/3VzsvmhnUb9OZ59bq2aoNZ'
     },
     {
-        artworkUrl: '/static/images/music/bellion',
+        artworkUrl: '/static/images/music/thc',
         name: 'The Human Condition',
         url: 'https://open.spotify.com/album/2jJReDZqTuAxr4R0ItimZc'
     }
