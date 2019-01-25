@@ -14,7 +14,7 @@
     },
     "engines": {
         "node": "8.10.0",
-        "yarn": ">=1.13.0"
+        "yarn": ">=1.5.1"
     },
     "files": [
         "components",
