@@ -1,0 +1,11 @@
+{
+    "alias": ["leerob.io", "www.leerob.io"],
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@now/static-build"
+        }
+    ],
+    "name": "leerob",
+    "version": 2
+}
