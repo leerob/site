@@ -1,48 +1,56 @@
-const {cp, mv, rm} = require('shelljs');
+const fs = require('fs');
+const {parse} = require('path');
+
+const cpy = require('cpy');
+const del = require('del');
+const globby = require('globby');
 const execao = require('execa-output');
 const Listr = require('listr');
+const prettifyXml = require('prettify-xml');
 
-const exportDirectory = 'out';
+const exportDirectory = 'dist';
+const removeTrailingSlash = (text) => (text.endsWith('/') ? text.slice(0, -1) : text);
+const generateSitemap = async () => {
+    const patterns = `${exportDirectory}/**/*.html`;
+    const pages = await globby(patterns);
+    const sitemap = `
+        <?xml version="1.0" encoding="UTF-8"?>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            ${pages
+                .map((page) => {
+                    const path = page.replace(exportDirectory, '');
+                    const parsed = parse(path);
+                    const loc = parsed.name === 'index' ? parsed.dir : parsed.dir + parsed.base;
+
+                    return `
+                    <url>
+                        <loc>${`https://leerob.io${removeTrailingSlash(loc)}`}</loc>
+                    </url>
+                `;
+                })
+                .join('')}
+        </urlset>
+    `;
+
+    // eslint-disable-next-line no-sync
+    fs.writeFileSync(`${exportDirectory}/sitemap.xml`, prettifyXml(sitemap));
+};
 
 const tasks = new Listr([
     {
-        task: () => rm('-rf', exportDirectory),
-        title: 'Removing export directory'
+        task: () => execao('next', ['export', '-o', exportDirectory]),
+        title: 'Running `next export`'
     },
     {
-        task: () => execao('next', ['build']),
-        title: 'Building site'
-    },
-    {
-        task: () => execao('next', ['export']),
-        title: 'Exporting site'
-    },
-    {
-        task: () => rm('-rf', `${exportDirectory}/**/*.pxd/`),
-        title: 'Removing unnecessary files'
-    },
-    {
-        task: () => cp('-r', `${exportDirectory}/static/root/*`, `${exportDirectory}`),
+        task: () => cpy([`${exportDirectory}/static/root/*`], exportDirectory),
         title: 'Copying static files to root'
     },
     {
-        task: () => mv(`${exportDirectory}/404/index.html`, `${exportDirectory}/404.html`),
-        title: 'Moving 404 page to root'
+        task: () => del([`${exportDirectory}/**/*.pxd/`, `${exportDirectory}/index`, `${exportDirectory}/static/root`]),
+        title: 'Removing unnecessary files and folders'
     },
     {
-        task: () => rm('-rf', `${exportDirectory}/index`),
-        title: 'Removing index directory'
-    },
-    {
-        task: () => rm('-rf', `${exportDirectory}/404`),
-        title: 'Removing 404 directory'
-    },
-    {
-        task: () => rm('-rf', `${exportDirectory}/static/root`),
-        title: 'Removing static root directory'
-    },
-    {
-        task: () => execao('node', ['./scripts/sitemap.js']),
+        task: () => generateSitemap(),
         title: 'Generating sitemap'
     }
 ]);
