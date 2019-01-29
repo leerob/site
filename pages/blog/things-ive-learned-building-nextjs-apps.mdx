@@ -1,0 +1,157 @@
+import Date from '../../components/date'
+import Post from '../../components/post'
+
+export const meta = {
+date: '2019-01-25',
+description: 'TODO.',
+image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg',
+title: `Things I've Learned Building Next.js Apps`
+}
+
+export default ({children}) => <Post meta={meta}>{children}</Post>
+
+# Things I've Learned Building Next.js Apps
+
+<Date>{meta.date}</Date>
+
+![Next.js](/static/images/things-ive-learned-building-nextjs-apps/nextjs.png)
+
+I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
+
+-   I ported over my personal site from [Hugo](https://gohugo.io/) to [Next.js + MDX](https://github.com/leerob/leerob.io).
+-   I created [dsmtech.io](https://dsmtech.io/) (link to Mapbox post).
+-   A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
+
+Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
+
+## CSS-in-JS
+
+I used to be strongly against CSS-in-JS. If you didn't like CSS, then use SASS/LESS. _Why mix styling with your code_?
+
+Well, turns out I was wrong. **Styling is code** and I have never felt more productive styling components than I do using CSS-in-JS.
+Next.js comes preloaded with [styled-jsx](https://github.com/zeit/styled-jsx), which is fine, but I prefer [styled-components](https://www.styled-components.com/) 💅.
+
+If you want to know more, I have a whole separate post about building a [UI Component Library with Styled Components](https://medium.com/hy-vee-engineering).
+
+## Font Loading
+
+[Comprehensive Guide](https://www.zachleat.com/web/comprehensive-webfonts)
+
+```css
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    src: url(${500woff2}) format('woff2'), url(${500woff}) format('woff');
+}
+```
+
+## Dynamic Assets and Testing
+
+It's likely that at some point in scaling your Next.js app, you'll want to use an external package
+that doesn't work well server-side rendered. For me, this package was [react-select](https://react-select.com).
+
+When SSR this component, it simply did not work in Safari. Until that bug is fixed, I needed a work around. Thanks
+to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy to import a component and disable SSR.
+
+```js
+import dynamic from 'next/dynamic';
+
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+    ssr: false
+});
+
+export default () => (
+    <>
+        <Header />
+        <ReactSelectNoSSR />
+        <Footer />
+    </>
+);
+```
+
+While this works, we can go a step further and provide a loading placeholder to make the user experience better.
+
+```js
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+    loading: () => <Input />,
+    ssr: false
+});
+```
+
+Much better! 🎉 Now, how do we test it?
+
+My preferred testing library is [Jest](https://jestjs.io/). The dynamic import support offered by Next.js **does not** expose a way to preload the dynamically imported components in Jest’s environment.
+However, thanks to [jest-next-dynamic](https://github.com/FormidableLabs/jest-next-dynamic), we can render the full component tree instead of the loading placeholder. Perfect!
+
+You'll need to add [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) to your `.babelrc` like so.
+
+```js
+{
+  "plugins": ["babel-plugin-dynamic-import-node"]
+}
+```
+
+Then, you can use `preloadAll()` to render the component instead of the loading placeholder.
+
+```js
+import preloadAll from 'jest-next-dynamic';
+import ReactSelect from './select';
+
+beforeAll(async () => {
+    await preloadAll();
+});
+```
+
+## MDX
+
+TODO
+
+## Polyfills
+
+Next.js supports IE11 and all modern browsers out of the box using `@babel/preset-env`.
+However, it's possible that your own code or external NPM dependencies might use features not supported in your target browsers. In this case,
+you will need to add polyfills. This requires changes in a couple of places.
+
+First, you will need to create/override your `next.config.js` file to customize Webpack.
+
+```js
+module.exports = {
+    webpack: function(cfg) {
+        const originalEntry = cfg.entry;
+        cfg.entry = async () => {
+            const entries = await originalEntry();
+
+            if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+                entries['main.js'].unshift('./client/polyfills.js');
+            }
+
+            return entries;
+        };
+
+        return cfg;
+    }
+};
+```
+
+Then, create `/client/polyfills.js` and include whichever polyfills you need.
+
+```js
+import '@babel/polyfill';
+```
+
+## Now
+
+[Now](https://zeit.co/now) (also created by Zeit) is hands down the **easiest way to deploy applications** I've ever used. Yes, I'm definitely drinking
+the Zeit kool-aid. It's incredibly easy to get started and their GitHub integration will automatically deploy your app on pull requests and leave a link
+for you to review the changes. If everything looks good, it will deploy to prod when the PR is merged. Simple as that.
+
+The icing on the cake is how well the Zeit ecosystem works together. Their [domain service](https://zeit.co/domains) allows you
+to buy domains _from the command line_. That's just... amazing. I've never been able to go from an idea to a live, deployed application
+hosted on a domain so fast.
+
+## Where To Get Help
+
+The Next.js and larger Zeit community support is _fantastic_. They're very responsive to emails, issues, or any other form
+of contact. My preferred method would be on [Spectrum](https://spectrum.chat/next-js). Thanks to Spectrum, all
+questions and answers are indexed, searchable, and easy to find.
