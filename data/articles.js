@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 09, 2019',
+        slug: 'benefits-i-care-about-in-2019',
+        title: 'Benefits I Care About in 2019'
+    },
+    {
         date: 'January 13, 2019',
         slug: 'using-mapbox-with-next-js',
         title: 'Using Mapbox with Next.js (Instead of Google Maps)'
