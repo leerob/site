@@ -1,8 +1,13 @@
 export default [
     {
-        date: 'January 25, 2019',
+        date: 'February 11, 2019',
         slug: 'things-ive-learned-building-nextjs-apps',
         title: `Things I've Learned Building Next.js Apps`
+    },
+    {
+        date: 'February 09, 2019',
+        slug: 'benefits-i-care-about-in-2019',
+        title: 'Benefits I Care About in 2019'
     },
     {
         date: 'January 13, 2019',
