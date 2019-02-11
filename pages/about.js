@@ -36,7 +36,7 @@ const Index = () => (
                 {'For a closer look at the professional work I’ve done, check out my '}
                 <A href="/LeeRobinson.pdf">{'resume.'}</A>
                 {' If you’re interested in reaching out to me, feel free to '}
-                <A href="mailto:lrobinson2011@gmail.com">{'email me.'}</A>
+                <A href="mailto:me@leerob.io">{'email me.'}</A>
             </p>
             <H3>{'Contact'}</H3>
             <Social />
