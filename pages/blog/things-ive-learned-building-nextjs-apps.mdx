@@ -125,7 +125,7 @@ something custom, it's as simple as importing a React component. I've also start
 ## Link Prefetching
 
 For maximum performance, you can use the `prefetch` [attribute](https://nextjs.org/docs#prefetching-pages) on Next's `<Link>` component. This will give the perception
-that the page loads instantly.
+that the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `prefetch` uses `<link rel="preload">` instead of a `<script>` tag. It also only starts prefetching after `onload` to allow the browser to manage resources.
 
 ```js
 <Link prefetch href="/">
@@ -133,7 +133,7 @@ that the page loads instantly.
 </Link>
 ```
 
-**Bonus:** Next won't prefetch [if the user is on 2G](https://github.com/zeit/next.js/blob/fc19b233ebcb6074a55ef4a00771ef7b0a3bcc33/packages/next/client/page-loader.js#L137-L143), since that would actually be a worse experience. Pretty neat!
+**Bonus:** Next won't prefetch [if the user is on 2G](https://github.com/zeit/next.js/blob/fc19b233ebcb6074a55ef4a00771ef7b0a3bcc33/packages/next/client/page-loader.js#L137-L143). Pretty neat!
 
 ## Polyfills
 
@@ -178,6 +178,8 @@ The icing on the cake is how well the Zeit ecosystem works together. Their [doma
 to buy domains _from the command line_. That's just... amazing. I've never been able to go from an idea to a live, deployed application
 hosted on a domain so fast.
 
+**Bonus:** I was even able to [setup email forwarding](https://spectrum.chat/zeit/now/redirection-email-domain~b5e1b613-ae92-42f9-bc49-e8c824a8a7f2?m=MTUzNDE5OTg3MzMwMw==) for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
+
 ## Where To Get Help
 
 The Next.js and larger Zeit community support is _fantastic_. They're very responsive to emails, issues, or any other form
@@ -188,3 +190,4 @@ questions and answers are indexed, searchable, and easy to find. Their [tutorial
 
 -   [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
 -   [Awesome Next.js](https://github.com/unicodeveloper/awesome-nextjs)
+-   [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)
