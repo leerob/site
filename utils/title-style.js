@@ -2,5 +2,20 @@ import title from 'title';
 
 export default (text) =>
     title(text, {
-        special: ['CSS', 'iPhone', 'USB', 'HDD', '1Password', 'QC35', 'VSCode', 'iTerm', 'About', 'MDX', 'UI']
+        special: [
+            '1Password',
+            'About',
+            'CSS',
+            'dart_dev',
+            'HDD',
+            'iPhone',
+            'iTerm',
+            'MDX',
+            'OverReact',
+            'QC35',
+            'UI',
+            'USB',
+            'VSCode',
+            'w_flux'
+        ]
     });
