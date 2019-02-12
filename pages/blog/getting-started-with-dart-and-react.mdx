@@ -16,7 +16,9 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 ![React + Dart](/static/images/getting-started-with-dart-and-react/banner.png)
 
-There are a million different ways to build a web app in today's landscape. Different languages and frameworks come and go and vary in popularity. There isn't one right way to do things and ultimately it's about weighing the pros and cons of the available tools at your disposable. The goal of this article is to inform you about another option you may have not previously considered: using React with Dart.
+> Update (2019): This tutorial has been updated for [Dart 2.0](https://www.dartlang.org/dart-2) and [OverReact 2.0](https://github.com/Workiva/over_react/releases/tag/2.0.0) 🎉
+
+There are a million different ways to build a web app in today's landscape. Different languages and frameworks come and go and vary in popularity. There isn't one right way to do things and ultimately it's about weighing the pros and cons of the available tools at your disposable. The goal of this document is to inform you about another option you may have not previously considered: using React with Dart.
 
 ## Table of Contents
 
@@ -43,7 +45,7 @@ Dart is a programming language originally [developed by Google](https://www.dart
 -   Multi-threading support
 -   And [much, much more](https://www.dartlang.org/guides/language)
 
-Google uses Dart for [AdWords](https://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html) which makes up the majority of Google's revenue. It's also the language we use at [Workiva](https://www.workiva.com/) for our next-generation products. Workiva has committed to using Dart and has published a [variety of OSS (open-source software) libraries](https://workiva.github.io/) to make developer's lives easier. If you're curious, here's a list of some companies [who use Dart.](https://www.dartlang.org/community/who-uses-dart)
+Google uses Dart for [AdWords](https://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html) which makes up the majority of Google's revenue. It's also the language used at [Workiva](https://www.workiva.com/) for their next-generation products. Workiva has committed to using Dart and has published a [variety of OSS (open-source software) libraries](https://workiva.github.io/) to make developer's lives easier. If you're curious, here's a list of some companies [who use Dart.](https://www.dartlang.org/community/who-uses-dart)
 
 ## Why React?
 
@@ -77,25 +79,19 @@ You can install Dart on macOS using Homebrew.
 
 ```bash
 $ brew tap dart-lang/dart
-$ brew install dart --with-content-shell --with-dartium
+$ brew install dart
 ```
-
-Dartium is a special build of [Chromium](<https://en.wikipedia.org/wiki/Chromium_(web_browser)>) distributed with the Dart SDK that includes the Dart VM. Using Dartium means you don’t have to compile your code to JavaScript until you’re ready to test on other browsers. This allows for a faster development iteration cycle.
-
-Dartium is going away in Dart 2.0. In Dart 2.0, you’ll use Chrome or other standard browsers for testing instead of Dartium thanks to a new development compiler called [dartdevc](https://webdev.dartlang.org/tools/dartdevc). Rather than go in-depth on Dartium, this tutorial will use Chrome instead in preparation for Dart 2.0. For more information see [Dart 2.0 Updates](https://www.dartlang.org/dart-2.0).
 
 ## Building & Running
 
 The Dart SDK comes with a tool called `pub` to help manage your codebase. The most common command `pub get` is used to download a package's dependencies. This is the first thing you will need to do when checking out an
 existing Dart repository.
 
-`pub serve` starts up a development server for your Dart application. Refreshing your browser will recompile your Dart files to JavaScript. As previously mentioned, with Dart 2.0 you will be able to "hot reload" with dartdevc. You can download a [pre-release](https://www.dartlang.org/dart-2.0#testing) of Dart 2.0 if you need this now.
-
-To retrieve all of the dependencies for the todo application and start a server, we can run:
+`pub run build_runner serve` starts up a development server for your Dart application, fully complete with hot reloading thanks to Dart 2.0. To retrieve all of the dependencies for the todo application and start a server, we can run:
 
 ```bash
 $ pub get
-$ pub serve
+$ pub run build_runner serve
 ```
 
 Now, we can open up http://localhost:8080/ to see the todo application.
@@ -142,7 +138,7 @@ your_app/
 
 ### dart_dev
 
-[dart_dev](https://github.com/Workiva/dart_dev) is our centralized tooling built on top of the Dart SDK. All Dart projects eventually share a common set of development requirements:
+dart_dev is a centralized tooling package built on top of the Dart SDK. All Dart projects eventually share a common set of development requirements:
 
 -   Tests (unit, integration, and functional)
 -   Code coverage
@@ -152,10 +148,9 @@ your_app/
 
 The Dart SDK provides the necessary tooling to accomplish the tasks mentioned above but lacks a consistent usage pattern across multiple projects. Using dart_dev, a single configuration file will get our project configured and ready to use a variety of command line arguments.
 
-For example: let's analyze and format our entire code base.
+For example: let's format the entire code base.
 
 ```bash
-$ pub run dart_dev analyze
 $ pub run dart_dev format
 ```
 
@@ -165,10 +160,9 @@ To make things even more simple, we can set up a bash alias
 $ alias ddev='pub run dart_dev'
 ```
 
-which turns the previous commands into:
+which turns the previous command into:
 
 ```bash
-$ ddev analyze
 $ ddev format
 ```
 
@@ -178,19 +172,19 @@ Now that we have an understanding of the language/tools we're working with, let'
 
 ### OverReact
 
-[OverReact](https://workiva.github.io/over_react/) is our library for building statically-typed React UI components. Since OverReact is built on top of React JS, I strongly encourage you to gain familiarity with React first if you're not by reading [this tutorial](https://reactjs.org/docs/hello-world.html). The example below compares a `render()` function for JSX and OverReact that will have the exact same HTML markup result.
+[OverReact](https://workiva.github.io/over_react/) is a library for building statically-typed React UI components. Since OverReact is built on top of React, I strongly encourage you to gain familiarity with React first if you're not by reading [this tutorial](https://reactjs.org/docs/hello-world.html). The example below compares a `render()` function for JSX and OverReact that will have the exact same HTML markup result.
 
--   **React JS** (JSX):
+-   **React** (JSX):
 
-    ```javascript
+    ```jsx
     render() {
-    return <div className="container">
-      <h1>Click the button!</h1>
-      <button
-        id="main_button"
-        onClick={_handleClick}
-      >Click me</button>
-    </div>;
+      return <div className="container">
+        <h1>Click the button!</h1>
+        <button
+          id="main_button"
+          onClick={_handleClick}
+        >Click me</button>
+      </div>;
     }
     ```
 
@@ -198,47 +192,21 @@ Now that we have an understanding of the language/tools we're working with, let'
 
     ```dart
     render() {
-    return (Dom.div()..className = 'container')(
-      Dom.h1()('Click the button!'),
-      (Dom.button()
-        ..id = 'main_button'
-        ..onClick = _handleClick
-      )('Click me')
-    );
+      return (Dom.div()..className = 'container')(
+        Dom.h1()('Click the button!'),
+        (Dom.button()
+          ..id = 'main_button'
+          ..onClick = _handleClick
+        )('Click me')
+      );
     }
     ```
 
-Let’s break down the OverReact style shown above.
-
-```dart
-render() {
-  // Create a builder for a <div>,
-  // add a CSS class name by cascading a typed setter,
-  // and invoke the builder with the HTML DOM <h1> and <button> children.
-  return (Dom.div()..className = 'container')(
-
-    // Create a builder for an <h1> and invoke it with children.
-    // No need for wrapping parentheses, since no props are added.
-    Dom.h1()('Click the button!'),
-
-    // Create a builder for a <button>,
-    (Dom.button()
-      // add a ubiquitous DOM prop exposed on all components,
-      // which Dom.button() forwards to its rendered DOM,
-      ..id = 'main_button'
-      // add another prop,
-      ..onClick = _handleClick
-    // and finally invoke the builder with children.
-    )('Click me')
-  );
-}
-```
-
-OverReact helps bridge the gap between Dart and React. If you're using VS Code, my colleague Jace has created some [OverReact code snippets](https://github.com/JaceHensley/vscode-over-react-snippets) that will help speed up your development. Now, let's talk about our front-end architecture.
+OverReact helps bridge the gap between Dart and React. If you're using VS Code, you can utilize [OverReact code snippets](https://github.com/JaceHensley/vscode-over-react-snippets) to help speed up your development. Now, let's talk about our front-end architecture.
 
 ### w_flux
 
-[w_flux](https://github.com/Workiva/w_flux) is our architecture library for Flux - a simple uni-directional data flow pattern that provides an MVC like architecture and works well with React UI components.
+[w_flux](https://github.com/Workiva/w_flux) is an architecture library with uni-directional data flow that provides an MVC like architecture and works well with React UI components.
 
 ![w_flux Diagram](/static/images/getting-started-with-dart-and-react/flux_diagram.png)
 
@@ -250,33 +218,30 @@ As previously mentioned, we'll use the `pubspec.yaml` file in our root directory
 
 **pubspec.yaml**
 
-```javascript
-name: 'todo_dart_react'
-version: 1.0.0
-description: 'Dart + React Todo List Example'
-homepage: 'https://github.com/leerob/dart-react-todo'
-author: 'Lee Robinson <lee.robinson@workiva.com>'
+```yaml
+name: todo_dart_react
+version: 2.0.0
+description: Dart + React Todo List Example
+homepage: https://github.com/leerob/dart-react-todo
+author: Lee Robinson <me@leerob.io>
 
 environment:
-  sdk: '>=1.23.0 <2.0.0'
+    sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
-  w_flux: ^2.9.4
-  over_react: ^1.18.1
-  react: ^3.6.0
+    over_react: ^2.0.0
+    w_flux: ^2.10.1
+    react: ^4.6.0
 
 dev_dependencies:
-  coverage: ^0.8.0
-  test: ^0.12.28
-  over_react_test: ^1.3.1
-  dart_dev: ^1.8.1
-  dart_style: ^1.0.8
-
-transformers:
-- over_react
-- $dart2js
-- test/pub_serve:
-    $include: test/**.dart
+    build_runner: ^1.1.2
+    build_test: ^0.10.3
+    build_web_compilers: ^1.0.0
+    coverage: ^0.12.4
+    dart_dev: ^2.0.3
+    dart_style: ^1.0.8
+    over_react_test: ^2.3.0
+    test: ^1.5.3
 ```
 
 This file tells `pub` which versions of the included packages it needs to retrieve. You can find more information about what all can be included in this file [here](https://www.dartlang.org/tools/pub/pubspec).
@@ -331,8 +296,7 @@ The container previously mentioned is the `app-container` DOM node shown below. 
 
         <script src="./packages/react/react.js"></script>
         <script src="./packages/react/react_dom.js"></script>
-        <script src="main.dart" type="application/dart"></script>
-        <script src="./packages/browser/dart.js"></script>
+        <script defer src="main.dart.js"></script>
     </body>
 </html>
 ```
@@ -415,10 +379,10 @@ The final piece will be the OverReact UI components to display the store's data.
 
 ```dart
 @Factory()
-UiFactory<TodoAppProps> TodoApp;
+UiFactory<TodoAppProps> TodoApp = _$TodoApp;
 
 @Props()
-class TodoAppProps extends FluxUiProps<TodoActions, TodoStore> {}
+class _$TodoAppProps extends FluxUiProps<TodoActions, TodoStore> {}
 
 @Component()
 class TodoAppComponent extends FluxUiComponent<TodoAppProps> {
@@ -511,38 +475,22 @@ This test creates a new handler for deleting a todo and passes it to the `TodoLi
 We can now run all unit tests using the following command:
 
 ```bash
-$ ddev test
-```
-
-We can also run a specific test group using the -n flag and providing the group name.
-
-```bash
-$ ddev test -n "TodoListItem"
+$ pub run build_runner test
 ```
 
 ## Continuous Integration
 
-Continuous Integration (CI) is the process of automating the building and testing of your code every time you commit changes to GitHub. We can utilize [Travis CI](https://travis-ci.org/) to easily perform static analysis, check formatting, run unit tests, and generate code coverage using a `.travis.yml` file. You don't need to worry about configuring this file - it's already all set up and running in the repository. If you [fork the repo](https://github.com/leerob/dart-react-todo#fork-destination-box) to create your own application, you will need to sync Travis CI and [codecov](https://codecov.io/) with your GitHub account to trigger builds when you commit changes and generate coverage.
+Continuous Integration (CI) is the process of automating the building and testing of your code every time you commit changes to GitHub. We can utilize [Travis CI](https://travis-ci.org/) to easily perform static analysis, check formatting, run unit tests, and generate code coverage using a `.travis.yml` file. You don't need to worry about configuring this file - it's already all set up and running in this repository. If you [fork the repo](https://github.com/leerob/dart-react-todo#fork-destination-box) to create your own application, you will need to sync Travis CI with your GitHub account to trigger builds when you commit changes.
 
 ## Deploying
 
-When you're ready to compile your code to JS, we can use `pub build`. This command uses
+When you're ready to compile your code to JS, we can use `pub run build_runner build`. [This command](https://webdev.dartlang.org/tools/webdev#webdev-build) uses
 `dart2js` to compile Dart to a single JS bundle. `dart2js` will automatically
 remove any dead code or unused libraries. By default, the
 compiled code is output to the `build/` directory.
 
 ```bash
-$ pub build
-```
-
-The `build` command has two modes, `release` and `debug`. It defaults to
-`release`, which will minify the resulting JS and omit the `.dart` files from
-the output directory. In `debug` mode, the output will be un-minified and will
-contain `.dart` source files next to compiled code for use with source maps.
-This is useful for staging environments where debugging may be required.
-
-```bash
-$ pub build --mode debug
+$ pub run build_runner build
 ```
 
 ### Netlify
@@ -553,7 +501,7 @@ $ pub build --mode debug
 
 ```bash
 $ npm install netlify-cli -g
-$ pub build
+$ pub run build_runner build
 $ netlify deploy
 ? No site id specified, create a new site Yes
 ? Path to deploy? (current dir) build/web/
