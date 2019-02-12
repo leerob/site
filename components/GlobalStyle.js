@@ -7,7 +7,7 @@ const code = `
     background-color: #f3f3f3;
     border-radius: 2px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 16px;
+    font-size: 14px;
     padding: 3px 6px;
 `;
 
@@ -112,13 +112,6 @@ const GlobalStyle = createGlobalStyle`
         ${code}
     }
 
-    kbd {
-        ${code}
-        background-color: #333;
-        color: #fff;
-        font-weight: bold;
-    }
-
     pre {
         ${code}
         line-height: 1.4em;
@@ -154,6 +147,10 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: 768px) {
         body {
             font-size: 18px;
+        }
+
+        code, pre {
+            font-size: 16px;
         }
     }
 `;
