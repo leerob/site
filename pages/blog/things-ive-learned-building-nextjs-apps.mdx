@@ -3,8 +3,8 @@ import Post from '../../components/post'
 import Link from '../../components/link'
 
 export const meta = {
-date: '2019-02-11',
-description: 'TODO.',
+date: '2019-02-15',
+description: `I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use.`,
 image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg',
 title: `Things I've Learned Building Next.js Apps`
 }
@@ -60,7 +60,7 @@ I've used some of the other font-loading approaches in other scenarios. Becommin
 It's likely that at some point in scaling your Next.js app, you'll want to use an external package
 that doesn't work well server-side rendered. For me, this package was [react-select](https://react-select.com).
 
-When SSR this component, it simply did not work in Safari. Until that bug is fixed, I needed a work around. Thanks
+When SSR this component, it simply did not work in Safari. Until that bug is fixed, I needed a workaround. Thanks
 to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy to import a component and disable SSR.
 
 ```js
@@ -79,7 +79,7 @@ export default () => (
 );
 ```
 
-While this works, we can go a step further and provide a loading placeholder to make the user experience better.
+While this works, we can go a step further and provide a <Link slug="blog/loading-placeholder-with-sass" title="Creating a Loading Placeholder with Sass" underline={true}>loading placeholder</Link> to make the user experience better.
 
 ```js
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
@@ -88,7 +88,7 @@ const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
 });
 ```
 
-Much better! 🎉 Now, how do we test it?
+Much better 🎉 Now, how do we test it?
 
 My preferred testing library is [Jest](https://jestjs.io/). The dynamic import support offered by Next.js **does not** expose a way to preload the dynamically imported components in Jest’s environment.
 However, thanks to [jest-next-dynamic](https://github.com/FormidableLabs/jest-next-dynamic), we can render the full component tree instead of the loading placeholder. Perfect!
@@ -114,7 +114,7 @@ beforeAll(async () => {
 
 ## MDX
 
-My <Link slug="blog/beginners-guide-to-the-programming-portfolio" title="Beginner’s Guide to the Programming Portfolio" underline={true}>portfolio</Link> has transformed quite a bit since I started in 2014. Originally, it was
+My <Link slug="blog/beginners-guide-to-the-programming-portfolio" title="Beginner’s Guide to the Programming Portfolio" underline={true}>portfolio</Link> has transformed quite a bit since I started it in 2014. Originally, it was
 just static HTML & CSS. Then, I <Link slug="blog/migrating-to-hugo" title="Migrating to Hugo" underline={true}>switched over to Hugo</Link> so I could write my posts in Markdown.
 This worked well for awhile, but I wanted full control over my layouts and felt much more comfortable with JavaScript.
 That's what led me to Next.js and MDX.
@@ -125,7 +125,7 @@ something custom, it's as simple as importing a React component. I've also start
 ## Link Prefetching
 
 For maximum performance, you can use the `prefetch` [attribute](https://nextjs.org/docs#prefetching-pages) on Next's `<Link>` component. This will give the perception
-that the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `prefetch` uses `<link rel="preload">` instead of a `<script>` tag. It also only starts prefetching after `onload` to allow the browser to manage resources.
+the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `prefetch` uses `<link rel="preload">` instead of a `<script>` tag. It also only starts prefetching after `onload` to allow the browser to manage resources.
 
 ```js
 <Link prefetch href="/">
@@ -170,19 +170,19 @@ import '@babel/polyfill';
 
 ## Now
 
-[Now](https://zeit.co/now) (also created by Zeit) is hands down the **easiest way to deploy applications** I've ever used. Yes, I'm definitely drinking
-the Zeit kool-aid. It's incredibly easy to get started and their GitHub integration will automatically deploy your app on pull requests and leave a link
+[Now](https://zeit.co/now) (also created by ZEIT) is hands down the **easiest way to deploy applications** I've ever used. Yes, I'm definitely drinking
+the ZEIT kool-aid. It's incredibly easy to get started and their GitHub integration will automatically deploy your app on pull requests and leave a link
 for you to review the changes. If everything looks good, it will deploy to prod when the PR is merged. Simple as that.
 
-The icing on the cake is how well the Zeit ecosystem works together. Their [domain service](https://zeit.co/domains) allows you
-to buy domains _from the command line_. That's just... amazing. I've never been able to go from an idea to a live, deployed application
+The icing on the cake is how well the ZEIT ecosystem works together. Their [domain service](https://zeit.co/domains) allows you
+to buy domains _from the command line_. I've never been able to go from an idea to a live, deployed application
 hosted on a domain so fast.
 
 **Bonus:** I was even able to [setup email forwarding](https://spectrum.chat/zeit/now/redirection-email-domain~b5e1b613-ae92-42f9-bc49-e8c824a8a7f2?m=MTUzNDE5OTg3MzMwMw==) for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
 
 ## Where To Get Help
 
-The Next.js and larger Zeit community support is _fantastic_. They're very responsive to emails, issues, or any other form
+The Next.js and larger ZEIT community support is _fantastic_. They're very responsive to emails, issues, or any other form
 of contact. My preferred method would be on [Spectrum](https://spectrum.chat/next-js). Thanks to Spectrum, all
 questions and answers are indexed, searchable, and easy to find. Their [tutorials](https://nextjs.org/learn/) and [docs](https://nextjs.org/docs) are also fantastic and well-written.
 
