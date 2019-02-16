@@ -10,8 +10,10 @@ export default (text) =>
             'HDD',
             'iPhone',
             'iTerm',
+            'MDX',
             'OverReact',
             'QC35',
+            'UI',
             'USB',
             'VSCode',
             'w_flux'

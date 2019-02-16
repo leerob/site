@@ -1,8 +1,25 @@
 export default [
     {
+        date: 'February 15, 2019',
+        slug: 'things-ive-learned-building-nextjs-apps',
+        title: `Things I've Learned Building Next.js Apps`
+    },
+    {
+        date: 'February 12, 2019',
+        publisher: 'Hy-Vee R&D',
+        title: 'Building a UI Component Library with Styled Components',
+        url: 'https://medium.com/hy-vee-engineering/building-a-ui-component-library-with-styled-components-8f033aaa3d52'
+    },
+    {
         date: 'February 09, 2019',
         slug: 'benefits-i-care-about-in-2019',
         title: 'Benefits I Care About in 2019'
+    },
+    {
+        date: 'January 18, 2019',
+        publisher: 'Hy-Vee R&D',
+        title: 'Announcing the Hy-Vee R&D Tech Blog',
+        url: 'https://medium.com/hy-vee-engineering/announcing-the-hy-vee-r-d-tech-blog-5a4f090d4743'
     },
     {
         date: 'January 13, 2019',
