@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 17, 2019',
+        slug: 'technical-recruiting-is-broken',
+        title: 'Technical Recruiting is Broken'
+    },
+    {
         date: 'February 15, 2019',
         slug: 'things-ive-learned-building-nextjs-apps',
         title: `Things I've Learned Building Next.js Apps`
