@@ -32,7 +32,7 @@ export default class CustomDocument extends Document {
     render() {
         return (
             <html lang="en">
-                <Head>{this.props.styleTags}</Head>
+                <Head />
                 <body>
                     <Main />
                     <NextScript />
