@@ -71,6 +71,7 @@
         "next-ga": "2.3.4",
         "react": "16.8.2",
         "react-dom": "16.8.2",
+        "react-tweet-embed": "1.1.1",
         "styled-components": "4.1.3",
         "styled-reset": "1.6.4",
         "title": "3.4.1"

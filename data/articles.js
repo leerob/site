@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'March 10, 2019',
+        slug: 'purpose-driven-work',
+        title: 'Purpose-Driven Work'
+    },
+    {
         date: 'February 17, 2019',
         slug: 'technical-recruiting-is-broken',
         title: 'Technical Recruiting is Broken'
