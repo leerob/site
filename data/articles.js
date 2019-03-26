@@ -1,5 +1,11 @@
 export default [
     {
+        date: 'March 26, 2019',
+        publisher: 'Hy-Vee R&D',
+        title: 'Creating a Monorepo with Lerna & Yarn Workspaces',
+        url: 'https://medium.com/hy-vee-engineering/creating-a-monorepo-with-lerna-yarn-workspaces-cf163908965d'
+    },
+    {
         date: 'March 10, 2019',
         slug: 'purpose-driven-work',
         title: 'Purpose-Driven Work'
