@@ -1,5 +1,7 @@
 # leerob.io
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/leerob/leerob.io.svg)](https://greenkeeper.io/)
+
 > My personal website.
 
 Built using:
