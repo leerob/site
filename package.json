@@ -84,7 +84,7 @@
         "cpy": "7.1.0",
         "cross-env": "5.2.0",
         "del": "4.0.0",
-        "eslint": "5.15.3",
+        "eslint": "4.19.1",
         "eslint-config-get-off-my-lawn-prettier": "1.0.0",
         "execa": "1.0.0",
         "execa-output": "2.0.0",
@@ -98,6 +98,11 @@
         "webpack-bundle-analyzer": "3.1.0"
     },
     "resolutions": {
-        "@mdx-js/mdx": "0.17.5"
+        "@mdx-js/mdx": "^0.15.7"
+    },
+    "greenkeeper": {
+        "ignore": [
+            "eslint"
+        ]
     }
 }
