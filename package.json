@@ -64,16 +64,16 @@
         ]
     },
     "dependencies": {
-        "@mdx-js/mdx": "0.17.5",
-        "@mdx-js/tag": "0.17.5",
+        "@mdx-js/mdx": "0.20.3",
+        "@mdx-js/tag": "0.20.3",
         "date-fns": "1.30.1",
-        "next": "8.0.1",
+        "next": "8.0.3",
         "next-ga": "2.3.4",
-        "react": "16.8.2",
-        "react-dom": "16.8.2",
-        "react-tweet-embed": "1.1.1",
-        "styled-components": "4.1.3",
-        "styled-reset": "1.6.4",
+        "react": "16.8.6",
+        "react-dom": "16.8.6",
+        "react-tweet-embed": "1.2.2",
+        "styled-components": "4.2.0",
+        "styled-reset": "2.0.4",
         "title": "3.4.1"
     },
     "devDependencies": {
@@ -81,23 +81,28 @@
         "@zeit/next-mdx": "1.2.0",
         "babel-plugin-inline-react-svg": "1.0.1",
         "babel-plugin-styled-components": "1.10.0",
-        "cpy": "7.0.1",
+        "cpy": "7.1.0",
         "cross-env": "5.2.0",
-        "del": "3.0.0",
+        "del": "4.0.0",
         "eslint": "4.19.1",
         "eslint-config-get-off-my-lawn-prettier": "1.0.0",
         "execa": "1.0.0",
         "execa-output": "2.0.0",
-        "globby": "9.0.0",
+        "globby": "9.1.0",
         "husky": "1.3.1",
-        "imageoptim-cli": "2.3.4",
-        "lint-staged": "8.1.0",
+        "imageoptim-cli": "2.3.5",
+        "lint-staged": "8.1.5",
         "listr": "0.14.3",
         "prettier": "1.16.4",
         "prettify-xml": "1.2.0",
-        "webpack-bundle-analyzer": "3.0.3"
+        "webpack-bundle-analyzer": "3.1.0"
     },
     "resolutions": {
-        "@mdx-js/mdx": "0.17.5"
+        "@mdx-js/mdx": "^0.15.7"
+    },
+    "greenkeeper": {
+        "ignore": [
+            "eslint"
+        ]
     }
 }
