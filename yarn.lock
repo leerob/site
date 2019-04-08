@@ -6780,10 +6780,10 @@ styled-jsx@3.2.1:
     stylis "3.5.4"
     stylis-rule-sheet "0.0.10"
 
-styled-reset@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-2.0.4.tgz#abd439295d824e61a867f39caeee4ad10c813643"
-  integrity sha512-2k+QcG8Z8wVEisH559MGunvPf8aOstqTD6CNDv8QwKTjMHo2MnzPTbMr06UOu6nV4QFlYdZmOwjEKHlHcCyUYQ==
+styled-reset@2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-2.0.6.tgz#66a0f7f660a04388f1d4e9d336c14f7045c961a8"
+  integrity sha512-AheA4ouqDcx5UNS4/VfLNVpEgAJmFoqN663NT0wk2+sHlhrAfuK5tjlV2spTF2HdP0+7fBcUue/5oQLxqXLBFg==
   dependencies:
     opencollective "^1.0.3"
     opencollective-postinstall "2.0.2"
