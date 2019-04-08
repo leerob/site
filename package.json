@@ -73,7 +73,7 @@
         "react-dom": "16.8.6",
         "react-tweet-embed": "1.2.2",
         "styled-components": "4.2.0",
-        "styled-reset": "2.0.4",
+        "styled-reset": "2.0.6",
         "title": "3.4.1"
     },
     "devDependencies": {
