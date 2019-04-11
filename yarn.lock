@@ -1441,15 +1441,15 @@ babel-plugin-dynamic-import-node@2.2.0:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-inline-react-svg@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inline-react-svg/-/babel-plugin-inline-react-svg-1.0.1.tgz#1457edae1035a12b3c5026ef28a1239edc71d2a2"
-  integrity sha512-vTsG/L2cUN4XRJdJ1scYXMSBlgAxkZm/tgo1Lo/FulbPADztEtVOPUNuNDeEoRHZCz9RC0ZHXdVSJ/GaqahF/Q==
+babel-plugin-inline-react-svg@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inline-react-svg/-/babel-plugin-inline-react-svg-1.1.0.tgz#b39519c78249b3fcf895b541c38b485a2b11b0be"
+  integrity sha512-Y/tBMi7Jh7Jh+DGcSNsY9/RW33nvcR067HFK0Dp+03jpidil1sJAffBdajK72xn3tbwMsgFLJubxW5xpQLJytA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/parser" "^7.0.0"
     lodash.isplainobject "^4.0.6"
-    resolve "^1.8.1"
+    resolve "^1.10.0"
     svgo "^0.7.2"
 
 babel-plugin-react-require@3.0.0:
@@ -6143,7 +6143,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@^1.3.2, resolve@^1.3.3, resolve@^1.5.0, resolve@^1.8.1:
+resolve@^1.10.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.5.0, resolve@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.10.0.tgz#3bdaaeaf45cc07f375656dfd2e54ed0810b101ba"
   integrity sha512-3sUr9aq5OfSg2S9pNtPA9hL1FVEAjvfOC4leW0SNf/mpnaakz2a9femSd6LqAww2RaFctwyf1lCqnTHuF1rxDg==
