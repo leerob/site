@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'April 11, 2019',
+        slug: 'stop-wasting-your-time',
+        title: 'Stop Wasting Your Time'
+    },
+    {
         date: 'March 26, 2019',
         publisher: 'Hy-Vee R&D',
         title: 'Creating a Monorepo with Lerna & Yarn Workspaces',
