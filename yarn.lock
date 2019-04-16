@@ -880,10 +880,10 @@
     "@mdx-js/tag" "^0.15.6"
     loader-utils "^1.1.0"
 
-"@mdx-js/mdx@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.0.5.tgz#380eb24d04c99f608b82cf4f4ef6bddca3342b45"
-  integrity sha512-vyqW9GDixcUhEKxuXzIMHpKFbKxc8HzJQQ86Piy5w2QFUSEedjZ2U1gqjkUWec3zUeD0PBBpCig3BH249CMwtw==
+"@mdx-js/mdx@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.0.6.tgz#95edb662a637e8325e80e9a21cb686277a4d35de"
+  integrity sha512-cB+/iwMgv8vPytc+R1FnE58Cj3tWbbx+3q9J+diBAFTQOPOLL8/ult4cF8U2O4SwNjpHRRaDiSyr/+JdeQH5kg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-jsx" "^7.2.0"
