@@ -12,7 +12,7 @@ import Page from '../components/page';
 import Social from '../components/socials/social';
 import MusicGrid from '../components/music/album';
 
-const AboutTitle = styled.h3`
+const AboutTitle = styled.h1`
     ${heading} color: #2e2e2e;
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
