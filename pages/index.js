@@ -35,7 +35,7 @@ const Quote = styled.blockquote`
     }
 `;
 
-const Bio = styled.p`
+const Bio = styled.h3`
     font-size: 1.2em;
     margin: 0;
 
@@ -57,7 +57,7 @@ const Bio = styled.p`
     }
 `;
 
-const Subtitle = styled.div`
+const Subtitle = styled.h2`
     font-style: italic;
     margin: 0;
     color: ${colors.accent};
@@ -85,7 +85,7 @@ const Container = styled.div`
     }
 `;
 
-const Action = styled.p`
+const Action = styled.h4`
     font-style: italic;
     letter-spacing: 0.05em;
     margin: 1em 0 0;
