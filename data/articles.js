@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'April 23, 2019',
+        slug: 'configuring-sentry-for-nextjs-apps',
+        title: 'Configuring Sentry for Next.js Apps'
+    },
+    {
         date: 'April 11, 2019',
         slug: 'stop-wasting-your-time',
         title: 'Stop Wasting Your Time'

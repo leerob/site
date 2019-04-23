@@ -1,0 +1,174 @@
+import Date from '../../components/date'
+import Post from '../../components/post'
+import Link from '../../components/link'
+
+export const meta = {
+date: '2019-04-23',
+description: 'Learn how to set up Sentry to capture client-side and server-side exceptions for Next.js applications.',
+image: '/static/images/configuring-sentry-for-nextjs-apps/banner.png',
+title: 'Configuring Sentry for Next.js Apps'
+}
+
+export default ({children}) => <Post meta={meta}>{children}</Post>
+
+# Configuring Sentry for Next.js Apps
+
+<Date>{meta.date}</Date>
+
+For many teams using Next.js, setting up exception monitoring is a critical requirement before going to production.
+This guide will show you how to use [Sentry](https://sentry.io) to catch & report errors on both client and server-side.
+
+## Brief Next.js Overview
+
+Next.js allows you to easily server-side render (SSR) your React components. All files inside the `/pages` directory will be routed based on their filename (e.g. `/pages/home.js` routes to `your-domain.com/home`).
+
+There are a few Next-specific routes you should understand:
+
+-   `_document.js` is _server-side only_ and is used to change the initial server-side rendered document markup.
+-   `_app.js` is client-side only and is used to initialize pages.
+
+## Implementing Sentry
+
+There are a few different ways to integrate Sentry into your Next.js app, each with their own pros and cons. This guide will focus on a simple example and provide a reference for how to expand your Sentry setup as needed.
+
+### Simple Setup
+
+_You can view the completed example [here](https://github.com/zeit/next.js/pull/7119)._
+
+1. Set up an account with [Sentry](https://sentry.io) and retrieve your DSN.
+2. Add Sentry to your project. Here is an example `package.json`.
+
+```js
+{
+  "name": "with-sentry-simple",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@sentry/browser": "^5.1.0",
+    "next": "latest",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@zeit/next-source-maps": "0.0.4-canary.1"
+  }
+}
+```
+
+3. Override `_app.js` to initialize Sentry and capture client-side exceptions using the `componentDidCatch` React lifecycle method.
+
+```js
+import React from 'react';
+import App, {Container} from 'next/app';
+import * as Sentry from '@sentry/browser';
+
+Sentry.init({
+    dsn: 'ENTER_YOUR_SENTRY_DSN_HERE'
+});
+
+class MyApp extends App {
+    static async getInitialProps({Component, ctx}) {
+        let pageProps = {};
+
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(ctx);
+        }
+
+        return {pageProps};
+    }
+
+    componentDidCatch(error, errorInfo) {
+        Sentry.withScope((scope) => {
+            Object.keys(errorInfo).forEach((key) => {
+                scope.setExtra(key, errorInfo[key]);
+            });
+
+            Sentry.captureException(error);
+        });
+
+        super.componentDidCatch(error, errorInfo);
+    }
+
+    render() {
+        const {Component, pageProps} = this.props;
+
+        return (
+            <Container>
+                <Component {...pageProps} />
+            </Container>
+        );
+    }
+}
+
+export default MyApp;
+```
+
+4. Override `_document.js` to capture server-side exceptions by listening at the node process level.
+
+```js
+import Document, {Html, Head, Main, NextScript} from 'next/document';
+import * as Sentry from '@sentry/browser';
+
+process.on('unhandledRejection', (err) => {
+    Sentry.captureException(err);
+});
+
+process.on('uncaughtException', (err) => {
+    Sentry.captureException(err);
+});
+
+class MyDocument extends Document {
+    static async getInitialProps(ctx) {
+        const initialProps = await Document.getInitialProps(ctx);
+        return {...initialProps};
+    }
+
+    render() {
+        return (
+            <Html>
+                <Head />
+                <body>
+                    <Main />
+                    <NextScript />
+                </body>
+            </Html>
+        );
+    }
+}
+
+export default MyDocument;
+```
+
+5. Override `next.config.js` to produce source maps.
+
+```js
+const withSourceMaps = require('@zeit/next-source-maps')();
+
+module.exports = withSourceMaps({
+    webpack(config, _options) {
+        return config;
+    }
+});
+```
+
+### Complex Setup
+
+Next has an example [with-sentry](https://github.com/zeit/next.js/tree/canary/examples/with-sentry) which contains more functionality but is also more complex. Building off the simple example, it also:
+
+-   Reports the `BUILD_ID` as a release inside Sentry.
+-   Contains a custom error reporting page to allow users to submit feedback.
+-   Uses cookies for a more accurate user count between client and server.
+
+There are still a [few](https://github.com/getsentry/sentry-javascript/issues/1622) [issues](https://github.com/getsentry/sentry-javascript/issues/1762) with it, so I wouldn't recommend using it as a base for now.
+You might be able to extract pieces of the complex example and apply them as you see fit.
+
+## Other Notes
+
+-   Source maps will not be sent to Sentry successfully when running locally.
+-   It's possible you will see duplicate errors sent when testing locally due to hot reloading.
+    For a more accurate simulation, please deploy to whatever service you use for hosting (e.g. Now).
