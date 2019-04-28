@@ -8,7 +8,6 @@ const code = `
     border-radius: 2px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 14px;
-    padding: 3px 6px;
 `;
 
 const GlobalStyle = createGlobalStyle`
