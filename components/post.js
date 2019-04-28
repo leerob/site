@@ -7,6 +7,7 @@ import {spacing} from '../styles/vars';
 
 import A from './elements/a';
 import Blockquote from './elements/blockquote';
+import Code from './elements/code';
 import Em from './elements/em';
 import Footer from './footer';
 import H1 from './elements/h1';
@@ -31,6 +32,7 @@ const components = {
     img: Img,
     li: Li,
     ol: Ol,
+    pre: Code,
     strong: Strong,
     ul: Ul
 };

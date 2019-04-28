@@ -119,6 +119,7 @@ const GlobalStyle = createGlobalStyle`
         overflow-x: auto;
         padding: ${spacing.normal};
         white-space: pre;
+        background: #2d2d2d;
 
         code {
             padding: 0;

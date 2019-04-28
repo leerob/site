@@ -54,7 +54,7 @@ There’s a few exceptions to this list that stick out to me. Joker’s, The Exc
 
 After researching similar rating strategies, I settled on using a [Bayesian estimate](https://en.wikipedia.org/wiki/Bayes_estimator). This is how [IMDb](http://www.imdb.com/help/show_leaf?votestopfaq) and [BeerAdvocate](https://www.beeradvocate.com/lists/top/) rank their Top 250 lists. This essentially normalizes ratings based on the number of ratings for each business.
 
-```
+```bash
 Weighted Rating (WR) = (v ÷ (v + m)) × R + (m ÷ (v + m)) × C
 Where:
 R = rating average for this business

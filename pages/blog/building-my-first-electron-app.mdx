@@ -116,7 +116,7 @@ Electron is set up and there's a place for the React code to be written. Let's j
 
 The entry point for the React application is inside `app.js`. This file loads our components and renders them into `index.html`.
 
-```js
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './containers/app.container';
@@ -135,7 +135,7 @@ You'll notice I've defined `AppContainer`, which is the top-level class containi
 
 For example, the `AppContainer` is a smart component. It will contain the logic for making HTTP requests to retrieve YouTube videos, incrementing the progress bar, and initiating the file download. Inside of this component, you'll find the visual components which don't do any of the heavy lifting. Here's what the `AppContainer` renders.
 
-```js
+```jsx
 render() {
   if (this.state.showProgressBar) {
     return <ProgressBar progress={this.state.progress} />;
@@ -147,7 +147,7 @@ render() {
 
 `ProgressBar` and `LinkInput` are the two visual components used in this application. The link input is initially shown which looks something like this.
 
-```js
+```jsx
 render() {
   let className = `link__input${this.state.showError ? '--error' : ''}`;
   return <div>
@@ -161,7 +161,7 @@ render() {
 
 One of my favorites features of [ES6](https://github.com/lukehoban/es6features) is string template literals.
 
-```js
+```jsx
 `link__input${this.state.showError ? '--error' : ''}`;
 ```
 
@@ -206,7 +206,7 @@ Sass will transform this code into three classes: `link__input`, `link__input--e
 
 The `ProgressBar` component displays a loading bar disguised as an input which updates based on the percentage value passed in from its parent `AppContainer`. When it's nearing completion, the text color changes to white so there's sufficient contrast.
 
-```js
+```jsx
 import React, {Component} from 'react';
 
 class ProgressBar extends Component {
@@ -239,7 +239,7 @@ export default ProgressBar;
 
 As previously mentioned, the `AppContainer` will handle the heavy lifting of fetching the videos from YouTube. I utilized an exisiting API for processing videos to MP3 to reduce duplication of efforts.
 
-```js
+```jsx
 fetchVideo(id) {
   let _this = this;
   Axios.get(`http://www.yt-mp3.com/fetch?v=${id}&apikey=${this.api_key}`)
@@ -264,4 +264,4 @@ fetchVideo(id) {
 
 ### Source Code
 
-You can [view the entire source code here](https://github.com/leerob/youtube-to-mp3). Leave me a comment if you enjoyed this article and happy coding! 😄
+You can [view the entire source code here](https://github.com/leerob/youtube-to-mp3). Happy coding! 😄
