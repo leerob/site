@@ -38,31 +38,31 @@ _You can view the completed example [here](https://github.com/zeit/next.js/pull/
 1. Set up an account with [Sentry](https://sentry.io) and retrieve your DSN.
 2. Add Sentry to your project. Here is an example `package.json`.
 
-```js
+```json
 {
-  "name": "with-sentry-simple",
-  "version": "1.0.0",
-  "license": "ISC",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@sentry/browser": "^5.1.0",
-    "next": "latest",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "devDependencies": {
-    "@zeit/next-source-maps": "0.0.4-canary.1"
-  }
+    "name": "with-sentry-simple",
+    "version": "1.0.0",
+    "license": "ISC",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@sentry/browser": "^5.1.0",
+        "next": "latest",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+    },
+    "devDependencies": {
+        "@zeit/next-source-maps": "0.0.4-canary.1"
+    }
 }
 ```
 
 3. Override `_app.js` to initialize Sentry and capture client-side exceptions using the `componentDidCatch` React lifecycle method.
 
-```js
+```jsx
 import React from 'react';
 import App, {Container} from 'next/app';
 import * as Sentry from '@sentry/browser';
@@ -110,7 +110,7 @@ export default MyApp;
 
 4. Override `_document.js` to capture server-side exceptions by listening at the node process level.
 
-```js
+```jsx
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 import * as Sentry from '@sentry/browser';
 

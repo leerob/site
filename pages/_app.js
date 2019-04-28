@@ -2,6 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import withGA from 'next-ga';
 import App, {Container} from 'next/app';
+import '../styles/prism.css';
 
 class CustomApp extends App {
     render() {

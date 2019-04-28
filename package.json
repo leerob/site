@@ -64,6 +64,7 @@
         ]
     },
     "dependencies": {
+        "@mapbox/rehype-prism": "0.3.1",
         "@mdx-js/mdx": "1.0.14",
         "@mdx-js/tag": "0.20.3",
         "date-fns": "1.30.1",
@@ -71,6 +72,7 @@
         "next-ga": "2.3.4",
         "react": "16.8.6",
         "react-dom": "16.8.6",
+        "react-syntax-highlighter": "10.2.1",
         "react-tweet-embed": "1.2.2",
         "styled-components": "4.2.0",
         "styled-reset": "2.0.8",
@@ -78,6 +80,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.0.0-0",
+        "@zeit/next-css": "1.0.1",
         "@zeit/next-mdx": "1.2.0",
         "babel-plugin-inline-react-svg": "1.1.0",
         "babel-plugin-styled-components": "1.10.0",
@@ -98,7 +101,7 @@
         "webpack-bundle-analyzer": "3.3.0"
     },
     "resolutions": {
-        "@mdx-js/mdx": "^0.15.7"
+        "@mdx-js/mdx": "^0.16.0"
     },
     "greenkeeper": {
         "ignore": [
