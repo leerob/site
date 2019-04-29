@@ -1,5 +1,10 @@
 export default [
     {
+        description: 'Helping companies build, manage, and scale effective distributed teams.',
+        link: 'https://beyondhq.co',
+        name: '✈️ BeyondHQ'
+    },
+    {
         description: 'The best tech companies in the greater DSM area.',
         link: 'https://dsmtech.io',
         name: '🚀 dsmtech'
