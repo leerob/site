@@ -961,10 +961,10 @@
     "@mdx-js/tag" "^0.15.6"
     loader-utils "^1.1.0"
 
-"@mdx-js/mdx@1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.0.15.tgz#a78c084f73203e6062797ca2337de133f2f3ec29"
-  integrity sha512-7lbd2RS0s5TJvytPTbJ0YQqIkJokmggcla3hdOYUHJq2O6eG/IW6qNwf21IWEwNzRbI8IbWM6FflKEopYAPL+w==
+"@mdx-js/mdx@1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.0.16.tgz#cfeca91a70b37bc5bfcf6f8e94dbf16048f1531e"
+  integrity sha512-d4YD7utmW850UVQdb4GjD6MRnRlB5NspheS6x48PiewuW7DuoNPTEnQ+ZjJYzZg5dWRy52yWtaZvDj39a7DMgg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-jsx" "^7.2.0"
