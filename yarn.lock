@@ -6317,10 +6317,10 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-syntax-highlighter@10.2.1:
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.2.1.tgz#a30bf8e131c29e714a8e781ecadbace329da1530"
-  integrity sha512-oiCu5H0cv8FoBx1RfKWFJJEWARIyvl8FbOpzLtTextkN2D6mPAFjRooSyP0sU7/BqZnt7C6vF1CqrjdnEKREYw==
+react-syntax-highlighter@10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.3.0.tgz#ffd9b80cf1b3dd6080af1683a0f054f5d8616960"
+  integrity sha512-pp95xqBkUD3L8mYdUzPqY6ckSi+WvC1DYZxQo4fTwEr1tbvGU7kELVJgOAPjRKHgJVBuRCigJvv6COMD46uwng==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "~9.13.0"
