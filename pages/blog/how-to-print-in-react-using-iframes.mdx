@@ -67,7 +67,7 @@ When the route has finished loading, we can click the `button`.
 import React, {useState, useEffect} from 'react';
 
 function PaymentConfirmation() {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleMessage = (event) {
         if (event.data.action === 'receipt-loaded') {
