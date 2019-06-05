@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'June 04, 2019',
+        slug: 'how-to-print-in-react-using-iframes',
+        title: 'How To Print in React Using Iframes'
+    },
+    {
         date: 'April 23, 2019',
         slug: 'configuring-sentry-for-nextjs-apps',
         title: 'Configuring Sentry for Next.js Apps'

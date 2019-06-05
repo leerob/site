@@ -5,9 +5,10 @@ import {colors, spacing} from '../styles/vars';
 
 const code = `
     background-color: #f3f3f3;
-    border-radius: 2px;
+    border-radius: 3px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 14px;
+    font-size: 85%;
+    padding: .2em .4em;
 `;
 
 const GlobalStyle = createGlobalStyle`
