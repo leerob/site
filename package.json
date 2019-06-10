@@ -50,6 +50,10 @@
             "prettier --write",
             "git add"
         ],
+        "*.gif": [
+            "imageoptim",
+            "git add"
+        ],
         "*.jpg": [
             "imageoptim",
             "git add"

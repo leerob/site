@@ -69,7 +69,7 @@ import React, {useState, useEffect} from 'react';
 function PaymentConfirmation() {
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleMessage = (event) {
+    const handleMessage = (event) => {
         if (event.data.action === 'receipt-loaded') {
             setIsLoading(false);
         }
@@ -90,23 +90,15 @@ function PaymentConfirmation() {
 
         return () => {
             window.removeEventListener('message', handleMessage);
-        }
+        };
     }, []);
 
     return (
         <>
-            <iframe
-                id="receipt"
-                src="/payment/receipt"
-                style={{display: 'none'}}
-                title="Receipt"
-            />
-                <button onClick={() => printIframe('receipt')}>
-                    {isLoading ? 'Loading...' : 'Print Receipt'}
-                </button>
+            <iframe id="receipt" src="/payment/receipt" style={{display: 'none'}} title="Receipt" />
+            <button onClick={() => printIframe('receipt')}>{isLoading ? 'Loading...' : 'Print Receipt'}</button>
         </>
     );
-
 }
 
 export default PaymentConfirmation;
