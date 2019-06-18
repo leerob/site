@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::selection {
-        background-color: #ff5252;
+        background-color: #47A3F3;
         color: #fefefe;
     }
     
@@ -82,7 +82,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 5px;
     }
     
-    td {  
+    td {
+        color: ${(props) => props.theme.primary};
         padding: 5px;
         text-align: left;
     }
@@ -102,7 +103,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     code {
-        background-color: ${(props) => props.theme.inlineCode};
+        color: ${(props) => props.theme.inlineCode};
+        background-color: ${(props) => props.theme.inlineCodeBg};
         border-radius: 3px;
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         font-size: 85%;

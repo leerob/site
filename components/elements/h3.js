@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {withTheme} from 'styled-components';
+import styled from 'styled-components';
 
 import {heading} from '../../styles/mixins';
 import {spacing} from '../../styles/vars';
@@ -19,4 +19,4 @@ const createId = (text) => text.toLowerCase().replace(/ /g, '-');
 
 const H3 = ({children}) => <StyledH3 id={createId(children)}>{titleStyle(children)}</StyledH3>;
 
-export default withTheme(H3);
+export default H3;

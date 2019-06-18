@@ -55,7 +55,7 @@ const Page = ({children, date, description, image, title = 'Lee Robinson', keywo
                 <meta content="@leeerob" name="twitter:site" />
                 <meta content="@leeerob" name="twitter:creator" />
             </Head>
-            <GlobalStyle darkMode />
+            <GlobalStyle />
             {children}
         </>
     );
