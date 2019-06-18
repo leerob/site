@@ -6,12 +6,17 @@ import {colors} from '../styles/vars';
 import A from './elements/a';
 
 const StyledTimeline = styled.div`
-    border-top: 1px solid ${(props) => props.theme.lightGrey};
-    margin-bottom: 64px;
+    margin: 0 auto 0 32px;
+    max-width: 340px;
 
-    @media (max-width: 991px) {
-        margin: 0 auto 0 32px;
-        max-width: 340px;
+    @media (min-width: 500px) {
+        margin: 0 auto 0 48px;
+        max-width: 100%;
+    }
+
+    @media (min-width: 991px) {
+        margin: 0 0 64px 0;
+        border-top: 1px solid ${(props) => props.theme.lightGrey};
     }
 `;
 
@@ -72,7 +77,7 @@ const StepLeft = styled.div`
         left: 40px;
         text-align: left;
         padding: 24px 0;
-        width: 250px;
+        width: 260px;
     }
 
     :before {
@@ -108,7 +113,7 @@ const StepRight = styled.div`
     @media (max-width: 991px) {
         left: 40px;
         padding: 24px 0;
-        width: 250px;
+        width: 260px;
     }
 
     :before {
@@ -141,11 +146,13 @@ const StepCopy = styled.p`
 
     @media (min-width: 400px) {
         min-width: 320px;
+        width: 80vw;
     }
 
     @media (min-width: 991px) {
         margin: auto;
         min-width: 350px;
+        width: 100%;
     }
 `;
 
@@ -157,6 +164,7 @@ const AccentHeader = styled.h5`
 
 const StyledLink = styled(A)`
     margin: 0 4px;
+    color: ${(props) => props.theme.body};
 `;
 
 const Timeline = () => (
@@ -172,7 +180,7 @@ const Timeline = () => (
                     <StepHeader>{`June 2019: Spoke at Talent42 🎤`}</StepHeader>
                     <StepCopy>
                         <span>{`I spoke to over 100 technical recruiting leaders from across the country at`}</span>
-                        <StyledLink href="/LeeRobinson.pdf" underline>
+                        <StyledLink href="https://www.talent42.com/home" underline>
                             {'Talent42'}
                         </StyledLink>
                         <span>{`in Seattle during a 45-minute keynote.`}</span>
@@ -182,7 +190,12 @@ const Timeline = () => (
             <TimelineStep>
                 <StepLeft>
                     <StepHeader>{`December 2018: Started dsmtech.io 🤘🏻`}</StepHeader>
-                    <StepCopy>{`Reflecting on my recent job search, I realized there wasn't a centralized listing of all the DSM tech companies. So, I created it.`}</StepCopy>
+                    <StepCopy>
+                        {`Reflecting on my recent job search, I realized there wasn't a centralized listing of all the Des Moines tech companies. So...`}
+                        <StyledLink href="https://dsmtech.io" underline>
+                            {'I created it.'}
+                        </StyledLink>
+                    </StepCopy>
                 </StepLeft>
             </TimelineStep>
             <TimelineStep>
@@ -195,7 +208,7 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'August 2016: Moved to DSM 🏙'}</StepHeader>
                     <StepCopy>
-                        {`I moved Downtown DSM into a quaint 1BR apartment. Des Moines had always felt like a home away from home.`}
+                        {`I moved Downtown DSM into a quaint 1BR apartment. Des Moines has always felt like home growing up ~45 minutes away.`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
@@ -263,7 +276,7 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'December 2011: Wanted To Dropout'}</StepHeader>
                     <StepCopy>
-                        {`I didn't pick up programming right away. It didn't help we were learning C 🙄. I'm glad I stuck with it, though.`}
+                        {`I didn't pick up programming right away. It didn't help we were learning C 🙄 I'm glad I stuck with it, though.`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
@@ -277,14 +290,14 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'August 2011: Started at ISU 🌪❤️'}</StepHeader>
                     <StepCopy>
-                        {`I've been a die-hard Cyclone fan my whole life. It was pretty much a no-brainer that I was going to ISU, especially since they have a great Engineering program.`}
+                        {`I've been a die-hard Cyclone fan my whole life. It was a no-brainer that I was going to ISU, especially since they have a great Engineering program.`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
             <TimelineStep>
                 <StepRight>
                     <StepHeader>{'May 2011: Graduated High School'}</StepHeader>
-                    <StepCopy>{`My hometown had about 1000 people, total. My graduating class with 36. High school was... interesting.`}</StepCopy>
+                    <StepCopy>{`My hometown had about 1000 people, total. My graduating class was 36. High school was... interesting.`}</StepCopy>
                 </StepRight>
             </TimelineStep>
             <TimelineStep>

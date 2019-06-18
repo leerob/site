@@ -35,9 +35,11 @@ const Speaking = () => (
             <H3>{'Conferences'}</H3>
             <table>
                 <thead>
-                    <th>{'Conference'}</th>
-                    <th>{'Date'}</th>
-                    <th>{'Location'}</th>
+                    <tr>
+                        <th>{'Conference'}</th>
+                        <th>{'Date'}</th>
+                        <th>{'Location'}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>

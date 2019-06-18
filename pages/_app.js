@@ -24,6 +24,7 @@ class CustomApp extends App {
             text: '#2e2e2e'
         };
 
+        // eslint-disable-next-line no-unused-vars
         const darkTheme = {
             accent: '#47A3F3',
             accentLight: '#BAE3FF',

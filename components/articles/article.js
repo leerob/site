@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors, spacing} from '../../styles/vars';
+import {spacing} from '../../styles/vars';
 import Date from '../date';
 import H3 from '../elements/h3';
 import Link from '../link';
