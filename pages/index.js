@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Link from '../components/link';
 import Page from '../components/page';
 import {column} from '../styles/mixins';
-import {colors, spacing} from '../styles/vars';
+import {spacing} from '../styles/vars';
+import Nav from '../components/nav';
+import Timeline from '../components/timeline';
 
 const Main = styled.main`
-    background-color: #101010;
-    color: #fefefe;
     display: flex;
     flex: 1;
 `;
@@ -22,55 +21,25 @@ const Content = styled.div`
     justify-content: center;
 `;
 
-const Quote = styled.blockquote`
-    font-style: italic;
-    margin: 2em 0;
-    padding: 0 1em 0 0;
-    position: relative;
-
-    @media (min-width: 737px) {
-        left: -2.25em;
-        margin: 0 0 4em;
-        padding: 0 1.5em 0 2.25em;
-    }
-`;
-
-const Bio = styled.h3`
-    font-size: 1.2em;
-    margin: 0;
-
-    :before {
-        color: #ff5252;
-        content: '“';
-        display: none;
-        font-size: 3em;
-        left: 0.05em;
-        line-height: 1;
-        position: absolute;
-        top: -0.05em;
-    }
-
-    @media (min-width: 737px) {
-        :before {
-            display: block;
-        }
-    }
-`;
-
 const Subtitle = styled.h2`
+    text-align: center;
     font-style: italic;
     margin: 0;
-    color: ${colors.accent};
+    color: ${(props) => props.theme.accent};
     letter-spacing: 0.03;
 `;
 
 const Title = styled.h1`
+    display: initial;
     font-size: 1.65em;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    text-align: center;
     line-height: 1.35;
-    margin: 0;
     font-weight: bold;
+    margin: 0 auto;
+    background-image: linear-gradient(120deg, #2ec7c0 0%, #1a86e4 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 100%;
 
     @media (min-width: 737px) {
         font-size: 2.3em;
@@ -78,6 +47,8 @@ const Title = styled.h1`
 `;
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
     padding: 30px 0;
 
     @media (min-width: 737px) {
@@ -85,61 +56,32 @@ const Container = styled.div`
     }
 `;
 
-const Action = styled.h4`
-    font-style: italic;
-    letter-spacing: 0.05em;
-    margin: 1em 0 0;
-    text-transform: uppercase;
+const Details = styled.div`
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: ${spacing.large};
 `;
 
-const ActionLink = styled(Link)`
-    color: ${colors.accent};
-    transition: all 0.15s ease;
-
-    :after {
-        content: ' →';
-    }
-
-    :hover {
-        color: white;
-
-        :after {
-            color: white;
-        }
-    }
-`;
-
-const description = 'Curious mind, developer, and writer.';
+const description = 'Developer, writer, and UI/UX enthusiast.';
 
 const Index = () => (
-    <Page description={description} image={'/static/images/avatar.jpg'} title={`Lee Robinson - ${description}`}>
+    <Page
+        description={description}
+        image={'/static/images/speaking/speaking.jpg'}
+        title={`Lee Robinson - ${description}`}
+    >
+        <Nav />
         <Main>
             <Content>
                 <Container>
                     <Subtitle>{description}</Subtitle>
                     <Title>{'Lee Robinson'}</Title>
                 </Container>
-                <Quote>
-                    <Bio>
-                        {
-                            'Front-end engineer with experience in scalability, best practices and design. Currently inventing the future of Grocery at Hy-Vee.'
-                        }
-                    </Bio>
-                </Quote>
-                <Action>
-                    {'Check out his '}
-                    <ActionLink slug={'blog'}>{'blog'}</ActionLink>
-                </Action>
-                <Action>
-                    {'These are his '}
-                    <ActionLink slug={'projects'}>{'projects'}</ActionLink>
-                </Action>
-                <Action>
-                    {'Find out more '}
-                    <ActionLink slug={'about'}>{'about him'}</ActionLink>
-                </Action>
+                <Details>{`Welcome to my personal slice of the internet 👋🏼 Here you'll find everything you want to know about me - blog posts, work history, projects, contact information, and more!`}</Details>
             </Content>
         </Main>
+        <Timeline />
     </Page>
 );
 

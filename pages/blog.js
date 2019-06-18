@@ -9,7 +9,7 @@ import Page from '../components/page';
 const Index = () => (
     <Page
         description={'Thoughts on the software industry, programming, tech, videography, music, and my personal life.'}
-        image={'/static/images/avatar.jpg'}
+        image={'/static/images/speaking/speaking.jpg'}
         title={'Lee Robinson - Blog'}
     >
         <Nav />

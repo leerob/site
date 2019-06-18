@@ -19,8 +19,8 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
 
--   I ported over my personal site from <Link slug="blog/migrating-to-hugo" title="Migrating to Hugo" underline={true}>Hugo</Link> to [Next.js + MDX](https://github.com/leerob/leerob.io).
--   I created [dsmtech.io](https://dsmtech.io/) (and explored using <Link slug="blog/using-mapbox-with-next-js" title="Using Mapbox with Next.js (Instead of Google Maps)" underline={true}>Mapbox</Link>).
+-   I ported over my personal site from <Link slug="blog/migrating-to-hugo" title="Migrating to Hugo" >Hugo</Link> to [Next.js + MDX](https://github.com/leerob/leerob.io).
+-   I created [dsmtech.io](https://dsmtech.io/) (and explored using <Link slug="blog/using-mapbox-with-next-js" title="Using Mapbox with Next.js (Instead of Google Maps)" >Mapbox</Link>).
 -   A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
 
 Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
@@ -79,7 +79,7 @@ export default () => (
 );
 ```
 
-While this works, we can go a step further and provide a <Link slug="blog/loading-placeholder-with-sass" title="Creating a Loading Placeholder with Sass" underline={true}>loading placeholder</Link> to make the user experience better.
+While this works, we can go a step further and provide a <Link slug="blog/loading-placeholder-with-sass" title="Creating a Loading Placeholder with Sass" >loading placeholder</Link> to make the user experience better.
 
 ```jsx
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
@@ -114,8 +114,8 @@ beforeAll(async () => {
 
 ## MDX
 
-My <Link slug="blog/beginners-guide-to-the-programming-portfolio" title="Beginner’s Guide to the Programming Portfolio" underline={true}>portfolio</Link> has transformed quite a bit since I started it in 2014. Originally, it was
-just static HTML & CSS. Then, I <Link slug="blog/migrating-to-hugo" title="Migrating to Hugo" underline={true}>switched over to Hugo</Link> so I could write my posts in Markdown.
+My <Link slug="blog/beginners-guide-to-the-programming-portfolio" title="Beginner’s Guide to the Programming Portfolio" >portfolio</Link> has transformed quite a bit since I started it in 2014. Originally, it was
+just static HTML & CSS. Then, I <Link slug="blog/migrating-to-hugo" title="Migrating to Hugo" >switched over to Hugo</Link> so I could write my posts in Markdown.
 This worked well for awhile, but I wanted full control over my layouts and felt much more comfortable with JavaScript.
 That's what led me to Next.js and MDX.
 

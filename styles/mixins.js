@@ -6,7 +6,7 @@ export const column = `
 `;
 
 export const heading = `
-    color: #2e2e2e;
+    color: ${(props) => props.theme.text};
     font-weight: bold;
     line-height: 1.25;
     letter-spacing: -1px;

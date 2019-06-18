@@ -5,7 +5,7 @@ import {heading} from '../../styles/mixins';
 import {spacing} from '../../styles/vars';
 
 const StyledProjectsTitle = styled.h1`
-    ${heading} color: #2e2e2e;
+    ${heading};
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
 `;

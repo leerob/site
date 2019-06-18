@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'June 12, 2019',
+        slug: 'how-to-fix-technical-recruiting',
+        title: 'How To Fix Technical Recruiting'
+    },
+    {
         date: 'June 04, 2019',
         slug: 'how-to-print-in-react-using-iframes',
         title: 'How To Print in React Using Iframes'

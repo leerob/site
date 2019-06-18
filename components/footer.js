@@ -21,7 +21,7 @@ const Container = styled.div`
 const Footer = () => (
     <StyledFooter>
         <Container>
-            <Link underline>{'leerob.io'}</Link>
+            <Link>{'leerob.io'}</Link>
         </Container>
     </StyledFooter>
 );

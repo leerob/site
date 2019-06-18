@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors} from '../../styles/vars';
-
 const StyledArticleDate = styled.h4`
-    color: ${colors.accent};
+    color: ${(props) => props.theme.accent};
     display: block;
     font-size: 0.9em;
     margin: 0.5em 0 0;

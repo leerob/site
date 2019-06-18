@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors} from '../../styles/vars';
-
 const StyledProjectDescription = styled.h4`
-    color: ${colors.light};
+    color: ${(props) => props.theme.body};
     font-size: 14px;
     font-weight: lighter;
 `;

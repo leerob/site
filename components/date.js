@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors} from '../styles/vars';
 import {dateTime, full} from '../utils/date-format';
 
 const StyledDate = styled.time`
-    color: ${colors.accent};
+    color: ${(props) => props.theme.accent};
     display: block;
     font-size: 0.9em;
     margin: 0.5em 0 0;
