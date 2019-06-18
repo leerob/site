@@ -54,6 +54,10 @@
             "imageoptim",
             "git add"
         ],
+        "*.jpg": [
+            "imageoptim",
+            "git add"
+        ],
         "*.png": [
             "imageoptim --no-imageoptim --imagealpha",
             "git add"
