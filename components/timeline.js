@@ -51,8 +51,8 @@ const TimelineStep = styled.li`
         background: inherit;
         box-sizing: content-box;
         top: 5px;
-        border: 10px solid ${colors.grey[100]};
-        background: ${colors.grey[700]};
+        border: 10px solid ${(props) => props.theme.secondary};
+        background: ${(props) => props.theme.body};
 
         ${(props) =>
             props.highlight &&
