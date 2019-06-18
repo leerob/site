@@ -112,6 +112,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     pre {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 85%;
         line-height: 1.4em;
         margin: 0 0 ${spacing.normal};
         overflow-x: auto;
