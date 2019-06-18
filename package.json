@@ -93,7 +93,7 @@
         "execa-output": "2.0.0",
         "globby": "9.2.0",
         "husky": "2.4.1",
-        "imageoptim-cli": "2.3.5",
+        "imageoptim-cli": "2.3.6",
         "lint-staged": "8.2.1",
         "listr": "0.14.3",
         "prettier": "1.18.2",
