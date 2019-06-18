@@ -1,27 +1,27 @@
 export default [
     {
-        artworkUrl: '/static/images/music/voicenotes',
-        name: 'Voicenotes',
-        url: 'https://open.spotify.com/album/0mZIUXje90JtHxPNzWsJNR'
+        artworkUrl: '/static/images/music/kinda',
+        name: 'Kinda',
+        url: 'https://open.spotify.com/album/42jFcn7WDz3hkdkEUUQaM7'
     },
     {
-        artworkUrl: '/static/images/music/tsou',
-        name: 'The Story of Us',
-        url: 'https://open.spotify.com/album/7j7cqgeWmYH9PbKe3S5oJj'
+        artworkUrl: '/static/images/music/make-out',
+        name: 'Make Out',
+        url: 'https://open.spotify.com/album/4m8eGSQH7drGiCIPHmmVqe'
     },
     {
-        artworkUrl: '/static/images/music/sick-boy',
-        name: 'Sick Boy',
-        url: 'https://open.spotify.com/album/6ZvDJs17O3woQirttKRYCG'
+        artworkUrl: '/static/images/music/lany',
+        name: 'LANY',
+        url: 'https://open.spotify.com/album/0HiwsXForePsWdIZW6EEkK'
     },
     {
-        artworkUrl: '/static/images/music/odesza',
-        name: 'A Moment Apart',
-        url: 'https://open.spotify.com/album/3VzsvmhnUb9OZ59bq2aoNZ'
+        artworkUrl: '/static/images/music/camino',
+        name: 'The Band CAMINO',
+        url: 'https://open.spotify.com/album/2B4wLLLPV8rAnpmdBAykxs'
     },
     {
-        artworkUrl: '/static/images/music/thc',
-        name: 'The Human Condition',
-        url: 'https://open.spotify.com/album/2jJReDZqTuAxr4R0ItimZc'
+        artworkUrl: '/static/images/music/mtoy',
+        name: 'My Thoughts on You',
+        url: 'https://open.spotify.com/album/6cSlODoo4uSPxXfyGwcY9I'
     }
 ];

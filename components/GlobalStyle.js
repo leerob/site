@@ -1,15 +1,7 @@
 import {createGlobalStyle} from 'styled-components';
 import reset from 'styled-reset';
 
-import {colors, spacing} from '../styles/vars';
-
-const code = `
-    background-color: #f3f3f3;
-    border-radius: 3px;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 85%;
-    padding: .2em .4em;
-`;
+import {spacing} from '../styles/vars';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -39,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::selection {
-        background-color: #ff5252;
+        background-color: #47A3F3;
         color: #fefefe;
     }
     
@@ -57,8 +49,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #fff;
-        color: ${colors.text};
+        background-color: ${(props) => props.theme.secondary};
+        color: ${(props) => props.theme.primary};
         font-size: 15px;
         font-weight: 400;
         -webkit-font-smoothing: antialiased;
@@ -90,7 +82,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 5px;
     }
     
-    td {  
+    td {
+        color: ${(props) => props.theme.primary};
         padding: 5px;
         text-align: left;
     }
@@ -100,26 +93,31 @@ const GlobalStyle = createGlobalStyle`
     }
 
     a {
-        color: ${colors.text};
+        color: ${(props) => props.theme.primary};
         cursor: pointer;
     }
 
     p {
         margin: 1.5em 0;
+        color: ${(props) => props.theme.primary};
     }
 
     code {
-        ${code}
+        color: ${(props) => props.theme.inlineCode};
+        background-color: ${(props) => props.theme.inlineCodeBg};
+        border-radius: 3px;
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 85%;
+        padding: .2em .4em;
     }
 
     pre {
-        ${code}
         line-height: 1.4em;
         margin: 0 0 ${spacing.normal};
         overflow-x: auto;
         padding: ${spacing.normal};
         white-space: pre;
-        background: #2d2d2d;
+        background: ${(props) => props.theme.code};
 
         code {
             padding: 0;

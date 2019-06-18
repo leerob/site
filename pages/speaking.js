@@ -13,7 +13,7 @@ import H2 from '../components/elements/h2';
 import Img from '../components/elements/img';
 
 const Title = styled.h1`
-    ${heading} color: #2e2e2e;
+    ${heading};
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
 `;
@@ -28,14 +28,18 @@ const Speaking = () => (
             <Title>{'Speaking'}</Title>
             <p>
                 {`These are conferences I will or have spoken at, as well as summaries of the talks I’ve given. If you’d like to have me speak at your event, please `}
-                <A href="mailto:me@leerob.io">{'contact me.'}</A>
+                <A href="mailto:me@leerob.io" underline>
+                    {'contact me.'}
+                </A>
             </p>
             <H3>{'Conferences'}</H3>
             <table>
                 <thead>
-                    <th>{'Conference'}</th>
-                    <th>{'Date'}</th>
-                    <th>{'Location'}</th>
+                    <tr>
+                        <th>{'Conference'}</th>
+                        <th>{'Date'}</th>
+                        <th>{'Location'}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-import {colors} from '../../styles/vars';
-
 const Li = styled.li`
-    color: ${colors.text};
+    color: ${(props) => props.theme.primary};
 `;
 
 export default Li;

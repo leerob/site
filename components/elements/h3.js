@@ -6,7 +6,8 @@ import {spacing} from '../../styles/vars';
 import titleStyle from '../../utils/title-style';
 
 const StyledH3 = styled.h3`
-    ${heading} font-size: 20px;
+    ${heading};
+    font-size: 20px;
     margin: ${spacing.normal} 0 ${spacing.small};
 
     @media (min-width: 768px) {

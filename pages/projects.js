@@ -9,7 +9,7 @@ import Projects from '../components/projects/projects';
 const description = `Projects I've done personally or for clients.`;
 
 const Index = () => (
-    <Page description={description} image={'/static/images/avatar.jpg'} title={`Lee Robinson - Projects`}>
+    <Page description={description} image={'/static/images/speaking/speaking.jpg'} title={`Lee Robinson - Projects`}>
         <Nav />
         <Main>
             <Projects />

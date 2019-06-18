@@ -14,6 +14,7 @@ export default (text) =>
             'OverReact',
             'QC35',
             'UI',
+            'UX',
             'USB',
             'VSCode',
             'w_flux'

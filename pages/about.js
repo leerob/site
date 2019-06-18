@@ -13,7 +13,7 @@ import Social from '../components/socials/social';
 import MusicGrid from '../components/music/album';
 
 const AboutTitle = styled.h1`
-    ${heading} color: #2e2e2e;
+    ${heading};
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
 `;
@@ -22,21 +22,27 @@ const description =
     'Front-end engineer with experience in scalability, best practices and design. Currently inventing the future of Grocery at Hy-Vee.';
 
 const Index = () => (
-    <Page description={description} image={'/static/images/avatar.jpg'} title={'Lee Robinson - About Me'}>
+    <Page description={description} image={'/static/images/speaking/speaking.jpg'} title={'Lee Robinson - About Me'}>
         <Nav />
         <Main>
             <AboutTitle>{'About Me'}</AboutTitle>
             <p>
                 {`Born and raised in Iowa, I'm currently living in Des Moines and working as a Software Engineer at `}
-                <A href="https://www.hy-vee.com">{'Hy-Vee.'}</A>
+                <A href="https://www.hy-vee.com" underline>
+                    {'Hy-Vee.'}
+                </A>
             </p>
             <p />
             <p>
                 {'I enjoy all things technology, videography, and music. '}
                 {'For a closer look at the professional work I’ve done, check out my '}
-                <A href="/LeeRobinson.pdf">{'resume.'}</A>
+                <A href="/LeeRobinson.pdf" underline>
+                    {'resume.'}
+                </A>
                 {' If you’re interested in reaching out to me, feel free to '}
-                <A href="mailto:me@leerob.io">{'email me.'}</A>
+                <A href="mailto:me@leerob.io" underline>
+                    {'email me.'}
+                </A>
             </p>
             <H3>{'Contact'}</H3>
             <Social />

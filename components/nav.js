@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors} from '../styles/vars';
-
 import Link from './link';
 
 const StyledNav = styled.nav`
@@ -19,23 +17,24 @@ const StyledNav = styled.nav`
 
 const Logo = styled.img`
     display: flex;
-    height: 16px;
+    height: 10px;
     padding-right: 2em;
 
     @media (min-width: 737px) {
+        height: 16px;
         padding-right: 3em;
     }
 `;
 
 const NavLink = styled(Link)`
-    color: ${colors.accent};
+    color: ${(props) => props.theme.accent};
     font-size: 0.8em;
     letter-spacing: 0.03em;
     text-decoration: none;
     transition: all 0.15s ease;
 
     :hover {
-        color: ${colors.text};
+        color: ${(props) => props.theme.primary};
     }
 
     @media (min-width: 737px) {

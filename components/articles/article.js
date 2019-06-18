@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors, spacing} from '../../styles/vars';
+import {spacing} from '../../styles/vars';
 import Date from '../date';
 import H3 from '../elements/h3';
 import Link from '../link';
@@ -21,7 +21,7 @@ const StyledArticle = styled.li`
     :hover {
         h3 {
             transition: all 0.15s ease;
-            color: ${colors.accent};
+            color: ${(props) => props.theme.accent};
         }
     }
 `;
@@ -31,7 +31,7 @@ const ExternalLink = styled.a`
 `;
 
 const PublisherInfo = styled.span`
-    color: ${colors.light};
+    color: ${(props) => props.theme.text};
     display: block;
     font-size: 0.9em;
     margin: 0.5em 0 0;
@@ -40,7 +40,15 @@ const PublisherInfo = styled.span`
 `;
 
 const Publisher = styled.span`
-    color: ${colors.accent};
+    color: ${(props) => props.theme.accent};
+`;
+
+const StyledLink = styled(Link)`
+    color: ${(props) => props.theme.text};
+
+    :hover {
+        color: ${(props) => props.theme.accent};
+    }
 `;
 
 const Article = ({article}) => (
@@ -54,10 +62,10 @@ const Article = ({article}) => (
                 <H3>{article.title}</H3>
             </ExternalLink>
         ) : (
-            <Link slug={`blog/${article.slug}`}>
+            <StyledLink slug={`blog/${article.slug}`}>
                 <Date>{article.date}</Date>
                 <H3>{article.title}</H3>
-            </Link>
+            </StyledLink>
         )}
     </StyledArticle>
 );
