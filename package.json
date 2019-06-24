@@ -83,7 +83,7 @@
         "@zeit/next-css": "1.0.1",
         "@zeit/next-mdx": "1.2.0",
         "babel-plugin-inline-react-svg": "1.1.0",
-        "babel-plugin-styled-components": "1.10.1",
+        "babel-plugin-styled-components": "1.10.2",
         "cpy": "7.3.0",
         "cross-env": "5.2.0",
         "del": "4.1.1",
