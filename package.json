@@ -89,7 +89,7 @@
         "del": "4.1.1",
         "eslint": "4.19.1",
         "eslint-config-get-off-my-lawn-prettier": "1.0.0",
-        "execa": "1.0.0",
+        "execa": "2.0.0",
         "execa-output": "2.0.0",
         "globby": "9.2.0",
         "husky": "2.4.1",
