@@ -6397,10 +6397,10 @@ react-ssr-prepass@1.0.2:
   dependencies:
     object-is "^1.0.1"
 
-react-syntax-highlighter@10.3.0:
-  version "10.3.0"
-  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.3.0.tgz#ffd9b80cf1b3dd6080af1683a0f054f5d8616960"
-  integrity sha512-pp95xqBkUD3L8mYdUzPqY6ckSi+WvC1DYZxQo4fTwEr1tbvGU7kELVJgOAPjRKHgJVBuRCigJvv6COMD46uwng==
+react-syntax-highlighter@10.3.1:
+  version "10.3.1"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.3.1.tgz#62eba96367eb2e75e24be56349f21574fd61a0ab"
+  integrity sha512-iSH1XsXnoCZQYEaSMgwW90WDpx6BeQFhDQIqPpQYaYPAcPyfiLkptjjJPBYi+vGy7z4PJQe1VenV7t5LmreAIQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "~9.13.0"
