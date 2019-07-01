@@ -4161,10 +4161,10 @@ ignore@^4.0.3:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-imageoptim-cli@2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/imageoptim-cli/-/imageoptim-cli-2.3.6.tgz#e54881f51be7775a007c29d7412c10363e5d248a"
-  integrity sha512-Ua5zNEAEDrQU9R9L+2Y5n2dcPTxeqCgrd93HRa2aZ95Negp3/LIZH/mmne80Pl6WGldR3sDgYZ8SJw8RQNojVQ==
+imageoptim-cli@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/imageoptim-cli/-/imageoptim-cli-2.3.7.tgz#8999681cacc75cea3bb25a7ccce2473506e90905"
+  integrity sha512-DKNwuFhK+ovU3vdOxZdKvRB6xx4DFe68hs2ohv1EoRGNyqpjGTyMN34bycSt787QCTLXZPpF6ppD2yKVm0EE+A==
   dependencies:
     chalk "2.4.2"
     commander "2.20.0"
