@@ -86,7 +86,7 @@
         "babel-plugin-styled-components": "1.10.1",
         "cpy": "7.3.0",
         "cross-env": "5.2.0",
-        "del": "4.1.1",
+        "del": "5.0.0",
         "eslint": "4.19.1",
         "eslint-config-get-off-my-lawn-prettier": "1.0.0",
         "execa": "1.0.0",
