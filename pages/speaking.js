@@ -56,6 +56,13 @@ const Speaking = () => (
                         <td>{'September 12th, 2019'}</td>
                         <td>{'Des Moines, IA'}</td>
                     </tr>
+                    <tr>
+                        <td>
+                            <A href="https://www.iowatechsummit.com/">{'Iowa Technology Summit'}</A>
+                        </td>
+                        <td>{'October 1st, 2019'}</td>
+                        <td>{'Des Moines, IA'}</td>
+                    </tr>
                 </tbody>
             </table>
             <H2>{'Talks'}</H2>
