@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'July 10, 2019',
+        slug: 'how-to-be-the-best-developer',
+        title: "Want to Be the Best Developer? Here's How"
+    },
+    {
         date: 'July 09, 2019',
         slug: 'how-to-fix-technical-recruiting',
         title: 'How To Fix Technical Recruiting'
