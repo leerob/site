@@ -21,7 +21,8 @@
             "src": "/(.*)",
             "dest": "/$1",
             "headers": {"cache-control": "public, max-age=0, must-revalidate"}
-        }
+        },
+        {"src": "/.*", "status": 404, "dest": "404.html"}
     ],
     "name": "leerob",
     "version": 2
