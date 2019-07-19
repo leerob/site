@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'July 19, 2019',
+        slug: 'going-serverless-next-firebase-now',
+        title: 'Going Serverless with Next.js, Firebase, and Now'
+    },
+    {
         date: 'July 10, 2019',
         slug: 'how-to-be-the-best-developer',
         title: "Want to Be the Best Developer? Here's How"

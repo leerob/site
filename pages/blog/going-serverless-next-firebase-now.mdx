@@ -1,0 +1,214 @@
+import Date from '../../components/date'
+import Post from '../../components/post'
+import Link from '../../components/link'
+
+export const meta = {
+date: '2019-07-19',
+description: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.',
+image: '/static/images/going-serverless-next-firebase-now/banner.jpg',
+title: 'Going Serverless with Next.js, Firebase, and Now'
+}
+
+export default ({children}) => <Post meta={meta}>{children}</Post>
+
+# Going Serverless with Next.js, Firebase, and Now
+
+<Date>{meta.date}</Date>
+
+![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
+
+A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
+
+[BeyondHQ](https://beyondhq.co/) is an early-stage startup that helps companies expand outside of San Francisco. Think "Expansion-as-a-Service" - finding the right city, opening an office, growing your team, etc. They needed a basic website explaining who, what, and why - as well as a platform to build their SaaS solutions on top of. That's where I came in.
+
+## The Requirements
+
+For the main website, the requirements were fairly straight forward:
+
+-   Basic splash page with information about the product.
+-   About page with information on the employees.
+-   Frequently asked questions page.
+-   Save off information from a contact form.
+-   Cheap hosting. Ideally free.
+
+![BeyondHQ](/static/images/going-serverless-next-firebase-now/landing.png)
+
+They also wanted a platform to build SaaS on. That meant I needed to consider more requirements, as it would be the next bit of functionality I would create.
+
+The first step towards their full-featured SaaS product was a [location evaluation tool](https://beyondhq.co/geo-eval). Users could enter information like their company size, the number of employees, and potential expansion locations to get a list of their top city matches. Then, they could explore each city and see metrics about what made it an attractive option to expand to. Those requirements were a bit more complex:
+
+-   Resilient, highly available, and fast.
+-   Cheap storage. Ideally free.
+-   Great SEO (Search Engine Optimization).
+-   City pages should be dynamic and pull from a database.
+-   The ability for non-technical people to easily edit data.
+-   Save off lead generation information from user input.
+
+![BeyondHQ](/static/images/going-serverless-next-firebase-now/questions.png)
+
+## The Technology
+
+Given these requirements, what technical choices did I make and why? Let's take a look.
+
+### React
+
+[React](https://reactjs.org/) is the industry-standard for building modern web applications. Of 90,000 developers [surveyed by Stack Overflow](https://insights.stackoverflow.com/survey/2019), React was the most loved and most wanted. This technology provides a platform for the main website, as well as any future SaaS.
+
+### Next.js
+
+[Next.js](https://nextjs.org/) makes it easy to build scalable, performant React code. It's blazing fast and uses server-side rendering to improve SEO. On top of that, it simplifies the developer experience and provides a future-proof platform for the BeyondHQ team.
+
+### Now
+
+Deploying serverless applications couldn't be easier with [Now](https://zeit.co/now). It's resilient, [highly available](https://zeit.co/smart-cdn), and fault-tolerant. Plus, it has an excellent [free tier](https://zeit.co/pricing) with the ability to scale as needed.
+
+### Firebase
+
+[Firebase](https://firebase.google.com/) is the industry standard [NoSQL](https://en.wikipedia.org/wiki/NoSQL) platform. It has a sufficient user/permissions system and an easy interface for non-technical users. Did it mention it has a generous [free tier](https://firebase.google.com/pricing)? Firebase's [Cloud Firestore](https://firebase.google.com/products/firestore/) product allowed us to save off contact info, city information, and user's lead gen input. It was a no-brainer!
+
+Why use NoSQL? There weren't any requirements which needed a relational database. If there were, I might have considered [Postgres on Hasura](https://hasura.io/) instead.
+
+## The Solution
+
+After reviewing the requirements and choosing the technology, the next step was to begin implementing a solution. But first, mockups!
+
+![BeyondHQ](/static/images/going-serverless-next-firebase-now/geo-eval.png)
+
+I iterated over a handful of designs and went back and forth with the team, tweaking things based on their feedback. We eventually agreed on a mockup and the coding commenced.
+
+### The Server
+
+To use Firebase, we need to create a Node.js API. This will allow us to use `firebase-admin` to communicate with our Cloud Firestore database.
+
+After generating a service account in Firebase, you can create a server like so:
+
+```js
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const admin = require('firebase-admin');
+
+const server = express();
+
+const firebase = admin
+    .initializeApp(
+        {
+            credential: admin.credential.cert(require('../.firebase/service-account.json')),
+            databaseURL: 'https://your-name-here.firebaseio.com'
+        },
+        'server'
+    )
+    .firestore();
+
+server.use(cors());
+server.use(bodyParser.json());
+server.use((req, _res, next) => {
+    req.firebaseServer = firebase;
+    next();
+});
+
+module.exports = server;
+```
+
+Then, you're able to define routes to communicate with your database.
+
+```js
+try {
+    const server = require('../../lib/server');
+
+    server.get('/api/cities', (req, res) => {
+        req.firebaseServer
+            .collection('cities')
+            .get()
+            .then((snapshot) => {
+                const cities = [];
+
+                snapshot.forEach((doc) => {
+                    cities.push(doc.data());
+                });
+
+                res.json({cities});
+            })
+            .catch((error) => {
+                res.json({error});
+            });
+    });
+
+    module.exports = server;
+} catch (error) {
+    console.log('API Error', error);
+}
+```
+
+That's it for the server infrastructure. From here, it's easy to create new routes and add functionality. You can view the completed example [here](https://github.com/leerob/nextjs-now-firebase).
+
+### The Client
+
+Since we already created a custom API, we can use Next's default server to communicate with Firebase. Let's configure the app to be [serverless](https://en.wikipedia.org/wiki/Serverless_computing) via `next.config.js`.
+
+```js
+module.exports = {
+    target: 'serverless'
+};
+```
+
+While the majority of the requirements were centered around creating basic React components, there's one part which requires more explanation: [dynamic routing](https://nextjs.org/learn/basics/create-dynamic-pages). For the city pages, we needed to be able to pass a city name as a route (e.g. `/city/des-moines`) and fetch data from our custom API.
+
+The magic happens in our `now.json` file, which defines how the apps will be deployed. We can route all requests to `/api/` to our Node API:
+
+```json
+{
+    "src": "/api/(.*)",
+    "dest": "/app/routes/api"
+}
+```
+
+and all requests to `/city/city-name/` to forward a query param along to a `City` component.
+
+```json
+{
+    "src": "/city/(?<name>[^/]+)$",
+    "dest": "/www/city?name=$name"
+}
+```
+
+Finally, we can create `/pages/city/js` inside our Next app to fetch the query param for the city name and call our Node API.
+
+```js
+import {useEffect, useState} from 'react';
+import fetch from 'isomorphic-unfetch';
+
+function City() {
+    const [city, setCity] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const cityName = window.location.pathname.split('/').pop();
+            const baseUrl =
+                process.env.NODE_ENV === 'production' ? `https://${window.location.host}` : 'http://localhost:3000';
+            const res = await fetch(`${baseUrl}/api/city/${cityName}`);
+            const data = await res.json();
+
+            setCity(data);
+        }
+
+        fetchData();
+    }, []);
+
+    return city ? city.name : 'Loading...';
+}
+
+export default City;
+```
+
+This gives you the flexibility to add a loading state or placeholder to improve your user experience.
+
+![Loading Placeholder](/static/images/going-serverless-next-firebase-now/loading.gif)
+
+Much better! 🎉
+
+## Conclusion
+
+If you find yourself with similar requirements, you can now consider using this stack to provide an elegant solution. Again, you can view the entire example [here](https://github.com/leerob/nextjs-now-firebase).
+
+Would you have done something differently? [Let me know](mailto:me@leerob.io)!
