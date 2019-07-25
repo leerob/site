@@ -11,6 +11,7 @@ import Nav from '../components/nav';
 import Page from '../components/page';
 import H2 from '../components/elements/h2';
 import Img from '../components/elements/img';
+import events from '../data/speaking';
 
 const Title = styled.h1`
     ${heading};
@@ -27,42 +28,30 @@ const Speaking = () => (
         <Main>
             <Title>{'Speaking'}</Title>
             <p>
-                {`These are conferences I will or have spoken at, as well as summaries of the talks I’ve given. If you’d like to have me speak at your event, please `}
+                {`These are events I will or have spoken at, as well as summaries of the talks I’ve given. If you’d like to have me speak at your event, please `}
                 <A href="mailto:me@leerob.io" underline>
                     {'contact me.'}
                 </A>
             </p>
-            <H3>{'Conferences'}</H3>
+            <H3>{'Events'}</H3>
             <table>
                 <thead>
                     <tr>
-                        <th>{'Conference'}</th>
+                        <th>{'Event'}</th>
                         <th>{'Date'}</th>
                         <th>{'Location'}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <A href="https://www.talent42.com/home">{'Talent42'}</A>
-                        </td>
-                        <td>{'June 11th, 2019'}</td>
-                        <td>{'Seatle, WA'}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <A href="https://prairiecode.amegala.com/">{'Prairie Code'}</A>
-                        </td>
-                        <td>{'September 12th, 2019'}</td>
-                        <td>{'Des Moines, IA'}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <A href="https://www.iowatechsummit.com/">{'Iowa Technology Summit'}</A>
-                        </td>
-                        <td>{'October 1st, 2019'}</td>
-                        <td>{'Des Moines, IA'}</td>
-                    </tr>
+                    {events.map((event) => (
+                        <tr key={event.date}>
+                            <td>
+                                <A href={event.link}>{event.name}</A>
+                            </td>
+                            <td>{event.date}</td>
+                            <td>{event.location}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <H2>{'Talks'}</H2>
