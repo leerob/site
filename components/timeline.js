@@ -228,7 +228,7 @@ const Timeline = () => (
             </TimelineStep>
             <TimelineStep>
                 <StepRight>
-                    <StepHeader>{'May 2016: Graudated College 🎓'}</StepHeader>
+                    <StepHeader>{'May 2016: Graduated College 🎓'}</StepHeader>
                     <StepCopy>{`One of my most cherished accomplishments. I worked my ass off to get this degree and hit a 3.5 GPA.`}</StepCopy>
                 </StepRight>
             </TimelineStep>
@@ -236,7 +236,7 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'January 2016: More Workiva'}</StepHeader>
                     <StepCopy>
-                        {`Apparently I did something right, because I was offerred and accepted a full-time offer with Workiva, as well as the opportunity to continue my internship until graduation. Nice!`}
+                        {`Apparently I did something right, because I was offered and accepted a full-time offer with Workiva, as well as the opportunity to continue my internship until graduation. Nice!`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
