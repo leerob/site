@@ -40,6 +40,11 @@
         "start": "cross-env NODE_ENV=production next start",
         "test": "yarn lint"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
     "lint-staged": {
         "*.{html,js,json,md,mdx,mjs,yml}": [
             "prettier --write",
