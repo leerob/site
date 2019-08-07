@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'August 07, 2019',
+        slug: 'style-guides-component-libraries-design-systems',
+        title: 'Everything I Know About Style Guides, Design Systems, and Component Libraries'
+    },
+    {
         date: 'July 19, 2019',
         slug: 'going-serverless-next-firebase-now',
         title: 'Going Serverless with Next.js, Firebase, and Now'
