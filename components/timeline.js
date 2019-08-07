@@ -222,7 +222,7 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'May 2016: Family Roadtrip 🚗'}</StepHeader>
                     <StepCopy>
-                        {`To celebrate graduating, my family and I did a roadtrip down the Pacific Coast Highway in California. An unforgetable experience.`}
+                        {`To celebrate graduating, my family and I did a road trip down the Pacific Coast Highway in California. An unforgettable experience.`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
@@ -236,7 +236,7 @@ const Timeline = () => (
                 <StepLeft>
                     <StepHeader>{'January 2016: More Workiva'}</StepHeader>
                     <StepCopy>
-                        {`Apparently I did something right, because I was offered and accepted a full-time offer with Workiva, as well as the opportunity to continue my internship until graduation. Nice!`}
+                        {`I was offered and accepted a full-time offer with Workiva, as well as the opportunity to continue my internship until graduation. Nice!`}
                     </StepCopy>
                 </StepLeft>
             </TimelineStep>
@@ -297,7 +297,7 @@ const Timeline = () => (
             <TimelineStep>
                 <StepRight>
                     <StepHeader>{'May 2011: Graduated High School'}</StepHeader>
-                    <StepCopy>{`My hometown had about 1000 people, total. My graduating class was 36. High school was... interesting.`}</StepCopy>
+                    <StepCopy>{`My hometown had about 1000 people, in total. My graduating class was 36. High school was... interesting.`}</StepCopy>
                 </StepRight>
             </TimelineStep>
             <TimelineStep>
