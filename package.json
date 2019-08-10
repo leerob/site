@@ -75,7 +75,7 @@
         "react-syntax-highlighter": "11.0.1",
         "react-tweet-embed": "1.2.2",
         "styled-components": "4.3.2",
-        "styled-reset": "3.0.0",
+        "styled-reset": "3.0.1",
         "title": "3.4.1"
     },
     "devDependencies": {
