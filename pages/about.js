@@ -11,6 +11,7 @@ import Nav from '../components/nav';
 import Page from '../components/page';
 import Social from '../components/socials/social';
 import MusicGrid from '../components/music/album';
+import ConcertList from '../components/concerts';
 
 const AboutTitle = styled.h1`
     ${heading};
@@ -49,6 +50,7 @@ const Index = () => (
             <H3>{'Music'}</H3>
             <p>{'Some of my favorite albums that have been on repeat lately 🎶'}</p>
             <MusicGrid />
+            <ConcertList />
             <H3>{'Travel Map'}</H3>
             <p>{' Check out the map below to see every place I’ve traveled to ✈️ '}</p>
             <iframe
