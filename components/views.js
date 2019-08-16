@@ -57,11 +57,11 @@ function Views(props) {
         }
     }, [props.views]);
 
-    const formattedViews = ` - ${format(props.views)} views`;
+    const formattedViews = `${format(props.views)} views`;
 
     return (
         <Container>
-            <StyledViews highlight={highlight}>{props.views && formattedViews}</StyledViews>
+            <StyledViews highlight={highlight}>{` - ${props.views && formattedViews}`}</StyledViews>
         </Container>
     );
 }
