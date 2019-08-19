@@ -4,7 +4,7 @@ import styled, {css, keyframes} from 'styled-components';
 
 const highlightBackgound = keyframes`
     from {
-        background-color: yellow;
+        background-color: #79FFE1;
     }
     to {
         background-color: #fff;
@@ -31,31 +31,15 @@ const StyledViews = styled.span`
 
 function Views(props) {
     const [highlight, setHighlight] = useState(false);
-    let raf = null;
-
-    const animateViews = () => {
-        if (raf) {
-            return;
-        }
-
-        if (highlight) {
-            setHighlight(
-                false,
-                // Reset the animation
-                (raf = requestAnimationFrame(() => {
-                    raf = null;
-                    setHighlight(true);
-                }))
-            );
-        } else {
-            setHighlight(true);
-        }
-    };
 
     useEffect(() => {
         if (props.views) {
-            animateViews();
+            setHighlight(true);
         }
+
+        setTimeout(() => {
+            setHighlight(false);
+        }, 2000);
     }, [props.views]);
 
     const formattedViews = `${format(props.views)} views`;
