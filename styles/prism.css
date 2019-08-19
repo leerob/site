@@ -33,7 +33,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'] {
     background: #011627;
-    padding: 2px;
+    padding: 3px 0;
 }
 
 .token.attr-name {
