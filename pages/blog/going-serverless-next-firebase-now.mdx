@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -13,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Going Serverless with Next.js, Firebase, and Now
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="going-serverless-next-firebase-now" />
 
 ![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
 

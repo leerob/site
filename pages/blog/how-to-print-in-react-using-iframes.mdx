@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 
 export const meta = {
@@ -12,7 +12,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # How To Print in React Using Iframes
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="how-to-print-in-react-using-iframes" />
 
 You want to print the contents of a page. If you use the standard browser API, this will print the entirety of the _current_ page.
 In this scenario, you can use the print media query to show/hide certain parts of the page.
