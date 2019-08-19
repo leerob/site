@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -13,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Why I Create Open-Source Software
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="why-i-create-open-source-software" />
 
 Creating open-source software makes me happy. It’s an opportunity for me to showcase my programming skills and gain experience with new languages and frameworks. I don’t make any money from it. I’ve actually _lost_ money on most websites I’ve created from buying domain names.
 

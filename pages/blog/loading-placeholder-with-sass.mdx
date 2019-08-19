@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 
 export const meta = {
@@ -12,7 +12,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Creating a Loading Placeholder with Sass
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="loading-placeholder-with-sass" />
 
 ![Loading Placeholder](/static/images/loading-placeholder-with-sass/example.gif)
 

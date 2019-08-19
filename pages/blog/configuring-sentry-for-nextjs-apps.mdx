@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -13,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Configuring Sentry for Next.js Apps
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="configuring-sentry-for-nextjs-apps" />
 
 For many teams using Next.js, setting up exception monitoring is a critical requirement before going to production.
 This guide will show you how to use [Sentry](https://sentry.io) to catch & report errors on both client and server-side.

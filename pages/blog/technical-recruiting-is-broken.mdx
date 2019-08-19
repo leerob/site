@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -13,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Technical Recruiting is Broken
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="technical-recruiting-is-broken" />
 
 On my [LinkedIn profile](https://www.linkedin.com/in/leejamesrobinson/), I explicitly list what I'm looking for in a position to help
 receive more targeted, relevant messages.

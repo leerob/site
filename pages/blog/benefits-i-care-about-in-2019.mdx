@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -13,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Benefits I Care About in 2019
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id="benefits-i-care-about-in-2019" />
 
 > Edit: This post is generating a lot of great conversation on Reddit. [Check it out!](https://www.reddit.com/r/cscareerquestions/comments/ap0h7h/what_benefits_do_you_actually_care_about_in_2019/)
 
