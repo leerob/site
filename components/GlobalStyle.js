@@ -120,6 +120,7 @@ const GlobalStyle = createGlobalStyle`
         padding: ${spacing.normal};
         white-space: pre;
         background: ${(props) => props.theme.code};
+        border-radius: 4px;
 
         code {
             padding: 0;
