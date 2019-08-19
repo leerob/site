@@ -4,7 +4,7 @@ import styled, {css, keyframes} from 'styled-components';
 
 const highlightBackgound = keyframes`
     from {
-        background-color: #79FFE1;
+        background-color: yellow;
     }
     to {
         background-color: #fff;
