@@ -12,6 +12,7 @@ const highlightBackgound = keyframes`
 `;
 
 const Container = styled.div`
+    display: flex;
     margin: 0.5em 0 0 0.3em;
 `;
 
