@@ -107,19 +107,20 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.inlineCodeBg};
         border-radius: 3px;
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 85%;
+        font-size: 14px;
         padding: .2em .4em;
     }
 
     pre {
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 85%;
+        font-size: 14px;
         line-height: 1.4em;
         margin: 0 0 ${spacing.normal};
         overflow-x: auto;
         padding: ${spacing.normal};
         white-space: pre;
         background: ${(props) => props.theme.code};
+        border-radius: 4px;
 
         code {
             padding: 0;
