@@ -69,7 +69,7 @@
         "@mdx-js/mdx": "1.0.27",
         "@mdx-js/tag": "0.20.3",
         "comma-number": "2.0.1",
-        "date-fns": "1.30.1",
+        "date-fns": "2.0.0",
         "firebase": "5.8.6",
         "isomorphic-unfetch": "3.0.0",
         "next": "8.1.0",
