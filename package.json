@@ -41,6 +41,29 @@
         "start": "cross-env NODE_ENV=production next start",
         "test": "yarn lint"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{html,js,json,md,mdx,mjs,yml}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.gif": [
+            "imageoptim",
+            "git add"
+        ],
+        "*.jpg": [
+            "imageoptim",
+            "git add"
+        ],
+        "*.png": [
+            "imageoptim --no-imageoptim --imagealpha",
+            "git add"
+        ]
+    },
     "dependencies": {
         "@mapbox/rehype-prism": "0.3.1",
         "@mdx-js/mdx": "1.0.27",
