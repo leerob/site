@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'August 21, 2019',
+        slug: 'real-time-post-views',
+        title: 'Real-Time Blog Post Views With React and Firebase'
+    },
+    {
         date: 'August 07, 2019',
         slug: 'style-guides-component-libraries-design-systems',
         title: 'Everything I Know About Style Guides, Design Systems, and Component Libraries'
