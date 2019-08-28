@@ -1,0 +1,18 @@
+name: CI
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 10.15.0
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.15.0
+    - name: npm install, build, and test
+      uses: Borales/actions-yarn@1.1.0
+      run: |
+        yarn
+        yarn test
+      env:
+        CI: true
