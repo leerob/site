@@ -8,7 +8,7 @@ const CustomLink = (props) => {
     const href = `/${slug}`;
 
     return (
-        <Link href={href} prefetch>
+        <Link href={href}>
             <A href={href} {...props}>
                 {props.children}
             </A>

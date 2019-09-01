@@ -1,0 +1,56 @@
+import DateAndViews from '../../components/date-and-views'
+import Post from '../../components/post'
+import Link from '../../components/link'
+
+export const meta = {
+date: '2019-09-10',
+description: `TODO`,
+image: '/static/images/mailchimp-newsletter/banner.jpg',
+title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+}
+
+export default ({children}) => <Post meta={meta}>{children}</Post>
+
+<!-- Next API Routes
+Mailchimp
+Newsletter
+
+A Practical Example of Next API Routes: Newsletter Integration
+How To Add A Newsletter to your Next.js Blog
+Create A Mailing List with Next.js API Routes and Mailchimp
+Create A Newsletter with Next.js API Routes and Mailchimp
+Add A Newsletter To Your Next.js Blog  -->
+
+# Create A Newsletter with Next.js API Routes and Mailchimp
+
+<DateAndViews date={meta.date} id="mailchimp-newsletter" />
+
+-   Why Newsletter?
+    -   You want to build a following
+    -   Keep people updated
+-   Why Mailchimp?
+    -   Explain how I used TinyLetter
+    -   Bad UX with pop up window
+    -   Explore other free options
+    -   Less than 2k subs
+-   Why Next?
+    -   SSR
+    -   API routes, talk about Next 9
+    -   Now
+-   Setting up Mailchimp
+    -   Create account
+    -   Create List
+    -   Get your API key (https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key)
+    -   API docs (https://developer.mailchimp.com/documentation/mailchimp/guides/get-started-with-mailchimp-api-3/)
+    -   API Playground (https://us1.api.mailchimp.com/playground/?_ga=2.231663199.1180055433.1567349670-195619933.1565803046)
+    -   Test request to add someone to list
+-   Creating API route
+    -   Include code
+    -   Unfetch (https://github.com/developit/unfetch)
+    -   Why isomorphic unfetch? https://spectrum.chat/next-js/general/why-using-isomorphic-unfetch-rather-than-other-library~743d842d-f429-42d1-8184-570985456dec
+    -   Talk about serverless and how next api routes work
+    -   `now secrets add <secret-name> <secret-value>`
+    -   Setting up env variables (https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets)
+    -   Proper HTTP statuses (https://httpstatuses.com/)
+    -   Testing the API route
+-   Creating form input

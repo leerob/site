@@ -15,7 +15,7 @@ const StyledH3 = styled.h3`
     }
 `;
 
-const createId = (text) => text.toLowerCase().replace(/ /g, '-');
+const createId = (text) => text.toLowerCase().replace(/ /gu, '-');
 
 const H3 = ({children}) => <StyledH3 id={createId(children)}>{titleStyle(children)}</StyledH3>;
 
