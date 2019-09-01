@@ -4,4 +4,4 @@
 .next
 node_modules
 dist
-.env.build
+.env*

@@ -4,7 +4,7 @@ export default async (req, res) => {
     const {email} = req.body;
 
     if (!email) {
-        res.status(400).json({error: 'Email is required'});
+        return res.status(400).json({error: 'Email is required'});
     }
 
     try {
@@ -27,8 +27,8 @@ export default async (req, res) => {
             method: 'POST'
         });
 
-        res.status(201).json(response);
+        return res.status(201).json(response);
     } catch (error) {
-        res.status(500).json({error: error.message || error.toString()});
+        return res.status(500).json({error: error.message || error.toString()});
     }
 };

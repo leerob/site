@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 
@@ -57,8 +57,11 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? `https://${window.locat
 
 function Subscribe() {
     const inputEl = useRef(null);
+    const [apiError, setApiError] = useState('');
 
     const subscribe = async (e) => {
+        e.preventDefault();
+
         const res = await fetch(`${BASE_URL}/api/subscribe`, {
             body: JSON.stringify({
                 email: inputEl.current.value
@@ -69,13 +72,16 @@ function Subscribe() {
             method: 'POST'
         });
 
-        const response = await res.json();
+        const {error} = await res.json();
 
-        // eslint-disable-next-line no-console
-        console.log(response);
+        if (error) {
+            setApiError(error);
 
-        e.preventDefault();
-        e.target.reset();
+            return;
+        }
+
+        inputEl.current.value = '';
+        setApiError('');
     };
 
     return (
@@ -88,6 +94,7 @@ function Subscribe() {
                 <FinePrint>{`I'll only send emails when new content is posted. No spam.`}</FinePrint>
                 <Button type="submit">{'✨ Subscribe 💌'}</Button>
             </form>
+            {apiError && apiError}
         </>
     );
 }
