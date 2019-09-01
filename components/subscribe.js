@@ -53,8 +53,6 @@ const FinePrint = styled.p`
     font-size: 0.9rem;
 `;
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? `https://${window.location.host}` : 'http://localhost:3000';
-
 function Subscribe() {
     const inputEl = useRef(null);
     const [apiError, setApiError] = useState('');
@@ -62,7 +60,7 @@ function Subscribe() {
     const subscribe = async (e) => {
         e.preventDefault();
 
-        const res = await fetch(`${BASE_URL}/api/subscribe`, {
+        const res = await fetch(`/api/subscribe`, {
             body: JSON.stringify({
                 email: inputEl.current.value
             }),
