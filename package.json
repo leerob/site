@@ -105,8 +105,5 @@
         "prettier": "1.18.2",
         "prettify-xml": "1.2.0",
         "webpack-bundle-analyzer": "3.4.1"
-    },
-    "resolutions": {
-        "@mdx-js/mdx": "^0.16.0"
     }
 }
