@@ -55,7 +55,7 @@ const FinePrint = styled.p`
 
 function Subscribe() {
     const inputEl = useRef(null);
-    const [apiError, setApiError] = useState('');
+    const [message, setMessage] = useState('');
 
     const subscribe = async (e) => {
         e.preventDefault();
@@ -73,13 +73,13 @@ function Subscribe() {
         const {error} = await res.json();
 
         if (error) {
-            setApiError(error);
+            setMessage(error);
 
             return;
         }
 
         inputEl.current.value = '';
-        setApiError('');
+        setMessage('Success! 🎉 You are now subscribed to the newsletter.');
     };
 
     return (
@@ -89,10 +89,11 @@ function Subscribe() {
             <form onSubmit={subscribe}>
                 <Label htmlFor="email-input">{'Email Address'}</Label>
                 <Input id="email-input" name="email" placeholder="you@awesome.com" ref={inputEl} type="email" />
-                <FinePrint>{`I'll only send emails when new content is posted. No spam.`}</FinePrint>
+                <FinePrint>
+                    {message ? message : `I'll only send emails when new content is posted. No spam.`}
+                </FinePrint>
                 <Button type="submit">{'✨ Subscribe 💌'}</Button>
             </form>
-            {apiError && apiError}
         </>
     );
 }
