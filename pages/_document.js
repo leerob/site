@@ -1,8 +1,10 @@
 import Document, {Head, Main, NextScript} from 'next/document';
+import Router from 'next/router';
+import withGA from 'next-ga';
 import React from 'react';
 import {ServerStyleSheet} from 'styled-components';
 
-export default class CustomDocument extends Document {
+class CustomDocument extends Document {
     static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
@@ -41,3 +43,5 @@ export default class CustomDocument extends Document {
         );
     }
 }
+
+export default withGA('UA-131784128-1', Router)(CustomDocument);
