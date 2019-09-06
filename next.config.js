@@ -11,6 +11,10 @@ const withMDX = require('@zeit/next-mdx')({
 
 module.exports = withCSS(
     withMDX({
+        env: {
+            MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
+            MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID
+        },
         pageExtensions: ['js', 'mdx'],
         webpack: (config, {isServer}) => {
             if (ANALYZE) {
