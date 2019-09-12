@@ -18,6 +18,12 @@ export default [
         name: 'Prairie Code'
     },
     {
+        date: 'September 18th, 2019',
+        link: 'https://www.dsmwebgeeks.com/',
+        location: 'Des Moines, IA',
+        name: 'DSM Web Geeks'
+    },
+    {
         date: 'October 1st, 2019',
         link: 'https://www.iowatechsummit.com/',
         location: 'Des Moines, IA',
