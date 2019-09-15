@@ -75,7 +75,7 @@ const Index = () => (
         <Main>
             <Content>
                 <Container>
-                    <Subtitle>{description}</Subtitle>
+                    <Subtitle>{'Developer, writer, and UI/UX enthusiast.'}</Subtitle>
                     <Title>{'Lee Robinson'}</Title>
                 </Container>
                 <Details>{`Welcome to my personal slice of the internet 👋🏼 Here you'll find everything you need to know about me - blog posts, work history, projects, contact information, and more!`}</Details>
