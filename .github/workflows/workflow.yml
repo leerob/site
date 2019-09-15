@@ -1,17 +1,17 @@
 name: CI
 on: pull_request
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 10.15.0
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.15.0
-    - name: npm install and test
-      run: |
-        npm install
-        npm test
-      env:
-        CI: true
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+              with:
+                  fetch-depth: 1
+            - name: Setup Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.15.0
+            - name: Installing dependencies
+              run: yarn install --frozen-lockfile
+            - name: Running tests
+              run: yarn test

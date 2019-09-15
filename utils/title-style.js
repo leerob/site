@@ -6,6 +6,7 @@ export default (text) =>
             '1Password',
             'About',
             'CSS',
+            'CircleCI',
             'dart_dev',
             'HDD',
             'iPhone',
