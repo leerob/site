@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'September 15, 2019',
+        slug: 'github-actions',
+        title: 'Why I Switched From CircleCI to GitHub Actions'
+    },
+    {
         date: 'August 21, 2019',
         slug: 'real-time-post-views',
         title: 'Real-Time Blog Post Views With React and Firebase'
