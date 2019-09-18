@@ -2,9 +2,10 @@ import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 
 export const meta = {
-date: '2019-09-13',
+date: '2019-09-20',
 description: `Learn about how we've adopted GraphQL at Hy-Vee to improve developer efficiency and enhance our user experience.`,
 image: '/static/images/graphql-at-hy-vee/banner.jpg',
+slug: 'graphql-at-hy-vee',
 title: 'GraphQL at Hy-Vee'
 }
 
@@ -12,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # GraphQL at Hy-Vee
 
-<DateAndViews date={meta.date} id="graphql-at-hy-vee" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![GraphQL at Hy-Vee](/static/images/graphql-at-hy-vee/banner.jpg)
 

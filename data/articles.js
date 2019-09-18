@@ -1,8 +1,13 @@
 export default [
     {
-        date: 'September 13, 2019',
+        date: 'September 20, 2019',
         slug: 'graphql-at-hy-vee',
         title: 'GraphQL at Hy-Vee'
+    },
+    {
+        date: 'September 15, 2019',
+        slug: 'github-actions',
+        title: 'Why I Switched From CircleCI to GitHub Actions'
     },
     {
         date: 'August 21, 2019',

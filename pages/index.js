@@ -63,19 +63,19 @@ const Details = styled.div`
     margin-bottom: ${spacing.large};
 `;
 
-const description = 'Developer, writer, and UI/UX enthusiast.';
+const description = `Lee Robinson is a developer, writer, and UI/UX enthusiast. He's interested in all things JAMstack (JavaScript, APIs, Markup) and Design Systems. Lee has spoken across the country at conferences and meet-ups about front-end development, design, and recruiting. He currently works at Hy-Vee (and previously at Workiva) in Des Moines, IA. `;
 
 const Index = () => (
     <Page
         description={description}
         image={'/static/images/speaking/speaking.jpg'}
-        title={`Lee Robinson - ${description}`}
+        title={'Lee Robinson - Developer, writer, and UI/UX enthusiast.'}
     >
         <Nav />
         <Main>
             <Content>
                 <Container>
-                    <Subtitle>{description}</Subtitle>
+                    <Subtitle>{'Developer, writer, and UI/UX enthusiast.'}</Subtitle>
                     <Title>{'Lee Robinson'}</Title>
                 </Container>
                 <Details>{`Welcome to my personal slice of the internet 👋🏼 Here you'll find everything you need to know about me - blog posts, work history, projects, contact information, and more!`}</Details>
