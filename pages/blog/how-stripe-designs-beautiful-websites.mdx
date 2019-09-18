@@ -6,6 +6,7 @@ export const meta = {
 date: '2017-12-02',
 description: 'Examining the tips and tricks used to make Stripe\'s website design a notch above the rest.',
 image: '/static/images/how-stripe-designs-beautiful-websites/banner.png',
+slug: 'how-stripe-designs-beautiful-websites',
 title: 'How Stripe Designs Beautiful Websites'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # How Stripe Designs Beautiful Websites
 
-<DateAndViews date={meta.date} id="how-stripe-designs-beautiful-websites" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Stripe Logo](/static/images/how-stripe-designs-beautiful-websites/banner.png)
 

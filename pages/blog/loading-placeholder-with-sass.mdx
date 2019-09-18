@@ -5,6 +5,7 @@ export const meta = {
 date: '2017-11-12',
 description: 'Using animation to simulate loading text content.',
 image: '/static/images/loading-placeholder-with-sass/banner.png',
+slug: 'loading-placeholder-with-sass',
 title: 'Creating a Loading Placeholder with Sass'
 }
 
@@ -12,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Creating a Loading Placeholder with Sass
 
-<DateAndViews date={meta.date} id="loading-placeholder-with-sass" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Loading Placeholder](/static/images/loading-placeholder-with-sass/example.gif)
 

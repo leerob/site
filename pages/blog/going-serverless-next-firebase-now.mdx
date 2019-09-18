@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-07-19',
 description: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.',
 image: '/static/images/going-serverless-next-firebase-now/banner.jpg',
+slug: 'going-serverless-next-firebase-now',
 title: 'Going Serverless with Next.js, Firebase, and Now'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Going Serverless with Next.js, Firebase, and Now
 
-<DateAndViews date={meta.date} id="going-serverless-next-firebase-now" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
 

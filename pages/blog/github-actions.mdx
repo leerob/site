@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-09-15',
 description: 'Can GitHub Actions relace CircleCI entirely? Find out why I decided to switch CI/CD providers to GitHub Actions.',
 image: '/static/images/github-actions/banner.png',
+slug: 'github-actions',
 title: 'Why I Switched From CircleCI to GitHub Actions'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Why I Switched From CircleCI to GitHub Actions
 
-<DateAndViews date={meta.date} id="github-actions" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![GitHub Actions Checks](/static/images/github-actions/banner.png)
 
