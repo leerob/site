@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'September 13, 2019',
+        slug: 'graphql-at-hy-vee',
+        title: 'GraphQL at Hy-Vee'
+    },
+    {
         date: 'August 21, 2019',
         slug: 'real-time-post-views',
         title: 'Real-Time Blog Post Views With React and Firebase'

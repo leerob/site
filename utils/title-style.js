@@ -7,6 +7,7 @@ export default (text) =>
             'About',
             'CSS',
             'dart_dev',
+            'GraphQL',
             'HDD',
             'iPhone',
             'iTerm',
