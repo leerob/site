@@ -5,6 +5,7 @@ export const meta = {
 date: '2017-11-25',
 description: 'Building a todo list from start to finish.',
 image: '/static/images/getting-started-with-dart-and-react/banner.png',
+slug: 'getting-started-with-dart-and-react',
 title: 'Getting Started with Dart & React'
 }
 
@@ -12,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Getting Started with Dart & React
 
-<DateAndViews date={meta.date} id="getting-started-with-dart-and-react" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![React + Dart](/static/images/getting-started-with-dart-and-react/banner.png)
 

@@ -5,6 +5,7 @@ export const meta = {
 date: '2017-02-24',
 description: 'Learn how to create your portfolio from the ground up.',
 image: '/static/images/beginners-guide-to-the-programming-portfolio/banner.png',
+slug: 'beginners-guide-to-the-programming-portfolio',
 title: 'Beginner’s Guide to the Programming Portfolio'
 }
 
@@ -12,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Beginner’s Guide to the Programming Portfolio
 
-<DateAndViews date={meta.date} id="beginners-guide-to-the-programming-portfolio" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Programming Portfolio](/static/images/beginners-guide-to-the-programming-portfolio/banner.png)
 

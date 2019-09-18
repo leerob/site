@@ -46,6 +46,10 @@ const Main = styled.main`
     }
 `;
 
+const editUrl = (slug) => `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
+const discussUrl = (slug) =>
+    `https://mobile.twitter.com/search?q=${encodeURIComponent(`https://leerob.io/blog/${slug}`)}`;
+
 const Post = ({children, meta}) => (
     <Page date={meta.date} description={meta.description} image={meta.image} title={`${meta.title} - Lee Robinson`}>
         <Nav />
@@ -53,6 +57,16 @@ const Post = ({children, meta}) => (
             <MDXProvider components={components}>
                 <article>{children}</article>
             </MDXProvider>
+            <hr />
+            <p>
+                <A href={discussUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
+                    {'Discuss on Twitter'}
+                </A>
+                {` • `}
+                <A href={editUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
+                    {'Edit on GitHub'}
+                </A>
+            </p>
             <Subscribe />
         </Main>
         <Footer />

@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-01-13',
 description: 'Learn how to use Mapbox with Next.js to create a non-SSR map component that is free up to 50,000 map views per month.',
 image: '/static/images/using-mapbox-with-next-js/banner.png',
+slug: 'using-mapbox-with-next-js',
 title: 'Using Mapbox with Next.js (Instead of Google Maps)'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Using Mapbox with Next.js (Instead of Google Maps)
 
-<DateAndViews date={meta.date} id="using-mapbox-with-next-js" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 In the process of selecting a mapping library for [dsmtech.io](https://dsmtech.io), I ran into a
 number of roadblocks. First and foremost, Google Maps has **drastically** changed their [pricing structure](https://cloud.google.com/maps-platform/user-guide/pricing-changes/).
