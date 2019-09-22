@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'September 20, 2019',
+        slug: 'mailchimp-next-js',
+        title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+    },
+    {
         date: 'September 15, 2019',
         slug: 'github-actions',
         title: 'Why I Switched From CircleCI to GitHub Actions'
