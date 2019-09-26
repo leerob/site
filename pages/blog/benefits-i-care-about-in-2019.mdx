@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-02-09',
 description: 'Should you care about game rooms and beer on tap? How important is working remotely and a flexible schedule? I give my take on what benefits are important to me in 2019.',
 image: '/static/images/benefits-i-care-about-in-2019/banner.jpg',
+slug: 'benefits-i-care-about-in-2019',
 title: 'Benefits I Care About in 2019'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Benefits I Care About in 2019
 
-<DateAndViews date={meta.date} id="benefits-i-care-about-in-2019" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 > Edit: This post is generating a lot of great conversation on Reddit. [Check it out!](https://www.reddit.com/r/cscareerquestions/comments/ap0h7h/what_benefits_do_you_actually_care_about_in_2019/)
 

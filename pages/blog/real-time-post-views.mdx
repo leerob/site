@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-08-21',
 description: `Want more accurate page view counts? Learn how to create your own microservice for tracking real-time view counts using Firebase and then visualize those counts using React.`,
 image: '/static/images/real-time-post-views/banner.jpg',
+slug: 'real-time-post-views',
 title: 'Real-Time Blog Post Views With React and Firebase'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Real-Time Blog Post Views With React and Firebase
 
-<DateAndViews date={meta.date} id="real-time-post-views" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 [![Blog Post Views](/static/images/real-time-post-views/chart.png)](https://github.com/timqian/chart.xkcd)
 

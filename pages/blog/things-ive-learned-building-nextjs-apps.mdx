@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-02-15',
 description: `I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use.`,
 image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg',
+slug: 'things-ive-learned-building-nextjs-apps',
 title: `Things I've Learned Building Next.js Apps`
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Things I've Learned Building Next.js Apps
 
-<DateAndViews date={meta.date} id="things-ive-learned-building-nextjs-apps" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Next.js](/static/images/things-ive-learned-building-nextjs-apps/nextjs.png)
 
