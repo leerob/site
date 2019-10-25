@@ -177,6 +177,20 @@ const Timeline = () => (
             </TimelineStep>
             <TimelineStep>
                 <StepRight>
+                    <StepHeader>{`October 2019: Bought a Townhome 🏡`}</StepHeader>
+                    <StepCopy>{`Who wants to do yardwork? Not me. Plus, Allie and I love living downtown Des Moines.`}</StepCopy>
+                </StepRight>
+            </TimelineStep>
+            <TimelineStep>
+                <StepLeft>
+                    <StepHeader>{`September 2019: Got Engaged 💍`}</StepHeader>
+                    <StepCopy>
+                        {`I asked my now fiancée, Allie, to marry me. She said yes! It was a busy month, to say the least. I also spoke at three events and sold my condo.`}
+                    </StepCopy>
+                </StepLeft>
+            </TimelineStep>
+            <TimelineStep>
+                <StepRight>
                     <StepHeader>{`June 2019: Spoke at Talent42 🎤`}</StepHeader>
                     <StepCopy>
                         <span>{`I spoke to over 100 technical recruiting leaders from across the country at`}</span>
