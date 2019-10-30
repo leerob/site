@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-02-17',
 description: 'Why is there so much recruiter spam? What can we do to fix technical recruiting?',
 image: '/static/images/technical-recruiting-is-broken/banner.jpg',
+slug: 'technical-recruiting-is-broken',
 title: 'Technical Recruiting is Broken'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Technical Recruiting is Broken
 
-<DateAndViews date={meta.date} id="technical-recruiting-is-broken" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 On my [LinkedIn profile](https://www.linkedin.com/in/leejamesrobinson/), I explicitly list what I'm looking for in a position to help
 receive more targeted, relevant messages.

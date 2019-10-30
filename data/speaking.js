@@ -2,7 +2,7 @@ export default [
     {
         date: 'June 11th, 2019',
         link: 'https://www.talent42.com/home',
-        location: 'Seatle, WA',
+        location: 'Seattle, WA',
         name: 'Talent42'
     },
     {

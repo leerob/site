@@ -5,6 +5,7 @@ export const meta = {
 date: '2014-10-31',
 description: 'Utilizing Python and PyGame to revive a classic.',
 image: '/static/images/space-invaders-with-python/banner.png',
+slug: 'space-invaders-with-python',
 title: 'Creating a Space Invaders Clone with Python'
 }
 
@@ -12,7 +13,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Creating a Space Invaders Clone with Python
 
-<DateAndViews date={meta.date} id="space-invaders-with-python" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 ![Space Invaders](/static/images/space-invaders-with-python/banner.png)
 

@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-01-06',
 description: 'Creating open-source software makes me happy. It’s an opportunity for me to showcase my programming skills and gain experience with new languages and frameworks.',
 image: '/static/images/why-i-create-open-source-software/banner.jpg',
+slug: 'why-i-create-open-source-software',
 title: 'Why I Create Open-Source Software'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Why I Create Open-Source Software
 
-<DateAndViews date={meta.date} id="why-i-create-open-source-software" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 Creating open-source software makes me happy. It’s an opportunity for me to showcase my programming skills and gain experience with new languages and frameworks. I don’t make any money from it. I’ve actually _lost_ money on most websites I’ve created from buying domain names.
 

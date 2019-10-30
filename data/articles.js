@@ -5,6 +5,11 @@ export default [
         title: 'GraphQL at Hy-Vee'
     },
     {
+        date: 'October 24, 2019',
+        slug: 'italy',
+        title: 'Backpacking Italy'
+    },
+    {
         date: 'September 15, 2019',
         slug: 'github-actions',
         title: 'Why I Switched From CircleCI to GitHub Actions'

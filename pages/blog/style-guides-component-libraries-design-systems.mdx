@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-08-07',
 description: `A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices.`,
 image: '/static/images/style-guides-component-libraries-design-systems/banner.jpg',
+slug: 'style-guides-component-libraries-design-systems',
 title: 'Everything I Know About Style Guides, Design Systems, and Component Libraries'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Everything I Know About Style Guides, Design Systems, and Component Libraries
 
-<DateAndViews date={meta.date} id="style-guides-component-libraries-design-systems" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 [![Ant Design Component Library](/static/images/style-guides-component-libraries-design-systems/component-library.png)](https://ant.design/)
 

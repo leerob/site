@@ -6,6 +6,7 @@ export const meta = {
 date: '2019-04-23',
 description: 'Learn how to set up Sentry to capture client-side and server-side exceptions for Next.js applications.',
 image: '/static/images/configuring-sentry-for-nextjs-apps/banner.png',
+slug: 'configuring-sentry-for-nextjs-apps',
 title: 'Configuring Sentry for Next.js Apps'
 }
 
@@ -13,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # Configuring Sentry for Next.js Apps
 
-<DateAndViews date={meta.date} id="configuring-sentry-for-nextjs-apps" />
+<DateAndViews date={meta.date} id={meta.slug} />
 
 For many teams using Next.js, setting up exception monitoring is a critical requirement before going to production.
 This guide will show you how to use [Sentry](https://sentry.io) to catch & report errors on both client and server-side.
