@@ -138,7 +138,7 @@ If successful, this mutation will return a JSON response of the fields we’ve d
 
 As the number of our microservice APIs began to grow, we recognized a problem. We had followed best practices for creating APIs with a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), but this meant we had multiple entry points to retrieve data. Clients had to stitch together resources from each of these APIs to paint the full picture. There had to be a [better way](https://principledgraphql.com/).
 
-Enter the GraphQL API. Unlike our other APIs, the **GraphQL API is not backed by a database. **This API acts as a proxy between all of our other services, providing one unified schema. This led to an improved developer experience for our consumers and the ability to easily stitch together pieces of information across multiple APIs. We currently have almost 10 different graphs being combined into one simple interface for developers.
+Enter the GraphQL API. Unlike our other APIs, the **GraphQL API is not backed by a database.** This API acts as a proxy between all of our other services, providing one unified schema. This led to an improved developer experience for our consumers and the ability to easily stitch together pieces of information across multiple APIs. We currently have almost 10 different graphs being combined into one simple interface for developers.
 
 With the GraphQL API, we can easily link a list item to a product, which is a completely separate API. Since the list item contains a `productId`, we can make a query to fetch the product.
 
