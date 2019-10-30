@@ -54,7 +54,7 @@ I started to explore using [Mailchimp](https://mailchimp.com/) as an alternative
 
 After creating an account, you'll need to fetch your [API key](https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key). You can utilize their [API Playground](https://us1.api.mailchimp.com/playground/?_ga=2.231663199.1180055433.1567349670-195619933.1565803046) to test requests.
 
-When a user clicks "subscribe", we'll want to add their email address to our list. This is through the [List Members POST](https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/#create-post_lists_list_id_members) endpoint.
+When a user clicks "subscribe", we'll want to add their email address to the mailing list. This is through the [List Members POST](https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/#create-post_lists_list_id_members) endpoint.
 
 According to their [API documentation](https://developer.mailchimp.com/documentation/mailchimp/guides/get-started-with-mailchimp-api-3/), we'll need to send a request to:
 
@@ -62,7 +62,7 @@ According to their [API documentation](https://developer.mailchimp.com/documenta
 https://<dc>.api.mailchimp.com/3.0
 ```
 
-Where `dc` is the datacenter. This is the last 3 characters of our API key we retrieved earlier. We'll also need to fetch the [Audience ID](https://mailchimp.com/help/find-audience-id/) (or List ID) for our mailing list.
+Where `dc` is the datacenter. This is the last 3 characters of your API key we retrieved earlier. We'll also need to fetch the [Audience ID](https://mailchimp.com/help/find-audience-id/) (or List ID) for the mailing list.
 
 ## Environment Variables
 
