@@ -1,6 +1,6 @@
 export default [
     {
-        date: 'September 20, 2019',
+        date: 'October 30, 2019',
         slug: 'graphql-at-hy-vee',
         title: 'GraphQL at Hy-Vee'
     },
