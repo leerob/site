@@ -5,8 +5,10 @@ export default (text) =>
         special: [
             '1Password',
             'About',
-            'CSS',
+            'API',
+            'APIs',
             'CircleCI',
+            'CSS',
             'dart_dev',
             'GraphQL',
             'HDD',
@@ -16,8 +18,8 @@ export default (text) =>
             'OverReact',
             'QC35',
             'UI',
-            'UX',
             'USB',
+            'UX',
             'VSCode',
             'w_flux'
         ]
