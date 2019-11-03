@@ -60,7 +60,7 @@ const onSubmit = () => {
 
 const Subscribe = () => (
     <>
-        <H3>{'Want more? Be notified when I post new articles 🚀'}</H3>
+        <H3 as="h5">{'Want more? Be notified when I post new articles 🚀'}</H3>
         <form action="https://tinyletter.com/leerob" method="post" onSubmit={onSubmit} target="popupwindow">
             <Label htmlFor="email-input">{'Email Address'}</Label>
             <Input id="email-input" name="email" placeholder="you@awesome.com" type="text" />
