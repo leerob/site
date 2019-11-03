@@ -1,5 +1,10 @@
 export default [
     {
+        description: 'The complete video course for building applications with Next.js and React.',
+        link: 'https://masteringnextjs.com',
+        name: '🏆 Mastering Next.js'
+    },
+    {
         description: 'Helping companies build, manage, and scale effective distributed teams.',
         link: 'https://beyondhq.co',
         name: '✈️ BeyondHQ'
