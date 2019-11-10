@@ -1,8 +1,18 @@
 export default [
     {
-        date: 'September 20, 2019',
+        date: 'November 10, 2019',
         slug: 'mailchimp-next-js',
         title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+    },
+    {
+        date: 'October 30, 2019',
+        slug: 'graphql-at-hy-vee',
+        title: 'GraphQL at Hy-Vee'
+    },
+    {
+        date: 'October 24, 2019',
+        slug: 'italy',
+        title: 'Backpacking Italy'
     },
     {
         date: 'September 15, 2019',

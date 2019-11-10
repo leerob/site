@@ -85,7 +85,7 @@ function Subscribe() {
     return (
         <>
             <hr />
-            <H3>{'Want more? Be notified when I post new articles 🚀'}</H3>
+            <H3 as="h5">{'Want more? Be notified when I post new articles 🚀'}</H3>
             <form onSubmit={subscribe}>
                 <Label htmlFor="email-input">{'Email Address'}</Label>
                 <Input id="email-input" name="email" placeholder="you@awesome.com" ref={inputEl} type="email" />

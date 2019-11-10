@@ -21,6 +21,7 @@ import Page from './page';
 import Strong from './elements/strong';
 import Subscribe from './subscribe';
 import Ul from './elements/ul';
+import NextjsCourse from './nextjs-course';
 
 const components = {
     a: A,
@@ -57,6 +58,8 @@ const Post = ({children, meta}) => (
             <MDXProvider components={components}>
                 <article>{children}</article>
             </MDXProvider>
+            <hr />
+            <NextjsCourse />
             <hr />
             <p>
                 <A href={discussUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
