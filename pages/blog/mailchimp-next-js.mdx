@@ -3,23 +3,13 @@ import Post from '../../components/post'
 import Link from '../../components/link'
 
 export const meta = {
-date: '2019-09-10',
-description: `TODO`,
+date: '2019-11-10',
+description: 'Learn how to integrate Next.js and React with Mailchimp to build a newsletter subscription form.',
 image: '/static/images/mailchimp-next-js/banner.png',
 title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
 }
 
 export default ({children}) => <Post meta={meta}>{children}</Post>
-
-<!-- Next API Routes
-Mailchimp
-Newsletter
-
-A Practical Example of Next API Routes: Newsletter Integration
-How To Add A Newsletter to your Next.js Blog
-Create A Mailing List with Next.js API Routes and Mailchimp
-Create A Newsletter with Next.js API Routes and Mailchimp
-Add A Newsletter To Your Next.js Blog  -->
 
 # Create A Newsletter with Next.js API Routes and Mailchimp
 
@@ -46,13 +36,17 @@ I started to explore using [Mailchimp](https://mailchimp.com/) as an alternative
 
 ## Why Next.js?
 
--   SSR
--   API routes, talk about Next 9
--   Now
+[Next.js](https://nextjs.org/) is the [easiest way](https://masteringnextjs.com/learn-next-js) to build applications in React. One of my favorite features is API routes.
+
+API routes provide a straightforward solution for building an API inside Next.js.
+All you need to get started is an `api/` folder inside your main `pages/` folder where your routes live.
+
+Every file inside `pages/api/` is mapped to `/api/*`. This is where we'll communicate with Mailchimp.
+First, we need to set up an account.
 
 ## Setting up Mailchimp
 
-After creating an account, you'll need to fetch your [API key](https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key). You can utilize their [API Playground](https://us1.api.mailchimp.com/playground/?_ga=2.231663199.1180055433.1567349670-195619933.1565803046) to test requests.
+After [creating an account](https://mailchimp.com/help/create-an-account/), you'll need to fetch your [API key](https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key). You can utilize their [API Playground](https://us1.api.mailchimp.com/playground/?_ga=2.231663199.1180055433.1567349670-195619933.1565803046) to test requests.
 
 When a user clicks "subscribe", we'll want to add their email address to the mailing list. This is through the [List Members POST](https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/#create-post_lists_list_id_members) endpoint.
 
@@ -66,7 +60,7 @@ Where `dc` is the datacenter. This is the last 3 characters of your API key we r
 
 ## Environment Variables
 
-Let's make our secrets available without hardcoding them into our request. Since I'm deploying with [Now](https://zeit.co), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
+Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Now](https://zeit.co), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
 You can use similar a [similar approach](https://create-react-app.dev/docs/adding-custom-environment-variables) for [any framework](https://www.gatsbyjs.org/docs/environment-variables/) to add your secrets to `process.env`.
 
 ```bash
@@ -87,18 +81,18 @@ Then, we can expose them via our `now.json` file.
 }
 ```
 
-These variables will now be available at build time. To test locally, we'll also want to create an `.env` file since Now Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `now dev`.
+These variables will be available at build time. To test locally, we'll also want to create a `.env` file since Now Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `now dev`.
 
 ```bash
 MAILCHIMP_LIST_ID=<secret-value>
 MAILCHIMP_API_KEY=<secret-value>
 ```
 
-**Note:** Don't forgot to add `.env` to your `.gitignore`. We don't want to commit our secrets.
+**Note:** Don't forget to add `.env` to your `.gitignore`. We don't want to commit our secrets.
 
 ## Creating The Request
 
-Now that we have the API Key and the List ID available, we can create an HTTP request to add a member to our list.
+Now that we have the API Key and the List ID available as environment variables, we can create an API route at `pages/api/subscribe.js` to add a member to our list.
 
 ```js
 import fetch from 'isomorphic-unfetch';
@@ -150,12 +144,6 @@ export default async (req, res) => {
 };
 ```
 
--   Unfetch (https://github.com/developit/unfetch)
--   Why isomorphic unfetch? https://spectrum.chat/next-js/general/why-using-isomorphic-unfetch-rather-than-other-library~743d842d-f429-42d1-8184-570985456dec
--   Talk about serverless and how next api routes work
--   Proper HTTP statuses (https://httpstatuses.com/)
--   Testing the API route
-
 ## Creating A Form Input
 
 Now that our API is created, we need a way to gather user input. Let's create a component to send a request to our API.
@@ -174,7 +162,7 @@ function Subscribe() {
         e.preventDefault();
 
         // 3. Send a request to our API with the user's email address.
-        const res = await fetch(`/api/subscribe`, {
+        const res = await fetch('/api/subscribe', {
             body: JSON.stringify({
                 email: inputEl.current.value
             }),
@@ -208,3 +196,9 @@ function Subscribe() {
     );
 }
 ```
+
+## Conclusion
+
+With the combination of the form input and API route, you can now successfully build your mailing list 🎉
+
+Curious if it works? Try it out below 😉
