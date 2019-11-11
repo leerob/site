@@ -3,7 +3,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const rehypePrism = require('@mapbox/rehype-prism');
 const withCSS = require('@zeit/next-css');
 const withMDX = require('@zeit/next-mdx')({
-    extension: /\.mdx?$/,
+    extension: /\.mdx?$/u,
     options: {
         hastPlugins: [rehypePrism]
     }
@@ -11,6 +11,10 @@ const withMDX = require('@zeit/next-mdx')({
 
 module.exports = withCSS(
     withMDX({
+        env: {
+            MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
+            MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID
+        },
         pageExtensions: ['js', 'mdx'],
         webpack: (config, {isServer}) => {
             if (ANALYZE) {

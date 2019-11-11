@@ -2,7 +2,9 @@ import Document, {Head, Main, NextScript} from 'next/document';
 import React from 'react';
 import {ServerStyleSheet} from 'styled-components';
 
-export default class CustomDocument extends Document {
+const GA_TRACKING_ID = 'UA-131784128-1';
+
+class CustomDocument extends Document {
     static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
@@ -32,7 +34,20 @@ export default class CustomDocument extends Document {
     render() {
         return (
             <html lang="en">
-                <Head />
+                <Head>
+                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+                    <script
+                        // eslint-disable-next-line react/no-danger
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', '${GA_TRACKING_ID}');
+                            `
+                        }}
+                    />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
@@ -41,3 +56,5 @@ export default class CustomDocument extends Document {
         );
     }
 }
+
+export default CustomDocument;

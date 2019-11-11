@@ -253,14 +253,14 @@ function ViewCounter({id}) {
         return function cleanup() {
             db.child(id).off('value', onViews);
         };
-    }, []);
+    }, [id]);
 
     // Asynchronously log a view
     useEffect(() => {
         const registerView = () => fetch(`https://your-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
 
         registerView();
-    }, []);
+    }, [id]);
 
     return <Views views={views} />;
 }

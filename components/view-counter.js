@@ -21,13 +21,13 @@ function ViewCounter({id}) {
         return function cleanup() {
             db.child(id).off('value', onViews);
         };
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         const registerView = () => fetch(`https://leerob-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
 
         registerView();
-    }, []);
+    }, [id]);
 
     return <Views views={views} />;
 }

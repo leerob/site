@@ -1,7 +1,5 @@
 import React from 'react';
-import Router from 'next/router';
-import withGA from 'next-ga';
-import App, {Container} from 'next/app';
+import App from 'next/app';
 import {ThemeProvider} from 'styled-components';
 
 import {colors} from '../styles/vars';
@@ -41,12 +39,10 @@ class CustomApp extends App {
 
         return (
             <ThemeProvider theme={lightTheme}>
-                <Container>
-                    <Component {...pageProps} />
-                </Container>
+                <Component {...pageProps} />
             </ThemeProvider>
         );
     }
 }
 
-export default withGA('UA-131784128-1', Router)(CustomApp);
+export default CustomApp;

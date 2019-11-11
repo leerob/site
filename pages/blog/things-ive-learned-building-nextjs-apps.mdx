@@ -134,7 +134,7 @@ the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `p
 </Link>
 ```
 
-**Bonus:** Next won't prefetch [if the user is on 2G](https://github.com/zeit/next.js/blob/fc19b233ebcb6074a55ef4a00771ef7b0a3bcc33/packages/next/client/page-loader.js#L137-L143). Pretty neat!
+**Update:** Next.js 9 will [automatically prefetch](https://nextjs.org/blog/next-9#prefetching-in-viewport-links) `<Link>` components as they appear in-viewport. You no longer need to explicity say `prefetch`.
 
 ## Polyfills
 

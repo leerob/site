@@ -1,11 +1,19 @@
 {
+    "version": 2,
+    "name": "leerob",
     "alias": ["leerob.io", "www.leerob.io"],
     "builds": [
         {
             "src": "package.json",
-            "use": "@now/static-build"
+            "use": "@now/next"
         }
     ],
+    "build": {
+        "env": {
+            "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
+            "MAILCHIMP_API_KEY": "@mailchimp-api-key"
+        }
+    },
     "routes": [
         {
             "src": "/static/(.*)",
@@ -16,13 +24,6 @@
             "src": "/(.*\\.(js|jpg|json|css|ico|png)$)",
             "dest": "/$1",
             "headers": {"cache-control": "public,max-age=31536000,immutable"}
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/$1",
-            "headers": {"cache-control": "public, max-age=0, must-revalidate"}
         }
-    ],
-    "name": "leerob",
-    "version": 2
+    ]
 }

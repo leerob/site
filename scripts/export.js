@@ -1,8 +1,6 @@
 const fs = require('fs');
 const {parse} = require('path');
 
-const cpy = require('cpy');
-const del = require('del');
 const globby = require('globby');
 const execao = require('execa-output');
 const Listr = require('listr');
@@ -40,14 +38,6 @@ const tasks = new Listr([
     {
         task: () => execao('next', ['export', '-o', exportDirectory]),
         title: 'Running `next export`'
-    },
-    {
-        task: () => cpy([`${exportDirectory}/static/root/*`], exportDirectory),
-        title: 'Copying static files to root'
-    },
-    {
-        task: () => del([`${exportDirectory}/**/*.pxd/`, `${exportDirectory}/index`, `${exportDirectory}/static/root`]),
-        title: 'Removing unnecessary files and folders'
     },
     {
         task: () => generateSitemap(),

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
+import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 
 import H3 from './elements/h3';
@@ -52,22 +53,48 @@ const FinePrint = styled.p`
     font-size: 0.9rem;
 `;
 
-const onSubmit = () => {
-    window.open('https://tinyletter.com/leerob', 'popupwindow', 'scrollbars=yes,width=800,height=680');
+function Subscribe() {
+    const inputEl = useRef(null);
+    const [message, setMessage] = useState('');
 
-    return true;
-};
+    const subscribe = async (e) => {
+        e.preventDefault();
 
-const Subscribe = () => (
-    <>
-        <H3 as="h5">{'Want more? Be notified when I post new articles 🚀'}</H3>
-        <form action="https://tinyletter.com/leerob" method="post" onSubmit={onSubmit} target="popupwindow">
-            <Label htmlFor="email-input">{'Email Address'}</Label>
-            <Input id="email-input" name="email" placeholder="you@awesome.com" type="text" />
-            <FinePrint>{`I'll only send emails when new content is posted. No spam.`}</FinePrint>
-            <Button type="submit">{'✨ Subscribe 💌'}</Button>
-        </form>
-    </>
-);
+        const res = await fetch('/api/subscribe', {
+            body: JSON.stringify({
+                email: inputEl.current.value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        });
+
+        const {error} = await res.json();
+
+        if (error) {
+            setMessage(error);
+
+            return;
+        }
+
+        inputEl.current.value = '';
+        setMessage('Success! 🎉 You are now subscribed to the newsletter.');
+    };
+
+    return (
+        <>
+            <H3 as="h5">{'Want more? Be notified when I post new articles 🚀'}</H3>
+            <form onSubmit={subscribe}>
+                <Label htmlFor="email-input">{'Email Address'}</Label>
+                <Input id="email-input" name="email" placeholder="you@awesome.com" ref={inputEl} type="email" />
+                <FinePrint>
+                    {message ? message : `I'll only send emails when new content is posted. No spam.`}
+                </FinePrint>
+                <Button type="submit">{'✨ Subscribe 💌'}</Button>
+            </form>
+        </>
+    );
+}
 
 export default Subscribe;
