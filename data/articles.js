@@ -1,8 +1,20 @@
 export default [
     {
+        date: 'November 12, 2019',
+        publisher: 'Mastering Next.js',
+        title: 'Next.js vs. Gatsby vs. Create React App',
+        url: 'https://masteringnextjs.com/nextjs-gatsby-create-react-app/'
+    },
+    {
         date: 'November 10, 2019',
         slug: 'mailchimp-next-js',
         title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+    },
+    {
+        date: 'November 7, 2019',
+        publisher: 'Mastering Next.js',
+        title: 'Why Should You Learn Next.js?',
+        url: 'https://masteringnextjs.com/learn-next-js'
     },
     {
         date: 'October 30, 2019',
