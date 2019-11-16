@@ -134,13 +134,11 @@ const StepRight = styled.div`
 `;
 
 const StepHeader = styled.h6`
-    color: ${(props) => props.theme.primary};
     font-weight: bold;
     margin-bottom: 8px;
 `;
 
 const StepCopy = styled.p`
-    color: ${(props) => props.theme.body};
     margin: auto 0;
     min-width: 200px;
 
@@ -167,8 +165,8 @@ const StyledLink = styled(A)`
     color: ${(props) => props.theme.body};
 `;
 
-const Timeline = () => (
-    <StyledTimeline>
+const Timeline = ({theme}) => (
+    <StyledTimeline key={theme}>
         <List>
             <TimelineStep highlight>
                 <StepLeft highlight>

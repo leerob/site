@@ -7,7 +7,7 @@ const highlightBackgound = keyframes`
         background-color: yellow;
     }
     to {
-        background-color: #fff;
+        background-color: ${(props) => props.theme.secondary};
     }
 `;
 
