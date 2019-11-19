@@ -7,6 +7,7 @@ import titleStyle from '../../utils/title-style';
 
 const StyledH3 = styled.h3`
     ${heading};
+    color: ${(props) => props.theme.text};
     font-size: 20px;
     margin: ${spacing.normal} 0 ${spacing.small};
 

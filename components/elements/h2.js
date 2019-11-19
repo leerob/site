@@ -6,7 +6,9 @@ import {spacing} from '../../styles/vars';
 import titleStyle from '../../utils/title-style';
 
 const StyledH2 = styled.h2`
-    ${heading} font-size: 1.4em;
+    ${heading};
+    color: ${(props) => props.theme.text};
+    font-size: 1.4em;
     margin: ${spacing.large} 0 ${spacing.small};
     line-height: 1.25;
 

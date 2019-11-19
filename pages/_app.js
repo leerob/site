@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import App from 'next/app';
 import {ThemeProvider} from 'styled-components';
 import useDarkMode from 'use-dark-mode';
@@ -37,7 +37,17 @@ const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
     const theme = darkMode.value ? darkTheme : lightTheme;
 
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    const [key, setKey] = useState('');
+
+    useEffect(() => {
+        setKey('force-update-sc-bug');
+    }, []);
+
+    return (
+        <ThemeProvider key={key} theme={theme}>
+            {children}
+        </ThemeProvider>
+    );
 };
 
 class CustomApp extends App {
