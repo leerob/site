@@ -2,6 +2,9 @@ import React from 'react';
 import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
 
+import Sun from '../icons/sun.svg';
+import Moon from '../icons/moon.svg';
+
 const ToggleButton = styled.button`
     background: none;
     border: none;
@@ -17,18 +20,35 @@ const ToggleButton = styled.button`
     @media (min-width: 737px) {
         margin: 0 0 0 2em;
     }
+`;
 
-    :hover {
-        transform: translateY(-1px);
+const iconStyles = `
+    width: 14px;
+    height: 14px;
+
+    @media (min-width: 768px) {
+        height: 16px;
+        width: 16px;
     }
+`;
+
+const SunIcon = styled(Sun)`
+    color: ${(props) => props.theme.accent};
+    ${iconStyles};
+`;
+
+const MoonIcon = styled(Moon)`
+    color: ${(props) => props.theme.accent};
+    ${iconStyles};
 `;
 
 const DarkModeToggle = () => {
     const darkMode = useDarkMode(false);
+    const label = darkMode.value ? 'Use dark theme' : 'Use light theme';
 
     return (
-        <ToggleButton onClick={darkMode.toggle} type="button">
-            {darkMode.value ? '☀️' : '🌙'}
+        <ToggleButton aria-label={label} onClick={darkMode.toggle} type="button">
+            {darkMode.value ? <SunIcon /> : <MoonIcon />}
         </ToggleButton>
     );
 };
