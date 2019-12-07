@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://leerob.io" rel="noopener">
- <img width=200px height=200px src="./static/images/avatar.jpg" alt="Lee Robinson"></a>
+ <img width=200px height=200px src="./public/static/images/avatar.jpg" alt="Lee Robinson"></a>
 </p>
 
 <h3 align="center">Lee Robinson</h3>
