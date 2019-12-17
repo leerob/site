@@ -165,8 +165,8 @@ const StyledLink = styled(A)`
     color: ${(props) => props.theme.body};
 `;
 
-const Timeline = ({theme}) => (
-    <StyledTimeline key={theme}>
+const Timeline = () => (
+    <StyledTimeline>
         <List>
             <TimelineStep highlight>
                 <StepLeft highlight>
