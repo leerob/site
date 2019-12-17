@@ -37,17 +37,16 @@ const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
     const theme = darkMode.value ? darkTheme : lightTheme;
 
-    const [key, setKey] = useState('');
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setKey('force-update-sc-bug');
+        setMounted(true);
     }, []);
 
-    return (
-        <ThemeProvider key={key} theme={theme}>
-            {children}
-        </ThemeProvider>
-    );
+    // Prevents SSR flash for mismatched dark mode
+    if (!mounted) return null;
+
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 class CustomApp extends App {
