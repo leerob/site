@@ -37,15 +37,6 @@ const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
     const theme = darkMode.value ? darkTheme : lightTheme;
 
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    // Prevents SSR flash for mismatched dark mode
-    if (!mounted) return null;
-
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
