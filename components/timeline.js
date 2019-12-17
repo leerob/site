@@ -177,6 +177,27 @@ const Timeline = () => (
             </TimelineStep>
             <TimelineStep>
                 <StepRight>
+                    <StepHeader>{'December 2019: Software Engineer III ✨'}</StepHeader>
+                    <StepCopy>
+                        {`I'm currently leading our`}
+                        <StyledLink
+                            href="https://medium.com/hy-vee-engineering/creating-a-monorepo-with-lerna-yarn-workspaces-cf163908965d"
+                            underline
+                        >
+                            {'design system'}
+                        </StyledLink>
+                        {'architecture, building new components with React, Storybook, and styled-components.'}
+                    </StepCopy>
+                </StepRight>
+            </TimelineStep>
+            <TimelineStep>
+                <StepLeft>
+                    <StepHeader>{`November 2019: Mastering Next.js 🏆`}</StepHeader>
+                    <StepCopy>{`Launched a 50+ lesson video course for building apps with Next.js and React.`}</StepCopy>
+                </StepLeft>
+            </TimelineStep>
+            <TimelineStep>
+                <StepRight>
                     <StepHeader>{`October 2019: Bought a Townhome 🏡`}</StepHeader>
                     <StepCopy>{`Who wants to do yardwork? Not me. Plus, Allie and I love living downtown Des Moines.`}</StepCopy>
                 </StepRight>

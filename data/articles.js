@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'December 26, 2019',
+        slug: '2019',
+        title: '2019 Year in Review'
+    },
+    {
         date: 'November 12, 2019',
         publisher: 'Mastering Next.js',
         title: 'Next.js vs. Gatsby vs. Create React App',
