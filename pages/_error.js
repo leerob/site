@@ -24,6 +24,10 @@ const Article = styled.article`
         height: 32px;
         vertical-align: middle;
         width: 32px;
+
+        path {
+            fill: ${(props) => props.theme.primary};
+        }
     }
 `;
 

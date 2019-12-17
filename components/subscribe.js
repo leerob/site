@@ -89,7 +89,7 @@ function Subscribe() {
             <H3 as="h5">{'Want more? Be notified when I post new articles 🚀'}</H3>
             <form onSubmit={subscribe}>
                 <Label htmlFor="email-input">{'Email Address'}</Label>
-                <Input id="email-input" name="email" placeholder="you@awesome.com" ref={inputEl} type="email" />
+                <Input id="email-input" name="email" placeholder="tim@apple.com" ref={inputEl} type="email" />
                 <FinePrint>
                     {message ? message : `I'll only send emails when new content is posted. No spam.`}
                 </FinePrint>
