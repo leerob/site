@@ -10,7 +10,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v1
               with:
-                  node-version: 10.15.0
+                  node-version: 10.17.0
             - name: Installing dependencies
               run: yarn install --frozen-lockfile
             - name: Running tests
