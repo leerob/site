@@ -77,9 +77,10 @@
         "react-dom": "16.12.0",
         "react-syntax-highlighter": "11.0.2",
         "react-tweet-embed": "1.2.2",
-        "styled-components": "4.4.1",
+        "styled-components": "5.0.0-rc.2",
         "styled-reset": "4.0.8",
-        "title": "3.4.1"
+        "title": "3.4.1",
+        "use-dark-mode": "2.3.1"
     },
     "devDependencies": {
         "@babel/core": "^7.7.5",

@@ -13,7 +13,8 @@ const Article = styled.article`
     padding: ${spacing.normal};
     
     h3 {
-        ${heading}
+        ${heading};
+        color: ${(props) => props.theme.text};
         margin: 8px 0 12px;
         font-size: 32px;
     }

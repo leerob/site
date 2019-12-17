@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {colors, spacing} from '../../styles/vars';
+import {spacing} from '../../styles/vars';
 
 const StyledSocialLink = styled.a`
-    color: ${colors.light};
+    color: ${(props) => props.theme.primary};
     display: inline-block;
     text-decoration: none;
 

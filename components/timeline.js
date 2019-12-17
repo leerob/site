@@ -134,13 +134,11 @@ const StepRight = styled.div`
 `;
 
 const StepHeader = styled.h6`
-    color: ${(props) => props.theme.primary};
     font-weight: bold;
     margin-bottom: 8px;
 `;
 
 const StepCopy = styled.p`
-    color: ${(props) => props.theme.body};
     margin: auto 0;
     min-width: 200px;
 

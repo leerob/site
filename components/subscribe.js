@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import H3 from './elements/h3';
 
 const Input = styled.input`
+    background: ${(props) => props.theme.secondary};
     border-radius: 4px;
     border: 1px solid #cac8c8;
+    color: ${(props) => props.theme.primary};
     font-family: 'Fira Sans';
     font-size: 1rem;
     font-weight: 400;

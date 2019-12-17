@@ -15,6 +15,7 @@ import ConcertList from '../components/concerts';
 
 const AboutTitle = styled.h1`
     ${heading};
+    color: ${(props) => props.theme.text};
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
 `;
