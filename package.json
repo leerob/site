@@ -13,7 +13,7 @@
         "url": "git+https://github.com/leerob/leerob.io.git"
     },
     "engines": {
-        "node": ">=10.15.0",
+        "node": ">=12.13.0",
         "yarn": ">=1.5.1"
     },
     "files": [
