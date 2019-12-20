@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from './link';
-import DarkModeToggle from './dark-mode-toggle';
+// import DarkModeToggle from './dark-mode-toggle';
 
 const StyledNav = styled.nav`
     padding: 25px;
@@ -74,7 +74,7 @@ const Nav = () => (
             <NavLink slug={'speaking'}>{'Speaking'}</NavLink>
             <NavLink slug={'blog'}>{'Blog'}</NavLink>
             <ProjectsLink slug={'projects'}>{'Projects'}</ProjectsLink>
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
         </Centered>
     </StyledNav>
 );

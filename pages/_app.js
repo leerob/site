@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import App from 'next/app';
 import {ThemeProvider} from 'styled-components';
 import useDarkMode from 'use-dark-mode';
@@ -35,9 +35,10 @@ const darkTheme = {
 
 const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
+    // eslint-disable-next-line no-unused-vars
     const theme = darkMode.value ? darkTheme : lightTheme;
 
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    return <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>;
 };
 
 class CustomApp extends App {
