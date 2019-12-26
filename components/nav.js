@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from './link';
+// import DarkModeToggle from './dark-mode-toggle';
 
 const StyledNav = styled.nav`
     padding: 25px;
@@ -42,10 +43,10 @@ const NavLink = styled(Link)`
     }
 
     + a {
-        margin: 0 0 0 2em;
+        margin: 0 0 0 1em;
 
         @media (min-width: 737px) {
-            margin: 0 0 0 3em;
+            margin: 0 0 0 2em;
         }
     }
 `;
@@ -58,17 +59,23 @@ const ProjectsLink = styled(NavLink)`
     }
 `;
 
+const Centered = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 const Nav = () => (
     <StyledNav>
         <Link aria-label="Lee Robinson - Home">
             <Logo alt="Lee Robinson" src="/static/images/logo.png" />
         </Link>
-        <div>
+        <Centered>
             <NavLink slug={'about'}>{'Start Here'}</NavLink>
             <NavLink slug={'speaking'}>{'Speaking'}</NavLink>
             <NavLink slug={'blog'}>{'Blog'}</NavLink>
             <ProjectsLink slug={'projects'}>{'Projects'}</ProjectsLink>
-        </div>
+            {/* <DarkModeToggle /> */}
+        </Centered>
     </StyledNav>
 );
 

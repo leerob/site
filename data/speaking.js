@@ -28,11 +28,5 @@ export default [
         link: 'https://www.iowatechsummit.com/',
         location: 'Des Moines, IA',
         name: 'Iowa Technology Summit'
-    },
-    {
-        date: 'April 15th, 2020',
-        link: 'https://www.ererecruitingconference.com/',
-        location: 'San Diego, CA',
-        name: 'ERE Recruiting Conference'
     }
 ];

@@ -15,6 +15,7 @@ import ConcertList from '../components/concerts';
 
 const AboutTitle = styled.h1`
     ${heading};
+    color: ${(props) => props.theme.text};
     font-size: 2.5em;
     margin-bottom: ${spacing.large};
 `;
@@ -27,14 +28,25 @@ const Index = () => (
         <Main>
             <AboutTitle>{'About Me'}</AboutTitle>
             <p>
-                {`Born and raised in Iowa, I'm currently living in Des Moines and working as a Software Engineer at `}
+                {`Lee Robinson is a developer, writer, and UI/UX enthusiast. He works at `}
                 <A href="https://www.hy-vee.com" underline>
-                    {'Hy-Vee.'}
+                    {'Hy-Vee'}
                 </A>
+                {`, a $10 billion dollar retailer in the Midwest. His primary focus is developing Aisles Online, Hy-Vee's e-commerce grocery shopping platform, which serves millions of customers every year.`}
             </p>
             <p />
             <p>
-                {'I enjoy all things technology, videography, and music. '}
+                {`Lee has spoken across the country at conferences and meet-ups about front-end development, design, and recruiting. He also runs his own `}
+                <A href="/blog" underline>
+                    {'blog'}
+                </A>
+                {`, attracting thousands of readers every month. `}
+            </p>
+            <p>
+                {`Prior to Hy-Vee, Lee worked as an engineer at Workiva (NYSE:WK) - a cloud provider of connected data, reporting, and compliance solutions. Lee enjoys all things technology, music, and photography/videography.`}
+            </p>
+            <hr />
+            <p>
                 {'For a closer look at the professional work I’ve done, check out my '}
                 <A href="/LeeRobinson.pdf" underline>
                     {'resume.'}

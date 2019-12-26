@@ -70,13 +70,14 @@ const GlobalStyle = createGlobalStyle`
     }
     
     thead {
-        background: #f5f5f5;
+        background: ${(props) => props.theme.inlineCodeBg};
         border-radius: 5px;
         text-transform: uppercase;
         font-size: 0.9rem;
     }
 
-    th {  
+    th {
+        color: ${(props) => props.theme.primary};
         font-weight: 500;
         text-align: left;
         padding: 5px;

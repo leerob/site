@@ -134,13 +134,11 @@ const StepRight = styled.div`
 `;
 
 const StepHeader = styled.h6`
-    color: ${(props) => props.theme.primary};
     font-weight: bold;
     margin-bottom: 8px;
 `;
 
 const StepCopy = styled.p`
-    color: ${(props) => props.theme.body};
     margin: auto 0;
     min-width: 200px;
 
@@ -173,6 +171,27 @@ const Timeline = () => (
             <TimelineStep highlight>
                 <StepLeft highlight>
                     <AccentHeader>{'Today 🎉'}</AccentHeader>
+                </StepLeft>
+            </TimelineStep>
+            <TimelineStep>
+                <StepRight>
+                    <StepHeader>{'December 2019: Software Engineer III ✨'}</StepHeader>
+                    <StepCopy>
+                        {`I'm currently leading our`}
+                        <StyledLink
+                            href="https://medium.com/hy-vee-engineering/creating-a-monorepo-with-lerna-yarn-workspaces-cf163908965d"
+                            underline
+                        >
+                            {'design system'}
+                        </StyledLink>
+                        {'architecture, building new components with React, Storybook, and styled-components.'}
+                    </StepCopy>
+                </StepRight>
+            </TimelineStep>
+            <TimelineStep>
+                <StepLeft>
+                    <StepHeader>{`November 2019: Mastering Next.js 🏆`}</StepHeader>
+                    <StepCopy>{`Launched a 50+ lesson video course for building apps with Next.js and React.`}</StepCopy>
                 </StepLeft>
             </TimelineStep>
             <TimelineStep>

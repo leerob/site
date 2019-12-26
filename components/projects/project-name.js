@@ -5,7 +5,9 @@ import {heading} from '../../styles/mixins';
 import {spacing} from '../../styles/vars';
 
 const StyledProjectName = styled.h3`
-    ${heading} font-size: 20px;
+    ${heading};
+    color: ${(props) => props.theme.text};
+    font-size: 20px;
     margin: ${spacing.normal} 0 0.2em;
 
     @media (min-width: 768px) {
