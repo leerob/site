@@ -25,5 +25,6 @@
             "dest": "/$1",
             "headers": {"cache-control": "public,max-age=31536000,immutable"}
         }
-    ]
+    ],
+    "redirects": [{"source": "/LeeRobinson.pdf", "destination": "/robinson-resume-2019.pdf"}]
 }
