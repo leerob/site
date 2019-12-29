@@ -27,8 +27,8 @@
         },
         {
             "src": "/LeeRobinson.pdf",
-            "dest": "/robinson-resume-2019.pdf",
-            "status": 301
+            "status": 301,
+            "headers": {"Location": "https://leerob.io/robinson-resume-2019.pdf"}
         }
     ]
 }
