@@ -24,7 +24,11 @@
             "src": "/(.*\\.(js|jpg|json|css|ico|png)$)",
             "dest": "/$1",
             "headers": {"cache-control": "public,max-age=31536000,immutable"}
+        },
+        {
+            "src": "/LeeRobinson.pdf",
+            "dest": "/robinson-resume-2019.pdf",
+            "status": 301
         }
-    ],
-    "redirects": [{"source": "/LeeRobinson.pdf", "destination": "/robinson-resume-2019.pdf"}]
+    ]
 }
