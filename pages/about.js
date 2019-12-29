@@ -48,7 +48,7 @@ const Index = () => (
             <hr />
             <p>
                 {'For a closer look at the professional work I’ve done, check out my '}
-                <A href="/LeeRobinson.pdf" underline>
+                <A href="/robinson-resume-2019.pdf" underline>
                     {'resume.'}
                 </A>
                 {' If you’re interested in reaching out to me, feel free to '}
