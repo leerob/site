@@ -35,10 +35,9 @@ const darkTheme = {
 
 const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
-    // eslint-disable-next-line no-unused-vars
     const theme = darkMode.value ? darkTheme : lightTheme;
 
-    return <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>;
+    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 class CustomApp extends App {
