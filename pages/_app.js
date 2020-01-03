@@ -35,7 +35,11 @@ const darkTheme = {
 
 const DarkMode = ({children}) => {
     const darkMode = useDarkMode(false);
-    const theme = darkMode.value ? darkTheme : lightTheme;
+    const [theme, setTheme] = React.useState(lightTheme);
+
+    React.useEffect(() => {
+        setTheme(darkMode.value ? darkTheme : lightTheme);
+    }, [darkMode, darkMode.value]);
 
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
