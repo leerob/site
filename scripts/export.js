@@ -1,5 +1,4 @@
 const fs = require('fs');
-const {parse} = require('path');
 
 const globby = require('globby');
 const execao = require('execa-output');
@@ -7,7 +6,7 @@ const Listr = require('listr');
 const prettifyXml = require('prettify-xml');
 
 const exportDirectory = 'dist';
-const removeTrailingSlash = (text) => (text.endsWith('/') ? text.slice(0, -1) : text);
+
 const generateSitemap = async () => {
     const patterns = `${exportDirectory}/**/*.html`;
     const pages = await globby(patterns);
@@ -16,13 +15,12 @@ const generateSitemap = async () => {
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             ${pages
                 .map((page) => {
-                    const path = page.replace(exportDirectory, '');
-                    const parsed = parse(path);
-                    const loc = parsed.name === 'index' ? parsed.dir : parsed.dir + parsed.base;
+                    const path = page.replace(exportDirectory, '').replace('.html', '');
+                    const route = path === '/index' ? '/' : path;
 
                     return `
                     <url>
-                        <loc>${`https://leerob.io${removeTrailingSlash(loc)}`}</loc>
+                        <loc>${`https://leerob.io${route}`}</loc>
                     </url>
                 `;
                 })
