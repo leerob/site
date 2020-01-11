@@ -15,6 +15,17 @@ module.exports = withCSS(
             MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
             MAILCHIMP_LIST_ID: process.env.MAILCHIMP_LIST_ID
         },
+        experimental: {
+            modern: true,
+            rewrites() {
+                return [
+                    {
+                        destination: '/api/sitemap',
+                        source: '/sitemap.xml'
+                    }
+                ];
+            }
+        },
         pageExtensions: ['js', 'mdx'],
         webpack: (config, {isServer}) => {
             if (ANALYZE) {

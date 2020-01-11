@@ -69,6 +69,7 @@
         "comma-number": "2.0.1",
         "date-fns": "1.30.1",
         "firebase": "5.10.1",
+        "globby": "11.0.0",
         "isomorphic-unfetch": "3.0.0",
         "next": "9.1.7",
         "react": "16.12.0",
@@ -90,14 +91,10 @@
         "eslint": "6.8.0",
         "eslint-config-get-off-my-lawn": "5.0.1",
         "execa": "2.0.4",
-        "execa-output": "2.0.0",
-        "globby": "10.0.1",
         "husky": "3.0.9",
         "imageoptim-cli": "3.0.2",
         "lint-staged": "9.4.2",
-        "listr": "0.14.3",
         "prettier": "1.19.1",
-        "prettify-xml": "1.2.0",
         "webpack-bundle-analyzer": "3.6.0"
     }
 }
