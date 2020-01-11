@@ -28,15 +28,13 @@
     ],
     "scripts": {
         "analyze": "cross-env ANALYZE=true next build",
-        "build": "cross-env NODE_ENV=production next build",
+        "build": "next build",
         "dev": "next",
-        "export": "node scripts/export.js",
         "imageoptim": "yarn imageoptim:gif && yarn imageoptim:jpg && yarn imageoptim:png",
         "imageoptim:gif": "imageoptim \"static/**/*.gif\"",
         "imageoptim:jpg": "imageoptim \"static/**/*.jpg\"",
         "imageoptim:png": "imageoptim --no-imageoptim --imagealpha \"static/**/*.png\"",
         "lint": "eslint . --ext .json --ext .js",
-        "now-build": "yarn build && yarn export",
         "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
         "start": "cross-env NODE_ENV=production next start",
         "test": "yarn lint"
