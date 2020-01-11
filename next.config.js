@@ -17,14 +17,12 @@ module.exports = withCSS(
         },
         experimental: {
             modern: true,
-            rewrites() {
-                return [
-                    {
-                        destination: '/api/sitemap',
-                        source: '/sitemap.xml'
-                    }
-                ];
-            }
+            rewrites: () => [
+                {
+                    destination: '/api/sitemap',
+                    source: '/sitemap.xml'
+                }
+            ]
         },
         pageExtensions: ['js', 'mdx'],
         webpack: (config, {isServer}) => {
