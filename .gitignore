@@ -3,5 +3,5 @@
 .idea
 .next
 node_modules
-dist
 .env*
+out
