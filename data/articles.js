@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'January 14, 2020',
+        slug: 'resume',
+        title: `You Don't Need A Two-Page Resume`
+    },
+    {
         date: 'December 26, 2019',
         slug: '2019',
         title: '2019 Year in Review'
