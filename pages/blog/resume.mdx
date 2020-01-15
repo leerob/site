@@ -1,4 +1,4 @@
-import Date from '../../components/date'
+import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
 import Link from '../../components/link'
 
@@ -14,7 +14,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 # You Don't Need A Two-Page Resume
 
-<Date>{meta.date}</Date>
+<DateAndViews date={meta.date} id={meta.slug} />
 
 Over the years, I've had many resume iterations. As I moved into my <Link slug="blog/2019" title="2019 Year in Review">new role</Link> last month, I went to update my resume — That's when I realized it was terrible.
 
