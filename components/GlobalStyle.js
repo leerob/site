@@ -6,30 +6,6 @@ import {spacing} from '../styles/vars';
 const GlobalStyle = createGlobalStyle`
     ${reset}
 
-    @font-face {
-        font-family: "Fira Sans";
-        src: url("/static/fonts/FiraSans-Bold.ttf");
-        font-weight: bold;
-        font-display: auto;
-	    font-style: normal;
-    }
-    
-    @font-face {
-        font-family: "Fira Sans";
-        src: url("/static/fonts/FiraSans-Italic.ttf");
-        font-weight: normal;
-        font-display: auto;
-	    font-style: italic;
-    }
-
-    @font-face {
-        font-family: "Fira Sans";
-        src: url("/static/fonts/FiraSans-Regular.ttf");
-        font-weight: normal;
-        font-display: auto;
-	    font-style: normal;
-    }
-
     ::selection {
         background-color: #47A3F3;
         color: #fefefe;

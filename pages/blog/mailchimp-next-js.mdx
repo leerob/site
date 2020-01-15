@@ -64,19 +64,17 @@ Let's make our secrets we've retrieved available without hardcoding them into ou
 You can use similar a [similar approach](https://create-react-app.dev/docs/adding-custom-environment-variables) for [any framework](https://www.gatsbyjs.org/docs/environment-variables/) to add your secrets to `process.env`.
 
 ```bash
-$ now secrets add MAILCHIMP_LIST_ID <secret-value>
-$ now secrets add MAILCHIMP_API_KEY <secret-value>
+$ now secret add MAILCHIMP_LIST_ID <secret-value>
+$ now secret add MAILCHIMP_API_KEY <secret-value>
 ```
 
 Then, we can expose them via our `now.json` file.
 
 ```json
 {
-    "build": {
-        "env": {
-            "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
-            "MAILCHIMP_API_KEY": "@mailchimp-api-key"
-        }
+    "env": {
+        "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
+        "MAILCHIMP_API_KEY": "@mailchimp-api-key"
     }
 }
 ```

@@ -143,6 +143,8 @@ try {
 
 That's it for the server infrastructure. From here, it's easy to create new routes and add functionality. You can view the completed example [here](https://github.com/leerob/nextjs-now-firebase).
 
+_Next 9 Update_: The preferred way to handle this now is with [API routes](https://nextjs.org/docs/api-routes/introduction) (e.g., `/pages/api/cities.js`).
+
 ### The Client
 
 Since we already created a custom API, we can use Next's default server to communicate with Firebase. Let's configure the app to be [serverless](https://en.wikipedia.org/wiki/Serverless_computing) via `next.config.js`.
@@ -173,7 +175,7 @@ and all requests to `/city/city-name/` to forward a query param along to a `City
 }
 ```
 
-Finally, we can create `/pages/city/js` inside our Next app to fetch the query param for the city name and call our Node API.
+Finally, we can create `/pages/city.js` inside our Next app to fetch the query param for the city name and call our Node API.
 
 ```js
 import {useEffect, useState} from 'react';
@@ -201,6 +203,8 @@ function City() {
 
 export default City;
 ```
+
+_Next 9 Update_: The preferred way to handle this now is with the [bracket notation](https://nextjs.org/docs/routing/dynamic-routes) (e.g., `/pages/[city].js`).
 
 This gives you the flexibility to add a loading state or placeholder to improve your user experience.
 

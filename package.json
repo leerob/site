@@ -13,7 +13,7 @@
         "url": "git+https://github.com/leerob/leerob.io.git"
     },
     "engines": {
-        "node": "10.17.0",
+        "node": "12.13.1",
         "yarn": ">=1.10.0"
     },
     "files": [
@@ -27,7 +27,6 @@
         "utils"
     ],
     "scripts": {
-        "analyze": "cross-env ANALYZE=true next build",
         "build": "next build",
         "dev": "next",
         "imageoptim": "yarn imageoptim:gif && yarn imageoptim:jpg && yarn imageoptim:png",
@@ -36,7 +35,7 @@
         "imageoptim:png": "imageoptim --no-imageoptim --imagealpha \"static/**/*.png\"",
         "lint": "eslint . --ext .json --ext .js",
         "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
-        "start": "cross-env NODE_ENV=production next start",
+        "start": "next start",
         "test": "yarn lint"
     },
     "husky": {
@@ -63,41 +62,36 @@
         ]
     },
     "dependencies": {
-        "@mapbox/rehype-prism": "0.3.1",
+        "@mapbox/rehype-prism": "0.4.0",
         "@mdx-js/mdx": "1.5.3",
         "@mdx-js/tag": "0.20.3",
         "comma-number": "2.0.1",
         "date-fns": "1.30.1",
-        "firebase": "5.10.1",
+        "firebase": "7.6.2",
+        "firebase-admin": "8.9.0",
         "isomorphic-unfetch": "3.0.0",
         "next": "9.1.7",
         "react": "16.12.0",
         "react-dom": "16.12.0",
-        "react-syntax-highlighter": "11.0.2",
+        "react-syntax-highlighter": "12.2.1",
         "react-tweet-embed": "1.2.2",
-        "styled-components": "5.0.0-rc.2",
+        "styled-components": "5.0.0",
         "styled-reset": "4.0.9",
         "title": "3.4.1",
         "use-dark-mode": "2.3.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.7.7",
-        "@zeit/next-css": "1.0.1",
+        "@babel/core": "^7.8.3",
         "@zeit/next-mdx": "1.2.0",
         "babel-plugin-inline-react-svg": "1.1.0",
         "babel-plugin-styled-components": "1.10.6",
-        "cross-env": "5.2.1",
         "eslint": "6.8.0",
         "eslint-config-get-off-my-lawn": "5.0.1",
-        "execa": "2.0.4",
-        "execa-output": "2.0.0",
-        "globby": "10.0.1",
+        "globby": "11.0.0",
         "husky": "3.0.9",
         "imageoptim-cli": "3.0.2",
         "lint-staged": "9.4.2",
         "listr": "0.14.3",
-        "prettier": "1.19.1",
-        "prettify-xml": "1.2.0",
-        "webpack-bundle-analyzer": "3.6.0"
+        "prettier": "1.19.1"
     }
 }
