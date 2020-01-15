@@ -11,8 +11,6 @@ $ yarn
 $ yarn dev
 ```
 
-f
-
 ## Built Using
 
 -   [Next.js](https://nextjs.org/)
