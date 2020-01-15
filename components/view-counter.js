@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import loadDb from '../lib/load-db';
+import loadDb from '../lib/db';
 
 import Views from './views';
 
@@ -24,7 +24,7 @@ function ViewCounter({id}) {
     }, [id]);
 
     useEffect(() => {
-        const registerView = () => fetch(`https://leerob-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
+        const registerView = () => fetch(`/api/view?id=${encodeURIComponent(id)}`);
 
         registerView();
     }, [id]);
