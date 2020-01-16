@@ -38,8 +38,8 @@ If you want learn more, check out [Building a UI Component Library with Styled C
 ## Font Loading
 
 Performant font loading is much, much more difficult than I thought. I'm immensely greatful to Zach Leatherman for his
-[Comprehensive Guide on Web Fonts.](https://www.zachleat.com/web/comprehensive-webfonts) Every option has their pros/cons, but the approach I've taken for this site
-is to use `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display).
+[Comprehensive Guide on Web Fonts.](https://www.zachleat.com/web/comprehensive-webfonts)
+One approach I've taken is to use `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display).
 
 This approach allows me prevent FOUT (Flash of Unstyled Text) but still has FOIT (Flash of Invisible Text). Yes, FOIT is undeserable, but thanks to Next.js my [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 performance score is still almost 100.
@@ -47,14 +47,43 @@ performance score is still almost 100.
 ```css
 @font-face {
     font-family: 'Fira Sans';
-    src: url('/static/fonts/FiraSans-Bold.ttf');
+    src: url('/fonts/FiraSans-Bold.ttf');
     font-weight: bold;
     font-display: auto;
     font-style: normal;
 }
 ```
 
-I've used some of the other font-loading approaches in other scenarios. Becomming informed about all the different options and their tradeoffs has been a worthy investment.
+Another approach I've used with Google Fonts is to include the `link` in the `Head` of my document.
+
+```js
+// pages/_document.js
+import Document, {Head, Main, NextScript} from 'next/document';
+import React from 'react';
+
+class CustomDocument extends Document {
+    render() {
+        return (
+            <html lang="en">
+                <Head>
+                    <link
+                        href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700&display=swap"
+                        rel="stylesheet"
+                    />
+                </Head>
+                <body>
+                    <Main />
+                    <NextScript />
+                </body>
+            </html>
+        );
+    }
+}
+
+export default CustomDocument;
+```
+
+Becomming informed about all the different options and their tradeoffs has been a worthy investment.
 
 ## Dynamic Assets and Testing
 

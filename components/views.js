@@ -4,10 +4,10 @@ import styled, {css, keyframes} from 'styled-components';
 
 const highlightBackgound = keyframes`
     from {
-        background-color: yellow;
+        color: yellow;
     }
     to {
-        background-color: ${(props) => props.theme.secondary};
+        color: ${(props) => props.theme.secondary};
     }
 `;
 

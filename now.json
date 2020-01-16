@@ -8,11 +8,12 @@
             "use": "@now/next"
         }
     ],
-    "build": {
-        "env": {
-            "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
-            "MAILCHIMP_API_KEY": "@mailchimp-api-key"
-        }
+    "env": {
+        "FIREBASE_PROJECT_ID": "leerob-blog",
+        "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
+        "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
+        "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
+        "MAILCHIMP_API_KEY": "@mailchimp-api-key"
     },
     "routes": [
         {
