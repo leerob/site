@@ -24,6 +24,5 @@ export default async (_, res) => {
         </urlset>
     `;
 
-    res.write(sitemap);
-    res.end();
+    res.status(200).send(sitemap);
 };
