@@ -8,6 +8,6 @@ const StyledAvatar = styled.img`
     width: 60px;
 `;
 
-const Avatar = () => <StyledAvatar alt="Lee Robinson avatar" src={'/static/images/avatar.jpg'} />;
+const Avatar = () => <StyledAvatar alt="Lee Robinson" src={'/static/images/lee.jpg'} />;
 
 export default Avatar;
