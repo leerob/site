@@ -1,6 +1,7 @@
+import React from 'react';
 import Head from 'next/head';
 import {withRouter} from 'next/router';
-import React from 'react';
+import {ArticleJsonLd} from 'next-seo';
 
 import {dateTime} from '../utils/date-format';
 import titleStyle from '../utils/title-style';
@@ -58,6 +59,19 @@ const Page = ({children, date, description, image, title = 'Lee Robinson', keywo
             </Head>
             <GlobalStyle />
             {children}
+            {date && (
+                <ArticleJsonLd
+                    authorName="Lee Robinson"
+                    dateModified={dateTime(date)}
+                    datePublished={dateTime(date)}
+                    description={description}
+                    images={[featuredImage]}
+                    publisherLogo="/static/favicons/android-chrome-192x192.png"
+                    publisherName="Lee Robinson"
+                    title={formattedTitle}
+                    url={canonical}
+                />
+            )}
         </>
     );
 };
