@@ -16,7 +16,7 @@ module.exports = withMDX({
     webpack: (config) => {
         config.plugins.push(
             new BundleAnalyzerPlugin({
-                token: process.env.BUNDLE_ANALYZER_TOKEN
+                token: 'fdebd748e86e965d28ac7fdd6203a5a50076e13a'
             })
         );
 
