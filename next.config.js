@@ -1,3 +1,4 @@
+const BundleAnalyzerPlugin = require('@bundle-analyzer/webpack-plugin');
 const rehypePrism = require('@mapbox/rehype-prism');
 const withMDX = require('@zeit/next-mdx')({
     extension: /\.mdx?$/u,
@@ -11,5 +12,14 @@ module.exports = withMDX({
         css: true,
         modern: true
     },
-    pageExtensions: ['js', 'mdx']
+    pageExtensions: ['js', 'mdx'],
+    webpack: (config) => {
+        config.plugins.push(
+            new BundleAnalyzerPlugin({
+                token: process.env.BUNDLE_ANALYZER_TOKEN
+            })
+        );
+
+        return config;
+    }
 });

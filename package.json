@@ -83,6 +83,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.8.3",
+        "@bundle-analyzer/webpack-plugin": "0.5.1",
         "@zeit/next-mdx": "1.2.0",
         "babel-plugin-inline-react-svg": "1.1.1",
         "babel-plugin-styled-components": "1.10.6",
