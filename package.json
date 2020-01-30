@@ -76,6 +76,7 @@
         "react-dom": "16.12.0",
         "react-syntax-highlighter": "12.2.1",
         "react-tweet-embed": "1.2.2",
+        "spotify-web-api-node": "4.0.0",
         "styled-components": "5.0.0",
         "styled-reset": "4.0.10",
         "title": "3.4.1",
