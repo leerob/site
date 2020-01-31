@@ -178,10 +178,7 @@ const Timeline = () => (
                     <StepHeader>{'December 2019: Software Engineer III ✨'}</StepHeader>
                     <StepCopy>
                         {`I'm currently leading our`}
-                        <StyledLink
-                            href="https://medium.com/hy-vee-engineering/creating-a-monorepo-with-lerna-yarn-workspaces-cf163908965d"
-                            underline
-                        >
+                        <StyledLink href="https://leerob.io/blog/monorepo-lerna-yarn-workspaces" underline>
                             {'design system'}
                         </StyledLink>
                         {'architecture, building new components with React, Storybook, and styled-components.'}
