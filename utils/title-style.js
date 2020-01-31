@@ -15,6 +15,7 @@ export default (text) =>
             'iPhone',
             'iTerm',
             'MDX',
+            'IDE',
             'OverReact',
             'QC35',
             'UI',

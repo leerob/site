@@ -83,9 +83,8 @@ export default [
     },
     {
         date: 'March 26, 2019',
-        publisher: 'Hy-Vee R&D',
-        title: 'Creating a Monorepo with Lerna & Yarn Workspaces',
-        url: 'https://medium.com/hy-vee-engineering/creating-a-monorepo-with-lerna-yarn-workspaces-cf163908965d'
+        slug: 'monorepo-lerna-yarn-workspaces',
+        title: 'Creating a Monorepo with Lerna & Yarn Workspaces'
     },
     {
         date: 'March 10, 2019',
@@ -104,9 +103,8 @@ export default [
     },
     {
         date: 'February 12, 2019',
-        publisher: 'Hy-Vee R&D',
-        title: 'Building a UI Component Library with Styled Components',
-        url: 'https://medium.com/hy-vee-engineering/building-a-ui-component-library-with-styled-components-8f033aaa3d52'
+        slug: 'ui-component-library-with-styled-components',
+        title: 'Building a UI Component Library with Styled Components'
     },
     {
         date: 'February 09, 2019',
