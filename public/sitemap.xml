@@ -201,4 +201,11 @@
     <loc>https://leerob.io/blog/zero-programming-experience-to-three-internships</loc>
   </url>
   
+  <url>
+    <loc>https://leerob.io/blog/ui-component-library-with-styled-components</loc>
+  </url>
+
+  <url>
+    <loc>https://leerob.io/blog/monorepo-lerna-yarn-workspaces</loc>
+  </url>
 </urlset>
