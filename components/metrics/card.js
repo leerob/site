@@ -68,7 +68,7 @@ const MetricCard = ({brand, header, link, metric}) => (
     <Card>
         <Section>
             <Header>{header}</Header>
-            <Metric>{metric}</Metric>
+            <Metric>{metric || '-'}</Metric>
         </Section>
         <Source>
             <Image alt={brand} src={`/static/logos/${getSvgFilename(brand)}.svg`} title={brand} />

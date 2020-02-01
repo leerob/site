@@ -10,12 +10,8 @@ import MetricGrid from './grid';
 function Unsplash() {
     const {data} = useSWR('/api/unsplash', fetcher);
 
-    if (!data) {
-        return null;
-    }
-
-    const downloads = format(data.downloads);
-    const views = format(data.views);
+    const downloads = format(data?.downloads);
+    const views = format(data?.views);
     const link = 'https://unsplash.com/@leerob';
 
     return (

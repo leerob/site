@@ -11,12 +11,8 @@ function GoogleAnalytics() {
     const {data: allTime} = useSWR('/api/page-views?startDate=2019-01-01', fetcher);
     const {data: today} = useSWR('/api/page-views?startDate=today', fetcher);
 
-    if (!allTime || !today) {
-        return null;
-    }
-
-    const allTimePageViews = format(allTime.pageViews);
-    const todayPageViews = format(today.pageViews);
+    const allTimePageViews = format(allTime?.pageViews);
+    const todayPageViews = format(today?.pageViews);
     const link = 'https://leerob.io';
 
     return (

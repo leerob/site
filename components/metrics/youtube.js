@@ -10,12 +10,8 @@ import MetricGrid from './grid';
 function YouTube() {
     const {data} = useSWR('/api/youtube', fetcher);
 
-    if (!data) {
-        return null;
-    }
-
-    const subscriberCount = format(data.subscriberCount);
-    const viewCount = format(data.viewCount);
+    const subscriberCount = format(data?.subscriberCount);
+    const viewCount = format(data?.viewCount);
     const link = 'https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw';
 
     return (
