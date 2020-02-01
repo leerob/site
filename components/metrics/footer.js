@@ -12,7 +12,7 @@ const Container = styled.div`
 const MetricsFooter = () => (
     <Container>
         {`Want to learn more about Next.js? Check out `}
-        <A href="https://masteringnextjs.com" underline>
+        <A href="https://masteringnextjs.com?ref=dashboard" underline>
             {'my course.'}
         </A>
     </Container>
