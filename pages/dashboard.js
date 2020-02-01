@@ -10,7 +10,7 @@ import GoogleAnalytics from '../components/metrics/analytics';
 
 const Dashboard = () => (
     <Page
-        description={'Inspired by open startups, this page shows various stats about my digital presence.'}
+        description={'Inspired by open startups, this dashboard shows various stats about my digital presence.'}
         image={'/static/images/metrics.png'}
         title={'Lee Robinson - Dashboard'}
     >
