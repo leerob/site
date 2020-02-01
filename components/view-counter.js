@@ -19,7 +19,9 @@ function ViewCounter({id}) {
         fetchData();
 
         return function cleanup() {
-            db.child(id).off('value', onViews);
+            if (db) {
+                db.child(id).off('value', onViews);
+            }
         };
     }, [id]);
 
