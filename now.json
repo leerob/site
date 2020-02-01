@@ -15,7 +15,6 @@
         "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
         "MAILCHIMP_API_KEY": "@mailchimp-api-key",
         "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
-        "GOOGLE_PRIVATE_KEY": "@google-private-key",
         "GOOGLE_CLIENT_EMAIL": "@google-client-email",
         "GOOGLE_CLIENT_ID": "@google-client-id"
     },
