@@ -47,6 +47,11 @@
             "src": "/LeeRobinson.pdf",
             "status": 301,
             "headers": {"Location": "https://leerob.io/robinson-resume-2019.pdf"}
+        },
+        {
+            "src": "/index.html",
+            "status": 301,
+            "headers": {"Location": "https://leerob.io"}
         }
     ]
 }
