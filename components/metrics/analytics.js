@@ -1,16 +1,11 @@
 import React from 'react';
 import useSWR from 'swr';
-import fetch from 'isomorphic-unfetch';
 import format from 'comma-number';
+
+import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
 import MetricGrid from './grid';
-
-const fetcher = async (path) => {
-    const res = await fetch(path);
-
-    return res.json();
-};
 
 function GoogleAnalytics() {
     const {data: allTime} = useSWR('/api/page-views?startDate=2019-01-01', fetcher);
