@@ -16,11 +16,12 @@ function Unsplash() {
 
     const downloads = format(data.downloads);
     const views = format(data.views);
+    const link = 'https://unsplash.com/@leerob';
 
     return (
         <MetricGrid>
-            <MetricCard brand="Unsplash" header="Unsplash Downloads" metric={downloads} />
-            <MetricCard brand="Unsplash" header="Unsplash Views" metric={views} />
+            <MetricCard brand="Unsplash" header="Unsplash Downloads" link={link} metric={downloads} />
+            <MetricCard brand="Unsplash" header="Unsplash Views" link={link} metric={views} />
         </MetricGrid>
     );
 }

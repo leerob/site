@@ -17,11 +17,12 @@ function GoogleAnalytics() {
 
     const allTimePageViews = format(allTime.pageViews);
     const todayPageViews = format(today.pageViews);
+    const link = 'https://leerob.io';
 
     return (
         <MetricGrid>
-            <MetricCard brand="Google Analytics" header="All-Time Views" metric={allTimePageViews} />
-            <MetricCard brand="Google Analytics" header="Today's Views" metric={todayPageViews} />
+            <MetricCard brand="Google Analytics" header="All-Time Views" link={link} metric={allTimePageViews} />
+            <MetricCard brand="Google Analytics" header="Today's Views" link={link} metric={todayPageViews} />
         </MetricGrid>
     );
 }

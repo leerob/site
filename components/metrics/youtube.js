@@ -16,11 +16,12 @@ function YouTube() {
 
     const subscriberCount = format(data.subscriberCount);
     const viewCount = format(data.viewCount);
+    const link = 'https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw';
 
     return (
         <MetricGrid>
-            <MetricCard brand="YouTube" header="YouTube Subscribers" metric={subscriberCount} />
-            <MetricCard brand="YouTube" header="YouTube Views" metric={viewCount} />
+            <MetricCard brand="YouTube" header="YouTube Subscribers" link={link} metric={subscriberCount} />
+            <MetricCard brand="YouTube" header="YouTube Views" link={link} metric={viewCount} />
         </MetricGrid>
     );
 }

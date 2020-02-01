@@ -19,21 +19,6 @@ const Section = styled.div`
     padding: 1.25rem;
 `;
 
-const Source = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 0.6rem 1.25rem;
-    font-size: 0.7rem;
-    background-color: ${colors.grey[900]};
-    color: ${colors.grey[400]};
-`;
-
-const Image = styled.img`
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.5rem;
-`;
-
 const Header = styled.div`
     display: flex;
     justify-content: space-between;
@@ -53,9 +38,33 @@ const Metric = styled.h2`
     display: block;
 `;
 
+const Source = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.7rem;
+    background-color: ${colors.grey[900]};
+`;
+
+const Image = styled.img`
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+`;
+
+const BrandLink = styled.a`
+    text-decoration: none;
+    color: ${colors.grey[400]};
+    transition: color 0.15s ease;
+
+    :hover {
+        color: ${colors.grey[100]};
+    }
+`;
+
 const getSvgFilename = (path) => path.toLowerCase().replace(' ', '');
 
-const MetricCard = ({brand, header, metric}) => (
+const MetricCard = ({brand, header, link, metric}) => (
     <Card>
         <Section>
             <Header>{header}</Header>
@@ -63,7 +72,7 @@ const MetricCard = ({brand, header, metric}) => (
         </Section>
         <Source>
             <Image alt={brand} src={`/static/logos/${getSvgFilename(brand)}.svg`} title={brand} />
-            <span>{brand}</span>
+            <BrandLink href={link}>{brand}</BrandLink>
         </Source>
     </Card>
 );
