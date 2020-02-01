@@ -1,13 +1,8 @@
 {
     "version": 2,
     "name": "leerob",
-    "alias": ["leerob.io", "www.leerob.io"],
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@now/next"
-        }
-    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
     "env": {
         "FIREBASE_PROJECT_ID": "leerob-blog",
         "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
@@ -17,41 +12,39 @@
         "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
         "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key"
     },
-    "routes": [
+    "redirects": [
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1",
-            "headers": {"cache-control": "public,max-age=31536000,immutable"}
+            "source": "/LeeRobinson.pdf",
+            "destination": "/robinson-resume-2019.pdf"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/api/unsplash",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=1200, stale-while-revalidate=600"
+                }
+            ]
         },
         {
-            "src": "/(.*\\.(js|jpg|json|css|ico|png)$)",
-            "dest": "/$1",
-            "headers": {"cache-control": "public,max-age=31536000,immutable"}
+            "source": "/api/youtube",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=120, stale-while-revalidate=60"
+                }
+            ]
         },
         {
-            "src": "/api/unsplash",
-            "dest": "/api/unsplash",
-            "headers": {"cache-control": "public,max-age=1200,stale-while-revalidate=600"}
-        },
-        {
-            "src": "/api/youtube",
-            "dest": "/api/youtube",
-            "headers": {"cache-control": "public,max-age=120,stale-while-revalidate=60"}
-        },
-        {
-            "src": "/api/page-views",
-            "dest": "/api/page-views",
-            "headers": {"cache-control": "public,max-age=120,stale-while-revalidate=60"}
-        },
-        {
-            "src": "/LeeRobinson.pdf",
-            "status": 301,
-            "headers": {"Location": "https://leerob.io/robinson-resume-2019.pdf"}
-        },
-        {
-            "src": "/index.html",
-            "status": 301,
-            "headers": {"Location": "https://leerob.io"}
+            "source": "/api/page-views",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=120, stale-while-revalidate=60"
+                }
+            ]
         }
     ]
 }
