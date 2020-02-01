@@ -31,7 +31,7 @@
         {
             "src": "/api/unsplash",
             "dest": "/api/unsplash",
-            "headers": {"cache-control": "public,max-age=120,stale-while-revalidate=60"}
+            "headers": {"cache-control": "public,max-age=1200,stale-while-revalidate=600"}
         },
         {
             "src": "/api/youtube",
