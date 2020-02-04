@@ -20,7 +20,7 @@ const AboutTitle = styled.h1`
     margin-bottom: ${spacing.large};
 `;
 
-const description = `Lee Robinson is a developer, writer, and UI/UX enthusiast. He's interested in all things JAMstack (JavaScript, APIs, Markup) and Design Systems. Lee has spoken across the country at conferences and meet-ups about front-end development, design, and recruiting. He currently works at Hy-Vee (and previously at Workiva) in Des Moines, IA. `;
+const description = `Lee Robinson is a developer, writer, and UI/UX enthusiast. He's interested in all things JAMstack (JavaScript, APIs, Markup) and Design Systems.`;
 
 const Index = () => (
     <Page description={description} image={'/static/images/speaking/speaking.jpg'} title={'Lee Robinson - About Me'}>
