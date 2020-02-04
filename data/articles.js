@@ -1,6 +1,6 @@
 export default [
     {
-        date: 'February 08, 2020',
+        date: 'February 4, 2020',
         slug: 'unsplash-api-nextjs',
         title: 'Create a Dashboard with Next.js API Routes - Unsplash API'
     },
