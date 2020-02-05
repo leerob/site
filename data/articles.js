@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 5, 2020',
+        slug: 'youtube-api-nextjs',
+        title: 'Create a Dashboard with Next.js API Routes - YouTube API'
+    },
+    {
         date: 'February 4, 2020',
         slug: 'unsplash-api-nextjs',
         title: 'Create a Dashboard with Next.js API Routes - Unsplash API'
