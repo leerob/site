@@ -59,6 +59,18 @@ const Index = () => (
                 </A>
             </p>
             <Social />
+            <H2>{'Music'}</H2>
+            <p>{'Some of my favorite albums that have been on repeat lately 🎶'}</p>
+            <MusicGrid />
+            <ConcertList />
+            <H2>{'Travel Map'}</H2>
+            <p>{' Check out the map below to see every place I’ve traveled to ✈️ '}</p>
+            <iframe
+                height="280"
+                src="https://www.google.com/maps/d/embed?mid=1QOGi-u8d4vwoQ4vC4zQjKxrSfsDIQdOK&hl=en"
+                title="Lee's Travel Map"
+                width="100%"
+            />
             <H2>{'Speaking'}</H2>
             <H3>{`Recruiting Engineers (From An Engineer's Perspective)`}</H3>
             <table>
@@ -106,18 +118,6 @@ const Index = () => (
             </table>
             <p>{`Learn why your organization needs a component library and discover the best practices for building, scaling, and adopting it across all platforms. We'll be using industry-standard technology (React, JavaScript, Storybook) alongside cutting-edge solutions (CSS-in-JS, Monorepo).`}</p>
             <A href="/building-component-libraries-with-a-monorepo.pdf">{'View Slides'}</A>
-            <H2>{'Music'}</H2>
-            <p>{'Some of my favorite albums that have been on repeat lately 🎶'}</p>
-            <MusicGrid />
-            <ConcertList />
-            <H2>{'Travel Map'}</H2>
-            <p>{' Check out the map below to see every place I’ve traveled to ✈️ '}</p>
-            <iframe
-                height="280"
-                src="https://www.google.com/maps/d/embed?mid=1QOGi-u8d4vwoQ4vC4zQjKxrSfsDIQdOK&hl=en"
-                title="Lee's Travel Map"
-                width="100%"
-            />
         </Main>
         <Footer />
     </Page>
