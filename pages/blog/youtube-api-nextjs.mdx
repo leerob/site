@@ -23,11 +23,11 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 ## Overview
 
-[YouTube](https://youtube.com) has cemented itself as the number one video sharing platform. It's vibrant community of creators is growing expontentially.
+[YouTube](https://youtube.com) has cemented itself as the number one video sharing platform. Its vibrant community of creators is growing exponentially.
 
 Tracking metrics about your channel is an integral part of measuring your success.
-YouTube provides [a Data API](https://developers.google.com/youtube/v3/docs) which allows you to integrate the platform directly into your website.
-Since I'm a [YouTube Creator](https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw), I wanted to see how many times my videos have been viewed and my subscriber count directly on my site.
+YouTube provides [a Data API](https://developers.google.com/youtube/v3/docs), which allows you to integrate the platform directly into your website.
+Since I'm a [YouTube Creator](https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw), I wanted to see how many times my subscriber count and views directly on my site.
 
 ## Getting Access to YouTube
 
@@ -39,7 +39,7 @@ To gain access to the YouTube API, you need to:
 -   Click “Enable APIs and services.”
 -   Find "YouTube Data API v3" and enable it.
 
-Since we're communicating server-to-server, we'll need a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) and delegate [domain-wide authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority).
+Since we're communicating server-to-server, we'll need a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
 -   Go to your [service accounts](https://console.developers.google.com/iam-admin/serviceaccounts) page.
 -   Create a service account.
@@ -62,7 +62,9 @@ You should now have a JSON file similar to this:
 }
 ```
 
-We will use this key later to set up our client in our API Route. Okay, back to the [service account](https://console.developers.google.com/iam-admin/serviceaccounts).
+We use this key later to set up our client in our API Route.
+Okay, back to the [service account](https://console.developers.google.com/iam-admin/serviceaccounts).
+We need to delegate [domain-wide authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority).
 
 -   On the table row, click Actions -> Edit.
 -   Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
@@ -75,7 +77,7 @@ To securely access the API, we need to include the secret with each request.
 We also _do not_ want to commit secrets to git. Thus, we should use an environment variable.
 
 Since I'm deploying via [Now](https://zeit.co), I can add the secrets via their CLI.
-We only need a few of the values from the JSON file. For the private key, make sure you either convert
+We only need a few of the values from the JSON file. For the private key, make sure you convert
 the new line characters (`\n`) to actual new lines.
 
 ```bash
