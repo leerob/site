@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 6, 2020',
+        slug: 'now-env-variables-size-limit',
+        title: 'How To Use Encrypted Secrets With Now'
+    },
+    {
         date: 'February 5, 2020',
         slug: 'youtube-api-nextjs',
         title: 'Create a Dashboard with Next.js API Routes - YouTube API'
