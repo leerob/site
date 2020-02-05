@@ -1,7 +1,6 @@
 *.log
 .DS_Store
-.idea
 .next
 node_modules
 .env*
-out
+public/sitemap.xml
