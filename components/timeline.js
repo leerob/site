@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 
 import {colors} from '../styles/vars';
 
-import A from './elements/a';
+import Link from './link';
 
 const StyledTimeline = styled.div`
     margin: 0 auto 0 32px;
@@ -160,7 +160,7 @@ const AccentHeader = styled.h5`
     font-weight: bold;
 `;
 
-const StyledLink = styled(A)`
+const StyledLink = styled(Link)`
     margin: 0 4px;
     color: ${(props) => props.theme.body};
 `;
@@ -178,7 +178,7 @@ const Timeline = () => (
                     <StepHeader>{'December 2019: Software Engineer III ✨'}</StepHeader>
                     <StepCopy>
                         {`I'm currently leading our`}
-                        <StyledLink href="https://leerob.io/blog/monorepo-lerna-yarn-workspaces" underline>
+                        <StyledLink href="/blog/monorepo-lerna-yarn-workspaces" underline>
                             {'design system'}
                         </StyledLink>
                         {'architecture, building new components with React, Storybook, and styled-components.'}

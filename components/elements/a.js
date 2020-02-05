@@ -1,8 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
 import styled, {css} from 'styled-components';
 
-const StyledA = styled.a`
+const A = styled.a`
     color: ${(props) => props.theme.accent};
     cursor: pointer;
     text-decoration: none;
@@ -28,17 +26,5 @@ const StyledA = styled.a`
             }
         `};
 `;
-
-const A = ({href, ...otherProps}) => {
-    if (href.startsWith('/') || href.startsWith('#')) {
-        return (
-            <Link href={href}>
-                <StyledA {...otherProps} />
-            </Link>
-        );
-    }
-
-    return <StyledA href={href} {...otherProps} />;
-};
 
 export default A;

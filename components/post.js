@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import {column} from '../styles/mixins';
 import {spacing} from '../styles/vars';
 
-import A from './elements/a';
 import Blockquote from './elements/blockquote';
 import Code from './elements/code';
 import Em from './elements/em';
@@ -15,6 +14,7 @@ import H2 from './elements/h2';
 import H3 from './elements/h3';
 import Img from './elements/img';
 import Li from './elements/li';
+import Link from './link';
 import Nav from './nav';
 import Ol from './elements/ol';
 import Page from './page';
@@ -24,7 +24,7 @@ import Ul from './elements/ul';
 import NextjsCourse from './nextjs-course';
 
 const components = {
-    a: A,
+    a: Link,
     blockquote: Blockquote,
     em: Em,
     h1: H1,
@@ -62,13 +62,13 @@ const Post = ({children, meta}) => (
             <NextjsCourse />
             <hr />
             <p>
-                <A href={discussUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
+                <Link href={discussUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
                     {'Discuss on Twitter'}
-                </A>
+                </Link>
                 {` • `}
-                <A href={editUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
+                <Link href={editUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
                     {'Edit on GitHub'}
-                </A>
+                </Link>
             </p>
             <Subscribe />
         </Main>

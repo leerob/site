@@ -65,14 +65,14 @@ const Centered = styled.div`
 
 const Nav = () => (
     <StyledNav>
-        <Link aria-label="Lee Robinson - Home">
+        <Link aria-label="Lee Robinson - Home" href="/">
             <Logo alt="Lee Robinson" src="/static/images/logo.png" />
         </Link>
         <Centered>
-            <NavLink slug={'about'}>{'About'}</NavLink>
-            <NavLink slug={'dashboard'}>{'Dashboard'}</NavLink>
-            <NavLink slug={'blog'}>{'Blog'}</NavLink>
-            <ProjectsLink slug={'projects'}>{'Projects'}</ProjectsLink>
+            <NavLink href="/about">{'About'}</NavLink>
+            <NavLink href="/dashboard">{'Dashboard'}</NavLink>
+            <NavLink href="/blog">{'Blog'}</NavLink>
+            <ProjectsLink href="/projects">{'Projects'}</ProjectsLink>
         </Centered>
     </StyledNav>
 );

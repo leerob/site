@@ -62,7 +62,7 @@ const Article = ({article}) => (
                 <H3>{article.title}</H3>
             </ExternalLink>
         ) : (
-            <StyledLink slug={`blog/${article.slug}`}>
+            <StyledLink href={`/blog/${article.slug}`}>
                 <Date>{article.date}</Date>
                 <H3>{article.title}</H3>
             </StyledLink>
