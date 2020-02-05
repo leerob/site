@@ -101,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
 
         code {
             padding: 0;
+            background: none;
         }
     }
 

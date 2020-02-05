@@ -20,11 +20,7 @@
   <url>
     <loc>https://leerob.io/projects</loc>
   </url>
-  
-  <url>
-    <loc>https://leerob.io/speaking</loc>
-  </url>
-  
+
   <url>
     <loc>https://leerob.io/blog/10-days-in-norway</loc>
   </url>
@@ -211,5 +207,9 @@
 
   <url>
     <loc>https://leerob.io/blog/unsplash-api-nextjs</loc>
+  </url>
+
+  <url>
+    <loc>https://leerob.io/blog/youtube-api-nextjs</loc>
   </url>
 </urlset>

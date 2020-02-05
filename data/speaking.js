@@ -1,11 +1,5 @@
 export default [
     {
-        date: 'June 11th, 2019',
-        link: 'https://www.talent42.com/home',
-        location: 'Seattle, WA',
-        name: 'Talent42'
-    },
-    {
         date: 'September 10th, 2019',
         link: 'https://dsmjs.com/',
         location: 'Des Moines, IA',
