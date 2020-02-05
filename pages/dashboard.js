@@ -7,6 +7,7 @@ import Page from '../components/page';
 import Unsplash from '../components/metrics/unsplash';
 import YouTube from '../components/metrics/youtube';
 import GoogleAnalytics from '../components/metrics/analytics';
+import GitHub from '../components/metrics/github';
 import MetricsFooter from '../components/metrics/footer';
 
 const Dashboard = () => (
@@ -20,6 +21,7 @@ const Dashboard = () => (
             <Unsplash />
             <YouTube />
             <GoogleAnalytics />
+            <GitHub />
             <MetricsFooter />
         </Main>
         <Footer />

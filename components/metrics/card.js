@@ -72,7 +72,9 @@ const MetricCard = ({brand, header, link, metric}) => (
         </Section>
         <Source>
             <Image alt={brand} src={`/static/logos/${getSvgFilename(brand)}.svg`} title={brand} />
-            <BrandLink href={link}>{brand}</BrandLink>
+            <BrandLink href={link} rel="noopener noreferrer" target="_blank">
+                {brand}
+            </BrandLink>
         </Source>
     </Card>
 );
