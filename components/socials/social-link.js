@@ -9,10 +9,8 @@ const StyledSocialLink = styled.a`
     text-decoration: none;
 
     svg {
-        display: inline-block;
         height: 24px;
-        margin-right: ${spacing.extrasmall};
-        vertical-align: middle;
+        margin-right: ${spacing.normal};
         width: 24px;
     }
 `;

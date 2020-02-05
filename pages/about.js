@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 import {heading} from '../styles/mixins';
 import {spacing} from '../styles/vars';
+import events from '../data/speaking';
 import A from '../components/elements/a';
 import Footer from '../components/footer';
+import H2 from '../components/elements/h2';
 import H3 from '../components/elements/h3';
 import Main from '../components/main';
 import Nav from '../components/nav';
@@ -56,13 +58,59 @@ const Index = () => (
                     {'email me.'}
                 </A>
             </p>
-            <H3>{'Contact'}</H3>
             <Social />
-            <H3>{'Music'}</H3>
+            <H2>{'Speaking'}</H2>
+            <H3>{`Recruiting Engineers (From An Engineer's Perspective)`}</H3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{'Event'}</th>
+                        <th>{'Date'}</th>
+                        <th>{'Location'}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <A href="https://www.talent42.com/">{'Talent42'}</A>
+                        </td>
+                        <td>{'June 11th, 2019'}</td>
+                        <td>{'Seattle, WA'}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>{`Hiring talent is becoming increasingly difficult with low unemployment rates and the tech industry booming. What you can do to stick out? Learn from an engineer who's been involved on both sides - both as a candidate and with hiring - on what candidates REALLY want out of a position.`}</p>
+            <A href="/recruiting-engineers-talent42-lee-robinson.pdf">{'View Slides'}</A>
+            {' | '}
+            <A href="https://www.youtube.com/watch?v=chWOJB1LYkk">{'Watch Recording'}</A>
+            <H3>{'Building Component Libraries with a Monorepo'}</H3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{'Event'}</th>
+                        <th>{'Date'}</th>
+                        <th>{'Location'}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {events.map((event) => (
+                        <tr key={event.date}>
+                            <td>
+                                <A href={event.link}>{event.name}</A>
+                            </td>
+                            <td>{event.date}</td>
+                            <td>{event.location}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <p>{`Learn why your organization needs a component library and discover the best practices for building, scaling, and adopting it across all platforms. We'll be using industry-standard technology (React, JavaScript, Storybook) alongside cutting-edge solutions (CSS-in-JS, Monorepo).`}</p>
+            <A href="/building-component-libraries-with-a-monorepo.pdf">{'View Slides'}</A>
+            <H2>{'Music'}</H2>
             <p>{'Some of my favorite albums that have been on repeat lately 🎶'}</p>
             <MusicGrid />
             <ConcertList />
-            <H3>{'Travel Map'}</H3>
+            <H2>{'Travel Map'}</H2>
             <p>{' Check out the map below to see every place I’ve traveled to ✈️ '}</p>
             <iframe
                 height="280"

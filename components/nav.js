@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from './link';
-// import DarkModeToggle from './dark-mode-toggle';
 
 const StyledNav = styled.nav`
     padding: 25px;
@@ -70,11 +69,10 @@ const Nav = () => (
             <Logo alt="Lee Robinson" src="/static/images/logo.png" />
         </Link>
         <Centered>
-            <NavLink slug={'about'}>{'Start Here'}</NavLink>
-            <NavLink slug={'speaking'}>{'Speaking'}</NavLink>
+            <NavLink slug={'about'}>{'About'}</NavLink>
+            <NavLink slug={'dashboard'}>{'Dashboard'}</NavLink>
             <NavLink slug={'blog'}>{'Blog'}</NavLink>
             <ProjectsLink slug={'projects'}>{'Projects'}</ProjectsLink>
-            {/* <DarkModeToggle /> */}
         </Centered>
     </StyledNav>
 );
