@@ -1,6 +1,5 @@
 import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
-import Link from '../../components/link'
 
 export const meta = {
 date: '2019-03-29',
@@ -18,7 +17,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 ![](/static/images/monorepo-lerna-yarn-workspaces/banner.png)
 
-As applications scale, you’ll inevitably reach a point where you want to write <Link slug="blog/ui-component-library-with-styled-components" title="Building a UI Component Library with Styled Components">shared reusable components</Link> which can be used everywhere. Historically, we’ve had separate repositories for each package. However, this becomes a problem for a few reasons:
+As applications scale, you’ll inevitably reach a point where you want to write [shared reusable components](/blog/ui-component-library-with-styled-components) which can be used everywhere. Historically, we’ve had separate repositories for each package. However, this becomes a problem for a few reasons:
 
 -   It does not scale well. Before you know it, you have dozens of different package repositories repeating the same build, test, and release process.
 -   It promotes bundling unnecessary components. Do we need to create a new repo for this button? Let’s put it together with this other package. Now we’ve increased the bundle size for something 95% of consumers won’t use.
@@ -294,7 +293,7 @@ You can modify this as you see fit. We’ll also want to add some scripts to our
 ```
 
 Finally, let’s create our first test alongside our button component. We’ll utilize Snapshot testing since this is a purely presentational component.
-For more information, <Link slug="blog/ui-component-library-with-styled-components" title="Building a UI Component Library with Styled Components">see our other post here</Link>.
+For more information, [see our other post here](/blog/ui-component-library-with-styled-components).
 
 ```js
 // Button.spec.js
@@ -504,5 +503,5 @@ Congratulations, you now have a fully-featured monorepo! If you’d like to take
 
 ## Further Reading
 
--   <Link slug="blog/ui-component-library-with-styled-components" title="Building a UI Component Library with Styled Components">Building a UI Component Library with Styled Components</Link>
+-   [Building a UI Component Library with Styled Components](/blog/ui-component-library-with-styled-components)
 -   [Understand How Yarn Workspaces Works](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)

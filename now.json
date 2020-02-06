@@ -10,6 +10,7 @@
         "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
         "MAILCHIMP_API_KEY": "@mailchimp-api-key",
         "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
+        "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
         "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key"
     },
     "redirects": [

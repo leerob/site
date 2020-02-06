@@ -4,10 +4,10 @@ My portfolio has transformed over the years - from a static HTML site, to Jekyll
 
 ## Overview
 
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://leerob.io/dashboard), newsletter subscription (Mailchimp), and post views (Firebase).
-- `pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
-- `pages/dashboard` - [Personal dashboard](https://leerob.io/dashboard) containing metrics from YouTube, Google Analytics, and Unsplash.
-- `pages/*` - All other static pages. 
+-   `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://leerob.io/dashboard), newsletter subscription (Mailchimp), and post views (Firebase).
+-   `pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
+-   `pages/dashboard` - [Personal dashboard](https://leerob.io/dashboard) containing metrics from YouTube, Google Analytics, and Unsplash.
+-   `pages/*` - All other static pages.
 
 ## Running Locally
 

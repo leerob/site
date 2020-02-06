@@ -1,6 +1,5 @@
 import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
-import Link from '../../components/link'
 
 export const meta = {
 date: '2019-02-12',
@@ -20,7 +19,7 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 Don’t repeat yourself. It’s a principle that engineers strive to adhere to — preventing code duplication by abstracting shared functionality out into its own place.
 
-At <Link slug="blog/joining-hy-vee" title="Joining Hy-Vee" >Hy-Vee</Link>, we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products. How could we ensure every person created a button that looked and functioned the same way across all digital properties?
+At [Hy-Vee](/blog/joining-hy-vee), we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products. How could we ensure every person created a button that looked and functioned the same way across all digital properties?
 
 Our first step in tackling this problem was having UI/UX define a style guide that all consumers should implement. We needed a simple approach to ensure the adoption of our style guide and a set of shared components consumers could use without having to worry about styling.
 
@@ -207,6 +206,6 @@ We’re working to have this library adopted across all web and mobile applicati
 
 As we’ve built out this library, it’s prompted us to think deeply about our component architecture and strategy. We’re working to define what set of components makes sense for all consumers to implement and which should be their own separate entities.
 
-This has inspired us to implement a <Link slug="blog/monorepo-lerna-yarn-workspaces" title="Creating a Monorepo with Lerna & Yarn Workspaces">Monorepo</Link> design where we can easily develop and publish a large number of packages.
+This has inspired us to implement a [Monorepo](/blog/monorepo-lerna-yarn-workspaces) design where we can easily develop and publish a large number of packages.
 
-Want to learn more? <Link slug="blog/monorepo-lerna-yarn-workspaces" title="Creating a Monorepo with Lerna & Yarn Workspaces">Read the next post</Link> where I'll create a Monorepo with [Lerna](https://lernajs.io/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+Want to learn more? [Read the next post](/blog/monorepo-lerna-yarn-workspaces) where I'll create a Monorepo with [Lerna](https://lernajs.io/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).

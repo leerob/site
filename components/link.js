@@ -4,16 +4,18 @@ import Link from 'next/link';
 import A from './elements/a';
 
 const CustomLink = (props) => {
-    const slug = props.slug || '';
-    const href = `/${slug}`;
+    const href = props.href;
+    const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
-    return (
-        <Link href={href}>
-            <A href={href} {...props}>
-                {props.children}
-            </A>
-        </Link>
-    );
+    if (isInternalLink) {
+        return (
+            <Link href={href}>
+                <A {...props} />
+            </Link>
+        );
+    }
+
+    return <A {...props} />;
 };
 
 export default CustomLink;
