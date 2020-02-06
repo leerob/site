@@ -1,3 +1,4 @@
+/* eslint-disable no-sync */
 const fs = require('fs');
 
 const globby = require('globby');
@@ -16,10 +17,14 @@ const prettier = require('prettier');
                         .replace('.js', '')
                         .replace('.mdx', '');
                     const route = path === '/index' ? '' : path;
+                    const date = fs.statSync(page).mtime;
+                    const lastModified = date.toISOString().slice(0, 10);
 
                     return `
                         <url>
                             <loc>${`https://leerob.io${route}`}</loc>
+                            <lastmod>${lastModified}</lastmod>
+                            <changefreq>daily</changefreq>
                         </url>
                     `;
                 })
@@ -32,6 +37,6 @@ const prettier = require('prettier');
         parser: 'html'
     });
 
-    // eslint-disable-next-line no-sync
     fs.writeFileSync('public/sitemap.xml', formatted);
 })();
+/* eslint-enable no-sync */
