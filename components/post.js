@@ -59,8 +59,12 @@ const Post = ({children, meta}) => (
                 <article>{children}</article>
             </MDXProvider>
             <hr />
-            <NextjsCourse />
-            <hr />
+            {!meta.hideCourseMarketing && (
+                <>
+                    <NextjsCourse />
+                    <hr />
+                </>
+            )}
             <p>
                 <Link href={discussUrl(meta.slug)} rel="noopener noreferrer" target="_blank">
                     {'Discuss on Twitter'}
