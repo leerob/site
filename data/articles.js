@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 7, 2020',
+        slug: 'google-analytics-api-nextjs',
+        title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
+    },
+    {
         date: 'February 6, 2020',
         slug: 'now-env-variables-size-limit',
         title: 'How To Use Encrypted Secrets With Now'
