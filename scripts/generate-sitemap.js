@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const globby = require('globby');
 const prettier = require('prettier');
+const execa = require('execa');
 
 (async () => {
     const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -17,8 +18,8 @@ const prettier = require('prettier');
                         .replace('.js', '')
                         .replace('.mdx', '');
                     const route = path === '/index' ? '' : path;
-                    const date = fs.statSync(page).mtime;
-                    const lastModified = date.toISOString().slice(0, 10);
+                    const {stdout} = execa.sync('git', ['log', '-1', '--pretty="format:%cs"', page]);
+                    const lastModified = stdout.slice(8, 18);
 
                     return `
                         <url>
