@@ -3,7 +3,7 @@ import Post from '../../components/post'
 import GoogleAnalytics from '../../components/metrics/analytics';
 
 export const meta = {
-date: '2020-02-08',
+date: '2020-02-18',
 description: 'Learn how to use Next.js API routes to integrate with the Google Analytics API and retrieve statistics about a site.',
 image: '/static/images/metrics.png',
 slug: 'google-analytics-api-nextjs',
@@ -22,7 +22,10 @@ export default ({children}) => <Post meta={meta}>{children}</Post>
 
 ## Overview
 
-TODO
+Google Analytics is by far the most popular analytics platform. In this post, we'll look at how
+we can retrieve the number of page views in a certain time period programatically.
+
+If you're more concerned about privacy, you might consider using [Fathom](https://usefathom.com/) or [SimpleAnalytics](https://simpleanalytics.com/).
 
 ## Getting Access to Google Analytics
 
@@ -66,7 +69,9 @@ We need to delegate [domain-wide authority](https://developers.google.com/identi
 
 Finally, we need to add our service account email to the Google Analytics account we want to use.
 
--   TODO
+-   Go to the Admin panel inside Google Analytics.
+-   Click "User Management."
+-   Add the `client_email` from your service account.
 
 **That's it!** 🎉 You now have access to make requests to the Google Analytics API with your service account.
 

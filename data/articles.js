@@ -1,6 +1,6 @@
 export default [
     {
-        date: 'February 8, 2020',
+        date: 'February 18, 2020',
         slug: 'google-analytics-api-nextjs',
         title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
     },
