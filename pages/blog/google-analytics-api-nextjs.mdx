@@ -1,42 +1,43 @@
 import DateAndViews from '../../components/date-and-views'
 import Post from '../../components/post'
-import YouTube from '../../components/metrics/youtube';
+import GoogleAnalytics from '../../components/metrics/analytics';
 
 export const meta = {
-date: '2020-02-05',
-description: 'Learn how to use Next.js API routes to integrate with the YouTube API and retrieve statistics about a channel.',
+date: '2020-02-18',
+description: 'Learn how to use Next.js API routes to integrate with the Google Analytics API and retrieve statistics about a site.',
 image: '/static/images/metrics.png',
-slug: 'youtube-api-nextjs',
-title: 'Create a Dashboard with Next.js API Routes - YouTube API'
+slug: 'google-analytics-api-nextjs',
+title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
 }
 
 export default ({children}) => <Post meta={meta}>{children}</Post>
 
-# Create a Dashboard with Next.js API Routes - YouTube API
+# Create a Dashboard with Next.js API Routes - Google Analytics API
 
 <DateAndViews date={meta.date} id={meta.slug} />
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
-<YouTube />
+<GoogleAnalytics />
 
 ## Overview
 
-[YouTube](https://youtube.com) has cemented itself as the number one video sharing platform. Its vibrant community of creators is growing exponentially.
+Google Analytics is, by far, the most popular analytics platform. In this post, we'll look at how
+we can retrieve the number of page views in a specific time range programmatically.
 
-Tracking metrics about your channel is an integral part of measuring your success.
-YouTube provides [a Data API](https://developers.google.com/youtube/v3/docs), which allows you to integrate the platform directly into your website.
-Since I'm a [YouTube Creator](https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw), I wanted to see how many times my subscriber count and views directly on my site.
+If you're more concerned about privacy, you might consider using [Fathom](https://usefathom.com/) or [SimpleAnalytics](https://simpleanalytics.com/).
 
-## Getting Access to YouTube
+_Note_: You'll need to turn off your ad blocker for this page to work.
 
-To gain access to the YouTube API, you need to:
+## Getting Access to Google Analytics
+
+To gain access to the Google Analytics API, you need to:
 
 -   Go to the [Google Developer Console.](https://console.developers.google.com/)
 -   Create a new project.
 -   Credentials -> Create Credentials -> Service-account key.
 -   Click “Enable APIs and services.”
--   Find "YouTube Data API v3" and enable it.
+-   Find "Google Analytics API" and enable it.
 
 Since we're communicating server-to-server, we'll need a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
@@ -68,7 +69,13 @@ We need to delegate [domain-wide authority](https://developers.google.com/identi
 -   On the table row, click Actions -> Edit.
 -   Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
 
-**That's it!** 🎉 You now have access to make requests to the YouTube API with your service account.
+Finally, we need to add our service account email to the Google Analytics account we want to use.
+
+-   Go to the Admin panel inside Google Analytics.
+-   Click "User Management."
+-   Add the `client_email` from your service account.
+
+**That's it!** 🎉 You now have access to make requests to the Google Analytics API with your service account.
 
 ## Creating an environment variable
 
@@ -116,7 +123,7 @@ _Note_: If you have a lot of environment variables on Now, you might need to [en
 
 ## Creating the API Route
 
-Let's start by creating a new API route at `pages/api/youtube.js`.
+Let's start by creating a new API route at `pages/api/page-views.js`.
 
 ```js
 export default (req, res) => {
@@ -124,7 +131,7 @@ export default (req, res) => {
 };
 ```
 
-To make server-side requests to YouTube, we can install the [googleapis](https://github.com/googleapis/google-api-nodejs-client) library.
+To make server-side requests to Google Analytics, we can install the [googleapis](https://github.com/googleapis/google-api-nodejs-client) library.
 
 ```bash
 $ yarn add googleapis
@@ -144,10 +151,10 @@ export default async (_, res) => {
             client_id: process.env.GOOGLE_CLIENT_ID,
             private_key: process.env.GOOGLE_PRIVATE_KEY
         },
-        scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+        scopes: ['https://www.googleapis.com/auth/analytics.readonly']
     });
 
-    const youtube = google.youtube({
+    const analytics = google.analytics({
         auth,
         version: 'v3'
     });
@@ -156,7 +163,14 @@ export default async (_, res) => {
 };
 ```
 
-Finally, we want to pull statistics for a given channel and return the total number of subscribers and views.
+Finally, we want to pull statistics about our site. We'd like to know the total number of views for a given time range.
+To allow the API route to be re-used, let's pass the start date as a query parameter.
+
+```js
+const startDate = req.query.startDate;
+```
+
+Then, we can use the same API route to fetch stats about different time ranges.
 
 ```js
 import {google} from 'googleapis';
@@ -173,29 +187,28 @@ export default async (_, res) => {
         scopes: ['https://www.googleapis.com/auth/youtube.readonly']
     });
 
-    const youtube = google.youtube({
+    const analytics = google.analytics({
         auth,
         version: 'v3'
     });
 
-    const response = await youtube.channels.list({
-        id: 'UCZMli3czZnd1uoc1ShTouQw',
-        part: 'statistics'
+    const startDate = req.query.startDate;
+    const response = await analytics.data.ga.get({
+        'end-date': 'today',
+        ids: 'ga:187331021',
+        metrics: 'ga:pageviews',
+        'start-date': startDate
     });
 
-    const channel = response.data.items[0];
-    const {subscriberCount, viewCount} = channel.statistics;
-
     return res.status(200).json({
-        subscriberCount,
-        viewCount
+        pageViews: response.data.rows[0][0]
     });
 };
 ```
 
 ## Example
 
-The two cards below talk to `/api/youtube` and pull back stats about my YouTube account.
+The two cards below talk to `/api/page-views` and pull back stats about my site.
 
 _Bonus_: You can cache the API route with the [cache-control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header.
 
@@ -203,7 +216,7 @@ _Bonus_: You can cache the API route with the [cache-control](https://developer.
 Cache-Control: public, max-age=120, stale-while-revalidate=60
 ```
 
-<YouTube />
+<GoogleAnalytics />
 
 ## Keep Reading
 

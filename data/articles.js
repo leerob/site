@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 18, 2020',
+        slug: 'google-analytics-api-nextjs',
+        title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
+    },
+    {
         date: 'February 7, 2020',
         slug: 'iowa-caucuses',
         title: 'Iowa Caucuses Should Not Have Used An App'
