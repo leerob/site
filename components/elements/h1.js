@@ -14,6 +14,10 @@ const StyledH1 = styled.h1`
     @media (min-width: 768px) {
         font-size: 2.5em;
     }
+
+    a {
+        color: ${(props) => props.theme.text};
+    }
 `;
 
 const H1 = ({children}) => <StyledH1>{titleStyle(children)}</StyledH1>;

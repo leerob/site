@@ -1,8 +1,10 @@
-const rehypePrism = require('@mapbox/rehype-prism');
+const prism = require('@mapbox/rehype-prism');
+const slug = require('rehype-slug');
+const link = require('rehype-autolink-headings');
 const withMDX = require('@next/mdx')({
     extension: /\.(mdx)?$/u,
     options: {
-        rehypePlugins: [rehypePrism]
+        rehypePlugins: [prism, slug, [link, {behavior: 'wrap'}]]
     }
 });
 

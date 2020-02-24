@@ -15,10 +15,12 @@ const StyledH2 = styled.h2`
     @media (min-width: 768px) {
         font-size: 36px;
     }
+
+    a {
+        color: ${(props) => props.theme.text};
+    }
 `;
 
-const createId = (text) => text.toLowerCase().replace(/ /gu, '-');
-
-const H2 = ({children}) => <StyledH2 id={createId(children)}>{titleStyle(children)}</StyledH2>;
+const H2 = ({children}) => <StyledH2>{titleStyle(children)}</StyledH2>;
 
 export default H2;
