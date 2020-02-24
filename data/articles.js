@@ -1,5 +1,10 @@
 export default [
     {
+        date: 'February 24, 2020',
+        slug: 'fetching-data-with-swr',
+        title: 'Create a Dashboard with Next.js API Routes - Fetching Data with SWR'
+    },
+    {
         date: 'February 18, 2020',
         slug: 'google-analytics-api-nextjs',
         title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
