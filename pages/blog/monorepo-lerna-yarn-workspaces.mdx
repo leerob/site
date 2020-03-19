@@ -1,27 +1,18 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-03-29',
-description: 'In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process.',
-image: '/static/images/monorepo-lerna-yarn-workspaces/banner.png',
-slug: 'monorepo-lerna-yarn-workspaces',
+---
 title: 'Creating a Monorepo with Lerna & Yarn Workspaces'
-}
+publishedAt: '2019-03-29'
+summary: 'In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process.'
+image: '/static/images/monorepo-lerna-yarn-workspaces/banner.png'
+slug: 'monorepo-lerna-yarn-workspaces'
+---
 
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Creating a Monorepo with Lerna & Yarn Workspaces
-
-<DateAndViews date={meta.date} id={meta.slug} />
-
-![](/static/images/monorepo-lerna-yarn-workspaces/banner.png)
+![Creating a Monorepo with Lerna & Yarn Workspace](/static/images/monorepo-lerna-yarn-workspaces/banner.png)
 
 As applications scale, you’ll inevitably reach a point where you want to write [shared reusable components](/blog/ui-component-library-with-styled-components) which can be used everywhere. Historically, we’ve had separate repositories for each package. However, this becomes a problem for a few reasons:
 
--   It does not scale well. Before you know it, you have dozens of different package repositories repeating the same build, test, and release process.
--   It promotes bundling unnecessary components. Do we need to create a new repo for this button? Let’s put it together with this other package. Now we’ve increased the bundle size for something 95% of consumers won’t use.
--   It makes upgrading difficult. If you update a base component, you now have to update its consumers, its consumer’s consumers, etc. This problem gets worse as you scale.
+- It does not scale well. Before you know it, you have dozens of different package repositories repeating the same build, test, and release process.
+- It promotes bundling unnecessary components. Do we need to create a new repo for this button? Let’s put it together with this other package. Now we’ve increased the bundle size for something 95% of consumers won’t use.
+- It makes upgrading difficult. If you update a base component, you now have to update its consumers, its consumer’s consumers, etc. This problem gets worse as you scale.
 
 To make our applications as performant as possible, we need to have **small bundle sizes**. This means we should only include the code we’re using in our bundle.
 
@@ -43,13 +34,13 @@ Several large JavaScript projects use monorepos including: [Babel](https://githu
 
 In this guide, we will be utilizing:
 
--   🐉 [Lerna](https://lernajs.io/) — The Monorepo manager
--   📦 [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) — Sane multi-package management
--   🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
--   💅 [styled-components](https://www.styled-components.com/) — CSS in JS elegance
--   🛠 [Babel](https://babeljs.io/) — Compiles next-gen JavaScript
--   📖 [Storybook](https://storybook.js.org/) — UI Component Environment
--   🃏 [Jest](https://jestjs.io/) — Unit/Snapshot Testing
+- 🐉 [Lerna](https://lernajs.io/) — The Monorepo manager
+- 📦 [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) — Sane multi-package management
+- 🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
+- 💅 [styled-components](https://www.styled-components.com/) — CSS in JS elegance
+- 🛠 [Babel](https://babeljs.io/) — Compiles next-gen JavaScript
+- 📖 [Storybook](https://storybook.js.org/) — UI Component Environment
+- 🃏 [Jest](https://jestjs.io/) — Unit/Snapshot Testing
 
 You can either follow along or [view the finished repo here](https://github.com/Hy-Vee/lerna-yarn-workspaces-monorepo).
 
@@ -65,11 +56,11 @@ This creates a `package.json` file for your project.
 
 ```json
 {
-    "name": "root",
-    "private": true,
-    "devDependencies": {
-        "lerna": "^3.20.2"
-    }
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
 }
 ```
 
@@ -77,10 +68,10 @@ You’ll notice a `lerna.json` file has also been created, as well as a `/packag
 
 ```json
 {
-    "packages": ["packages/*"],
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "version": "independent"
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent"
 }
 ```
 
@@ -88,12 +79,12 @@ We’ll also need to modify our `package.json` to define where the Yarn workspac
 
 ```json
 {
-    "name": "root",
-    "private": true,
-    "workspaces": ["packages/*"],
-    "devDependencies": {
-        "lerna": "^3.20.2"
-    }
+  "name": "root",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
 }
 ```
 
@@ -121,8 +112,8 @@ Okay, back to Babel. To set up the global configuration for Babel, we’ll need 
 
 ```js
 module.exports = {
-    plugins: ['babel-plugin-styled-components'],
-    presets: ['@babel/preset-env', '@babel/preset-react']
+  plugins: ['babel-plugin-styled-components'],
+  presets: ['@babel/preset-env', '@babel/preset-react']
 };
 ```
 
@@ -150,20 +141,20 @@ Then, inside of `/packages` let's create a folder called `/button` and set up ou
 
 ```json
 {
-    "name": "button",
-    "version": "1.0.0",
-    "main": "lib/index.js",
-    "module": "src/index.js",
-    "dependencies": {
-        "react": "latest",
-        "react-dom": "latest",
-        "styled-components": "latest"
-    },
-    "peerDependencies": {
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
-        "styled-components": "^5.0.0"
-    }
+  "name": "button",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "styled-components": "latest"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^5.0.0"
+  }
 }
 ```
 
@@ -185,13 +176,13 @@ Okay, now let’s create our first component: `<Button />`.
 import styled from 'styled-components';
 
 const Button = styled.button`
-    background: red;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 300;
-    padding: 9px 36px;
+  background: red;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 9px 36px;
 `;
 
 export default Button;
@@ -222,8 +213,8 @@ We’ll also want to configure Storybook so it knows where to find our stories.
 ```js
 // .storybook/main.js
 module.exports = {
-    stories: ['../packages/**/*.stories.js'],
-    addons: ['@storybook/addon-docs']
+  stories: ['../packages/**/*.stories.js'],
+  addons: ['@storybook/addon-docs']
 };
 ```
 
@@ -236,8 +227,8 @@ import React from 'react';
 import Button from '.';
 
 export default {
-    component: Button,
-    title: 'Design System|Button'
+  component: Button,
+  title: 'Design System|Button'
 };
 
 export const primary = () => <Button>{'Button'}</Button>;
@@ -267,19 +258,19 @@ Next, let's configure our Jest setup in the root directory.
 
 ```js
 module.exports = {
-    cacheDirectory: '.jest-cache',
-    coverageDirectory: '.jest-coverage',
-    coveragePathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/'],
-    coverageReporters: ['html', 'text'],
-    coverageThreshold: {
-        global: {
-            branches: 100,
-            functions: 100,
-            lines: 100,
-            statements: 100
-        }
-    },
-    testPathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/']
+  cacheDirectory: '.jest-cache',
+  coverageDirectory: '.jest-coverage',
+  coveragePathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/'],
+  coverageReporters: ['html', 'text'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
+  },
+  testPathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/']
 };
 ```
 
@@ -304,10 +295,10 @@ import 'jest-styled-components';
 import Button from '.';
 
 describe('Button', () => {
-    test('renders correctly', () => {
-        const tree = renderer.create(<Button>{'Test'}</Button>).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  test('renders correctly', () => {
+    const tree = renderer.create(<Button>{'Test'}</Button>).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 ```
 
@@ -337,20 +328,20 @@ The main reason for the Monorepo structure is to support multiple packages. This
 
 ```json
 {
-    "name": "input",
-    "version": "1.0.0",
-    "main": "lib/index.js",
-    "module": "src/index.js",
-    "dependencies": {
-        "react": "latest",
-        "react-dom": "latest",
-        "styled-components": "latest"
-    },
-    "peerDependencies": {
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
-        "styled-components": "^5.0.0"
-    }
+  "name": "input",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "styled-components": "latest"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^5.0.0"
+  }
 }
 ```
 
@@ -358,13 +349,13 @@ The main reason for the Monorepo structure is to support multiple packages. This
 import styled from 'styled-components';
 
 const Input = styled.input`
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 300;
-    padding: 10px 40px 10px 10px;
-    width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 10px 40px 10px 10px;
+  width: 150px;
 `;
 
 export default Input;
@@ -378,8 +369,8 @@ import React from 'react';
 import Input from '.';
 
 export default {
-    component: Input,
-    title: 'Design System|Input'
+  component: Input,
+  title: 'Design System|Input'
 };
 
 export const placeholder = () => <Input placeholder="user@gmail.com" />;
@@ -412,10 +403,12 @@ import 'jest-styled-components';
 import Input from '.';
 
 describe('Input', () => {
-    test('renders correctly', () => {
-        const tree = renderer.create(<Input placeholder="user@gmail.com" />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  test('renders correctly', () => {
+    const tree = renderer
+      .create(<Input placeholder="user@gmail.com" />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 ```
 
@@ -484,9 +477,9 @@ Congrats! 🎉 The tags have been pushed to GitHub. If we wanted to release our 
 
 It should be as easy as possible for others to contribute. That’s why all formatting and linting is taken care of with:
 
--   [ESLint](https://eslint.org/)
--   [Stylelint](https://github.com/stylelint/stylelint)
--   [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+- [Stylelint](https://github.com/stylelint/stylelint)
+- [Prettier](https://prettier.io/)
 
 Thanks to git pre-commit hooks with [husky](https://github.com/typicode/husky), we’re ensured all code is formatted correctly before getting pushed to GitHub.
 Proper linting and formatting saved us time and headaches while reviewing pull requests.
@@ -496,12 +489,12 @@ We recommend you develop and agree upon linting and formatting rules to reduce t
 
 Congratulations, you now have a fully-featured monorepo! If you’d like to take this even further, here are some other ideas:
 
--   Automate [semver](https://semver.org/) on your releases using [Conventional Commits](https://www.conventionalcommits.org).
--   Create a [“theme” package](https://github.com/Hy-Vee/lerna-yarn-workspaces-monorepo/pull/2) you can share across all other packages. This could be the start of your [design system](https://forumone.com/ideas/what-is-design-system/) — sharing colors, spacing, iconography, etc.
--   Extend Storybook with a variety of [add ons](https://storybook.js.org/docs/addons/addon-gallery/).
--   Configure Webpack/Rollup to generate a `/dist` folder.
+- Automate [semver](https://semver.org/) on your releases using [Conventional Commits](https://www.conventionalcommits.org).
+- Create a [“theme” package](https://github.com/Hy-Vee/lerna-yarn-workspaces-monorepo/pull/2) you can share across all other packages. This could be the start of your [design system](https://forumone.com/ideas/what-is-design-system/) — sharing colors, spacing, iconography, etc.
+- Extend Storybook with a variety of [add ons](https://storybook.js.org/docs/addons/addon-gallery/).
+- Configure Webpack/Rollup to generate a `/dist` folder.
 
 ## Further Reading
 
--   [Building a UI Component Library with Styled Components](/blog/ui-component-library-with-styled-components)
--   [Understand How Yarn Workspaces Works](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
+- [Building a UI Component Library with Styled Components](/blog/ui-component-library-with-styled-components)
+- [Understand How Yarn Workspaces Works](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
