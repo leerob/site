@@ -1,47 +1,14 @@
 import React from 'react';
-import NextLink from 'next/link';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  Box,
-  Link
-} from '@chakra-ui/core';
+import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
 
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';
+import BlogPost from '../components/BlogPost';
+import Subscribe from '../components/Subscribe';
 
 import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
 import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
 import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
-
-const BlogPost = ({ title, summary, views, slug }) => {
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
-
-  return (
-    <NextLink href={`blog/${slug}`} passHref>
-      <Link w="100%" _hover={{ textDecoration: 'none' }}>
-        <Box mb={8} display="block" width="100%">
-          <Flex width="100%" justifyContent="space-between">
-            <Heading size="md" as="h3" mb={2} fontWeight="medium">
-              {title}
-            </Heading>
-            <Text color="gray.500" minWidth="105px">
-              {views}
-            </Text>
-          </Flex>
-          <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
-        </Box>
-      </Link>
-    </NextLink>
-  );
-};
 
 const Index = () => {
   const { colorMode } = useColorMode();
@@ -85,11 +52,12 @@ const Index = () => {
           <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
             Most Popular
           </Heading>
-          <BlogPost {...styleGuides} views="32,532 views" />
-          <BlogPost {...monorepo} views="31,552 views" />
-          <BlogPost {...technicalRecruiting} views="12,532 views" />
+          <BlogPost {...styleGuides} badge="32,532 views" />
+          <BlogPost {...monorepo} badge="31,552 views" />
+          <BlogPost {...technicalRecruiting} badge="12,532 views" />
         </Flex>
         <Timeline />
+        <Subscribe />
       </Stack>
     </Container>
   );

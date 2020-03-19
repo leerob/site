@@ -5,7 +5,6 @@ import {
   Text,
   Flex,
   Stack,
-  Box,
   Input,
   InputGroup,
   InputRightElement,
@@ -13,6 +12,12 @@ import {
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
+import BlogPost from '../components/BlogPost';
+
+import { frontMatter as blogPosts } from './blog/**/*.mdx';
+import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
+import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
+import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
 
 const Blog = () => {
   const { colorMode } = useColorMode();
@@ -62,50 +67,29 @@ const Blog = () => {
           <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
             Most Popular
           </Heading>
-          <Box mb={8} display="block" width="100%">
-            <Flex width="100%" justifyContent="space-between">
-              <Heading size="md" as="h3" mb={2} fontWeight="medium">
-                Technical Recruiting is Broken
-              </Heading>
-              <Text color="gray.500" minWidth="100px">
-                12,532 views
-              </Text>
-            </Flex>
-            <Text color={secondaryTextColor[colorMode]}>
-              Why is there so much recruiter spam? What can we do to fix
-              technical recruiting?
-            </Text>
-          </Box>
-          <Box mb={8} width="100%">
-            <Flex width="100%" justifyContent="space-between">
-              <Heading size="md" as="h3" mb={2} fontWeight="medium">
-                Things I've Learned Building Next.js Apps
-              </Heading>
-              <Text color="gray.500" minWidth="100px">
-                12,532 views
-              </Text>
-            </Flex>
-            <Text color={secondaryTextColor[colorMode]}>
-              I've spent a lot of time in the past 4 months creating Next.js
-              apps for both work and personal use.
-            </Text>
-          </Box>
-          <Box mb={8} width="100%">
-            <Flex width="100%" justifyContent="space-between">
-              <Heading size="md" as="h3" mb={2} fontWeight="medium">
-                Everything I Know About Style Guides, Design Systems, and
-                Component Libraries
-              </Heading>
-              <Text color="gray.500" minWidth="100px">
-                12,532 views
-              </Text>
-            </Flex>
-            <Text color={secondaryTextColor[colorMode]}>
-              A deep-dive on everything I've learned in the past year building
-              style guides, design systems, component libraries, and their best
-              practices.
-            </Text>
-          </Box>
+          <BlogPost {...styleGuides} badge="32,532 views" />
+          <BlogPost {...monorepo} badge="31,552 views" />
+          <BlogPost {...technicalRecruiting} badge="12,532 views" />
+        </Flex>
+        <Flex
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          maxWidth="700px"
+          mt={8}
+        >
+          <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
+            All Posts
+          </Heading>
+          {blogPosts
+            .sort(
+              (a, b) =>
+                Number(new Date(b.publishedAt)) -
+                Number(new Date(a.publishedAt))
+            )
+            .map((frontMatter) => (
+              <BlogPost key={frontMatter.title} {...frontMatter} />
+            ))}
         </Flex>
       </Stack>
     </Container>

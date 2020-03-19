@@ -67,9 +67,9 @@ const Container = ({ children }) => {
               About
             </Button>
           </NextLink>
-          <NextLink href="/contact" passHref>
+          <NextLink href="/" passHref>
             <Button as="a" variant="ghost">
-              Contact
+              Home
             </Button>
           </NextLink>
         </Box>
