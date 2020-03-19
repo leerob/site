@@ -56,7 +56,10 @@
     "react-dom": "^16.12.0",
     "react-tweet-embed": "1.2.2",
     "reading-time": "^1.2.0",
+    "remark-autolink-headings": "^5.2.2",
+    "remark-capitalize": "^1.1.0",
     "remark-code-titles": "^0.1.1",
+    "remark-slug": "^5.1.2",
     "swr": "0.1.16",
     "title": "3.4.1",
     "unsplash-js": "6.0.0"

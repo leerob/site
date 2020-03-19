@@ -5,13 +5,13 @@ import {
   Code,
   Heading,
   Kbd,
+  Link,
   PseudoBox,
   Text,
   useColorMode
 } from '@chakra-ui/core';
 import { jsx } from '@emotion/core';
 import NextLink from 'next/link';
-import { forwardRef } from 'react';
 
 const Table = (props) => (
   <Box as="table" textAlign="left" mt="32px" width="full" {...props} />
@@ -19,7 +19,10 @@ const Table = (props) => (
 
 const THead = (props) => {
   const { colorMode } = useColorMode();
-  const bg = { light: 'gray.50', dark: 'whiteAlpha.100' };
+  const bg = {
+    light: 'gray.50',
+    dark: 'whiteAlpha.100'
+  };
 
   return (
     <Box
@@ -45,24 +48,23 @@ const TData = (props) => (
   />
 );
 
-const Link = forwardRef((props, ref) => (
-  <PseudoBox
-    as="a"
-    ref={ref}
-    color="blue.700"
-    cursor="pointer"
-    textDecoration="underline"
-    outline="none"
-    _hover={{ opacity: '0.8' }}
-    _focus={{ boxShadow: 'outline' }}
-    {...props}
-  />
-));
+const CustomLink = (props) => {
+  const href = props.href;
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+
+  if (isInternalLink) {
+    return (
+      <NextLink href={href} passHref>
+        <Link color="blue.500" {...props} />
+      </NextLink>
+    );
+  }
+
+  return <Link color="blue.500" isExternal {...props} />;
+};
 
 const DocsHeading = (props) => (
   <Heading
-    mb="1em"
-    mt="2em"
     css={{
       '&[id]': {
         pointerEvents: 'none'
@@ -77,6 +79,8 @@ const DocsHeading = (props) => (
       '&[id]:hover a': { opacity: 1 }
     }}
     {...props}
+    mb="1em"
+    mt="2em"
   >
     <Box pointerEvents="auto">
       {props.children}
@@ -116,11 +120,7 @@ const MDXComponents = {
   table: Table,
   th: THead,
   td: TData,
-  a: ({ href, ...props }) => (
-    <NextLink href={href} passHref>
-      <Link {...props} />
-    </NextLink>
-  ),
+  a: CustomLink,
   p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
   ul: (props) => <Box as="ul" pt="8px" pl="16px" {...props} />,
   ol: (props) => <Box as="ol" pt="8px" pl="16px" {...props} />,
@@ -128,7 +128,7 @@ const MDXComponents = {
   blockquote: (props) => (
     <Callout
       mt={4}
-      w="100%"
+      w="98%"
       variant="left-accent"
       status="info"
       css={{ '> *:first-of-type': { marginTop: 0 } }}
