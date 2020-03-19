@@ -1,29 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import Link from './link';
-
-const StyledFooter = styled.footer`
-    flex-shrink: 0;
-    text-align: center;
-`;
-
-const Container = styled.div`
-    padding: 30px 20px;
-
-    @media (min-width: 737px) {
-        margin: 0 auto;
-        max-width: 41em;
-        padding: 45px;
-    }
-`;
+import { Stack, Link } from '@chakra-ui/core';
 
 const Footer = () => (
-    <StyledFooter>
-        <Container>
-            <Link href="/">{'leerob.io'}</Link>
-        </Container>
-    </StyledFooter>
+  <Stack>
+    <Link href="https://twitter.com/leeerob" title="Twitter" isExternal />
+    <Link href="https://github.com/leerob" title="GitHub" isExternal />
+    <Link
+      href="https://www.linkedin.com/in/leejamesrobinson/"
+      title="LinkedIn"
+      isExternal
+    />
+  </Stack>
 );
 
 export default Footer;

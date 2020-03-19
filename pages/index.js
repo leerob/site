@@ -1,92 +1,106 @@
 import React from 'react';
-import styled from 'styled-components';
-import {LogoJsonLd} from 'next-seo';
+import NextLink from 'next/link';
+import {
+  useColorMode,
+  Heading,
+  Text,
+  Flex,
+  Stack,
+  Box,
+  Link
+} from '@chakra-ui/core';
 
-import Page from '../components/page';
-import {column} from '../styles/mixins';
-import {spacing} from '../styles/vars';
-import Nav from '../components/nav';
-import Timeline from '../components/timeline';
+import Timeline from '../components/Timeline';
+import Container from '../components/Container';
 
-const Main = styled.main`
-    display: flex;
-    flex: 1;
-`;
+const BlogPost = ({ title, summary, views }) => {
+  const { colorMode } = useColorMode();
+  const secondaryTextColor = {
+    light: 'gray.700',
+    dark: 'gray.400'
+  };
 
-const Content = styled.div`
-    ${column}
-    margin-bottom: ${spacing.normal};
-    padding: ${spacing.normal};
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`;
+  return (
+    <NextLink href={'blog/test'} passHref>
+      <Link w="100%" _hover={{ textDecoration: 'none' }}>
+        <Box mb={8} display="block" width="100%">
+          <Flex width="100%" justifyContent="space-between">
+            <Heading size="md" as="h3" mb={2} fontWeight="medium">
+              {title}
+            </Heading>
+            <Text color="gray.500" minWidth="100px">
+              {views}
+            </Text>
+          </Flex>
+          <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
+        </Box>
+      </Link>
+    </NextLink>
+  );
+};
 
-const Subtitle = styled.h2`
-    text-align: center;
-    font-style: italic;
-    margin: 0;
-    color: ${(props) => props.theme.accent};
-    letter-spacing: 0.03;
-`;
+const Index = () => {
+  const { colorMode } = useColorMode();
+  const secondaryTextColor = {
+    light: 'gray.700',
+    dark: 'gray.400'
+  };
 
-const Title = styled.h1`
-    display: initial;
-    font-size: 1.65em;
-    text-align: center;
-    line-height: 1.35;
-    font-weight: bold;
-    margin: 0 auto;
-    background-image: linear-gradient(120deg, #2ec7c0 0%, #1a86e4 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 0.2em;
-    background-position: 0 100%;
-
-    @media (min-width: 737px) {
-        font-size: 2.3em;
-    }
-`;
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 30px 0;
-
-    @media (min-width: 737px) {
-        padding: 30px 0 80px;
-    }
-`;
-
-const Details = styled.div`
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom: ${spacing.large};
-`;
-
-const description = `Lee Robinson is a developer, writer, and UI/UX enthusiast. He's interested in all things JAMstack (JavaScript, APIs, Markup) and Design Systems.`;
-
-const Index = () => (
-    <>
-        <Page
-            description={description}
-            image={'/static/images/speaking/speaking.jpg'}
-            title={'Lee Robinson - Developer, writer, and UI/UX enthusiast.'}
+  return (
+    <Container>
+      <Stack
+        as="main"
+        spacing={8}
+        justifyContent="center"
+        alignItems="flex-start"
+        m="0 auto 4rem auto"
+        maxWidth="700px"
+      >
+        <Flex
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          maxWidth="700px"
         >
-            <Nav />
-            <Main>
-                <Content>
-                    <Container>
-                        <Subtitle>{'Developer, writer, and UI/UX enthusiast.'}</Subtitle>
-                        <Title>{'Lee Robinson'}</Title>
-                    </Container>
-                    <Details>{`Welcome to my personal slice of the internet 👋🏼 Here you'll find everything you need to know about me - blog posts, work history, projects, contact information, and more!`}</Details>
-                </Content>
-            </Main>
-            <Timeline />
-        </Page>
-        <LogoJsonLd logo="https://leerob.io/static/images/lee.jpg" url="https://leerob.io" />
-    </>
-);
+          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+            Hey, I’m Lee Robinson
+          </Heading>
+          <Text color={secondaryTextColor[colorMode]}>
+            I’m a developer, writer, and creator living in Des Moines, IA.
+            You’ve found my personal slice of the internet – everything you want
+            to know and more is here.
+          </Text>
+        </Flex>
+        <Flex
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          maxWidth="700px"
+          mt={8}
+        >
+          <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
+            Most Popular
+          </Heading>
+          <BlogPost
+            title="Technical Recruiting is Broken"
+            summary="Why is there so much recruiter spam? What can we do to fix technical recruiting?"
+            views="12,532 views"
+          />
+          <BlogPost
+            title="Things I've Learned Building Next.js Apps"
+            summary=" I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use."
+            views="12,532 views"
+          />
+          <BlogPost
+            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
+            summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
+            views="12,532 views"
+          />
+        </Flex>
+        <Timeline />
+      </Stack>
+    </Container>
+  );
+};
 
 export default Index;

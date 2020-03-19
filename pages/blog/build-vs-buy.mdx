@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2018-09-25',
-description: 'What decisions go into evaluating software solutions?',
-image: '/static/images/build-vs-buy/banner.png',
-slug: 'build-vs-buy',
+---
 title: 'Build vs. Buy'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Build vs. Buy
-
-<Date>{meta.date}</Date>
+publishedAt: '2018-09-25'
+summary: 'What decisions go into evaluating software solutions?'
+image: '/static/images/build-vs-buy/banner.png'
+---
 
 An essential part of any software company is the tooling required to build, test, deploy, release, and monitor their software. This is an integral part of the software development life cycle (SDLC). Whether you should build or buy this tooling is a critical, expensive decision.
 
@@ -45,10 +35,10 @@ This meant it sometimes took hours before engineers reacted to an issue if there
 
 Our company, product, and industry presented us with some difficult requirements:
 
--   Strict security and compliance requirements
--   Sensitive customer data
--   A wide variety of programming languages (some not well used)
--   Massive code base (100s of repositories) would require a lot of changes
+- Strict security and compliance requirements
+- Sensitive customer data
+- A wide variety of programming languages (some not well used)
+- Massive code base (100s of repositories) would require a lot of changes
 
 Not a single off-the-shelf solution we found supported every major programming language we used. This wasn’t a complete showstopper, because some had REST APIs or other methods of getting data sent to their product. It just required a bit more work.
 
@@ -60,9 +50,9 @@ We evaluated the time it would take to adopt the final two contending solutions 
 
 After weighing the options and much debate, we decided it was in our best interest to build our own solution, utilizing existing Infrastructure as a Service (IaaS) solutions like Amazon Web Services (AWS) and Google App Engine (GAE) which allow you to only pay for what you need. Our main goals behind this decision were to:
 
--   Provide value faster by incrementally building a new solution versus adapting to existing solutions
--   Create a scalable, reliable platform that will revolutionize the support process of our products
--   Drive the adoption of this solution by desire and not requirement so that 100% of production services have near real-time alerting set up
+- Provide value faster by incrementally building a new solution versus adapting to existing solutions
+- Create a scalable, reliable platform that will revolutionize the support process of our products
+- Drive the adoption of this solution by desire and not requirement so that 100% of production services have near real-time alerting set up
 
 That’s where my journey with Workiva began as we started building our monitoring and alerting system.
 
@@ -105,5 +95,3 @@ We periodically compare our application against other third-party and open-sourc
 ### Conclusion
 
 As of right now, it is still cheaper for us to host our own solution versus migrating over to another provider. If hosting costs were to change, or the volume of logs was to drastically increase, this might not be true. This is why it’s important to constantly evaluate your product against others to determine when it’s right to build vs. buy. If your team currently doesn’t have any exception monitoring, we would recommend either [Sentry](https://sentry.io/) or [BugSnag](https://www.bugsnag.com/).
-
-Cheers 🎉

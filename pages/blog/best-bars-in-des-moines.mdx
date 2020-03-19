@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2015-12-13',
-description: 'Using data to determine where to drink.',
-image: '/static/images/best-bars-in-des-moines/banner.png',
-slug: 'best-bars-in-des-moines',
+---
 title: 'The 10 Best Bars in Des Moines'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# The 10 Best Bars in Des Moines
-
-<Date>{meta.date}</Date>
+publishedAt: '2015-12-13'
+summary: 'Using data to determine where to drink.'
+image: '/static/images/best-bars-in-des-moines/banner.png'
+---
 
 ![Des Moines, Iowa](/static/images/best-bars-in-des-moines/banner.png)
 
@@ -40,9 +30,9 @@ After browsing [Yelp](https://www.yelp.com) and [Foursquare](https://www.foursqu
 
 Overall, this list looks pretty solid. Cross-referencing it with lists from [Yelp](https://www.yelp.com/c/des-moines/bars), [TripAdvisor](https://www.tripadvisor.com/Attractions-g37835-Activities-c20-Des_Moines_Iowa.html), [BeerAdvocate](https://www.beeradvocate.com/place/list/?city=Des+Moines&c_id=US&s_id=IA), [Zomato](https://www.zomato.com/des-moines-ia/restaurants/bar-food), and [Roadtrippers](https://roadtrippers.com/lists-itinerary/des-moines-bars-and-pubs/2376349?lat=40.80972&lng=-96.67528&z=5) we see a lot of similarities. In total, I looked at:
 
--   **113** different businesses
--   **~9,000** unique ratings
--   **~40,000** check-ins on Foursquare
+- **113** different businesses
+- **~9,000** unique ratings
+- **~40,000** check-ins on Foursquare
 
 Combining all of this data, I was able to create a list that more accurately represents the ratings of bars given the number of reviews. It’s important to remember this list is based on statistical data. This is simply one approach to how the best bars are perceived. However, remember it’s all subjective. My (expert) opinion would be to try them all out and decide for yourself.
 
