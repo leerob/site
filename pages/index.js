@@ -13,7 +13,11 @@ import {
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 
-const BlogPost = ({ title, summary, views }) => {
+import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
+import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
+import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
+
+const BlogPost = ({ title, summary, views, slug }) => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
@@ -21,14 +25,14 @@ const BlogPost = ({ title, summary, views }) => {
   };
 
   return (
-    <NextLink href={'blog/test'} passHref>
+    <NextLink href={`blog/${slug}`} passHref>
       <Link w="100%" _hover={{ textDecoration: 'none' }}>
         <Box mb={8} display="block" width="100%">
           <Flex width="100%" justifyContent="space-between">
             <Heading size="md" as="h3" mb={2} fontWeight="medium">
               {title}
             </Heading>
-            <Text color="gray.500" minWidth="100px">
+            <Text color="gray.500" minWidth="105px">
               {views}
             </Text>
           </Flex>
@@ -81,21 +85,9 @@ const Index = () => {
           <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
             Most Popular
           </Heading>
-          <BlogPost
-            title="Technical Recruiting is Broken"
-            summary="Why is there so much recruiter spam? What can we do to fix technical recruiting?"
-            views="12,532 views"
-          />
-          <BlogPost
-            title="Things I've Learned Building Next.js Apps"
-            summary=" I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use."
-            views="12,532 views"
-          />
-          <BlogPost
-            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-            summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
-            views="12,532 views"
-          />
+          <BlogPost {...styleGuides} views="32,532 views" />
+          <BlogPost {...monorepo} views="31,552 views" />
+          <BlogPost {...technicalRecruiting} views="12,532 views" />
         </Flex>
         <Timeline />
       </Stack>
