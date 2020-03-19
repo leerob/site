@@ -12,10 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/leerob/leerob.io.git"
   },
-  "engines": {
-    "node": "12.13.1",
-    "yarn": ">=1.10.0"
-  },
   "scripts": {
     "build": "next build",
     "dev": "next",
@@ -60,6 +56,7 @@
     "react-dom": "^16.12.0",
     "react-tweet-embed": "1.2.2",
     "reading-time": "^1.2.0",
+    "remark-code-titles": "^0.1.1",
     "swr": "0.1.16",
     "title": "3.4.1",
     "unsplash-js": "6.0.0"

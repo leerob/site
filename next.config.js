@@ -1,5 +1,6 @@
 const readingTime = require('reading-time');
 const mdxPrism = require('mdx-prism');
+const codeTitles = require('remark-code-titles');
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 const withMdxEnhanced = require('next-mdx-enhanced');
@@ -9,6 +10,7 @@ module.exports = withPlugins(
     withMdxEnhanced({
       layoutPath: 'layouts',
       defaultLayout: true,
+      remarkPlugins: [codeTitles],
       rehypePlugins: [mdxPrism],
       extendFrontMatter: {
         process: (mdxContent) => ({

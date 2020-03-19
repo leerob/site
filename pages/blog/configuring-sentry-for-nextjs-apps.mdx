@@ -29,7 +29,7 @@ _You can view the completed example [here](https://github.com/zeit/next.js/tree/
 1. Set up an account with [Sentry](https://sentry.io) and retrieve your DSN.
 2. Add Sentry to your project. Here is an example `package.json`.
 
-```json
+```json:package.json
 {
   "name": "with-sentry-simple",
   "version": "1.0.0",
@@ -51,7 +51,7 @@ _You can view the completed example [here](https://github.com/zeit/next.js/tree/
 
 3. Override `_app.js` to initialize Sentry and capture client-side exceptions using the `componentDidCatch` React lifecycle method.
 
-```jsx
+```jsx:pages/_app.js
 import React from 'react';
 import App, { Container } from 'next/app';
 import * as Sentry from '@sentry/browser';
@@ -99,7 +99,7 @@ export default MyApp;
 
 4. Override `_document.js` to capture server-side exceptions by listening at the node process level.
 
-```jsx
+```jsx:pages/_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import * as Sentry from '@sentry/browser';
 
@@ -135,7 +135,7 @@ export default MyDocument;
 
 5. Override `next.config.js` to produce source maps.
 
-```js
+```js:next.config.js
 const withSourceMaps = require('@zeit/next-source-maps')();
 
 module.exports = withSourceMaps({

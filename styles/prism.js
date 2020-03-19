@@ -106,6 +106,7 @@ const prismBaseTheme = css`
   .token.entity {
     cursor: help;
   }
+
   .mdx-marker {
     display: block;
     margin-left: -${theme.space[4]};
@@ -115,6 +116,26 @@ const prismBaseTheme = css`
     background-color: ${theme.colors.gray[200]};
     box-shadow: inset 3px 0px 0 0px ${theme.colors.blue[600]};
     min-width: fit-content;
+  }
+
+  .remark-code-title {
+    padding: ${theme.space[2]} ${theme.space[4]};
+    font-family: ${theme.fonts.mono};
+    background: ${theme.colors.gray[200]};
+    color: ${theme.colors.gray[800]};
+    border: 1px solid ${theme.colors.gray[200]};
+    border-top-left-radius: ${theme.radii.lg};
+    border-top-right-radius: ${theme.radii.lg};
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    width: 100%;
+
+    + pre {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0;
+    }
   }
 `;
 
@@ -218,5 +239,11 @@ export const prismDarkTheme = css`
 
   .mdx-marker {
     background-color: ${theme.colors.gray[700]};
+  }
+
+  .remark-code-title {
+    background: ${theme.colors.gray[700]};
+    color: ${theme.colors.gray[100]};
+    border: 1px solid ${theme.colors.gray[700]};
   }
 `;
