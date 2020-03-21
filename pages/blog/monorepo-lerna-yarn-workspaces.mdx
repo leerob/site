@@ -54,7 +54,7 @@ $ npx lerna init
 
 This creates a `package.json` file for your project.
 
-```json
+```json:package.json
 {
   "name": "root",
   "private": true,
@@ -66,7 +66,7 @@ This creates a `package.json` file for your project.
 
 You’ll notice a `lerna.json` file has also been created, as well as a `/packages` folder which will contain our libraries. Let’s now modify our `lerna.json` file to use Yarn Workspaces. We’ll use independent versioning so we can properly enforce [semver](https://semver.org/) for each package.
 
-```json
+```json:lerna.json
 {
   "packages": ["packages/*"],
   "npmClient": "yarn",
@@ -77,7 +77,7 @@ You’ll notice a `lerna.json` file has also been created, as well as a `/packag
 
 We’ll also need to modify our `package.json` to define where the Yarn workspaces are located.
 
-```json
+```json:package.json
 {
   "name": "root",
   "private": true,
@@ -100,7 +100,7 @@ Using `-w` instructs Yarn to install the given dependencies for the _entire_ wor
 
 Since `yarn` has ran, you have a `/node_modules` folder. We don’t want to commit any of these packages, so let’s add a `.gitignore`.
 
-```bash
+```bash:.gitignore
 .log
 .DS_Store
 .jest-*
@@ -110,7 +110,7 @@ node_modules
 
 Okay, back to Babel. To set up the global configuration for Babel, we’ll need a `babel.config.js` file in the root of the repository.
 
-```js
+```js:babel.config.js
 module.exports = {
   plugins: ['babel-plugin-styled-components'],
   presets: ['@babel/preset-env', '@babel/preset-react']
@@ -119,7 +119,7 @@ module.exports = {
 
 This file tells Babel how to compile our packages. Now, let’s create a script to execute Babel. We’ll add this to our `package.json`.
 
-```json
+```json:package.json
 "scripts": {
     "build": "lerna exec --parallel -- babel --root-mode upward src -d lib --ignore **/*.stories.js,**/*.spec.js"
 }
@@ -139,7 +139,7 @@ $ yarn add --dev -W react react-dom styled-components
 
 Then, inside of `/packages` let's create a folder called `/button` and set up our first package.
 
-```json
+```json:packages/button/package.json
 {
   "name": "button",
   "version": "1.0.0",
@@ -162,7 +162,7 @@ This file informs consumers the `module` will live inside the `/src` folder and 
 
 We’ll also want to link our root dependencies to our newly created package. Let’s create a script to do this inside our `package.json`.
 
-```json
+```json:package.json
 "scripts": {
   "bootstrap": "lerna bootstrap --use-workspaces"
 }
@@ -172,7 +172,7 @@ Now we can simply run `yarn bootstrap` to install and link all dependencies.
 
 Okay, now let’s create our first component: `<Button />`.
 
-```js
+```js:packages/button/src/Button.js
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -210,8 +210,7 @@ $ yarn add --dev -W @storybook/react @storybook/addon-docs
 
 We’ll also want to configure Storybook so it knows where to find our stories.
 
-```js
-// .storybook/main.js
+```js:.storybook/main.js
 module.exports = {
   stories: ['../packages/**/*.stories.js'],
   addons: ['@storybook/addon-docs']
@@ -220,8 +219,7 @@ module.exports = {
 
 Then, we can create our first story for the newly created Button inside `/packages/button/src`.
 
-```js
-// Button.stories.js
+```js:packages/button/src/Button.stories.js
 import React from 'react';
 
 import Button from '.';
@@ -236,7 +234,7 @@ export const primary = () => <Button>{'Button'}</Button>;
 
 Finally, let’s add a script to start Storybook.
 
-```json
+```json:package.json
 "scripts": {
   "dev": "start-storybook -p 5555"
 }
@@ -256,7 +254,7 @@ $ yarn add --dev -W jest jest-styled-components babel-jest react-test-renderer j
 
 Next, let's configure our Jest setup in the root directory.
 
-```js
+```js:jest.config.js
 module.exports = {
   cacheDirectory: '.jest-cache',
   coverageDirectory: '.jest-coverage',
@@ -276,7 +274,7 @@ module.exports = {
 
 You can modify this as you see fit. We’ll also want to add some scripts to our `package.json`.
 
-```json
+```json:package.json
 "scripts": {
   "coverage": "jest --coverage",
   "unit": "jest"
@@ -286,8 +284,7 @@ You can modify this as you see fit. We’ll also want to add some scripts to our
 Finally, let’s create our first test alongside our button component. We’ll utilize Snapshot testing since this is a purely presentational component.
 For more information, [see our other post here](/blog/ui-component-library-with-styled-components).
 
-```js
-// Button.spec.js
+```js:packages/button/src/Button.spec.js
 import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -326,7 +323,7 @@ Ran all test suites.
 
 The main reason for the Monorepo structure is to support multiple packages. This allows us to have a single lint, build, test, and release process for all packages. Let’s create an input package and add a new component.
 
-```json
+```json:packages/input/src/package.json
 {
   "name": "input",
   "version": "1.0.0",
@@ -345,7 +342,7 @@ The main reason for the Monorepo structure is to support multiple packages. This
 }
 ```
 
-```js
+```js:packages/input/src/Input.js
 import styled from 'styled-components';
 
 const Input = styled.input`
@@ -363,7 +360,7 @@ export default Input;
 
 Okay, now we have an `Input` component. Let’s run `yarn bootstrap` again to link our packages together and create a new story.
 
-```js
+```js:packages/input/src/Input.stories.js
 import React from 'react';
 
 import Input from '.';
@@ -378,7 +375,7 @@ export const placeholder = () => <Input placeholder="user@gmail.com" />;
 
 Our Storybook instance should still be running via `yarn dev`, but if not, then re-run the command. We can observe our component was rendered correctly.
 
-![](/static/images/monorepo-lerna-yarn-workspaces/storybook.png)
+![Storybook](/static/images/monorepo-lerna-yarn-workspaces/storybook.png)
 
 Finally, let’s ensure Babel works as expected for multiple packages by running `yarn build`.
 
@@ -395,7 +392,7 @@ lerna success exec Executed command in 2 packages: "babel --root-mode upward src
 
 Both packages were compiled successfully 🎉 What about testing? Let’s create another test for the Input component.
 
-```js
+```js:packages/input/src/Input.spec.js
 import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -471,7 +468,7 @@ lerna success version finished
 
 Congrats! 🎉 The tags have been pushed to GitHub. If we wanted to release our packages to NPM, we would use `npx lerna publish` instead.
 
-![](/static/images/monorepo-lerna-yarn-workspaces/tags.png)
+![Yarn Workspaces](/static/images/monorepo-lerna-yarn-workspaces/tags.png)
 
 ## Linting & Formatting
 

@@ -2,7 +2,8 @@ import React from 'react';
 import NextLink from 'next/link';
 import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
 
-const BlogPost = ({ title, summary, slug, badge }) => {
+const BlogPost = (frontMatter) => {
+  const { title, summary, badge } = frontMatter;
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
@@ -10,7 +11,7 @@ const BlogPost = ({ title, summary, slug, badge }) => {
   };
 
   return (
-    <NextLink href={`blog/${slug}`} passHref>
+    <NextLink href={frontMatter.__resourcePath.replace('.mdx', '')} passHref>
       <Link w="100%" _hover={{ textDecoration: 'none' }}>
         <Box mb={8} display="block" width="100%">
           <Flex width="100%" justifyContent="space-between">
