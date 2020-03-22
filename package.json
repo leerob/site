@@ -52,7 +52,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-mdx-enhanced": "^2.4.0",
     "next-optimized-images": "^2.5.5",
-    "next-seo": "3.4.0",
+    "next-seo": "4.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-tweet-embed": "1.2.2",

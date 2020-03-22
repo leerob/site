@@ -52,9 +52,9 @@ const Index = () => {
           <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
             Most Popular
           </Heading>
-          <BlogPost {...styleGuides} badge="32,532 views" />
-          <BlogPost {...monorepo} badge="31,552 views" />
-          <BlogPost {...technicalRecruiting} badge="12,532 views" />
+          <BlogPost {...styleGuides} />
+          <BlogPost {...monorepo} />
+          <BlogPost {...technicalRecruiting} />
         </Flex>
         <Timeline />
         <Subscribe />

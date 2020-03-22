@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   useColorMode,
   Heading,
@@ -20,6 +20,7 @@ import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.m
 import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
 
 const Blog = () => {
+  const [searchValue, setSearchValue] = useState('');
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
@@ -51,26 +52,31 @@ const Blog = () => {
             Use the search or filters to find what you're looking for!
           </Text>
           <InputGroup my={4} mr={4} w="100%">
-            <Input placeholder="Search articles" />
+            <Input
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="Search articles"
+            />
             <InputRightElement
               children={<Icon name="search" color="gray.300" />}
             />
           </InputGroup>
         </Flex>
-        <Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          maxWidth="700px"
-          mt={8}
-        >
-          <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
-            Most Popular
-          </Heading>
-          <BlogPost {...styleGuides} badge="32,532 views" />
-          <BlogPost {...monorepo} badge="31,552 views" />
-          <BlogPost {...technicalRecruiting} badge="12,532 views" />
-        </Flex>
+        {!searchValue && (
+          <Flex
+            flexDirection="column"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            maxWidth="700px"
+            mt={8}
+          >
+            <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
+              Most Popular
+            </Heading>
+            <BlogPost {...styleGuides} />
+            <BlogPost {...monorepo} />
+            <BlogPost {...technicalRecruiting} />
+          </Flex>
+        )}
         <Flex
           flexDirection="column"
           justifyContent="flex-start"
@@ -86,6 +92,11 @@ const Blog = () => {
               (a, b) =>
                 Number(new Date(b.publishedAt)) -
                 Number(new Date(a.publishedAt))
+            )
+            .filter((frontMatter) =>
+              frontMatter.title
+                .toLowerCase()
+                .includes(searchValue.toLowerCase())
             )
             .map((frontMatter) => (
               <BlogPost key={frontMatter.title} {...frontMatter} />

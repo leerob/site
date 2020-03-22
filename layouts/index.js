@@ -13,6 +13,8 @@ import {
 
 import Container from '../components/Container';
 import Subscribe from '../components/Subscribe';
+import ViewCounter from '../components/ViewCounter';
+import BlogSeo from '../components/BlogSeo';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
@@ -22,6 +24,10 @@ const discussUrl = (slug) =>
   )}`;
 
 export default (frontMatter) => {
+  const slug = frontMatter.__resourcePath
+    .replace('blog/', '')
+    .replace('.mdx', '');
+
   return ({ children }) => {
     const { colorMode } = useColorMode();
     const textColor = {
@@ -31,6 +37,7 @@ export default (frontMatter) => {
 
     return (
       <Container>
+        <BlogSeo slug={slug} {...frontMatter} />
         <Stack
           as="article"
           spacing={8}
@@ -66,17 +73,19 @@ export default (frontMatter) => {
               </Flex>
               <Text fontSize="sm" color="gray.500" minWidth="100px">
                 {frontMatter.readingTime.text}
+                {` • `}
+                <ViewCounter id={slug} />
               </Text>
             </Flex>
           </Flex>
           {children}
           <Subscribe />
           <Box>
-            <Link href={discussUrl(frontMatter.slug)} isExternal>
+            <Link href={discussUrl(slug)} isExternal>
               {'Discuss on Twitter'}
             </Link>
             {` • `}
-            <Link href={editUrl(frontMatter.slug)} isExternal>
+            <Link href={editUrl(slug)} isExternal>
               {'Edit on GitHub'}
             </Link>
           </Box>

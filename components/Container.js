@@ -4,6 +4,7 @@ import { useColorMode, Button, Flex, Box } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
 import { DarkModeSwitch } from './DarkModeSwitch';
+import Footer from './Footer';
 
 const StickyNav = styled(Flex)`
   position: sticky;
@@ -75,6 +76,7 @@ const Container = ({ children }) => {
         </Box>
       </StickyNav>
       {children}
+      <Footer />
     </Flex>
   );
 };

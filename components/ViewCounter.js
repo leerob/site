@@ -25,12 +25,13 @@ const ViewCounter = ({ id }) => {
   }, [id]);
 
   useEffect(() => {
-    const registerView = () => fetch(`/api/view?id=${encodeURIComponent(id)}`);
+    const registerView = () =>
+      fetch(`/api/increment-views?id=${encodeURIComponent(id)}`);
 
     registerView();
   }, [id]);
 
-  return views && `${format(views)} views`;
+  return `${views ? format(views) : '–––'} views`;
 };
 
 export default ViewCounter;

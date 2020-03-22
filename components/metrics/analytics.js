@@ -9,10 +9,10 @@ import MetricCard from './card';
 
 function GoogleAnalytics() {
   const { data: allTime } = useSWR(
-    '/api/page-views?startDate=2019-01-01',
+    '/api/ga-page-views?startDate=2019-01-01',
     fetcher
   );
-  const { data: today } = useSWR('/api/page-views?startDate=today', fetcher);
+  const { data: today } = useSWR('/api/ga-page-views?startDate=today', fetcher);
 
   const allTimePageViews = format(allTime?.pageViews);
   const todayPageViews = format(today?.pageViews);

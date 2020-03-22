@@ -2,6 +2,7 @@ import React from 'react';
 import NextApp from 'next/app';
 import { MDXProvider } from '@mdx-js/react';
 import { Global, css } from '@emotion/core';
+import { DefaultSeo } from 'next-seo';
 import {
   ThemeProvider,
   CSSReset,
@@ -12,6 +13,7 @@ import {
 import theme from '../styles/theme';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
 import MDXComponents from '../components/MDXComponents';
+import SEO from '../next-seo.config';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -33,15 +35,11 @@ const GlobalStyle = ({ children }) => {
             scroll-behavior: smooth;
           }
 
-          /* body {
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-          } */
-
           #__next {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            background: ${colorMode === 'light' ? 'white' : '#171923'};
           }
         `}
       />
@@ -59,6 +57,7 @@ class App extends NextApp {
         <MDXProvider components={MDXComponents}>
           <ColorModeProvider>
             <GlobalStyle>
+              <DefaultSeo {...SEO} />
               <Component />
             </GlobalStyle>
           </ColorModeProvider>
