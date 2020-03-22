@@ -8,7 +8,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Icon,
+  Icon
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
@@ -24,7 +24,7 @@ const Blog = () => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
-    dark: 'gray.400',
+    dark: 'gray.400'
   };
 
   return (
@@ -56,9 +56,9 @@ const Blog = () => {
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles"
             />
-            <InputRightElement
-              children={<Icon name="search" color="gray.300" />}
-            />
+            <InputRightElement>
+              <Icon name="search" color="gray.300" />
+            </InputRightElement>
           </InputGroup>
         </Flex>
         {!searchValue && (

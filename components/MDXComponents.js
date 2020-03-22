@@ -49,18 +49,24 @@ const TData = (props) => (
 );
 
 const CustomLink = (props) => {
+  const { colorMode } = useColorMode();
+  const color = {
+    light: 'hsl(208, 99%, 44%)',
+    dark: 'hsl(208, 95%, 68%)'
+  };
+
   const href = props.href;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
       <NextLink href={href} passHref>
-        <Link color="blue.500" {...props} />
+        <Link color={color[colorMode]} {...props} />
       </NextLink>
     );
   }
 
-  return <Link color="blue.500" isExternal {...props} />;
+  return <Link color={color[colorMode]} isExternal {...props} />;
 };
 
 const DocsHeading = (props) => (
@@ -104,13 +110,9 @@ const DocsHeading = (props) => (
 );
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my="1em" {...props}></Heading>,
-  h2: (props) => (
-    <DocsHeading as="h2" fontWeight="bold" size="lg" {...props}></DocsHeading>
-  ),
-  h3: (props) => (
-    <DocsHeading as="h3" size="md" fontWeight="bold" {...props}></DocsHeading>
-  ),
+  h1: (props) => <Heading as="h1" size="xl" my="1em" {...props} />,
+  h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
+  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
     <Code variantColor="yellow" fontSize="0.84em" {...props} />
   ),
