@@ -1,5 +1,13 @@
 import React from 'react';
-import { useColorMode, Heading, Text, Flex, Stack, Box } from '@chakra-ui/core';
+import {
+  useColorMode,
+  Heading,
+  Text,
+  Flex,
+  Stack,
+  Link,
+  Icon
+} from '@chakra-ui/core';
 
 import Container from '../components/Container';
 
@@ -46,6 +54,53 @@ const About = () => {
             solutions. Lee enjoys all things technology, music, and
             photography/videography.
           </Text>
+          <Heading letterSpacing="tight" mt={8} mb={4} as="h2" size="xl">
+            Conference Talks
+          </Heading>
+          <Heading size="md" as="h3" mb={2} fontWeight="medium">
+            <Link
+              display="flex"
+              href="/building-component-libraries-with-a-monorepo.pdf"
+              isExternal
+            >
+              <Flex align="center">
+                Building Component Libraries with a Monorepo
+                <Icon name="external-link" mx={2} size="16px" />
+              </Flex>
+            </Link>
+          </Heading>
+          <Text color={secondaryTextColor[colorMode]} mb={8}>
+            Learn why your organization needs a component library and discover
+            the best practices for building, scaling, and adopting it across all
+            platforms. We'll be using industry-standard technology (React,
+            JavaScript, Storybook) alongside cutting-edge solutions (CSS-in-JS,
+            Monorepo).
+          </Text>
+          <Heading size="md" as="h3" mb={2} fontWeight="medium">
+            <Link
+              display="flex"
+              href="/recruiting-engineers-talent42-lee-robinson.pdf"
+              isExternal
+            >
+              <Flex align="center">
+                Recruiting Engineers (From An Engineer's Perspective)
+                <Icon name="external-link" mx={2} size="16px" />
+              </Flex>
+            </Link>
+          </Heading>
+          <Text color={secondaryTextColor[colorMode]} mb={8}>
+            Hiring talent is becoming increasingly difficult with low
+            unemployment rates and the tech industry booming. What you can do to
+            stick out? Learn from an engineer who's been involved on both sides
+            - both as a candidate and with hiring - on what candidates really
+            want out of a position.
+          </Text>
+          <iframe
+            height="280"
+            src="https://www.google.com/maps/d/embed?mid=1QOGi-u8d4vwoQ4vC4zQjKxrSfsDIQdOK&hl=en"
+            title="Lee's Travel Map"
+            width="100%"
+          />
         </Flex>
       </Stack>
     </Container>

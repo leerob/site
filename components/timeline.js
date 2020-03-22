@@ -19,9 +19,7 @@ const YearDivider = () => {
     dark: 'gray.600'
   };
 
-  return (
-    <Divider borderColor={borderColor[colorMode]} mt={8} mb={8} w="100%" />
-  );
+  return <Divider borderColor={borderColor[colorMode]} my={8} w="100%" />;
 };
 
 const TimelineStep = ({ title, children }) => {
