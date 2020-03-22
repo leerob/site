@@ -3,7 +3,6 @@ title: 'Create a Dashboard with Next.js API Routes - Fetching Data with SWR'
 publishedAt: '2020-02-24'
 summary: 'Learn how to fetch data with SWR, a React Hooks library which improves the developer experience of retrieving data.'
 image: '/static/images/metrics.png'
-slug: 'fetching-data-with-swr'
 ---
 
 import Unsplash from '../../components/metrics/unsplash';
@@ -38,7 +37,7 @@ const { data } = useSWR('/api/unsplash', fetcher);
 ```js
 import fetch from 'isomorphic-unfetch';
 
-export default async function(...args) {
+export default async function (...args) {
   const res = await fetch(...args);
 
   return res.json();

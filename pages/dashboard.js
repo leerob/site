@@ -11,7 +11,7 @@ const Dashboard = () => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
-    dark: 'gray.400'
+    dark: 'gray.400',
   };
 
   return (
@@ -36,7 +36,7 @@ const Dashboard = () => {
           <Text color={secondaryTextColor[colorMode]}>
             This is my personal dashboard, built with Next.js API routes
             deployed as serverless functions. I use this dashboard to track
-            various metrics across platforms like Unplash, Google Analytics,
+            various metrics across platforms like Unsplash, Google Analytics,
             GitHub, and more.
           </Text>
         </Flex>

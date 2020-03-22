@@ -3,7 +3,6 @@ title: 'Configuring Sentry for Next.js Apps'
 publishedAt: '2019-04-23'
 summary: 'Learn how to set up Sentry to capture client-side and server-side exceptions for Next.js applications.'
 image: '/static/images/configuring-sentry-for-nextjs-apps/banner.png'
-slug: 'configuring-sentry-for-nextjs-apps'
 ---
 
 For many teams using Next.js, setting up exception monitoring is a critical requirement before going to production.
@@ -57,7 +56,7 @@ import App, { Container } from 'next/app';
 import * as Sentry from '@sentry/browser';
 
 Sentry.init({
-  dsn: 'ENTER_YOUR_SENTRY_DSN_HERE'
+  dsn: 'ENTER_YOUR_SENTRY_DSN_HERE',
 });
 
 class MyApp extends App {
@@ -141,7 +140,7 @@ const withSourceMaps = require('@zeit/next-source-maps')();
 module.exports = withSourceMaps({
   webpack(config, _options) {
     return config;
-  }
+  },
 });
 ```
 

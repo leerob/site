@@ -3,7 +3,6 @@ title: 'Create a Dashboard with Next.js API Routes - Unsplash API'
 publishedAt: '2020-02-04'
 summary: 'Learn how to use Next.js API routes to integrate with the Unsplash API and retrieve statistics about a user.'
 image: '/static/images/metrics.png'
-slug: 'unsplash-api-nextjs'
 ---
 
 import Unsplash from '../../components/metrics/unsplash';
@@ -90,7 +89,7 @@ let unsplash;
 export default async (_, res) => {
   if (!unsplash) {
     unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY
+      accessKey: process.env.UNSPLASH_ACCESS_KEY,
     });
   }
 
@@ -109,7 +108,7 @@ let unsplash;
 export default async (_, res) => {
   if (!unsplash) {
     unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY
+      accessKey: process.env.UNSPLASH_ACCESS_KEY,
     });
   }
 
@@ -118,7 +117,7 @@ export default async (_, res) => {
 
   return res.status(200).json({
     downloads: downloads.total,
-    views: views.total
+    views: views.total,
   });
 };
 ```

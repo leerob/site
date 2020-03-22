@@ -3,7 +3,6 @@ title: 'Creating a Monorepo with Lerna & Yarn Workspaces'
 publishedAt: '2019-03-29'
 summary: 'In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process.'
 image: '/static/images/monorepo-lerna-yarn-workspaces/banner.png'
-slug: 'monorepo-lerna-yarn-workspaces'
 ---
 
 ![Creating a Monorepo with Lerna & Yarn Workspace](/static/images/monorepo-lerna-yarn-workspaces/banner.png)
@@ -113,7 +112,7 @@ Okay, back to Babel. To set up the global configuration for Babel, we’ll need 
 ```js:babel.config.js
 module.exports = {
   plugins: ['babel-plugin-styled-components'],
-  presets: ['@babel/preset-env', '@babel/preset-react']
+  presets: ['@babel/preset-env', '@babel/preset-react'],
 };
 ```
 
@@ -213,7 +212,7 @@ We’ll also want to configure Storybook so it knows where to find our stories.
 ```js:.storybook/main.js
 module.exports = {
   stories: ['../packages/**/*.stories.js'],
-  addons: ['@storybook/addon-docs']
+  addons: ['@storybook/addon-docs'],
 };
 ```
 
@@ -226,7 +225,7 @@ import Button from '.';
 
 export default {
   component: Button,
-  title: 'Design System|Button'
+  title: 'Design System|Button',
 };
 
 export const primary = () => <Button>{'Button'}</Button>;
@@ -265,10 +264,10 @@ module.exports = {
       branches: 100,
       functions: 100,
       lines: 100,
-      statements: 100
-    }
+      statements: 100,
+    },
   },
-  testPathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/']
+  testPathIgnorePatterns: ['<rootDir>/packages/(?:.+?)/lib/'],
 };
 ```
 
@@ -367,7 +366,7 @@ import Input from '.';
 
 export default {
   component: Input,
-  title: 'Design System|Input'
+  title: 'Design System|Input',
 };
 
 export const placeholder = () => <Input placeholder="user@gmail.com" />;

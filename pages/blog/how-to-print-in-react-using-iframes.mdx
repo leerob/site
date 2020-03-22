@@ -3,7 +3,6 @@ title: 'How To Print in React Using Iframes'
 publishedAt: '2019-06-04'
 summary: "Learn how to use iframes to print React components while only printing what's necessary."
 image: '/static/images/how-to-print-in-react-using-iframes/banner.png'
-slug: 'how-to-print-in-react-using-iframes'
 ---
 
 You want to print the contents of a page. If you use the standard browser API, this will print the entirety of the _current_ page.
@@ -132,7 +131,7 @@ class PaymentConfirmation extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: true
+      isLoading: true,
     };
 
     this.handleMessage = this.handleMessage.bind(this);
@@ -149,7 +148,7 @@ class PaymentConfirmation extends React.Component {
   handleMessage(event) {
     if (event.data.action === 'receipt-loaded') {
       this.setState({
-        isLoading: false
+        isLoading: false,
       });
     }
   }

@@ -3,7 +3,6 @@ title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
 publishedAt: '2019-11-10'
 summary: 'Learn how to integrate Next.js and React with Mailchimp to build a newsletter subscription form.'
 image: '/static/images/mailchimp-next-js/banner.png'
-slug: 'mailchimp-next-js'
 ---
 
 ![Next.js and Mailchimp](/static/images/mailchimp-next-js/banner.png)
@@ -105,7 +104,7 @@ export default async (req, res) => {
     // 5. The status of 'subscribed' is equivalent to a double opt-in.
     const data = {
       email_address: email,
-      status: 'subscribed'
+      status: 'subscribed',
     };
 
     // 6. Send a POST request to Mailchimp.
@@ -115,16 +114,16 @@ export default async (req, res) => {
         body: JSON.stringify(data),
         headers: {
           Authorization: `apikey ${API_KEY}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        method: 'POST'
+        method: 'POST',
       }
     );
 
     // 7. Swallow any errors from Mailchimp and return a better error message.
     if (response.status >= 400) {
       return res.status(400).json({
-        error: `There was an error subscribing to the newsletter. Shoot me an email at [me@leerob.io] and I'll add you to the list.`
+        error: `There was an error subscribing to the newsletter. Shoot me an email at [me@leerob.io] and I'll add you to the list.`,
       });
     }
 
@@ -156,12 +155,12 @@ function Subscribe() {
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value
+        email: inputEl.current.value,
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     });
 
     const { error } = await res.json();

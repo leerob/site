@@ -3,7 +3,6 @@ title: "Things I've Learned Building Next.js Apps"
 publishedAt: '2019-02-15'
 summary: "I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use."
 image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg'
-slug: 'things-ive-learned-building-nextjs-apps'
 ---
 
 ![Next.js](/static/images/things-ive-learned-building-nextjs-apps/nextjs.png)
@@ -86,7 +85,7 @@ to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy 
 import dynamic from 'next/dynamic';
 
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
-  ssr: false
+  ssr: false,
 });
 
 export default () => (
@@ -103,7 +102,7 @@ While this works, we can go a step further and provide a [loading placeholder](/
 ```jsx
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
   loading: () => <Input />,
-  ssr: false
+  ssr: false,
 });
 ```
 
@@ -164,7 +163,7 @@ First, you will need to create/override your `next.config.js` file to customize 
 
 ```js:next.config.js
 module.exports = {
-  webpack: function(cfg) {
+  webpack: function (cfg) {
     const originalEntry = cfg.entry;
     cfg.entry = async () => {
       const entries = await originalEntry();
@@ -180,7 +179,7 @@ module.exports = {
     };
 
     return cfg;
-  }
+  },
 };
 ```
 

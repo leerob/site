@@ -3,7 +3,6 @@ title: 'Using Mapbox with Next.js (Instead of Google Maps)'
 publishedAt: '2019-01-13'
 summary: 'Learn how to use Mapbox with Next.js to create a non-SSR map component that is free up to 50,000 map views per month.'
 image: '/static/images/using-mapbox-with-next-js/banner.png'
-slug: 'using-mapbox-with-next-js'
 ---
 
 In the process of selecting a mapping library for [dsmtech.io](https://dsmtech.io), I ran into a
@@ -61,8 +60,8 @@ class Map extends Component {
       height: '100vh',
       latitude: 41.5868,
       longitude: -93.625,
-      zoom: 13
-    }
+      zoom: 13,
+    },
   };
 
   render() {
@@ -91,7 +90,7 @@ on the client-side. Let's modify our `pages/index.js` file, or whichever route y
 import dynamic from 'next/dynamic';
 
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/Map'), {
-  ssr: false
+  ssr: false,
 });
 
 export default () => <DynamicComponentWithNoSSR />;

@@ -3,7 +3,6 @@ title: 'How To Use Encrypted Secrets With Now'
 publishedAt: '2020-02-06'
 summary: "Learn how to encrypt secrets to workaround ZEIT Now's 4kb max limit for environment variables."
 image: '/static/images/now-env-variables-size-limit/banner.png'
-slug: 'now-env-variables-size-limit'
 ---
 
 When trying to deploy a new API route with [Now](https://zeit.co), I stumbled onto this error.
@@ -127,7 +126,7 @@ import { getDecryptedSecret } from './decret-secret';
 
 const googleAuth = new google.auth.GoogleAuth({
   credentials: getDecryptedSecret(),
-  scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+  scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
 });
 
 export default googleAuth;

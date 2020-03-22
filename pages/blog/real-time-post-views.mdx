@@ -3,7 +3,6 @@ title: 'Real-Time Blog Post Views With React and Firebase'
 publishedAt: '2019-08-21'
 summary: 'Want more accurate page view counts? Learn how to create your own microservice for tracking real-time view counts using Firebase and then visualize those counts using React.'
 image: '/static/images/real-time-post-views/banner.jpg'
-slug: 'real-time-post-views'
 ---
 
 [![Blog Post Views](/static/images/real-time-post-views/chart.png)](https://github.com/timqian/chart.xkcd)
@@ -91,7 +90,7 @@ const cert = join(__dirname, '../service-account.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(cert),
-  databaseURL: 'https://your-blog.firebaseio.com'
+  databaseURL: 'https://your-blog.firebaseio.com',
 });
 
 module.exports = admin.database();
@@ -133,7 +132,7 @@ module.exports = async (req, res) => {
   // ensure no duplicate views
   verify(req);
   const {
-    query: { id }
+    query: { id },
   } = parse(req.url, true);
 
   if (!id) {
@@ -196,7 +195,7 @@ export default async function loadDb() {
 
   try {
     firebase.initializeApp({
-      databaseURL: 'https://your-blog.firebaseio.com'
+      databaseURL: 'https://your-blog.firebaseio.com',
     });
   } catch (error) {
     /*
@@ -318,8 +317,9 @@ function Views(props) {
 
   return (
     <Container>
-      <StyledViews highlight={highlight}>{` - ${props.views &&
-        formattedViews}`}</StyledViews>
+      <StyledViews highlight={highlight}>{` - ${
+        props.views && formattedViews
+      }`}</StyledViews>
     </Container>
   );
 }

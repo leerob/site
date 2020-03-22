@@ -3,7 +3,6 @@ title: 'GraphQL at Hy-Vee'
 publishedAt: '2019-10-30'
 summary: "Learn about how we've adopted GraphQL at Hy-Vee to improve developer efficiency and enhance our user experience."
 image: '/static/images/graphql-at-hy-vee/banner.jpg'
-slug: 'graphql-at-hy-vee'
 ---
 
 ![GraphQL at Hy-Vee](/static/images/graphql-at-hy-vee/banner.jpg)
@@ -169,7 +168,7 @@ To achieve the GraphQL API, we’re using a custom solution - but it’s similar
 
 ```js
 const {
-  ApolloGateway
+  ApolloGateway,
 } = require('[@apollo/gateway](http://twitter.com/apollo/gateway)');
 
 const gateway = new ApolloGateway({
@@ -177,8 +176,8 @@ const gateway = new ApolloGateway({
     { name: 'accounts', url: 'accounts-api.company.com/graphql' },
     { name: 'reviews', url: 'reviews-api.company.com/graphql' },
     { name: 'products', url: 'products-api.company.com/graphql' },
-    { name: 'inventory', url: 'inventory-api.company.com/graphql' }
-  ]
+    { name: 'inventory', url: 'inventory-api.company.com/graphql' },
+  ],
 });
 ```
 

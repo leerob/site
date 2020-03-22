@@ -3,7 +3,6 @@ title: 'Going Serverless with Next.js, Firebase, and Now'
 publishedAt: '2019-07-19'
 summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.'
 image: '/static/images/going-serverless-next-firebase-now/banner.jpg'
-slug: 'going-serverless-next-firebase-now'
 ---
 
 ![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
@@ -87,7 +86,7 @@ const firebase = admin
       credential: admin.credential.cert(
         require('../.firebase/service-account.json')
       ),
-      databaseURL: 'https://your-name-here.firebaseio.com'
+      databaseURL: 'https://your-name-here.firebaseio.com',
     },
     'server'
   )
@@ -143,7 +142,7 @@ Since we already created a custom API, we can use Next's default server to commu
 
 ```js
 module.exports = {
-  target: 'serverless'
+  target: 'serverless',
 };
 ```
 

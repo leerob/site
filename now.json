@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "leerob",
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
