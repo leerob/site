@@ -167,17 +167,15 @@ This allows us to retrieve the associated product image for the list item.
 To achieve the GraphQL API, we’re using a custom solution - but it’s similar to the idea behind [Apollo Federation](https://blog.apollographql.com/apollo-federation-f260cf525d21).
 
 ```js
-const {
-  ApolloGateway,
-} = require('[@apollo/gateway](http://twitter.com/apollo/gateway)');
+const { ApolloGateway } = require('@apollo/gateway');
 
 const gateway = new ApolloGateway({
   serviceList: [
     { name: 'accounts', url: 'accounts-api.company.com/graphql' },
     { name: 'reviews', url: 'reviews-api.company.com/graphql' },
     { name: 'products', url: 'products-api.company.com/graphql' },
-    { name: 'inventory', url: 'inventory-api.company.com/graphql' },
-  ],
+    { name: 'inventory', url: 'inventory-api.company.com/graphql' }
+  ]
 });
 ```
 

@@ -90,7 +90,7 @@ const cert = join(__dirname, '../service-account.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(cert),
-  databaseURL: 'https://your-blog.firebaseio.com',
+  databaseURL: 'https://your-blog.firebaseio.com'
 });
 
 module.exports = admin.database();
@@ -132,7 +132,7 @@ module.exports = async (req, res) => {
   // ensure no duplicate views
   verify(req);
   const {
-    query: { id },
+    query: { id }
   } = parse(req.url, true);
 
   if (!id) {
@@ -195,7 +195,7 @@ export default async function loadDb() {
 
   try {
     firebase.initializeApp({
-      databaseURL: 'https://your-blog.firebaseio.com',
+      databaseURL: 'https://your-blog.firebaseio.com'
     });
   } catch (error) {
     /*

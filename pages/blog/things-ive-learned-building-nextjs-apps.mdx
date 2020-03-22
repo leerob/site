@@ -85,7 +85,7 @@ to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy 
 import dynamic from 'next/dynamic';
 
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
-  ssr: false,
+  ssr: false
 });
 
 export default () => (
@@ -102,7 +102,7 @@ While this works, we can go a step further and provide a [loading placeholder](/
 ```jsx
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
   loading: () => <Input />,
-  ssr: false,
+  ssr: false
 });
 ```
 
@@ -179,7 +179,7 @@ module.exports = {
     };
 
     return cfg;
-  },
+  }
 };
 ```
 

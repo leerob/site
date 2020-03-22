@@ -133,14 +133,14 @@ export default async (_, res) => {
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
     },
-    scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
   });
 
   const youtube = google.youtube({
     auth,
-    version: 'v3',
+    version: 'v3'
   });
 
   return res.status(200).json({});
@@ -159,19 +159,19 @@ export default async (_, res) => {
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
     },
-    scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
   });
 
   const youtube = google.youtube({
     auth,
-    version: 'v3',
+    version: 'v3'
   });
 
   const response = await youtube.channels.list({
     id: 'UCZMli3czZnd1uoc1ShTouQw',
-    part: 'statistics',
+    part: 'statistics'
   });
 
   const channel = response.data.items[0];
@@ -179,7 +179,7 @@ export default async (_, res) => {
 
   return res.status(200).json({
     subscriberCount,
-    viewCount,
+    viewCount
   });
 };
 ```

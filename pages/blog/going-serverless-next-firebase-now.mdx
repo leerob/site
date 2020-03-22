@@ -86,7 +86,7 @@ const firebase = admin
       credential: admin.credential.cert(
         require('../.firebase/service-account.json')
       ),
-      databaseURL: 'https://your-name-here.firebaseio.com',
+      databaseURL: 'https://your-name-here.firebaseio.com'
     },
     'server'
   )
@@ -142,7 +142,7 @@ Since we already created a custom API, we can use Next's default server to commu
 
 ```js
 module.exports = {
-  target: 'serverless',
+  target: 'serverless'
 };
 ```
 

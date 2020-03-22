@@ -89,7 +89,7 @@ let unsplash;
 export default async (_, res) => {
   if (!unsplash) {
     unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY,
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
     });
   }
 
@@ -108,7 +108,7 @@ let unsplash;
 export default async (_, res) => {
   if (!unsplash) {
     unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY,
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
     });
   }
 
@@ -117,7 +117,7 @@ export default async (_, res) => {
 
   return res.status(200).json({
     downloads: downloads.total,
-    views: views.total,
+    views: views.total
   });
 };
 ```

@@ -131,7 +131,7 @@ class PaymentConfirmation extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: true
     };
 
     this.handleMessage = this.handleMessage.bind(this);
@@ -148,7 +148,7 @@ class PaymentConfirmation extends React.Component {
   handleMessage(event) {
     if (event.data.action === 'receipt-loaded') {
       this.setState({
-        isLoading: false,
+        isLoading: false
       });
     }
   }

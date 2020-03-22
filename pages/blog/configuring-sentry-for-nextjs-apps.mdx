@@ -56,7 +56,7 @@ import App, { Container } from 'next/app';
 import * as Sentry from '@sentry/browser';
 
 Sentry.init({
-  dsn: 'ENTER_YOUR_SENTRY_DSN_HERE',
+  dsn: 'ENTER_YOUR_SENTRY_DSN_HERE'
 });
 
 class MyApp extends App {
@@ -140,7 +140,7 @@ const withSourceMaps = require('@zeit/next-source-maps')();
 module.exports = withSourceMaps({
   webpack(config, _options) {
     return config;
-  },
+  }
 });
 ```
 

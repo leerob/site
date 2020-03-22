@@ -140,14 +140,14 @@ export default async (_, res) => {
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
     },
-    scopes: ['https://www.googleapis.com/auth/analytics.readonly'],
+    scopes: ['https://www.googleapis.com/auth/analytics.readonly']
   });
 
   const analytics = google.analytics({
     auth,
-    version: 'v3',
+    version: 'v3'
   });
 
   return res.status(200).json({});
@@ -173,14 +173,14 @@ export default async (_, res) => {
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
     },
-    scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
   });
 
   const analytics = google.analytics({
     auth,
-    version: 'v3',
+    version: 'v3'
   });
 
   const startDate = req.query.startDate;
@@ -188,11 +188,11 @@ export default async (_, res) => {
     'end-date': 'today',
     ids: 'ga:187331021',
     metrics: 'ga:pageviews',
-    'start-date': startDate,
+    'start-date': startDate
   });
 
   return res.status(200).json({
-    pageViews: response.data.rows[0][0],
+    pageViews: response.data.rows[0][0]
   });
 };
 ```

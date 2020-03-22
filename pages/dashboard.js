@@ -11,7 +11,7 @@ const Dashboard = () => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
-    dark: 'gray.400',
+    dark: 'gray.400'
   };
 
   return (
