@@ -13,7 +13,7 @@
     "url": "git+https://github.com/leerob/leerob.io.git"
   },
   "scripts": {
-    "build": "next build",
+    "build": "next build ; next build",
     "dev": "next",
     "lint": "eslint . --ext .json --ext .js",
     "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
