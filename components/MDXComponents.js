@@ -94,7 +94,7 @@ const DocsHeading = (props) => (
         <PseudoBox
           aria-label="anchor"
           as="a"
-          color="teal.500"
+          color="blue.500"
           fontWeight="normal"
           outline="none"
           _focus={{
@@ -113,7 +113,7 @@ const DocsHeading = (props) => (
 );
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my="1em" {...props} />,
+  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
@@ -127,9 +127,9 @@ const MDXComponents = {
   td: TData,
   a: CustomLink,
   p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
-  ul: (props) => <Box as="ul" pt="8px" pl="16px" {...props} />,
-  ol: (props) => <Box as="ol" pt="8px" pl="16px" {...props} />,
-  li: (props) => <Box as="li" pb="4px" {...props} />,
+  ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
+  ol: (props) => <Box as="ol" pt={2} pl={4} {...props} />,
+  li: (props) => <Box as="li" pb={1} {...props} />,
   blockquote: (props) => (
     <Callout
       mt={4}

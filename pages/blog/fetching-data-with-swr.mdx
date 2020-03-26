@@ -47,7 +47,7 @@ export default async function (...args) {
 `data` will contain the JSON response from our API route.
 
 ```json
-// /api/unsplash
+// /api/unsplash response
 
 {
   "downloads": 7995,
@@ -60,8 +60,7 @@ export default async function (...args) {
 Now that you have access to the data from the route, you can build a UI to consume the data.
 I've chosen to create "cards" for each metric.
 
-```js
-// components/metrics/unsplash.js
+```js:components/metrics/unsplash.js
 import React from 'react';
 import useSWR from 'swr';
 import format from 'comma-number';
@@ -69,7 +68,6 @@ import format from 'comma-number';
 import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
-import MetricGrid from './grid';
 
 function Unsplash() {
   const { data } = useSWR('/api/unsplash', fetcher);
@@ -79,27 +77,17 @@ function Unsplash() {
   const link = 'https://unsplash.com/@leerob';
 
   return (
-    <MetricGrid>
-      <MetricCard
-        brand="Unsplash"
-        header="Unsplash Downloads"
-        link={link}
-        metric={downloads}
-      />
-      <MetricCard
-        brand="Unsplash"
-        header="Unsplash Views"
-        link={link}
-        metric={views}
-      />
-    </MetricGrid>
+    <>
+      <MetricCard header="Unsplash Downloads" link={link} metric={downloads} />
+      <MetricCard header="Unsplash Views" link={link} metric={views} />
+    </>
   );
 }
 
 export default Unsplash;
 ```
 
-_Note_: The `MetricGrid` and `MetricCard` source code is [here](https://github.com/leerob/leerob.io/blob/master/components/metrics/card.js).
+_Note_: The `MetricGrid` source code is [here](https://github.com/leerob/leerob.io/blob/master/components/metrics/card.js).
 
 ## Example
 
