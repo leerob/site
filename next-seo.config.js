@@ -14,7 +14,7 @@ const SEO = {
     description,
     images: [
       {
-        url: 'https://leerob.io/static/images/og-banner.png',
+        url: 'https://leerob.io/static/images/speaking/speaking.jpg',
         alt: title
       }
     ]

@@ -12,7 +12,13 @@ module.exports = {
     camelcase: [
       'error',
       {
-        allow: ['client_email', 'client_id', 'private_key', 'project_id']
+        allow: [
+          'client_email',
+          'client_id',
+          'private_key',
+          'project_id',
+          'email_address'
+        ]
       }
     ]
   }

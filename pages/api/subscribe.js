@@ -13,7 +13,6 @@ export default async (req, res) => {
     const DATACENTER = API_KEY.split('-')[1];
 
     const data = {
-      // eslint-disable-next-line camelcase
       email_address: email,
       status: 'subscribed'
     };
