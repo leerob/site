@@ -1,6 +1,6 @@
-import title from 'title';
+const remarkCapitalize = require('remark-capitalize');
 
-const EXCLUDED_WORDS = [
+const excludedWords = [
   '1Password',
   'About',
   'API',
@@ -24,7 +24,6 @@ const EXCLUDED_WORDS = [
   'w_flux'
 ];
 
-export default (text) =>
-  title(text, {
-    special: EXCLUDED_WORDS
-  });
+module.exports = remarkCapitalize({
+  special: excludedWords
+});

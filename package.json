@@ -18,7 +18,8 @@
     "lint": "eslint . --ext .json --ext .js",
     "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
     "start": "next start",
-    "test": "yarn lint"
+    "test": "yarn lint",
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
@@ -51,6 +52,8 @@
     "next": "9.3.1",
     "next-mdx-enhanced": "2.4.0",
     "next-seo": "4.4.0",
+    "patch-package": "^6.2.1",
+    "postinstall-postinstall": "^2.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-tweet-embed": "1.2.2",
@@ -60,7 +63,6 @@
     "remark-code-titles": "0.1.1",
     "remark-slug": "5.1.2",
     "swr": "0.1.18",
-    "title": "3.4.1",
     "unsplash-js": "6.0.0"
   },
   "devDependencies": {
