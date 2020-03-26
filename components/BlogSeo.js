@@ -1,10 +1,8 @@
 import React from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
-import { dateTime } from '../utils/date-format';
-
 const BlogSeo = ({ title, summary, publishedAt, slug, image }) => {
-  const date = dateTime(publishedAt);
+  const date = new Date(publishedAt).toISOString();
   const url = `https://leerob.io/blog/${slug}`;
   const featuredImage = {
     url: `https://leerob.io${image}`,

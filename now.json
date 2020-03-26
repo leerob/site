@@ -15,6 +15,10 @@
     {
       "source": "/LeeRobinson.pdf",
       "destination": "/robinson-resume-2019.pdf"
+    },
+    {
+      "source": "/projects",
+      "destination": "/about"
     }
   ],
   "headers": [
