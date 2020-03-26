@@ -53,6 +53,7 @@ const Blog = () => {
           </Text>
           <InputGroup my={4} mr={4} w="100%">
             <Input
+              aria-label="Search articles"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles"
             />

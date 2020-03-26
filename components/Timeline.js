@@ -30,15 +30,17 @@ const TimelineStep = ({ title, children }) => {
   };
 
   return (
-    <Stack ml={2} mb={4}>
-      <Flex align="center">
-        <Icon name="check-circle" mr={2} color="whatsapp.500" />
-        <ListItem fontWeight="medium">{title}</ListItem>
-      </Flex>
-      <Text color={color[colorMode]} ml={6}>
-        {children}
-      </Text>
-    </Stack>
+    <ListItem>
+      <Stack ml={2} mb={4}>
+        <Flex align="center">
+          <Icon name="check-circle" mr={2} color="whatsapp.500" />
+          <Text fontWeight="medium">{title}</Text>
+        </Flex>
+        <Text color={color[colorMode]} ml={6}>
+          {children}
+        </Text>
+      </Stack>
+    </ListItem>
   );
 };
 
@@ -65,8 +67,8 @@ const FullTimeline = () => (
         I moved Downtown DSM into a quaint 1BR apartment. Des Moines has always
         felt like home growing up ~45 minutes away.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       2015
     </Heading>
@@ -83,8 +85,8 @@ const FullTimeline = () => (
         Spent the summer in (beautiful?) Cedar Rapids, IA working at Rockwell
         Collins.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       2014
     </Heading>
@@ -97,8 +99,8 @@ const FullTimeline = () => (
         interviewing skills weren't great, but I managed to snag my first
         internship.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       2011
     </Heading>
@@ -120,8 +122,8 @@ const FullTimeline = () => (
         I didn't pick up programming right away. It didn't help we learned C to
         start – I'm glad I stuck with it, though.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       1998
     </Heading>
@@ -130,8 +132,8 @@ const FullTimeline = () => (
         I remember many nights playing Age of Empires, Lego Island, and
         Runescape.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       1997
     </Heading>
@@ -140,8 +142,8 @@ const FullTimeline = () => (
         Every time we'd go to Target, I would beg my mom to get a pack of
         Pokémon cards. Sorry, mom.
       </TimelineStep>
-      <YearDivider />
     </List>
+    <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       1993
     </Heading>
@@ -196,8 +198,8 @@ const Timeline = () => {
           I spoke to over 100 technical recruiting leaders from across the
           country at Talent42 in Seattle during a 45-minute keynote.
         </TimelineStep>
-        <YearDivider />
       </List>
+      <YearDivider />
       <Heading
         as="h3"
         size="lg"

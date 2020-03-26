@@ -79,7 +79,12 @@ function Subscribe() {
         articles.
       </Text>
       <InputGroup size="md" mt={4}>
-        <Input placeholder="tim@apple.com" ref={inputEl} type="email" />
+        <Input
+          aria-label="Email for newsletter"
+          placeholder="tim@apple.com"
+          ref={inputEl}
+          type="email"
+        />
         <InputRightElement width="6.75rem">
           <Button fontWeight="bold" h="1.75rem" size="sm" onClick={subscribe}>
             {'Subscribe'}

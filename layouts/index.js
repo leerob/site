@@ -57,7 +57,14 @@ export default (frontMatter) => {
             <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
               {frontMatter.title}
             </Heading>
-            <Flex justify="space-between" align="center" mt={2} w="100%" mb={4}>
+            <Flex
+              justify="space-between"
+              align={['initial', 'center']}
+              direction={['column', 'row']}
+              mt={2}
+              w="100%"
+              mb={4}
+            >
               <Flex align="center">
                 <Avatar
                   size="xs"
@@ -71,7 +78,7 @@ export default (frontMatter) => {
                   {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
                 </Text>
               </Flex>
-              <Text fontSize="sm" color="gray.500" minWidth="100px">
+              <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
                 {frontMatter.readingTime.text}
                 {` • `}
                 <ViewCounter id={slug} />

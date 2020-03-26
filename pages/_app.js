@@ -31,7 +31,7 @@ const GlobalStyle = ({ children }) => {
           }
 
           html {
-            min-width: 320px;
+            min-width: 360px;
             scroll-behavior: smooth;
           }
 

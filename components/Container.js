@@ -30,14 +30,7 @@ const Container = ({ children }) => {
   };
 
   return (
-    <Flex
-      as="main"
-      justifyContent="center"
-      flexDirection="column"
-      bg={bgColor[colorMode]}
-      color={primarytextColor[colorMode]}
-      px={8}
-    >
+    <>
       <StickyNav
         flexDirection="row"
         justifyContent="space-between"
@@ -46,8 +39,9 @@ const Container = ({ children }) => {
         width="100%"
         bg={navBgColor[colorMode]}
         as="nav"
-        py={8}
-        my={8}
+        p={8}
+        mt={[0, 8]}
+        mb={8}
         mx="auto"
       >
         <IconButton
@@ -57,30 +51,39 @@ const Container = ({ children }) => {
         />
         <Box>
           <NextLink href="/dashboard" passHref>
-            <Button as="a" variant="ghost">
+            <Button as="a" variant="ghost" p={[1, 4]}>
               Dashboard
             </Button>
           </NextLink>
           <NextLink href="/blog" passHref>
-            <Button as="a" variant="ghost">
+            <Button as="a" variant="ghost" p={[1, 4]}>
               Blog
             </Button>
           </NextLink>
           <NextLink href="/about" passHref>
-            <Button as="a" variant="ghost">
+            <Button as="a" variant="ghost" p={[1, 4]}>
               About
             </Button>
           </NextLink>
           <NextLink href="/" passHref>
-            <Button as="a" variant="ghost">
+            <Button as="a" variant="ghost" p={[1, 4]}>
               Home
             </Button>
           </NextLink>
         </Box>
       </StickyNav>
-      {children}
-      <Footer />
-    </Flex>
+      <Flex
+        as="main"
+        justifyContent="center"
+        flexDirection="column"
+        bg={bgColor[colorMode]}
+        color={primarytextColor[colorMode]}
+        px={8}
+      >
+        {children}
+        <Footer />
+      </Flex>
+    </>
   );
 };
 

@@ -2,21 +2,19 @@ import React from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 import { dateTime } from '../utils/date-format';
-import titleStyle from '../utils/title-style';
 
 const BlogSeo = ({ title, summary, publishedAt, slug, image }) => {
-  const formattedTitle = titleStyle(title);
   const date = dateTime(publishedAt);
   const url = `https://leerob.io/blog/${slug}`;
   const featuredImage = {
     url: `https://leerob.io${image}`,
-    alt: formattedTitle
+    alt: title
   };
 
   return (
     <>
       <NextSeo
-        title={`${formattedTitle} – Lee Robinson`}
+        title={`${title} – Lee Robinson`}
         description={summary}
         canonical={url}
         openGraph={{
@@ -25,7 +23,7 @@ const BlogSeo = ({ title, summary, publishedAt, slug, image }) => {
             publishedTime: date
           },
           url,
-          title: formattedTitle,
+          title,
           description: summary,
           images: [featuredImage]
         }}
@@ -38,7 +36,7 @@ const BlogSeo = ({ title, summary, publishedAt, slug, image }) => {
         images={[featuredImage]}
         publisherLogo="/static/favicons/android-chrome-192x192.png"
         publisherName="Lee Robinson"
-        title={formattedTitle}
+        title={title}
         url={url}
       />
     </>

@@ -165,33 +165,33 @@ Now that we have an understanding of the language/tools we're working with, let'
 
 [OverReact](https://workiva.github.io/over_react/) is a library for building statically-typed React UI components. Since OverReact is built on top of React, I strongly encourage you to gain familiarity with React first if you're not by reading [this tutorial](https://reactjs.org/docs/hello-world.html). The example below compares a `render()` function for JSX and OverReact that will have the exact same HTML markup result.
 
-- **React** (JSX):
+**React** (JSX):
 
-  ```jsx
-  render() {
-    return <div className="container">
-      <h1>Click the button!</h1>
-      <button
-        id="main_button"
-        onClick={_handleClick}
-      >Click me</button>
-    </div>;
-  }
-  ```
+```jsx
+render() {
+  return <div className="container">
+    <h1>Click the button!</h1>
+    <button
+      id="main_button"
+      onClick={_handleClick}
+    >Click me</button>
+  </div>;
+}
+```
 
-- **OverReact** (Dart):
+**OverReact** (Dart):
 
-  ```dart
-  render() {
-    return (Dom.div()..className = 'container')(
-      Dom.h1()('Click the button!'),
-      (Dom.button()
-        ..id = 'main_button'
-        ..onClick = _handleClick
-      )('Click me')
-    );
-  }
-  ```
+```dart
+render() {
+  return (Dom.div()..className = 'container')(
+    Dom.h1()('Click the button!'),
+    (Dom.button()
+      ..id = 'main_button'
+      ..onClick = _handleClick
+    )('Click me')
+  );
+}
+```
 
 OverReact helps bridge the gap between Dart and React. If you're using VS Code, you can utilize [OverReact code snippets](https://github.com/JaceHensley/vscode-over-react-snippets) to help speed up your development. Now, let's talk about our front-end architecture.
 
@@ -207,9 +207,7 @@ This library was inspired by [RefluxJS](https://github.com/reflux/refluxjs) and 
 
 As previously mentioned, we'll use the `pubspec.yaml` file in our root directory to define the dependencies for our project. Let's take a look at the `pubspec.yaml` for the todo list.
 
-**pubspec.yaml**
-
-```yaml
+```yaml:pubspec.yaml
 name: todo_dart_react
 version: 2.0.0
 description: Dart + React Todo List Example
@@ -241,9 +239,7 @@ This file tells `pub` which versions of the included packages it needs to retrie
 
 Inside the web directory, we'll find the entry point into our application. This file sets up the `Actions` and `Store` for our Flux architecture. Then, it creates a new `TodoApp` component and renders it into our container.
 
-**main.dart**
-
-```dart
+```dart:main.dart
 import 'dart:html';
 
 import 'package:react/react_dom.dart' as react_dom;
@@ -268,9 +264,7 @@ void main() {
 
 The container previously mentioned is the `app-container` DOM node shown below. You'll notice I've included [Bootstrap](https://getbootstrap.com/) to handle the styling our of UI components.
 
-**index.html**
-
-```html
+```html:index.html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -302,9 +296,7 @@ The container previously mentioned is the `app-container` DOM node shown below. 
 
 Let's take a look at `actions.dart`. This file defines the available operations we can perform.
 
-**actions.dart**
-
-```dart
+```dart:actions.dart
 class TodoActions {
   final Action<Todo> addTodo = new Action<Todo>();
   final Action<Todo> deleteTodo = new Action<Todo>();
@@ -315,9 +307,7 @@ class TodoActions {
 
 You'll notice some actions take a `Todo` parameter. Let's define the structure of our `Todo` model.
 
-**todo.dart**
-
-```dart
+```dart:todo.dart
 class Todo {
   String content;
   bool completed = false;
@@ -334,9 +324,7 @@ We now have some actions to dispatch. Next, we need a store to contain our appli
 
 **Note**: For larger applications, you will generally have multiple stores. Review the w_flux [README](https://github.com/Workiva/w_flux) for more information.
 
-**todo_store.dart**
-
-```dart
+```dart:todo_store.dart
 class TodoStore extends Store {
   TodoStore(TodoActions actions) : _actions = actions {
     _todos = [
@@ -372,9 +360,7 @@ To summarize so far, we have:
 
 The final piece will be the OverReact UI components to display the store's data. We defined a top-level `TodoApp` component in `main.dart`. This is what we refer to as a ["container"](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) component. It subscribes to our store and dispatches actions. It does _not_ handle displaying UI components.
 
-**todo_app.dart**
-
-```dart
+```dart:todo_app.dart
 @Factory()
 UiFactory<TodoAppProps> TodoApp = _$TodoApp;
 
@@ -397,9 +383,7 @@ class TodoAppComponent extends FluxUiComponent<TodoAppProps> {
 
 The `TodoList` component is a "presentational" component. It has no knowledge of any stores/actions and simply renders the data passed along as props and uses [callbacks](https://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components) to communicate with the store. Let's take a look at the `renderListItems()` function of the `TodoList` component.
 
-**todo_list.dart**
-
-```dart
+```dart:todo_list.dart
 /// Create a new [TodoListItem] for each todo.
 List _renderListItems() {
   List items = [];
@@ -419,9 +403,7 @@ List _renderListItems() {
 
 Based on the todo data passed in as props, this function creates a new list of `TodoListItem` components to be rendered. Those components will render as follows:
 
-**todo_list_item.dart**
-
-```dart
+```dart:todo_list_item.dart
 render() {
   return ListGroupItem()(
     (Dom.input()
@@ -447,9 +429,7 @@ The `ListGroupItem` component is taken from the [OverReact examples](https://wor
 
 All of the test files are located in the `test/` directory. For this example, I've only created unit tests. You could also create integration and functional tests here as well. Testing OverReact components is simple using [over_react_test](https://github.com/Workiva/over_react_test) along with the [React test utilities](https://github.com/cleandart/react-dart#testing-using-react-test-utilities). Let's look at how we can test our `TodoListItem` component to check it properly calls `deleteTodo` when the button is clicked.
 
-**todo_list_item_test.dart**
-
-```dart
+```dart:todo_list_item_test.dart
 test('calls deleteTodo when button is clicked', () {
   bool called = false;
   Todo todo = new Todo('Testing!');
