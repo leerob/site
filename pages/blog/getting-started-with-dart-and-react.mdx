@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2017-11-25',
-description: 'Building a todo list from start to finish.',
-image: '/static/images/getting-started-with-dart-and-react/banner.png',
-slug: 'getting-started-with-dart-and-react',
+---
 title: 'Getting Started with Dart & React'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Getting Started with Dart & React
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2017-11-25'
+summary: 'Building a todo list from start to finish.'
+image: '/static/images/getting-started-with-dart-and-react/banner.png'
+---
 
 ![React + Dart](/static/images/getting-started-with-dart-and-react/banner.png)
 
@@ -23,28 +13,28 @@ There are a million different ways to build a web app in today's landscape. Diff
 
 ## Table of Contents
 
--   [What is Dart?](#what-is-dart?)
--   [Why React?](#why-react?)
--   [Requirements](#requirements)
--   [Getting Started](#getting-started)
--   [Building & Running](#building-&-running)
--   [Dart Development Environment](#dart-development-environment)
--   [Building the Application](#building-the-application)
--   [Testing](#testing)
--   [Continuous Integration](#continuous-integration)
--   [Deploying](#deploying)
--   [Your Turn](#your-turn)
--   [Additional Resources](#additional-resources)
+- [What is Dart?](#what-is-dart)
+- [Why React?](#why-react)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Building & Running](#building-&-running)
+- [Dart Development Environment](#dart-development-environment)
+- [Building the Application](#building-the-application)
+- [Testing](#testing)
+- [Continuous Integration](#continuous-integration)
+- [Deploying](#deploying)
+- [Your Turn](#your-turn)
+- [Additional Resources](#additional-resources)
 
 ## What is Dart?
 
 Dart is a programming language originally [developed by Google](https://www.dartlang.org/) for building complex web applications. It's a statically-typed alternative to JavaScript that compiles to JS for use in the browser. It's open-source, easy to learn, and easy to scale. But wait, there's more!
 
--   Strong IDE integration (code completion, code navigation, static analysis, etc.)
--   Strong core set of common libraries (async, collections, isolates, etc.)
--   Excellent development ecosystem
--   Multi-threading support
--   And [much, much more](https://www.dartlang.org/guides/language)
+- Strong IDE integration (code completion, code navigation, static analysis, etc.)
+- Strong core set of common libraries (async, collections, isolates, etc.)
+- Excellent development ecosystem
+- Multi-threading support
+- And [much, much more](https://www.dartlang.org/guides/language)
 
 Google uses Dart for [AdWords](https://news.dartlang.org/2016/03/the-new-adwords-ui-uses-dart-we-asked.html) which makes up the majority of Google's revenue. It's also the language used at [Workiva](https://www.workiva.com/) for their next-generation products. Workiva has committed to using Dart and has published a [variety of OSS (open-source software) libraries](https://workiva.github.io/) to make developer's lives easier. If you're curious, here's a list of some companies [who use Dart.](https://www.dartlang.org/community/who-uses-dart)
 
@@ -52,9 +42,9 @@ Google uses Dart for [AdWords](https://news.dartlang.org/2016/03/the-new-adwords
 
 As I mentioned at the start of this article, it's important to thoroughly evaluate all of the different framework options before choosing what's right for your team or company. I won't go too in-depth here on [React](https://reactjs.org/) vs. [Angular](https://angular.io/) since there are a [variety of articles](https://www.google.com/search?q=react+vs+angular) that dive into specifics, but I will note a couple wins for React:
 
--   Uni-directional data flow
--   Declarative nature of rendering views
--   XML-like syntax called JSX
+- Uni-directional data flow
+- Declarative nature of rendering views
+- XML-like syntax called JSX
 
 ## Requirements
 
@@ -66,8 +56,8 @@ Let's assume we are given some requirements to create a todo list as shown below
 
 The IDE you choose is mostly personal preference, but here are some I suggest for Dart:
 
--   [VS Code](https://code.visualstudio.com/) (Free)
--   [WebStorm](https://www.jetbrains.com/webstorm/) (Requires License)
+- [VS Code](https://code.visualstudio.com/) (Free)
+- [WebStorm](https://www.jetbrains.com/webstorm/) (Requires License)
 
 You can clone the git repository with the todo application by running:
 
@@ -120,32 +110,32 @@ your_app/
 └── pubspec.yaml
 ```
 
--   **`lib/`**
-    -   Contains all internal implementation code.
--   **`test/`**
-    -   Contains all unit, integration, and functional tests.
--   **`tool/`**
-    -   Contains development tools, scripts, and configuration.
--   **`web/`**
-    -   This directory is served by default when running the application. It is common to
-        include an `index.html` file in this directory.
--   **`pubspec.yaml`**
-    -   This file defines all the metadata about your package such as name, version, authors,
-        dependencies, etc.
--   **`pubspec.lock`**
-    -   This file specifies the version of each dependency installed in the project.
-        It will be automatically updated when dependencies change in
-        `pubspec.yaml` or by running `pub upgrade`.
+- **`lib/`**
+  - Contains all internal implementation code.
+- **`test/`**
+  - Contains all unit, integration, and functional tests.
+- **`tool/`**
+  - Contains development tools, scripts, and configuration.
+- **`web/`**
+  - This directory is served by default when running the application. It is common to
+    include an `index.html` file in this directory.
+- **`pubspec.yaml`**
+  - This file defines all the metadata about your package such as name, version, authors,
+    dependencies, etc.
+- **`pubspec.lock`**
+  - This file specifies the version of each dependency installed in the project.
+    It will be automatically updated when dependencies change in
+    `pubspec.yaml` or by running `pub upgrade`.
 
 ### dart_dev
 
 [dart_dev](https://github.com/Workiva/dart_dev) is a centralized tooling package built on top of the Dart SDK. All Dart projects eventually share a common set of development requirements:
 
--   Tests (unit, integration, and functional)
--   Code coverage
--   Consistent code formatting
--   Static analysis to detect issues
--   Documentation generation
+- Tests (unit, integration, and functional)
+- Code coverage
+- Consistent code formatting
+- Static analysis to detect issues
+- Documentation generation
 
 The Dart SDK provides the necessary tooling to accomplish the tasks mentioned above but lacks a consistent usage pattern across multiple projects. Using dart_dev, a single configuration file will get our project configured and ready to use a variety of command line arguments.
 
@@ -175,33 +165,33 @@ Now that we have an understanding of the language/tools we're working with, let'
 
 [OverReact](https://workiva.github.io/over_react/) is a library for building statically-typed React UI components. Since OverReact is built on top of React, I strongly encourage you to gain familiarity with React first if you're not by reading [this tutorial](https://reactjs.org/docs/hello-world.html). The example below compares a `render()` function for JSX and OverReact that will have the exact same HTML markup result.
 
--   **React** (JSX):
+**React** (JSX):
 
-    ```jsx
-    render() {
-      return <div className="container">
-        <h1>Click the button!</h1>
-        <button
-          id="main_button"
-          onClick={_handleClick}
-        >Click me</button>
-      </div>;
-    }
-    ```
+```jsx
+render() {
+  return <div className="container">
+    <h1>Click the button!</h1>
+    <button
+      id="main_button"
+      onClick={_handleClick}
+    >Click me</button>
+  </div>;
+}
+```
 
--   **OverReact** (Dart):
+**OverReact** (Dart):
 
-    ```dart
-    render() {
-      return (Dom.div()..className = 'container')(
-        Dom.h1()('Click the button!'),
-        (Dom.button()
-          ..id = 'main_button'
-          ..onClick = _handleClick
-        )('Click me')
-      );
-    }
-    ```
+```dart
+render() {
+  return (Dom.div()..className = 'container')(
+    Dom.h1()('Click the button!'),
+    (Dom.button()
+      ..id = 'main_button'
+      ..onClick = _handleClick
+    )('Click me')
+  );
+}
+```
 
 OverReact helps bridge the gap between Dart and React. If you're using VS Code, you can utilize [OverReact code snippets](https://github.com/JaceHensley/vscode-over-react-snippets) to help speed up your development. Now, let's talk about our front-end architecture.
 
@@ -217,9 +207,7 @@ This library was inspired by [RefluxJS](https://github.com/reflux/refluxjs) and 
 
 As previously mentioned, we'll use the `pubspec.yaml` file in our root directory to define the dependencies for our project. Let's take a look at the `pubspec.yaml` for the todo list.
 
-**pubspec.yaml**
-
-```yaml
+```yaml:pubspec.yaml
 name: todo_dart_react
 version: 2.0.0
 description: Dart + React Todo List Example
@@ -227,22 +215,22 @@ homepage: https://github.com/leerob/dart-react-todo
 author: Lee Robinson <me@leerob.io>
 
 environment:
-    sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
-    over_react: ^2.0.0
-    w_flux: ^2.10.1
-    react: ^4.6.0
+  over_react: ^2.0.0
+  w_flux: ^2.10.1
+  react: ^4.6.0
 
 dev_dependencies:
-    build_runner: ^1.1.2
-    build_test: ^0.10.3
-    build_web_compilers: ^1.0.0
-    coverage: ^0.12.4
-    dart_dev: ^2.0.3
-    dart_style: ^1.0.8
-    over_react_test: ^2.3.0
-    test: ^1.5.3
+  build_runner: ^1.1.2
+  build_test: ^0.10.3
+  build_web_compilers: ^1.0.0
+  coverage: ^0.12.4
+  dart_dev: ^2.0.3
+  dart_style: ^1.0.8
+  over_react_test: ^2.3.0
+  test: ^1.5.3
 ```
 
 This file tells `pub` which versions of the included packages it needs to retrieve. You can find more information about what all can be included in this file [here](https://www.dartlang.org/tools/pub/pubspec).
@@ -251,9 +239,7 @@ This file tells `pub` which versions of the included packages it needs to retrie
 
 Inside the web directory, we'll find the entry point into our application. This file sets up the `Actions` and `Store` for our Flux architecture. Then, it creates a new `TodoApp` component and renders it into our container.
 
-**main.dart**
-
-```dart
+```dart:main.dart
 import 'dart:html';
 
 import 'package:react/react_dom.dart' as react_dom;
@@ -278,27 +264,31 @@ void main() {
 
 The container previously mentioned is the `app-container` DOM node shown below. You'll notice I've included [Bootstrap](https://getbootstrap.com/) to handle the styling our of UI components.
 
-**index.html**
-
-```html
+```html:index.html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
 
-        <title>Dart React Todo</title>
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
-    </head>
-    <body>
-        <div id="app-container" class="container"></div>
+    <title>Dart React Todo</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="app-container" class="container"></div>
 
-        <script src="./packages/react/react.js"></script>
-        <script src="./packages/react/react_dom.js"></script>
-        <script defer src="main.dart.js"></script>
-    </body>
+    <script src="./packages/react/react.js"></script>
+    <script src="./packages/react/react_dom.js"></script>
+    <script defer src="main.dart.js"></script>
+  </body>
 </html>
 ```
 
@@ -306,9 +296,7 @@ The container previously mentioned is the `app-container` DOM node shown below. 
 
 Let's take a look at `actions.dart`. This file defines the available operations we can perform.
 
-**actions.dart**
-
-```dart
+```dart:actions.dart
 class TodoActions {
   final Action<Todo> addTodo = new Action<Todo>();
   final Action<Todo> deleteTodo = new Action<Todo>();
@@ -319,9 +307,7 @@ class TodoActions {
 
 You'll notice some actions take a `Todo` parameter. Let's define the structure of our `Todo` model.
 
-**todo.dart**
-
-```dart
+```dart:todo.dart
 class Todo {
   String content;
   bool completed = false;
@@ -338,9 +324,7 @@ We now have some actions to dispatch. Next, we need a store to contain our appli
 
 **Note**: For larger applications, you will generally have multiple stores. Review the w_flux [README](https://github.com/Workiva/w_flux) for more information.
 
-**todo_store.dart**
-
-```dart
+```dart:todo_store.dart
 class TodoStore extends Store {
   TodoStore(TodoActions actions) : _actions = actions {
     _todos = [
@@ -367,18 +351,16 @@ When our `TodoStore` is constructed, it populates our todo list with some pre-de
 
 To summarize so far, we have:
 
--   Initialized an entry point into the application
--   Defined actions for the todo list
--   Created a data model for a Todo item
--   Set up a store to contain the application's data
+- Initialized an entry point into the application
+- Defined actions for the todo list
+- Created a data model for a Todo item
+- Set up a store to contain the application's data
 
 ### /views/
 
 The final piece will be the OverReact UI components to display the store's data. We defined a top-level `TodoApp` component in `main.dart`. This is what we refer to as a ["container"](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) component. It subscribes to our store and dispatches actions. It does _not_ handle displaying UI components.
 
-**todo_app.dart**
-
-```dart
+```dart:todo_app.dart
 @Factory()
 UiFactory<TodoAppProps> TodoApp = _$TodoApp;
 
@@ -401,9 +383,7 @@ class TodoAppComponent extends FluxUiComponent<TodoAppProps> {
 
 The `TodoList` component is a "presentational" component. It has no knowledge of any stores/actions and simply renders the data passed along as props and uses [callbacks](https://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components) to communicate with the store. Let's take a look at the `renderListItems()` function of the `TodoList` component.
 
-**todo_list.dart**
-
-```dart
+```dart:todo_list.dart
 /// Create a new [TodoListItem] for each todo.
 List _renderListItems() {
   List items = [];
@@ -423,9 +403,7 @@ List _renderListItems() {
 
 Based on the todo data passed in as props, this function creates a new list of `TodoListItem` components to be rendered. Those components will render as follows:
 
-**todo_list_item.dart**
-
-```dart
+```dart:todo_list_item.dart
 render() {
   return ListGroupItem()(
     (Dom.input()
@@ -451,9 +429,7 @@ The `ListGroupItem` component is taken from the [OverReact examples](https://wor
 
 All of the test files are located in the `test/` directory. For this example, I've only created unit tests. You could also create integration and functional tests here as well. Testing OverReact components is simple using [over_react_test](https://github.com/Workiva/over_react_test) along with the [React test utilities](https://github.com/cleandart/react-dart#testing-using-react-test-utilities). Let's look at how we can test our `TodoListItem` component to check it properly calls `deleteTodo` when the button is clicked.
 
-**todo_list_item_test.dart**
-
-```dart
+```dart:todo_list_item_test.dart
 test('calls deleteTodo when button is clicked', () {
   bool called = false;
   Todo todo = new Todo('Testing!');
@@ -520,22 +496,22 @@ That's it! 🎉 We can modify the settings for our site on Netlify to change the
 
 The todo list isn't fully completed per our requirements. To fully finish the application, you'll need to:
 
--   Mark todos as completed when the checkbox is clicked
--   Add an action for clearing all completed todos
--   Modify the `TodoStore` to listen to the new action
--   Create the `TodoFooter` component
--   Hook up the buttons in the footer to the store
--   Use icons inside the buttons
+- Mark todos as completed when the checkbox is clicked
+- Add an action for clearing all completed todos
+- Modify the `TodoStore` to listen to the new action
+- Create the `TodoFooter` component
+- Hook up the buttons in the footer to the store
+- Use icons inside the buttons
 
 You can view the entire source code [here](https://github.com/leerob/dart-react-todo). Thanks for reading!
 
 ## Additional Resources
 
--   [Getting the most out of React in Dart](https://www.youtube.com/watch?v=ekBD-_jRjds)
--   [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html#0)
--   [Language Tour](https://www.dartlang.org/guides/language/language-tour)
--   [Library Tour](https://www.dartlang.org/guides/libraries/library-tour)
--   [Effective Dart](https://www.dartlang.org/guides/language/effective-dart)
--   [Futures Tutorial](https://www.dartlang.org/tutorials/language/futures)
--   [Streams Tutorial](https://www.dartlang.org/tutorials/language/streams)
--   [Dart by Example](http://jpryan.me/dartbyexample/)
+- [Getting the most out of React in Dart](https://www.youtube.com/watch?v=ekBD-_jRjds)
+- [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/index.html#0)
+- [Language Tour](https://www.dartlang.org/guides/language/language-tour)
+- [Library Tour](https://www.dartlang.org/guides/libraries/library-tour)
+- [Effective Dart](https://www.dartlang.org/guides/language/effective-dart)
+- [Futures Tutorial](https://www.dartlang.org/tutorials/language/futures)
+- [Streams Tutorial](https://www.dartlang.org/tutorials/language/streams)
+- [Dart by Example](http://jpryan.me/dartbyexample/)

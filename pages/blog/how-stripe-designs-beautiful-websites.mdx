@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2017-12-02',
-description: 'Examining the tips and tricks used to make Stripe\'s website design a notch above the rest.',
-image: '/static/images/how-stripe-designs-beautiful-websites/banner.png',
-slug: 'how-stripe-designs-beautiful-websites',
+---
 title: 'How Stripe Designs Beautiful Websites'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# How Stripe Designs Beautiful Websites
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2017-12-02'
+summary: "Examining the tips and tricks used to make Stripe's website design a notch above the rest."
+image: '/static/images/how-stripe-designs-beautiful-websites/banner.png'
+---
 
 ![Stripe Logo](/static/images/how-stripe-designs-beautiful-websites/banner.png)
 
@@ -52,10 +42,10 @@ We can utilize the `text-rendering` CSS property to allow us to choose quality o
 
 ```css
 body {
-    font-family: Camphor, Open Sans, Segoe UI, sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 ```
 
@@ -75,9 +65,9 @@ Indicating a visual response when hovering over items like buttons and links pro
 
 ```css
 button:hover {
-    color: #7795f8;
-    transform: translateY(-1px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  color: #7795f8;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 ```
 
@@ -93,9 +83,9 @@ I personally love the color palette of Stripe's website. It's bright and grabs y
 
 Something else that really stuck out to me was how high quality their images looked. This is because they use SVG ([Scalable Vector Graphic](https://svgontheweb.com/)) images instead of normal `.png` or `.jpg` files whenever possible. This has a multitude of benefits.
 
--   Smaller file sizes
--   Allows the ability to animate the image using CSS
--   Looks crisp on any size display from mobile to desktop
+- Smaller file sizes
+- Allows the ability to animate the image using CSS
+- Looks crisp on any size display from mobile to desktop
 
 That tablet displayed on the home screen? Yeah, that's a `.svg` that's been scaled and rotated. Here's the `.svg` file from Stripe's website. Notice how when you zoom in the quality remains clear.
 
@@ -119,15 +109,15 @@ For a more detailed look into creating animations, I **highly recommend** [this 
 
 Hopefully this article gave you some insight into how Stripe designs their websites and inspired you to create something of your own! Here's three main points to leave you with.
 
--   Typography choices are critical
--   Don't underestimate the value of good UX
--   Use SVG images whenever possible
+- Typography choices are critical
+- Don't underestimate the value of good UX
+- Use SVG images whenever possible
 
 Cheers! 🍻
 
 ### Additional Resources
 
--   [Stripe Elements Examples](https://stripe.github.io/elements-examples/)
--   [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
--   [Ember Stripe Elements](https://github.com/code-corps/ember-stripe-elements)
--   [Animate+ JavaScript Library](https://github.com/bendc/AnimatePlus)
+- [Stripe Elements Examples](https://stripe.github.io/elements-examples/)
+- [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
+- [Ember Stripe Elements](https://github.com/code-corps/ember-stripe-elements)
+- [Animate+ JavaScript Library](https://github.com/bendc/AnimatePlus)

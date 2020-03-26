@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2020-02-06',
-description: `Learn how to encrypt secrets to workaround ZEIT Now's 4kb max limit for environment variables.`,
-image: '/static/images/now-env-variables-size-limit/banner.png',
-slug: 'now-env-variables-size-limit',
+---
 title: 'How To Use Encrypted Secrets With Now'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# How To Use Encrypted Secrets With Now
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2020-02-06'
+summary: "Learn how to encrypt secrets to workaround ZEIT Now's 4kb max limit for environment variables."
+image: '/static/images/now-env-variables-size-limit/banner.png'
+---
 
 When trying to deploy a new API route with [Now](https://zeit.co), I stumbled onto this error.
 
@@ -45,19 +35,19 @@ $ now secret add google-encryption-secret
 
 To reference it locally when using `now dev` it needs to be added to your `.env` file.
 
-```bash
+```bash:.env
 GOOGLE_ENCRYPTION_IV=042d344042d34404
 GOOGLE_ENCRYPTION_KEY=042d344042d34404
 ```
 
 Finally, we need to add our new secret to `now.json`.
 
-```json
+```json:now.json
 {
-    "env": {
-        "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
-        "GOOGLE_ENCRYPTION_KEY": "@google-encryption-secret"
-    }
+  "env": {
+    "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
+    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-secret"
+  }
 }
 ```
 
@@ -69,27 +59,27 @@ Let's assume we have a service account like this:
 
 ```json
 {
-    "type": "service_account",
-    "project_id": "...",
-    "private_key_id": "...",
-    "private_key": "...",
-    "client_email": "...",
-    "client_id": "...",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://accounts.google.com/o/oauth2/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "..."
+  "type": "service_account",
+  "project_id": "...",
+  "private_key_id": "...",
+  "private_key": "...",
+  "client_email": "...",
+  "client_id": "...",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "..."
 }
 ```
 
 One way to encrypt this value is by using an [AES Online Encryption Tool](https://www.devglan.com/online-tools/aes-encryption-decryption).
 
--   Enter your unencrypted text (or select a file).
--   Choose "CBC" mode.
--   Key Size -> 128.
--   IV -> random string of 16 characters. (_Save this_)
--   Secret -> random string of 16 characters. (_Save this_)
--   Output as `base64` and hit "Encrypt."
+- Enter your unencrypted text (or select a file).
+- Choose "CBC" mode.
+- Key Size -> 128.
+- IV -> random string of 16 characters. (_Save this_)
+- Secret -> random string of 16 characters. (_Save this_)
+- Output as `base64` and hit "Encrypt."
 
 You should now have three values: IV, secret, and the encrypted output.
 First, let's save the encrypted output to a file.
@@ -101,7 +91,7 @@ You now only need 32 characters to decode your service account.
 Create a new file called `service-account.enc.js`.
 
 ```js
-module.exports = {encrypted: 'BASE64_RESULT_GOES_HERE'};
+module.exports = { encrypted: 'BASE64_RESULT_GOES_HERE' };
 ```
 
 Next, we need to create a function to decrypt the value.
@@ -109,34 +99,34 @@ Next, we need to create a function to decrypt the value.
 ```js
 import crypto from 'crypto';
 
-import {encrypted} from './service-account.enc';
+import { encrypted } from './service-account.enc';
 
 const algorithm = 'aes-128-cbc';
 const decipher = crypto.createDecipheriv(
-    algorithm,
-    process.env.GOOGLE_ENCRYPTION_KEY,
-    process.env.GOOGLE_ENCRYPTION_IV
+  algorithm,
+  process.env.GOOGLE_ENCRYPTION_KEY,
+  process.env.GOOGLE_ENCRYPTION_IV
 );
 
 export const getDecryptedSecret = () => {
-    let decrypted = decipher.update(encrypted, 'base64', 'utf8');
+  let decrypted = decipher.update(encrypted, 'base64', 'utf8');
 
-    decrypted += decipher.final('utf8');
+  decrypted += decipher.final('utf8');
 
-    return JSON.parse(decrypted);
+  return JSON.parse(decrypted);
 };
 ```
 
 Finally, we can use this decrypted value inside of our API.
 
 ```js
-import {google} from 'googleapis';
+import { google } from 'googleapis';
 
-import {getDecryptedSecret} from './decret-secret';
+import { getDecryptedSecret } from './decret-secret';
 
 const googleAuth = new google.auth.GoogleAuth({
-    credentials: getDecryptedSecret(),
-    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+  credentials: getDecryptedSecret(),
+  scopes: ['https://www.googleapis.com/auth/youtube.readonly']
 });
 
 export default googleAuth;

@@ -1,51 +1,53 @@
 {
-    "version": 2,
-    "name": "leerob",
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "env": {
-        "FIREBASE_PROJECT_ID": "leerob-blog",
-        "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
-        "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
-        "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
-        "MAILCHIMP_API_KEY": "@mailchimp-api-key",
-        "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
-        "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
-        "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key"
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "env": {
+    "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
+    "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
+    "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
+    "MAILCHIMP_API_KEY": "@mailchimp-api-key",
+    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
+    "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
+    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key"
+  },
+  "redirects": [
+    {
+      "source": "/LeeRobinson.pdf",
+      "destination": "/robinson-resume-2019.pdf"
     },
-    "redirects": [
+    {
+      "source": "/projects",
+      "destination": "/about"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/unsplash",
+      "headers": [
         {
-            "source": "/LeeRobinson.pdf",
-            "destination": "/robinson-resume-2019.pdf"
+          "key": "Cache-Control",
+          "value": "public, max-age=1200, stale-while-revalidate=600"
         }
-    ],
-    "headers": [
+      ]
+    },
+    {
+      "source": "/api/youtube",
+      "headers": [
         {
-            "source": "/api/unsplash",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=1200, stale-while-revalidate=600"
-                }
-            ]
-        },
-        {
-            "source": "/api/youtube",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=120, stale-while-revalidate=60"
-                }
-            ]
-        },
-        {
-            "source": "/api/page-views",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=120, stale-while-revalidate=60"
-                }
-            ]
+          "key": "Cache-Control",
+          "value": "public, max-age=120, stale-while-revalidate=60"
         }
-    ]
+      ]
+    },
+    {
+      "source": "/api/ga-page-views",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120, stale-while-revalidate=60"
+        }
+      ]
+    }
+  ]
 }

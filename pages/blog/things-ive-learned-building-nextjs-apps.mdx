@@ -1,27 +1,17 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-02-15',
-description: `I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use.`,
-image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg',
-slug: 'things-ive-learned-building-nextjs-apps',
-title: `Things I've Learned Building Next.js Apps`
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Things I've Learned Building Next.js Apps
-
-<DateAndViews date={meta.date} id={meta.slug} />
+---
+title: "Things I've Learned Building Next.js Apps"
+publishedAt: '2019-02-15'
+summary: "I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use."
+image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg'
+---
 
 ![Next.js](/static/images/things-ive-learned-building-nextjs-apps/nextjs.png)
 
 I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
 
--   I ported over my personal site from [Hugo](/blog/migrating-to-hugo) to [Next.js + MDX](https://github.com/leerob/leerob.io).
--   I created [dsmtech.io](https://dsmtech.io/) (and explored using [Mapbox](/blog/using-mapbox-with-next-js)).
--   A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
+- I ported over my personal site from [Hugo](/blog/migrating-to-hugo) to [Next.js + MDX](https://github.com/leerob/leerob.io).
+- I created [dsmtech.io](https://dsmtech.io/) (and explored using [Mapbox](/blog/using-mapbox-with-next-js)).
+- A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
 
 Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
 
@@ -45,38 +35,37 @@ performance score is still almost 100.
 
 ```css
 @font-face {
-    font-family: 'Fira Sans';
-    src: url('/fonts/FiraSans-Bold.ttf');
-    font-weight: bold;
-    font-display: auto;
-    font-style: normal;
+  font-family: 'Fira Sans';
+  src: url('/fonts/FiraSans-Bold.ttf');
+  font-weight: bold;
+  font-display: auto;
+  font-style: normal;
 }
 ```
 
 Another approach I've used with Google Fonts is to include the `link` in the `Head` of my document.
 
-```js
-// pages/_document.js
-import Document, {Head, Main, NextScript} from 'next/document';
+```js:pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 
 class CustomDocument extends Document {
-    render() {
-        return (
-            <html lang="en">
-                <Head>
-                    <link
-                        href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700&display=swap"
-                        rel="stylesheet"
-                    />
-                </Head>
-                <body>
-                    <Main />
-                    <NextScript />
-                </body>
-            </html>
-        );
-    }
+  render() {
+    return (
+      <html lang="en">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    );
+  }
 }
 
 export default CustomDocument;
@@ -96,15 +85,15 @@ to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy 
 import dynamic from 'next/dynamic';
 
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
-    ssr: false
+  ssr: false
 });
 
 export default () => (
-    <>
-        <Header />
-        <ReactSelectNoSSR />
-        <Footer />
-    </>
+  <>
+    <Header />
+    <ReactSelectNoSSR />
+    <Footer />
+  </>
 );
 ```
 
@@ -112,8 +101,8 @@ While this works, we can go a step further and provide a [loading placeholder](/
 
 ```jsx
 const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
-    loading: () => <Input />,
-    ssr: false
+  loading: () => <Input />,
+  ssr: false
 });
 ```
 
@@ -124,7 +113,7 @@ However, thanks to [jest-next-dynamic](https://github.com/FormidableLabs/jest-ne
 
 You'll need to add [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) to your `.babelrc` like so.
 
-```js
+```js:.babelrc
 {
   "plugins": ["babel-plugin-dynamic-import-node"]
 }
@@ -137,7 +126,7 @@ import preloadAll from 'jest-next-dynamic';
 import ReactSelect from './select';
 
 beforeAll(async () => {
-    await preloadAll();
+  await preloadAll();
 });
 ```
 
@@ -158,7 +147,7 @@ the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `p
 
 ```jsx
 <Link prefetch href="/">
-    <a>Home</a>
+  <a>Home</a>
 </Link>
 ```
 
@@ -172,22 +161,25 @@ you will need to add polyfills. This requires changes in a couple of places.
 
 First, you will need to create/override your `next.config.js` file to customize Webpack.
 
-```js
+```js:next.config.js
 module.exports = {
-    webpack: function(cfg) {
-        const originalEntry = cfg.entry;
-        cfg.entry = async () => {
-            const entries = await originalEntry();
+  webpack: function (cfg) {
+    const originalEntry = cfg.entry;
+    cfg.entry = async () => {
+      const entries = await originalEntry();
 
-            if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
-                entries['main.js'].unshift('./client/polyfills.js');
-            }
+      if (
+        entries['main.js'] &&
+        !entries['main.js'].includes('./client/polyfills.js')
+      ) {
+        entries['main.js'].unshift('./client/polyfills.js');
+      }
 
-            return entries;
-        };
+      return entries;
+    };
 
-        return cfg;
-    }
+    return cfg;
+  }
 };
 ```
 
@@ -217,6 +209,6 @@ questions and answers are indexed, searchable, and easy to find. Their [tutorial
 
 ## Additional Resources
 
--   [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
--   [Awesome Next.js](https://github.com/unicodeveloper/awesome-nextjs)
--   [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)
+- [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
+- [Awesome Next.js](https://github.com/unicodeveloper/awesome-nextjs)
+- [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)

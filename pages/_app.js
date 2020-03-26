@@ -1,56 +1,70 @@
 import React from 'react';
-import App from 'next/app';
-import {ThemeProvider} from 'styled-components';
-import useDarkMode from 'use-dark-mode';
+import NextApp from 'next/app';
+import { MDXProvider } from '@mdx-js/react';
+import { Global, css } from '@emotion/core';
+import { DefaultSeo } from 'next-seo';
+import {
+  ThemeProvider,
+  CSSReset,
+  ColorModeProvider,
+  useColorMode
+} from '@chakra-ui/core';
 
-import {colors} from '../styles/vars';
+import theme from '../styles/theme';
+import { prismLightTheme, prismDarkTheme } from '../styles/prism';
+import MDXComponents from '../components/MDXComponents';
+import SEO from '../next-seo.config';
 
-import '../styles/prism.css';
+const GlobalStyle = ({ children }) => {
+  const { colorMode } = useColorMode();
 
-const lightTheme = {
-    accent: '#0967D2',
-    accentLight: '#ff5252',
-    body: '#3a4145',
-    code: '#011627',
-    inlineCode: colors.text,
-    inlineCodeBg: '#f3f3f3',
-    lightGrey: colors.grey[200],
-    primary: colors.text,
-    secondary: '#fff',
-    text: '#2e2e2e'
+  return (
+    <>
+      <CSSReset />
+      <Global
+        styles={css`
+          ${colorMode === 'light' ? prismLightTheme : prismDarkTheme};
+
+          ::selection {
+            background-color: #47a3f3;
+            color: #fefefe;
+          }
+
+          html {
+            min-width: 360px;
+            scroll-behavior: smooth;
+          }
+
+          #__next {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: ${colorMode === 'light' ? 'white' : '#171923'};
+          }
+        `}
+      />
+      {children}
+    </>
+  );
 };
 
-const darkTheme = {
-    accent: '#47A3F3',
-    accentLight: '#BAE3FF',
-    body: '#F5F7FA',
-    code: '#011627',
-    inlineCode: '#f3f3f3',
-    inlineCodeBg: '#192129',
-    lightGrey: colors.grey[200],
-    primary: '#F5F7FA',
-    secondary: '#1F2933',
-    text: '#F5F7FA'
-};
+class App extends NextApp {
+  render() {
+    const { Component } = this.props;
 
-const DarkMode = ({children}) => {
-    const darkMode = useDarkMode(false);
-    // eslint-disable-next-line no-unused-vars
-    const theme = darkMode.value ? darkTheme : lightTheme;
-
-    return <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>;
-};
-
-class CustomApp extends App {
-    render() {
-        const {Component, pageProps} = this.props;
-
-        return (
-            <DarkMode>
-                <Component {...pageProps} />
-            </DarkMode>
-        );
-    }
+    return (
+      <ThemeProvider theme={theme}>
+        <MDXProvider components={MDXComponents}>
+          <ColorModeProvider value="light">
+            <GlobalStyle>
+              <DefaultSeo {...SEO} />
+              <Component />
+            </GlobalStyle>
+          </ColorModeProvider>
+        </MDXProvider>
+      </ThemeProvider>
+    );
+  }
 }
 
-export default CustomApp;
+export default App;

@@ -1,21 +1,11 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-02-12',
-description: 'At Hy-Vee, we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products.',
-image: '/static/images/ui-component-library-with-styled-components/banner.jpg',
-slug: 'ui-component-library-with-styled-components',
+---
 title: 'Building a UI Component Library with Styled Components'
-}
+publishedAt: '2019-02-12'
+summary: 'At Hy-Vee, we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products.'
+image: '/static/images/ui-component-library-with-styled-components/banner.jpg'
+---
 
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Building a UI Component Library with Styled Components
-
-<DateAndViews date={meta.date} id={meta.slug} />
-
-![](/static/images/ui-component-library-with-styled-components/banner.jpg)
+![Building a UI Component Library with Styled Components](/static/images/ui-component-library-with-styled-components/banner.jpg)
 
 Don’t repeat yourself. It’s a principle that engineers strive to adhere to — preventing code duplication by abstracting shared functionality out into its own place.
 
@@ -27,30 +17,30 @@ Our first step in tackling this problem was having UI/UX define a style guide th
 
 We decided to build a reusable UI component library which will be consumed in all of our client-facing applications. This project had a few main goals:
 
-1. _Create consistency across the organization_
+1. **Create consistency across the organization**
 
-    - All digital properties should look and feel the same, implementing our agreed upon style guide.
+   - All digital properties should look and feel the same, implementing our agreed upon style guide.
 
-2. _Improve the overall quality of our codebase_
+2. **Improve the overall quality of our codebase**
 
-    - Having a shared set of UI components means less custom code for consumers.
-    - We can ensure all components meet our accessibility requirements.
-    - Components become hardened by multiple teams contributing to bug fixes and improvements.
+   - Having a shared set of UI components means less custom code for consumers.
+   - We can ensure all components meet our accessibility requirements.
+   - Components become hardened by multiple teams contributing to bug fixes and improvements.
 
-3. _Increase developer proficiency_
+3. **Increase developer proficiency**
 
-    - Developers not specialized in CSS don’t have to worry about CSS quirks or cross-browser issues.
-    - Allow us to ship new products and rewrite legacy products faster.
-    - Decrease the amount of time it takes new employees to build UIs correctly.
+   - Developers not specialized in CSS don’t have to worry about CSS quirks or cross-browser issues.
+   - Allow us to ship new products and rewrite legacy products faster.
+   - Decrease the amount of time it takes new employees to build UIs correctly.
 
 To accomplish these goals, we chose to use [styled-components](https://www.styled-components.com/) as the base of the library. styled-components uses ES6 tagged template literals and CSS to allow you to write _real_ CSS code in your components instead of using JS objects.
 
 It’s used by companies like Bloomberg, Atlassian, Reddit, Patreon, Target, Coinbase, and [more](https://github.com/styled-components/awesome-styled-components/blob/master/README.md#real-apps). There’s a variety of CSS in JS solutions, as outlined very succinctly [here](https://github.com/MicheleBertoli/css-in-js). After reviewing this list and reading the styled-components documentation, it seemed like a no-brainer for our use case. Some big wins for us:
 
--   Feels like writing traditional CSS vs. JavaScript objects
--   React & React Native support
--   Auto-prefixing vendor styles
--   Scoped styles eliminate global CSS conflicts
+- Feels like writing traditional CSS vs. JavaScript objects
+- React & React Native support
+- Auto-prefixing vendor styles
+- Scoped styles eliminate global CSS conflicts
 
 ## Building the Library
 
@@ -58,10 +48,10 @@ Let’s take a look at a simple example: a button.
 
 ```jsx
 const BaseButton = styled.button`
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 8px 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 32px;
 `;
 ```
 
@@ -75,14 +65,14 @@ A component library doesn’t have just one type of button, though. Let’s expl
 
 ```js
 const Button = styled(BaseButton)`
-    background: #e21c11;
-    border: none;
-    color: #fff;
+  background: #e21c11;
+  border: none;
+  color: #fff;
 
-    :hover,
-    :focus {
-        background: #af0000;
-    }
+  :hover,
+  :focus {
+    background: #af0000;
+  }
 `;
 ```
 
@@ -116,27 +106,33 @@ All inputs should have a label, which needs to reference the actual `<input>` el
 We also need to ensure the proper `aria-labels` are added for accessibility.
 
 ```jsx
-const Input = ({disabled, id, label, placeholder, required}) => (
-    <Container>
-        <Label htmlFor={id} required={required}>
-            {label}
-        </Label>
-        <Input
-            aria-label={label}
-            aria-required={required}
-            disabled={disabled}
-            id={id}
-            placeholder={placeholder}
-            type="text"
-        />
-    </Container>
+const Input = ({ disabled, id, label, placeholder, required }) => (
+  <Container>
+    <Label htmlFor={id} required={required}>
+      {label}
+    </Label>
+    <Input
+      aria-label={label}
+      aria-required={required}
+      disabled={disabled}
+      id={id}
+      placeholder={placeholder}
+      type="text"
+    />
+  </Container>
 );
 ```
 
 Now, it’s much easier for consumers to properly build accessible forms with the correct styling.
 
 ```jsx
-<Input disabled={false} id="first-name" label="First Name" placeholder="Please enter your name" required />
+<Input
+  disabled={false}
+  id="first-name"
+  label="First Name"
+  placeholder="Please enter your name"
+  required
+/>
 ```
 
 ## Testing
@@ -156,12 +152,12 @@ Using [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/), we ca
 
 Thanks to [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components), we get these (and more) for free:
 
--   Generated class names are prefixed with the file and component name for an improved debugging experience.
--   [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) shows `Button` instead of `styled.button`.
+- Generated class names are prefixed with the file and component name for an improved debugging experience.
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) shows `Button` instead of `styled.button`.
 
 Here’s our `.babelrc` file.
 
-```js
+```js:.babelrc
 {
     "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": ["babel-plugin-styled-components"]
@@ -172,9 +168,9 @@ Here’s our `.babelrc` file.
 
 We wanted to make it as easy as possible for others at Hy-Vee to contribute. That’s why all formatting and linting is taken care of with:
 
--   [ESLint](https://eslint.org/)
--   [Stylelint](https://github.com/stylelint/stylelint)
--   [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+- [Stylelint](https://github.com/stylelint/stylelint)
+- [Prettier](https://prettier.io/)
 
 Thanks to git pre-commit hooks with [husky](https://github.com/typicode/husky), we’re ensured all code is formatted correctly before getting pushed to GitHub.
 
@@ -182,9 +178,9 @@ Thanks to git pre-commit hooks with [husky](https://github.com/typicode/husky), 
 
 There are even extensions for your favorite IDE to have CSS syntax highlighting inside of the JS template strings. Thanks, styled-components! 🎉
 
--   [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
--   [webstorm-styled-components](https://github.com/styled-components/webstorm-styled-components)
--   [Other IDEs](https://www.styled-components.com/docs/tooling#syntax-highlighting)
+- [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+- [webstorm-styled-components](https://github.com/styled-components/webstorm-styled-components)
+- [Other IDEs](https://www.styled-components.com/docs/tooling#syntax-highlighting)
 
 ## Storybook
 
@@ -192,13 +188,13 @@ There are even extensions for your favorite IDE to have CSS syntax highlighting 
 
 Another bonus feature of using Storybook are its add-ons. You’ll notice in the bottom pane we’ve chosen to use:
 
--   [Story Source](https://github.com/storybooks/storybook/tree/master/addons/storysource) for showing code consumption examples
--   [Viewport](https://github.com/storybooks/storybook/tree/master/addons/viewport) for allowing us to test different screen sizes and devices
--   [a11y](https://github.com/storybooks/storybook/tree/next/addons/a11y) for ensuring our components are accessible
--   [storybook-readme](https://github.com/tuchk4/storybook-readme) so our documentation lives alongside the component
--   [addon-knobs](https://www.npmjs.com/package/@storybook/addon-knobs) so we can dynamically edit props
+- [Story Source](https://github.com/storybooks/storybook/tree/master/addons/storysource) for showing code consumption examples
+- [Viewport](https://github.com/storybooks/storybook/tree/master/addons/viewport) for allowing us to test different screen sizes and devices
+- [a11y](https://github.com/storybooks/storybook/tree/next/addons/a11y) for ensuring our components are accessible
+- [storybook-readme](https://github.com/tuchk4/storybook-readme) so our documentation lives alongside the component
+- [addon-knobs](https://www.npmjs.com/package/@storybook/addon-knobs) so we can dynamically edit props
 
-![](/static/images/ui-component-library-with-styled-components/example.gif)
+![Storybook Example](/static/images/ui-component-library-with-styled-components/example.gif)
 
 ## Future Plans & Roadmap
 

@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-08-07',
-description: `A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices.`,
-image: '/static/images/style-guides-component-libraries-design-systems/banner.jpg',
-slug: 'style-guides-component-libraries-design-systems',
+---
 title: 'Everything I Know About Style Guides, Design Systems, and Component Libraries'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Everything I Know About Style Guides, Design Systems, and Component Libraries
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-08-07'
+summary: "A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
+image: '/static/images/style-guides-component-libraries-design-systems/banner.jpg'
+---
 
 [![Ant Design Component Library](/static/images/style-guides-component-libraries-design-systems/component-library.png)](https://ant.design/)
 
@@ -23,11 +13,11 @@ Since then, I've learned a lot about style guides, design systems, component lib
 
 ## Table of Contents
 
-1.  [Why Should You Care?](#why-should-you-care?)
-2.  [What Is a Style Guide?](#what-is-a-style-guide?)
-3.  [What Is a Component Library?](#what-is-a-component-library?)
-4.  [What Is a Design System?](#what-is-a-design-system?)
-5.  [Where Should You Begin?](#where-should-you-begin?)
+1.  [Why Should You Care?](#why-should-you-care)
+2.  [What Is a Style Guide?](#what-is-a-style-guide)
+3.  [What Is a Component Library?](#what-is-a-component-library)
+4.  [What Is a Design System?](#what-is-a-design-system)
+5.  [Where Should You Begin?](#where-should-you-begin)
 6.  [Building the Design System](#building-the-design-system)
 7.  [Conclusion](#conclusion)
 8.  [Resources](#resources)
@@ -48,9 +38,9 @@ Is this a preventable problem? Absolutely. Yet, why does it happen over and over
 
 To prevent this issue from happening, or to fix the existing lack of consistency in your products, you need three things:
 
--   **Style Guide**
--   **Component Library**
--   **Design System**
+- **Style Guide**
+- **Component Library**
+- **Design System**
 
 Don't worry if you have no idea what I'm talking about yet. By the end of this article, you'll have consumed almost a year's worth of trial & error, research, and development.
 
@@ -68,10 +58,10 @@ The purpose of a style guide is to **allow multiple contributors to create conte
 
 A **component library** is living, breathing implementation of your style guide. It's a shared set of UI components that developers can consume to build applications reflecting your brand. Some notable benefits:
 
--   Having a component library means less custom code for consumers.
--   Since there's a central location, you can ensure all components meet accessibility requirements.
--   Components become more robust with multiple contributors submitting bug fixes and improvements in a single place.
--   Less duplication of code allows you to ship new products and rewrite legacy code faster.
+- Having a component library means less custom code for consumers.
+- Since there's a central location, you can ensure all components meet accessibility requirements.
+- Components become more robust with multiple contributors submitting bug fixes and improvements in a single place.
+- Less duplication of code allows you to ship new products and rewrite legacy code faster.
 
 ## What is a Design System?
 
@@ -81,25 +71,25 @@ A **design system** is a complete set of standards, documentation, and principle
 
 A design system should contain:
 
--   **Content** -- The language to design a more thoughtful product experience.
--   **Design** -- The visual elements of the design system.
--   **Components** -- The building blocks for developing new products and features.
--   **Patterns** -- The individual pieces for creating meaningful product experiences.
+- **Content** -- The language to design a more thoughtful product experience.
+- **Design** -- The visual elements of the design system.
+- **Components** -- The building blocks for developing new products and features.
+- **Patterns** -- The individual pieces for creating meaningful product experiences.
 
 ## Where should you begin?
 
 Depending on the state of your company/product, you might have a different starting point. This is the outline before we dive into specifics.
 
--   Create an inventory of existing design patterns.
--   Establish design principles and begin a style guide.
--   Define your design tokens.
--   Create or identify an icon set.
--   Choose languages/frameworks supported.
--   Evaluate Monorepo vs. single package.
--   Evaluate CSS/Sass vs. CSS-in-JS.
--   Create a component library.
--   Choose a documentation platform.
--   Write design system documentation.
+- Create an inventory of existing design patterns.
+- Establish design principles and begin a style guide.
+- Define your design tokens.
+- Create or identify an icon set.
+- Choose languages/frameworks supported.
+- Evaluate Monorepo vs. single package.
+- Evaluate CSS/Sass vs. CSS-in-JS.
+- Create a component library.
+- Choose a documentation platform.
+- Write design system documentation.
 
 ## Building the Design System
 
@@ -115,10 +105,10 @@ This should start to paint a picture of which pieces your style guide will need.
 
 It's time to translate these findings into the beginnings of a style guide. You can use tools like:
 
--   [Sketch](https://www.sketch.com/)
--   [Figma](https://www.figma.com/)
--   [Framer](https://www.framer.com/)
--   [Abobe XD](https://www.adobe.com/products/xd.html)
+- [Sketch](https://www.sketch.com/)
+- [Figma](https://www.figma.com/)
+- [Framer](https://www.framer.com/)
+- [Abobe XD](https://www.adobe.com/products/xd.html)
 
 My recommendation would be **Sketch**, but it's ultimately up to your team and company. Make sure you understand [best practices around Sketch symbols](https://novemberfive.co/blog/symbols-guidelines-in-sketch/) and when to use [nesting](https://www.sketch.com/docs/symbols/nested-symbols/).
 
@@ -130,11 +120,11 @@ My recommendation would be **Sketch**, but it's ultimately up to your team and c
 
 This includes things like:
 
--   [Colors](https://colors.eva.design/) (text, backgrounds, borders)
--   [Fonts](https://fonts.google.com/)
--   [Typography sizes](http://spencermortensen.com/articles/typographic-scale/)
--   [Spacing values](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
--   [Shadows](https://material.io/design/environment/light-shadows.html)
+- [Colors](https://colors.eva.design/) (text, backgrounds, borders)
+- [Fonts](https://fonts.google.com/)
+- [Typography sizes](http://spencermortensen.com/articles/typographic-scale/)
+- [Spacing values](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
+- [Shadows](https://material.io/design/environment/light-shadows.html)
 
 For example, let's take a look at [Geist](https://zeit.co/design/geist) - ZEIT's Design System.
 
@@ -170,13 +160,13 @@ There is now a shared language between designers and developers.
 
 If you already have existing icons, you'll need to determine which to keep. It might not make sense to create your own icons depending on the size and priorities of your company. You might be better off utilizing an open-source icon library. Here are some examples:
 
--   [Font Awesome](https://fontawesome.com)
--   [Icons8](https://icons8.com/)
--   [Material UI Icons](https://material-ui.com/components/icons/)
--   [Eva Icons](https://akveo.github.io/eva-icons/)
--   [Feather Icons](https://feathericons.com)
--   [Styled Icons](https://styled-icons.js.org/)
--   [Ikonate](https://ikonate.com/)
+- [Font Awesome](https://fontawesome.com)
+- [Icons8](https://icons8.com/)
+- [Material UI Icons](https://material-ui.com/components/icons/)
+- [Eva Icons](https://akveo.github.io/eva-icons/)
+- [Feather Icons](https://feathericons.com)
+- [Styled Icons](https://styled-icons.js.org/)
+- [Ikonate](https://ikonate.com/)
 
 Regardless if you build your own or use open source, you should standardize on usage and identify consumption patterns. It's also worth considering who are the end-users of your icons set - designers, developers, and marketing?
 
@@ -212,24 +202,24 @@ A [Monorepo](https://www.toptal.com/front-end/guide-to-monorepos) allows you to 
 
 **Pros**
 
--   ✅ Small bundle sizes by decreasing the scope of components included in one package.
--   ✅ Shared built, lint, test, and release process for multiple packages versus separate repositories with duplicated code.
--   ✅ More granular control of [semver](https://semver.org/) on a package-by-package basis.
+- ✅ Small bundle sizes by decreasing the scope of components included in one package.
+- ✅ Shared built, lint, test, and release process for multiple packages versus separate repositories with duplicated code.
+- ✅ More granular control of [semver](https://semver.org/) on a package-by-package basis.
 
 **Cons**
 
--   ⛔️ Additional tooling and infrastructure needed.
--   ⛔️ Consumers are required to import from a variety of packages instead of one single component library.
--   ⛔️ Cutting edge technology. There is industry adoption, but you can run into issues very few have experienced without a clear path for a solution.
+- ⛔️ Additional tooling and infrastructure needed.
+- ⛔️ Consumers are required to import from a variety of packages instead of one single component library.
+- ⛔️ Cutting edge technology. There is industry adoption, but you can run into issues very few have experienced without a clear path for a solution.
 
 Some questions that will help you identify which solution is right for your company.
 
--   Do you currently have multiple repositories all publishing to NPM?
--   Is your build, test, lint infrastructure complex? Is it duplicated in many places?
--   How many repositories do you have (or plan to have in the next year?)
--   How large is your team? How many people will be consuming the component library?
--   Will it be open-source? Can you lean on others in the industry to help solve problems?
--   Do you see the need for multiple packages in the future? (e.g. icons, [codemods](https://github.com/facebook/jscodeshift), etc)
+- Do you currently have multiple repositories all publishing to NPM?
+- Is your build, test, lint infrastructure complex? Is it duplicated in many places?
+- How many repositories do you have (or plan to have in the next year?)
+- How large is your team? How many people will be consuming the component library?
+- Will it be open-source? Can you lean on others in the industry to help solve problems?
+- Do you see the need for multiple packages in the future? (e.g. icons, [codemods](https://github.com/facebook/jscodeshift), etc)
 
 For most smaller companies, I would argue that a Monorepo is unnecessary. It has its time and place. [We use it at Hy-Vee](/blog/monorepo-lerna-yarn-workspaces) (~150 developers) to distribute 10 different packages at once, spanning both internal and external apps.
 
@@ -239,17 +229,17 @@ For most smaller companies, I would argue that a Monorepo is unnecessary. It has
 
 I've come to prefer CSS-in-JS, especially [styled-components](https://www.styled-components.com/). There's a variety of different CSS-in-JS options outlined [here](https://github.com/MicheleBertoli/css-in-js). The major selling points for styled-components for our component library were:
 
--   Feels like writing traditional CSS vs. JavaScript objects
--   React & React Native support
--   Auto-prefixing vendor styles
--   Scoped styles which eliminate global CSS conflicts
+- Feels like writing traditional CSS vs. JavaScript objects
+- React & React Native support
+- Auto-prefixing vendor styles
+- Scoped styles which eliminate global CSS conflicts
 
 If your component library needs to support outputting raw HTML/CSS as an option, I would recommend sticking with Sass. A great example of this is IBM's [Carbon Design System](https://www.carbondesignsystem.com/components/button/code).
 ![Design System Button](/static/images/style-guides-component-libraries-design-systems/button.png)
 
 ```html
 <button class="bx--btn bx--btn--primary" type="button">
-    Button
+  Button
 </button>
 ```
 
@@ -288,12 +278,12 @@ Secondarily, what should the prop be called? `variant`? `type`? Did you consider
 
 Some other things you might want to consider:
 
--   Should you allow consumers to [pass CSS properties](https://evergreen.segment.com/components/layout-primitives) in as props to the React components, or should they have to extend/wrap components to achieve their desired styling? If you choose the former, consider [styled-system](https://github.com/styled-system/styled-system).
--   Should you build loading states [directly into components](http://react.carbondesignsystem.com/?path=/story/accordion--skeleton), or should there be a [generic component](https://www.npmjs.com/package/react-loading-skeleton) for loading (spinner, skeleton?)
--   How should you test purely visual components? [Snapshot testing](https://jestjs.io/docs/en/snapshot-testing)? [Visual diff testing](https://www.chromaticqa.com/)?
--   What will consumers need to do to integrate with your component library? Should there be a [global style reset](https://cssreset.com/what-is-a-css-reset/)? Should they add any [Babel plugins](https://github.com/ant-design/babel-plugin-import)?
--   Should you utilize [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) to auto-generate a changelog?
--   Will your components need to support web _and_ mobile? Consider using [React Native Web](https://github.com/devhubapp/devhub) to share code across platforms.
+- Should you allow consumers to [pass CSS properties](https://evergreen.segment.com/components/layout-primitives) in as props to the React components, or should they have to extend/wrap components to achieve their desired styling? If you choose the former, consider [styled-system](https://github.com/styled-system/styled-system).
+- Should you build loading states [directly into components](http://react.carbondesignsystem.com/?path=/story/accordion--skeleton), or should there be a [generic component](https://www.npmjs.com/package/react-loading-skeleton) for loading (spinner, skeleton?)
+- How should you test purely visual components? [Snapshot testing](https://jestjs.io/docs/en/snapshot-testing)? [Visual diff testing](https://www.chromaticqa.com/)?
+- What will consumers need to do to integrate with your component library? Should there be a [global style reset](https://cssreset.com/what-is-a-css-reset/)? Should they add any [Babel plugins](https://github.com/ant-design/babel-plugin-import)?
+- Should you utilize [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) to auto-generate a changelog?
+- Will your components need to support web _and_ mobile? Consider using [React Native Web](https://github.com/devhubapp/devhub) to share code across platforms.
 
 ### Choose a documentation platform.
 
@@ -304,10 +294,10 @@ If you're just getting started, I would recommend using **[Storybook Docs](https
 
 This combination will achieve the output as other similar platforms like [Docz](https://github.com/pedronauck/docz), [Styleguidist](https://react-styleguidist.js.org/), and [Docusaurus](https://docusaurus.io/).
 
--   Easily copy code snippets from component examples
--   Auto-generate a props table based on `prop-types` and `defaultProps`
--   Easily view all permutations of a component
--   Write custom docs using MDX
+- Easily copy code snippets from component examples
+- Auto-generate a props table based on `prop-types` and `defaultProps`
+- Easily view all permutations of a component
+- Write custom docs using MDX
 
 ![Storybook Flow](/static/images/style-guides-component-libraries-design-systems/storybook-flow.png)
 
@@ -324,17 +314,17 @@ One example I'm extremely impressed by is [Atomize React](https://atomizecode.co
 
 Now that you've chosen a documentation platform, it's time to write the docs. You should include:
 
--   Installation and setup instruction for the component library
--   Props schemas and type definitions for each component
--   Component examples along with copyable code snippets
--   Technology choices and rationale
+- Installation and setup instruction for the component library
+- Props schemas and type definitions for each component
+- Component examples along with copyable code snippets
+- Technology choices and rationale
 
 Consider also adding:
 
--   A "Getting Started" section involving a tutorial
--   Completed UI templates to choose from
--   Information about theming
--   A live code playground for interacting with components
+- A "Getting Started" section involving a tutorial
+- Completed UI templates to choose from
+- Information about theming
+- A live code playground for interacting with components
 
 ## Conclusion
 
@@ -349,15 +339,15 @@ Feel free to [reach out](mailto:me@leerob.io) if you wanna chat about building d
 
 **Design Systems**
 
--   [Shopify's Polaris](https://polaris.shopify.com/)
--   [Segment's Evergreen](https://evergreen.segment.com/)
--   [Eva Design](https://eva.design)
--   [ZEIT's Geist](https://zeit.co/design/geist)
--   [Ant Design](https://ant.design/)
--   [IBM's Carbon](https://www.carbondesignsystem.com/)
--   [Storybook's Design System](https://github.com/storybookjs/design-system)
--   [Modulz's Radix](https://radix.modulz.app/docs/getting-started/)
--   [GitHub's Primer](https://primer.style/)
--   [Palantir's Blueprint](https://blueprintjs.com/)
--   [Atlassian's Design System](https://atlassian.design/)
--   [Chakra UI](https://chakra-ui.com/)
+- [Shopify's Polaris](https://polaris.shopify.com/)
+- [Segment's Evergreen](https://evergreen.segment.com/)
+- [Eva Design](https://eva.design)
+- [ZEIT's Geist](https://zeit.co/design/geist)
+- [Ant Design](https://ant.design/)
+- [IBM's Carbon](https://www.carbondesignsystem.com/)
+- [Storybook's Design System](https://github.com/storybookjs/design-system)
+- [Modulz's Radix](https://radix.modulz.app/docs/getting-started/)
+- [GitHub's Primer](https://primer.style/)
+- [Palantir's Blueprint](https://blueprintjs.com/)
+- [Atlassian's Design System](https://atlassian.design/)
+- [Chakra UI](https://chakra-ui.com/)

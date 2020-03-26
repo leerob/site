@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2015-12-15',
-description: 'A simple Python program to retrieve relevant data.',
-image: '/static/images/google-yelp-foursquare-apis-python/banner.png',
-slug: 'google-yelp-foursquare-apis-python',
+---
 title: 'Harnessing the Google, Yelp, and Foursquare APIs with Python'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Harnessing the Google, Yelp, and Foursquare APIs with Python
-
-<Date>{meta.date}</Date>
+publishedAt: '2015-12-15'
+summary: 'A simple Python program to retrieve relevant data.'
+image: '/static/images/google-yelp-foursquare-apis-python/banner.png'
+---
 
 Data is a beautiful thing. Especially when we can sort, organize, and manipulate it to our needs. In this post, I’m going to walk you through harnessing the power of the Google Places, Yelp, and Foursquare APIs to create a list of businesses in your area.
 
@@ -62,9 +52,9 @@ https://api.foursquare.com/v2/venues/explore
 
 Let’s give it some parameters to narrow our search:
 
--   ll: Latitude and longitude of the user’s location.
--   radius: Search radius in meters.
--   categoryId: Limit results to a specific category (e.g. “bars”).
+- ll: Latitude and longitude of the user’s location.
+- radius: Search radius in meters.
+- categoryId: Limit results to a specific category (e.g. “bars”).
 
 Combining these parameters with our client keys, we can make a request to our newly created URL and retrieve a list of venues:
 
@@ -103,9 +93,9 @@ https://api.yelp.com/v2/search
 
 Once again, let’s give the URL some parameters to narrow our search:
 
--   ll: Latitude and longitude of the user’s location.
--   radius_filter: Search radius in meters. Max distance 40000 meters.
--   term: Limit results to a specific category (e.g. “bars”).
+- ll: Latitude and longitude of the user’s location.
+- radius_filter: Search radius in meters. Max distance 40000 meters.
+- term: Limit results to a specific category (e.g. “bars”).
 
 To obtain our desired information, we first need to create an authenticated session. Next, we make a request to our newly created URL and once again parse the JSON response.
 
@@ -146,9 +136,9 @@ https://maps.googleapis.com/maps/api/place/nearbysearch/json?params
 
 We need to supply these parameters:
 
--   location: Latitude and longitude of the user’s location.
--   radius: Search radius in meters. Max distance 50000 meters.
--   type: Limit results to a specific category (e.g. “bars”).
+- location: Latitude and longitude of the user’s location.
+- radius: Search radius in meters. Max distance 50000 meters.
+- type: Limit results to a specific category (e.g. “bars”).
 
 ```python
 place_list = []

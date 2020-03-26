@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-10-30',
-description: `Learn about how we've adopted GraphQL at Hy-Vee to improve developer efficiency and enhance our user experience.`,
-image: '/static/images/graphql-at-hy-vee/banner.jpg',
-slug: 'graphql-at-hy-vee',
+---
 title: 'GraphQL at Hy-Vee'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# GraphQL at Hy-Vee
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-10-30'
+summary: "Learn about how we've adopted GraphQL at Hy-Vee to improve developer efficiency and enhance our user experience."
+image: '/static/images/graphql-at-hy-vee/banner.jpg'
+---
 
 ![GraphQL at Hy-Vee](/static/images/graphql-at-hy-vee/banner.jpg)
 
@@ -51,17 +41,17 @@ Let’s say we’re dealing with a user’s shopping lists. When our page loads,
 
 ```graphql
 query {
-    lists {
-        listId
-        name
-        isPrimary
-        lastModified
-        listItems {
-            isChecked
-            listItemId
-            productId
-        }
+  lists {
+    listId
+    name
+    isPrimary
+    lastModified
+    listItems {
+      isChecked
+      listItemId
+      productId
     }
+  }
 }
 ```
 
@@ -97,24 +87,24 @@ If fetching is the equivalent of a GET request, a [Mutation](https://graphql.org
 
 ```graphql
 mutation {
-    createList(
-        createListInput: {
-            listId: "415cefed-1624-4977-96c3-f835ad2369d4"
-            name: "Snacks"
-            created: "2018-10-05T14:48:00.000Z"
-            lastModified: "2018-10-05T14:48:00.000Z"
-            isPrimary: false
-            isRemoved: false
-        }
-    ) {
-        listId
-        name
-        isPrimary
-        lastModified
-        listItems {
-            listItemId
-        }
+  createList(
+    createListInput: {
+      listId: "415cefed-1624-4977-96c3-f835ad2369d4"
+      name: "Snacks"
+      created: "2018-10-05T14:48:00.000Z"
+      lastModified: "2018-10-05T14:48:00.000Z"
+      isPrimary: false
+      isRemoved: false
     }
+  ) {
+    listId
+    name
+    isPrimary
+    lastModified
+    listItems {
+      listItemId
+    }
+  }
 }
 ```
 
@@ -144,14 +134,14 @@ With the GraphQL API, we can easily link a list item to a product, which is a co
 
 ```graphql
 query {
-    product(productId: $productId) {
-        productId
-        productImages(where: {isPrimary: true, size: $size}) {
-            size
-            uri
-            isPrimary
-        }
+  product(productId: $productId) {
+    productId
+    productImages(where: { isPrimary: true, size: $size }) {
+      size
+      uri
+      isPrimary
     }
+  }
 }
 ```
 
@@ -177,15 +167,15 @@ This allows us to retrieve the associated product image for the list item.
 To achieve the GraphQL API, we’re using a custom solution - but it’s similar to the idea behind [Apollo Federation](https://blog.apollographql.com/apollo-federation-f260cf525d21).
 
 ```js
-const {ApolloGateway} = require('[@apollo/gateway](http://twitter.com/apollo/gateway)');
+const { ApolloGateway } = require('@apollo/gateway');
 
 const gateway = new ApolloGateway({
-    serviceList: [
-        {name: 'accounts', url: 'accounts-api.company.com/graphql'},
-        {name: 'reviews', url: 'reviews-api.company.com/graphql'},
-        {name: 'products', url: 'products-api.company.com/graphql'},
-        {name: 'inventory', url: 'inventory-api.company.com/graphql'}
-    ]
+  serviceList: [
+    { name: 'accounts', url: 'accounts-api.company.com/graphql' },
+    { name: 'reviews', url: 'reviews-api.company.com/graphql' },
+    { name: 'products', url: 'products-api.company.com/graphql' },
+    { name: 'inventory', url: 'inventory-api.company.com/graphql' }
+  ]
 });
 ```
 
@@ -199,18 +189,18 @@ The `useQuery` [hook](https://www.apollographql.com/docs/react/api/react-hooks/)
 
 ```jsx
 function Lists() {
-    const {loading, error, data} = useQuery(GET_LISTS);
+  const { loading, error, data } = useQuery(GET_LISTS);
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
 
-    return (
-        <ul>
-            {data.lists.map((list) => (
-                <li key={list.listId}>{list.name}</li>
-            ))}
-        </ul>
-    );
+  return (
+    <ul>
+      {data.lists.map((list) => (
+        <li key={list.listId}>{list.name}</li>
+      ))}
+    </ul>
+  );
 }
 ```
 

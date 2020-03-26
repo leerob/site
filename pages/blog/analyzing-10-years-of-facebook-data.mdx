@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2018-04-04',
-description: 'Which year was I the most active? Who has commented on my pictures the most? How many songs have I streamed?',
-image: '/static/images/analyzing-10-years-of-facebook-data/banner.png',
-slug: 'analyzing-10-years-of-facebook-data',
+---
 title: 'Analyzing 10+ Years of My Facebook Data'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Analyzing 10+ Years of My Facebook Data
-
-<Date>{meta.date}</Date>
+publishedAt: '2018-04-04'
+summary: 'Which year was I the most active? Who has commented on my pictures the most? How many songs have I streamed?'
+image: '/static/images/analyzing-10-years-of-facebook-data/banner.png'
+---
 
 ![Facebook](/static/images/analyzing-10-years-of-facebook-data/banner.png)
 
@@ -25,12 +15,12 @@ Facebook has an option to export a data dump of “everything” they have store
 
 My data dump was surprisingly only **500mb**. All of the pictures and videos were heavily compressed, so if you were wanting to keep higher quality copies of these, I’d recommend downloading them separately. In total, I had:
 
--   292 photos
--   245 videos
--   5,917 posts & comments
--   43,511 songs streamed
+- 292 photos
+- 245 videos
+- 5,917 posts & comments
+- 43,511 songs streamed
 
-The main file, `timeline.htm`, is a massive clobber of information. Individual entries are generally structured like this:
+The main file, `timeline.html`, is a massive clobber of information. Individual entries are generally structured like this:
 
 ```html
 <div class="meta">Friday, March 9, 2018 at 11:53pm UTC+11</div>
@@ -51,17 +41,17 @@ Inside of the `/photos` folder, you'll find a folder for each photo album, as we
 
 I wanted to know four main statistics:
 
--   Total number of photos
--   Total number of comments
--   Average comments per photo
--   Top 10 commenters
+- Total number of photos
+- Total number of comments
+- Average comments per photo
+- Top 10 commenters
 
 To achieve this, I was able to recursively walk through the directory and sum the total number of pictures per photo album. To analyze the comments, I needed to look at the HTML file. Here's an example of the comment structure:
 
 ```html
 <div class="comment">
-    <span class="user">Probably My Mom</span>Love this photo! ✈️ 🙌🏻 📷
-    <div class="meta">Wednesday, May 17, 2017 at 7:08am UTC+10</div>
+  <span class="user">Probably My Mom</span>Love this photo! ✈️ 🙌🏻 📷
+  <div class="meta">Wednesday, May 17, 2017 at 7:08am UTC+10</div>
 </div>
 ```
 
@@ -119,11 +109,11 @@ If you don't want to install those packages globally, you can use a virtual envi
 
 If you feel like taking the script further, here are some other ideas:
 
--   Find the total number of people you’ve messaged
--   Create a chart of who you've messaged the most
--   Find the total number of events you've attended
--   Analyze the tone of all posts to determine mood (positive / negative)
--   Find your top friends based on the number of timeline interactions
+- Find the total number of people you’ve messaged
+- Create a chart of who you've messaged the most
+- Find the total number of events you've attended
+- Analyze the tone of all posts to determine mood (positive / negative)
+- Find your top friends based on the number of timeline interactions
 
 If you now feel like deleting all your Facebook posts/comments, I found a [Google Chrome extension](https://chrome.google.com/webstore/detail/social-book-post-manager/ljfidlkcmdmmibngdfikhffffdmphjae?hl=en-US) that should help.
 Thanks for reading!

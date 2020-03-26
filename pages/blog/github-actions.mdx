@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-09-15',
-description: 'Can GitHub Actions relace CircleCI entirely? Find out why I decided to switch CI/CD providers to GitHub Actions.',
-image: '/static/images/github-actions/banner.png',
-slug: 'github-actions',
+---
 title: 'Why I Switched From CircleCI to GitHub Actions'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Why I Switched From CircleCI to GitHub Actions
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-09-15'
+summary: 'Can GitHub Actions relace CircleCI entirely? Find out why I decided to switch CI/CD providers to GitHub Actions.'
+image: '/static/images/github-actions/banner.png'
+---
 
 ![GitHub Actions Checks](/static/images/github-actions/banner.png)
 
@@ -35,27 +25,27 @@ Here's the CircleCI config I was using. It installs the dependencies and runs `y
 ```yml
 version: 2
 jobs:
-    build:
-        docker:
-            - image: circleci/node:10.15.0
-        steps:
-            - checkout
-            - restore_cache:
-                  name: Restoring dependencies
-                  keys:
-                      - dependencies-v1-{{ checksum "yarn.lock" }}
-            - run:
-                  name: Installing dependencies
-                  command: yarn
-            - save_cache:
-                  name: Saving dependencies
-                  paths:
-                      - ~/.cache/yarn
-                      - node_modules
-                  key: dependencies-v1-{{ checksum "yarn.lock" }}
-            - run:
-                  name: Running tests
-                  command: yarn test
+  build:
+    docker:
+      - image: circleci/node:10.15.0
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restoring dependencies
+          keys:
+            - dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Installing dependencies
+          command: yarn
+      - save_cache:
+          name: Saving dependencies
+          paths:
+            - ~/.cache/yarn
+            - node_modules
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Running tests
+          command: yarn test
 ```
 
 ## GitHub Actions
@@ -64,24 +54,24 @@ jobs:
 
 I can achieve the **exact configuration** as CircleCI with GitHub Actions 🎉
 
-```yml
+```yml:.github/workflows/workflow.yml
 name: CI
 on: pull_request
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v1
-              with:
-                  fetch-depth: 1
-            - name: Setup Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 10.15.0
-            - name: Installing dependencies
-              run: yarn install --frozen-lockfile
-            - name: Running tests
-              run: yarn test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.15.0
+      - name: Installing dependencies
+        run: yarn install --frozen-lockfile
+      - name: Running tests
+        run: yarn test
 ```
 
 After adding this file at `.github/workflows/workflow.yml`, you'll be able to see each run show up under the "Actions" tab.
@@ -97,9 +87,9 @@ I've defined my check to happen on every pull request.
 GitHub Actions has been excellent so far. Plus, there's a lot more I could do with Actions.
 You can run a workflow on any GitHub event (e.g. push, issue creation, releases, etc) and even:
 
--   [Deploy to AWS/Kubernetes](https://github.com/actions/aws)
--   [Publish a package to NPM](https://github.com/actions/npm)
--   [Create a ticket in JIRA](https://github.com/atlassian/gajira)
--   [Label and close stale issues and pull requests](https://github.com/actions/stale)
+- [Deploy to AWS/Kubernetes](https://github.com/actions/aws)
+- [Publish a package to NPM](https://github.com/actions/npm)
+- [Create a ticket in JIRA](https://github.com/atlassian/gajira)
+- [Label and close stale issues and pull requests](https://github.com/actions/stale)
 
 I'm looking forward to seeing the adoption of GitHub Actions as it releases to the public.

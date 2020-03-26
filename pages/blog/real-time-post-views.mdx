@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-08-21',
-description: `Want more accurate page view counts? Learn how to create your own microservice for tracking real-time view counts using Firebase and then visualize those counts using React.`,
-image: '/static/images/real-time-post-views/banner.jpg',
-slug: 'real-time-post-views',
+---
 title: 'Real-Time Blog Post Views With React and Firebase'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Real-Time Blog Post Views With React and Firebase
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-08-21'
+summary: 'Want more accurate page view counts? Learn how to create your own microservice for tracking real-time view counts using Firebase and then visualize those counts using React.'
+image: '/static/images/real-time-post-views/banner.jpg'
+---
 
 [![Blog Post Views](/static/images/real-time-post-views/chart.png)](https://github.com/timqian/chart.xkcd)
 
@@ -27,7 +17,7 @@ What if we could have better accuracy, better performance, and better privacy fo
 
 ## Table of Contents
 
-1. [Who Is This For?](#who-is-this-for?)
+1. [Who Is This For?](#who-is-this-for)
 1. [Technical Overview](#technical-overview)
 1. [Setting Up Firebase](#setting-up-firebase)
 1. [Creating The Microservice](#creating-the-microservice)
@@ -81,7 +71,7 @@ We're finished! 🎉 You have successfully set up a realtime database, as well a
 
 ## Creating The Microservice
 
-> Update 2020: I've switched my microservice to an [API route](https://github.com/leerob/leerob.io/blob/master/pages/api/view.js) inside my Next.js application. If you're using Next.js, I would recommend this approach.
+> Update 2020: I've switched my microservice to an [API route](https://github.com/leerob/leerob.io/blob/master/pages/api/increment-views.js) inside my Next.js application. If you're using Next.js, I would recommend this approach.
 
 This blog post was inspired by Guillermo Rauch's [blog](https://github.com/rauchg/blog), where he open-sourced [his code](https://github.com/rauchg/blog-views). I've updated some things (to use Now 2.0 and React Hooks) but this is largely inspired by his work 🎉
 
@@ -95,12 +85,12 @@ This file is inside `.gitignore` so it won't be committed to GitHub. We can conn
 
 ```js
 const admin = require('firebase-admin');
-const {join} = require('path');
+const { join } = require('path');
 const cert = join(__dirname, '../service-account.json');
 
 admin.initializeApp({
-    credential: admin.credential.cert(cert),
-    databaseURL: 'https://your-blog.firebaseio.com'
+  credential: admin.credential.cert(cert),
+  databaseURL: 'https://your-blog.firebaseio.com'
 });
 
 module.exports = admin.database();
@@ -114,12 +104,12 @@ To track a view, we need to look at the database for `views -> id`.
 const db = require('./db');
 
 module.exports = function incrementViews(id) {
-    const ref = db.ref('views').child(id);
-    return ref.transaction((currentViews) => {
-        // if it has never been set it returns null
-        if (currentViews === null) currentViews = 0;
-        return currentViews + 1;
-    });
+  const ref = db.ref('views').child(id);
+  return ref.transaction((currentViews) => {
+    // if it has never been set it returns null
+    if (currentViews === null) currentViews = 0;
+    return currentViews + 1;
+  });
 };
 ```
 
@@ -129,30 +119,30 @@ The entry point into the application sets CORS headers, checks for a valid reque
 
 ```js
 const verify = require('./lib/verify');
-const {parse} = require('url');
+const { parse } = require('url');
 const increment = require('./lib/increment-views');
 
 module.exports = async (req, res) => {
-    const orig = req.headers.origin;
-    if (/https:\/\/(.*\.)?leerob\.io/.test(orig)) {
-        res.setHeader('Access-Control-Allow-Origin', orig);
-        res.setHeader('Access-Control-Allow-Methods', 'GET');
-    }
+  const orig = req.headers.origin;
+  if (/https:\/\/(.*\.)?leerob\.io/.test(orig)) {
+    res.setHeader('Access-Control-Allow-Origin', orig);
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+  }
 
-    // ensure no duplicate views
-    verify(req);
-    const {
-        query: {id}
-    } = parse(req.url, true);
+  // ensure no duplicate views
+  verify(req);
+  const {
+    query: { id }
+  } = parse(req.url, true);
 
-    if (!id) {
-        const err = new Error('Missing `id` parameter');
-        err.statusCode = 400;
-        throw err;
-    }
+  if (!id) {
+    const err = new Error('Missing `id` parameter');
+    err.statusCode = 400;
+    throw err;
+  }
 
-    const {snapshot} = await increment(id);
-    return {total: snapshot.val()};
+  const { snapshot } = await increment(id);
+  return { total: snapshot.val() };
 };
 ```
 
@@ -175,10 +165,10 @@ Update the `name` and `alias` to be unique for your microservice.
 
 ```json
 {
-    "version": 2,
-    "name": "your-blog-views",
-    "alias": "your-blog-views",
-    "builds": [{"src": "index.js", "use": "now-micro"}]
+  "version": 2,
+  "name": "your-blog-views",
+  "alias": "your-blog-views",
+  "builds": [{ "src": "index.js", "use": "now-micro" }]
 }
 ```
 
@@ -199,25 +189,25 @@ Let's lazy-load the Firebase JavaScript SDK.
 
 ```js
 export default async function loadDb() {
-    const firebase = await import('firebase/app');
+  const firebase = await import('firebase/app');
 
-    await import('firebase/database');
+  await import('firebase/database');
 
-    try {
-        firebase.initializeApp({
-            databaseURL: 'https://your-blog.firebaseio.com'
-        });
-    } catch (error) {
-        /*
-         * We skip the "already exists" message which is
-         * not an actual error when we're hot-reloading.
-         */
-        if (!/already exists/.test(error.message)) {
-            console.error('Firebase initialization error', error.stack);
-        }
+  try {
+    firebase.initializeApp({
+      databaseURL: 'https://your-blog.firebaseio.com'
+    });
+  } catch (error) {
+    /*
+     * We skip the "already exists" message which is
+     * not an actual error when we're hot-reloading.
+     */
+    if (!/already exists/.test(error.message)) {
+      console.error('Firebase initialization error', error.stack);
     }
+  }
 
-    return firebase.database().ref('views');
+  return firebase.database().ref('views');
 }
 ```
 
@@ -230,40 +220,41 @@ Let's create a `<ViewCounter />` component.
 **Note**: The `<Views />` component will be created next.
 
 ```jsx
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import loadDb from '../lib/load-db';
 
 import Views from './views';
 
-function ViewCounter({id}) {
-    const [views, setViews] = useState('');
+function ViewCounter({ id }) {
+  const [views, setViews] = useState('');
 
-    // Subscribe to view count updates
-    useEffect(() => {
-        const onViews = (newViews) => setViews(newViews.val());
-        let db;
+  // Subscribe to view count updates
+  useEffect(() => {
+    const onViews = (newViews) => setViews(newViews.val());
+    let db;
 
-        const fetchData = async () => {
-            db = await loadDb();
-            db.child(id).on('value', onViews);
-        };
+    const fetchData = async () => {
+      db = await loadDb();
+      db.child(id).on('value', onViews);
+    };
 
-        fetchData();
+    fetchData();
 
-        return function cleanup() {
-            db.child(id).off('value', onViews);
-        };
-    }, [id]);
+    return function cleanup() {
+      db.child(id).off('value', onViews);
+    };
+  }, [id]);
 
-    // Asynchronously log a view
-    useEffect(() => {
-        const registerView = () => fetch(`https://your-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
+  // Asynchronously log a view
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`https://your-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
 
-        registerView();
-    }, [id]);
+    registerView();
+  }, [id]);
 
-    return <Views views={views} />;
+  return <Views views={views} />;
 }
 
 export default ViewCounter;
@@ -272,8 +263,8 @@ export default ViewCounter;
 Now, let's look at `<Views />`.
 This component should accept a prop `views` and display a formatted string that highlights when the value updates.
 
--   For styling, I'm using [styled-components](https://www.styled-components.com/).
--   For formatting, I'm using [comma-number](https://www.npmjs.com/package/comma-number).
+- For styling, I'm using [styled-components](https://www.styled-components.com/).
+- For formatting, I'm using [comma-number](https://www.npmjs.com/package/comma-number).
 
 First, let's look at the styles. A `highlight` prop controls a CSS animation.
 
@@ -306,29 +297,31 @@ After 2 seconds, it resets the highlight state.
 
 ```jsx
 import format from 'comma-number';
-import React, {useState, useEffect} from 'react';
-import styled, {css, keyframes} from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 
 function Views(props) {
-    const [highlight, setHighlight] = useState(false);
+  const [highlight, setHighlight] = useState(false);
 
-    useEffect(() => {
-        if (props.views) {
-            setHighlight(true);
-        }
+  useEffect(() => {
+    if (props.views) {
+      setHighlight(true);
+    }
 
-        setTimeout(() => {
-            setHighlight(false);
-        }, 2000);
-    }, [props.views]);
+    setTimeout(() => {
+      setHighlight(false);
+    }, 2000);
+  }, [props.views]);
 
-    const formattedViews = `${format(props.views)} views`;
+  const formattedViews = `${format(props.views)} views`;
 
-    return (
-        <Container>
-            <StyledViews highlight={highlight}>{` - ${props.views && formattedViews}`}</StyledViews>
-        </Container>
-    );
+  return (
+    <Container>
+      <StyledViews highlight={highlight}>{` - ${
+        props.views && formattedViews
+      }`}</StyledViews>
+    </Container>
+  );
 }
 
 export default Views;

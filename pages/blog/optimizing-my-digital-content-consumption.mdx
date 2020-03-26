@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2018-07-11',
-description: 'Using RSS to aggregate and simplify how I consume media.',
-image: '/static/images/optimizing-my-digital-content-consumption/banner.png',
-slug: 'optimizing-my-digital-content-consumption',
+---
 title: 'Optimizing My Digital Content Consumption'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Optimizing My Digital Content Consumption
-
-<Date>{meta.date}</Date>
+publishedAt: '2018-07-11'
+summary: 'Using RSS to aggregate and simplify how I consume media.'
+image: '/static/images/optimizing-my-digital-content-consumption/banner.png'
+---
 
 ![Feedly & Instapaper](/static/images/optimizing-my-digital-content-consumption/banner.png)
 
@@ -25,10 +15,10 @@ My old process consisted of two main sources: [Reddit](https://www.reddit.com/) 
 
 I'd check these websites daily, reading various subreddits and diving deep in comment threads. It had worked pretty well. However, I saw a couple places for improvements.
 
--   There was no shared history across both sources. Sure, Reddit has a view history and HN has an upvote history, but there's no single source of truth. This problem exacerbates itself when adding another source into the mix (e.g. NY Times).
--   My bookmarks were flooded with articles I wanted to save forever or read later. This list was starting to get out of hand (and again, not a single source of truth).
--   I wanted to consume more content sources, specifically news sites, without having to check 4-5 websites daily.
--   Lots of news sites have poorly designed interfaces filled with cruft. Your adblocker can only do so much. It doesn't surpass a paywall or improve the page layout.
+- There was no shared history across both sources. Sure, Reddit has a view history and HN has an upvote history, but there's no single source of truth. This problem exacerbates itself when adding another source into the mix (e.g. NY Times).
+- My bookmarks were flooded with articles I wanted to save forever or read later. This list was starting to get out of hand (and again, not a single source of truth).
+- I wanted to consume more content sources, specifically news sites, without having to check 4-5 websites daily.
+- Lots of news sites have poorly designed interfaces filled with cruft. Your adblocker can only do so much. It doesn't surpass a paywall or improve the page layout.
 
 ## The New Way
 

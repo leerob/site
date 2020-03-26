@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-07-19',
-description: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.',
-image: '/static/images/going-serverless-next-firebase-now/banner.jpg',
-slug: 'going-serverless-next-firebase-now',
+---
 title: 'Going Serverless with Next.js, Firebase, and Now'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Going Serverless with Next.js, Firebase, and Now
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-07-19'
+summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.'
+image: '/static/images/going-serverless-next-firebase-now/banner.jpg'
+---
 
 ![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
 
@@ -25,11 +15,11 @@ A critical step in freelance development is assessing your client's business pro
 
 For the main website, the requirements were fairly straight forward:
 
--   Basic splash page with information about the product.
--   About page with information on the employees.
--   Frequently asked questions page.
--   Save off information from a contact form.
--   Cheap hosting. Ideally free.
+- Basic splash page with information about the product.
+- About page with information on the employees.
+- Frequently asked questions page.
+- Save off information from a contact form.
+- Cheap hosting. Ideally free.
 
 ![BeyondHQ](/static/images/going-serverless-next-firebase-now/landing.png)
 
@@ -37,12 +27,12 @@ They also wanted a platform to build SaaS on. That meant I needed to consider mo
 
 The first step towards their full-featured SaaS product was a [location evaluation tool](https://beyondhq.co/geo-eval). Users could enter information like their company size, the number of employees, and potential expansion locations to get a list of their top city matches. Then, they could explore each city and see metrics about what made it an attractive option to expand to. Those requirements were a bit more complex:
 
--   Resilient, highly available, and fast.
--   Cheap storage. Ideally free.
--   Great SEO (Search Engine Optimization).
--   City pages should be dynamic and pull from a database.
--   The ability for non-technical people to easily edit data.
--   Save off lead generation information from user input.
+- Resilient, highly available, and fast.
+- Cheap storage. Ideally free.
+- Great SEO (Search Engine Optimization).
+- City pages should be dynamic and pull from a database.
+- The ability for non-technical people to easily edit data.
+- Save off lead generation information from user input.
 
 ![BeyondHQ](/static/images/going-serverless-next-firebase-now/questions.png)
 
@@ -91,20 +81,22 @@ const admin = require('firebase-admin');
 const server = express();
 
 const firebase = admin
-    .initializeApp(
-        {
-            credential: admin.credential.cert(require('../.firebase/service-account.json')),
-            databaseURL: 'https://your-name-here.firebaseio.com'
-        },
-        'server'
-    )
-    .firestore();
+  .initializeApp(
+    {
+      credential: admin.credential.cert(
+        require('../.firebase/service-account.json')
+      ),
+      databaseURL: 'https://your-name-here.firebaseio.com'
+    },
+    'server'
+  )
+  .firestore();
 
 server.use(cors());
 server.use(bodyParser.json());
 server.use((req, _res, next) => {
-    req.firebaseServer = firebase;
-    next();
+  req.firebaseServer = firebase;
+  next();
 });
 
 module.exports = server;
@@ -114,29 +106,29 @@ Then, you're able to define routes to communicate with your database.
 
 ```js
 try {
-    const server = require('../../lib/server');
+  const server = require('../../lib/server');
 
-    server.get('/api/cities', (req, res) => {
-        req.firebaseServer
-            .collection('cities')
-            .get()
-            .then((snapshot) => {
-                const cities = [];
+  server.get('/api/cities', (req, res) => {
+    req.firebaseServer
+      .collection('cities')
+      .get()
+      .then((snapshot) => {
+        const cities = [];
 
-                snapshot.forEach((doc) => {
-                    cities.push(doc.data());
-                });
+        snapshot.forEach((doc) => {
+          cities.push(doc.data());
+        });
 
-                res.json({cities});
-            })
-            .catch((error) => {
-                res.json({error});
-            });
-    });
+        res.json({ cities });
+      })
+      .catch((error) => {
+        res.json({ error });
+      });
+  });
 
-    module.exports = server;
+  module.exports = server;
 } catch (error) {
-    console.log('API Error', error);
+  console.log('API Error', error);
 }
 ```
 
@@ -148,9 +140,9 @@ _Next 9 Update_: The preferred way to handle this now is with [API routes](https
 
 Since we already created a custom API, we can use Next's default server to communicate with Firebase. Let's configure the app to be [serverless](https://en.wikipedia.org/wiki/Serverless_computing) via `next.config.js`.
 
-```js
+```js:next.config.js
 module.exports = {
-    target: 'serverless'
+  target: 'serverless'
 };
 ```
 
@@ -158,46 +150,48 @@ While the majority of the requirements were centered around creating basic React
 
 The magic happens in our `now.json` file, which defines how the apps will be deployed. We can route all requests to `/api/` to our Node API:
 
-```json
+```json:now.json
 {
-    "src": "/api/(.*)",
-    "dest": "/app/routes/api"
+  "src": "/api/(.*)",
+  "dest": "/app/routes/api"
 }
 ```
 
 and all requests to `/city/city-name/` to forward a query param along to a `City` component.
 
-```json
+```json:now.json
 {
-    "src": "/city/(?<name>[^/]+)$",
-    "dest": "/www/city?name=$name"
+  "src": "/city/(?<name>[^/]+)$",
+  "dest": "/www/city?name=$name"
 }
 ```
 
 Finally, we can create `/pages/city.js` inside our Next app to fetch the query param for the city name and call our Node API.
 
-```js
-import {useEffect, useState} from 'react';
+```js:/pages/city.js
+import { useEffect, useState } from 'react';
 import fetch from 'isomorphic-unfetch';
 
 function City() {
-    const [city, setCity] = useState(null);
+  const [city, setCity] = useState(null);
 
-    useEffect(() => {
-        async function fetchData() {
-            const cityName = window.location.pathname.split('/').pop();
-            const baseUrl =
-                process.env.NODE_ENV === 'production' ? `https://${window.location.host}` : 'http://localhost:3000';
-            const res = await fetch(`${baseUrl}/api/city/${cityName}`);
-            const data = await res.json();
+  useEffect(() => {
+    async function fetchData() {
+      const cityName = window.location.pathname.split('/').pop();
+      const baseUrl =
+        process.env.NODE_ENV === 'production'
+          ? `https://${window.location.host}`
+          : 'http://localhost:3000';
+      const res = await fetch(`${baseUrl}/api/city/${cityName}`);
+      const data = await res.json();
 
-            setCity(data);
-        }
+      setCity(data);
+    }
 
-        fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    return city ? city.name : 'Loading...';
+  return city ? city.name : 'Loading...';
 }
 
 export default City;

@@ -1,19 +1,9 @@
-import Date from '../../components/date'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2017-10-29',
-description: 'Learn how I created a simple application to convert and download YouTube videos as MP3s.',
-image: '/static/images/building-my-first-electron-app/banner.png',
-slug: 'building-my-first-electron-app',
+---
 title: 'Building My First Electron App'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Building My First Electron App
-
-<Date>{meta.date}</Date>
+publishedAt: '2017-10-29'
+summary: 'Learn how I created a simple application to convert and download YouTube videos as MP3s.'
+image: '/static/images/building-my-first-electron-app/banner.png'
+---
 
 ![YouTube To MP3 Logo](/static/images/building-my-first-electron-app/banner.png)
 
@@ -25,10 +15,10 @@ Whenever I have an idea for a new project, I immediately want to dive into the c
 
 I defined a rough list of requirements for what my design should contain:
 
--   A macOS application versus a website
--   A large input that allows the user to enter a YouTube URL
--   A button to start the conversion process and begin the download
--   The input should transform into a progress bar after clicking the button
+- A macOS application versus a website
+- A large input that allows the user to enter a YouTube URL
+- A button to start the conversion process and begin the download
+- The input should transform into a progress bar after clicking the button
 
 Here are the mockups I created for my application:
 
@@ -37,9 +27,9 @@ Here are the mockups I created for my application:
 
 I strived to create a simple but visually appealing design. The soft, green to blue gradient in the background provides contrast against the large, rounded input. I emphasized the little things like:
 
--   Adding box shadows around the input and button
--   Using a crisp, clear font ([San Francisco](https://developer.apple.com/fonts/))
--   Using a complementary color for the button to offset the background
+- Adding box shadows around the input and button
+- Using a crisp, clear font ([San Francisco](https://developer.apple.com/fonts/))
+- Using a complementary color for the button to offset the background
 
 Overall, I'm pretty happy with how it turned out. This gave me a great base to begin with.
 
@@ -70,10 +60,10 @@ I also wanted to gain more experience with React and the JavaScript tooling that
 
 Let's look at what I've defined here:
 
--   [Axios](https://github.com/axios/axios) - Send HTTP requests from the browser
--   [Babel](https://babeljs.io/) - Use the latest JavaScript features and compile your code to support older browsers
--   [React](https://github.com/facebook/react) - A JavaScript library for building user interfaces
--   [Sass](https://github.com/sass/sass) - CSS with superpowers
+- [Axios](https://github.com/axios/axios) - Send HTTP requests from the browser
+- [Babel](https://babeljs.io/) - Use the latest JavaScript features and compile your code to support older browsers
+- [React](https://github.com/facebook/react) - A JavaScript library for building user interfaces
+- [Sass](https://github.com/sass/sass) - CSS with superpowers
 
 These libraries will be the building blocks of my application.
 
@@ -81,10 +71,10 @@ Electron requires you to specify a main entry point into your application. It's 
 
 ```js
 const browserOptions = {
-    width: 800,
-    height: 600,
-    maximizeable: false,
-    icon: path.join(__dirname, '/public/img/logo.png')
+  width: 800,
+  height: 600,
+  maximizeable: false,
+  icon: path.join(__dirname, '/public/img/logo.png')
 };
 
 mainWindow = new BrowserWindow(browserOptions);
@@ -96,16 +86,16 @@ Here's the entirety of the `index.html` file it renders. This file simply includ
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="public/css/global.css" />
-        <title>Youtube To MP3</title>
-    </head>
-    <body>
-        <div class="root center" id="root"></div>
-        <script src="public/js/bundle.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="public/css/global.css" />
+    <title>Youtube To MP3</title>
+  </head>
+  <body>
+    <div class="root center" id="root"></div>
+    <script src="public/js/bundle.js"></script>
+  </body>
 </html>
 ```
 
@@ -123,9 +113,9 @@ import ReactDOM from 'react-dom';
 import AppContainer from './containers/app.container';
 
 class App extends React.Component {
-    render() {
-        return <AppContainer />;
-    }
+  render() {
+    return <AppContainer />;
+  }
 }
 
 // Render to index.html
@@ -170,36 +160,36 @@ It's much easier to create strings with dynamic content now. You'll notice that 
 
 ```css
 .link {
-    &__input {
-        width: 510px;
-        height: 60px;
-        border: 0;
-        border-radius: 10px;
-        box-shadow: $shadow;
-        color: $grey;
-        font-size: $font-size;
-        text-indent: 15px;
-        font-weight: 200;
+  &__input {
+    width: 510px;
+    height: 60px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    color: $grey;
+    font-size: $font-size;
+    text-indent: 15px;
+    font-weight: 200;
 
-        &--error {
-            @extend .link__input;
-            box-shadow: 0 0 0 2pt rgba(255, 0, 0, 0.53);
-        }
+    &--error {
+      @extend .link__input;
+      box-shadow: 0 0 0 2pt rgba(255, 0, 0, 0.53);
     }
+  }
 
-    &__button {
-        height: 50px;
-        width: 200px;
-        box-shadow: $shadow;
-        border: 0;
-        border-radius: 10px;
-        color: white;
-        font-size: $font-size;
-        background: $pink;
-        margin-top: 10px;
-        font-weight: 200;
-        cursor: pointer;
-    }
+  &__button {
+    height: 50px;
+    width: 200px;
+    box-shadow: $shadow;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: $font-size;
+    background: $pink;
+    margin-top: 10px;
+    font-weight: 200;
+    cursor: pointer;
+  }
 }
 ```
 
@@ -208,31 +198,33 @@ Sass will transform this code into three classes: `link__input`, `link__input--e
 The `ProgressBar` component displays a loading bar disguised as an input which updates based on the percentage value passed in from its parent `AppContainer`. When it's nearing completion, the text color changes to white so there's sufficient contrast.
 
 ```jsx
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ProgressBar extends Component {
-    render() {
-        let percentComplete = `${this.props.progress}%`;
-        let color = '#747373';
+  render() {
+    let percentComplete = `${this.props.progress}%`;
+    let color = '#747373';
 
-        if (this.props.progress > 90) {
-            color = 'white';
-        }
-
-        return (
-            <div>
-                <div className="progress">
-                    <div className="progress__bar" style={{width: percentComplete}} />
-                    <div className="progress__percentage" style={{color: color}}>
-                        {percentComplete}
-                    </div>
-                </div>
-                <div className="center">
-                    <span className="progress__info">The video is currently being processed.</span>
-                </div>
-            </div>
-        );
+    if (this.props.progress > 90) {
+      color = 'white';
     }
+
+    return (
+      <div>
+        <div className="progress">
+          <div className="progress__bar" style={{ width: percentComplete }} />
+          <div className="progress__percentage" style={{ color: color }}>
+            {percentComplete}
+          </div>
+        </div>
+        <div className="center">
+          <span className="progress__info">
+            The video is currently being processed.
+          </span>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ProgressBar;

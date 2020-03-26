@@ -1,20 +1,11 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-import YouTube from '../../components/metrics/youtube';
-
-export const meta = {
-date: '2020-02-05',
-description: 'Learn how to use Next.js API routes to integrate with the YouTube API and retrieve statistics about a channel.',
-image: '/static/images/metrics.png',
-slug: 'youtube-api-nextjs',
+---
 title: 'Create a Dashboard with Next.js API Routes - YouTube API'
-}
+publishedAt: '2020-02-05'
+summary: 'Learn how to use Next.js API routes to integrate with the YouTube API and retrieve statistics about a channel.'
+image: '/static/images/metrics.png'
+---
 
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Create a Dashboard with Next.js API Routes - YouTube API
-
-<DateAndViews date={meta.date} id={meta.slug} />
+import YouTube from '../../components/metrics/youtube';
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
@@ -32,32 +23,32 @@ Since I'm a [YouTube Creator](https://www.youtube.com/channel/UCZMli3czZnd1uoc1S
 
 To gain access to the YouTube API, you need to:
 
--   Go to the [Google Developer Console.](https://console.developers.google.com/)
--   Create a new project.
--   Credentials -> Create Credentials -> Service-account key.
--   Click “Enable APIs and services.”
--   Find "YouTube Data API v3" and enable it.
+- Go to the [Google Developer Console.](https://console.developers.google.com/)
+- Create a new project.
+- Credentials -> Create Credentials -> Service-account key.
+- Click “Enable APIs and services.”
+- Find "YouTube Data API v3" and enable it.
 
 Since we're communicating server-to-server, we'll need a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
--   Go to your [service accounts](https://console.developers.google.com/iam-admin/serviceaccounts) page.
--   Create a service account.
--   Click "Create Key" and choose JSON.
+- Go to your [service accounts](https://console.developers.google.com/iam-admin/serviceaccounts) page.
+- Create a service account.
+- Click "Create Key" and choose JSON.
 
 You should now have a JSON file similar to this:
 
 ```json
 {
-    "type": "service_account",
-    "project_id": "...",
-    "private_key_id": "...",
-    "private_key": "...",
-    "client_email": "...",
-    "client_id": "...",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://accounts.google.com/o/oauth2/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "..."
+  "type": "service_account",
+  "project_id": "...",
+  "private_key_id": "...",
+  "private_key": "...",
+  "client_email": "...",
+  "client_id": "...",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "..."
 }
 ```
 
@@ -65,8 +56,8 @@ We use this key later to set up our client in our API Route.
 Okay, back to the [service account](https://console.developers.google.com/iam-admin/serviceaccounts).
 We need to delegate [domain-wide authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority).
 
--   On the table row, click Actions -> Edit.
--   Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
+- On the table row, click Actions -> Edit.
+- Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
 
 **That's it!** 🎉 You now have access to make requests to the YouTube API with your service account.
 
@@ -102,11 +93,11 @@ Finally, we need to add the secrets to our `now.json`.
 
 ```json
 {
-    "env": {
-        "GOOGLE_PRIVATE_KEY": "@google-private-key",
-        "GOOGLE_CLIENT_EMAIL": "@google-client-email",
-        "GOOGLE_CLIENT_ID": "@google-client-id"
-    }
+  "env": {
+    "GOOGLE_PRIVATE_KEY": "@google-private-key",
+    "GOOGLE_CLIENT_EMAIL": "@google-client-email",
+    "GOOGLE_CLIENT_ID": "@google-client-id"
+  }
 }
 ```
 
@@ -120,7 +111,7 @@ Let's start by creating a new API route at `pages/api/youtube.js`.
 
 ```js
 export default (req, res) => {
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
@@ -133,63 +124,63 @@ $ yarn add googleapis
 Then, we can initialize `googleapis` inside our API route.
 
 ```js
-import {google} from 'googleapis';
+import { google } from 'googleapis';
 
 let googleAuth;
 
 export default async (_, res) => {
-    googleAuth = new google.auth.GoogleAuth({
-        credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            client_id: process.env.GOOGLE_CLIENT_ID,
-            private_key: process.env.GOOGLE_PRIVATE_KEY
-        },
-        scopes: ['https://www.googleapis.com/auth/youtube.readonly']
-    });
+  googleAuth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
+    },
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+  });
 
-    const youtube = google.youtube({
-        auth,
-        version: 'v3'
-    });
+  const youtube = google.youtube({
+    auth,
+    version: 'v3'
+  });
 
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
 Finally, we want to pull statistics for a given channel and return the total number of subscribers and views.
 
 ```js
-import {google} from 'googleapis';
+import { google } from 'googleapis';
 
 let googleAuth;
 
 export default async (_, res) => {
-    googleAuth = new google.auth.GoogleAuth({
-        credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            client_id: process.env.GOOGLE_CLIENT_ID,
-            private_key: process.env.GOOGLE_PRIVATE_KEY
-        },
-        scopes: ['https://www.googleapis.com/auth/youtube.readonly']
-    });
+  googleAuth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
+    },
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+  });
 
-    const youtube = google.youtube({
-        auth,
-        version: 'v3'
-    });
+  const youtube = google.youtube({
+    auth,
+    version: 'v3'
+  });
 
-    const response = await youtube.channels.list({
-        id: 'UCZMli3czZnd1uoc1ShTouQw',
-        part: 'statistics'
-    });
+  const response = await youtube.channels.list({
+    id: 'UCZMli3czZnd1uoc1ShTouQw',
+    part: 'statistics'
+  });
 
-    const channel = response.data.items[0];
-    const {subscriberCount, viewCount} = channel.statistics;
+  const channel = response.data.items[0];
+  const { subscriberCount, viewCount } = channel.statistics;
 
-    return res.status(200).json({
-        subscriberCount,
-        viewCount
-    });
+  return res.status(200).json({
+    subscriberCount,
+    viewCount
+  });
 };
 ```
 
@@ -209,7 +200,7 @@ Cache-Control: public, max-age=120, stale-while-revalidate=60
 
 **Create a Dashboard with Next.js API Routes**
 
--   Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
--   Part 2 - [YouTube API](/blog/youtube-api-nextjs)
--   Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
--   Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)
+- Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
+- Part 2 - [YouTube API](/blog/youtube-api-nextjs)
+- Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
+- Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)

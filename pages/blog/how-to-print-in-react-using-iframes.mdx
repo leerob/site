@@ -1,29 +1,19 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2019-06-04',
-description: `Learn how to use iframes to print React components while only printing what's necessary.`,
-image: '/static/images/how-to-print-in-react-using-iframes/banner.png',
-slug: 'how-to-print-in-react-using-iframes',
+---
 title: 'How To Print in React Using Iframes'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# How To Print in React Using Iframes
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2019-06-04'
+summary: "Learn how to use iframes to print React components while only printing what's necessary."
+image: '/static/images/how-to-print-in-react-using-iframes/banner.png'
+---
 
 You want to print the contents of a page. If you use the standard browser API, this will print the entirety of the _current_ page.
 In this scenario, you can use the print media query to show/hide certain parts of the page.
 
 ```css
 @media print {
-    header,
-    footer {
-        display: none;
-    }
+  header,
+  footer {
+    display: none;
+  }
 }
 ```
 
@@ -50,14 +40,19 @@ We can create an `iframe` which loads the contents of our receipt. Once the cont
 First, let's create an `iframe` that routes to our receipt.
 
 ```jsx
-<iframe id="receipt" src="/payment/receipt" style={{display: 'none'}} title="Receipt" />
+<iframe
+  id="receipt"
+  src="/payment/receipt"
+  style={{ display: 'none' }}
+  title="Receipt"
+/>
 ```
 
 We need to ensure the contents of that route have loaded, otherwise the page will be blank when trying to print.
 We can communicate with the `iframe` from the receipt route to let it know we've finished loading.
 
 ```js
-parent.postMessage({action: 'receipt-loaded'});
+parent.postMessage({ action: 'receipt-loaded' });
 ```
 
 Finally, we need a way to invoke the print dialog.
@@ -65,41 +60,50 @@ Let's create a component which sets up an event listener for the `receipt-loaded
 When the route has finished loading, we can click the `button`.
 
 ```js
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 function PaymentConfirmation() {
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const handleMessage = (event) => {
-        if (event.data.action === 'receipt-loaded') {
-            setIsLoading(false);
-        }
+  const handleMessage = (event) => {
+    if (event.data.action === 'receipt-loaded') {
+      setIsLoading(false);
+    }
+  };
+
+  const printIframe = (id) => {
+    const iframe = document.frames
+      ? document.frames[id]
+      : document.getElementById(id);
+    const iframeWindow = iframe.contentWindow || iframe;
+
+    iframe.focus();
+    iframeWindow.print();
+
+    return false;
+  };
+
+  useEffect(() => {
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
     };
+  }, []);
 
-    const printIframe = (id) => {
-        const iframe = document.frames ? document.frames[id] : document.getElementById(id);
-        const iframeWindow = iframe.contentWindow || iframe;
-
-        iframe.focus();
-        iframeWindow.print();
-
-        return false;
-    };
-
-    useEffect(() => {
-        window.addEventListener('message', handleMessage);
-
-        return () => {
-            window.removeEventListener('message', handleMessage);
-        };
-    }, []);
-
-    return (
-        <>
-            <iframe id="receipt" src="/payment/receipt" style={{display: 'none'}} title="Receipt" />
-            <button onClick={() => printIframe('receipt')}>{isLoading ? 'Loading...' : 'Print Receipt'}</button>
-        </>
-    );
+  return (
+    <>
+      <iframe
+        id="receipt"
+        src="/payment/receipt"
+        style={{ display: 'none' }}
+        title="Receipt"
+      />
+      <button onClick={() => printIframe('receipt')}>
+        {isLoading ? 'Loading...' : 'Print Receipt'}
+      </button>
+    </>
+  );
 }
 
 export default PaymentConfirmation;
@@ -111,52 +115,59 @@ export default PaymentConfirmation;
 import React from 'react';
 
 const printIframe = (id) => {
-    const iframe = document.frames ? document.frames[id] : document.getElementById(id);
-    const iframeWindow = iframe.contentWindow || iframe;
+  const iframe = document.frames
+    ? document.frames[id]
+    : document.getElementById(id);
+  const iframeWindow = iframe.contentWindow || iframe;
 
-    iframe.focus();
-    iframeWindow.print();
+  iframe.focus();
+  iframeWindow.print();
 
-    return false;
+  return false;
 };
 
 class PaymentConfirmation extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isLoading: true
-        };
+    this.state = {
+      isLoading: true
+    };
 
-        this.handleMessage = this.handleMessage.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
+  }
+
+  componentWillMount() {
+    window.addEventListener('message', this.handleMessage);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('message', this.handleMessage);
+  }
+
+  handleMessage(event) {
+    if (event.data.action === 'receipt-loaded') {
+      this.setState({
+        isLoading: false
+      });
     }
+  }
 
-    componentWillMount() {
-        window.addEventListener('message', this.handleMessage);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('message', this.handleMessage);
-    }
-
-    handleMessage(event) {
-        if (event.data.action === 'receipt-loaded') {
-            this.setState({
-                isLoading: false
-            });
-        }
-    }
-
-    render() {
-        return (
-            <>
-                <iframe id="receipt" src="/payment/receipt" style={{display: 'none'}} title="Receipt" />
-                <button onClick={() => printIframe('receipt')}>
-                    {this.state.isLoading ? 'Loading...' : 'Print Receipt'}
-                </button>
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        <iframe
+          id="receipt"
+          src="/payment/receipt"
+          style={{ display: 'none' }}
+          title="Receipt"
+        />
+        <button onClick={() => printIframe('receipt')}>
+          {this.state.isLoading ? 'Loading...' : 'Print Receipt'}
+        </button>
+      </>
+    );
+  }
 }
 
 export default PaymentConfirmation;

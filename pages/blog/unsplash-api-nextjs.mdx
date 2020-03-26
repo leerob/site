@@ -1,20 +1,11 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-import Unsplash from '../../components/metrics/unsplash';
-
-export const meta = {
-date: '2020-02-04',
-description: 'Learn how to use Next.js API routes to integrate with the Unsplash API and retrieve statistics about a user.',
-image: '/static/images/metrics.png',
-slug: 'unsplash-api-nextjs',
+---
 title: 'Create a Dashboard with Next.js API Routes - Unsplash API'
-}
+publishedAt: '2020-02-04'
+summary: 'Learn how to use Next.js API routes to integrate with the Unsplash API and retrieve statistics about a user.'
+image: '/static/images/metrics.png'
+---
 
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Create a Dashboard with Next.js API Routes - Unsplash API
-
-<DateAndViews date={meta.date} id={meta.slug} />
+import Unsplash from '../../components/metrics/unsplash';
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
@@ -32,12 +23,12 @@ As an [Unsplash contributor](https://unsplash.com/@leerob), I wanted to see how 
 
 To gain access to the Unsplash API, you need to:
 
--   [Create an account.](https://unsplash.com/documentation#creating-a-developer-account)
--   Go to [your applications](https://unsplash.com/oauth/applications).
--   Click “New Application.”
--   Accept the terms of usage.
--   Fill in the required details.
--   Retrieve the secret key for your new application.
+- [Create an account.](https://unsplash.com/documentation#creating-a-developer-account)
+- Go to [your applications](https://unsplash.com/oauth/applications).
+- Click “New Application.”
+- Accept the terms of usage.
+- Fill in the required details.
+- Retrieve the secret key for your new application.
 
 **That's it!** 🎉 You now have access to make requests to the Unsplash API with your secret key.
 
@@ -62,9 +53,9 @@ Finally, we need to add our new secret to `now.json`.
 
 ```json
 {
-    "env": {
-        "UNSPLASH_ACCESS_KEY": "@unsplash-access-key"
-    }
+  "env": {
+    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key"
+  }
 }
 ```
 
@@ -76,7 +67,7 @@ Let's start by creating a new API route at `pages/api/unsplash.js`.
 
 ```js
 export default (req, res) => {
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
@@ -91,18 +82,18 @@ Then, we can initialize `unsplash-js` inside our API route.
 
 ```js
 import fetch from 'isomorphic-unfetch';
-import Unsplash, {toJson} from 'unsplash-js';
+import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;
 
 export default async (_, res) => {
-    if (!unsplash) {
-        unsplash = new Unsplash({
-            accessKey: process.env.UNSPLASH_ACCESS_KEY
-        });
-    }
+  if (!unsplash) {
+    unsplash = new Unsplash({
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
+    });
+  }
 
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
@@ -110,24 +101,24 @@ Finally, we want to pull statistics for a given user and return the total number
 
 ```js
 import fetch from 'isomorphic-unfetch';
-import Unsplash, {toJson} from 'unsplash-js';
+import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;
 
 export default async (_, res) => {
-    if (!unsplash) {
-        unsplash = new Unsplash({
-            accessKey: process.env.UNSPLASH_ACCESS_KEY
-        });
-    }
-
-    const userStats = await unsplash.users.statistics('leerob');
-    const {downloads, views} = await toJson(userStats);
-
-    return res.status(200).json({
-        downloads: downloads.total,
-        views: views.total
+  if (!unsplash) {
+    unsplash = new Unsplash({
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
     });
+  }
+
+  const userStats = await unsplash.users.statistics('leerob');
+  const { downloads, views } = await toJson(userStats);
+
+  return res.status(200).json({
+    downloads: downloads.total,
+    views: views.total
+  });
 };
 ```
 
@@ -147,7 +138,7 @@ Cache-Control: public, max-age=120, stale-while-revalidate=60
 
 **Create a Dashboard with Next.js API Routes**
 
--   Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
--   Part 2 - [YouTube API](/blog/youtube-api-nextjs)
--   Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
--   Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)
+- Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
+- Part 2 - [YouTube API](/blog/youtube-api-nextjs)
+- Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
+- Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)

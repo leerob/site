@@ -1,20 +1,11 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-import GoogleAnalytics from '../../components/metrics/analytics';
-
-export const meta = {
-date: '2020-02-18',
-description: 'Learn how to use Next.js API routes to integrate with the Google Analytics API and retrieve statistics about a site.',
-image: '/static/images/metrics.png',
-slug: 'google-analytics-api-nextjs',
+---
 title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
-}
+publishedAt: '2020-02-18'
+summary: 'Learn how to use Next.js API routes to integrate with the Google Analytics API and retrieve statistics about a site.'
+image: '/static/images/metrics.png'
+---
 
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Create a Dashboard with Next.js API Routes - Google Analytics API
-
-<DateAndViews date={meta.date} id={meta.slug} />
+import GoogleAnalytics from '../../components/metrics/analytics';
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
@@ -33,32 +24,32 @@ _Note_: You'll need to turn off your ad blocker for this page to work.
 
 To gain access to the Google Analytics API, you need to:
 
--   Go to the [Google Developer Console.](https://console.developers.google.com/)
--   Create a new project.
--   Credentials -> Create Credentials -> Service-account key.
--   Click “Enable APIs and services.”
--   Find "Google Analytics API" and enable it.
+- Go to the [Google Developer Console.](https://console.developers.google.com/)
+- Create a new project.
+- Credentials -> Create Credentials -> Service-account key.
+- Click “Enable APIs and services.”
+- Find "Google Analytics API" and enable it.
 
 Since we're communicating server-to-server, we'll need a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
--   Go to your [service accounts](https://console.developers.google.com/iam-admin/serviceaccounts) page.
--   Create a service account.
--   Click "Create Key" and choose JSON.
+- Go to your [service accounts](https://console.developers.google.com/iam-admin/serviceaccounts) page.
+- Create a service account.
+- Click "Create Key" and choose JSON.
 
 You should now have a JSON file similar to this:
 
 ```json
 {
-    "type": "service_account",
-    "project_id": "...",
-    "private_key_id": "...",
-    "private_key": "...",
-    "client_email": "...",
-    "client_id": "...",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://accounts.google.com/o/oauth2/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "..."
+  "type": "service_account",
+  "project_id": "...",
+  "private_key_id": "...",
+  "private_key": "...",
+  "client_email": "...",
+  "client_id": "...",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "..."
 }
 ```
 
@@ -66,14 +57,14 @@ We use this key later to set up our client in our API Route.
 Okay, back to the [service account](https://console.developers.google.com/iam-admin/serviceaccounts).
 We need to delegate [domain-wide authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority).
 
--   On the table row, click Actions -> Edit.
--   Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
+- On the table row, click Actions -> Edit.
+- Show Domain-Wide Delegation -> Enable G-Suite Domain-Wide Delegation.
 
 Finally, we need to add our service account email to the Google Analytics account we want to use.
 
--   Go to the Admin panel inside Google Analytics.
--   Click "User Management."
--   Add the `client_email` from your service account.
+- Go to the Admin panel inside Google Analytics.
+- Click "User Management."
+- Add the `client_email` from your service account.
 
 **That's it!** 🎉 You now have access to make requests to the Google Analytics API with your service account.
 
@@ -109,11 +100,11 @@ Finally, we need to add the secrets to our `now.json`.
 
 ```json
 {
-    "env": {
-        "GOOGLE_PRIVATE_KEY": "@google-private-key",
-        "GOOGLE_CLIENT_EMAIL": "@google-client-email",
-        "GOOGLE_CLIENT_ID": "@google-client-id"
-    }
+  "env": {
+    "GOOGLE_PRIVATE_KEY": "@google-private-key",
+    "GOOGLE_CLIENT_EMAIL": "@google-client-email",
+    "GOOGLE_CLIENT_ID": "@google-client-id"
+  }
 }
 ```
 
@@ -127,7 +118,7 @@ Let's start by creating a new API route at `pages/api/page-views.js`.
 
 ```js
 export default (req, res) => {
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
@@ -140,26 +131,26 @@ $ yarn add googleapis
 Then, we can initialize `googleapis` inside our API route.
 
 ```js
-import {google} from 'googleapis';
+import { google } from 'googleapis';
 
 let googleAuth;
 
 export default async (_, res) => {
-    googleAuth = new google.auth.GoogleAuth({
-        credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            client_id: process.env.GOOGLE_CLIENT_ID,
-            private_key: process.env.GOOGLE_PRIVATE_KEY
-        },
-        scopes: ['https://www.googleapis.com/auth/analytics.readonly']
-    });
+  googleAuth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
+    },
+    scopes: ['https://www.googleapis.com/auth/analytics.readonly']
+  });
 
-    const analytics = google.analytics({
-        auth,
-        version: 'v3'
-    });
+  const analytics = google.analytics({
+    auth,
+    version: 'v3'
+  });
 
-    return res.status(200).json({});
+  return res.status(200).json({});
 };
 ```
 
@@ -173,36 +164,36 @@ const startDate = req.query.startDate;
 Then, we can use the same API route to fetch stats about different time ranges.
 
 ```js
-import {google} from 'googleapis';
+import { google } from 'googleapis';
 
 let googleAuth;
 
 export default async (_, res) => {
-    googleAuth = new google.auth.GoogleAuth({
-        credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            client_id: process.env.GOOGLE_CLIENT_ID,
-            private_key: process.env.GOOGLE_PRIVATE_KEY
-        },
-        scopes: ['https://www.googleapis.com/auth/youtube.readonly']
-    });
+  googleAuth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      private_key: process.env.GOOGLE_PRIVATE_KEY
+    },
+    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+  });
 
-    const analytics = google.analytics({
-        auth,
-        version: 'v3'
-    });
+  const analytics = google.analytics({
+    auth,
+    version: 'v3'
+  });
 
-    const startDate = req.query.startDate;
-    const response = await analytics.data.ga.get({
-        'end-date': 'today',
-        ids: 'ga:187331021',
-        metrics: 'ga:pageviews',
-        'start-date': startDate
-    });
+  const startDate = req.query.startDate;
+  const response = await analytics.data.ga.get({
+    'end-date': 'today',
+    ids: 'ga:187331021',
+    metrics: 'ga:pageviews',
+    'start-date': startDate
+  });
 
-    return res.status(200).json({
-        pageViews: response.data.rows[0][0]
-    });
+  return res.status(200).json({
+    pageViews: response.data.rows[0][0]
+  });
 };
 ```
 
@@ -222,7 +213,7 @@ Cache-Control: public, max-age=120, stale-while-revalidate=60
 
 **Create a Dashboard with Next.js API Routes**
 
--   Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
--   Part 2 - [YouTube API](/blog/youtube-api-nextjs)
--   Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
--   Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)
+- Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
+- Part 2 - [YouTube API](/blog/youtube-api-nextjs)
+- Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
+- Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)

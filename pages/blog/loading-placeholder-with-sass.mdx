@@ -1,19 +1,9 @@
-import DateAndViews from '../../components/date-and-views'
-import Post from '../../components/post'
-
-export const meta = {
-date: '2017-11-12',
-description: 'Using animation to simulate loading text content.',
-image: '/static/images/loading-placeholder-with-sass/banner.png',
-slug: 'loading-placeholder-with-sass',
+---
 title: 'Creating a Loading Placeholder with Sass'
-}
-
-export default ({children}) => <Post meta={meta}>{children}</Post>
-
-# Creating a Loading Placeholder with Sass
-
-<DateAndViews date={meta.date} id={meta.slug} />
+publishedAt: '2017-11-12'
+summary: 'Using animation to simulate loading text content.'
+image: '/static/images/loading-placeholder-with-sass/banner.png'
+---
 
 ![Loading Placeholder](/static/images/loading-placeholder-with-sass/example.gif)
 
@@ -43,16 +33,16 @@ First, let's create the base structure. In this example, the placeholder is supp
 
 ```html
 <div class="text-input__loading">
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
-    <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
 </div>
 ```
 
@@ -60,9 +50,9 @@ Each line should be about the same height as our text. We can use CSS animation 
 
 ```css
 &--line {
-    height: 10px;
-    margin: 10px;
-    animation: pulse 1s infinite ease-in-out;
+  height: 10px;
+  margin: 10px;
+  animation: pulse 1s infinite ease-in-out;
 }
 ```
 
@@ -70,15 +60,15 @@ Next, let's define how our pulse animation should work. We can modify the opacit
 
 ```css
 @keyframes pulse {
-    0% {
-        background-color: rgba(165, 165, 165, 0.1);
-    }
-    50% {
-        background-color: rgba(165, 165, 165, 0.3);
-    }
-    100% {
-        background-color: rgba(165, 165, 165, 0.1);
-    }
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
 }
 ```
 
@@ -86,11 +76,11 @@ We also want to vary the width of each loading line. Let's create a Sass mixin t
 
 ```css
 @mixin nth-children($points...) {
-    @each $point in $points {
-        &:nth-child(#{$point}) {
-            @content;
-        }
+  @each $point in $points {
+    &:nth-child(#{$point}) {
+      @content;
     }
+  }
 }
 ```
 
@@ -98,16 +88,16 @@ We can use the newly created mixin to change the width of all 10 children `div` 
 
 ```css
 @include nth-children(1, 5, 9) {
-    width: 150px;
+  width: 150px;
 }
 @include nth-children(2, 6, 10) {
-    width: 250px;
+  width: 250px;
 }
 @include nth-children(3, 7) {
-    width: 50px;
+  width: 50px;
 }
 @include nth-children(4, 8) {
-    width: 100px;
+  width: 100px;
 }
 ```
 
@@ -119,5 +109,5 @@ You can view the code and a live example on [CodePen](https://codepen.io/leerob/
 
 Further Reading:
 
--   [The Nine States of Design](https://medium.com/swlh/the-nine-states-of-design-5bfe9b3d6d85)
--   [How the Facebook content placeholder works](https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html)
+- [The Nine States of Design](https://medium.com/swlh/the-nine-states-of-design-5bfe9b3d6d85)
+- [How the Facebook content placeholder works](https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html)

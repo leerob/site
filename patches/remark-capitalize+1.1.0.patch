@@ -1,0 +1,18 @@
+diff --git a/node_modules/remark-capitalize/index.js b/node_modules/remark-capitalize/index.js
+index 1db3e59..fdcbe27 100644
+--- a/node_modules/remark-capitalize/index.js
++++ b/node_modules/remark-capitalize/index.js
+@@ -1,11 +1,11 @@
+ const title = require('title')
+ const visit = require('unist-util-visit')
+ 
+-module.exports = () => (tree, file) => {
++module.exports = (options) => () => (tree, file) => {
+   visit(tree, 'heading', node => {
+     visit(node, 'text', textNode => {
+       const text = textNode.value ? textNode.value.trim() : ''  
+-      textNode.value = title(text)
++      textNode.value = title(text, options)
+     })
+   })
+ }

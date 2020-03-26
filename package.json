@@ -1,102 +1,77 @@
 {
-    "name": "leerob.io",
-    "description": "My personal website.",
-    "version": "0.0.0",
-    "author": {
-        "name": "Lee Robinson",
-        "email": "me@leerob.io",
-        "url": "https://leerob.io"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/leerob/leerob.io.git"
-    },
-    "engines": {
-        "node": "12.13.1",
-        "yarn": ">=1.10.0"
-    },
-    "files": [
-        "components",
-        "data",
-        "icons",
-        "lib",
-        "pages",
-        "public",
-        "styles",
-        "utils"
-    ],
-    "scripts": {
-        "build": "next build",
-        "dev": "next",
-        "imageoptim": "yarn imageoptim:gif && yarn imageoptim:jpg && yarn imageoptim:png",
-        "imageoptim:gif": "imageoptim \"public/**/*.gif\"",
-        "imageoptim:jpg": "imageoptim \"public/**/*.jpg\"",
-        "imageoptim:png": "imageoptim --no-imageoptim --imagealpha \"public/**/*.png\"",
-        "lint": "eslint . --ext .json --ext .js",
-        "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
-        "start": "next start",
-        "test": "yarn lint"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{html,js,json,md,mdx,mjs,yml}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.gif": [
-            "imageoptim",
-            "git add"
-        ],
-        "*.jpg": [
-            "imageoptim",
-            "git add"
-        ],
-        "*.png": [
-            "imageoptim --no-imageoptim --imagealpha",
-            "git add"
-        ]
-    },
-    "dependencies": {
-        "@mapbox/rehype-prism": "0.4.0",
-        "@mdx-js/mdx": "1.5.5",
-        "@mdx-js/react": "1.5.5",
-        "comma-number": "2.0.1",
-        "date-fns": "1.30.1",
-        "firebase": "7.8.0",
-        "firebase-admin": "8.9.2",
-        "googleapis": "47.0.0",
-        "isomorphic-unfetch": "3.0.0",
-        "next": "9.2.1",
-        "next-seo": "3.4.0",
-        "react": "16.12.0",
-        "react-dom": "16.12.0",
-        "react-syntax-highlighter": "12.2.1",
-        "react-tweet-embed": "1.2.2",
-        "styled-components": "5.0.0",
-        "styled-reset": "4.1.0",
-        "swr": "0.1.16",
-        "title": "3.4.1",
-        "unsplash-js": "6.0.0",
-        "use-dark-mode": "2.3.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.8.4",
-        "@mdx-js/loader": "1.5.5",
-        "@next/mdx": "9.2.1",
-        "babel-plugin-inline-react-svg": "1.1.1",
-        "babel-plugin-styled-components": "1.10.7",
-        "eslint": "6.8.0",
-        "eslint-config-get-off-my-lawn": "5.0.1",
-        "globby": "11.0.0",
-        "husky": "3.0.9",
-        "imageoptim-cli": "3.0.2",
-        "lint-staged": "9.4.2",
-        "listr": "0.14.3",
-        "prettier": "1.19.1"
+  "name": "leerob.io",
+  "description": "My personal website.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Lee Robinson",
+    "email": "me@leerob.io",
+    "url": "https://leerob.io"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leerob/leerob.io.git"
+  },
+  "scripts": {
+    "build": "next build ; next build",
+    "dev": "next",
+    "lint": "eslint . --ext .json --ext .js",
+    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
+    "start": "next start",
+    "test": "yarn lint",
+    "postinstall": "patch-package"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{html,js,json,md,mdx,mjs,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/core": "0.6.1",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "@mapbox/rehype-prism": "0.4.0",
+    "@mdx-js/loader": "1.5.7",
+    "@mdx-js/react": "1.5.7",
+    "@next/mdx": "9.3.1",
+    "babel-plugin-import-glob-array": "0.2.0",
+    "comma-number": "2.0.1",
+    "date-fns": "2.11.0",
+    "emotion-theming": "10.0.27",
+    "firebase": "7.12.0",
+    "firebase-admin": "8.10.0",
+    "googleapis": "48.0.0",
+    "isomorphic-unfetch": "3.0.0",
+    "mdx-prism": "0.3.1",
+    "next": "9.3.1",
+    "next-mdx-enhanced": "2.4.0",
+    "next-seo": "4.4.0",
+    "patch-package": "^6.2.1",
+    "postinstall-postinstall": "^2.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-tweet-embed": "1.2.2",
+    "reading-time": "1.2.0",
+    "remark-autolink-headings": "5.2.2",
+    "remark-capitalize": "1.1.0",
+    "remark-code-titles": "0.1.1",
+    "remark-slug": "5.1.2",
+    "swr": "0.1.18",
+    "unsplash-js": "6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-get-off-my-lawn": "5.0.1",
+    "globby": "11.0.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8",
+    "prettier": "2.0.1",
+    "rehype": "9.0.1"
+  }
 }
