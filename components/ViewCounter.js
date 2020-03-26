@@ -17,7 +17,7 @@ const ViewCounter = ({ id }) => {
 
     fetchData();
 
-    return function cleanup() {
+    return () => {
       if (db) {
         db.child(id).off('value', onViews);
       }

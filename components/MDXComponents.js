@@ -97,7 +97,10 @@ const DocsHeading = (props) => (
           color="teal.500"
           fontWeight="normal"
           outline="none"
-          _focus={{ opacity: 1, boxShadow: 'outline' }}
+          _focus={{
+            opacity: 1,
+            boxShadow: 'outline'
+          }}
           opacity="0"
           ml="0.375rem"
           href={`#${props.id}`}

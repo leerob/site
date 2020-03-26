@@ -7,7 +7,7 @@ import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
 
-function Unsplash() {
+const Unsplash = () => {
   const { data } = useSWR('/api/unsplash', fetcher);
 
   const downloads = format(data?.downloads);
@@ -20,6 +20,6 @@ function Unsplash() {
       <MetricCard header="Unsplash Views" link={link} metric={views} />
     </SimpleGrid>
   );
-}
+};
 
 export default Unsplash;

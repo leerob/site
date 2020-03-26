@@ -7,7 +7,7 @@ import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
 
-function YouTube() {
+const YouTube = () => {
   const { data } = useSWR('/api/youtube', fetcher);
 
   const subscriberCount = format(data?.subscriberCount);
@@ -24,6 +24,6 @@ function YouTube() {
       <MetricCard header="YouTube Views" link={link} metric={viewCount} />
     </SimpleGrid>
   );
-}
+};
 
 export default YouTube;

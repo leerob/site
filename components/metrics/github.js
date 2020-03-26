@@ -7,7 +7,7 @@ import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
 
-function GitHub() {
+const GitHub = () => {
   const { data } = useSWR('/api/github', fetcher);
 
   const followers = format(data?.followers);
@@ -20,6 +20,6 @@ function GitHub() {
       <MetricCard header="GitHub Stars" link={link} metric={stars} />
     </SimpleGrid>
   );
-}
+};
 
 export default GitHub;

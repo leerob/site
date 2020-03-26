@@ -7,7 +7,7 @@ import fetcher from '../../lib/fetcher';
 
 import MetricCard from './card';
 
-function GoogleAnalytics() {
+const GoogleAnalytics = () => {
   const { data: allTime } = useSWR(
     '/api/ga-page-views?startDate=2019-01-01',
     fetcher
@@ -28,6 +28,6 @@ function GoogleAnalytics() {
       <MetricCard header="Today's Views" link={link} metric={todayPageViews} />
     </SimpleGrid>
   );
-}
+};
 
 export default GoogleAnalytics;

@@ -12,7 +12,7 @@ import {
   useColorMode
 } from '@chakra-ui/core';
 
-function Subscribe() {
+const Subscribe = () => {
   const inputEl = useRef(null);
   const toast = useToast();
   const { colorMode } = useColorMode();
@@ -93,6 +93,6 @@ function Subscribe() {
       </InputGroup>
     </Box>
   );
-}
+};
 
 export default Subscribe;
