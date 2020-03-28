@@ -14,8 +14,10 @@ const SEO = {
     description,
     images: [
       {
-        url: 'https://leerob.io/static/images/speaking/speaking.jpg',
-        alt: title
+        url: 'https://leerob.io/static/images/og.jpg',
+        alt: title,
+        width: 1280,
+        height: 720
       }
     ]
   },
