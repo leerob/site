@@ -87,7 +87,7 @@ const Subscribe = () => {
         />
         <InputRightElement width="6.75rem">
           <Button fontWeight="bold" h="1.75rem" size="sm" onClick={subscribe}>
-            {'Subscribe'}
+            Subscribe
           </Button>
         </InputRightElement>
       </InputGroup>

@@ -58,6 +58,43 @@ design I was aiming for. That's why I chose to adopt [Chakra UI](https://chakra-
 - It includes a great set of accessible components out of the box
 - Works well with Next.js and supports dark mode
 
+Here's a quick example of Chakra UI and styled-system. This is part of the source for
+the newsletter subscription at the bottom of this post.
+
+```js:components/Subscribe.js
+<Box
+  border="1px solid"
+  borderColor="blue.200"
+  bg="blue.50"
+  borderRadius={4}
+  padding={6}
+  my={4}
+>
+  <Heading as="h5" size="lg" mb={2}>
+    Subscribe to the newsletter
+  </Heading>
+  <Text>
+    Get emails from me about web development, tech, and early access to new
+    articles.
+  </Text>
+  <InputGroup size="md" mt={4}>
+    <Input
+      aria-label="Email for newsletter"
+      placeholder="tim@apple.com"
+      type="email"
+    />
+    <InputRightElement width="6.75rem">
+      <Button fontWeight="bold" h="1.75rem" size="sm">
+        Subscribe
+      </Button>
+    </InputRightElement>
+  </InputGroup>
+</Box>
+```
+
+Using [style props](https://styled-system.com/getting-started), I'm able to easily style my components while pulling values directly from
+my design system. For example, `mb` (short for `margin-bottom`) of `2` will translate to `0.5rem` or `~8px`.
+
 ## Improved Content Management
 
 I wanted to decrease the amount of friction it took to create new articles,
