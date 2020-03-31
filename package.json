@@ -49,7 +49,7 @@
     "googleapis": "48.0.0",
     "isomorphic-unfetch": "3.0.0",
     "mdx-prism": "0.3.1",
-    "next": "9.3.1",
+    "next": "9.3.2",
     "next-mdx-enhanced": "2.4.0",
     "next-seo": "4.4.0",
     "patch-package": "^6.2.1",
