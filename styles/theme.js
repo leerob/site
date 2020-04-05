@@ -12,6 +12,13 @@ const theme = {
     medium: 600,
     bold: 700
   },
+  colors: {
+    ...chakraTheme.colors,
+    link: {
+      light: 'hsl(208, 99%, 44%)',
+      dark: 'hsl(208, 95%, 68%)'
+    }
+  },
   icons: {
     ...chakraTheme.icons,
     twitter: {

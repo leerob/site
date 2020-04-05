@@ -10,7 +10,7 @@ import {
   Icon
 } from '@chakra-ui/core';
 
-import Container from '../components/Container';
+import Container from '@components/Container';
 
 const url = 'https://leerob.io/about';
 const title = 'About Me – Lee Robinson';
@@ -22,8 +22,8 @@ const About = () => {
     dark: 'gray.400'
   };
   const linkColor = {
-    light: 'hsl(208, 99%, 44%)',
-    dark: 'hsl(208, 95%, 68%)'
+    light: 'link.light',
+    dark: 'link.dark'
   };
 
   return (

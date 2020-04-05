@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import format from 'comma-number';
 import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
 
-import fetcher from '../lib/fetcher';
+import fetcher from '@lib/fetcher';
 
 const BlogPost = (frontMatter) => {
   const { title, summary } = frontMatter;

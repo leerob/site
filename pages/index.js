@@ -1,14 +1,14 @@
 import React from 'react';
 import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
 
-import Timeline from '../components/Timeline';
-import Container from '../components/Container';
-import BlogPost from '../components/BlogPost';
-import Subscribe from '../components/Subscribe';
-
 import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
 import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
 import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
+
+import Timeline from '@components/Timeline';
+import Container from '@components/Container';
+import BlogPost from '@components/BlogPost';
+import Subscribe from '@components/Subscribe';
 
 const Index = () => {
   const { colorMode } = useColorMode();

@@ -10,10 +10,10 @@ import {
   useColorMode
 } from '@chakra-ui/core';
 
-import theme from '../styles/theme';
-import { prismLightTheme, prismDarkTheme } from '../styles/prism';
-import MDXComponents from '../components/MDXComponents';
-import SEO from '../next-seo.config';
+import { prismLightTheme, prismDarkTheme } from '@styles/prism';
+import MDXComponents from '@components/MDXComponents';
+import SEO from '@utils/next-seo.config';
+import theme from '@styles/theme';
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();

@@ -11,10 +11,10 @@ import {
   Box
 } from '@chakra-ui/core';
 
-import Container from '../components/Container';
-import Subscribe from '../components/Subscribe';
-import ViewCounter from '../components/ViewCounter';
-import BlogSeo from '../components/BlogSeo';
+import Container from '@components/Container';
+import Subscribe from '@components/Subscribe';
+import ViewCounter from '@components/ViewCounter';
+import BlogSeo from '@components/BlogSeo';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;

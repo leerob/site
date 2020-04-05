@@ -9,7 +9,7 @@ import {
   Button
 } from '@chakra-ui/core';
 
-import Container from '../components/Container';
+import Container from '@components/Container';
 
 const Error = () => {
   const { colorMode } = useColorMode();

@@ -12,14 +12,14 @@ import {
   Icon
 } from '@chakra-ui/core';
 
-import Container from '../components/Container';
-import BlogPost from '../components/BlogPost';
-
-// eslint-disable-next-line import/no-unresolved, import/extensions
+// eslint-disable-next-line import/no-unresolved
 import { frontMatter as blogPosts } from './blog/**/*.mdx';
 import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
 import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
 import { frontMatter as technicalRecruiting } from './blog/technical-recruiting-is-broken.mdx';
+
+import Container from '@components/Container';
+import BlogPost from '@components/BlogPost';
 
 const url = 'https://leerob.io/blog';
 const title = 'Blog – Lee Robinson';

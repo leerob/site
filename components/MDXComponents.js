@@ -51,8 +51,8 @@ const TData = (props) => (
 const CustomLink = (props) => {
   const { colorMode } = useColorMode();
   const color = {
-    light: 'hsl(208, 99%, 44%)',
-    dark: 'hsl(208, 95%, 68%)'
+    light: 'link.light',
+    dark: 'link.dark'
   };
 
   const href = props.href;
@@ -101,7 +101,7 @@ const DocsHeading = (props) => (
             opacity: 1,
             boxShadow: 'outline'
           }}
-          opacity="0"
+          opacity={0}
           ml="0.375rem"
           href={`#${props.id}`}
         >

@@ -2,11 +2,11 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
 
-import Unsplash from '../components/metrics/unsplash';
-import YouTube from '../components/metrics/youtube';
-import GoogleAnalytics from '../components/metrics/analytics';
-import GitHub from '../components/metrics/github';
-import Container from '../components/Container';
+import Unsplash from '@components/metrics/unsplash';
+import YouTube from '@components/metrics/youtube';
+import GoogleAnalytics from '@components/metrics/analytics';
+import GitHub from '@components/metrics/github';
+import Container from '@components/Container';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';

@@ -3,9 +3,9 @@ import useSWR from 'swr';
 import format from 'comma-number';
 import { SimpleGrid } from '@chakra-ui/core';
 
-import fetcher from '../../lib/fetcher';
-
 import MetricCard from './card';
+
+import fetcher from '@lib/fetcher';
 
 const GoogleAnalytics = () => {
   const { data: allTime } = useSWR(

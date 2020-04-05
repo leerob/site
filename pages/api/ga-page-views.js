@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 
-import googleAuth from '../../lib/google/auth';
+import googleAuth from '@lib/google/auth';
 
 export default async (req, res) => {
   const startDate = req.query.startDate;

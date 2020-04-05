@@ -16,7 +16,7 @@
     "build": "next build ; next build",
     "dev": "next",
     "lint": "eslint . --ext .json --ext .js",
-    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
+    "prettier": "prettier --write \"**/*.{html,js,json,mdx,yml}\"",
     "start": "next start",
     "test": "yarn lint",
     "postinstall": "patch-package"
@@ -27,7 +27,7 @@
     }
   },
   "lint-staged": {
-    "*.{html,js,json,md,mdx,mjs,yml}": [
+    "*.{html,js,json,mdx,yml}": [
       "prettier --write",
       "git add"
     ]
@@ -66,8 +66,10 @@
     "unsplash-js": "6.0.0"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "4.0.0",
     "eslint": "6.8.0",
     "eslint-config-get-off-my-lawn": "5.0.1",
+    "eslint-import-resolver-babel-module": "^5.1.2",
     "globby": "11.0.0",
     "husky": "4.2.3",
     "lint-staged": "10.1.1",

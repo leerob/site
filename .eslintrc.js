@@ -1,5 +1,10 @@
 module.exports = {
   extends: 'get-off-my-lawn',
+  settings: {
+    'import/resolver': {
+      'babel-module': {}
+    }
+  },
   rules: {
     'react/prop-types': 0,
     'react/jsx-sort-props': 0,
@@ -9,6 +14,7 @@ module.exports = {
     'sort-keys': 0,
     'objects/no-object-properties-one-line': 0,
     'node/no-unpublished-require': 0,
+    'import/extensions': ['error', { mdx: 'always' }],
     camelcase: [
       'error',
       {
