@@ -174,14 +174,37 @@ const Timeline = () => {
         mb={4}
         letterSpacing="tighter"
       >
+        2020
+      </Heading>
+      <List>
+        <TimelineStep title="Emerging Technology Leader of the Year 🏆">
+          I'm extremely honored to be one of five finalists nominated for this
+          award at the 2020 Prometheus Awards.
+        </TimelineStep>
+        <TimelineStep title="Became a Tech Lead 👨🏻‍💻">
+          Starting at the beginning of this year, I moved into a tech leadership
+          role on one of our e-commerce development teams.
+        </TimelineStep>
+        <TimelineStep title="Mastering Next.js hits $5K 📈">
+          Achieved my yearly sales goal way ahead of schedule for my course.
+        </TimelineStep>
+      </List>
+      <YearDivider />
+      <Heading
+        as="h3"
+        size="lg"
+        fontWeight="bold"
+        mb={4}
+        letterSpacing="tighter"
+      >
         2019
       </Heading>
       <List>
         <TimelineStep title="Software Engineer III ✨">
-          I'm currently leading our design system architecture, building new
-          components with React, Storybook, and styled-components.
+          Lead our design system architecture, building new components with
+          React, Storybook, and styled-components.
         </TimelineStep>
-        <TimelineStep title="Mastering Next.js 🏆">
+        <TimelineStep title="Mastering Next.js ⚛️">
           Launched a 50+ lesson video course for building apps with Next.js and
           React.
         </TimelineStep>
