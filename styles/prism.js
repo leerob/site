@@ -154,7 +154,7 @@ export const prismLightTheme = css`
   }
 
   .mdx-marker {
-    background-color: ${theme.colors.gray[200]};
+    background-color: hsla(204, 45%, 96%, 1);
   }
 `;
 

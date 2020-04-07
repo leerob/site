@@ -275,8 +275,6 @@ and `getStaticProps`. Try navigating to `/songs/1` in your browser.
 You should see a YouTube video.
 
 ```js:pages/songs/[id].js
-import { PrismaClient } from '@prisma/client';
-
 export async function getStaticProps({ params }) {
   return {
     props: {
@@ -317,7 +315,7 @@ Now, let's hook this up to real data.
 - `getStaticProps` will query song data for the given `id`
 - `getStaticPaths` will generate a page for each song in the database
 
-```js{4,5,6,7,8,9,10,20,21}:pages/songs/[id].js
+```js{1,4,5,6,7,8,9,10,14,20,21,24,25,26,27}:pages/songs/[id].js
 import { PrismaClient } from '@prisma/client';
 
 export async function getStaticProps({ params }) {
@@ -378,7 +376,7 @@ $ now
 ## Conclusion
 
 Next.js 9.3 and Prisma are a fantastic combo. The combination of dynamic data
-and static site benefits result in an incredible user experience.
+and static sites result in an incredible user experience.
 
-To see the completed tutorial code with styling added,
+To see the completed tutorial code with styles added,
 check out my [next-prisma](https://github.com/leerob/next-prisma) repo.
