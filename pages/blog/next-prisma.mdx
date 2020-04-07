@@ -67,8 +67,8 @@ we'll need for this tutorial. Don't worry, I'll explain them! First, clone the
 repository and install the dependencies.
 
 ```bash
-$ git clone https://github.com/leerob/next-prism-static-site.git
-$ cd next-prism-static-site
+$ git clone https://github.com/leerob/next-prisma-starter.git
+$ cd next-prisma-starter
 $ yarn
 ```
 
@@ -255,9 +255,13 @@ $ npx prisma studio --experimental
 For convenience, I've added these three commands as scripts in the `package.json` already.
 
 ```json:package.json
-"db": "prisma studio --experimental",
-"db-save": "prisma migrate save --experimental",
-"db-up": "prisma migrate up --experimental"
+{
+  "scripts": {
+    "db": "prisma studio --experimental",
+    "db-save": "prisma migrate save --experimental",
+    "db-up": "prisma migrate up --experimental"
+  }
+}
 ```
 
 ## Dynamic Routes
@@ -285,11 +289,13 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    paths: songs.map((song) => ({
-      params: {
-        id: 1
+    paths: [
+      {
+        params: {
+          id: '1'
+        }
       }
-    })),
+    ],
     fallback: false
   };
 }
