@@ -235,6 +235,13 @@ Let's run the migration.
 $ npx prisma migrate up --experimental
 ```
 
+Finally, we need to update our Prisma Client API (`node_modules/@prisma/client`)
+to recognize the new changes.
+
+```bash
+$ npx prisma generate
+```
+
 **That's it!** You now have two new fields available on the `Song` model.
 Now, let's update our database and populate those values.
 There's a variety of ways to do this:
@@ -259,7 +266,8 @@ For convenience, I've added these three commands as scripts in the `package.json
   "scripts": {
     "db": "prisma studio --experimental",
     "db-save": "prisma migrate save --experimental",
-    "db-up": "prisma migrate up --experimental"
+    "db-up": "prisma migrate up --experimental",
+    "update": "prisma generate"
   }
 }
 ```
