@@ -1,7 +1,7 @@
 ---
 title: "Things I've Learned Building Next.js Apps"
 publishedAt: '2019-02-15'
-summary: "I've spent a lot of time in the past 4 months creating Next.js apps for both work and personal use."
+summary: 'CSS-in-JS, Font Loading, Polyfills, Dynamic Imports, MDX, and more!'
 image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg'
 ---
 
@@ -73,7 +73,7 @@ export default CustomDocument;
 
 Becomming informed about all the different options and their tradeoffs has been a worthy investment.
 
-## Dynamic Assets and Testing
+## Dynamic Imports and Testing
 
 It's likely that at some point in scaling your Next.js app, you'll want to use an external package
 that doesn't work well server-side rendered. For me, this package was [react-select](https://react-select.com).
@@ -132,7 +132,7 @@ beforeAll(async () => {
 
 ## MDX
 
-My [portfolio](/blog/beginners-guide-to-the-programming-portfolio) has transformed quite a bit since I started it in 2014. Originally, it was
+My [portfolio](https://github.com/leerob/leerob.io) has transformed quite a bit since I started it in 2014. Originally, it was
 just static HTML & CSS. Then, I [switched over to Hugo](/blog/migrating-to-hugo) so I could write my posts in Markdown.
 This worked well for awhile, but I wanted full control over my layouts and felt much more comfortable with JavaScript.
 That's what led me to Next.js and MDX.
@@ -155,7 +155,7 @@ the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `p
 
 ## Polyfills
 
-Next.js supports IE11 and all modern browsers out of the box using `@babel/preset-env`.
+Next.js supports IE10 and all modern browsers out of the box using `@babel/preset-env`.
 However, it's possible that your own code or external NPM dependencies might use features not supported in your target browsers. In this case,
 you will need to add polyfills. This requires changes in a couple of places.
 
@@ -204,11 +204,11 @@ hosted on a domain so fast.
 ## Where To Get Help
 
 The Next.js and larger ZEIT community support is _fantastic_. They're very responsive to emails, issues, or any other form
-of contact. My preferred method would be on [Spectrum](https://spectrum.chat/next-js). Thanks to Spectrum, all
+of contact. My preferred method would be [GitHub Discussions](https://github.com/zeit/next.js/discussions). Thanks to Discussions, all
 questions and answers are indexed, searchable, and easy to find. Their [tutorials](https://nextjs.org/learn/) and [docs](https://nextjs.org/docs) are also fantastic and well-written.
 
 ## Additional Resources
 
+- [Next.js Resources](https://masteringnextjs.com/resources)
 - [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
-- [Awesome Next.js](https://github.com/unicodeveloper/awesome-nextjs)
 - [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)
