@@ -9,7 +9,8 @@
     "MAILCHIMP_API_KEY": "@mailchimp-api-key",
     "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
     "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
-    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key"
+    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
+    "BUTTONDOWN_API_KEY": "@buttondown-api-key"
   },
   "redirects": [
     {

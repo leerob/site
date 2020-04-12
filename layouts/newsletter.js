@@ -6,26 +6,16 @@ import {
   Text,
   Flex,
   Stack,
-  Avatar,
-  Link,
-  Box
+  Avatar
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
 import Subscribe from '../components/Subscribe';
-import ViewCounter from '../components/ViewCounter';
 import BlogSeo from '../components/BlogSeo';
-
-const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
-  )}`;
 
 export default (frontMatter) => {
   const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
+    .replace('newsletter/', '')
     .replace('.mdx', '');
 
   return ({ children }) => {
@@ -37,7 +27,10 @@ export default (frontMatter) => {
 
     return (
       <Container>
-        <BlogSeo url={`https://leerob.io/blog/${slug}`} {...frontMatter} />
+        <BlogSeo
+          url={`https://leerob.io/newsletter/${slug}`}
+          {...frontMatter}
+        />
         <Stack
           as="article"
           spacing={8}
@@ -80,22 +73,11 @@ export default (frontMatter) => {
               </Flex>
               <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
                 {frontMatter.readingTime.text}
-                {` • `}
-                <ViewCounter id={slug} />
               </Text>
             </Flex>
           </Flex>
           {children}
           <Subscribe />
-          <Box>
-            <Link href={discussUrl(slug)} isExternal>
-              {'Discuss on Twitter'}
-            </Link>
-            {` • `}
-            <Link href={editUrl(slug)} isExternal>
-              {'Edit on GitHub'}
-            </Link>
-          </Box>
         </Stack>
       </Container>
     );

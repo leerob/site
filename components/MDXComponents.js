@@ -8,6 +8,7 @@ import {
   Link,
   PseudoBox,
   Text,
+  Divider,
   useColorMode
 } from '@chakra-ui/core';
 import { jsx } from '@emotion/core';
@@ -112,6 +113,16 @@ const DocsHeading = (props) => (
   </Heading>
 );
 
+const Hr = () => {
+  const { colorMode } = useColorMode();
+  const borderColor = {
+    light: 'gray.200',
+    dark: 'gray.600'
+  };
+
+  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
+};
+
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
@@ -121,7 +132,7 @@ const MDXComponents = {
   ),
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,
-  hr: (props) => <Box as="hr" borderTopWidth="1px" my={8} {...props} />,
+  hr: Hr,
   table: Table,
   th: THead,
   td: TData,
