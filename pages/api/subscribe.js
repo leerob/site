@@ -8,21 +8,13 @@ export default async (req, res) => {
   }
 
   try {
-    const LIST_ID = process.env.MAILCHIMP_LIST_ID;
-    const API_KEY = process.env.MAILCHIMP_API_KEY;
-    const DATACENTER = API_KEY.split('-')[1];
-
-    const data = {
-      email_address: email,
-      status: 'subscribed'
-    };
-
+    const API_KEY = process.env.BUTTONDOWN_API_KEY;
     const response = await fetch(
-      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
+      `https://api.buttondown.email/v1/subscribers`,
       {
-        body: JSON.stringify(data),
+        body: JSON.stringify({ email }),
         headers: {
-          Authorization: `apikey ${API_KEY}`,
+          Authorization: `Token ${API_KEY}`,
           'Content-Type': 'application/json'
         },
         method: 'POST'

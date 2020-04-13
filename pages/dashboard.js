@@ -7,6 +7,7 @@ import YouTube from '../components/metrics/youtube';
 import GoogleAnalytics from '../components/metrics/analytics';
 import GitHub from '../components/metrics/github';
 import Container from '../components/Container';
+import Buttondown from '../components/metrics/buttondown';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';
@@ -76,6 +77,7 @@ const Dashboard = () => {
             <YouTube />
             <GoogleAnalytics />
             <GitHub />
+            <Buttondown />
           </Flex>
         </Stack>
       </Container>
