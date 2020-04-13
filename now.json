@@ -5,8 +5,6 @@
   "env": {
     "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
     "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
-    "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
-    "MAILCHIMP_API_KEY": "@mailchimp-api-key",
     "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
     "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
     "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
@@ -47,6 +45,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=120, stale-while-revalidate=60"
+        }
+      ]
+    },
+    {
+      "source": "/api/subscribers",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=1200, stale-while-revalidate=600"
         }
       ]
     }
