@@ -70,6 +70,31 @@ const CustomLink = (props) => {
   return <Link color={color[colorMode]} isExternal {...props} />;
 };
 
+const Quote = (props) => {
+  const { colorMode } = useColorMode();
+  const bgColor = {
+    light: 'blue.50',
+    dark: 'blue.900'
+  };
+
+  return (
+    <Callout
+      mt={4}
+      w="98%"
+      bg={bgColor[colorMode]}
+      variant="left-accent"
+      status="info"
+      css={{
+        '> *:first-of-type': {
+          marginTop: 0,
+          marginLeft: 8
+        }
+      }}
+      {...props}
+    />
+  );
+};
+
 const DocsHeading = (props) => (
   <Heading
     css={{
@@ -141,16 +166,7 @@ const MDXComponents = {
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
-  blockquote: (props) => (
-    <Callout
-      mt={4}
-      w="98%"
-      variant="left-accent"
-      status="info"
-      css={{ '> *:first-of-type': { marginTop: 0 } }}
-      {...props}
-    />
-  )
+  blockquote: Quote
 };
 
 export default MDXComponents;
