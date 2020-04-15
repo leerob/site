@@ -5,7 +5,7 @@ import { SimpleGrid } from '@chakra-ui/core';
 
 import fetcher from '../../lib/fetcher';
 
-import MetricCard from './card';
+import MetricCard from './Card';
 
 const GitHub = () => {
   const { data } = useSWR('/api/github', fetcher);
