@@ -4,7 +4,7 @@ import format from 'comma-number';
 
 import fetcher from '../../lib/fetcher';
 
-import MetricCard from './Cardd';
+import MetricCard from './Card';
 
 const Buttondown = () => {
   const { data } = useSWR('/api/subscribers', fetcher);
