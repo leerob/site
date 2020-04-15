@@ -5,7 +5,7 @@ import { SimpleGrid } from '@chakra-ui/core';
 
 import fetcher from '../../lib/fetcher';
 
-import MetricCard from './card';
+import MetricCard from './Card';
 
 const YouTube = () => {
   const { data } = useSWR('/api/youtube', fetcher);

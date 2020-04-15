@@ -8,7 +8,8 @@
     "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
     "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
     "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
-    "BUTTONDOWN_API_KEY": "@buttondown-api-key"
+    "BUTTONDOWN_API_KEY": "@buttondown-api-key",
+    "GUMROAD_API_KEY": "@gumroad-api-key"
   },
   "redirects": [
     {
@@ -54,6 +55,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=1200, stale-while-revalidate=600"
+        }
+      ]
+    },
+    {
+      "source": "/api/gumroad",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=120, stale-while-revalidate=60"
         }
       ]
     }

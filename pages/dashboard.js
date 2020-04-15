@@ -1,13 +1,21 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
-import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
+import {
+  useColorMode,
+  Heading,
+  Text,
+  Flex,
+  Stack,
+  SimpleGrid
+} from '@chakra-ui/core';
 
-import Unsplash from '../components/metrics/unsplash';
-import YouTube from '../components/metrics/youtube';
-import GoogleAnalytics from '../components/metrics/analytics';
-import GitHub from '../components/metrics/github';
+import Unsplash from '../components/metrics/Unsplash';
+import YouTube from '../components/metrics/Youtube';
+import GoogleAnalytics from '../components/metrics/Analytics';
+import GitHub from '../components/metrics/Github';
+import Buttondown from '../components/metrics/Buttondown';
 import Container from '../components/Container';
-import Buttondown from '../components/metrics/buttondown';
+import Gumroad from '../components/metrics/Gumroad';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';
@@ -77,7 +85,10 @@ const Dashboard = () => {
             <YouTube />
             <GoogleAnalytics />
             <GitHub />
-            <Buttondown />
+            <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
+              <Gumroad />
+              <Buttondown />
+            </SimpleGrid>
           </Flex>
         </Stack>
       </Container>

@@ -5,7 +5,7 @@ summary: 'Learn how to fetch data with SWR, a React Hooks library which improves
 image: '/static/images/dashboard.jpg'
 ---
 
-import Unsplash from '../../components/metrics/unsplash';
+import Unsplash from '../../components/metrics/Unsplash';
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
@@ -60,7 +60,7 @@ export default async function (...args) {
 Now that you have access to the data from the route, you can build a UI to consume the data.
 I've chosen to create "cards" for each metric.
 
-```js:components/metrics/unsplash.js
+```js:components/metrics/Unsplash.js
 import React from 'react';
 import useSWR from 'swr';
 import format from 'comma-number';
@@ -87,7 +87,7 @@ function Unsplash() {
 export default Unsplash;
 ```
 
-_Note_: The `MetricCard` source code is [here](https://github.com/leerob/leerob.io/blob/master/components/metrics/card.js).
+_Note_: The `MetricCard` source code is [here](https://github.com/leerob/leerob.io/blob/master/components/metrics/Card.js).
 
 ## Example
 
