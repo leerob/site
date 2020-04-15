@@ -4,7 +4,7 @@ import format from 'comma-number';
 
 import fetcher from '../../lib/fetcher';
 
-import MetricCard from './Card';
+import MetricCard from './Cardd';
 
 const Gumroad = () => {
   const { data } = useSWR('/api/gumroad', fetcher);

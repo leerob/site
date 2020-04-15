@@ -5,7 +5,7 @@ import { SimpleGrid } from '@chakra-ui/core';
 
 import fetcher from '../../lib/fetcher';
 
-import MetricCard from './Card';
+import MetricCard from './Cardd';
 
 const GoogleAnalytics = () => {
   const { data: allTime } = useSWR(
