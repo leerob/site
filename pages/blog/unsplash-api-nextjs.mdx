@@ -37,7 +37,7 @@ To gain access to the Unsplash API, you need to:
 To securely access the API, we need to include the secret with each request.
 We also _do not_ want to commit secrets to git. Thus, we should use an environment variable.
 
-Since I'm deploying via [Now](https://zeit.co), I can add the secret via their CLI.
+Since I'm deploying with [Vercel](https://vercel.com), I can add the secret via their CLI.
 
 ```bash
 $ now secret add unsplash-access-token

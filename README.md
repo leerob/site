@@ -32,6 +32,6 @@ BUTTONDOWN_API_KEY=
 ## Built Using
 
 - [Next.js](https://nextjs.org/)
-- [Now](https://zeit.co/now)
+- [Vercel](https://vercel.com)
 - [MDX](https://github.com/mdx-js/mdx)
 - [Chakra UI](https://chakra-ui.com/)

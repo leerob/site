@@ -50,7 +50,7 @@ Where `dc` is the datacenter. This is the last 3 characters of your API key we r
 
 ## Environment Variables
 
-Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Now](https://zeit.co), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
+Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Vercel](https://vercel.com), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
 You can use similar a [similar approach](https://create-react-app.dev/docs/adding-custom-environment-variables) for [any framework](https://www.gatsbyjs.org/docs/environment-variables/) to add your secrets to `process.env`.
 
 ```bash
@@ -69,7 +69,7 @@ Then, we can expose them via our `now.json` file.
 }
 ```
 
-These variables will be available at build time. To test locally, we'll also want to create a `.env` file since Now Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `now dev`.
+These variables will be available at build time. To test locally, we'll also want to create a `.env` file since Vercel Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `now dev`.
 
 ```bash:.env
 MAILCHIMP_LIST_ID=<secret-value>

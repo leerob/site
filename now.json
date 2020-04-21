@@ -19,6 +19,14 @@
     {
       "source": "/projects",
       "destination": "/about"
+    },
+    {
+      "source": "/now-env-variables-size-limit",
+      "destination": "/vercel-env-variables-size-limit"
+    },
+    {
+      "source": "/going-serverless-next-firebase-now",
+      "destination": "/nextjs-firebase-serverless"
     }
   ],
   "headers": [

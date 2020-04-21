@@ -1,18 +1,18 @@
 ---
-title: 'How To Use Encrypted Secrets With Now'
+title: 'How To Use Encrypted Secrets With Vercel'
 publishedAt: '2020-02-06'
-summary: "Learn how to encrypt secrets to workaround ZEIT Now's 4kb max limit for environment variables."
-image: '/static/images/now-env-variables-size-limit/banner.png'
+summary: "Learn how to encrypt secrets to workaround Vercel's 4kb max limit for environment variables."
+image: '/static/images/vercel-env-variables-size-limit/banner.png'
 ---
 
-When trying to deploy a new API route with [Now](https://zeit.co), I stumbled onto this error.
+When trying to deploy a new API route with [Vercel](https://vercel.com), I stumbled onto this error.
 
 ```bash
 Environment variables must not be greater
 than 4kb when JSON-stringified (got 4.21KB)
 ```
 
-I _love_ Now and use it for all my deployments. Thus, I had 12 different secrets. Unfortunately, there is an [upstream limit](https://zeit.co/docs/v2/platform/limits#environment-variables) on the size.
+I _love_ Vercel and use it for all my deployments. Thus, I had 12 different secrets. Unfortunately, there is an [upstream limit](https://zeit.co/docs/v2/platform/limits#environment-variables) on the size.
 
 > The total size of environment variables is limited to 4kb. Deployments made with environment variables exceeding the 4kb limit will fail at the build step.
 
@@ -26,7 +26,7 @@ If you've never worked with encryption before, don't worry – it's easier than 
 ## Storing Your Secrets
 
 We _do not_ want to commit secrets to git. Thus, we should use an environment variable.
-We can add secrets using the Now CLI.
+We can add secrets using the Vercel CLI.
 
 ```bash
 $ now secret add google-encryption-iv
