@@ -1,0 +1,19 @@
+---
+layout: 'note'
+---
+
+# Data Fetching Strategies
+
+- **Static site, no data fetching. **
+  - Just HTML – whether created manually or through [[Static-Site Generators]].
+- **Static site, data fetching at **build** time.** (Full rebuild needed)
+  - [[Next.js]] uses `getStaticProps`/`getStaticPaths`.
+  - [[Gatsby]] uses GraphQL.
+- **Static site, data fetching at **run** time.** (Pages rebuild on-demand)
+  - [Incremental Static Generation](https://github.com/zeit/next.js/discussions/11552)
+- **SPA, data fetching at **run** time.**
+  - Traditional single-page apps (React, Vue, Angular).
+  - Static shell served first, then data fetching through libraries like SWR or react-query.
+  - **Use Case: **page with lots of data fetching that shouldn't block initial render.
+    - **Example:** Dashboard pages, other information dense applications.
+- [[Server-Side Rendering]]

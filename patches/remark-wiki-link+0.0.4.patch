@@ -1,0 +1,31 @@
+diff --git a/node_modules/remark-wiki-link/lib/index.js b/node_modules/remark-wiki-link/lib/index.js
+index 9441ef4..de68708 100644
+--- a/node_modules/remark-wiki-link/lib/index.js
++++ b/node_modules/remark-wiki-link/lib/index.js
+@@ -17,7 +17,7 @@ function wikiLinkPlugin() {
+   var permalinks = opts.permalinks || [];
+ 
+   var defaultPageResolver = function defaultPageResolver(name) {
+-    return [name.replace(/ /g, '_').toLowerCase()];
++    return [name.replace(/ /g, '-').replace('.', '').toLowerCase()];
+   };
+ 
+   var pageResolver = opts.pageResolver || defaultPageResolver;
+@@ -25,7 +25,7 @@ function wikiLinkPlugin() {
+   var wikiLinkClassName = opts.wikiLinkClassName || 'internal';
+ 
+   var defaultHrefTemplate = function defaultHrefTemplate(permalink) {
+-    return "#/page/".concat(permalink);
++    return "/notes/".concat(permalink);
+   };
+ 
+   var hrefTemplate = opts.hrefTemplate || defaultHrefTemplate;
+@@ -98,7 +98,7 @@ function wikiLinkPlugin() {
+           },
+           hChildren: [{
+             type: 'text',
+-            value: displayName
++            value: `[[${displayName}]]`
+           }]
+         }
+       });

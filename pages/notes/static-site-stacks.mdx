@@ -1,0 +1,16 @@
+---
+layout: 'note'
+---
+
+# Static Site Stacks
+
+- React
+  - [[Next.js]] (Static pages, API routes, deployed on [[ZEIT Now]])
+    - API Routes request and response are generalized for different serverless providers
+    - Includes express-like middleware out of the box
+    - API routes can be deployed anywhere, but experience is easiest with ZEIT Now
+  - [[Gatsby]] (Static pages, Netlify functions, deployed on Netlify)
+    - `netlify.toml` defines location of AWS Lambda functions
+    - Locked into AWS style, versus Next's more agnostic approach
+- Vue
+  - Nuxt.js

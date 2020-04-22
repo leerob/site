@@ -1,0 +1,17 @@
+diff --git a/node_modules/@andymatuschak/note-link-janitor/dist/lib/updateBacklinks.js b/node_modules/@andymatuschak/note-link-janitor/dist/lib/updateBacklinks.js
+index ab3672e..23c34b6 100644
+--- a/node_modules/@andymatuschak/note-link-janitor/dist/lib/updateBacklinks.js
++++ b/node_modules/@andymatuschak/note-link-janitor/dist/lib/updateBacklinks.js
+@@ -59,9 +59,9 @@ function updateBacklinks(tree, noteContents, backlinks) {
+                 }
+             ]
+         };
+-        backlinksString = `## Backlinks\n${backlinks
+-            .map(entry => `* [[${entry.sourceTitle}]]\n${entry.context
+-            .map(block => `\t* ${processor_1.default.stringify(block).replace(/\n.+/, "")}\n`)
++        backlinksString = `## Backlinks\n\n${backlinks
++            .map(entry => `- [[${entry.sourceTitle}]]\n${entry.context
++            .map(block => `  - ${processor_1.default.stringify(block).replace(/\n.+/, "")}\n`)
+             .join("")}`)
+             .join("")}\n`;
+     }
