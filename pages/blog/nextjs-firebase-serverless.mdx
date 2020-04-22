@@ -1,11 +1,11 @@
 ---
-title: 'Going Serverless with Next.js, Firebase, and Now'
+title: 'Going Serverless with Next.js and Firebase'
 publishedAt: '2019-07-19'
-summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Now.'
-image: '/static/images/going-serverless-next-firebase-now/banner.jpg'
+summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Vercel.'
+image: '/static/images/nextjs-firebase-serverless/banner.jpg'
 ---
 
-![Next.js + Firebase + Now](/static/images/going-serverless-next-firebase-now/banner.png)
+![Next.js + Firebase + Vercel](/static/images/nextjs-firebase-serverless/banner.png)
 
 A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
 
@@ -21,7 +21,7 @@ For the main website, the requirements were fairly straight forward:
 - Save off information from a contact form.
 - Cheap hosting. Ideally free.
 
-![BeyondHQ](/static/images/going-serverless-next-firebase-now/landing.png)
+![BeyondHQ](/static/images/nextjs-firebase-serverless/landing.png)
 
 They also wanted a platform to build SaaS on. That meant I needed to consider more requirements, as it would be the next bit of functionality I would create.
 
@@ -34,7 +34,7 @@ The first step towards their full-featured SaaS product was a [location evaluati
 - The ability for non-technical people to easily edit data.
 - Save off lead generation information from user input.
 
-![BeyondHQ](/static/images/going-serverless-next-firebase-now/questions.png)
+![BeyondHQ](/static/images/nextjs-firebase-serverless/questions.png)
 
 ## The Technology
 
@@ -48,9 +48,9 @@ Given these requirements, what technical choices did I make and why? Let's take 
 
 [Next.js](https://nextjs.org/) makes it easy to build scalable, performant React code. It's blazing fast and uses server-side rendering to improve SEO. On top of that, it simplifies the developer experience and provides a future-proof platform for the BeyondHQ team.
 
-### Now
+### Vercel
 
-Deploying serverless applications couldn't be easier with [Now](https://zeit.co/now). It's resilient, [highly available](https://zeit.co/smart-cdn), and fault-tolerant. Plus, it has an excellent [free tier](https://zeit.co/pricing) with the ability to scale as needed.
+Deploying serverless applications couldn't be easier with [Vercel](https://vercel.com). It's resilient, [highly available](https://vercel.com/smart-cdn), and fault-tolerant. Plus, it has an excellent [free tier](https://vercel.com/pricing) with the ability to scale as needed.
 
 ### Firebase
 
@@ -62,7 +62,7 @@ Why use NoSQL? There weren't any requirements which needed a relational database
 
 After reviewing the requirements and choosing the technology, the next step was to begin implementing a solution. But first, mockups!
 
-![BeyondHQ](/static/images/going-serverless-next-firebase-now/geo-eval.png)
+![BeyondHQ](/static/images/nextjs-firebase-serverless/geo-eval.png)
 
 I iterated over a handful of designs and went back and forth with the team, tweaking things based on their feedback. We eventually agreed on a mockup and the coding commenced.
 
@@ -201,7 +201,7 @@ _Next 9 Update_: The preferred way to handle this now is with the [bracket notat
 
 This gives you the flexibility to add a loading state or placeholder to improve your user experience.
 
-![Loading Placeholder](/static/images/going-serverless-next-firebase-now/loading.gif)
+![Loading Placeholder](/static/images/nextjs-firebase-serverless/loading.gif)
 
 Much better! 🎉
 

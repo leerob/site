@@ -73,7 +73,7 @@ Finally, we need to add our service account email to the Google Analytics accoun
 To securely access the API, we need to include the secret with each request.
 We also _do not_ want to commit secrets to git. Thus, we should use an environment variable.
 
-Since I'm deploying via [Now](https://zeit.co), I can add the secrets via their CLI.
+Since I'm deploying with [Vercel](https://vercel.com), I can add the secrets via their CLI.
 We only need a few of the values from the JSON file. For the private key, make sure you convert
 the new line characters (`\n`) to actual new lines.
 
@@ -110,7 +110,7 @@ Finally, we need to add the secrets to our `now.json`.
 
 We can now reference the secrets via `process.env.GOOGLE_PRIVATE_KEY` in our API route.
 
-_Note_: If you have a lot of environment variables on Now, you might need to [encrpyt your service account](/blog/now-env-variables-size-limit).
+_Note_: If you have a lot of environment variables in Vercel, you might need to [encrpyt your service account](/blog/vercel-env-variables-size-limit).
 
 ## Creating the API Route
 

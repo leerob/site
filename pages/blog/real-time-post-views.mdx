@@ -50,7 +50,7 @@ It should also prevent abuse by logging IPs.
 Our client application should [lazy-load](https://nextjs.org/learn/excel/lazy-loading-components) the [Firebase JavaScript SDK](https://firebase.google.com/docs/reference/js) on page load and subscribe to view counts.
 When it receives a new count, the counter should highlight and update.
 
-We can host and deploy this entire solution **for free** using Firebase's [free tier](https://firebase.google.com/pricing/) and [ZEIT's Now](https://zeit.co/now). Amazing.
+We can host and deploy this entire solution **for free** using Firebase's [free tier](https://firebase.google.com/pricing/) and [Vercel](https://vercel.com). Amazing.
 
 ## Setting Up Firebase
 
@@ -73,7 +73,7 @@ We're finished! 🎉 You have successfully set up a realtime database, as well a
 
 > Update 2020: I've switched my microservice to an [API route](https://github.com/leerob/leerob.io/blob/master/pages/api/increment-views.js) inside my Next.js application. If you're using Next.js, I would recommend this approach.
 
-This blog post was inspired by Guillermo Rauch's [blog](https://github.com/rauchg/blog), where he open-sourced [his code](https://github.com/rauchg/blog-views). I've updated some things (to use Now 2.0 and React Hooks) but this is largely inspired by his work 🎉
+This blog post was inspired by Guillermo Rauch's [blog](https://github.com/rauchg/blog), where he open-sourced [his code](https://github.com/rauchg/blog-views). I've updated some things but this is largely inspired by his work 🎉
 
 You can view the entire source code [here](https://github.com/leerob/blog-views). I'll be explaining some key concepts for how the microservice works.
 
@@ -158,9 +158,9 @@ We can confirm it was logged correctly by checking Firebase.
 
 ![Testing Firebase](/static/images/real-time-post-views/testing-database.png)
 
-### Deployment via Now
+### Deployment with Vercel
 
-We can configure our microservice to deploy via [Now](https://zeit.co/now) through a `now.json` file.
+We can configure our microservice to deploy with [Vercel](https://vercel.com) through a `now.json` file.
 Update the `name` and `alias` to be unique for your microservice.
 
 ```json
@@ -172,7 +172,7 @@ Update the `name` and `alias` to be unique for your microservice.
 }
 ```
 
-After installing the [Now CLI](https://zeit.co/download), you can deploy in _one command_ 🚀
+After installing the [Vercel CLI](https://vercel.com/download), you can deploy in _one command_ 🚀
 
 ```bash
 $ now --target production
