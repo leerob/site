@@ -88,7 +88,14 @@ const About = () => {
               front-end development, design, and recruiting. I also actively
               contribute to my blog, which attracts thousands of readers every
               month. I mostly write about development, tech careers, and my
-              personal life.
+              personal life. If you'd like to follow along, subscribe to&nbsp;
+              <Link
+                href="/newsletter"
+                title="Newsletter"
+                color={linkColor[colorMode]}
+              >
+                my newsletter.
+              </Link>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I grew up in small-town Iowa and went to school at Iowa State,
