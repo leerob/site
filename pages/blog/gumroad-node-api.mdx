@@ -86,4 +86,16 @@ return res.status(200).json({ sales: allSales });
 The first example allowed me to fetch the total sales of [Mastering Next.js](https://masteringnextjs.com/)
 and display it on my dashboard. Hooray! 🎉
 
-<Gumroad />
+import { Box } from '@chakra-ui/core';
+import ProjectCard from '../../components/ProjectCard';
+
+<Box mb={4}>
+  <Gumroad />
+</Box>
+
+<ProjectCard
+  title="jamstackfns"
+  description="The best serverless functions for JAMstack applications. Deploy to Vercel or Netlify for your static site."
+  href="https://jamstackfns.com/"
+  icon="jamstackfns"
+/>
