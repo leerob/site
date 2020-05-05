@@ -8,8 +8,8 @@ import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
 
 import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
+import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
 import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
-import { frontMatter as nextJs } from './blog/things-ive-learned-building-nextjs-apps.mdx';
 
 const Index = () => {
   const { colorMode } = useColorMode();
@@ -54,8 +54,8 @@ const Index = () => {
             Most Popular
           </Heading>
           <BlogPost {...styleGuides} />
+          <BlogPost {...stripeDesign} />
           <BlogPost {...monorepo} />
-          <BlogPost {...nextJs} />
         </Flex>
         <Flex
           flexDirection="column"
