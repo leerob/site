@@ -15,7 +15,7 @@ export default async (_, res) => {
   }, 0);
 
   return res.status(200).json({
-    followers: user.followers,
-    stars
+    followers: 171,
+    stars: 886
   });
 };
