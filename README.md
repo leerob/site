@@ -18,7 +18,7 @@ $ yarn
 $ yarn dev
 ```
 
-To use anything that requires API routes, you will need to run `now dev` and have a `.env` file similar to this.
+To use anything that requires API routes, you will need to run `vc dev` and have a `.env` file similar to this.
 
 ```
 FIREBASE_PRIVATE_KEY=

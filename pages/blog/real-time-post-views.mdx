@@ -160,7 +160,7 @@ We can confirm it was logged correctly by checking Firebase.
 
 ### Deployment with Vercel
 
-We can configure our microservice to deploy with [Vercel](https://vercel.com) through a `now.json` file.
+We can configure our microservice to deploy with [Vercel](https://vercel.com) through a `vercel.json` file.
 Update the `name` and `alias` to be unique for your microservice.
 
 ```json
@@ -175,7 +175,7 @@ Update the `name` and `alias` to be unique for your microservice.
 After installing the [Vercel CLI](https://vercel.com/download), you can deploy in _one command_ 🚀
 
 ```bash
-$ now --target production
+$ vc --prod
 ```
 
 You should now be able to hit `https://your-blog-views.now.sh/`.

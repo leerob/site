@@ -40,18 +40,18 @@ We also _do not_ want to commit secrets to git. Thus, we should use an environme
 Since I'm deploying with [Vercel](https://vercel.com), I can add the secret via their CLI.
 
 ```bash
-$ now secret add unsplash-access-token
+$ vc secret add unsplash-access-token
 ```
 
-To reference it locally when using `now dev` it needs to be added to your `.env` file.
+To reference it locally when using `vc dev` it needs to be added to your `.env` file.
 
 ```bash
 UNSPLASH_ACCESS_TOKEN=042d344
 ```
 
-Finally, we need to add our new secret to `now.json`.
+Finally, we need to add our new secret to `vercel.json`.
 
-```json
+```json:vercel.json
 {
   "env": {
     "UNSPLASH_ACCESS_KEY": "@unsplash-access-key"
