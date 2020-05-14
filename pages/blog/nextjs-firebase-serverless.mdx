@@ -148,9 +148,9 @@ module.exports = {
 
 While the majority of the requirements were centered around creating basic React components, there's one part which requires more explanation: [dynamic routing](https://nextjs.org/learn/basics/create-dynamic-pages). For the city pages, we needed to be able to pass a city name as a route (e.g. `/city/des-moines`) and fetch data from our custom API.
 
-The magic happens in our `now.json` file, which defines how the apps will be deployed. We can route all requests to `/api/` to our Node API:
+The magic happens in our `vercel.json` file, which defines how the apps will be deployed. We can route all requests to `/api/` to our Node API:
 
-```json:now.json
+```json:vercel.json
 {
   "src": "/api/(.*)",
   "dest": "/app/routes/api"
@@ -159,7 +159,7 @@ The magic happens in our `now.json` file, which defines how the apps will be dep
 
 and all requests to `/city/city-name/` to forward a query param along to a `City` component.
 
-```json:now.json
+```json:vercel.json
 {
   "src": "/city/(?<name>[^/]+)$",
   "dest": "/www/city?name=$name"

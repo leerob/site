@@ -29,20 +29,20 @@ We _do not_ want to commit secrets to git. Thus, we should use an environment va
 We can add secrets using the Vercel CLI.
 
 ```bash
-$ now secret add google-encryption-iv
-$ now secret add google-encryption-secret
+$ vc secret add google-encryption-iv
+$ vc secret add google-encryption-secret
 ```
 
-To reference it locally when using `now dev` it needs to be added to your `.env` file.
+To reference it locally when using `vc dev` it needs to be added to your `.env` file.
 
 ```bash:.env
 GOOGLE_ENCRYPTION_IV=042d344042d34404
 GOOGLE_ENCRYPTION_KEY=042d344042d34404
 ```
 
-Finally, we need to add our new secret to `now.json`.
+Finally, we need to add our new secret to `vercel.json`.
 
-```json:now.json
+```json:vercel.json
 {
   "env": {
     "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",

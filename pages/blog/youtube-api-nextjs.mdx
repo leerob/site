@@ -71,17 +71,17 @@ We only need a few of the values from the JSON file. For the private key, make s
 the new line characters (`\n`) to actual new lines.
 
 ```bash
-$ now secret add -- google-private-key "-----BEGIN PRIVATE KEY-----
+$ vc secret add -- google-private-key "-----BEGIN PRIVATE KEY-----
 MIIEvQIBA
 ..
 ..
 2DAVOW4c=
 -----END PRIVATE KEY-----"
-$ now secret add google-client-email my-account@project.iam.gserviceaccount.com
-$ now secret add google-client-id 721877721877
+$ vc secret add google-client-email my-account@project.iam.gserviceaccount.com
+$ vc secret add google-client-id 721877721877
 ```
 
-To reference these values locally when using `now dev`, they need to be added to your `.env` file.
+To reference these values locally when using `vc dev`, they need to be added to your `.env` file.
 
 ```bash
 GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nDVOW4c=\n-----END PRIVATE KEY-----\n"
@@ -89,9 +89,9 @@ GOOGLE_CLIENT_EMAIL=my-account@project.iam.gserviceaccount.com
 GOOGLE_CLIENT_ID=721877721877
 ```
 
-Finally, we need to add the secrets to our `now.json`.
+Finally, we need to add the secrets to our `vercel.json`.
 
-```json
+```json:vercel.json
 {
   "env": {
     "GOOGLE_PRIVATE_KEY": "@google-private-key",
