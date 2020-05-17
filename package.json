@@ -13,10 +13,10 @@
     "url": "git+https://github.com/leerob/leerob.io.git"
   },
   "scripts": {
-    "build": "next build ; next build",
+    "build": "next build",
     "dev": "next",
     "lint": "eslint . --ext .json --ext .js",
-    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,mjs,yml}\"",
+    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,yml}\"",
     "start": "next start",
     "test": "yarn lint",
     "postinstall": "patch-package"
@@ -27,35 +27,38 @@
     }
   },
   "lint-staged": {
-    "*.{html,js,json,md,mdx,mjs,yml}": [
+    "*.{html,js,json,md,mdx,yml}": [
       "prettier --write",
       "git add"
     ]
   },
   "dependencies": {
-    "@chakra-ui/core": "0.7.0",
+    "@chakra-ui/core": "0.8.0",
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
     "@mapbox/rehype-prism": "0.4.0",
     "@mdx-js/loader": "1.5.8",
     "@mdx-js/react": "1.5.8",
-    "@next/mdx": "9.3.4",
+    "@next/mdx": "9.4.1",
     "babel-plugin-import-glob-array": "0.2.0",
     "comma-number": "2.0.1",
-    "date-fns": "2.11.1",
+    "date-fns": "2.13.0",
     "emotion-theming": "10.0.27",
-    "firebase": "7.13.2",
-    "firebase-admin": "8.10.0",
+    "fathom-client": "^2.0.3",
+    "firebase": "7.14.4",
+    "firebase-admin": "8.12.1",
     "googleapis": "48.0.0",
-    "isomorphic-unfetch": "3.0.0",
     "mdx-prism": "0.3.1",
-    "next": "9.3.4",
-    "next-mdx-enhanced": "2.4.0",
-    "next-seo": "4.4.0",
+    "next": "9.4.1",
+    "next-mdx-enhanced": "3.0.0",
+    "next-seo": "4.5.0",
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "preact": "^10.4.1",
+    "preact-render-to-string": "^5.1.8",
+    "react": "github:preact-compat/react#1.0.0",
+    "react-dom": "github:preact-compat/react-dom#1.0.0",
+    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
     "react-tweet-embed": "1.2.2",
     "reading-time": "1.2.0",
     "remark-autolink-headings": "6.0.0",
@@ -71,7 +74,7 @@
     "globby": "11.0.0",
     "husky": "4.2.3",
     "lint-staged": "10.1.2",
-    "prettier": "2.0.2",
+    "prettier": "2.0.5",
     "rehype": "10.0.0"
   }
 }

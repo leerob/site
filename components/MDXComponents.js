@@ -98,8 +98,8 @@ const Quote = (props) => {
 const DocsHeading = (props) => (
   <Heading
     css={{
-      'scroll-margin-top': '100px',
-      'scroll-snap-margin': '100px', // Safari
+      scrollMarginTop: '100px',
+      scrollSnapMargin: '100px', // Safari
       '&[id]': {
         pointerEvents: 'none'
       },

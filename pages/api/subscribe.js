@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
-
 export default async (req, res) => {
   const { email } = req.body;
 
@@ -23,7 +21,7 @@ export default async (req, res) => {
 
     if (response.status >= 400) {
       return res.status(400).json({
-        error: `There was an error subscribing to the newsletter. Shoot me an email at [me@leerob.io] and I'll add you to the list.`
+        error: await response.text()
       });
     }
 

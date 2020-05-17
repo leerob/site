@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
-
 export default async (_, res) => {
   const userResponse = await fetch('https://api.github.com/users/leerob');
   const userReposResponse = await fetch(

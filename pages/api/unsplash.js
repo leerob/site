@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import fetch from 'isomorphic-unfetch';
 import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;

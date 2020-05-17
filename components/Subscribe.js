@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import fetch from 'isomorphic-unfetch';
 import {
   Heading,
   InputGroup,

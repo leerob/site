@@ -72,16 +72,14 @@ export default (req, res) => {
 ```
 
 To make server-side requests to Unsplash, we can install the [unsplash-js](https://github.com/unsplash/unsplash-js) library.
-Since the library [depends on fetch](https://github.com/unsplash/unsplash-js#dependencies), you need to include `isomorphic-unfetch` (or another fetching library like `node-fetch`).
 
 ```bash
-$ yarn add unsplash-js isomorphic-unfetch
+$ yarn add unsplash-js
 ```
 
 Then, we can initialize `unsplash-js` inside our API route.
 
 ```js
-import fetch from 'isomorphic-unfetch';
 import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;
@@ -100,7 +98,6 @@ export default async (_, res) => {
 Finally, we want to pull statistics for a given user and return the total number of downloads and views.
 
 ```js
-import fetch from 'isomorphic-unfetch';
 import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;

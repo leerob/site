@@ -1,5 +1,5 @@
-import React from 'react';
-import NextApp from 'next/app';
+import React, { useEffect } from 'react';
+import Router from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
 import { Global, css } from '@emotion/core';
 import { DefaultSeo } from 'next-seo';
@@ -9,6 +9,7 @@ import {
   ColorModeProvider,
   useColorMode
 } from '@chakra-ui/core';
+import * as Fathom from 'fathom-client';
 
 import theme from '../styles/theme';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
@@ -48,23 +49,31 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
-class App extends NextApp {
-  render() {
-    const { Component } = this.props;
+Router.events.on('routeChangeComplete', () => {
+  Fathom.trackPageview();
+});
 
-    return (
-      <ThemeProvider theme={theme}>
-        <MDXProvider components={MDXComponents}>
-          <ColorModeProvider value="light">
-            <GlobalStyle>
-              <DefaultSeo {...SEO} />
-              <Component />
-            </GlobalStyle>
-          </ColorModeProvider>
-        </MDXProvider>
-      </ThemeProvider>
-    );
-  }
-}
+const App = ({ Component, pageProps }) => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      Fathom.load();
+      Fathom.setSiteId('UVWLEUFH');
+      Fathom.trackPageview();
+    }
+  }, []);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <MDXProvider components={MDXComponents}>
+        <ColorModeProvider value="light">
+          <GlobalStyle>
+            <DefaultSeo {...SEO} />
+            <Component {...pageProps} />
+          </GlobalStyle>
+        </ColorModeProvider>
+      </MDXProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

@@ -2,7 +2,7 @@
 .DS_Store
 .next
 node_modules
-.env*
+.env.*
 public/sitemap.xml
 .mdx-data
 .now
