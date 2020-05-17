@@ -10,7 +10,7 @@
     "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
     "BUTTONDOWN_API_KEY": "@buttondown-api-key",
     "GUMROAD_API_KEY": "@gumroad-api-key",
-    "FATHOM_SITE_ID": "@fathom-site-id-leerob"
+    "NEXT_PUBLIC_FATHOM_SITE_ID": "@fathom-site-id-leerob"
   },
   "redirects": [
     {
