@@ -57,7 +57,7 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       Fathom.load();
-      Fathom.setSiteId(process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
+      Fathom.setSiteId('UVWLEUFH');
       Fathom.trackPageview();
     }
   }, []);
