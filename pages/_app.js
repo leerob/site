@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Router from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
 import { Global, css } from '@emotion/core';
 import { DefaultSeo } from 'next-seo';
@@ -9,7 +8,6 @@ import {
   ColorModeProvider,
   useColorMode
 } from '@chakra-ui/core';
-import * as Fathom from 'fathom-client';
 
 import theme from '../styles/theme';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
@@ -49,16 +47,17 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
-Router.events.on('routeChangeComplete', () => {
-  Fathom.trackPageview();
-});
-
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      Fathom.load();
-      Fathom.setSiteId('UVWLEUFH');
-      Fathom.trackPageview();
+      const tracker = window.document.createElement('script');
+      const firstScript = window.document.querySelectorAll('script')[0];
+
+      tracker.defer = true;
+      tracker.setAttribute('site', 'UVWLEUFH');
+      tracker.setAttribute('spa', 'auto');
+      tracker.src = 'https://cdn.usefathom.com/script.js';
+      firstScript.parentNode.insertBefore(tracker, firstScript);
     }
   }, []);
 

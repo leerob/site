@@ -10,7 +10,6 @@ import {
   useToast,
   useColorMode
 } from '@chakra-ui/core';
-import * as Fathom from 'fathom-client';
 
 const Subscribe = () => {
   const [loading, setLoading] = useState(false);
@@ -55,7 +54,7 @@ const Subscribe = () => {
       return;
     }
 
-    Fathom.trackGoal('JYFUFMSF', 0);
+    window.fathom.trackGoal('JYFUFMSF', 0);
     inputEl.current.value = '';
     toast({
       title: 'Success!',
