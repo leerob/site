@@ -27,8 +27,10 @@ module.exports = withMdxEnhanced({
       require('./scripts/generate-sitemap');
     }
 
-    // https://github.com/developit/nextjs-preact-demo
-    // https://preactjs.com/guide/v10/differences-to-react
+    /*
+     * https://github.com/developit/nextjs-preact-demo
+     * https://preactjs.com/guide/v10/differences-to-react
+     */
     const splitChunks = config.optimization && config.optimization.splitChunks;
 
     if (splitChunks) {
