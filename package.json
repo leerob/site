@@ -48,7 +48,6 @@
     "firebase": "7.14.4",
     "firebase-admin": "8.12.1",
     "googleapis": "48.0.0",
-    "isomorphic-unfetch": "3.0.0",
     "mdx-prism": "0.3.1",
     "next": "9.4.1",
     "next-mdx-enhanced": "3.0.0",

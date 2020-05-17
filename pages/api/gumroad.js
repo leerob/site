@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
-
 export default async (_, res) => {
   const API_KEY = process.env.GUMROAD_API_KEY;
   const response = await fetch(`https://api.gumroad.com/v2/products/sDpG`, {

@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
-
 export default async (_, res) => {
   const API_KEY = process.env.BUTTONDOWN_API_KEY;
   const response = await fetch('https://api.buttondown.email/v1/subscribers', {

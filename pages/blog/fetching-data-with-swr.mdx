@@ -32,11 +32,9 @@ import useSWR from 'swr';
 const { data } = useSWR('/api/unsplash', fetcher);
 ```
 
-`fetcher` is a small wrapper around `isomorphic-unfetch`.
+`fetcher` is a small wrapper around `fetch` returning `json`.
 
 ```js
-import fetch from 'isomorphic-unfetch';
-
 export default async function (...args) {
   const res = await fetch(...args);
 

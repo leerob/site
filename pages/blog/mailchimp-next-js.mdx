@@ -83,8 +83,6 @@ MAILCHIMP_API_KEY=<secret-value>
 Now that we have the API Key and the List ID available as environment variables, we can create an API route at `pages/api/subscribe.js` to add a member to our list.
 
 ```js:pages/api/subscribe.js
-import fetch from 'isomorphic-unfetch';
-
 export default async (req, res) => {
   // 1. Destructure the email address from the request body.
   const { email } = req.body;
@@ -141,7 +139,6 @@ Now that our API is created, we need a way to gather user input. Let's create a 
 
 ```js:components/Subscribe.js
 import React, { useRef, useState } from 'react';
-import fetch from 'isomorphic-unfetch';
 
 function Subscribe() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
