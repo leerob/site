@@ -49,15 +49,6 @@
       ]
     },
     {
-      "source": "/api/ga-page-views",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
       "source": "/api/subscribers",
       "headers": [
         {
