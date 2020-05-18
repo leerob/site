@@ -67,6 +67,12 @@ const Index = () => {
             Projects
           </Heading>
           <ProjectCard
+            title="React 2025"
+            description="Build and deploy a modern Jamstack application using the most popular open-source software."
+            href="https://react2025.com/"
+            icon="react2025"
+          />
+          <ProjectCard
             title="Mastering Next.js"
             description="The premiere video course for building static and server-side rendered applications with Next.js and React."
             href="https://masteringnextjs.com/"

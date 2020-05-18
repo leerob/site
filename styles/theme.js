@@ -88,6 +88,14 @@ const theme = {
         </g>
       ),
       viewBox: '.5 -.2 1023 1024.1'
+    },
+    react2025: {
+      path: (
+        <g fill="currentColor">
+          <path d="M0 296V8.5H231.5V89L170.5 150L258.5 238H174L86 150L170.5 65.5H58V238L0 296Z" />
+        </g>
+      ),
+      viewBox: '0 0 267 305'
     }
   }
 };
