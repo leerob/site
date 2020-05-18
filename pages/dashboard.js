@@ -9,13 +9,13 @@ import {
   SimpleGrid
 } from '@chakra-ui/core';
 
-import Unsplash from '../components/metrics/Unsplash';
-import YouTube from '../components/metrics/Youtube';
-import GoogleAnalytics from '../components/metrics/Analytics';
-import GitHub from '../components/metrics/Github';
+import Analytics from '../components/metrics/Analytics';
 import Buttondown from '../components/metrics/Buttondown';
 import Container from '../components/Container';
+import GitHub from '../components/metrics/Github';
 import Gumroad from '../components/metrics/Gumroad';
+import Unsplash from '../components/metrics/Unsplash';
+import YouTube from '../components/metrics/Youtube';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';
@@ -70,8 +70,8 @@ const Dashboard = () => {
             <Text color={secondaryTextColor[colorMode]}>
               This is my personal dashboard, built with Next.js API routes
               deployed as serverless functions. I use this dashboard to track
-              various metrics across platforms like Unsplash, Google Analytics,
-              GitHub, and more.
+              various metrics across platforms like Unsplash, YouTube, GitHub,
+              and more.
             </Text>
           </Flex>
           <Flex
@@ -83,8 +83,10 @@ const Dashboard = () => {
           >
             <Unsplash />
             <YouTube />
-            <GoogleAnalytics />
-            <GitHub />
+            <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
+              <Analytics />
+              <GitHub />
+            </SimpleGrid>
             <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
               <Gumroad />
               <Buttondown />

@@ -1,9 +1,16 @@
 import db from '../../lib/db-admin';
 
-const pageViews = (req, res) => {
+export default (req, res) => {
   if (!req.query.id) {
-    return res.status(400).json({
-      error: 'Missing "id" query parameter'
+    return db.ref('views').once('value', (snapshot) => {
+      const views = snapshot.val();
+      const allViews = Object.values(views).reduce(
+        (total, value) => total + value
+      );
+
+      return res.status(200).json({
+        total: allViews
+      });
     });
   }
 
@@ -15,5 +22,3 @@ const pageViews = (req, res) => {
     });
   });
 };
-
-export default pageViews;

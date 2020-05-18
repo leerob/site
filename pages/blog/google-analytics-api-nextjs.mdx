@@ -5,20 +5,20 @@ summary: 'Learn how to use Next.js API routes to integrate with the Google Analy
 image: '/static/images/dashboard.jpg'
 ---
 
-import GoogleAnalytics from '../../components/metrics/Analytics';
+import Analytics from '../../components/metrics/Analytics';
 
 > In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
 
-<GoogleAnalytics />
+<Analytics />
 
 ## Overview
 
 Google Analytics is, by far, the most popular analytics platform. In this post, we'll look at how
 we can retrieve the number of page views in a specific time range programmatically.
 
-If you're more concerned about privacy, you might consider using [Fathom](https://usefathom.com/) or [SimpleAnalytics](https://simpleanalytics.com/).
+If you're more concerned about privacy, you might consider using [Fathom Analytics](https://usefathom.com/ref/T93GOJ) or [SimpleAnalytics](https://simpleanalytics.com/).
 
-_Note_: You'll need to turn off your ad blocker for this page to work.
+**Note:** You'll need to turn off your ad blocker for this page to work.
 
 ## Getting Access to Google Analytics
 
@@ -110,7 +110,7 @@ Finally, we need to add the secrets to our `vercel.json`.
 
 We can now reference the secrets via `process.env.GOOGLE_PRIVATE_KEY` in our API route.
 
-_Note_: If you have a lot of environment variables in Vercel, you might need to [encrpyt your service account](/blog/vercel-env-variables-size-limit).
+**Note:** If you have a lot of environment variables in Vercel, you might need to [encrpyt your service account](/blog/vercel-env-variables-size-limit).
 
 ## Creating the API Route
 
@@ -186,7 +186,7 @@ export default async (_, res) => {
   const startDate = req.query.startDate;
   const response = await analytics.data.ga.get({
     'end-date': 'today',
-    ids: 'ga:187331021',
+    ids: 'ga:186371021',
     metrics: 'ga:pageviews',
     'start-date': startDate
   });
@@ -199,15 +199,13 @@ export default async (_, res) => {
 
 ## Example
 
-The two cards below talk to `/api/page-views` and pull back stats about my site.
-
 _Bonus_: You can cache the API route with the [cache-control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header.
 
 ```bash
 Cache-Control: public, max-age=120, stale-while-revalidate=60
 ```
 
-<GoogleAnalytics />
+<Analytics />
 
 ## Keep Reading
 
