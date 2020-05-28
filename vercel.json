@@ -10,7 +10,7 @@
     "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
     "BUTTONDOWN_API_KEY": "@buttondown-api-key",
     "GUMROAD_API_KEY": "@gumroad-api-key",
-    "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
+    "FIREBASE_DATABASE_URL": "@firebase-database-url",
     "FIREBASE_PROJECT_ID": "@firebase-project-id"
   },
   "redirects": [
