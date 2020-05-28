@@ -6,3 +6,4 @@ node_modules
 public/sitemap.xml
 .mdx-data
 .now
+.env
