@@ -17,7 +17,7 @@ import NewsletterLink from '../components/NewsletterLink';
 import { frontMatter as newsletters } from './newsletter/**/*.mdx';
 
 const url = 'https://leerob.io/newsletter';
-const title = 'Newsletter – Lee Robinson';
+const title = 'Newsletter – Anton Fenske';
 const description =
   'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
 

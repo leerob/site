@@ -13,7 +13,7 @@ import {
 import Container from '../components/Container';
 
 const url = 'https://leerob.io/about';
-const title = 'About Me – Lee Robinson';
+const title = 'About Me – Anton Fenske';
 
 const About = () => {
   const { colorMode } = useColorMode();

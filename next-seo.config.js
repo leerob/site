@@ -1,4 +1,4 @@
-const title = 'Lee Robinson – Developer, writer, creator.';
+const title = 'Anton Fenske – Developer, writer, creator.';
 const description =
   'Front-end developer, JavaScript enthusiast, and creator of Mastering Next.js.';
 

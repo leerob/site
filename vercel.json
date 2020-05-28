@@ -5,11 +5,9 @@
   "env": {
     "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
     "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
-    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
-    "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
-    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
-    "BUTTONDOWN_API_KEY": "@buttondown-api-key",
-    "GUMROAD_API_KEY": "@gumroad-api-key"
+    "FIREBASE_PROJECT_ID": "@firebase-project-id",
+    "FIREBASE_DATABASE_URL": "@firebase-database-url",
+    "BUTTONDOWN_API_KEY": "@buttondown-api-key"
   },
   "headers": [
     {

@@ -68,13 +68,13 @@ export default (frontMatter) => {
               <Flex align="center">
                 <Avatar
                   size="xs"
-                  name="Lee Robinson"
+                  name="Anton Fenske"
                   src="https://bit.ly/33vEjhB"
                   mr={2}
                 />
                 <Text fontSize="sm" color={textColor[colorMode]}>
                   {frontMatter.by}
-                  {'Lee Robinson / '}
+                  {'Anton Fenske / '}
                   {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
                 </Text>
               </Flex>
