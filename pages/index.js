@@ -29,10 +29,10 @@ const Index = () => {
           maxWidth="700px"
         >
           <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-            Hi there , Anton Fenske is here.
+            Hi there, I'm Anton.
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>
-            Here I share info about my work.
+            Here I share what I'm working on.
           </Text>
         </Flex>
         <Flex
