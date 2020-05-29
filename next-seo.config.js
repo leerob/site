@@ -22,8 +22,8 @@ const SEO = {
     ]
   },
   twitter: {
-    handle: '@leeerob',
-    site: '@leeerob',
+    handle: '@fenskexyz',
+    site: '@fenskexyz',
     cardType: 'summary_large_image'
   }
 };
