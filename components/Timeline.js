@@ -48,6 +48,21 @@ const FullTimeline = () => (
   <>
     <YearDivider />
     <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+      2018
+    </Heading>
+    <List>
+      <TimelineStep title="Started dsmtech.io 🤘🏻">
+        Reflecting on my recent job search, I realized there wasn't a
+        centralized listing of all the Des Moines tech companies. So...I created
+        it.
+      </TimelineStep>
+      <TimelineStep title="Joined Hy-Vee 🛒">
+        It was time for a change in my career, and Hy-Vee came calling. The best
+        part was reducing my commute time by an hour/day.
+      </TimelineStep>
+    </List>
+    <YearDivider />
+    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
       2016
     </Heading>
     <List>
@@ -177,6 +192,9 @@ const Timeline = () => {
         2020
       </Heading>
       <List>
+        <TimelineStep title="Launched React 2025 💯">
+          Building a real SaaS application, from zero to production.
+        </TimelineStep>
         <TimelineStep title="Emerging Technology Leader of the Year 🏆">
           I'm extremely honored to be one of five finalists nominated for this
           award at the 2020 Prometheus Awards.
@@ -185,7 +203,7 @@ const Timeline = () => {
           Starting at the beginning of this year, I moved into a tech leadership
           role on one of our e-commerce development teams.
         </TimelineStep>
-        <TimelineStep title="Mastering Next.js hits $5K 📈">
+        <TimelineStep title="Mastering Next.js hits $10K 📈">
           Achieved my yearly sales goal way ahead of schedule for my course.
         </TimelineStep>
       </List>
@@ -220,31 +238,6 @@ const Timeline = () => {
         <TimelineStep title="Spoke at Talent42 🎤">
           I spoke to over 100 technical recruiting leaders from across the
           country at Talent42 in Seattle during a 45-minute keynote.
-        </TimelineStep>
-      </List>
-      <YearDivider />
-      <Heading
-        as="h3"
-        size="lg"
-        fontWeight="bold"
-        mb={4}
-        letterSpacing="tighter"
-      >
-        2018
-      </Heading>
-      <List>
-        <TimelineStep title="Started dsmtech.io 🤘🏻">
-          Reflecting on my recent job search, I realized there wasn't a
-          centralized listing of all the Des Moines tech companies. So...I
-          created it.
-        </TimelineStep>
-        <TimelineStep title="Joined Hy-Vee 🛒">
-          It was time for a change in my career, and Hy-Vee came calling. The
-          best part was reducing my commute time by an hour/day.
-        </TimelineStep>
-        <TimelineStep title="Bought a Townhome 🏡">
-          Who wants to do yardwork? Not me. Plus, Allie and I love living
-          downtown Des Moines.
         </TimelineStep>
       </List>
       {isShowingFullTimeline ? (
