@@ -48,7 +48,7 @@ const Index = () => {
             title="CoreSkills"
             description="Coding interviews that make sense"
             href="https://coreskills.dev/"
-            icon="react2025"
+            icon="coreskills"
           />
         </Flex>
         <Subscribe />
