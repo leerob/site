@@ -17,10 +17,10 @@ import ViewCounter from '../components/ViewCounter';
 import BlogSeo from '../components/BlogSeo';
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
+  `https://github.com/fenske/fenske.xyz/edit/master/pages/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
+    `https://fenske.xyz/blog/${slug}`
   )}`;
 
 export default (frontMatter) => {
@@ -37,7 +37,7 @@ export default (frontMatter) => {
 
     return (
       <Container>
-        <BlogSeo url={`https://leerob.io/blog/${slug}`} {...frontMatter} />
+        <BlogSeo url={`https://fenske.xyz/blog/${slug}`} {...frontMatter} />
         <Stack
           as="article"
           spacing={8}

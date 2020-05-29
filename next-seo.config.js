@@ -1,25 +1,17 @@
 const title = 'Anton Fenske – Developer, writer, creator.';
-const description =
-  'Front-end developer, JavaScript enthusiast, and creator of Mastering Next.js.';
+const description = 'Minimalist.';
 
 const SEO = {
   title,
   description,
-  canonical: 'https://leerob.io',
+  canonical: 'https://fenske.xyz',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://leerob.io',
+    url: 'https://fenske.xyz',
     title,
     description,
-    images: [
-      {
-        url: 'https://leerob.io/static/images/og.jpg',
-        alt: title,
-        width: 1280,
-        height: 720
-      }
-    ]
+    images: []
   },
   twitter: {
     handle: '@fenskexyz',

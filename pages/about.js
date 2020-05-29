@@ -12,7 +12,7 @@ import {
 
 import Container from '../components/Container';
 
-const url = 'https://leerob.io/about';
+const url = 'https://fenske.xyz/about';
 const title = 'About Me – Anton Fenske';
 
 const About = () => {

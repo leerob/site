@@ -1,16 +1,16 @@
 {
-  "name": "leerob.io",
+  "name": "fenske.xyz",
   "description": "My personal website.",
   "version": "0.0.0",
   "author": {
     "name": "Anton Fenske",
-    "email": "me@leerob.io",
-    "url": "https://leerob.io"
+    "email": "anton@fenske.xyz",
+    "url": "https://fenske.xyz"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leerob/leerob.io.git"
+    "url": "git+https://github.com/fenske/fenske.xyz"
   },
   "scripts": {
     "build": "next build",
