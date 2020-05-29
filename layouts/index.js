@@ -17,10 +17,10 @@ import ViewCounter from '../components/ViewCounter';
 import BlogSeo from '../components/BlogSeo';
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
+  `https://github.com/fenske/fenske.xyz/edit/master/pages/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
+    `https://fenske.xyz/blog/${slug}`
   )}`;
 
 export default (frontMatter) => {
@@ -37,7 +37,7 @@ export default (frontMatter) => {
 
     return (
       <Container>
-        <BlogSeo url={`https://leerob.io/blog/${slug}`} {...frontMatter} />
+        <BlogSeo url={`https://fenske.xyz/blog/${slug}`} {...frontMatter} />
         <Stack
           as="article"
           spacing={8}
@@ -68,13 +68,13 @@ export default (frontMatter) => {
               <Flex align="center">
                 <Avatar
                   size="xs"
-                  name="Lee Robinson"
-                  src="https://bit.ly/33vEjhB"
+                  name="Anton Fenske"
+                  src="https://en.gravatar.com/userimage/187050769/7e746ca78f2df4f9070becd06a040efb.jpeg"
                   mr={2}
                 />
                 <Text fontSize="sm" color={textColor[colorMode]}>
                   {frontMatter.by}
-                  {'Lee Robinson / '}
+                  {'Anton Fenske / '}
                   {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
                 </Text>
               </Flex>

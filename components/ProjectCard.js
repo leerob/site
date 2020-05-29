@@ -9,16 +9,6 @@ import {
   useColorMode
 } from '@chakra-ui/core';
 
-const trackGoal = (title) => {
-  const goalCodes = {
-    'React 2025': '5WGDOKV0',
-    'Mastering Next.js': 'HV9HDL0O',
-    jamstackfns: 'LRXBPLZS'
-  };
-
-  window.fathom.trackGoal(goalCodes[title], 0);
-};
-
 const ProjectCard = ({ title, description, href, icon }) => {
   const { colorMode } = useColorMode();
   const borderColor = {
@@ -34,7 +24,6 @@ const ProjectCard = ({ title, description, href, icon }) => {
     <Link
       mb={4}
       href={href}
-      onClick={() => trackGoal(title)}
       title={title}
       isExternal
       _hover={{

@@ -10,7 +10,7 @@ const Analytics = () => {
   const { data } = useSWR('/api/page-views', fetcher);
 
   const pageViews = format(data?.total);
-  const link = 'https://leerob.io';
+  const link = 'https://fenske.xyz';
 
   return <MetricCard header="All-Time Views" link={link} metric={pageViews} />;
 };

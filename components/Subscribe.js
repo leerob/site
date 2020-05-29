@@ -54,7 +54,6 @@ const Subscribe = () => {
       return;
     }
 
-    window.fathom.trackGoal('JYFUFMSF', 0);
     inputEl.current.value = '';
     toast({
       title: 'Success!',
@@ -76,11 +75,11 @@ const Subscribe = () => {
       w="100%"
     >
       <Heading as="h5" size="lg" mb={2}>
-        Subscribe to the newsletter
+        You can subscribe to my newsletter here
       </Heading>
       <Text>
-        Get emails from me about web development, tech, and early access to new
-        articles.
+        I send emails about new blog posts, product updates, and software
+        engineering tips.
       </Text>
       <InputGroup size="md" mt={4}>
         <Input

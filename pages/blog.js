@@ -17,14 +17,11 @@ import BlogPost from '../components/BlogPost';
 
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import { frontMatter as blogPosts } from './blog/**/*.mdx';
-import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
-import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
-import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
 
-const url = 'https://leerob.io/blog';
-const title = 'Blog – Lee Robinson';
+const url = 'https://fenske.xyz/blog';
+const title = 'Blog – Anton Fenske';
 const description =
-  'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
+  'Ideas on software engineering, coding interviews, and building online businesses';
 
 const Blog = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -74,9 +71,7 @@ const Blog = () => {
               Blog
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
-              {`I've been writing online since 2014, mostly about web development and tech careers.
-                In total, I've written ${blogPosts.length} articles on this site.
-                Use the search below to filter by title.`}
+              {`Here I share my personal thoughts on sotware engineering, coding interviews, and building online businesses.`}
             </Text>
             <InputGroup my={4} mr={4} w="100%">
               <Input
@@ -89,22 +84,6 @@ const Blog = () => {
               </InputRightElement>
             </InputGroup>
           </Flex>
-          {!searchValue && (
-            <Flex
-              flexDirection="column"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              maxWidth="700px"
-              mt={8}
-            >
-              <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
-                Most Popular
-              </Heading>
-              <BlogPost {...styleGuides} />
-              <BlogPost {...stripeDesign} />
-              <BlogPost {...monorepo} />
-            </Flex>
-          )}
           <Flex
             flexDirection="column"
             justifyContent="flex-start"
