@@ -69,7 +69,7 @@ export default (frontMatter) => {
                 <Avatar
                   size="xs"
                   name="Anton Fenske"
-                  src="https://bit.ly/33vEjhB"
+                  src="https://en.gravatar.com/userimage/187050769/7e746ca78f2df4f9070becd06a040efb.jpeg"
                   mr={2}
                 />
                 <Text fontSize="sm" color={textColor[colorMode]}>

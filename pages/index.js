@@ -32,7 +32,7 @@ const Index = () => {
             Hi there , Anton Fenske is here.
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>
-            This is my personal website where I share info about my work.
+            Here I share info about my work.
           </Text>
         </Flex>
         <Flex
