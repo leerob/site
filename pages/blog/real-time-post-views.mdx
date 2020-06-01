@@ -236,6 +236,8 @@ function ViewCounter({ id }) {
 
     const fetchData = async () => {
       db = await loadDb();
+      // Note: in order for this to work, you must enable "read: true" under Rules
+      // for your Firebase Database
       db.child(id).on('value', onViews);
     };
 
