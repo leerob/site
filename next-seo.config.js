@@ -1,5 +1,5 @@
-const title = 'Anton Fenske – Developer, writer, creator.';
-const description = 'Minimalist.';
+const title = 'Anton Fenske';
+const description = 'Making things happen.';
 
 const SEO = {
   title,
