@@ -2,6 +2,9 @@ import { css } from '@emotion/core';
 import { theme } from '@chakra-ui/core';
 
 const prismBaseTheme = css`
+  code {
+    white-space: pre;
+  }
   code[class*='language-'],
   pre[class*='language-'] {
     color: ${theme.colors.gray[800]};
@@ -9,7 +12,6 @@ const prismBaseTheme = css`
     font-family: ${theme.fonts.mono};
     font-size: ${theme.fontSizes[2]};
     text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
@@ -33,6 +35,7 @@ const prismBaseTheme = css`
     overflow: auto;
     min-width: 100%;
     font-size: 0.9rem;
+    white-space: nowrap;
   }
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
