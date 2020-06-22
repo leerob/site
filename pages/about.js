@@ -101,7 +101,7 @@ const About = () => {
               I grew up in small-town Iowa and went to school at Iowa State,
               graduating with a degree in Computer Engineering. I spend my free
               time playing music, creating videos, and enjoying time with
-              friends and family
+              friends and family.
             </Text>
             <Heading letterSpacing="tight" mt={8} mb={4} as="h2" size="xl">
               Conference Talks
