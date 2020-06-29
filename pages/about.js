@@ -81,7 +81,16 @@ const About = () => {
               >
                 Mastering Next.js
               </Link>
-              , and it’s been my most successful solo-endeavor so far.
+              , and it’s been my most successful solo-endeavor so far. I'm now
+              building a new course called&nbsp;
+              <Link
+                href="https://react2025.com"
+                title="React 2025"
+                isExternal
+                color={linkColor[colorMode]}
+              >
+                React 2025.
+              </Link>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I’ve spoken across the country at conferences and meet-ups about
@@ -106,6 +115,24 @@ const About = () => {
             <Heading letterSpacing="tight" mt={8} mb={4} as="h2" size="xl">
               Conference Talks
             </Heading>
+            <Heading size="md" as="h3" mb={2} fontWeight="medium">
+              <Link
+                display="flex"
+                href="https://prisma.zoom.us/rec/share/6PwuN4zqyn9Of4XE-kvOUbUeF7i7T6a81yYbr_RZxEaE6v9ctLqFon6y4vLj2lxn"
+                isExternal
+              >
+                <Flex align="center">
+                  Building Static Sites with Prisma and Next.js
+                  <Icon name="external-link" mx={2} size="16px" />
+                </Flex>
+              </Link>
+            </Heading>
+            <Text color={secondaryTextColor[colorMode]} mb={8}>
+              During this workshop, you'll learn how to integrate Prisma with
+              Next.js and build a statically-generated site that displays a list
+              of your favorite songs. We'll use Chakra UI for styling and deploy
+              our site with Vercel.
+            </Text>
             <Heading size="md" as="h3" mb={2} fontWeight="medium">
               <Link
                 display="flex"
