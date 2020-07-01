@@ -175,7 +175,7 @@ export default async (_, res) => {
       client_id: process.env.GOOGLE_CLIENT_ID,
       private_key: process.env.GOOGLE_PRIVATE_KEY
     },
-    scopes: ['https://www.googleapis.com/auth/youtube.readonly']
+    scopes: ['https://www.googleapis.com/auth/analytics.readonly']
   });
 
   const analytics = google.analytics({
