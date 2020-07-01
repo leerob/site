@@ -54,7 +54,7 @@ const App = ({ Component, pageProps }) => {
       const firstScript = window.document.querySelectorAll('script')[0];
 
       tracker.defer = true;
-      tracker.setAttribute('site', 'UVWLEUFH');
+      tracker.setAttribute('site', process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
       tracker.setAttribute('spa', 'auto');
       tracker.src = 'https://cdn.usefathom.com/script.js';
       firstScript.parentNode.insertBefore(tracker, firstScript);
