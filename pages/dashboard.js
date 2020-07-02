@@ -16,6 +16,7 @@ import GitHub from '../components/metrics/Github';
 import Gumroad from '../components/metrics/Gumroad';
 import Unsplash from '../components/metrics/Unsplash';
 import YouTube from '../components/metrics/Youtube';
+import { CustomLink } from '../components/MDXComponents';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';
@@ -71,7 +72,10 @@ const Dashboard = () => {
               This is my personal dashboard, built with Next.js API routes
               deployed as serverless functions. I use this dashboard to track
               various metrics across platforms like Unsplash, YouTube, GitHub,
-              and more.
+              and more. Want to build your own? Check out my&nbsp;
+              <CustomLink href="/blog/fetching-data-with-swr">
+                blog series.
+              </CustomLink>
             </Text>
           </Flex>
           <Flex

@@ -1,6 +1,6 @@
 const title = 'Lee Robinson – Developer, writer, creator.';
 const description =
-  'Front-end developer, JavaScript enthusiast, and creator of Mastering Next.js.';
+  'Front-end developer, JavaScript enthusiast, and course creator.';
 
 const SEO = {
   title,

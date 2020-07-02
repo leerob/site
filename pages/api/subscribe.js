@@ -10,7 +10,10 @@ export default async (req, res) => {
     const response = await fetch(
       `https://api.buttondown.email/v1/subscribers`,
       {
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+          tags: ['leerob.io']
+        }),
         headers: {
           Authorization: `Token ${API_KEY}`,
           'Content-Type': 'application/json'
@@ -20,8 +23,16 @@ export default async (req, res) => {
     );
 
     if (response.status >= 400) {
+      const text = await response.text();
+
+      if (text.includes('already subscribed')) {
+        return res.status(400).json({
+          error: `You're already subscribed to my mailing list.`
+        });
+      }
+
       return res.status(400).json({
-        error: await response.text()
+        error: text
       });
     }
 
