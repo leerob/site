@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
+import { CustomLink } from '../components/MDXComponents';
 
 const url = 'https://leerob.io/about';
 const title = 'About Me – Lee Robinson';
@@ -20,10 +21,6 @@ const About = () => {
   const secondaryTextColor = {
     light: 'gray.700',
     dark: 'gray.400'
-  };
-  const linkColor = {
-    light: 'hsl(208, 99%, 44%)',
-    dark: 'hsl(208, 95%, 68%)'
   };
 
   return (
@@ -57,14 +54,7 @@ const About = () => {
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               Hey, I’m Lee. I live in Des Moines, IA and I’m a Senior Software
               Engineer at&nbsp;
-              <Link
-                href="https://innovate.hy-vee.com"
-                title="Hy-Vee"
-                isExternal
-                color={linkColor[colorMode]}
-              >
-                Hy-Vee
-              </Link>
+              <CustomLink href="https://innovate.hy-vee.com">Hy-Vee</CustomLink>
               , a $10B grocery tech company in the Midwest. As a tech lead, my
               primary focus is developing Aisles Online, Hy-Vee’s e-commerce
               grocery shopping platform – which serves millions of customers
@@ -73,24 +63,12 @@ const About = () => {
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               At the beginning of 2020, I launched my most ambitious project – a
               50+ lesson video course on React and Next.js. It’s called&nbsp;
-              <Link
-                href="https://masteringnextjs.com"
-                title="Mastering Next.js"
-                isExternal
-                color={linkColor[colorMode]}
-              >
+              <CustomLink href="https://masteringnextjs.com">
                 Mastering Next.js
-              </Link>
+              </CustomLink>
               , and it’s been my most successful solo-endeavor so far. I'm now
               building a new course called&nbsp;
-              <Link
-                href="https://react2025.com"
-                title="React 2025"
-                isExternal
-                color={linkColor[colorMode]}
-              >
-                React 2025.
-              </Link>
+              <CustomLink href="https://react2025.com">React 2025.</CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I’ve spoken across the country at conferences and meet-ups about
@@ -98,13 +76,7 @@ const About = () => {
               contribute to my blog, which attracts thousands of readers every
               month. I mostly write about development, tech careers, and my
               personal life. If you'd like to follow along, subscribe to&nbsp;
-              <Link
-                href="/newsletter"
-                title="Newsletter"
-                color={linkColor[colorMode]}
-              >
-                my newsletter.
-              </Link>
+              <CustomLink href="/newsletter">my newsletter.</CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I grew up in small-town Iowa and went to school at Iowa State,

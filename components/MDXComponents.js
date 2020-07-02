@@ -171,4 +171,5 @@ const MDXComponents = {
   blockquote: Quote
 };
 
+export { CustomLink };
 export default MDXComponents;
