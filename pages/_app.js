@@ -8,11 +8,17 @@ import {
   ColorModeProvider,
   useColorMode
 } from '@chakra-ui/core';
+import Router from 'next/router';
+import * as Fathom from 'fathom-client';
 
 import theme from '../styles/theme';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
 import MDXComponents from '../components/MDXComponents';
 import SEO from '../next-seo.config';
+
+Router.events.on('routeChangeComplete', () => {
+  Fathom.trackPageview();
+});
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -50,14 +56,9 @@ const GlobalStyle = ({ children }) => {
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      const tracker = window.document.createElement('script');
-      const firstScript = window.document.querySelectorAll('script')[0];
-
-      tracker.defer = true;
-      tracker.setAttribute('site', process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
-      tracker.setAttribute('spa', 'auto');
-      tracker.src = 'https://cdn.usefathom.com/script.js';
-      firstScript.parentNode.insertBefore(tracker, firstScript);
+      Fathom.load();
+      Fathom.setSiteId(process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
+      Fathom.trackPageview();
     }
   }, []);
 

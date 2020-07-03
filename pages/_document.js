@@ -1,10 +1,12 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
+import GoogleFonts from 'next-google-fonts';
 
 class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
+        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
         <Head>
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -30,17 +32,6 @@ class MyDocument extends Document {
             rel="preconnect"
             href="https://cdn.usefathom.com"
             crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-            as="style"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-            rel="stylesheet"
-            media="print"
-            onLoad="this.media='all'"
           />
           <link
             href="/static/favicons/apple-touch-icon.png"
