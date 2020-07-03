@@ -16,10 +16,6 @@ import { prismLightTheme, prismDarkTheme } from '../styles/prism';
 import MDXComponents from '../components/MDXComponents';
 import SEO from '../next-seo.config';
 
-Router.events.on('routeChangeComplete', () => {
-  Fathom.trackPageview();
-});
-
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode();
 
@@ -53,12 +49,16 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
+Router.events.on('routeChangeComplete', () => {
+  Fathom.trackPageview();
+});
+
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      Fathom.load();
-      Fathom.setSiteId(process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
-      Fathom.trackPageview();
+      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+        includedDomains: ['leerob.io']
+      });
     }
   }, []);
 
