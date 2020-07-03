@@ -74,7 +74,7 @@ const Index = () => {
           />
           <ProjectCard
             title="Mastering Next.js"
-            description="The premiere video course for building static and server-side rendered applications with Next.js and React."
+            description="A free video course for building static and server-side rendered applications with Next.js and React."
             href="https://masteringnextjs.com/"
             icon="nextjs"
           />
