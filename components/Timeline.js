@@ -196,15 +196,16 @@ const Timeline = () => {
           Building a real SaaS application, from zero to production.
         </TimelineStep>
         <TimelineStep title="Emerging Technology Leader of the Year 🏆">
-          I'm extremely honored to be one of five finalists nominated for this
+          I was extremely honored to be one of five finalists nominated for this
           award at the 2020 Prometheus Awards.
         </TimelineStep>
         <TimelineStep title="Became a Tech Lead 👨🏻‍💻">
           Starting at the beginning of this year, I moved into a tech leadership
           role on one of our e-commerce development teams.
         </TimelineStep>
-        <TimelineStep title="Mastering Next.js hits $10K 📈">
-          Achieved my yearly sales goal way ahead of schedule for my course.
+        <TimelineStep title="Mastering Next.js made $10K 📈">
+          I taught hundreds of students from all over the world how to build web
+          applications. Exceeded my wildest expectations.
         </TimelineStep>
       </List>
       <YearDivider />

@@ -1,17 +1,5 @@
 export default [
   {
-    date: 'November 12, 2019',
-    publisher: 'Mastering Next.js',
-    title: 'Next.js vs. Gatsby vs. Create React App',
-    url: 'https://masteringnextjs.com/nextjs-gatsby-create-react-app/'
-  },
-  {
-    date: 'November 7, 2019',
-    publisher: 'Mastering Next.js',
-    title: 'Why Should You Learn Next.js?',
-    url: 'https://masteringnextjs.com/learn-next-js'
-  },
-  {
     date: 'January 03, 2019',
     publisher: 'Innovation Iowa',
     title: 'Dsmtech.io launches for tech job seekers scouting Des Moines',
