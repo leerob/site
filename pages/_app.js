@@ -8,6 +8,8 @@ import {
   ColorModeProvider,
   useColorMode
 } from '@chakra-ui/core';
+import Router from 'next/router';
+import * as Fathom from 'fathom-client';
 
 import theme from '../styles/theme';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
@@ -47,17 +49,16 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
+Router.events.on('routeChangeComplete', () => {
+  Fathom.trackPageview();
+});
+
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      const tracker = window.document.createElement('script');
-      const firstScript = window.document.querySelectorAll('script')[0];
-
-      tracker.defer = true;
-      tracker.setAttribute('site', process.env.NEXT_PUBLIC_FATHOM_SITE_ID);
-      tracker.setAttribute('spa', 'auto');
-      tracker.src = 'https://cdn.usefathom.com/script.js';
-      firstScript.parentNode.insertBefore(tracker, firstScript);
+      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+        includedDomains: ['leerob.io']
+      });
     }
   }, []);
 

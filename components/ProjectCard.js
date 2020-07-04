@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Fathom from 'fathom-client';
 import {
   Flex,
   Link,
@@ -16,7 +17,7 @@ const trackGoal = (title) => {
     jamstackfns: 'LRXBPLZS'
   };
 
-  window.fathom.trackGoal(goalCodes[title], 0);
+  Fathom.trackGoal(goalCodes[title], 0);
 };
 
 const ProjectCard = ({ title, description, href, icon }) => {

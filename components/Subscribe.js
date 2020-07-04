@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { trackGoal } from 'fathom-client';
 import {
   Heading,
   InputGroup,
@@ -54,7 +55,7 @@ const Subscribe = () => {
       return;
     }
 
-    window.fathom.trackGoal('JYFUFMSF', 0);
+    trackGoal('JYFUFMSF', 0);
     inputEl.current.value = '';
     toast({
       title: 'Success!',
