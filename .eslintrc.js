@@ -17,7 +17,11 @@ module.exports = {
           'client_id',
           'private_key',
           'project_id',
-          'email_address'
+          'email_address',
+          'client_secret',
+          'access_token',
+          'refresh_token',
+          'grant_type'
         ]
       }
     ]
