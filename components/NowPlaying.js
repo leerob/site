@@ -45,7 +45,7 @@ const NowPlaying = () => {
           whiteSpace="nowrap"
           overflow="hidden"
           textOverflow="ellipsis"
-          href="https://chakra-ui.com"
+          href={data?.songUrl}
           isExternal
         >
           {data?.title}
