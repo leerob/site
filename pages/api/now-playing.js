@@ -48,7 +48,7 @@ export default async (_, res) => {
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
 
-  res.status(200).json({
+  return res.status(200).json({
     album,
     albumImageUrl,
     artist,
