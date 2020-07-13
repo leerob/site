@@ -21,10 +21,6 @@ const NowPlaying = () => {
     dark: 'gray.700'
   };
 
-  if (data && !data.title) {
-    return null;
-  }
-
   return (
     <Box
       mb={4}
@@ -42,7 +38,7 @@ const NowPlaying = () => {
           height="60px"
           width="60px"
           borderRadius={8}
-          src={data?.albumImageUrl}
+          src={data?.albumImageUrl || '/static/images/placeholder.jpg'}
         />
       </Skeleton>
       <Stack
@@ -62,7 +58,7 @@ const NowPlaying = () => {
           href={data?.songUrl}
           isExternal
         >
-          {data?.title}
+          {data && (data?.title || 'Not Playing')}
         </Link>
         <Text
           color="gray.500"
@@ -72,7 +68,7 @@ const NowPlaying = () => {
           overflow="hidden"
           textOverflow="ellipsis"
         >
-          {data?.artist}
+          {data && (data?.artist || 'Spotify')}
         </Text>
       </Stack>
       <Icon name="spotify" ml="auto" mt={1} />
