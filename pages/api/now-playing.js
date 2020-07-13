@@ -36,6 +36,10 @@ export default async (_, res) => {
 
   const { status } = response;
 
+  if (status === 204) {
+    return res.status(200).json({});
+  }
+
   if (status > 400) {
     return res.status(500).json({});
   }
