@@ -18,17 +18,7 @@ $ yarn
 $ yarn dev
 ```
 
-Create a `.env.local` file similar to `.env`.
-
-```
-FIREBASE_PRIVATE_KEY=
-FIREBASE_CLIENT_EMAIL=
-UNSPLASH_ACCESS_KEY=
-GOOGLE_ENCRYPTION_KEY=
-GOOGLE_ENCRYPTION_IV=
-BUTTONDOWN_API_KEY=
-NEXT_PUBLIC_FATHOM_SITE_ID=
-```
+Create a `.env.local` file similar to [`.env`](https://github.com/leerob/leerob.io/blob/master/.env).
 
 ## Built Using
 
