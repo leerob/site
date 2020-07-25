@@ -41,6 +41,7 @@
     "@mdx-js/react": "1.5.8",
     "@next/mdx": "9.4.1",
     "babel-plugin-import-glob-array": "0.2.0",
+    "big.js": "5.2.2",
     "comma-number": "2.0.1",
     "date-fns": "2.13.0",
     "emotion-theming": "10.0.27",
