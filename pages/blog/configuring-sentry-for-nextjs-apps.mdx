@@ -5,32 +5,46 @@ summary: 'Learn how to set up Sentry to capture client-side and server-side exce
 image: '/static/images/configuring-sentry-for-nextjs-apps/banner.png'
 ---
 
+> **Update (2020):** This guide has been updated with the latest Sentry example.
+
 For many teams using Next.js, setting up exception monitoring is a critical requirement before going to production.
 This guide will show you how to use [Sentry](https://sentry.io) to catch & report errors on both client and server-side.
 
 ## Brief Next.js Overview
 
-Next.js allows you to easily server-side render (SSR) your React components. All files inside the `/pages` directory will be routed based on their filename (e.g. `/pages/home.js` routes to `your-domain.com/home`).
+Next.js gives you a [hybrid approach](https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation) for rendering your application.
+You can choose on a per-page basis whether you want client-side rendering, server-side rendering, or static-site generation.
 
-There are a few Next-specific routes you should understand:
+Next.js uses [file system based routing](https://nextjs.org/docs/routing/introduction).
+All files inside the `/pages` directory will be routed based on their filename (e.g. `/pages/home.js` routes to `your-domain.com/home`).
 
-- `_document.js` is _server-side only_ and is used to change the initial server-side rendered document markup.
-- `_app.js` is used to initialize pages.
+There are a few Next-specific files you should understand:
+
+- `_app.js` is used to initialize pages and renders on both the client and the server.
+- `_error.js` is rendered by Next.js while handling exceptions.
+- `next.config.js` allows you to override the default configuration.
 
 ## Implementing Sentry
 
-There are a few different ways to integrate Sentry into your Next.js app, each with their own pros and cons. This guide will focus on a simple example and provide a reference for how to expand your Sentry setup as needed.
+**Note:** You can view the completed example [here](https://github.com/vercel/next.js/tree/canary/examples/with-sentry).
 
-### Simple Setup
+1. Set up an account with [Sentry](https://sentry.io) and retrieve your DSN from your project settings.
+2. Add the required environment variables.
 
-_You can view the completed example [here](https://github.com/zeit/next.js/tree/canary/examples/with-sentry-simple)._
+```bash:.env.local
+NEXT_PUBLIC_SENTRY_DSN=
 
-1. Set up an account with [Sentry](https://sentry.io) and retrieve your DSN.
-2. Add Sentry to your project. Here is an example `package.json`.
+# Only required to upload sourcemaps
+SENTRY_ORG=
+SENTRY_PROJECT=
+SENTRY_AUTH_TOKEN=
+```
+
+3. Add the required dependencies. Here is an example `package.json`. Ensure you have `v0.0.4-canary.1` of `@zeit/next-source-maps` until a [new version is published](https://github.com/vercel/next-plugins/issues/634).
 
 ```json:package.json
 {
-  "name": "with-sentry-simple",
+  "name": "with-sentry",
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
@@ -39,7 +53,9 @@ _You can view the completed example [here](https://github.com/zeit/next.js/tree/
     "start": "next start"
   },
   "dependencies": {
-    "@sentry/browser": "^5.1.0",
+    "@sentry/browser": "^5.15.5",
+    "@sentry/node": "^5.15.5",
+    "@sentry/webpack-plugin": "^1.11.1",
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "next": "latest",
     "react": "^16.8.6",
@@ -48,115 +64,167 @@ _You can view the completed example [here](https://github.com/zeit/next.js/tree/
 }
 ```
 
-3. Override `_app.js` to initialize Sentry and capture client-side exceptions using the `componentDidCatch` React lifecycle method.
+4. Override `_app.js` to initialize Sentry. Note that it's only enabled when building for production.
 
 ```jsx:pages/_app.js
-import React from 'react';
-import App, { Container } from 'next/app';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/node';
 
-Sentry.init({
-  dsn: 'ENTER_YOUR_SENTRY_DSN_HERE'
-});
-
-class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    Sentry.withScope((scope) => {
-      Object.keys(errorInfo).forEach((key) => {
-        scope.setExtra(key, errorInfo[key]);
-      });
-
-      Sentry.captureException(error);
-    });
-
-    super.componentDidCatch(error, errorInfo);
-  }
-
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    );
-  }
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  Sentry.init({
+    enabled: process.env.NODE_ENV === 'production',
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN
+  });
 }
 
-export default MyApp;
-```
-
-4. Override `_document.js` to capture server-side exceptions by listening at the node process level.
-
-```jsx:pages/_document.js
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import * as Sentry from '@sentry/browser';
-
-process.on('unhandledRejection', (err) => {
-  Sentry.captureException(err);
-});
-
-process.on('uncaughtException', (err) => {
-  Sentry.captureException(err);
-});
-
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
-
-  render() {
-    return (
-      <Html>
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+export default function App({ Component, pageProps, err }) {
+  // Workaround for https://github.com/vercel/next.js/issues/8592
+  return <Component {...pageProps} err={err} />;
 }
-
-export default MyDocument;
 ```
 
-5. Override `next.config.js` to produce source maps.
+5. Override `_error.js` to handle uncaught exceptions.
+
+```jsx:pages/_error.js
+import NextErrorComponent from 'next/error';
+import * as Sentry from '@sentry/node';
+
+const Error = async ({ statusCode, hasGetInitialPropsRun, err }) => {
+  if (!hasGetInitialPropsRun && err) {
+    // getInitialProps is not called in case of
+    // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
+    // err via _app.js so it can be captured
+    Sentry.captureException(err);
+    // flush is needed after calling captureException to send server side errors to Sentry, otherwise the serverless function will exit before it's sent
+    await Sentry.flush(2000);
+  }
+
+  return <NextErrorComponent statusCode={statusCode} />;
+};
+
+Error.getInitialProps = async ({ res, err, asPath }) => {
+  const errorInitialProps = await NextErrorComponent.getInitialProps({
+    res,
+    err
+  });
+
+  // Workaround for https://github.com/vercel/next.js/issues/8592, mark when
+  // getInitialProps has run
+  errorInitialProps.hasGetInitialPropsRun = true;
+
+  // Running on the server, the response object (`res`) is available.
+  //
+  // Next.js will pass an err on the server if a page's data fetching methods
+  // threw or returned a Promise that rejected
+  //
+  // Running on the client (browser), Next.js will provide an err if:
+  //
+  //  - a page's `getInitialProps` threw or returned a Promise that rejected
+  //  - an exception was thrown somewhere in the React lifecycle (render,
+  //    componentDidMount, etc) that was caught by Next.js's React Error
+  //    Boundary. Read more about what types of exceptions are caught by Error
+  //    Boundaries: https://reactjs.org/docs/error-boundaries.html
+
+  if (res?.statusCode === 404) {
+    // Opinionated: do not record an exception in Sentry for 404
+    return { statusCode: 404 };
+  }
+  if (err) {
+    Sentry.captureException(err);
+    await Sentry.flush(2000);
+    return errorInitialProps;
+  }
+
+  // If this point is reached, getInitialProps was called without any
+  // information about what the error might be. This is unexpected and may
+  // indicate a bug introduced in Next.js, so record it in Sentry
+  Sentry.captureException(
+    new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
+  );
+  await Sentry.flush(2000);
+
+  return errorInitialProps;
+};
+
+export default Error;
+```
+
+6. Override `next.config.js` to produce source maps. This enables source maps in production for Sentry and swaps out `@sentry/node` for `@sentry/browser` when building the client side.
 
 ```js:next.config.js
+// Use the hidden-source-map option when you don't want the source maps to be
+// publicly available on the servers, only to the error reporting
 const withSourceMaps = require('@zeit/next-source-maps')();
 
+// Use the SentryWebpack plugin to upload the source maps during build step
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const {
+  NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
+  SENTRY_ORG,
+  SENTRY_PROJECT,
+  SENTRY_AUTH_TOKEN,
+  NODE_ENV,
+  VERCEL_GITHUB_COMMIT_SHA,
+  VERCEL_GITLAB_COMMIT_SHA,
+  VERCEL_BITBUCKET_COMMIT_SHA
+} = process.env;
+
+const COMMIT_SHA =
+  VERCEL_GITHUB_COMMIT_SHA ||
+  VERCEL_GITLAB_COMMIT_SHA ||
+  VERCEL_BITBUCKET_COMMIT_SHA;
+
+process.env.SENTRY_DSN = SENTRY_DSN;
+
 module.exports = withSourceMaps({
-  webpack(config, _options) {
+  webpack: (config, options) => {
+    // In `pages/_app.js`, Sentry is imported from @sentry/browser. While
+    // @sentry/node will run in a Node.js environment. @sentry/node will use
+    // Node.js-only APIs to catch even more unhandled exceptions.
+    //
+    // This works well when Next.js is SSRing your page on a server with
+    // Node.js, but it is not what we want when your client-side bundle is being
+    // executed by a browser.
+    //
+    // Luckily, Next.js will call this webpack function twice, once for the
+    // server and once for the client. Read more:
+    // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
+    //
+    // So ask Webpack to replace @sentry/node imports with @sentry/browser when
+    // building the browser's bundle
+    if (!options.isServer) {
+      config.resolve.alias['@sentry/node'] = '@sentry/browser';
+    }
+
+    // When all the Sentry configuration env variables are available/configured
+    // The Sentry webpack plugin gets pushed to the webpack plugins to build
+    // and upload the source maps to sentry.
+    // This is an alternative to manually uploading the source maps
+    // Note: This is disabled in development mode.
+    if (
+      SENTRY_DSN &&
+      SENTRY_ORG &&
+      SENTRY_PROJECT &&
+      SENTRY_AUTH_TOKEN &&
+      COMMIT_SHA &&
+      NODE_ENV === 'production'
+    ) {
+      config.plugins.push(
+        new SentryWebpackPlugin({
+          include: '.next',
+          ignore: ['node_modules'],
+          urlPrefix: '~/_next',
+          release: COMMIT_SHA
+        })
+      );
+    }
+
     return config;
   }
 });
 ```
 
-### Complex Setup
-
-Next has an example [with-sentry](https://github.com/zeit/next.js/tree/canary/examples/with-sentry) which contains more functionality but is also more complex. Building off the simple example, it also:
-
-- Reports the `BUILD_ID` as a release inside Sentry.
-- Contains a custom error reporting page to allow users to submit feedback.
-- Uses cookies for a more accurate user count between client and server.
-
-There are still a [few](https://github.com/getsentry/sentry-javascript/issues/1622) [issues](https://github.com/getsentry/sentry-javascript/issues/1762) with it, so I wouldn't recommend using it as a base for now.
-You might be able to extract pieces of the complex example and apply them as you see fit.
-
 ## Other Notes
 
-- Source maps will not be sent to Sentry successfully when running locally.
-- It's possible you will see duplicate errors sent when testing locally due to hot reloading.
-  For a more accurate simulation, please deploy to whatever service you use for hosting (e.g. Vercel).
+- You'll want to upload source maps for the most helpful errors. If you use Vercel, you can add the [Sentry Integration](https://docs.sentry.io/workflow/integrations/vercel). Otherwise, follow [these steps](https://github.com/vercel/next.js/tree/canary/examples/with-sentry#without-using-vercel).
+- Source maps and error tracking are **not enabled** in development mode.
+- Both `@zeit/next-source-maps` and `@sentry/webpack-plugin` are added to `dependencies` (rather than `devDependencies`) because if used with SSR, these plugins are used during production for generating the source-maps and sending them to Sentry.
