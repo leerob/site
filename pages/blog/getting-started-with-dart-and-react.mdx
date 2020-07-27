@@ -69,7 +69,7 @@ $ git clone https://github.com/leerob/dart-react-todo.git
 $ cd dart-react-todo
 ```
 
-## Installing Dart
+### Installing Dart
 
 You can install Dart on macOS using [Homebrew](https://brew.sh/).
 
@@ -254,7 +254,7 @@ dev_dependencies:
 
 This file tells `pub` which versions of the included packages it needs to retrieve. You can find more information about what all can be included in this file [here](https://dart.dev/tools/pub/pubspec).
 
-#### /web/
+### /web/
 
 Inside the `web` directory, we'll find the entry point into our application. This file sets up the `Actions` and `Store` for our Flux architecture. Then, it creates a new `TodoApp` component and renders it into our container.
 
@@ -446,7 +446,7 @@ The `ListGroupItem` component is taken from the [OverReact examples](https://git
 
 You'll notice we've added a test ID to the `Button` component using `..addTestId()`. Let's talk about how we can unit test this component.
 
-### Testing
+## Testing
 
 All of the test files are located in the `test/` directory. For this example, I've only created unit tests. You could also create integration and functional tests here as well. Testing OverReact components is simple using [over_react_test](https://github.com/Workiva/over_react_test). Let's look at how we can test our `TodoListItem` component to check it properly calls `deleteTodo` when the button is clicked.
 
