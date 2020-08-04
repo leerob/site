@@ -98,8 +98,9 @@ export default (frontMatter) => {
             </Link>
           </Box>
           <IframeResizer
+            checkOrigin={false}
             title="Comments"
-            src={`http://fastfeedback.io/embed/9OtdNQnaelHnWGpmAsmj/${slug}`}
+            src={`https://fastfeedback.io/embed/9OtdNQnaelHnWGpmAsmj/${slug}`}
             style={{
               width: '1px',
               minWidth: '100%'
