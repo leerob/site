@@ -1,4 +1,5 @@
 import React from 'react';
+import IframeResizer from 'iframe-resizer-react';
 import { parseISO, format } from 'date-fns';
 import {
   useColorMode,
@@ -96,6 +97,14 @@ export default (frontMatter) => {
               {'Edit on GitHub'}
             </Link>
           </Box>
+          <IframeResizer
+            title="Comments"
+            src={`http://fastfeedback.io/embed/9OtdNQnaelHnWGpmAsmj/${slug}`}
+            style={{
+              width: '1px',
+              minWidth: '100%'
+            }}
+          />
         </Stack>
       </Container>
     );
