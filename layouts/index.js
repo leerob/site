@@ -100,7 +100,7 @@ export default (frontMatter) => {
           <IframeResizer
             checkOrigin={false}
             title="Comments"
-            src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}`}
+            src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}?theme=${colorMode}`}
             style={{
               width: '1px',
               minWidth: '100%'
