@@ -1,5 +1,5 @@
 ---
-title: 'Which Backend Should I Use As A Front-End Developer?'
+title: 'Which Back End Should I Use As A Front-End Developer?'
 publishedAt: '2020-08-09'
 summary: 'Choosing a service to store data can be confusing and overwhelming for a front-end developer. This comprehensive guide is a choose your own adventure dive into creating your backend.'
 image: 'todo'
@@ -13,7 +13,7 @@ As a front-end developer turned full-stack, I've spent more time than I'd like t
 Because the backend is harder to _visualize_, I struggled to understand how the pieces fit together. Luckily, I soon found
 out I wasn't alone. There's a support group when confused front-end engineers meet called Twitter.
 
-Consider this article a "choose your own adventure" piece. I'll ask questions about your requirements,
+Consider this article a "choose your own adventure" piece. I'll ask questions about your requirements
 and then present a few options. Before we can begin our journey, I must first explain the basics.
 
 ## Table of Contents
@@ -42,16 +42,16 @@ and then present a few options. Before we can begin our journey, I must first ex
 
 What is this scary place, **the back-end?** You can boil it down to this:
 
-- You need a place to store data ([Database](https://en.wikipedia.org/wiki/Database))
+- You need a place to store data ([database](https://en.wikipedia.org/wiki/Database))
 - You need a method of retrieving the data ([API](https://en.wikipedia.org/wiki/Application_programming_interface))
 
 As a front-end engineer, you've probably worked with APIs before. They allow you to fetch data from some database, somewhere.
 You don't have to consider what happens in between. On a long enough timeline, you'll eventually need to build your own API or
-work with an existing codebase that has a back-end. Which brings us to our first question...
+work with an existing codebase that has a back-end. This brings us to our first question.
 
 ## Do You Even Need a Database?
 
-You need a place to store data, right? Here's some questions to consider:
+You need a place to store data, right? Here are some questions to consider:
 
 - Can the data live alongside the code?
 - Can the data be tracked with source control?
@@ -59,20 +59,20 @@ You need a place to store data, right? Here's some questions to consider:
 - Do you need different levels of access?
 
 If you can store your data with your code in [source control](https://aws.amazon.com/devops/source-control),
-you probably want to use [Markdown](https://guides.github.com/features/mastering-markdown/)
-with [Git](https://git-scm.com/). That's exactly what [this blog](https://github.com/leerob/leerob.io) uses!
-It's also worth mentioning you _could_ use JSON files as a psuedo-database if you fall into this category.
+you might to fine using [Markdown](https://guides.github.com/features/mastering-markdown/)
+with [Git](https://git-scm.com/) – that's what [this blog](https://github.com/leerob/leerob.io) uses.
+It's also worth mentioning you _could_ use JSON files as a pseudo-database if you fall into this category.
 
 However, you're likely reading this article because **you need a database**. Before we start learning about how you can create
-you own backend, you might also consider a no-code solution.
+your own backend, you might also consider a no-code solution.
 
 ## Low Code Solutions
 
 Since you're a front-end developer, you might be able to utilize a low code solution.
-This is arguably the fastest way to get access to some remote data source.
+These low code tools are arguably the fastest way to get access to some remote data.
 
 Common examples include [Google Sheets](https://github.com/franciscop/use-spreadsheet) or [Airtable](https://www.gatsbyjs.org/packages/gatsby-source-airtable/)
-as a database. There are other services that provider an [API abstraction](https://nocodeapi.com/) on a variety of data sources.
+as a database. There are other services that provide an [API abstraction](https://nocodeapi.com/) on a variety of data sources.
 
 import ProsCard from '../../components/ProsCard';
 import ConsCard from '../../components/ConsCard';
@@ -98,17 +98,17 @@ import ConsCard from '../../components/ConsCard';
 ## Terms To Understand
 
 Okay, so you need a database and it's going to require code.
-First, I need to explain some terms you'll likely to run into.
+First, I need to explain some terms you'll likely run into.
 
 ### SQL / NoSQL
 
 A SQL database contains [relational data](https://aws.amazon.com/relational-database/). Consider a social media site with a table for `users` and `posts`.
 Every user represents a row in the `users` table.
 Each user can have many different `posts`. There is a **relation** between a post and the user.
-This makes it easy to look up different pieces of related data through queries.
+These relations makes it easy to look up different pieces of data through queries.
 
 NoSQL databases are (generally) document-oriented. Unlike a SQL database, there are no tables or rows.
-Instead, you store data in documents, which are organized into collections.
+Instead, you store data in documents, which get organized into collections.
 For example, in [Firestore](https://firebase.google.com/docs/firestore/data-model) each document contains a set of key-value pairs.
 This is a great option for large collections of small documents.
 
@@ -134,12 +134,12 @@ Converting the previous example from REST to a GraphQL query might look like thi
 }
 ```
 
-If you want to learn more, [here's a good resource](https://hasura.io/learn/graphql/intro-graphql/graphql-vs-rest/).
+If you want to learn more, [here's an excellent resource](https://hasura.io/learn/graphql/intro-graphql/graphql-vs-rest/).
 
 ### Authentication / Authorization
 
-Authentication is the process of verifying who a user is, while authorization is the process of verifying what they have access to.
-You'll commonly see this abbrievated as AuthN (Authentication) and AuthZ (Authorization).
+Authentication verifies who a user is, while authorization verifies what they have access to.
+You'll commonly see this abbreviated as AuthN (Authentication) and AuthZ (Authorization).
 
 If you're building any application that has users or requires limiting access to certain areas, you'll need to consider both of these.
 
@@ -176,23 +176,23 @@ it will help you choose the right solution. First, let's understand _what_ you'r
 - Will other people need to use it / support it?
 - Are you trying to build a [Minimum Viable Product (MVP)](https://en.wikipedia.org/wiki/Minimum_viable_product)?
 
-Personally, I like to experiement with new technologies when I'm creating personal projects. If I'm
+Personally, I like to experiment with new technologies when I'm creating personal projects. If I'm
 picking a tool for my day job, I'll likely default to one that's well-adopted in the industry and has
 robust support. There's more control picking a backend when you're a solo-founder building the entire
-tech stack yourself. As you introduce other engineers into the mix, things get more difficult.
+tech stack yourself. As you introduce other engineers into the mix, things get more complicated.
 
 If you need something fast, you'll want a higher-level abstraction. These services typically provide a client or API
 out of the box that reduces the amount of boilerplate code you need to write. This is commonly referred to as
 automating the [CRUD (Create, read, update and delete)](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) portion of your backend.
 
-Let's start with assuming you want something more high-level, ideally with a website or interface to manage your data.
-If you prefer a more bare metal approach, you might consider [starting from scratch](#starting-from-scratch).
+Let's assume you want something more high-level, ideally with a website or interface to manage your data.
+If you want complete control, you might consider [starting from scratch](#starting-from-scratch).
 
 ## List of Services
 
 I've crowdsourced a list of services you might consider using. Below, I'll give further insights into a few services I know well.
-The reality is that each service listed here has it's own tradeoffs. Hopefully this gives you a high-level overview to provide
-an entry point to research more. But first, some questions to consider.
+The reality is that each service listed here has its own tradeoffs. Hopefully, this gives you a high-level overview to provide
+an entry point to research more. First, some questions to consider.
 
 - Does your backend need to be built on open-source technology?
 - What level of vendor lock-in are you comfortable with?
@@ -208,19 +208,19 @@ an entry point to research more. But first, some questions to consider.
 5. Subscriptions / realtime
 6. Tooling (migrations, etc) -->
 
-| Name                                                         | Type      | Open Source | Free Tier | Auth Included | GraphQL |
-| ------------------------------------------------------------ | --------- | ----------- | --------- | ------------- | ------- |
-| [Firebase](https://firebase.google.com/)                     | NoSQL     | ⛔️         | ✅        | ✅            | ⛔️     |
-| [MongoDB](https://www.mongodb.com/)                          | NoSQL     | ✅          | ✅        | ✅            | ⛔️     |
-| [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ⛔️       | ⛔️           | ⛔️     |
-| [Fauna](https://fauna.com/)                                  | NoSQL     | ⛔️         | ✅        | ✅            | ✅      |
-| [Hasura](https://hasura.io/)                                 | Postgres  | ✅          | ✅        | ⛔️           | ✅      |
-| [Nhost](https://nhost.io/)                                   | Postgres  | ✅          | ✅        | ✅            | ✅      |
-| [Supabase](https://supabase.io/)                             | Postgres  | ✅          | ✅        | ✅            | ⛔️     |
-| [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅        | ⛔️           | ⛔️     |
-| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅        | ⛔️           | ✅      |
-| [AWS RDS](https://aws.amazon.com/rds/)                       | SQL-based | ✅          | ⛔️       | ⛔️           | ⛔️     |
-| [AWS Amplify](https://aws.amazon.com/amplify/)               | Both      | ✅          | ⛔️       | ✅            | ✅      |
+| Name                                                         | Type      | Open Source | Free Tier | AuthN Included | GraphQL |
+| ------------------------------------------------------------ | --------- | ----------- | --------- | -------------- | ------- |
+| [Firebase](https://firebase.google.com/)                     | NoSQL     | ⛔️         | ✅        | ✅             | ⛔️     |
+| [MongoDB](https://www.mongodb.com/)                          | NoSQL     | ✅          | ✅        | ✅             | ⛔️     |
+| [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ⛔️       | ⛔️            | ⛔️     |
+| [Fauna](https://fauna.com/)                                  | NoSQL     | ⛔️         | ✅        | ✅             | ✅      |
+| [Hasura](https://hasura.io/)                                 | Postgres  | ✅          | ✅        | ⛔️            | ✅      |
+| [Nhost](https://nhost.io/)                                   | Postgres  | ✅          | ✅        | ✅             | ✅      |
+| [Supabase](https://supabase.io/)                             | Postgres  | ✅          | ✅        | ✅             | ⛔️     |
+| [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅        | ⛔️            | ⛔️     |
+| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅        | ⛔️            | ✅      |
+| [AWS RDS](https://aws.amazon.com/rds/)                       | SQL-based | ✅          | ⛔️       | ⛔️            | ⛔️     |
+| [AWS Amplify](https://aws.amazon.com/amplify/)               | Both      | ✅          | ⛔️       | ✅             | ✅      |
 
 _Honorable Mentions: Laravel, Rails. I wanted to keep this JavaScript focused._
 
@@ -235,7 +235,7 @@ Firebase is a well-established, proven platform. It has (arguably) the best deve
     'You want authentication included',
     'You need to support social logins',
     'You need a generous free tier',
-    'You want an estalished community that has many examples'
+    'You want an established community with many examples'
   ]}
 />
 
@@ -243,14 +243,14 @@ Firebase is a well-established, proven platform. It has (arguably) the best deve
   title="Firebase"
   cons={[
     'Your backend needs to be open source',
-    'You have very relational data. Some pain can be mitigated with composite indexes',
+    'You have very relational data',
     `You don't want any sort of vendor lock-in`
   ]}
 />
 
 ### Hasura
 
-Hasura allows you to create an instant GraphQL API based on Postgres. With [Hasura Cloud](https://hasura.io/cloud/), it's extremely fast
+Hasura allows you to create an instant GraphQL API based on Postgres. With [Hasura Cloud](https://hasura.io/cloud/), it's easy
 to go from an idea to a live API. I love that you can create your database models directly through their console.
 It's worth noting that Hasura is open-source, so you can run it self-hosted if you want.
 
@@ -268,7 +268,7 @@ It's worth noting that Hasura is open-source, so you can run it self-hosted if y
   title="Hasura"
   cons={[
     `You'll need lots of custom backend logic`,
-    'You want auth included in the platform'
+    'You want authentication included in the platform'
   ]}
 />
 
@@ -322,13 +322,11 @@ Should you use a CMS or just use a database directly? More questions.
 - Do you need to [localize](https://www.w3.org/International/questions/qa-i18n) the data?
 - Do you need drafts / previews of content (like blog posts)?
 
-If you answered yes to any of those question, you might want to explore a CMS. Here are [10 great options](https://bejamas.io/blog/headless-cms/).
+If you answered yes to any of those questions, you might want to explore a CMS. Here are [10 great options](https://bejamas.io/blog/headless-cms/).
 
 ## Starting From Scratch
 
-If you read through all the questions above and thought "I want complete control", then you're probably in the wrong place.
 Some (usually more experienced) full-stack developers end up wanting full control over their infrastructure and prefer to work directly with databases.
-
 This typically requires a more fundamental understanding of the back-end. There's entire books on this subject, which include the following list of buzzwords.
 
 - [Object-relational mappers (ORMs)](https://www.fullstackpython.com/object-relational-mappers-orms.html)
