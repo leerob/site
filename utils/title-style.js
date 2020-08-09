@@ -21,7 +21,10 @@ const excludedWords = [
   'USB',
   'UX',
   'VSCode',
-  'w_flux'
+  'w_flux',
+  'SQL',
+  'NoSQL',
+  'REST'
 ];
 
 module.exports = remarkCapitalize({

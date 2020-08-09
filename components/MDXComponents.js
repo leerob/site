@@ -15,7 +15,9 @@ import { jsx } from '@emotion/core';
 import NextLink from 'next/link';
 
 const Table = (props) => (
-  <Box as="table" textAlign="left" mt="32px" width="full" {...props} />
+  <Box overflowX="scroll" w="full">
+    <Box as="table" textAlign="left" mt="32px" w="full" {...props} />
+  </Box>
 );
 
 const THead = (props) => {
