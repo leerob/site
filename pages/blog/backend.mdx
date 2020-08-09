@@ -62,8 +62,8 @@ You need a place to store data, right? Here are some questions to consider:
 - Do you need different levels of access?
 
 If you can store your data with your code in [source control](https://aws.amazon.com/devops/source-control),
-you might to fine using [Markdown](https://guides.github.com/features/mastering-markdown/)
-with [Git](https://git-scm.com/) – that's what [this blog](https://github.com/leerob/leerob.io) uses.
+you might be fine using [Markdown](https://guides.github.com/features/mastering-markdown/)
+with [git](https://git-scm.com/) – that's what [this blog](https://github.com/leerob/leerob.io) uses.
 It's also worth mentioning you _could_ use JSON files as a pseudo-database if you fall into this category.
 
 However, you're likely reading this article because **you need a database**. Before we start learning about how you can create
@@ -171,8 +171,7 @@ and [many-to-many](<https://en.wikipedia.org/wiki/Many-to-many_(data_model)>). T
 
 ## Levels of Abstraction
 
-The reason this blog post will ask a lot of questions is because every situation is unique.
-There are _many_ tools that exist to solve the same problem. By understanding what you're looking for,
+Every situation is unique. There are _many_ tools that exist to solve the same problem. By understanding what you're looking for,
 it will help you choose the right solution. First, let's understand _what_ you're trying to build.
 
 - Are you building this backend for yourself?
@@ -256,8 +255,8 @@ Firebase is a well-established, proven platform. It has (arguably) the best deve
 Hasura allows you to create an instant GraphQL API based on Postgres. With [Hasura Cloud](https://hasura.io/cloud/), it's easy
 to go from an idea to a live API. I love that you can create your database models directly through their console.
 
-If you haven't looked at Hasura since they've launched their managed service, give it another look. For me personally, one of the
-issues I had before with Hasura was [cold starts](https://medium.com/faun/on-the-serverless-cold-start-problem-2fc0797da5cc) with the [Heroku](https://heroku.com/) free tier. You can prevent that with Hasura Cloud, while still remaining
+If you haven't looked at Hasura since they've launched their managed service, give it another look. One of the
+issues I had before Hasura Cloud was [cold starts](https://medium.com/faun/on-the-serverless-cold-start-problem-2fc0797da5cc) with the [Heroku](https://heroku.com/) free tier. Hasura Cloud prevents this while remaining
 on the free tier.
 
 <ProsCard
@@ -291,12 +290,19 @@ When you lose a level of abstraction, there are other pieces you need to conside
 - How reliable does my database / backend need to be?
 - What kind of tooling does the solution provide (for example, [database migrations](https://www.alooma.com/blog/what-is-database-migration))
 
+AWS RDS and Prisma side-by-side feels a bit odd as I see RDS as a way to
+deploy and manage a PostgresDB in the cloud while Prisma is
+a layer on top of a Postgres DB to simplify a programming model at hand.
+
+It's also worth mentioning you can use [AWS RDS](https://aws.amazon.com/rds/) to self-host any SQL-based database.
+It's [proven technology](http://boringtechnology.club/) that even has [credits available](https://aws.amazon.com/about-aws/whats-new/2020/02/aws-launches-activate-founders-package/)
+for founder/startups.
+
 | Name                                                         | Type      | Open Source | Self Hosting? | AuthN Included | GraphQL |
 | ------------------------------------------------------------ | --------- | ----------- | ------------- | -------------- | ------- |
 | [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ✅            | ⛔️            | ⛔️     |
 | [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅            | ⛔️            | ⛔️     |
 | [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅            | ⛔️            | ✅      |
-| [AWS RDS](https://aws.amazon.com/rds/)                       | SQL-based | ✅          | ⛔️           | ⛔️            | ⛔️     |
 
 _Honorable Mentions: Laravel, Rails. I wanted to keep this JavaScript focused._
 
@@ -322,18 +328,15 @@ If you want to build a GraphQL API with Prisma, you can pair it with [Nexus](htt
   title="Prisma"
   cons={[
     `You want a solution that provides the API for you`,
-    `You don't want to worry about self hosting`
+    `You don't want to worry about self-hosting`
   ]}
 />
 
 ### Others
 
-I haven't worked very closely with the other services listed, but here's some general information you might want to know.
+I haven't worked closely with the other services listed, but here's some general information you might want to know.
 
 - MongoDB can support GraphQL with [Stitch](https://developer.mongodb.com/how-to/graphql-support-atlas-stitch)
-- Founder/startups without funding can apply for [AWS RDS credit](https://aws.amazon.com/about-aws/whats-new/2020/02/aws-launches-activate-founders-package/).
-- AWS Dynamo's pay-as-you-go pricing will be pennies a month up to 1 million requests per month scale.
-- AWS RDS is [boring, proven technology](http://boringtechnology.club/).
 - Supabase is still in alpha at the time of writing this post.
 - If you're interested in Fauna, you might want to learn their query language [FQL](https://fauna.com/blog/getting-started-with-fql-faunadbs-native-query-language-part-1).
 
@@ -349,7 +352,7 @@ Should you use a CMS or just use a database directly? More questions.
 - Do you need to [localize](https://www.w3.org/International/questions/qa-i18n) the data?
 - Do you need drafts / previews of content (like blog posts)?
 
-If you answered yes to any of those questions, you might want to [explore a CMS](https://bejamas.io/blog/headless-cms/)..
+If you answered yes to any of those questions, you might want to [explore a CMS](https://bejamas.io/blog/headless-cms/).
 
 ## Starting From Scratch
 
@@ -368,7 +371,8 @@ Start small, learn intently, and soon you will be crafting your own APIs with ea
 
 ## Conclusion / Resources
 
-Would you change anything? Do you have any resources others could learn from? If so, leave a comment below and I'll update this list.
+Would you change anything? Do you have any resources for learning the back-end? If so, leave a comment below and I'll update this list.
 
 - [How to Become a Good Backend Engineer (Fundamentals)](https://www.youtube.com/watch?v=V3ZPPPKEipA)
 - [What are web servers and how do they work?](https://www.youtube.com/watch?v=JhpUch6lWMw)
+- [Best GraphQL Stack for Node.js](https://www.benawad.com/what-is-the-best-graphql-stack-for-nodejs/)
