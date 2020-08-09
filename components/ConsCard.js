@@ -35,11 +35,11 @@ const ConsCard = ({ title, cons }) => {
           <ListItem
             key={con}
             fontWeight="medium"
-            alignItems="center"
+            alignItems="baseline"
             display="flex"
           >
             <ListIcon icon="x" color="red.500" />
-            {con}
+            <Text>{con}</Text>
           </ListItem>
         ))}
       </List>

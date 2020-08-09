@@ -35,12 +35,11 @@ const ProsCard = ({ title, pros }) => {
           <ListItem
             key={pro}
             fontWeight="medium"
-            // fontSize="lg"
-            alignItems="center"
+            alignItems="baseline"
             display="flex"
           >
             <ListIcon icon="check" color="green.500" />
-            {pro}
+            <Text>{pro}</Text>
           </ListItem>
         ))}
       </List>
