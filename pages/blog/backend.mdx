@@ -31,7 +31,7 @@ also jump to the [list of services](#list-of-services) directly.
   - [Data Modeling](#data-modeling)
 - [Levels of Abstraction](#levels-of-abstraction)
 - [List of Services](#list-of-services)
-  - [Database (as a Service)](#database-as-a-service)
+  - [Backend (as a Service)](#backend-as-a-service)
     - [Firebase](#firebase)
     - [Hasura](#hasura)
   - [Build Your Own Backend](#build-your-own-backend)
@@ -166,8 +166,10 @@ for this is connection pooling. For more information, check out [Prisma's deploy
 
 ### Data Modeling
 
-When learning about database relationships, you might hear terms like [one-to-many](<https://en.wikipedia.org/wiki/One-to-many_(data_model)>)
-and [many-to-many](<https://en.wikipedia.org/wiki/Many-to-many_(data_model)>). These are ways of modeling your data.
+When learning about databases, you might hear terms like [one-to-many](<https://en.wikipedia.org/wiki/One-to-many_(data_model)>)
+and [many-to-many](<https://en.wikipedia.org/wiki/Many-to-many_(data_model)>). These are ways of modeling your database relationships.
+[Database normalization](https://www.essentialsql.com/get-ready-to-learn-sql-database-normalization-explained-in-simple-english/) is
+how you organize a database into tables and columns.
 
 ## Levels of Abstraction
 
@@ -204,10 +206,14 @@ Here's some questions to consider.
 - Do you need social login? (Sign in with Google, Facebook, etc.)
 - Do you have an existing database you're trying to improve access to?
 
-### Database (as a Service)
+### Backend (as a Service)
 
 These are (typically) managed services that automate the creation of code based on your [database schema](https://www.youtube.com/watch?v=3BZz8R7mqu0).
 You might see these referred to as "in a box" solutions. For example, Hasura provides a GraphQL API in a box as part of the platform.
+
+- ✅ &nbsp;Yes, or included directly in the platform
+- ⛔️ &nbsp;Not supported or available
+- 🚧 &nbsp;Requires some work
 
 | Name                                           | Type     | Open Source | Self Hosted Option | AuthN Included | GraphQL |
 | ---------------------------------------------- | -------- | ----------- | ------------------ | -------------- | ------- |
@@ -215,7 +221,7 @@ You might see these referred to as "in a box" solutions. For example, Hasura pro
 | [MongoDB](https://www.mongodb.com/)            | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
 | [Fauna](https://fauna.com/)                    | NoSQL    | ⛔️         | ⛔️                | ✅             | ✅      |
 | [Userbase](https://userbase.com/)              | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
-| [Hasura](https://hasura.io/)                   | Postgres | ✅          | ✅                 | ⛔️            | ✅      |
+| [Hasura](https://hasura.io/)                   | Postgres | ✅          | ✅                 | 🚧             | ✅      |
 | [Nhost](https://nhost.io/)                     | Postgres | ✅          | ✅                 | ✅             | ✅      |
 | [Supabase](https://supabase.io/)               | Postgres | ✅          | ✅                 | ✅             | ⛔️     |
 | [AWS Amplify](https://aws.amazon.com/amplify/) | Both     | ✅          | ✅                 | ✅             | ✅      |
@@ -259,6 +265,9 @@ If you haven't looked at Hasura since they've launched their managed service, gi
 issues I had before Hasura Cloud was [cold starts](https://medium.com/faun/on-the-serverless-cold-start-problem-2fc0797da5cc) with the [Heroku](https://heroku.com/) free tier. Hasura Cloud prevents this while remaining
 on the free tier.
 
+While Hasura generally recommends using Auth0 for authorization, it's possible to [roll your own](https://hasura.io/docs/1.0/graphql/manual/auth/index.html).
+If you want authentication included with Hasura, consider [Nhost](https://nhost.io/).
+
 <ProsCard
   title="Hasura"
   pros={[
@@ -273,7 +282,7 @@ on the free tier.
   title="Hasura"
   cons={[
     `You'll need lots of custom backend logic`,
-    'You want authentication included in the platform (it does have authorization, though)'
+    'You want authentication included zero-config'
   ]}
 />
 
@@ -298,7 +307,7 @@ for founder/startups.
 | ------------------------------------------------------------ | --------- | ----------- | ------------- | -------------- | ------- |
 | [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ✅            | ⛔️            | ⛔️     |
 | [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅            | ⛔️            | ⛔️     |
-| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅            | ⛔️            | ✅      |
+| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅            | 🚧             | ✅      |
 
 _Honorable Mentions: Laravel, Rails. I wanted to keep this JavaScript focused._
 
@@ -308,7 +317,8 @@ Prisma provides an auto-generated and type-safe query builder based on your data
 It currently supports PostgreSQL, MySQL, and SQLite databases.
 
 There are frameworks like [Redwood](https://redwoodjs.com/) and [Blitz](https://blitzjs.com/) built on-top of Prisma.
-If you want to build a GraphQL API with Prisma, you can pair it with [Nexus](https://nexus.js.org/).
+If you want to build a GraphQL API with Prisma, you can pair it with [Nexus](https://nexus.js.org/). Nexus has [plug-ins](https://nexus.js.org/docs/api-plugins)
+for authentication / authorization.
 
 <ProsCard
   title="Prisma"
@@ -372,3 +382,4 @@ Would you change anything? Do you have any resources for learning the back-end? 
 - [How to Become a Good Backend Engineer (Fundamentals)](https://www.youtube.com/watch?v=V3ZPPPKEipA)
 - [What are web servers and how do they work?](https://www.youtube.com/watch?v=JhpUch6lWMw)
 - [Best GraphQL Stack for Node.js](https://www.benawad.com/what-is-the-best-graphql-stack-for-nodejs/)
+- [GraphQL Code Generator](https://graphql-code-generator.com/)

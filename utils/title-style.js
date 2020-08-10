@@ -6,25 +6,26 @@ const excludedWords = [
   'API',
   'APIs',
   'CircleCI',
+  'CMS',
   'CSS',
   'dart_dev',
   'GraphQL',
   'HDD',
+  'IDE',
   'iPhone',
   'iTerm',
   'MDX',
-  'IDE',
+  'NoSQL',
   'OverReact',
-  'SWR',
   'QC35',
+  'REST',
+  'SQL',
+  'SWR',
   'UI',
   'USB',
   'UX',
   'VSCode',
-  'w_flux',
-  'SQL',
-  'NoSQL',
-  'REST'
+  'w_flux'
 ];
 
 module.exports = remarkCapitalize({
