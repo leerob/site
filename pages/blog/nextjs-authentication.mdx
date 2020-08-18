@@ -82,7 +82,7 @@ Now that we've discussed authentication patterns, let's look at specific provide
 
 ### Firebase
 
-When using [Firebase Authentication](/blog/nextjs-firebase-serverless), I recommend using the static generation pattern. There currently isn't a way to log-in server-side using the Firebase Admin SDK.
+When using [Firebase Authentication](/blog/nextjs-firebase-serverless), I recommend using the static generation pattern.
 
 It is possible to use the Firebase Client SDK to generate an ID token and forward it directly to Firebase's REST API on the server to log-in. However, requests to Firebase might take some time to resolve, depending on your user's location.
 
