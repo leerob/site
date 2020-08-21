@@ -38,6 +38,19 @@ const Footer = () => (
           variant="ghost"
         />
       </Link>
+      <Link
+        href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw"
+        title="YouTube"
+        isExternal
+      >
+        <IconButton
+          aria-label="YouTube"
+          icon="youtube"
+          size="lg"
+          color="gray.500"
+          variant="ghost"
+        />
+      </Link>
       <Link href="mailto:me@leerob.io" title="Email" isExternal>
         <IconButton
           aria-label="Email"
