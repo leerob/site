@@ -119,7 +119,7 @@ First, create a new file at `pages/sitemap.xml.js`.
 import React from 'react';
 
 class Sitemap extends React.Component {
-  static async getServerSideProps({ res }) {
+  static async getInitialProps({ res }) {
     const request = await fetch(EXTERNAL_DATA_URL);
     const posts = await request.json();
 
@@ -155,7 +155,7 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
     `;
 
 class Sitemap extends React.Component {
-  static async getServerSideProps({ res }) {
+  static async getInitialProps({ res }) {
     const request = await fetch(EXTERNAL_DATA_URL);
     const posts = await request.json();
 
