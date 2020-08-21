@@ -199,6 +199,10 @@ const Timeline = () => {
           I was extremely honored to be one of five finalists nominated for this
           award at the 2020 Prometheus Awards.
         </TimelineStep>
+        <TimelineStep title="Got Married 🥳">
+          Great year for a wedding, huh? We had a small ceremony with family and
+          it was better than I could have imagined.
+        </TimelineStep>
         <TimelineStep title="Became a Tech Lead 👨🏻‍💻">
           Starting at the beginning of this year, I moved into a tech leadership
           role on one of our e-commerce development teams.
@@ -232,9 +236,9 @@ const Timeline = () => {
           downtown Des Moines.
         </TimelineStep>
         <TimelineStep title="Got Engaged 💍">
-          I asked my now fiancée, Allie, to marry me. She said yes! It was a
-          busy month, to say the least. I also spoke at three events and sold my
-          condo.
+          I asked my now fiancée, Allie, to marry me. She said yes! September
+          was a busy month, to say the least – I also spoke at three events and
+          sold my condo.
         </TimelineStep>
         <TimelineStep title="Spoke at Talent42 🎤">
           I spoke to over 100 technical recruiting leaders from across the
