@@ -19,6 +19,6 @@ export default async (_, res) => {
   const react2025Sales = await getProductSales('TifxZ');
 
   return res.status(200).json({
-    sales: masteringNextSales.plus(react2025Sales).toFixed()
+    sales: masteringNextSales.plus(react2025Sales).toFixed(0)
   });
 };
