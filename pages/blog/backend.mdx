@@ -45,7 +45,7 @@ also jump to the [list of services](#list-of-services) directly.
 
 What is this scary place, **the back-end?** You can boil it down to this:
 
-- You need a place to store data ([database](https://en.wikipedia.org/wiki/Database))
+- You need a place to store data ([database](https://dataguide.prisma.io/intro/what-are-databases))
 - You need a method of retrieving the data ([API](https://en.wikipedia.org/wiki/Application_programming_interface))
 
 As a front-end engineer, you've probably worked with APIs before. They allow you to fetch data from some database, somewhere.
@@ -105,7 +105,7 @@ First, I need to explain some terms you'll likely run into.
 
 ### SQL / NoSQL
 
-A SQL database contains [relational data](https://aws.amazon.com/relational-database/). Consider a social media site with a table for `users` and `posts`.
+A SQL database contains [relational data](https://dataguide.prisma.io/intro/comparing-database-types#relational-databases-working-with-tables-as-a-standard-solution-to-organize-well-structured-dataauthentication). Consider a social media site with a table for `users` and `posts`.
 Every user represents a row in the `users` table.
 Each user can have many different `posts`. There is a **relation** between a post and the user.
 These relations makes it easy to look up different pieces of data through queries.
@@ -141,7 +141,7 @@ If you want to learn more, [here's an excellent resource](https://hasura.io/lear
 
 ### Authentication / Authorization
 
-Authentication verifies who a user is, while authorization verifies what they have access to.
+[Authentication](https://dataguide.prisma.io/postgresql/authentication-and-authorization/intro-to-authn-and-authz#what-are-authentication-and-authorization) verifies who a user is, while [authorization](https://dataguide.prisma.io/postgresql/authentication-and-authorization/intro-to-authn-and-authz#what-are-authentication-and-authorization) verifies what they have access to.
 You'll commonly see this abbreviated as AuthN (Authentication) and AuthZ (Authorization).
 
 If you're building any application that has users or requires limiting access to certain areas, you'll need to consider both of these.
@@ -168,7 +168,7 @@ for this is connection pooling. For more information, check out [Prisma's deploy
 
 When learning about databases, you might hear terms like [one-to-many](<https://en.wikipedia.org/wiki/One-to-many_(data_model)>)
 and [many-to-many](<https://en.wikipedia.org/wiki/Many-to-many_(data_model)>). These are ways of modeling your database relationships.
-[Database normalization](https://www.essentialsql.com/get-ready-to-learn-sql-database-normalization-explained-in-simple-english/) is
+[Database normalization](https://dataguide.prisma.io/intro/intro-to-schemas) is
 how you organize a database into tables and columns.
 
 ## Levels of Abstraction
@@ -365,7 +365,7 @@ If you answered yes to any of those questions, you might want to [explore a CMS]
 Some (usually more experienced) full-stack developers end up wanting full control over their infrastructure and prefer to work directly with databases.
 This typically requires a more fundamental understanding of the back-end. There's entire books on this subject, which include the following list of buzzwords.
 
-- [Object-relational mappers (ORMs)](https://www.fullstackpython.com/object-relational-mappers-orms.html)
+- [Object-relational mappers (ORMs)](https://dataguide.prisma.io/types/relational/comparing-sql-query-builders-and-orms#what-are-orms)
 - [Manually sharing / replicating](<https://en.wikipedia.org/wiki/Shard_(database_architecture)>)
 - [Scaling instances](https://aws.amazon.com/blogs/database/scaling-your-amazon-rds-instance-vertically-and-horizontally/)
 - [Provisioning servers](https://www.redhat.com/en/topics/automation/what-is-provisioning)
