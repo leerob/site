@@ -78,7 +78,7 @@ const Subscribe = () => {
         You can subscribe to my newsletter here
       </Heading>
       <Text>
-        I send emails about new blog posts, product updates, and software
+        I may send emails about new blog posts, product updates, and software
         engineering tips.
       </Text>
       <InputGroup size="md" mt={4}>

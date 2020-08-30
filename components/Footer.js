@@ -45,16 +45,6 @@ const Footer = () => (
         />
       </Link>
     </Flex>
-    <Flex justify="center" mb={4} mr={1}>
-      <Link
-        href="https://github.com/leerob/leerob.io"
-        title="leerob"
-        isExternal
-        color={'gray.500'}
-      >
-        Forked from leerob.io
-      </Link>
-    </Flex>
   </Stack>
 );
 

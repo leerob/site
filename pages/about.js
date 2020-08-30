@@ -57,6 +57,14 @@ const About = () => {
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               TBA
             </Text>
+            <Link
+              href="https://github.com/leerob/leerob.io"
+              title="leerob"
+              isExternal
+              color={'gray.500'}
+            >
+              This site is forked from leerob.io
+            </Link>
           </Flex>
         </Stack>
       </Container>

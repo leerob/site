@@ -45,10 +45,10 @@ const Index = () => {
             Projects
           </Heading>
           <ProjectCard
-            title="CoreSkills"
-            description="Coding interviews that make sense"
-            href="https://coreskills.dev/"
-            icon="coreskills"
+            title="DevSkills"
+            description="Efficient coding interview for growing dev teams."
+            href="https://devskills.co/"
+            icon="devskills"
           />
         </Flex>
         <Subscribe />
