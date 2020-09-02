@@ -9,6 +9,7 @@ import {
   useColorMode
 } from '@chakra-ui/core';
 import Router from 'next/router';
+import Head from 'next/head';
 import * as Fathom from 'fathom-client';
 
 import theme from '../styles/theme';
@@ -67,6 +68,24 @@ const App = ({ Component, pageProps }) => {
       <MDXProvider components={MDXComponents}>
         <ColorModeProvider value="light">
           <GlobalStyle>
+            <Head>
+              <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+              <meta
+                content="width=device-width, initial-scale=1"
+                name="viewport"
+              />
+              <meta content="#ffffff" name="theme-color" />
+              <meta content="#ffffff" name="msapplication-TileColor" />
+              <meta
+                content="/static/favicons/browserconfig.xml"
+                name="msapplication-config"
+              />
+              <meta content="14d2e73487fa6c71" name="yandex-verification" />
+              <meta
+                content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
+                name="google-site-verification"
+              />
+            </Head>
             <DefaultSeo {...SEO} />
             <Component {...pageProps} />
           </GlobalStyle>

@@ -5,4 +5,4 @@ node_modules
 .env.*
 public/sitemap.xml
 .mdx-data
-.now
+.vercel
