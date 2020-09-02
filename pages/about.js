@@ -52,37 +52,24 @@ const About = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              Hey, I’m Lee. I live in Des Moines, IA and I’m a Senior Software
-              Engineer at&nbsp;
-              <CustomLink href="https://innovate.hy-vee.com">Hy-Vee</CustomLink>
-              , a $10B grocery tech company in the Midwest. As a tech lead, my
-              primary focus is developing Aisles Online, Hy-Vee’s e-commerce
-              grocery shopping platform – which serves millions of customers
-              every year. I also help maintain our internal component library.
-            </Text>
-            <Text color={secondaryTextColor[colorMode]} mb={4}>
-              At the beginning of 2020, I launched my most ambitious project – a
-              50+ lesson video course on React and Next.js. It’s called&nbsp;
+              Hey, I’m Lee. I'm a developer, writer, and the creator of&nbsp;
               <CustomLink href="https://masteringnextjs.com">
                 Mastering Next.js
               </CustomLink>
-              , and it’s been my most successful solo-endeavor so far. I'm now
-              building a new course called&nbsp;
+              &nbsp;and&nbsp;
               <CustomLink href="https://react2025.com">React 2025.</CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I’ve spoken across the country at conferences and meet-ups about
-              front-end development, design, and recruiting. I also actively
-              contribute to my blog, which attracts thousands of readers every
-              month. I mostly write about development, tech careers, and my
-              personal life. If you'd like to follow along, subscribe to&nbsp;
+              front-end development, design, and recruiting. I write about development, tech careers, and my
+              personal life on&nbsp;
               <CustomLink href="/newsletter">my newsletter.</CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I grew up in small-town Iowa and went to school at Iowa State,
               graduating with a degree in Computer Engineering. I spend my free
               time playing music, creating videos, and enjoying time with
-              friends and family.
+              friends and family in Des Moines, IA.
             </Text>
             <Heading letterSpacing="tight" mt={8} mb={4} as="h2" size="xl">
               Conference Talks
