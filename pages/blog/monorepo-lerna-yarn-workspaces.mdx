@@ -58,7 +58,7 @@ This creates a `package.json` file for your project.
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^3.22.1"
   }
 }
 ```
@@ -82,7 +82,7 @@ We’ll also need to modify our `package.json` to define where the Yarn workspac
   "private": true,
   "workspaces": ["packages/*"],
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^3.22.1"
   }
 }
 ```
@@ -204,7 +204,7 @@ lerna success exec Executed command in 1 package: "babel --root-mode upward src 
 Storybook provides us with an interactive UI playground for our components. This makes development a breeze. Let’s set up Storybook to view our newly created `Button` component.
 
 ```bash
-$ yarn add --dev -W @storybook/react @storybook/addon-docs
+$ yarn add --dev -W @storybook/react @storybook/addon-docs @storybook/preset-create-react-app
 ```
 
 We’ll also want to configure Storybook so it knows where to find our stories.
@@ -225,7 +225,7 @@ import Button from '.';
 
 export default {
   component: Button,
-  title: 'Design System|Button'
+  title: 'Design System/Button'
 };
 
 export const primary = () => <Button>{'Button'}</Button>;
@@ -366,7 +366,7 @@ import Input from '.';
 
 export default {
   component: Input,
-  title: 'Design System|Input'
+  title: 'Design System/Input'
 };
 
 export const placeholder = () => <Input placeholder="user@gmail.com" />;
