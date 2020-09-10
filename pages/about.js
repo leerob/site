@@ -58,11 +58,12 @@ const About = () => {
               </CustomLink>
               &nbsp;and&nbsp;
               <CustomLink href="https://react2025.com">React 2025.</CustomLink>
+              &nbsp;I work at ▲Vercel as a Solutions Architect.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I’ve spoken across the country at conferences and meet-ups about
-              front-end development, design, and recruiting. I write about development, tech careers, and my
-              personal life on&nbsp;
+              front-end development, design, and recruiting. I write about
+              development, tech careers, and my personal life on&nbsp;
               <CustomLink href="/newsletter">my newsletter.</CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
