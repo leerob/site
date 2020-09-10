@@ -192,6 +192,10 @@ const Timeline = () => {
         2020
       </Heading>
       <List>
+        <TimelineStep title="Joined ▲Vercel">
+          I'm excited to help grow the Next.js community and continue building
+          the optimal workflow for front-end developers.
+        </TimelineStep>
         <TimelineStep title="Launched React 2025 💯">
           Building a real SaaS application, from zero to production.
         </TimelineStep>
@@ -204,8 +208,8 @@ const Timeline = () => {
           it was better than I could have imagined.
         </TimelineStep>
         <TimelineStep title="Became a Tech Lead 👨🏻‍💻">
-          Starting at the beginning of this year, I moved into a tech leadership
-          role on one of our e-commerce development teams.
+          Starting at the beginning of 2020, I moved into a tech leadership role
+          on an e-commerce development team at Hy-Vee.
         </TimelineStep>
         <TimelineStep title="Mastering Next.js made $10K 📈">
           I taught hundreds of students from all over the world how to build web
@@ -224,7 +228,7 @@ const Timeline = () => {
       </Heading>
       <List>
         <TimelineStep title="Software Engineer III ✨">
-          Lead our design system architecture, building new components with
+          Led design system architecture at Hy-Vee, building new components with
           React, Storybook, and styled-components.
         </TimelineStep>
         <TimelineStep title="Mastering Next.js ⚛️">

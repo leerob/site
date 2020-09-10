@@ -27,7 +27,7 @@ const Footer = () => (
         />
       </Link>
       <Link
-        href="https://www.linkedin.com/in/leejamesrobinson/"
+        href="https://www.linkedin.com/in/leeerob"
         title="LinkedIn"
         isExternal
       >
