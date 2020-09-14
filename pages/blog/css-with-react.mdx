@@ -8,7 +8,7 @@ image: '/static/images/css-with-react/banner.png'
 The React ecosystem is unopinionated. **This is both it's greatest strength and weakness.**
 
 Over the years, I tried about seven different ways to style my React applications. Each solution has its pros and cons.
-Most comparions between CSS / CSS-in-JS and their ecosystem fail to consider the scale of the application and the team's size.
+Most comparisons between CSS / CSS-in-JS and their ecosystem fail to consider the scale of the application and the team's size.
 
 Let's go on a journey and learn how CSS has evolved to bring us to its current state. I'll share my journey and then discuss pros / cons of
 different approaches for styling React applications after. I'll try to make this comparison as unopinionated as possible.
@@ -30,14 +30,14 @@ Like most, I started web development with vanilla CSS. You have to learn the bas
 As I built more applications, I began to understand some of the drawbacks.
 
 - **Problem.** todo
-- **Specificity.** Since CSS has a global namespace, you can unintentionally target too many elements.
+- **Global Namespace.** Since CSS has a global namespace, you can unintentionally target too many elements.
 - **Colocation. **It's hard to modularize your CSS, which makes it difficult to delete code safely.
 
 At this point, I was introduced to CSS pre-processors.
 
-## Saas
+## Sass
 
-Saas, one of the most popular, allowed you to write more reusable, maintainable CSS. Some of the most popular features are variables, mixins, and modules.
+Sass, one of the most popular preprocessors, allows you to write more reusable, maintainable CSS. Some of the most popular features are variables, mixins, and modules.
 
 - **Variables.** I want to define global values once and share them throughout my stylesheets.
 - **Mixins.** I want to reuse particular snippets of CSS.
