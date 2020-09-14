@@ -8,10 +8,10 @@ image: '/static/images/css-with-react/banner.png'
 The React ecosystem is unopinionated. **This is both it's greatest strength and weakness.**
 
 Over the years, I tried about seven different ways to style my React applications. Each solution has its pros and cons.
-Most comparisons between CSS / CSS-in-JS and their ecosystem fail to consider the scale of the application and the team's size.
+Most comparisons between CSS/CSS-in-JS and their ecosystem fail to consider the scale of the application and the team's size.
 
-Let's go on a journey and learn how CSS has evolved to bring us to its current state. I'll share my journey and then discuss pros / cons of
-different approaches for styling React applications after. I'll try to make this comparison as unopinionated as possible.
+Let's go on a journey and learn how CSS has evolved to bring us to its current state. I'll share my journey and then discuss pros/cons of
+different approaches for styling React applications. I'll try to make this comparison as unopinionated as possible.
 
 ## Vanilla CSS
 
@@ -68,7 +68,7 @@ Sass helped me write more modular, reusable CSS – at least, for a while. Over 
 
 To solve naming, I started to adopt [BEM](http://getbem.com/introduction/).
 Block Element Modifier is a methodology that helps you to create reusable components
-and organize CSS in a modular way which keeps specificity low.
+and organize CSS in a modular way, which keeps specificity low.
 
 ```html
 <button class="button">Cancel</button>
@@ -134,7 +134,7 @@ Now, I know what you're thinking. Inline styles 🤮. I'll admit, I wasn't sold 
 I've recently been working with [CSS Modules](https://github.com/css-modules/css-modules) and [Tailwind CSS](https://tailwindcss.com/).
 Both of these approaches to styling React applications have prompted me to step back and evaluate the ecosystem.
 
-I've tried to summarize and collect pros and cons for various approaches of styling your React application. The choice that's best for you
+I've tried to summarize pros and cons of various approaches to styling your React application. The choice that's best for you
 likely depends on:
 
 - Your experience (stick with what you know)
@@ -165,7 +165,7 @@ import ConsCard from '../../components/ConsCard';
 components across applications.
 
 [Next.js](https://nextjs.org) has support for CSS Modules, which means you don't have to worry about setting up [Webpack](https://webpack.js.org/).
-It also sets up [autoprefixer](https://css-tricks.com/autoprefixer/), which makes CSS Modules an attractive alternative to CSS-in-JS in some cases.
+It also sets up [autoprefixer](https://css-tricks.com/autoprefixer/) making CSS Modules an attractive alternative to CSS-in-JS in some cases.
 
 <ProsCard
   title="CSS modules"
@@ -193,13 +193,13 @@ It also sets up [autoprefixer](https://css-tricks.com/autoprefixer/), which make
 There's many different CSS-in-JS libraries. The two most popular are [styled-components](https://styled-components.com/) and [Emotion](https://emotion.sh/docs/introduction).
 
 There's also zero-runtime solutions like [Linaria](https://github.com/callstack/linaria), where CSS is extracted to CSS files at build-time.
-To see comparisions between different libraries, see [CSS-in-JS benchmarks.](https://github.com/A-gambit/CSS-IN-JS-Benchmarks)
+To see comparisons between different libraries, see [CSS-in-JS benchmarks.](https://github.com/A-gambit/CSS-IN-JS-Benchmarks)
 
 <ProsCard
   title="CSS-in-JS"
   pros={[
     'Easy to distribute as reusable components on NPM.',
-    'You can take advatange of anything in the JavaScript ecosystem.',
+    'You can take advantage of anything in the JavaScript ecosystem.',
     'Styles are colocated with components, making it easy to delete code.',
     'Easy to provide multiple themes.'
   ]}
@@ -219,7 +219,7 @@ To see comparisions between different libraries, see [CSS-in-JS benchmarks.](htt
 ### Theme UI / Styled System
 
 Both [Theme UI](https://theme-ui.com) and [styled-system](https://styled-system.com/) abide by the [System UI theme specification](https://system-ui.com/).
-The intent behind this specification is to help make UI components, libraries, and tools as interoperable as possible.
+This specification intends to help make UI components, libraries, and tools as interoperable as possible.
 
 The primary use case for these libraries is implenting a component library and design system.
 One of my favorite libraries is [Chakra UI](https://next.chakra-ui.com/).
@@ -227,8 +227,8 @@ One of my favorite libraries is [Chakra UI](https://next.chakra-ui.com/).
 <ProsCard
   title="Theme UI / styled-system"
   pros={[
-    'Great for component libraries. Many are built on top of this.',
-    'Allows you to easily enforce a design system.',
+    'Great choice for component libraries.',
+    'Allows you to enforce a design system easily.',
     'Spend less time trying to name components',
     'All libraries that follow System UI spec should be interoperable.'
   ]}
@@ -244,7 +244,7 @@ One of my favorite libraries is [Chakra UI](https://next.chakra-ui.com/).
 
 ### Tailwind CSS
 
-[Tailwind CSS](https://tailwindcss.com/) has been rapidly growing in popularity. Many people are fed up with the bloat of utility frameworks like
+[Tailwind CSS](https://tailwindcss.com/) has been rapidly growing in popularity. Many people are frustrated with the bloat of CSS frameworks like
 [Bootstrap](https://getbootstrap.com/) and want an alternative. Tailwind provides an impressive developer experience with a refined API.
 
 With the combination of [Tailwind UI](https://tailwindui.com/), you can easily build extensible, well-designed applications.
@@ -253,7 +253,7 @@ With the combination of [Tailwind UI](https://tailwindui.com/), you can easily b
   title="Tailwind"
   pros={[
     'Utility classes allow you to never leave your HTML.',
-    'Allows you to easily enforce a design system.',
+    'Allows you to enforce a design system easily',
     'Spend less time trying to name components',
     'All libraries that follow System UI spec should be interoperable.'
   ]}
@@ -263,14 +263,14 @@ With the combination of [Tailwind UI](https://tailwindui.com/), you can easily b
   title="Tailwind"
   cons={[
     'You can have really, really long class names.',
-    'To use effectively, requires toolchain with PurgeCSS.',
-    'You need to learn Tailwind syntax, which is slighty different than standard CSS.'
+    'Requires toolchain with PurgeCSS to use effectively.',
+    'You need to learn Tailwind syntax, which is slightly different than standard CSS.'
   ]}
 />
 
 ## Conclusion
 
-Hopefully this article has helped demystify styling your React applications. Did I miss anything or see something you'd change?
+I hope this article has helped demystify styling your React applications. Did I miss anything or see something you'd change?
 Leave a comment below or reach out on [Twitter](https://twitter.com/leeerob).
 
 ## Further Reading
