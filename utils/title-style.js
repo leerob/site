@@ -14,6 +14,7 @@ const excludedWords = [
   'IDE',
   'iPhone',
   'iTerm',
+  'JS',
   'MDX',
   'NoSQL',
   'OverReact',

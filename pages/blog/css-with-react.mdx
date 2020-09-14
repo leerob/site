@@ -1,0 +1,267 @@
+---
+title: 'How Should I Style My React Application?'
+publishedAt: '2020-09-15'
+summary: 'TODO'
+image: '/static/images/css-with-react/banner.png'
+---
+
+The React ecosystem is unopinionated. **This is both it's greatest strength and weakness.**
+
+Over the years, I tried about seven different ways to style my React applications. Each solution has their own pros and cons.
+Most comparions between CSS / CSS-in-JS and their ecosystem fail to consider the scale of the application and the size of the team.
+
+Let's go on a journey and learn how CSS has evolved to bring us to its current state. I'll share my journey and then discuss pros / cons of
+different approaches for styling React applications after. I'll try to make this comparison as unopinionated as possible.
+
+## Vanilla CSS
+
+Like most, I started web development with vanilla CSS. You have to learn the basics first. All we need is an HTML and CSS file.
+
+```html:index.html
+<h1 class="header">Welcome</h1>
+```
+
+```css:index.css
+.header {
+  font-size: 32px;
+}
+```
+
+As I built more applications, I began to understand some of the drawbacks.
+
+- **Problem.** todo
+- **Specificity.** Since CSS has a global namespace, you can unintentionally target too many elements.
+- **Colocation. **It's hard to modularize your CSS, which makes it difficult to delete code safely.
+
+At this point, I was introduced to CSS pre-processors.
+
+## Saas
+
+Saas, one of the most popular, allowed you to write more reusable, maintainable CSS. Some of the most popular features are variables, mixins, and modules.
+
+- **Variables.** I want to define global values once and share them throughout my stylesheets.
+- **Mixins.** I want to reuse particular snippets of CSS.
+- **Modules.** I want to split up my CSS files for a more maintainable codebase.
+
+```scss:_base.scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
+
+```scss:_header.scss
+@use 'base';
+
+.header {
+  font-size: 32px;
+}
+```
+
+Sass helped me write more modular, reusable CSS – at least, for a while. Over time, I ran into new issues.
+
+- **Naming.** As your CSS grows, it's easy to have class names get out of hand.
+- **Browser support.** Certain features aren't supported across all browsers and require "vendor prefixes" like `-moz` (Firefox), `-webkit` (Safari), and `-ms` (Internet Explorer).
+
+To solve naming, I started to adopt [BEM](http://getbem.com/introduction/). Block Element Modifier is a methodology that helps you to create reusable components and code sharing in front-end development.
+
+```html
+<button class="button">Cancel</button>
+<button class="button button--primary">Submit</button>
+```
+
+```css
+.button {
+  color: black;
+  background-color: gray;
+}
+
+.button--state-success {
+  color: white;
+  background-color: green;
+}
+```
+
+Naming conventions helped but didn't fix the root cause: **naming is hard**.
+For browser support, it's possible to set up your Sass toolchain with a tool like [autoprefixer](https://css-tricks.com/autoprefixer/) to handle vendor prefixes. However, around this time, I started using React.
+
+Once I started using component-based frameworks like React, I started exploring CSS-in-JS.
+
+## CSS-in-JS
+
+My first adventure: building a component library with styled-components. At first, CSS-in-JS solved all my problems.
+
+- **Specificity **is solved by auto-generated class names.
+- **Colocation **is solved by putting CSS directly with the component, making it easy to delete code.
+- **Browser support** is solved by having autoprefixer built-in.
+- **Variables** are solved by creating a global theme.
+
+As the component library grew, I began to explore styled-system and Theme UI. These were more structured approaches to scaling CSS-in-JS and helping enforce a design system. Plus, it helped solve **naming**. Trying to scale `styled-components` alone in a large application made me get _really_ creative with names. You can only have so many container, wrapper, layout things.
+
+```js
+// Bad
+const HomeContainerWrapper = styled.div`
+   padding: 8px;
+   font-weight: bold;
+   color: white;
+   background: blue;
+`;
+
+<HomeContainerWrapper>
+  Hello
+</HomeContainerWrapper>
+
+// Good
+<Box
+  padding={3}
+  fontWeight='bold'
+  color='white'
+  bg='blue'
+>
+  Hello
+</Box>
+```
+
+Now, I know what you're thinking. Inline styles 🤮. I'll admit, I wasn't sold at first. But it grew on me. And that brings us to now.
+
+I've recently been working with CSS Modules and Tailwind. Both of these approaches to styling React applications have prompted me to step back.
+
+## Pros and Cons
+
+### Vanilla CSS
+
+import ProsCard from '../../components/ProsCard';
+import ConsCard from '../../components/ConsCard';
+
+<ProsCard
+  title="vanilla CSS"
+  pros={['No toolchain necessary. Works with every browser & language.']}
+/>
+
+<ConsCard
+  title="vanilla CSS"
+  cons={['Not a viable option for large web applications.']}
+/>
+
+### CSS Modules
+
+Next.js has support for CSS Modules built into the framework.
+This means you don't need to worry about configuring Webpack or setting up
+autoprefixer, which makes CSS Modules an attractive alternative to CSS-in-JS.
+
+<ProsCard
+  title="CSS modules"
+  pros={[
+    'Class names are scoped to the corresponding component.',
+    'CSS variables allow you to reuse values.',
+    'Your application can work without JavaScript.',
+    'Lowest barrier to entry.',
+    'Works with any language.'
+  ]}
+/>
+
+<ConsCard
+  title="CSS modules"
+  cons={[
+    'Requires confguring a toolchain like Webpack.',
+    'Distribution is hard.',
+    'Lack of nesting and CSS linting.',
+    `Some argue there's more context switching between different files`
+  ]}
+/>
+
+_insert next.js codesandbox_
+
+### CSS-in-JS
+
+Talk about zero-runtime solutions and performance. Talk about Styled Components / Emotion / etc.
+
+<ProsCard
+  title="CSS-in-JS"
+  pros={[
+    'Easy to distribute as reusable components on NPM.',
+    'You can take advatange of anything in the JavaScript ecosystem.',
+    'Styles are colocated with components, making it easy to delete code.',
+    'Easy to provide multiple themes.'
+  ]}
+/>
+
+<ConsCard
+  title="CSS-in-JS"
+  cons={[
+    'Requires confguring a toolchain like Webpack.',
+    'Some argue it breaks separation of concerns.',
+    'Your application needs JavaScript to work.',
+    'Difficult for libraries, since all consumers must use the same CSS-in-JS solution.'
+  ]}
+/>
+
+### Theme UI / Styled System
+
+Talk about System UI spec.
+
+<ProsCard
+  title="styled-system / Theme UI"
+  pros={[
+    'Great for component libraries. Many are built on top of this.',
+    'Allows you to easily enforce a design system.',
+    'Spend less time trying to name components',
+    'All libraries that follow System UI spec should be interoperable.'
+  ]}
+/>
+
+<ConsCard
+  title="styled-system / Theme UI"
+  cons={[
+    'You dislike providing styles as props.',
+    'Some argue it breaks separation of concerns.'
+  ]}
+/>
+
+### Tailwind CSS
+
+Mention Tailwind UI too.
+
+<!-- <
+  src="https://codesandbox.io/embed/nw10kz7m3j?fontsize=14&hidenavigation=1&theme=dark"
+  style={{
+    width: '100%',
+    height: '500px',
+    border: 0,
+    borderRadius: '4px',
+    overflow: 'hidden'
+  }}
+  title="Tailwind Workflow Animation"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+> -->
+
+<ProsCard
+  title="styled-system / Theme UI"
+  pros={[
+    'Utility classes allow you to never leave your HTML.',
+    'Allows you to easily enforce a design system.',
+    'Spend less time trying to name components',
+    'All libraries that follow System UI spec should be interoperable.'
+  ]}
+/>
+
+<ConsCard
+  title="styled-system / Theme UI"
+  cons={[
+    'You can have really, really long class names.',
+    'To use effectively, requires toolchain with PurgeCSS.'
+  ]}
+/>
+
+## Resources
+
+- [What are CSS Modules and why do we need them?](https://css-tricks.com/css-modules-part-1-need/)
+- [The Cost of JavaScript in 2019](https://v8.dev/blog/cost-of-javascript-2019)
+- [CSS-in-JS Benchmarks](https://github.com/A-gambit/CSS-IN-JS-Benchmarks)
+- [Refactoring an alert component from CSS to CSS-in-JS](https://alert-refactor.netlify.app/)
+- [Why I Write CSS in JavaScript](https://mxstbr.com/thoughts/css-in-js)
+- [Two Steps Forward, One Step Back](https://jxnblk.com/blog/two-steps-forward/)
