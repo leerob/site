@@ -149,12 +149,14 @@ import ConsCard from '../../components/ConsCard';
 
 <ProsCard
   title="vanilla CSS"
-  pros={['No toolchain necessary. Works with every browser & language.']}
+  pros={[
+    `You don't want to add a toolchain. Vanilla CSS works with every browser & language.`
+  ]}
 />
 
 <ConsCard
   title="vanilla CSS"
-  cons={['Not a viable option for large web applications.']}
+  cons={[`You're building a large web application.`]}
 />
 
 ### CSS Modules
@@ -168,21 +170,21 @@ It also sets up [autoprefixer](https://css-tricks.com/autoprefixer/) making CSS 
 <ProsCard
   title="CSS modules"
   pros={[
-    'Class names are scoped to the corresponding component.',
-    'CSS variables allow you to reuse values.',
-    'Your application can work without JavaScript.',
-    'Lowest barrier to entry.',
-    'Works with any language.'
+    'You want class names scoped to the corresponding component.',
+    'You want to use CSS variables to reuse values.',
+    'You need your application to work without JavaScript.',
+    'You want the lowest barrier to entry experience.',
+    'You want to use any language, not just JavaScript.'
   ]}
 />
 
 <ConsCard
   title="CSS modules"
   cons={[
-    'Requires confguring a toolchain like Webpack.',
-    'Distribution is hard.',
-    'Lack of nesting by default (requires PostCSS).',
-    `Some argue there's more context switching between different files`
+    `You don't want to configure a toolchain like Webpack.`,
+    'You need to distribute a package on NPM.',
+    'You want nesting support by default (requires PostCSS).',
+    `You don't want to context switch between files.`
   ]}
 />
 
@@ -196,21 +198,20 @@ To see comparisons between different libraries, see [CSS-in-JS benchmarks.](http
 <ProsCard
   title="CSS-in-JS"
   pros={[
-    'Easy to distribute as reusable components on NPM.',
-    'You can take advantage of anything in the JavaScript ecosystem.',
-    'Styles are colocated with components, making it easy to delete code.',
-    'Easy to provide multiple themes.'
+    'You want to distribute as reusable components on NPM.',
+    'You want to take advantage of anything in the JavaScript ecosystem.',
+    'You want to colocate styles with components, making it easy to delete code.',
+    'You need to support multiple themes.'
   ]}
 />
 
 <ConsCard
   title="CSS-in-JS"
   cons={[
-    'Requires confguring a toolchain like Webpack.',
-    'Naming is hard.',
-    'Typically uses React Context extensively.',
-    'Some argue it breaks separation of concerns.',
-    'Difficult for libraries, since all consumers must use the same CSS-in-JS solution.'
+    `You don't want to configure a toolchain like Webpack.`,
+    'You are sick of figuring out names for things.',
+    'You believe it breaks separation of concerns.',
+    `You are publishing a library and don't want to enforce all consumers must use the same CSS-in-JS solution.`
   ]}
 />
 
@@ -225,10 +226,9 @@ One of my favorite libraries is [Chakra UI](https://next.chakra-ui.com/).
 <ProsCard
   title="Theme UI / styled-system"
   pros={[
-    'Great choice for component libraries.',
-    'Allows you to enforce a design system easily.',
-    'Spend less time trying to name components',
-    'All libraries that follow System UI spec should be interoperable.'
+    `You're building a component library.`,
+    'You need to enforce a design system.',
+    'You want to spend less time trying to name components.'
   ]}
 />
 
@@ -236,7 +236,7 @@ One of my favorite libraries is [Chakra UI](https://next.chakra-ui.com/).
   title="Theme UI / styled-system"
   cons={[
     'You dislike providing styles as props.',
-    'Some argue it breaks separation of concerns.'
+    'You believe it breaks separation of concerns.'
   ]}
 />
 
@@ -250,19 +250,18 @@ With the combination of [Tailwind UI](https://tailwindui.com/), you can easily b
 <ProsCard
   title="Tailwind"
   pros={[
-    'Utility classes allow you to never leave your HTML.',
-    'Allows you to enforce a design system easily',
-    'Spend less time trying to name components',
-    'All libraries that follow System UI spec should be interoperable.'
+    'You want to never leave your HTML (or JSX).',
+    'You need to enforce a design system.',
+    'You want to spend less time trying to name components.'
   ]}
 />
 
 <ConsCard
   title="Tailwind"
   cons={[
-    'You can have really, really long class names.',
-    'Requires toolchain with PurgeCSS to use effectively.',
-    'You need to learn Tailwind syntax, which is slightly different than standard CSS.'
+    `You don't want (potentially) long class names.`,
+    `You don't want to configure a toolchain like PurgeCSS to use it effectively.`,
+    `You don't want to learn Tailwind syntax, which is slightly different than standard CSS.`
   ]}
 />
 
