@@ -5,10 +5,10 @@ summary: 'Learn how CSS has evolved and explore pros and cons of different styli
 image: '/static/images/css-with-react/banner.png'
 ---
 
-React doesn't prescribe how to do many things. This is both it's greatest strength _and_ weakness.
+React attempts to be as unopinionated as possible. This is both it's greatest strength _and_ weakness.
 
 Over the years, I've tried about seven different ways to style my React applications. Each solution has its pros and cons.
-Let's go on a journey and learn how CSS has evolved to bring us to its current state. I'll share my journey and then discuss pros/cons of
+This article will share my journey using CSS with React and how it's evolved to its current state. Then, I'll discuss pros/cons of
 different approaches for styling React applications.
 
 ## Vanilla CSS
@@ -25,17 +25,18 @@ Like most, I started web development with vanilla CSS. You have to learn the bas
 }
 ```
 
-As I built more applications, I began to understand some of the drawbacks.
+As I built more large applications, I began to understand some of the drawbacks.
 
-- **Problem.** todo
-- **Global Namespace.** Since CSS has a global namespace, you can unintentionally target too many elements.
-- **Colocation. **It's hard to modularize your CSS, which makes it difficult to delete code safely.
+- **Reusability.** It's easy to create append-only stylesheets that become very complex.
+- **Global Namespace.** Since CSS has a [global namespace](https://css-tricks.com/regarding-css-global-scope/), you can unintentionally target too many elements.
+- **Colocation.** It's hard to modularize your CSS, which makes it difficult to delete code safely.
 
-At this point, I was introduced to CSS pre-processors.
+At this point, I was introduced to [CSS pre-processors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor).
 
 ## Sass
 
-Sass, one of the most popular preprocessors, allows you to write more reusable, maintainable CSS. Some of the most popular features are variables, mixins, and modules.
+[Sass](https://sass-lang.com/), one of the most popular preprocessors, allows you to write more reusable, maintainable CSS.
+Some of the most popular features are [variables](https://sass-lang.com/documentation/variables), [mixins](https://sass-lang.com/documentation/at-rules/mixin), and [modules](https://sass-lang.com/documentation/modules).
 
 - **Variables.** I want to define global values once and share them throughout my stylesheets.
 - **Mixins.** I want to reuse particular snippets of CSS.
@@ -62,7 +63,7 @@ body {
 Sass helped me write more modular, reusable CSS – at least, for a while. Over time, I ran into new issues.
 
 - **Naming.** As your CSS grows, it's easy to have class names get out of hand.
-- **Browser support.** Certain features aren't supported across all browsers and require "vendor prefixes" like `-moz` (Firefox), `-webkit` (Safari), and `-ms` (Internet Explorer).
+- **Browser support.** Certain features aren't supported across all browsers and require [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) like `-moz-` (Firefox), `-webkit-` (Safari), and `-ms-` (Internet Explorer and Edge).
 
 To solve naming, I started to adopt [BEM](http://getbem.com/introduction/).
 Block Element Modifier is a methodology that helps you to create reusable components
@@ -79,30 +80,31 @@ and organize CSS in a modular way, which keeps specificity low.
   background-color: gray;
 }
 
-.button--state-success {
+.button--primary {
   color: white;
   background-color: green;
 }
 ```
 
 Naming conventions helped but didn't fix the root cause: **naming is hard**.
-For browser support, it's possible to set up your Sass toolchain with a tool like [autoprefixer](https://css-tricks.com/autoprefixer/) to handle vendor prefixes. However, around this time, I started using React.
-
-Once I started using component-based frameworks like React, I started exploring CSS-in-JS.
+For browser support, it's possible to set up your Sass toolchain with a tool like [autoprefixer](https://css-tricks.com/autoprefixer/) to handle vendor prefixes.
+However, around this time, component-based frameworks like React. This led me to explore CSS-in-JS.
 
 ## CSS-in-JS
 
-My first adventure: building a component library with styled-components. At first, CSS-in-JS solved all my problems.
+My first adventure: building a [component library with styled-components](/blog/ui-component-library-with-styled-components). At first, CSS-in-JS solved all my problems.
 
-- **Specificity **is solved by auto-generated class names.
-- **Colocation **is solved by putting CSS directly with the component, making it easy to delete code.
+- **Specificity** is solved by auto-generated class names.
+- **Colocation** is solved by putting CSS directly with the component, making it easy to delete code.
 - **Browser support** is solved by having autoprefixer built-in.
 - **Variables** are solved by creating a global theme.
 
-As the component library grew, I began to explore styled-system and Theme UI. These were more structured approaches to scaling CSS-in-JS and helping enforce a design system. Plus, it helped solve **naming**. Trying to scale `styled-components` alone in a large application made me get _really_ creative with names. You can only have so many container, wrapper, layout things.
+As the component library grew, I began to explore [Theme UI](https://theme-ui.com) and [styled-system](https://styled-system.com/).
+These were more structured approaches to scaling CSS-in-JS and helping enforce a design system.
+Plus, it helped solve **naming**. Trying to scale [styled-components](https://styled-components.com/) alone in a large application made me get _really_ creative with names.
+You can only have so many container, wrapper, layout things.
 
 ```js
-// Bad
 const HomeContainerWrapper = styled.div`
    padding: 8px;
    font-weight: bold;
@@ -114,7 +116,7 @@ const HomeContainerWrapper = styled.div`
   Hello
 </HomeContainerWrapper>
 
-// Good
+// Don't worry about names
 <Box
   padding={3}
   fontWeight='bold'
@@ -125,7 +127,7 @@ const HomeContainerWrapper = styled.div`
 </Box>
 ```
 
-Now, I know what you're thinking. Inline styles 🤮. I'll admit, I wasn't sold at first. But it grew on me. And that brings us to now.
+Now, I know what you're thinking. Inline styles 🤮. I'll admit, I wasn't sold at first. But it grew on me – and that brings us to now.
 
 ## Current State
 
@@ -135,10 +137,10 @@ Both of these approaches to styling React applications have prompted me to step 
 I've tried to summarize pros and cons of various approaches to styling your React application. I'll try to make this comparison as unopinionated as possible.
 The choice that's best for you likely depends on:
 
-- Your experience (stick with what you know)
-- Your team
-- The size of your application
-- What you're trying to build
+- Your experience (stick with what you know).
+- Your team.
+- The size of your application.
+- What you're trying to build.
 
 ## Pros and Cons
 
@@ -173,7 +175,7 @@ It also sets up [autoprefixer](https://css-tricks.com/autoprefixer/) making CSS 
     'You want class names scoped to the corresponding component.',
     'You want to use CSS variables to reuse values.',
     'You need your application to work without JavaScript.',
-    'You want the lowest barrier to entry experience.',
+    'You want the lowest barrier to entry.',
     'You want to use any language, not just JavaScript.'
   ]}
 />
@@ -211,7 +213,7 @@ To see comparisons between different libraries, see [CSS-in-JS benchmarks.](http
     `You don't want to configure a toolchain like Webpack.`,
     'You are sick of figuring out names for things.',
     'You believe it breaks separation of concerns.',
-    `You are publishing a library and don't want to enforce all consumers must use the same CSS-in-JS solution.`
+    `You don't want to enforce all consumers must use the same CSS-in-JS solution.`
   ]}
 />
 
