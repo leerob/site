@@ -7,13 +7,13 @@ image: '/static/images/css-with-react/banner.png'
 
 React attempts to be as unopinionated as possible. This is both it's greatest strength _and_ weakness.
 
-Over the years, I've tried about seven different ways to style my React applications. Each solution has its pros and cons.
+Over the years, I've tried many ways to style my React applications. Each solution has its pros and cons.
 This article will share my journey using CSS with React and how it's evolved to its current state. Then, I'll discuss pros/cons of
 different approaches for styling React applications.
 
 ## Vanilla CSS
 
-Like most, I started web development with vanilla CSS. You have to learn the basics first. All we need is an HTML and CSS file.
+Like most, I started web development with vanilla CSS. All you need is a single HTML and CSS file. Pretty simple.
 
 ```html:index.html
 <h1 class="header">Welcome</h1>
@@ -32,6 +32,7 @@ As I built more large applications, I began to understand some of the drawbacks.
 - **Colocation.** It's hard to modularize your CSS, which makes it difficult to delete code safely.
 
 At this point, I was introduced to [CSS pre-processors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor).
+These tools aim to introduce new funtionality and compile back to vanilla CSS.
 
 ## Sass
 
@@ -63,7 +64,7 @@ body {
 Sass helped me write more modular, reusable CSS – at least, for a while. Over time, I ran into new issues.
 
 - **Naming.** As your CSS grows, it's easy to have class names get out of hand.
-- **Browser support.** Certain features aren't supported across all browsers and require [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) like `-moz-` (Firefox), `-webkit-` (Safari), and `-ms-` (Internet Explorer and Edge).
+- **Browser support.** Certain features aren't [supported across all browsers](https://caniuse.com/) and require [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) like `-moz-` (Firefox), `-webkit-` (Safari), and `-ms-` (Internet Explorer and Edge).
 
 To solve naming, I started to adopt [BEM](http://getbem.com/introduction/).
 Block Element Modifier is a methodology that helps you to create reusable components
@@ -88,21 +89,23 @@ and organize CSS in a modular way, which keeps specificity low.
 
 Naming conventions helped but didn't fix the root cause: **naming is hard**.
 For browser support, it's possible to set up your Sass toolchain with a tool like [autoprefixer](https://css-tricks.com/autoprefixer/) to handle vendor prefixes.
-However, around this time, component-based frameworks like React. This led me to explore CSS-in-JS.
+However, around this time, I started using component-based frameworks like React. This led me to explore CSS-in-JS.
 
 ## CSS-in-JS
 
-My first adventure: building a [component library with styled-components](/blog/ui-component-library-with-styled-components). At first, CSS-in-JS solved all my problems.
+My first adventure with CSS-in-JS: building a [component library with styled-components](/blog/ui-component-library-with-styled-components). At first, CSS-in-JS solved all my problems.
 
 - **Specificity** is solved by auto-generated class names.
 - **Colocation** is solved by putting CSS directly with the component, making it easy to delete code.
 - **Browser support** is solved by having autoprefixer built-in.
 - **Variables** are solved by creating a global theme.
 
+However, **naming** was still a huge pain.
+
 As the component library grew, I began to explore [Theme UI](https://theme-ui.com) and [styled-system](https://styled-system.com/).
-These were more structured approaches to scaling CSS-in-JS and helping enforce a design system.
-Plus, it helped solve **naming**. Trying to scale [styled-components](https://styled-components.com/) alone in a large application made me get _really_ creative with names.
-You can only have so many container, wrapper, layout things.
+These were more structured approaches to scaling CSS-in-JS to help enforce a design system.
+Plus, they helped solve naming. Trying to scale [styled-components](https://styled-components.com/) alone in a large application made me get _really_ creative with names.
+You can only have so many container, wrapper, layout things. For example:
 
 ```js
 const HomeContainerWrapper = styled.div`
@@ -116,7 +119,7 @@ const HomeContainerWrapper = styled.div`
   Hello
 </HomeContainerWrapper>
 
-// Don't worry about names
+// Forget about naming
 <Box
   padding={3}
   fontWeight='bold'
@@ -134,7 +137,7 @@ Now, I know what you're thinking. Inline styles 🤮. I'll admit, I wasn't sold 
 I've recently been working with [CSS Modules](https://github.com/css-modules/css-modules) and [Tailwind CSS](https://tailwindcss.com/).
 Both of these approaches to styling React applications have prompted me to step back and evaluate the ecosystem.
 
-I've tried to summarize pros and cons of various approaches to styling your React application. I'll try to make this comparison as unopinionated as possible.
+Below, I've summarized pros and cons of various approaches to styling your React application. I tried to make this comparison as unopinionated as possible.
 The choice that's best for you likely depends on:
 
 - Your experience (stick with what you know).
