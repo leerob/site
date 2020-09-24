@@ -139,7 +139,7 @@ export default async (_, res) => {
   });
 
   const youtube = google.youtube({
-    auth,
+    auth: googleAuth,
     version: 'v3'
   });
 
@@ -165,7 +165,7 @@ export default async (_, res) => {
   });
 
   const youtube = google.youtube({
-    auth,
+    auth: googleAuth,
     version: 'v3'
   });
 
