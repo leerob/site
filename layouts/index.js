@@ -85,16 +85,9 @@ export default (frontMatter) => {
             </Flex>
           </Flex>
           {children}
-          <Box>
-            <Link href={discussUrl(slug)} isExternal>
-              {'Discuss on Twitter'}
-            </Link>
-            {` • `}
-            <Link href={editUrl(slug)} isExternal>
-              {'Edit on GitHub'}
-            </Link>
-          </Box>
+          <Box mt={12} />
           <IframeResizer
+            mt={10}
             checkOrigin={false}
             title="Comments"
             src={`https://fastfeedback.io/embed/R304ocjeB8gUf6BGwfkC/${slug}`}
