@@ -71,7 +71,7 @@ const Blog = () => {
               Blog
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
-              {`Here I share my personal thoughts on sotware engineering, coding interviews, and building online businesses.`}
+              {`Here I share my personal thoughts on software engineering, coding interviews, and building online businesses.`}
             </Text>
             <InputGroup my={4} mr={4} w="100%">
               <Input
