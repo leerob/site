@@ -90,7 +90,7 @@ export default (frontMatter) => {
             mt={10}
             checkOrigin={false}
             title="Comments"
-            src={`https://fastfeedback.io/embed/R304ocjeB8gUf6BGwfkC/${slug}`}
+            src={`https://fastfeedback.io/embed/R304ocjeB8gUf6BGwfkC/${slug}?theme=${colorMode}`}
             style={{
               width: '1px',
               minWidth: '100%'
