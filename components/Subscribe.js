@@ -75,10 +75,10 @@ const Subscribe = () => {
       w="100%"
     >
       <Heading as="h5" size="lg" mb={2}>
-        You can subscribe to my newsletter here
+        Subscribe to my newsletter here
       </Heading>
       <Text>
-        I may send emails about new blog posts, product updates, and software
+        I will notify you about my new blog posts, product updates, and software
         engineering tips.
       </Text>
       <InputGroup size="md" mt={4}>
