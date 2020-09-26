@@ -55,16 +55,24 @@ const About = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              TBA
+              Hi there! 👋 My name is Anton Fenske. I'm a software engineer and
+              an online entrepreneur.
             </Text>
-            <Link
-              href="https://github.com/leerob/leerob.io"
-              title="leerob"
-              isExternal
-              color={'gray.500'}
-            >
-              This site is forked from leerob.io
-            </Link>
+            <Text color={secondaryTextColor[colorMode]} mb={4}>
+              These days I work on{' '}
+              <Link href="https://devskills.co" color="blue.500">
+                <b>DevSkills</b>
+              </Link>{' '}
+              to make sense of coding interviews.
+            </Text>
+            <Text color={secondaryTextColor[colorMode]} mb={4}>
+              I'm building it in public, documenting the journey on my Twitter.
+              Don't hesitate to{' '}
+              <Link href="https://twitter.com/fenskexyz" color="blue.500">
+                <b>follow me</b>
+              </Link>{' '}
+              there.
+            </Text>
           </Flex>
         </Stack>
       </Container>
