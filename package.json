@@ -62,7 +62,8 @@
     "remark-code-titles": "0.1.1",
     "remark-slug": "6.0.0",
     "swr": "0.2.0",
-    "unsplash-js": "6.0.0"
+    "unsplash-js": "6.0.0",
+    "iframe-resizer-react": "^1.0.4"
   },
   "devDependencies": {
     "eslint": "6.8.0",
