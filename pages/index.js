@@ -32,8 +32,8 @@ const Index = () => {
             Hi there, I'm Anton Fenske.
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>
-            I'm a sotware engineer transitioning to an online entrepreneur. Here
-            I share what I'm working on and what's happening in my head.
+            I'm a sotware engineer and an online entrepreneur. Here I share what
+            I'm working on and what's happening in my head.
           </Text>
         </Flex>
         <Flex
