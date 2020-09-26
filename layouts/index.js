@@ -81,10 +81,11 @@ export default (frontMatter) => {
               <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
                 {frontMatter.readingTime.text}
               </Text>
+              {` • `}
+              <ViewCounter id={slug} />
             </Flex>
           </Flex>
           {children}
-
           <Box>
             <Link href={discussUrl(slug)} isExternal>
               {'Discuss on Twitter'}
