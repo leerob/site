@@ -78,7 +78,7 @@ const About = () => {
             <Heading size="md" as="h3" mb={2} fontWeight="medium">
               <Link
                 display="flex"
-                href="https://prisma.zoom.us/rec/share/6PwuN4zqyn9Of4XE-kvOUbUeF7i7T6a81yYbr_RZxEaE6v9ctLqFon6y4vLj2lxn"
+                href="https://youtu.be/z3rmZbOEBCM?t=273"
                 isExternal
               >
                 <Flex align="center">
