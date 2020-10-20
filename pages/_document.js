@@ -1,8 +1,13 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import GoogleFonts from 'next-google-fonts';
+import { ColorModeScript } from '@chakra-ui/core';
 
 class MyDocument extends Document {
+  static getInitialProps(ctx) {
+    return Document.getInitialProps(ctx);
+  }
+
   render() {
     return (
       <Html lang="en">
@@ -44,6 +49,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <ColorModeScript initialColorMode="dark" />
           <Main />
           <NextScript />
         </body>

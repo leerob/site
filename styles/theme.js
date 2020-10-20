@@ -1,8 +1,14 @@
 import React from 'react';
-import { theme as chakraTheme } from '@chakra-ui/core';
+import { theme as chakraTheme, extendTheme } from '@chakra-ui/core';
 
-const theme = {
+const config = {
+  useSystemColorMode: false,
+  initialColorMode: 'dark',
+}
+
+const theme = extendTheme({
   ...chakraTheme,
+  config,
   fonts: {
     ...chakraTheme.fonts,
     body: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
@@ -149,6 +155,6 @@ const theme = {
       )
     }
   }
-};
+});
 
 export default theme;
