@@ -2,8 +2,8 @@ import React from 'react';
 import { theme as chakraTheme, extendTheme } from '@chakra-ui/core';
 
 const config = {
-  useSystemColorMode: false,
-  initialColorMode: 'dark',
+  useSystemColorMode: true,
+  initialColorMode: 'system',
 }
 
 const theme = extendTheme({
