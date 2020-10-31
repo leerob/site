@@ -9,7 +9,6 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Icon
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
@@ -20,6 +19,7 @@ import { frontMatter as blogPosts } from './blog/**/*.mdx';
 import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
 import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
 import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const url = 'https://leerob.io/blog';
 const title = 'Blog – Lee Robinson';
@@ -85,7 +85,7 @@ const Blog = () => {
                 placeholder="Search articles"
               />
               <InputRightElement>
-                <Icon name="search" color="gray.300" />
+                <SearchIcon color="gray.300" />
               </InputRightElement>
             </InputGroup>
           </Flex>

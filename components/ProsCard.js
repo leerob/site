@@ -7,6 +7,7 @@ import {
   Box,
   useColorMode
 } from '@chakra-ui/core';
+import { CheckIcon } from './icons/customIcons';
 
 const ProsCard = ({ title, pros }) => {
   const { colorMode } = useColorMode();
@@ -38,7 +39,7 @@ const ProsCard = ({ title, pros }) => {
             alignItems="baseline"
             display="flex"
           >
-            <ListIcon icon="check" color="green.500" />
+            <ListIcon icon={<CheckIcon />} color="green.500" />
             <Text>{pro}</Text>
           </ListItem>
         ))}

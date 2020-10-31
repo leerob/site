@@ -8,6 +8,8 @@ import {
   useColorMode
 } from '@chakra-ui/core';
 
+import { XIcon } from './icons/customIcons';
+
 const ConsCard = ({ title, cons }) => {
   const { colorMode } = useColorMode();
   const bgColor = {
@@ -38,7 +40,7 @@ const ConsCard = ({ title, cons }) => {
             alignItems="baseline"
             display="flex"
           >
-            <ListIcon icon="x" color="red.500" />
+            <ListIcon icon={<XIcon />} color="red.500" />
             <Text>{con}</Text>
           </ListItem>
         ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Flex, Link, IconButton } from '@chakra-ui/core';
+import { GithubIcon, TwitterIcon, YoutubeIcon, MailIcon, LinkedinIcon } from './icons/customIcons';
 
 import NowPlaying from './NowPlaying';
 
@@ -11,7 +12,7 @@ const Footer = () => (
       <Link href="https://twitter.com/leeerob" title="Twitter" isExternal>
         <IconButton
           aria-label="Twitter"
-          icon="twitter"
+          icon={<TwitterIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"
@@ -20,7 +21,7 @@ const Footer = () => (
       <Link href="https://github.com/leerob" title="GitHub" isExternal>
         <IconButton
           aria-label="GitHub"
-          icon="github"
+          icon={<GithubIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"
@@ -33,7 +34,7 @@ const Footer = () => (
       >
         <IconButton
           aria-label="LinkedIn"
-          icon="linkedin"
+          icon={<LinkedinIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"
@@ -46,7 +47,7 @@ const Footer = () => (
       >
         <IconButton
           aria-label="YouTube"
-          icon="youtube"
+          icon={<YoutubeIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"
@@ -55,7 +56,7 @@ const Footer = () => (
       <Link href="mailto:me@leerob.io" title="Email" isExternal>
         <IconButton
           aria-label="Email"
-          icon="mail"
+          icon={<MailIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"

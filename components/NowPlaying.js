@@ -6,10 +6,11 @@ import {
   Stack,
   Image,
   Text,
-  Icon,
   Skeleton,
   useColorMode
 } from '@chakra-ui/core';
+
+import { SpotifyIcon } from './icons/customIcons';
 
 import fetcher from '../lib/fetcher';
 
@@ -72,7 +73,7 @@ const NowPlaying = () => {
           {data && (data?.artist || 'Spotify')}
         </Text>
       </Stack>
-      <Icon name="spotify" ml="auto" mt={1} />
+      <SpotifyIcon ml="auto" mt={1} />
     </Box>
   );
 };

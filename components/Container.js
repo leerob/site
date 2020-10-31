@@ -4,6 +4,7 @@ import { useColorMode, Button, Flex, Box, IconButton } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
 import Footer from './Footer';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 
 const StickyNav = styled(Flex)`
   position: sticky;
@@ -46,7 +47,8 @@ const Container = ({ children }) => {
       >
         <IconButton
           aria-label="Toggle dark mode"
-          icon={colorMode === 'dark' ? 'sun' : 'moon'}
+          bg={bgColor[colorMode]}
+          icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
           onClick={toggleColorMode}
         />
         <Box>

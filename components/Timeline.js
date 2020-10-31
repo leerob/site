@@ -7,10 +7,10 @@ import {
   Button,
   List,
   ListItem,
-  Icon,
   Stack,
   Divider
 } from '@chakra-ui/core';
+import { CheckCircleIcon, ChevronDownIcon } from '@chakra-ui/icons';
 
 const YearDivider = () => {
   const { colorMode } = useColorMode();
@@ -33,7 +33,7 @@ const TimelineStep = ({ title, children }) => {
     <ListItem>
       <Stack ml={2} mb={4}>
         <Flex align="center">
-          <Icon name="check-circle" mr={2} color="whatsapp.500" />
+          <CheckCircleIcon mr={2} color="whatsapp.500" />
           <Text fontWeight="medium">{title}</Text>
         </Flex>
         <Text color={color[colorMode]} ml={6}>
@@ -256,7 +256,7 @@ const Timeline = () => {
           my={4}
           mx="auto"
           fontWeight="medium"
-          rightIcon="chevron-down"
+          rightIcon={<ChevronDownIcon />}
           variant="ghost"
           onClick={() => showFullTimeline(true)}
         >

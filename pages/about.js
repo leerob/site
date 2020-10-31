@@ -7,8 +7,8 @@ import {
   Flex,
   Stack,
   Link,
-  Icon
 } from '@chakra-ui/core';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 import Container from '../components/Container';
 import { CustomLink } from '../components/MDXComponents';
@@ -83,7 +83,7 @@ const About = () => {
               >
                 <Flex align="center">
                   Building Static Sites with Prisma and Next.js
-                  <Icon name="external-link" mx={2} size="16px" />
+                  <ExternalLinkIcon mx={2} boxSize="16px" />
                 </Flex>
               </Link>
             </Heading>
@@ -101,7 +101,7 @@ const About = () => {
               >
                 <Flex align="center">
                   Building Component Libraries with a Monorepo
-                  <Icon name="external-link" mx={2} size="16px" />
+                  <ExternalLinkIcon mx={2} boxSize="16px" />
                 </Flex>
               </Link>
             </Heading>
@@ -120,7 +120,7 @@ const About = () => {
               >
                 <Flex align="center">
                   Recruiting Engineers (From An Engineer's Perspective)
-                  <Icon name="external-link" mx={2} size="16px" />
+                  <ExternalLinkIcon mx={2} boxSize="16px" />
                 </Flex>
               </Link>
             </Heading>
