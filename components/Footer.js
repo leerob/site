@@ -61,6 +61,15 @@ const Footer = () => (
           variant="ghost"
         />
       </Link>
+      <Link href="https://myspace.leerob.io" title="MySpace" isExternal>
+        <IconButton
+          aria-label="MySpace"
+          icon="myspace"
+          size="lg"
+          color="gray.500"
+          variant="ghost"
+        />
+      </Link>
     </div>
     <div>
       <NextLink href="/uses" passHref>
