@@ -124,7 +124,7 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(handleUser);
+    const unsubscribe = firebase.auth().onIdTokenChanged(() => setUser(false));
     return () => unsubscribe();
   }, []);
 
