@@ -30,7 +30,7 @@ const Track = (track) => {
       <Stack spacing={0} ml={3}>
         <Link
           fontWeight="medium"
-          maxWidth="600px"
+          maxWidth={['250px', '600px']}
           whiteSpace="nowrap"
           overflow="hidden"
           textOverflow="ellipsis"
@@ -42,7 +42,7 @@ const Track = (track) => {
         <Text
           color="gray.500"
           mb={4}
-          maxWidth="600px"
+          maxWidth={['250px', '600px']}
           whiteSpace="nowrap"
           overflow="hidden"
           textOverflow="ellipsis"
