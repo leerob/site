@@ -62,9 +62,13 @@ export async function getServerSideProps({ req, res }) {
 
   if (!session) {
     // If no user, redirect to login
-    res.writeHead(307, { Location: '/login' });
-    res.end();
-    return { props: {} };
+    return {
+      props: {},
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    };
   }
 
   // If there is a user, return the current session
@@ -216,9 +220,13 @@ export async function getServerSideProps({ req, res }) {
   const session = await auth0.getSession(req);
 
   if (!session || !session.user) {
-    res.writeHead(307, { Location: '/api/login' });
-    res.end();
-    return { props: {} };
+    return {
+      props: {},
+      redirect: {
+        destination: '/api/login',
+        permanent: false
+      }
+    };
   }
 
   return { props: { user: session.user } };
@@ -264,9 +272,13 @@ export const requirePageAuth = (inner) => {
     const session = await getSession(context.req);
 
     if (!session) {
-      context.res.writeHead(307, { Location: '/login' });
-      context.res.end();
-      return { props: {} };
+      return {
+        props: {},
+        redirect: {
+          destination: '/login',
+          permanent: false
+        }
+      };
     }
 
     return inner ? inner(context, auth) : { props: { session } };
