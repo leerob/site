@@ -10,11 +10,9 @@ const NewsletterLink = (frontMatter) => {
     dark: 'gray.400'
   };
 
-  const slug = frontMatter.__resourcePath.replace('.mdx', '');
-
   return (
     <ListItem mb={2}>
-      <NextLink href={slug} passHref>
+      <NextLink href={frontMatter.slug} passHref>
         <Link color={secondaryTextColor[colorMode]}>
           {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
         </Link>

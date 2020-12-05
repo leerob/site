@@ -1,5 +1,6 @@
 import React from 'react';
-import IframeResizer from 'iframe-resizer-react';
+import { useRouter } from 'next/router';
+// import IframeResizer from 'iframe-resizer-react';
 import { parseISO, format } from 'date-fns';
 import {
   useColorMode,
@@ -25,9 +26,8 @@ const discussUrl = (slug) =>
   )}`;
 
 export default function BlogLayout({ children, frontMatter }) {
-  const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
-    .replace('.mdx', '');
+  const router = useRouter();
+  const slug = router.asPath;
   const { colorMode } = useColorMode();
   const textColor = {
     light: 'gray.700',
@@ -55,7 +55,7 @@ export default function BlogLayout({ children, frontMatter }) {
         >
           <Heading
             letterSpacing="tight"
-            mb={4}
+            mb={2}
             as="h1"
             size="2xl"
             lineHeight="60px"
@@ -86,7 +86,7 @@ export default function BlogLayout({ children, frontMatter }) {
             <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
               {frontMatter.readingTime.text}
               {` • `}
-              <ViewCounter id={slug} />
+              {/* <ViewCounter id={slug} /> */}
             </Text>
           </Flex>
         </Flex>
@@ -101,7 +101,7 @@ export default function BlogLayout({ children, frontMatter }) {
             {'Edit on GitHub'}
           </Link>
         </Box>
-        <IframeResizer
+        {/* <IframeResizer
           checkOrigin={false}
           title="Comments"
           src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}?theme=${colorMode}`}
@@ -109,7 +109,7 @@ export default function BlogLayout({ children, frontMatter }) {
             width: '1px',
             minWidth: '100%'
           }}
-        />
+        /> */}
       </Stack>
     </Container>
   );

@@ -14,19 +14,20 @@ import {
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import { frontMatter as blogPosts } from './blog/**/*.mdx';
-import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
-import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
-import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
+// // eslint-disable-next-line import/no-unresolved, import/extensions
+// import { frontMatter as blogPosts } from './blog/**/*.mdx';
+// import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
+// import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
+// import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
 import { SearchIcon } from '@chakra-ui/icons';
+import { getAllBlogFrontMatter } from '../lib/mdx';
 
 const url = 'https://leerob.io/blog';
 const title = 'Blog – Lee Robinson';
 const description =
   'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
 
-const Blog = () => {
+const Blog = ({ posts }) => {
   const [searchValue, setSearchValue] = useState('');
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
@@ -34,7 +35,9 @@ const Blog = () => {
     dark: 'gray.400'
   };
 
-  const filteredBlogPosts = blogPosts
+  console.log(posts);
+
+  const filteredBlogPosts = posts
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
@@ -75,7 +78,7 @@ const Blog = () => {
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
               {`I've been writing online since 2014, mostly about web development and tech careers.
-                In total, I've written ${blogPosts.length} articles on this site.
+                In total, I've written ${posts.length} articles on this site.
                 Use the search below to filter by title.`}
             </Text>
             <InputGroup my={4} mr={4} w="100%">
@@ -100,9 +103,18 @@ const Blog = () => {
               <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
                 Most Popular
               </Heading>
-              <BlogPost {...styleGuides} />
-              <BlogPost {...stripeDesign} />
-              <BlogPost {...monorepo} />
+              <BlogPost
+                title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
+                summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
+              />
+              <BlogPost
+                title="How Stripe Designs Beautiful Websites"
+                summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
+              />
+              <BlogPost
+                title="Creating a Monorepo with Lerna & Yarn Workspaces"
+                summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
+              />
             </Flex>
           )}
           <Flex
@@ -125,5 +137,11 @@ const Blog = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await getAllBlogFrontMatter();
+
+  return { props: { posts } };
+}
 
 export default Blog;

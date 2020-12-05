@@ -7,16 +7,12 @@ import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/react';
 import fetcher from '../lib/fetcher';
 
 const BlogPost = (frontMatter) => {
-  const { title, summary } = frontMatter;
+  const { title, summary, slug } = frontMatter;
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
     dark: 'gray.400'
   };
-
-  const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
-    .replace('.mdx', '');
 
   const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
   const views = data?.total;

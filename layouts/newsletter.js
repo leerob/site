@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { parseISO, format } from 'date-fns';
 import {
   useColorMode,
@@ -14,10 +15,8 @@ import Subscribe from '../components/Subscribe';
 import BlogSeo from '../components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
-  const slug = frontMatter.__resourcePath
-    .replace('newsletter/', '')
-    .replace('.mdx', '');
-
+  const router = useRouter();
+  const slug = router.asPath;
   const { colorMode } = useColorMode();
   const textColor = {
     light: 'gray.700',
