@@ -2,7 +2,7 @@ import hydrate from 'next-mdx-remote/hydrate';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { getFiles, getFileBySlug } from '../../lib/mdx';
-import BlogLayout from '../../layouts/blog';
+import BlogLayout from '../../layouts/blogg';
 import MDXComponents from '../../components/MDXComponents';
 import theme from '../../styles/theme';
 
