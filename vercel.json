@@ -27,6 +27,10 @@
     {
       "source": "/blog/going-serverless-next-firebase-now",
       "destination": "/blog/nextjs-firebase-serverless"
+    },
+    {
+      "source": "/30min",
+      "destination": "https://calendly.com/lee-vercel/30min"
     }
   ],
   "headers": [
