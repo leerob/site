@@ -24,6 +24,11 @@ const prismBaseTheme = css`
     -ms-hyphens: none;
     hyphens: none;
     width: 100%;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  pre[class*='language-']::-webkit-scrollbar {
+    display: none;
   }
   /* Code blocks */
   pre[class*='language-'] {
@@ -137,7 +142,7 @@ const prismBaseTheme = css`
     + pre {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      margin-top: 0;
+      margin-top: 0 !important;
     }
   }
 `;

@@ -11,6 +11,15 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import NextImage from 'next/image';
+import Tweet from 'react-tweet-embed';
+import ProsCard from './ProsCard';
+import ConsCard from './ConsCard';
+import Gumroad from './metrics/Gumroad';
+import Unsplash from './metrics/Unsplash';
+import Analytics from './metrics/Analytics';
+import YouTube from './metrics/Youtube';
+import ProjectCard from './ProjectCard';
+import TopTracks from './TopTracks';
 
 const Table = (props) => (
   <Box overflowX="scroll" w="full">
@@ -177,7 +186,17 @@ const MDXComponents = {
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
-  blockquote: Quote
+  blockquote: Quote,
+  Analytics,
+  Box,
+  ConsCard,
+  Gumroad,
+  ProjectCard,
+  ProsCard,
+  Tweet,
+  TopTracks,
+  Unsplash,
+  YouTube
 };
 
 export { CustomLink };

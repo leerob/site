@@ -5,8 +5,6 @@ summary: 'The missing documentation for making requests to the Gumroad API from 
 image: '/static/images/gumroad-node-api/banner.jpg'
 ---
 
-import Gumroad from '../../components/metrics/Gumroad';
-
 While exploring the [Gumroad API](https://gumroad.com/api) for my [personal dashboard](/dashboard),
 I struggled to find any examples using Node.js. Yes, there was a cURL example.
 
@@ -82,9 +80,6 @@ return res.status(200).json({ sales: allSales });
 ```
 
 The first example allowed me to fetch my total sales and display it on my dashboard. Hooray! 🎉
-
-import { Box } from '@chakra-ui/react';
-import ProjectCard from '../../components/ProjectCard';
 
 <Box mb={4}>
   <Gumroad />
