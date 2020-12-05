@@ -7,10 +7,6 @@ import BlogPost from '../components/BlogPost';
 import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
 
-import { frontMatter as styleGuides } from './blog/style-guides-component-libraries-design-systems.mdx';
-import { frontMatter as stripeDesign } from './blog/how-stripe-designs-beautiful-websites.mdx';
-import { frontMatter as monorepo } from './blog/monorepo-lerna-yarn-workspaces.mdx';
-
 const Index = () => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
@@ -54,9 +50,18 @@ const Index = () => {
           <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
             Most Popular
           </Heading>
-          <BlogPost {...styleGuides} />
-          <BlogPost {...stripeDesign} />
-          <BlogPost {...monorepo} />
+          <BlogPost
+            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
+            summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
+          />
+          <BlogPost
+            title="How Stripe Designs Beautiful Websites"
+            summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
+          />
+          <BlogPost
+            title="Creating a Monorepo with Lerna & Yarn Workspaces"
+            summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
+          />
         </Flex>
         <Flex
           flexDirection="column"

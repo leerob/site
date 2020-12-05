@@ -12,16 +12,14 @@ import {
 import Container from '../components/Container';
 import Subscribe from '../components/Subscribe';
 import NewsletterLink from '../components/NewsletterLink';
-
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import { frontMatter as newsletters } from './newsletter/**/*.mdx';
+import { getAllFilesFrontMatter } from '../lib/mdx';
 
 const url = 'https://leerob.io/newsletter';
 const title = 'Newsletter – Lee Robinson';
 const description =
   'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
 
-const Newsletter = () => {
+const Newsletter = ({ newsletters }) => {
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
@@ -93,5 +91,11 @@ const Newsletter = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const newsletters = await getAllFilesFrontMatter('newsletter');
+
+  return { props: { newsletters } };
+}
 
 export default Newsletter;

@@ -1,8 +1,8 @@
 import hydrate from 'next-mdx-remote/hydrate';
 
-import { getFileBySlug } from '../../lib/blog';
-import UsesLayout from '../../layouts/Uses';
-import MDXComponents from '../../components/MDXComponents';
+import { getFileBySlug } from '../lib/mdx';
+import UsesLayout from '../layouts/Uses';
+import MDXComponents from '../components/MDXComponents';
 
 export default function Uses({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {
