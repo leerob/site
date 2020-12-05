@@ -9,11 +9,7 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 
-import {
-  React2025Icon,
-  JamstackfnsIcon,
-  NextjsIcon
-} from './icons/customIcons';
+import { React2025Icon, JamstackfnsIcon, NextjsIcon } from './icons';
 
 const trackGoal = (title) => {
   const goalCodes = {

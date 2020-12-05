@@ -10,8 +10,7 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 
-import { SpotifyIcon } from './icons/customIcons';
-
+import { SpotifyIcon } from './icons';
 import fetcher from '../lib/fetcher';
 
 const NowPlaying = () => {

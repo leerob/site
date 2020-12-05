@@ -8,7 +8,7 @@ import {
   MailIcon,
   LinkedinIcon,
   MyspaceIcon
-} from './icons/customIcons';
+} from './icons';
 
 import NowPlaying from './NowPlaying';
 

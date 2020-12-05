@@ -8,7 +8,7 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 
-import { XIcon } from './icons/customIcons';
+import { XIcon } from './icons';
 
 const ConsCard = ({ title, cons }) => {
   const { colorMode } = useColorMode();

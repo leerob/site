@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Code,
   Heading,
@@ -9,6 +10,7 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import NextImage from 'next/image';
 
 const Table = (props) => (
   <Box overflowX="scroll" w="full">
@@ -148,6 +150,14 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
 };
 
+const Image = ({ alt, src }) => {
+  return (
+    <Box w="100%" position="relative">
+      <NextImage alt={alt} src={src} layout="fill" objectFit="cover" />
+    </Box>
+  );
+};
+
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
@@ -158,6 +168,7 @@ const MDXComponents = {
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
+  // img: Image,
   table: Table,
   th: THead,
   td: TData,
