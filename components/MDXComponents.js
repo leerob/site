@@ -161,9 +161,22 @@ const Hr = () => {
 
 const Image = ({ alt, src }) => {
   return (
-    <Box w="100%" position="relative">
-      <NextImage alt={alt} src={src} layout="fill" objectFit="cover" />
-    </Box>
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '200px'
+      }}
+    >
+      <NextImage
+        alt={alt}
+        src={src}
+        // width={400}
+        // height={400}
+        layout="fill"
+        objectFit="cover"
+      />
+    </div>
   );
 };
 
@@ -177,7 +190,7 @@ const MDXComponents = {
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
-  // img: Image,
+  img: Image,
   table: Table,
   th: THead,
   td: TData,
