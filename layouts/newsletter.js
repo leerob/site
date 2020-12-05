@@ -43,7 +43,7 @@ export default function NewsletterLayout({ children, frontMatter }) {
           maxWidth="700px"
           w="100%"
         >
-          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+          <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
             {frontMatter.title}
           </Heading>
           <Flex

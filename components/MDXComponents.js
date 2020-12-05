@@ -111,8 +111,8 @@ const DocsHeading = (props) => (
       '&[id]:hover a': { opacity: 1 }
     }}
     {...props}
-    mb="1em"
-    mt="2em"
+    mb={0}
+    pt={8}
   >
     <Box pointerEvents="auto">
       {props.children}

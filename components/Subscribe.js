@@ -25,6 +25,14 @@ const Subscribe = () => {
     light: 'blue.200',
     dark: 'blue.900'
   };
+  const inputColor = {
+    light: 'white',
+    dark: 'blue.800'
+  };
+  const buttonColor = {
+    light: 'gray.100',
+    dark: 'blue.700'
+  };
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -76,7 +84,7 @@ const Subscribe = () => {
       my={4}
       w="100%"
     >
-      <Heading as="h5" size="lg" mb={2}>
+      <Heading as="h5" size="md" mb={2}>
         Subscribe to the newsletter
       </Heading>
       <Text>
@@ -87,16 +95,20 @@ const Subscribe = () => {
         <Input
           aria-label="Email for newsletter"
           placeholder="tim@apple.com"
+          bg={inputColor[colorMode]}
           ref={inputEl}
           type="email"
+          pr={2}
         />
-        <InputRightElement width="6.75rem">
+        <InputRightElement width="7.75rem" pr={2}>
           <Button
             isLoading={loading}
             fontWeight="bold"
             h="1.75rem"
+            px={4}
             size="sm"
             onClick={subscribe}
+            bg={buttonColor[colorMode]}
           >
             Subscribe
           </Button>

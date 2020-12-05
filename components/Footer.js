@@ -6,7 +6,8 @@ import {
   TwitterIcon,
   YoutubeIcon,
   MailIcon,
-  LinkedinIcon
+  LinkedinIcon,
+  MyspaceIcon
 } from './icons/customIcons';
 
 import NowPlaying from './NowPlaying';
@@ -71,7 +72,7 @@ const Footer = () => (
       <Link href="https://myspace.leerob.io" title="MySpace" isExternal>
         <IconButton
           aria-label="MySpace"
-          icon="myspace"
+          icon={<MyspaceIcon />}
           size="lg"
           color="gray.500"
           variant="ghost"

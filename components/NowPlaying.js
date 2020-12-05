@@ -39,7 +39,7 @@ const NowPlaying = () => {
           alt="Spotify album cover"
           height="60px"
           width="60px"
-          borderRadius={8}
+          borderRadius={6}
           src={data?.albumImageUrl || '/static/images/placeholder.jpg'}
         />
       </Skeleton>

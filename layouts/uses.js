@@ -46,7 +46,7 @@ export default function UsesLayout({ children }) {
           maxWidth="700px"
           w="100%"
         >
-          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+          <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
             My Gear
           </Heading>
           <Flex mt={2} w="100%">

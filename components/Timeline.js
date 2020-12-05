@@ -30,16 +30,14 @@ const TimelineStep = ({ title, children }) => {
   };
 
   return (
-    <ListItem>
-      <Stack ml={2} mb={4}>
-        <Flex align="center">
-          <CheckCircleIcon mr={2} color="whatsapp.500" />
-          <Text fontWeight="medium">{title}</Text>
-        </Flex>
-        <Text color={color[colorMode]} ml={6}>
-          {children}
-        </Text>
-      </Stack>
+    <ListItem mb={4} ml={2}>
+      <Flex align="center" mb={2}>
+        <CheckCircleIcon mr={2} color="cyan.500" />
+        <Text fontWeight="medium">{title}</Text>
+      </Flex>
+      <Text color={color[colorMode]} ml={6}>
+        {children}
+      </Text>
     </ListItem>
   );
 };
@@ -47,7 +45,7 @@ const TimelineStep = ({ title, children }) => {
 const FullTimeline = () => (
   <>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       2018
     </Heading>
     <List>
@@ -62,7 +60,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       2016
     </Heading>
     <List>
@@ -84,7 +82,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       2015
     </Heading>
     <List>
@@ -102,7 +100,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       2014
     </Heading>
     <List>
@@ -116,7 +114,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       2011
     </Heading>
     <List>
@@ -139,7 +137,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       1998
     </Heading>
     <List>
@@ -149,7 +147,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       1997
     </Heading>
     <List>
@@ -159,7 +157,7 @@ const FullTimeline = () => (
       </TimelineStep>
     </List>
     <YearDivider />
-    <Heading as="h3" size="lg" fontWeight="bold" mb={4} letterSpacing="tighter">
+    <Heading as="h3" size="md" fontWeight="bold" mb={4} letterSpacing="tighter">
       1993
     </Heading>
     <List>
@@ -184,7 +182,7 @@ const Timeline = () => {
       </Heading>
       <Heading
         as="h3"
-        size="lg"
+        size="md"
         fontWeight="bold"
         mb={4}
         letterSpacing="tighter"
@@ -219,7 +217,7 @@ const Timeline = () => {
       <YearDivider />
       <Heading
         as="h3"
-        size="lg"
+        size="md"
         fontWeight="bold"
         mb={4}
         letterSpacing="tighter"

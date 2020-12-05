@@ -55,7 +55,7 @@ const Newsletter = () => {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+            <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
               Newsletter
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>
