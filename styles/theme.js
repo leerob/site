@@ -1,10 +1,10 @@
 import React from 'react';
-import { theme as chakraTheme, extendTheme } from '@chakra-ui/core';
+import { theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 
 const config = {
   useSystemColorMode: true,
-  initialColorMode: 'system',
-}
+  initialColorMode: 'system'
+};
 
 const theme = extendTheme({
   ...chakraTheme,

@@ -1,5 +1,5 @@
-import { css } from '@emotion/core';
-import { theme } from '@chakra-ui/core';
+import { css } from '@emotion/react';
+import { theme } from '@chakra-ui/react';
 
 const prismBaseTheme = css`
   code {

@@ -1,7 +1,13 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Flex, Link, IconButton } from '@chakra-ui/core';
-import { GithubIcon, TwitterIcon, YoutubeIcon, MailIcon, LinkedinIcon } from './icons/customIcons';
+import { Flex, Link, IconButton } from '@chakra-ui/react';
+import {
+  GithubIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  MailIcon,
+  LinkedinIcon
+} from './icons/customIcons';
 
 import NowPlaying from './NowPlaying';
 

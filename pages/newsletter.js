@@ -7,7 +7,7 @@ import {
   Flex,
   Stack,
   List
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import Container from '../components/Container';
 import Subscribe from '../components/Subscribe';

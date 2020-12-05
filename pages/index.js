@@ -1,5 +1,5 @@
 import React from 'react';
-import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/core';
+import { useColorMode, Heading, Text, Flex, Stack } from '@chakra-ui/react';
 
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';

@@ -8,7 +8,7 @@ import {
   Text,
   Skeleton,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import { SpotifyIcon } from './icons/customIcons';
 

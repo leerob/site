@@ -7,9 +7,13 @@ import {
   Text,
   Stack,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
-import { React2025Icon, JamstackfnsIcon, NextjsIcon } from './icons/customIcons';
+import {
+  React2025Icon,
+  JamstackfnsIcon,
+  NextjsIcon
+} from './icons/customIcons';
 
 const trackGoal = (title) => {
   const goalCodes = {
@@ -51,15 +55,33 @@ const ProjectCard = ({ title, description, href, icon }) => {
         borderRadius={4}
         p={4}
       >
-        {
-          icon == 'react2025' && <React2025Icon aria-label="React2025" color={iconColor[colorMode]} boxSize="32px" ml={2} mr={4} />
-        }
-        {
-          icon == 'nextjs' && <NextjsIcon aria-label="NextJS" color={iconColor[colorMode]} boxSize="32px" ml={2} mr={4} />
-        }
-        {
-          icon == 'jamstackfns' && <JamstackfnsIcon aria-label="JamstackFns" color={iconColor[colorMode]} boxSize="32px" ml={2} mr={4} />
-        }
+        {icon == 'react2025' && (
+          <React2025Icon
+            aria-label="React2025"
+            color={iconColor[colorMode]}
+            boxSize="32px"
+            ml={2}
+            mr={4}
+          />
+        )}
+        {icon == 'nextjs' && (
+          <NextjsIcon
+            aria-label="NextJS"
+            color={iconColor[colorMode]}
+            boxSize="32px"
+            ml={2}
+            mr={4}
+          />
+        )}
+        {icon == 'jamstackfns' && (
+          <JamstackfnsIcon
+            aria-label="JamstackFns"
+            color={iconColor[colorMode]}
+            boxSize="32px"
+            ml={2}
+            mr={4}
+          />
+        )}
         <Stack>
           <Heading
             as="h4"

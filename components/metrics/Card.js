@@ -1,5 +1,5 @@
 import React from 'react';
-import { useColorMode, Text, Flex, Box, Link } from '@chakra-ui/core';
+import { useColorMode, Text, Flex, Box, Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const MetricCard = ({ header, link, metric }) => {

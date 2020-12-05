@@ -7,7 +7,7 @@ import {
   Flex,
   Stack,
   SimpleGrid
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import Analytics from '../components/metrics/Analytics';
 import Buttondown from '../components/metrics/Buttondown';

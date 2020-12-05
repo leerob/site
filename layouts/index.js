@@ -10,7 +10,7 @@ import {
   Avatar,
   Link,
   Box
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import Container from '../components/Container';
 import Subscribe from '../components/Subscribe';

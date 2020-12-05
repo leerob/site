@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { parseISO, format } from 'date-fns';
-import { useColorMode, Link, ListItem } from '@chakra-ui/core';
+import { useColorMode, Link, ListItem } from '@chakra-ui/react';
 
 const NewsletterLink = (frontMatter) => {
   const { colorMode } = useColorMode();

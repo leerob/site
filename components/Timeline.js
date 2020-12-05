@@ -9,7 +9,7 @@ import {
   ListItem,
   Stack,
   Divider
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { CheckCircleIcon, ChevronDownIcon } from '@chakra-ui/icons';
 
 const YearDivider = () => {

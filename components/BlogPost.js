@@ -2,7 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import useSWR from 'swr';
 import format from 'comma-number';
-import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
+import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/react';
 
 import fetcher from '../lib/fetcher';
 

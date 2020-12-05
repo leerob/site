@@ -8,8 +8,8 @@ import {
   Stack,
   Input,
   InputGroup,
-  InputRightElement,
-} from '@chakra-ui/core';
+  InputRightElement
+} from '@chakra-ui/react';
 
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';

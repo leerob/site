@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, List, ListItem } from '@chakra-ui/core';
+import { Button, List, ListItem } from '@chakra-ui/react';
 
 import concerts from '../data/concerts';
 

@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import GoogleFonts from 'next-google-fonts';
-import { ColorModeScript } from '@chakra-ui/core';
+import { ColorModeScript } from '@chakra-ui/react';
 import theme from '../styles/theme';
 
 class MyDocument extends Document {

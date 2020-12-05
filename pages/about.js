@@ -6,8 +6,8 @@ import {
   Text,
   Flex,
   Stack,
-  Link,
-} from '@chakra-ui/core';
+  Link
+} from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 import Container from '../components/Container';

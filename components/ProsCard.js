@@ -6,7 +6,7 @@ import {
   Text,
   Box,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { CheckIcon } from './icons/customIcons';
 
 const ProsCard = ({ title, pros }) => {

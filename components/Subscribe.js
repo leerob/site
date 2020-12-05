@@ -10,7 +10,7 @@ import {
   Text,
   useToast,
   useColorMode
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 const Subscribe = () => {
   const [loading, setLoading] = useState(false);

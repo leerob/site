@@ -7,7 +7,7 @@ import {
   Flex,
   Stack,
   Avatar
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import Container from '../components/Container';
 

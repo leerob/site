@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import { MDXProvider } from '@mdx-js/react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 import { DefaultSeo } from 'next-seo';
-import {
-  useColorMode,
-  ChakraProvider
-} from '@chakra-ui/core';
+import { useColorMode, ChakraProvider } from '@chakra-ui/react';
 import Router from 'next/router';
 import Head from 'next/head';
 import * as Fathom from 'fathom-client';
