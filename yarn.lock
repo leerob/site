@@ -5995,10 +5995,9 @@ next-google-fonts@1.2.1:
   resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-1.2.1.tgz#0b517cff3f34b8f7836f81eb9427973c8b4ac03e"
   integrity sha512-BhVSldP1oZBTwXeJdMtjmu2qbDT1EkbQO2rG83Oj6APYm6aUsIcMu00Pzkzd8TTkrQW9HyC08Pzr10PY4pE6jA==
 
-next-mdx-remote@^1.0.0:
+next-mdx-remote@hashicorp/next-mdx-remote#devrsi0n-custom-provider:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-1.0.0.tgz#b4b1480faa56bd7d907d6cf8c3ad1bf7e8ce06f9"
-  integrity sha512-18QulBpZKCMRiDx1YTlCwKWu3HWHqw4dXDeTHrJK0s5cJPbMhITwFIxZRhtzGPPPI1OxbmcLB76OpnRafBxymg==
+  resolved "https://codeload.github.com/hashicorp/next-mdx-remote/tar.gz/f498947863214e476ad4fdcb6acc798a14196a21"
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
