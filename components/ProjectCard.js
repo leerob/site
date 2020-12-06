@@ -79,13 +79,7 @@ const ProjectCard = ({ title, description, href, icon }) => {
           />
         )}
         <Stack>
-          <Heading
-            as="h4"
-            size="md"
-            fontWeight="bold"
-            mb={4}
-            letterSpacing="tighter"
-          >
+          <Heading as="h4" size="md" fontWeight="bold" letterSpacing="tighter">
             {title}
           </Heading>
           <Text lineHeight="1.3">{description}</Text>

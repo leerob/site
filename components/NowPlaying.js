@@ -50,6 +50,7 @@ const NowPlaying = () => {
         display="flex"
         flexDirection="column"
         ml={3}
+        mt={1}
       >
         <Link
           fontWeight="medium"

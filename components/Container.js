@@ -41,8 +41,7 @@ const Container = ({ children }) => {
         bg={navBgColor[colorMode]}
         as="nav"
         p={8}
-        mt={[0, 8]}
-        mb={8}
+        my={[0, 8]}
         mx="auto"
       >
         <IconButton

@@ -16,7 +16,7 @@ import BlogSeo from '../components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
   const router = useRouter();
-  const slug = router.asPath;
+  const slug = router.asPath.replace('/newsletter', '');
   const { colorMode } = useColorMode();
   const textColor = {
     light: 'gray.700',
@@ -47,7 +47,7 @@ export default function NewsletterLayout({ children, frontMatter }) {
             mb={4}
             as="h1"
             size="2xl"
-            lineHeight="60px"
+            lineHeight={['40px', '60px']}
           >
             {frontMatter.title}
           </Heading>
