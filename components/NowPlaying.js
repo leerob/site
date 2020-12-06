@@ -32,8 +32,9 @@ const NowPlaying = () => {
       borderColor={borderColor[colorMode]}
       p={2}
       w="300px"
+      lineHeight={1}
     >
-      <Skeleton isLoaded={data}>
+      <Skeleton isLoaded={data} mb={0}>
         <Image
           alt="Spotify album cover"
           height="60px"
@@ -68,11 +69,12 @@ const NowPlaying = () => {
           whiteSpace="nowrap"
           overflow="hidden"
           textOverflow="ellipsis"
+          pt={2}
         >
           {data && (data?.artist || 'Spotify')}
         </Text>
       </Stack>
-      <SpotifyIcon ml="auto" mt={1} />
+      <SpotifyIcon ml="auto" />
     </Box>
   );
 };

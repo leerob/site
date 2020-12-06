@@ -11,8 +11,8 @@ const NewsletterLink = (frontMatter) => {
   };
 
   return (
-    <ListItem mb={2}>
-      <NextLink href={frontMatter.slug} passHref>
+    <ListItem mb={2} ml={4}>
+      <NextLink href={`newsletter/${frontMatter.slug}`} passHref>
         <Link color={secondaryTextColor[colorMode]}>
           {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
         </Link>
