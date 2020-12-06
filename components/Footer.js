@@ -13,7 +13,7 @@ import {
 import NowPlaying from './NowPlaying';
 
 const Footer = () => (
-  <Flex align="center" mb={4} direction="column">
+  <Flex align="center" mb={8} direction="column">
     <NowPlaying />
     <div>
       <Link href="https://twitter.com/leeerob" title="Twitter" isExternal>

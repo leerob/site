@@ -11,17 +11,17 @@ const getProductSales = async (id) => {
 
   const { product } = await response.json();
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  );
-
   return new Big(product.sales_usd_cents).div(100);
 };
 
 export default async (_, res) => {
   const masteringNextSales = await getProductSales('sDpG');
   const react2025Sales = await getProductSales('TifxZ');
+
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
 
   return res.status(200).json({
     sales: masteringNextSales.plus(react2025Sales).toFixed(0)
