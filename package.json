@@ -16,8 +16,7 @@
     "build": "next build",
     "dev": "next",
     "start": "next start",
-    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,yml}\"",
-    "postinstall": "patch-package"
+    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,yml}\""
   },
   "dependencies": {
     "@chakra-ui/icons": "1.0.1",
@@ -43,8 +42,6 @@
     "next-google-fonts": "1.2.1",
     "next-mdx-remote": "hashicorp/next-mdx-remote#devrsi0n-custom-provider",
     "next-seo": "4.17.0",
-    "patch-package": "6.2.2",
-    "postinstall-postinstall": "2.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-tweet-embed": "1.2.2",
