@@ -113,6 +113,17 @@ const Footer = () => (
           /newsletter
         </Link>
       </NextLink>
+      <NextLink href="/snippets" passHref>
+        <Link
+          fontSize="sm"
+          color="gray.500"
+          minWidth="100px"
+          mr={2}
+          title="Snippets"
+        >
+          /snippets
+        </Link>
+      </NextLink>
     </div>
   </Flex>
 );

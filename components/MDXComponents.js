@@ -20,6 +20,7 @@ import Analytics from './metrics/Analytics';
 import YouTube from './metrics/Youtube';
 import ProjectCard from './ProjectCard';
 import TopTracks from './TopTracks';
+import Step from './Step';
 
 const Table = (props) => (
   <Box overflowX="scroll" w="full">
@@ -189,6 +190,7 @@ const MDXComponents = {
   Gumroad,
   ProjectCard,
   ProsCard,
+  Step,
   Tweet,
   TopTracks,
   Unsplash,
