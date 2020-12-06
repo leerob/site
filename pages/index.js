@@ -82,16 +82,16 @@ const Index = () => {
             icon="react2025"
           />
           <ProjectCard
-            title="Mastering Next.js"
+            title="Learn Next.js"
             description="A free video course for building static and server-side rendered applications with Next.js and React."
             href="https://masteringnextjs.com/"
             icon="nextjs"
           />
           <ProjectCard
-            title="jamstackfns"
-            description="The best serverless functions for JAMstack applications. Deploy to Vercel or Netlify for your static site."
-            href="https://jamstackfns.com/"
-            icon="jamstackfns"
+            title="Fast Feedback"
+            description="The easiest way to add comments or reviews to your static site. Built as part of React 2025."
+            href="https://fastfeedback.io/"
+            icon="fastfeedback"
           />
         </Flex>
         <Timeline />

@@ -14,7 +14,7 @@ export default async (req, res) => {
     await sendgrid.send({
       to: 'your@email.com',
       from: 'your@email.com',
-      subject: 'jamstackfns',
+      subject: 'Serverless Functions',
       text: 'Hello, world!'
     });
   } catch (error) {

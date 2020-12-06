@@ -9,13 +9,12 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 
-import { React2025Icon, JamstackfnsIcon, NextjsIcon } from './icons';
+import { React2025Icon, FastFeedbackIcon, NextjsIcon } from './icons';
 
 const trackGoal = (title) => {
   const goalCodes = {
     'React 2025': '5WGDOKV0',
-    'Mastering Next.js': 'HV9HDL0O',
-    jamstackfns: 'LRXBPLZS'
+    'Mastering Next.js': 'HV9HDL0O'
   };
 
   Fathom.trackGoal(goalCodes[title], 0);
@@ -53,7 +52,7 @@ const ProjectCard = ({ title, description, href, icon }) => {
       >
         {icon == 'react2025' && (
           <React2025Icon
-            aria-label="React2025"
+            aria-label="React 2025"
             color={iconColor[colorMode]}
             boxSize="32px"
             ml={2}
@@ -62,16 +61,16 @@ const ProjectCard = ({ title, description, href, icon }) => {
         )}
         {icon == 'nextjs' && (
           <NextjsIcon
-            aria-label="NextJS"
+            aria-label="Learn Next.js"
             color={iconColor[colorMode]}
             boxSize="32px"
             ml={2}
             mr={4}
           />
         )}
-        {icon == 'jamstackfns' && (
-          <JamstackfnsIcon
-            aria-label="JamstackFns"
+        {icon == 'fastfeedback' && (
+          <FastFeedbackIcon
+            aria-label="Fast Feedback"
             color={iconColor[colorMode]}
             boxSize="32px"
             ml={2}

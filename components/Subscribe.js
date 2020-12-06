@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
+import NextLink from 'next/link';
 import { trackGoal } from 'fathom-client';
+import useSWR from 'swr';
+import format from 'comma-number';
 import {
   Heading,
   InputGroup,
+  Link,
   Box,
   Input,
   InputRightElement,
@@ -11,6 +15,8 @@ import {
   useToast,
   useColorMode
 } from '@chakra-ui/react';
+
+import fetcher from '../lib/fetcher';
 
 const Subscribe = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +39,13 @@ const Subscribe = () => {
     light: 'gray.100',
     dark: 'blue.700'
   };
+  const secondaryText = {
+    light: 'gray.800',
+    dark: 'gray.200'
+  };
+
+  const { data } = useSWR('/api/subscribers', fetcher);
+  const subscriberCount = format(data?.count);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -91,7 +104,7 @@ const Subscribe = () => {
         Get emails from me about web development, tech, and early access to new
         articles.
       </Text>
-      <InputGroup size="md" mt={4}>
+      <InputGroup size="md" my={4}>
         <Input
           aria-label="Email for newsletter"
           placeholder="tim@apple.com"
@@ -114,6 +127,12 @@ const Subscribe = () => {
           </Button>
         </InputRightElement>
       </InputGroup>
+      <Text color={secondaryText[colorMode]} fontSize="sm">
+        {`${subscriberCount || '-'} subscribers – `}
+        <NextLink href="/newsletter" passHref>
+          <Link>{`24 issues`}</Link>
+        </NextLink>
+      </Text>
     </Box>
   );
 };
