@@ -32,7 +32,6 @@ const NowPlaying = () => {
       borderColor={borderColor[colorMode]}
       p={2}
       w="300px"
-      lineHeight={1}
     >
       <Skeleton isLoaded={data} mb={0}>
         <Image
@@ -50,7 +49,6 @@ const NowPlaying = () => {
         display="flex"
         flexDirection="column"
         ml={3}
-        mt={1}
       >
         <Link
           fontWeight="medium"
@@ -65,17 +63,16 @@ const NowPlaying = () => {
         </Link>
         <Text
           color="gray.500"
-          mb={4}
           maxWidth="190px"
           whiteSpace="nowrap"
           overflow="hidden"
           textOverflow="ellipsis"
-          pt={2}
+          pt={1}
         >
           {data && (data?.artist || 'Spotify')}
         </Text>
       </Stack>
-      <SpotifyIcon ml="auto" />
+      <SpotifyIcon ml="auto" mt={1} />
     </Box>
   );
 };

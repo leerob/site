@@ -39,7 +39,7 @@ const ProsCard = ({ title, pros }) => {
             alignItems="baseline"
             display="flex"
           >
-            <ListIcon icon={<CheckIcon />} color="green.500" />
+            <ListIcon as={CheckIcon} color="green.500" />
             <Text>{pro}</Text>
           </ListItem>
         ))}

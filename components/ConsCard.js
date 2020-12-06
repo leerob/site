@@ -40,7 +40,7 @@ const ConsCard = ({ title, cons }) => {
             alignItems="baseline"
             display="flex"
           >
-            <ListIcon icon={<XIcon />} color="red.500" />
+            <ListIcon as={XIcon} color="red.500" />
             <Text>{con}</Text>
           </ListItem>
         ))}

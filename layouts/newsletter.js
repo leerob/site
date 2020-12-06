@@ -47,7 +47,7 @@ export default function NewsletterLayout({ children, frontMatter }) {
             mb={4}
             as="h1"
             size="2xl"
-            lineHeight={['40px', '60px']}
+            lineHeight={['40px', null, '60px']}
           >
             {frontMatter.title}
           </Heading>

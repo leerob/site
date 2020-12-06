@@ -14,15 +14,15 @@ Since then, I've learned a lot about style guides, design systems, component lib
 ## Table of Contents
 
 1.  [Why Should You Care?](#why-should-you-care)
-2.  [What Is a Style Guide?](#what-is-a-style-guide)
-3.  [What Is a Component Library?](#what-is-a-component-library)
-4.  [What Is a Design System?](#what-is-a-design-system)
+2.  [What is a Style Guide?](#what-is-a-style-guide)
+3.  [What is a Component Library?](#what-is-a-component-library)
+4.  [What is a Design System?](#what-is-a-design-system)
 5.  [Where Should You Begin?](#where-should-you-begin)
 6.  [Building the Design System](#building-the-design-system)
 7.  [Conclusion](#conclusion)
 8.  [Resources](#resources)
 
-## Why should you care?
+## Why Should You Care?
 
 Every website starts simple. There's maybe one page with a few distinct pieces. It has modest intentions.
 
@@ -44,7 +44,7 @@ To prevent this issue from happening, or to fix the existing lack of consistency
 
 Don't worry if you have no idea what I'm talking about yet. By the end of this article, you'll have consumed almost a year's worth of trial & error, research, and development.
 
-## What is a Style Guide?
+## What Is a Style Guide?
 
 [![Style Guide](/static/images/style-guides-component-libraries-design-systems/style-guide.png)](https://dribbble.com/shots/6161977-BlueVine-Product-Style-Guide)
 
@@ -76,7 +76,7 @@ A design system should contain:
 - **Components** -- The building blocks for developing new products and features.
 - **Patterns** -- The individual pieces for creating meaningful product experiences.
 
-## Where should you begin?
+## Where Should You Begin?
 
 Depending on the state of your company/product, you might have a different starting point. This is the outline before we dive into specifics.
 
@@ -200,17 +200,23 @@ A [Monorepo](https://www.toptal.com/front-end/guide-to-monorepos) allows you to 
 
 [![Monorepo](/static/images/style-guides-component-libraries-design-systems/monorepo.png)](https://www.toptal.com/front-end/guide-to-monorepos)
 
-**Pros**
+<ProsCard
+  title="monorepo"
+  pros={[
+    'Small bundle sizes by decreasing the scope of components included in one package.',
+    'Shared built, lint, test, and release process for multiple packages versus separate repositories with duplicated code.',
+    'More granular control of semver on a package-by-package basis.'
+  ]}
+/>
 
-- ✅ Small bundle sizes by decreasing the scope of components included in one package.
-- ✅ Shared built, lint, test, and release process for multiple packages versus separate repositories with duplicated code.
-- ✅ More granular control of [semver](https://semver.org/) on a package-by-package basis.
-
-**Cons**
-
-- ⛔️ Additional tooling and infrastructure needed.
-- ⛔️ Consumers are required to import from a variety of packages instead of one single component library.
-- ⛔️ Cutting edge technology. There is industry adoption, but you can run into issues very few have experienced without a clear path for a solution.
+<ConsCard
+  title="monorepo"
+  cons={[
+    'Additional tooling and infrastructure needed.',
+    'Consumers are required to import from a variety of packages instead of one single component library.',
+    `Cutting edge technology. There is industry adoption, but you can run into issues very few have experienced without a clear path for a solution.`
+  ]}
+/>
 
 Some questions that will help you identify which solution is right for your company.
 
