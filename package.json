@@ -15,8 +15,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
-    "start": "next start",
-    "prettier": "prettier --write \"**/*.{html,js,json,md,mdx,yml}\""
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.0.1",
