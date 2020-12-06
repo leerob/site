@@ -5,7 +5,13 @@ summary: 'Learn how to build a serverless application with Next.js, Firebase, Cl
 image: '/static/images/nextjs-firebase-serverless/banner.jpg'
 ---
 
-![Next.js + Firebase + Vercel](/static/images/nextjs-firebase-serverless/banner.png)
+<Image
+  alt={`Next.js + Firebase + Vercel`}
+  src={`/static/images/nextjs-firebase-serverless/banner.png`}
+  width={1000}
+  height={571}
+  priority
+/>
 
 A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
 
@@ -21,7 +27,12 @@ For the main website, the requirements were fairly straight forward:
 - Save off information from a contact form.
 - Cheap hosting. Ideally free.
 
-![BeyondHQ](/static/images/nextjs-firebase-serverless/landing.png)
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/landing.png`}
+  width={1000}
+  height={498}
+/>
 
 They also wanted a platform to build SaaS on. That meant I needed to consider more requirements, as it would be the next bit of functionality I would create.
 
@@ -34,7 +45,12 @@ The first step towards their full-featured SaaS product was a [location evaluati
 - The ability for non-technical people to easily edit data.
 - Save off lead generation information from user input.
 
-![BeyondHQ](/static/images/nextjs-firebase-serverless/questions.png)
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/questions.png`}
+  width={1000}
+  height={398}
+/>
 
 ## The Technology
 
@@ -62,7 +78,12 @@ Why use NoSQL? There weren't any requirements which needed a relational database
 
 After reviewing the requirements and choosing the technology, the next step was to begin implementing a solution. But first, mockups!
 
-![BeyondHQ](/static/images/nextjs-firebase-serverless/geo-eval.png)
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/geo-eval.png`}
+  width={1000}
+  height={438}
+/>
 
 I iterated over a handful of designs and went back and forth with the team, tweaking things based on their feedback. We eventually agreed on a mockup and the coding commenced.
 
@@ -160,7 +181,12 @@ export default City;
 
 This gives you the flexibility to add a loading state or placeholder to improve your user experience.
 
-![Loading Placeholder](/static/images/nextjs-firebase-serverless/loading.gif)
+<Image
+  alt={`Loading Placeholder`}
+  src={`/static/images/nextjs-firebase-serverless/loading.gif`}
+  width={2548}
+  height={1640}
+/>
 
 Much better! 🎉
 

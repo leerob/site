@@ -59,8 +59,14 @@
   },
   "devDependencies": {
     "globby": "11.0.1",
+    "image-size": "0.9.3",
     "prettier": "2.2.1",
-    "rehype": "11.0.0"
+    "rehype": "11.0.0",
+    "remark-frontmatter": "3.0.0",
+    "remark-parse": "9.0.0",
+    "remark-stringify": "9.0.0",
+    "unified": "9.2.0",
+    "unist-util-visit": "2.0.3"
   },
   "prettier": {
     "arrowParens": "always",

@@ -5,7 +5,13 @@ summary: 'Learn how I created a simple application to convert and download YouTu
 image: '/static/images/building-my-first-electron-app/banner.png'
 ---
 
-![YouTube To MP3 Logo](/static/images/building-my-first-electron-app/banner.png)
+<Image
+  alt={`YouTube To MP3 Logo`}
+  src={`/static/images/building-my-first-electron-app/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
 
 In my free time, I like to create videos. As part of my process for creating new videos, I usually need to download some audio to accompany the visuals. That might be the main song, some sound effects, or vocal tracks. I typically find the video on YouTube (copyright free, of course) and navigate to a website where I can convert and download the video as a .mp3 file. It's not a broken process, but it could be improved. I wasn't particularly fond of any of the user interfaces these websites had. It shouldn't be _that_ difficult to download one song. So why not just build something myself?
 
@@ -22,8 +28,18 @@ I defined a rough list of requirements for what my design should contain:
 
 Here are the mockups I created for my application:
 
-![YouTube To MP3 Mockup 1](/static/images/building-my-first-electron-app/mock1.png)
-![YouTube To MP3 Mockup 2](/static/images/building-my-first-electron-app/mock2.png)
+<Image
+  alt={`YouTube To MP3 Mockup 1`}
+  src={`/static/images/building-my-first-electron-app/mock1.png`}
+  width={919}
+  height={525}
+/>
+<Image
+  alt={`YouTube To MP3 Mockup 2`}
+  src={`/static/images/building-my-first-electron-app/mock2.png`}
+  width={919}
+  height={525}
+/>
 
 I strived to create a simple but visually appealing design. The soft, green to blue gradient in the background provides contrast against the large, rounded input. I emphasized the little things like:
 
@@ -253,7 +269,12 @@ fetchVideo(id) {
 
 ### Final Product 🎉
 
-![YouTube To MP3 Example](/static/images/building-my-first-electron-app/example.gif)
+<Image
+  alt={`YouTube To MP3 Example`}
+  src={`/static/images/building-my-first-electron-app/example.gif`}
+  width={796}
+  height={596}
+/>
 
 ### Source Code
 

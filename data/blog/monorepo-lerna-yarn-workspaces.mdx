@@ -5,7 +5,13 @@ summary: 'In this guide, you will learn how to create a Monorepo to manage multi
 image: '/static/images/monorepo-lerna-yarn-workspaces/banner.png'
 ---
 
-![Creating a Monorepo with Lerna & Yarn Workspace](/static/images/monorepo-lerna-yarn-workspaces/banner.png)
+<Image
+  alt={`Creating a Monorepo with Lerna & Yarn Workspace`}
+  src={`/static/images/monorepo-lerna-yarn-workspaces/banner.png`}
+  width={1175}
+  height={505}
+  priority
+/>
 
 As applications scale, you’ll inevitably reach a point where you want to write [shared reusable components](/blog/ui-component-library-with-styled-components) which can be used everywhere. Historically, we’ve had separate repositories for each package. However, this becomes a problem for a few reasons:
 
@@ -241,7 +247,12 @@ Finally, let’s add a script to start Storybook.
 
 Then we can use `yarn dev` to view our Button 🎉
 
-![Button](/static/images/monorepo-lerna-yarn-workspaces/button.png)
+<Image
+  alt={`Button`}
+  src={`/static/images/monorepo-lerna-yarn-workspaces/button.png`}
+  width={856}
+  height={190}
+/>
 
 ## Testing
 
@@ -374,7 +385,12 @@ export const placeholder = () => <Input placeholder="user@gmail.com" />;
 
 Our Storybook instance should still be running via `yarn dev`, but if not, then re-run the command. We can observe our component was rendered correctly.
 
-![Storybook](/static/images/monorepo-lerna-yarn-workspaces/storybook.png)
+<Image
+  alt={`Storybook`}
+  src={`/static/images/monorepo-lerna-yarn-workspaces/storybook.png`}
+  width={862}
+  height={482}
+/>
 
 Finally, let’s ensure Babel works as expected for multiple packages by running `yarn build`.
 
@@ -467,7 +483,12 @@ lerna success version finished
 
 Congrats! 🎉 The tags have been pushed to GitHub. If we wanted to release our packages to NPM, we would use `npx lerna publish` instead.
 
-![Yarn Workspaces](/static/images/monorepo-lerna-yarn-workspaces/tags.png)
+<Image
+  alt={`Yarn Workspaces`}
+  src={`/static/images/monorepo-lerna-yarn-workspaces/tags.png`}
+  width={864}
+  height={337}
+/>
 
 ## Linting & Formatting
 

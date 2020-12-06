@@ -5,7 +5,13 @@ summary: 'Want more accurate page view counts? Learn how to create your own micr
 image: '/static/images/real-time-post-views/banner.jpg'
 ---
 
-[![Blog Post Views](/static/images/real-time-post-views/chart.png)](https://github.com/timqian/chart.xkcd)
+<Image
+  alt={`Blog Post Views`}
+  src={`/static/images/real-time-post-views/chart.png`}
+  width={1110}
+  height={624}
+  priority
+/>
 
 One metric for a website's success is the amount of traffic it receives.
 For a blog, this translates to page views. Articles with lots of views indicate the content your readers care most about.
@@ -54,18 +60,43 @@ We can host and deploy this entire solution **for free** using Firebase's [free 
 
 ## Setting Up Firebase
 
-1. If you do not have a Firebase account, create one first.
-1. Create a new project.
-1. Navigate to "Database" and click "Create Database".
-   ![Create Firebase Database](/static/images/real-time-post-views/firebase/step1.png)
-1. Start in test mode and click next.
-   ![Create Firebase Database](/static/images/real-time-post-views/firebase/step2.png)
-1. Choose your database location and click done.
-   ![Create Firebase Database](/static/images/real-time-post-views/firebase/step3.png)
-1. In the top left, click on "Project Settings".
-   ![Create Firebase Database](/static/images/real-time-post-views/firebase/step4.png)
-1. Navigate to "Service Accounts" tab and click "Generate new private key". Save the `.json` file. You will need this later.
-   ![Create Firebase Database](/static/images/real-time-post-views/firebase/step5.png)
+1.  If you do not have a Firebase account, create one first.
+2.  Create a new project.
+3.  Navigate to "Database" and click "Create Database".
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step1.png`}
+      width={1000}
+      height={534}
+    />
+4.  Start in test mode and click next.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step2.png`}
+      width={1000}
+      height={533}
+    />
+5.  Choose your database location and click done.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step3.png`}
+      width={1000}
+      height={532}
+    />
+6.  In the top left, click on "Project Settings".
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step4.png`}
+      width={979}
+      height={386}
+    />
+7.  Navigate to "Service Accounts" tab and click "Generate new private key". Save the `.json` file. You will need this later.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step5.png`}
+      width={1000}
+      height={535}
+    />
 
 We're finished! 🎉 You have successfully set up a realtime database, as well as generated credentials for your microservice to connect to the database.
 
@@ -152,11 +183,21 @@ After you've [cloned the repo](https://github.com/leerob/blog-views) and followe
 
 Using your favorite REST client or your browser, you can now hit `http://localhost:3000?id=blog-post` to log a view.
 
-![Testing Microservice](/static/images/real-time-post-views/microservice.jpg)
+<Image
+  alt={`Testing Microservice`}
+  src={`/static/images/real-time-post-views/microservice.jpg`}
+  width={1000}
+  height={420}
+/>
 
 We can confirm it was logged correctly by checking Firebase.
 
-![Testing Firebase](/static/images/real-time-post-views/testing-database.png)
+<Image
+  alt={`Testing Firebase`}
+  src={`/static/images/real-time-post-views/testing-database.png`}
+  width={1000}
+  height={562}
+/>
 
 ### Deployment with Vercel
 
@@ -339,13 +380,28 @@ You can see a completed client-side example by checking out [this blog post's so
 
 It works! 🎉
 
-![Blog Post Views Example Gif](/static/images/real-time-post-views/example.gif)
+<Image
+  alt={`Blog Post Views Example Gif`}
+  src={`/static/images/real-time-post-views/example.gif`}
+  width={2194}
+  height={1418}
+/>
 
 I was able to migrate my page views from Google Analytics into Firebase via their web interface.
 
-![Blog Post Views](/static/images/real-time-post-views/blog-post-views.png)
+<Image
+  alt={`Blog Post Views`}
+  src={`/static/images/real-time-post-views/blog-post-views.png`}
+  width={1000}
+  height={599}
+/>
 
 **Note**: If your site receives a lot of traffic, you'll need to upgrade from the Spark plan (free) to Blaze (pay-as-you-go).
 On Spark, you can only have 100 simultaneous connections. With Blaze, you can have 100k.
 
-![Database Usage](/static/images/real-time-post-views/db-usage.png)
+<Image
+  alt={`Database Usage`}
+  src={`/static/images/real-time-post-views/db-usage.png`}
+  width={1000}
+  height={529}
+/>

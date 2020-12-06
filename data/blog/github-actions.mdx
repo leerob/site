@@ -5,7 +5,13 @@ summary: 'Can GitHub Actions relace CircleCI entirely? Find out why I decided to
 image: '/static/images/github-actions/banner.png'
 ---
 
-![GitHub Actions Checks](/static/images/github-actions/banner.png)
+<Image
+  alt={`GitHub Actions Checks`}
+  src={`/static/images/github-actions/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
 
 I recently switched my Continuous Integration ([CI](https://en.wikipedia.org/wiki/Continuous_integration))
 provider from [CircleCI](https://circleci.com/) to [GitHub Actions](https://github.com/features/actions).
@@ -76,11 +82,21 @@ jobs:
 
 After adding this file at `.github/workflows/workflow.yml`, you'll be able to see each run show up under the "Actions" tab.
 
-![GitHub Actions Tab](/static/images/github-actions/actions-tab.png)
+<Image
+  alt={`GitHub Actions Tab`}
+  src={`/static/images/github-actions/actions-tab.png`}
+  width={1000}
+  height={548}
+/>
 
 I've defined my check to happen on every pull request.
 
-![GitHub Actions Checks](/static/images/github-actions/checks.png)
+<Image
+  alt={`GitHub Actions Checks`}
+  src={`/static/images/github-actions/checks.png`}
+  width={1000}
+  height={444}
+/>
 
 ## Conclusion
 

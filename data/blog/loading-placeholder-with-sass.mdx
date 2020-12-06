@@ -5,7 +5,13 @@ summary: 'Using animation to simulate loading text content.'
 image: '/static/images/loading-placeholder-with-sass/banner.png'
 ---
 
-![Loading Placeholder](/static/images/loading-placeholder-with-sass/example.gif)
+<Image
+  alt={`Loading Placeholder`}
+  src={`/static/images/loading-placeholder-with-sass/example.gif`}
+  width={695}
+  height={419}
+  priority
+/>
 
 As you walk through the office at work reading the news on your phone, you enter an elevator. You had just attempted to load a new page only to be greeted with a painful loading spinner. No one likes this experience.
 
@@ -19,11 +25,21 @@ Skeleton screens build anticipation for the content that is going to appear wher
 
 By now, you've probably seen some examples of skeleton screens in your daily browsing without even noticing. For example - Facebook shows users gray circles and lines to represent the contents of a post in their timeline.
 
-![Facebook Placeholder](/static/images/loading-placeholder-with-sass/facebook.png)
+<Image
+  alt={`Facebook Placeholder`}
+  src={`/static/images/loading-placeholder-with-sass/facebook.png`}
+  width={1045}
+  height={680}
+/>
 
 It's not just Facebook either. [LinkedIn](https://www.linkedin.com) has also re-designed their layout to use placeholders.
 
-![LinkedIn Placeholder](/static/images/loading-placeholder-with-sass/linkedin.png)
+<Image
+  alt={`LinkedIn Placeholder`}
+  src={`/static/images/loading-placeholder-with-sass/linkedin.png`}
+  width={1618}
+  height={1126}
+/>
 
 You can trick your users into thinking your website loads faster using skeleton screens. Let's look at how you can actually create this effect using some simple HTML and Scss.
 
@@ -103,7 +119,12 @@ We can use the newly created mixin to change the width of all 10 children `div` 
 
 ### Final Result 🎉
 
-![Loading Placeholder Final Result](/static/images/loading-placeholder-with-sass/final-result.gif)
+<Image
+  alt={`Loading Placeholder Final Result`}
+  src={`/static/images/loading-placeholder-with-sass/final-result.gif`}
+  width={650}
+  height={223}
+/>
 
 You can view the code and a live example on [CodePen](https://codepen.io/leerob/pen/XzRzpb?editors=1100). There's also a React library called [react-placeholder](https://github.com/buildo/react-placeholder) that achieves the same effect.
 

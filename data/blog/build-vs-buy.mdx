@@ -76,15 +76,30 @@ Over the past 3 years, we’ve worked tirelessly to create a product that revolu
 
 Let's walk through a typical use case of the product. First, a user will set up alerting rules so they are notified of the errors they care about. This could be a HipChat or Slack alert.
 
-![Build vs. Buy - Exception Monitoring](/static/images/build-vs-buy/hubble-alert.png)
+<Image
+  alt={`Build vs. Buy - Exception Monitoring`}
+  src={`/static/images/build-vs-buy/hubble-alert.png`}
+  width={1252}
+  height={304}
+/>
 
 From here, the user is taken to our application to inspect the error.
 
-![Build vs. Buy - Exception Monitoring](/static/images/build-vs-buy/hubble-context-view.png)
+<Image
+  alt={`Build vs. Buy - Exception Monitoring`}
+  src={`/static/images/build-vs-buy/hubble-context-view.png`}
+  width={3360}
+  height={1820}
+/>
 
 This is the complete overview of this specific error. You'll see similar stack traces, relevant metadata, accounts/users affected, comments, JIRA tickets, and more.
 
-![Build vs. Buy - Exception Monitoring](/static/images/build-vs-buy/hubble-errors-table.png)
+<Image
+  alt={`Build vs. Buy - Exception Monitoring`}
+  src={`/static/images/build-vs-buy/hubble-errors-table.png`}
+  width={3256}
+  height={1665}
+/>
 
 Errors are segmented by projects. There are different projects for each environment (e.g. dev, sandbox, prod). The above image shows the project overview listing all errors for the given day. Users have the ability to search and filter their results to find what's most important.
 

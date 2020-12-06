@@ -57,7 +57,12 @@ Okay, enough talking. Let's build an app! Here's the [final result](https://pris
 - Data is read from the database at build time
 - Pages are dynamically built (e.g., `/songs/[id]`)
 
-![Next.js and Prisma](/static/images/next-prisma/prisma.gif)
+<Image
+  alt={`Next.js and Prisma`}
+  src={`/static/images/next-prisma/prisma.gif`}
+  width={830}
+  height={489}
+/>
 
 Before continuing, you'll need to have
 [Node.js](https://nodejs.org/en/) (version 10 or higher) installed on your machine.
@@ -249,7 +254,12 @@ to recognize the new changes.
 $ npx prisma generate
 ```
 
-![Prisma Flow](/static/images/next-prisma/prisma-flow.png)
+<Image
+  alt={`Prisma Flow`}
+  src={`/static/images/next-prisma/prisma-flow.png`}
+  width={1600}
+  height={842}
+/>
 
 **That's it!** You now have two new fields available on the `Song` model.
 Now, let's update our database and populate those values.
@@ -266,7 +276,12 @@ Luckily, Prisma has another fancy tool called Prisma Studio that allows us to do
 $ npx prisma studio --experimental
 ```
 
-![Prisma Studio](/static/images/next-prisma/studio.gif)
+<Image
+  alt={`Prisma Studio`}
+  src={`/static/images/next-prisma/studio.gif`}
+  width={983}
+  height={537}
+/>
 
 For convenience, I've added these commands as scripts in the `package.json` already.
 

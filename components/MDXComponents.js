@@ -159,27 +159,6 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
 };
 
-const Image = ({ alt, src }) => {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        minHeight: '200px'
-      }}
-    >
-      <NextImage
-        alt={alt}
-        src={src}
-        // width={400}
-        // height={400}
-        layout="fill"
-        objectFit="cover"
-      />
-    </div>
-  );
-};
-
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
@@ -190,7 +169,11 @@ const MDXComponents = {
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
-  img: Image,
+  Image: (props) => (
+    <Box mt={4}>
+      <NextImage {...props} />
+    </Box>
+  ),
   table: Table,
   th: THead,
   td: TData,
