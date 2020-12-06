@@ -84,7 +84,7 @@ const Dashboard = () => {
             justifyContent="flex-start"
             alignItems="flex-start"
             maxWidth="700px"
-            mt={8}
+            pt={8}
           >
             <Unsplash />
             <YouTube />
@@ -100,7 +100,7 @@ const Dashboard = () => {
           <Heading letterSpacing="tight" as="h2" size="xl">
             Top Tracks
           </Heading>
-          <Text color={secondaryTextColor[colorMode]}>
+          <Text color={secondaryTextColor[colorMode]} mb={4}>
             Curious what I'm currently jamming to? Here's my top tracks on
             Spotify updated daily.
           </Text>

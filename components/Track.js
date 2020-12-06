@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Link, Stack, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Link, Flex, Text, useColorMode } from '@chakra-ui/react';
 
 const Track = (track) => {
   const { colorMode } = useColorMode();
@@ -13,21 +13,19 @@ const Track = (track) => {
   };
 
   return (
-    <Box
-      mb={4}
-      display="flex"
-      flexDirection="row"
+    <Flex
+      direction="row"
       alignItems="baseline"
       borderBottom="1px solid"
       borderColor={borderColor[colorMode]}
-      p={2}
       maxWidth="600px"
       w="full"
+      mt="16px !important"
     >
       <Text fontSize="sm" fontWeight="bold" color={rankingColor[colorMode]}>
         {track.ranking}
       </Text>
-      <Stack spacing={0} ml={3}>
+      <Flex direction="column" pl={3}>
         <Link
           fontWeight="medium"
           maxWidth={['250px', '600px']}
@@ -49,8 +47,8 @@ const Track = (track) => {
         >
           {track.artist}
         </Text>
-      </Stack>
-    </Box>
+      </Flex>
+    </Flex>
   );
 };
 
