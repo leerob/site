@@ -1,16 +1,6 @@
 {
-  "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "env": {
-    "FIREBASE_PRIVATE_KEY": "@firebase-private-key",
-    "FIREBASE_CLIENT_EMAIL": "@firebase-client-email",
-    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key",
-    "GOOGLE_ENCRYPTION_IV": "@google-encryption-iv",
-    "GOOGLE_ENCRYPTION_KEY": "@google-encryption-key",
-    "BUTTONDOWN_API_KEY": "@buttondown-api-key",
-    "GUMROAD_API_KEY": "@gumroad-api-key"
-  },
   "redirects": [
     {
       "source": "/LeeRobinson.pdf",
@@ -31,71 +21,6 @@
     {
       "source": "/30min",
       "destination": "https://calendly.com/lee-vercel/30min"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/unsplash",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=1200, stale-while-revalidate=600"
-        }
-      ]
-    },
-    {
-      "source": "/api/youtube",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
-      "source": "/api/subscribers",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=1200, stale-while-revalidate=600"
-        }
-      ]
-    },
-    {
-      "source": "/api/gumroad",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
-      "source": "/api/github",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=120, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
-      "source": "/api/now-playing",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=60, stale-while-revalidate=30"
-        }
-      ]
-    },
-    {
-      "source": "/api/top-tracks",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=43200"
-        }
-      ]
     }
   ]
 }

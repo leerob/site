@@ -11,6 +11,11 @@ const getProductSales = async (id) => {
 
   const { product } = await response.json();
 
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
+
   return new Big(product.sales_usd_cents).div(100);
 };
 
