@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
   useAnalytics();
 
   return (
-    <ThemeProvider forcedTheme={Component.theme || undefined} attribute="class">
+    <ThemeProvider attribute="class">
       <MDXProvider components={MDXComponents}>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
