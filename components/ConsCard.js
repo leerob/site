@@ -1,10 +1,10 @@
 export default function ConsCard({ title, cons }) {
   return (
-    <div className="border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-900 rounded p-6 my-4 w-full">
-      <p>{`You might use ${title} if...`}</p>
-      <ul className="mt-4">
+    <div className="border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-900 rounded p-6 my-6 w-full">
+      <span>{`You might use ${title} if...`}</span>
+      <div className="mt-4">
         {cons.map((con) => (
-          <li key={con} className="flex font-medium items-baseline mb-2">
+          <div key={con} className="flex font-medium items-baseline mb-2">
             <div className="h-4 w-4 mr-2">
               <svg className="h-4 w-4 text-red-500" viewBox="0 0 24 24">
                 <g
@@ -19,10 +19,10 @@ export default function ConsCard({ title, cons }) {
                 </g>
               </svg>
             </div>
-            <p>{con}</p>
-          </li>
+            <span>{con}</span>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
