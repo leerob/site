@@ -93,6 +93,17 @@ export default function About() {
           Conference Talks
         </h2>
         <Talk
+          title="Data Fetching with Next.js"
+          link="https://www.reactathon.com/schedule/day-3"
+        >
+          Next.js is a hybrid React framework allowing you to choose your data
+          fetching strategy on a per-page basis. In this talk, you’ll learn more
+          about CSR (Client-Side Rendering), SSR (Server-Side Rendering), SSG
+          (Static-Site Generation), ISR (Incremental Static Regeneration), and
+          when to use each one. I’ll also give a quick introduction to Next.js
+          and share some of the main features of the framework.
+        </Talk>
+        <Talk
           title="Building Static Sites with Prisma and Next.js"
           link="https://youtu.be/z3rmZbOEBCM?t=273"
         >
