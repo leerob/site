@@ -1,91 +1,73 @@
-import React from 'react';
 import NextLink from 'next/link';
-import { useColorMode, Button, Flex, Box, IconButton } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import { useTheme } from 'next-themes';
 
-import Footer from './Footer';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import Footer from '@/components/Footer';
 
-const StickyNav = styled(Flex)`
-  position: sticky;
-  z-index: 10;
-  top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  transition: background-color 0.1 ease-in-out;
-`;
-
-const Container = ({ children }) => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
-  const bgColor = {
-    light: 'white',
-    dark: 'gray.900'
-  };
-  const primarytextColor = {
-    light: 'black',
-    dark: 'white'
-  };
-  const navBgColor = {
-    light: 'rgba(255, 255, 255, 0.8)',
-    dark: 'rgba(23, 25, 35, 0.8)'
-  };
+export default function Container({ children }) {
+  const { theme, setTheme } = useTheme();
 
   return (
-    <>
-      <StickyNav
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-        maxWidth="900px"
-        width="100%"
-        bg={navBgColor[colorMode]}
-        as="nav"
-        p={8}
-        my={[0, 8]}
-        mx="auto"
-      >
-        <IconButton
-          aria-label="Toggle dark mode"
-          bg={bgColor[colorMode]}
-          icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
-          onClick={toggleColorMode}
-        />
-        <Box>
-          <NextLink href="/dashboard" passHref>
-            <Button as="a" variant="ghost" p={[1, 4]}>
+    <div className="bg-white dark:bg-black">
+      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto">
+        <button
+          aria-label="Toggle Dark Mode"
+          type="button"
+          className="bg-gray-200 dark:bg-gray-800 rounded p-3"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-gray-800 dark:text-gray-200"
+          >
+            {theme === 'dark' ? (
+              <>
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </>
+            ) : (
+              <path
+                fill="currentColor"
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+              />
+            )}
+          </svg>
+        </button>
+        <div>
+          <NextLink href="/dashboard">
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
               Dashboard
-            </Button>
+            </a>
           </NextLink>
-          <NextLink href="/blog" passHref>
-            <Button as="a" variant="ghost" p={[1, 4]}>
-              Blog
-            </Button>
+          <NextLink href="/blog">
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
           </NextLink>
-          <NextLink href="/about" passHref>
-            <Button as="a" variant="ghost" p={[1, 4]}>
-              About
-            </Button>
+          <NextLink href="/about">
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
           </NextLink>
-          <NextLink href="/" passHref>
-            <Button as="a" variant="ghost" p={[1, 4]}>
-              Home
-            </Button>
+          <NextLink href="/">
+            <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Home</a>
           </NextLink>
-        </Box>
-      </StickyNav>
-      <Flex
-        as="main"
-        justifyContent="center"
-        flexDirection="column"
-        bg={bgColor[colorMode]}
-        color={primarytextColor[colorMode]}
-        px={8}
-      >
+        </div>
+      </nav>
+      <main className="flex flex-col justify-center bg-white dark:bg-black px-8">
         {children}
         <Footer />
-      </Flex>
-    </>
+      </main>
+    </div>
   );
-};
-
-export default Container;
+}

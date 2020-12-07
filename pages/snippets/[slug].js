@@ -1,17 +1,12 @@
 import hydrate from 'next-mdx-remote/hydrate';
-import { ChakraProvider } from '@chakra-ui/react';
 
-import { getFiles, getFileBySlug } from '../../lib/mdx';
-import SnippetLayout from '../../layouts/snippets';
-import MDXComponents from '../../components/MDXComponents';
-import theme from '../../styles/theme';
+import { getFiles, getFileBySlug } from '@/lib/mdx';
+import SnippetLayout from '@/layouts/snippets';
+import MDXComponents from '@/components/MDXComponents';
 
 export default function Snippet({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {
-    components: MDXComponents,
-    provider: {
-      component: (props) => <ChakraProvider resetCSS theme={theme} {...props} />
-    }
+    components: MDXComponents
   });
 
   return <SnippetLayout frontMatter={frontMatter}>{content}</SnippetLayout>;

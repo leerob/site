@@ -1,49 +1,14 @@
-import React, { useState, useRef } from 'react';
-import NextLink from 'next/link';
-import { trackGoal } from 'fathom-client';
+import { useState, useRef } from 'react';
+import Link from 'next/link';
 import useSWR from 'swr';
 import format from 'comma-number';
-import {
-  Heading,
-  InputGroup,
-  Link,
-  Box,
-  Input,
-  InputRightElement,
-  Button,
-  Text,
-  useToast,
-  useColorMode
-} from '@chakra-ui/react';
+import { trackGoal } from 'fathom-client';
 
-import fetcher from '../lib/fetcher';
+import fetcher from '@/lib/fetcher';
 
-const Subscribe = () => {
+export default function Subscribe() {
   const [loading, setLoading] = useState(false);
   const inputEl = useRef(null);
-  const toast = useToast();
-  const { colorMode } = useColorMode();
-  const bgColor = {
-    light: 'blue.50',
-    dark: 'blue.900'
-  };
-  const borderColor = {
-    light: 'blue.200',
-    dark: 'blue.900'
-  };
-  const inputColor = {
-    light: 'white',
-    dark: 'blue.800'
-  };
-  const buttonColor = {
-    light: 'gray.100',
-    dark: 'blue.700'
-  };
-  const secondaryText = {
-    light: 'gray.800',
-    dark: 'gray.200'
-  };
-
   const { data } = useSWR('/api/subscribers', fetcher);
   const subscriberCount = format(data?.count);
 
@@ -65,76 +30,48 @@ const Subscribe = () => {
     const { error } = await res.json();
 
     if (error) {
-      toast({
-        title: 'An error occurred.',
-        description: error,
-        status: 'error',
-        duration: 3000,
-        isClosable: true
-      });
+      // TODO: Add error state
 
       return;
     }
 
     trackGoal('JYFUFMSF', 0);
     inputEl.current.value = '';
-    toast({
-      title: 'Success!',
-      description: 'You are now subscribed.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true
-    });
+    // TODO: Add success state
   };
 
   return (
-    <Box
-      border="1px solid"
-      borderColor={borderColor[colorMode]}
-      bg={bgColor[colorMode]}
-      borderRadius={4}
-      padding={6}
-      my={4}
-      w="100%"
-    >
-      <Heading as="h5" size="md" mb={2}>
+    <div className="border border-blue-200 rounded p-6 my-4 w-full dark:border-blue-800 bg-blue-50 dark:bg-blue-900">
+      <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
         Subscribe to the newsletter
-      </Heading>
-      <Text>
+      </h5>
+      <p className="my-1 text-gray-800 dark:text-gray-200">
         Get emails from me about web development, tech, and early access to new
         articles.
-      </Text>
-      <InputGroup size="md" my={4}>
-        <Input
+      </p>
+      <div className="relative my-4">
+        <input
+          ref={inputEl}
           aria-label="Email for newsletter"
           placeholder="tim@apple.com"
-          bg={inputColor[colorMode]}
-          ref={inputEl}
           type="email"
-          pr={2}
+          autoComplete="email"
+          className="px-4 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         />
-        <InputRightElement width="7.75rem" pr={2}>
-          <Button
-            isLoading={loading}
-            fontWeight="bold"
-            h="1.75rem"
-            px={4}
-            size="sm"
-            onClick={subscribe}
-            bg={buttonColor[colorMode]}
-          >
-            Subscribe
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-      <Text color={secondaryText[colorMode]} fontSize="sm">
+        <button
+          className="absolute right-1 top-1 px-4 font-bold h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded"
+          // isLoading={loading} TODO: loading dots
+          onClick={subscribe}
+        >
+          Subscribe
+        </button>
+      </div>
+      <p className="text-sm text-gray-800 dark:text-gray-200">
         {`${subscriberCount || '-'} subscribers – `}
-        <NextLink href="/newsletter" passHref>
-          <Link>{`24 issues`}</Link>
-        </NextLink>
-      </Text>
-    </Box>
+        <Link href="/newsletter">
+          <a>24 issues</a>
+        </Link>
+      </p>
+    </div>
   );
-};
-
-export default Subscribe;
+}

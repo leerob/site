@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import format from 'comma-number';
 
-import loadDb from '../lib/db';
+import loadDb from '@/lib/db';
 
-const ViewCounter = ({ id }) => {
+export default function ViewCounter({ id }) {
   const [views, setViews] = useState('');
 
   useEffect(() => {
@@ -32,6 +32,4 @@ const ViewCounter = ({ id }) => {
   }, [id]);
 
   return `${views ? format(views) : '–––'} views`;
-};
-
-export default ViewCounter;
+}

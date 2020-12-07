@@ -1,8 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
 import GoogleFonts from 'next-google-fonts';
-import { ColorModeScript } from '@chakra-ui/react';
-import theme from '../styles/theme';
 
 class MyDocument extends Document {
   render() {
@@ -44,9 +41,20 @@ class MyDocument extends Document {
             href="/static/favicons/safari-pinned-tab.svg"
             rel="mask-icon"
           />
+          <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+          <meta content="#ffffff" name="theme-color" />
+          <meta content="#ffffff" name="msapplication-TileColor" />
+          <meta
+            content="/static/favicons/browserconfig.xml"
+            name="msapplication-config"
+          />
+          <meta content="14d2e73487fa6c71" name="yandex-verification" />
+          <meta
+            content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
+            name="google-site-verification"
+          />
         </Head>
-        <body>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <body className="bg-white dark:bg-black text-white dark:text-black">
           <Main />
           <NextScript />
         </body>

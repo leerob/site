@@ -1,18 +1,12 @@
 import hydrate from 'next-mdx-remote/hydrate';
-import { ChakraProvider } from '@chakra-ui/react';
 
-import { getFileBySlug } from '../lib/mdx';
-import UsesLayout from '../layouts/uses';
-
-import MDXComponents from '../components/MDXComponents';
-import theme from '../styles/theme';
+import { getFileBySlug } from '@/lib/mdx';
+import UsesLayout from '@/layouts/uses';
+import MDXComponents from '@/components/MDXComponents';
 
 export default function Uses({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {
-    components: MDXComponents,
-    provider: {
-      component: (props) => <ChakraProvider resetCSS theme={theme} {...props} />
-    }
+    components: MDXComponents
   });
 
   return <UsesLayout frontMatter={frontMatter}>{content}</UsesLayout>;

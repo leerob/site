@@ -1,191 +1,84 @@
-import {
-  Alert,
-  Box,
-  Code,
-  Heading,
-  Kbd,
-  Link,
-  Text,
-  Divider,
-  useColorMode
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
-import NextImage from 'next/image';
+import Link from 'next/link';
+import Image from 'next/image';
 import Tweet from 'react-tweet-embed';
-import ProsCard from './ProsCard';
-import ConsCard from './ConsCard';
-import Gumroad from './metrics/Gumroad';
-import Unsplash from './metrics/Unsplash';
-import Analytics from './metrics/Analytics';
-import YouTube from './metrics/Youtube';
-import ProjectCard from './ProjectCard';
-import TopTracks from './TopTracks';
-import Step from './Step';
 
-const Table = (props) => (
-  <Box overflowX="scroll" w="full">
-    <Box as="table" textAlign="left" mt="32px" w="full" {...props} />
-  </Box>
-);
-
-const THead = (props) => {
-  const { colorMode } = useColorMode();
-  const bg = {
-    light: 'gray.50',
-    dark: 'whiteAlpha.100'
-  };
-
-  return (
-    <Box
-      as="th"
-      bg={bg[colorMode]}
-      fontWeight="semibold"
-      p={2}
-      fontSize="sm"
-      {...props}
-    />
-  );
-};
-
-const TData = (props) => (
-  <Box
-    as="td"
-    p={2}
-    borderTopWidth="1px"
-    borderColor="inherit"
-    fontSize="sm"
-    whiteSpace="normal"
-    {...props}
-  />
-);
+import ProsCard from '@/components/ProsCard';
+import ConsCard from '@/components/ConsCard';
+import Gumroad from '@/components/metrics/Gumroad';
+import Unsplash from '@/components/metrics/Unsplash';
+import Analytics from '@/components/metrics/Analytics';
+import YouTube from '@/components/metrics/Youtube';
+import ProjectCard from '@/components/ProjectCard';
+import TopTracks from '@/components/TopTracks';
+import Step from '@/components/Step';
 
 const CustomLink = (props) => {
-  const { colorMode } = useColorMode();
-  const color = {
-    light: 'hsl(208, 99%, 44%)',
-    dark: 'hsl(208, 95%, 68%)'
-  };
-
   const href = props.href;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
-      <NextLink href={href} passHref>
-        <Link color={color[colorMode]} {...props} />
-      </NextLink>
+      <Link href={href}>
+        <a {...props} />
+      </Link>
     );
   }
 
-  return <Link color={color[colorMode]} isExternal {...props} />;
-};
-
-const Quote = (props) => {
-  const { colorMode } = useColorMode();
-  const bgColor = {
-    light: 'blue.50',
-    dark: 'blue.900'
-  };
-
-  return (
-    <Alert
-      mt={4}
-      w="98%"
-      bg={bgColor[colorMode]}
-      variant="left-accent"
-      status="info"
-      css={{
-        '> *:first-of-type': {
-          marginTop: 0,
-          marginLeft: 8
-        }
-      }}
-      {...props}
-    />
-  );
-};
-
-const DocsHeading = (props) => (
-  <Heading
-    css={{
-      scrollMarginTop: '100px',
-      scrollSnapMargin: '100px', // Safari
-      '&[id]': {
-        pointerEvents: 'none'
-      },
-      '&[id]:before': {
-        display: 'block',
-        height: ' 6rem',
-        marginTop: '-6rem',
-        visibility: 'hidden',
-        content: `""`
-      },
-      '&[id]:hover a': { opacity: 1 }
-    }}
-    {...props}
-    mb={0}
-    pt={8}
-  >
-    <Box pointerEvents="auto">
-      {props.children}
-      {props.id && (
-        <Box
-          aria-label="anchor"
-          as="a"
-          color="blue.500"
-          fontWeight="normal"
-          outline="none"
-          _focus={{
-            opacity: 1,
-            boxShadow: 'outline'
-          }}
-          opacity="0"
-          ml="0.375rem"
-          href={`#${props.id}`}
-        >
-          #
-        </Box>
-      )}
-    </Box>
-  </Heading>
-);
-
-const Hr = () => {
-  const { colorMode } = useColorMode();
-  const borderColor = {
-    light: 'gray.200',
-    dark: 'gray.600'
-  };
-
-  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
+  return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
-  h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
-  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
-  inlineCode: (props) => (
-    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
+  h2: (props) => (
+    <h2 className="font-bold text-xl md:text-3xl mt-16 mb-4" {...props} />
   ),
-  kbd: Kbd,
-  br: (props) => <Box height="24px" {...props} />,
-  hr: Hr,
+  h3: (props) => (
+    <h3 className="font-medium text-md md:text-xl mt-8 mb-4" {...props} />
+  ),
+  br: (props) => <div className="h-8" {...props} />,
+  hr: (props) => (
+    <div
+      className="border border-gray-200 dark:border-gray-600 w-full my-8"
+      {...props}
+    />
+  ),
   Image: (props) => (
-    <Box mt={4}>
-      <NextImage {...props} />
-    </Box>
+    <div className="my-4">
+      <Image {...props} />
+    </div>
   ),
-  table: Table,
-  th: THead,
-  td: TData,
+  table: (props) => (
+    <div className="overflow-x-scroll w-full">
+      <table className="text-left mt-32 w-full" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="bg-gray-50 dark:bg-gray-900 font-bold p-2 text-sm"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td
+      className="p-2 border-t border-gray-200 dark:border-gray-900 text-sm"
+      {...props}
+    />
+  ),
   a: CustomLink,
-  p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
-  ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
-  ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-  li: (props) => <Box as="li" pb={1} {...props} />,
-  blockquote: Quote,
+  p: (props) => <p className="mt-4 spacing" {...props} />,
+  ul: (props) => (
+    <ul
+      className="list-disc list-inside text-gray-700 dark:text-gray-400 pt-2 pl-4 ml-2 text-gray-900"
+      {...props}
+    />
+  ),
+  ol: (props) => (
+    <ol
+      className="list-disc list-inside text-gray-700 dark:text-gray-400 pt-2 pl-4 ml-2"
+      {...props}
+    />
+  ),
+  li: (props) => <li className="pb-1" {...props} />,
   Analytics,
-  Box,
   ConsCard,
   Gumroad,
   ProjectCard,
@@ -197,5 +90,4 @@ const MDXComponents = {
   YouTube
 };
 
-export { CustomLink };
 export default MDXComponents;

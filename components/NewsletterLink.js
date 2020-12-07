@@ -1,24 +1,14 @@
-import React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
-import { useColorMode, Link, ListItem } from '@chakra-ui/react';
 
-const NewsletterLink = (frontMatter) => {
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
-
+export default function NewsletterLink({ slug, publishedAt }) {
   return (
-    <ListItem mb={2} ml={4}>
-      <NextLink href={`/newsletter/${frontMatter.slug}`} passHref>
-        <Link color={secondaryTextColor[colorMode]}>
-          {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
-        </Link>
-      </NextLink>
-    </ListItem>
+    <li className="mb-2 ml-2">
+      <Link href={`/newsletter/${slug}`}>
+        <a className="font-medium text-gray-800 dark:text-gray-300 hover:underline">
+          {format(parseISO(publishedAt), 'MMMM dd, yyyy')}
+        </a>
+      </Link>
+    </li>
   );
-};
-
-export default NewsletterLink;
+}

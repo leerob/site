@@ -1,22 +1,11 @@
-import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import IframeResizer from 'iframe-resizer-react';
 import { parseISO, format } from 'date-fns';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  Avatar,
-  Link,
-  Box
-} from '@chakra-ui/react';
 
-import Container from '../components/Container';
-import Subscribe from '../components/Subscribe';
-import ViewCounter from '../components/ViewCounter';
-import BlogSeo from '../components/BlogSeo';
+import Container from '@/components/Container';
+import Subscribe from '@/components/Subscribe';
+import ViewCounter from '@/components/ViewCounter';
+import BlogSeo from '@/components/BlogSeo';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
@@ -28,89 +17,47 @@ const discussUrl = (slug) =>
 export default function BlogLayout({ children, frontMatter }) {
   const router = useRouter();
   const slug = router.asPath.replace('/blog', '');
-  const { colorMode } = useColorMode();
-  const textColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
 
   return (
     <Container>
       <BlogSeo url={`https://leerob.io/blog/${slug}`} {...frontMatter} />
-      <Stack
-        as="article"
-        spacing={8}
-        justifyContent="center"
-        alignItems="flex-start"
-        m="0 auto 4rem auto"
-        maxWidth="700px"
-        w="100%"
-      >
-        <Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          maxWidth="700px"
-          w="100%"
-        >
-          <Heading
-            letterSpacing="tight"
-            mb={2}
-            as="h1"
-            size="2xl"
-            lineHeight={['40px', null, '60px']}
-          >
-            {frontMatter.title}
-          </Heading>
-          <Flex
-            justify="space-between"
-            align={['initial', 'center']}
-            direction={['column', 'row']}
-            mt={2}
-            w="100%"
-            mb={4}
-          >
-            <Flex align="center">
-              <Avatar
-                size="xs"
-                name="Lee Robinson"
-                src="https://bit.ly/33vEjhB"
-                mr={2}
-              />
-              <Text fontSize="sm" color={textColor[colorMode]}>
-                {frontMatter.by}
-                {'Lee Robinson / '}
-                {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
-              </Text>
-            </Flex>
-            <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
-              {frontMatter.readingTime.text}
-              {` • `}
-              <ViewCounter id={slug} />
-            </Text>
-          </Flex>
-        </Flex>
-        {children}
+      <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          {frontMatter.title}
+        </h1>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-4">
+          <div className="flex items-center">
+            <Image
+              alt="Lee Robinson"
+              height={24}
+              width={24}
+              src="/avatar.jpg"
+              className="rounded-full"
+            />
+            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
+              {frontMatter.by}
+              {'Lee Robinson / '}
+              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+            </p>
+          </div>
+          <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+            {frontMatter.readingTime.text}
+            {` • `}
+            <ViewCounter id={slug} />
+          </p>
+        </div>
+        <div className="prose dark:prose-dark">{children}</div>
         <Subscribe />
-        <Box>
-          <Link href={discussUrl(slug)} isExternal>
+        <div>
+          <a href={discussUrl(slug)} target="_blank" rel="noopener noreferrer">
             {'Discuss on Twitter'}
-          </Link>
+          </a>
           {` • `}
-          <Link href={editUrl(slug)} isExternal>
+          <a href={editUrl(slug)} target="_blank" rel="noopener noreferrer">
             {'Edit on GitHub'}
-          </Link>
-        </Box>
-        <IframeResizer
-          checkOrigin={false}
-          title="Comments"
-          src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}?theme=${colorMode}`}
-          style={{
-            width: '1px',
-            minWidth: '100%'
-          }}
-        />
-      </Stack>
+          </a>
+        </div>
+      </article>
     </Container>
   );
 }
