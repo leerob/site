@@ -36,17 +36,19 @@ export default function Newsletter({ newsletters }) {
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Archive
         </h3>
-        <ul className="list-disc list-inside text-gray-700 dark:text-gray-400">
-          {newsletters
-            .sort(
-              (a, b) =>
-                Number(new Date(b.publishedAt)) -
-                Number(new Date(a.publishedAt))
-            )
-            .map((frontMatter) => (
-              <NewsletterLink key={frontMatter.title} {...frontMatter} />
-            ))}
-        </ul>
+        <div className="prose dark:prose-dark">
+          <ul>
+            {newsletters
+              .sort(
+                (a, b) =>
+                  Number(new Date(b.publishedAt)) -
+                  Number(new Date(a.publishedAt))
+              )
+              .map((frontMatter) => (
+                <NewsletterLink key={frontMatter.title} {...frontMatter} />
+              ))}
+          </ul>
+        </div>
       </div>
     </Container>
   );

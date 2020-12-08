@@ -50,12 +50,11 @@ export default function About() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           About Me
         </h1>
-        <div className="mb-8">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+        <div className="mb-8 prose leading-6">
+          <p>
             Hey, I’m Lee. I'm a developer, writer, and the creator of&nbsp;
             <a
               href="https://masteringnextjs.com"
-              className="text-gray-900 dark:text-gray-100 underline"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -64,7 +63,6 @@ export default function About() {
             &nbsp;and&nbsp;
             <a
               href="https://react2025.com"
-              className="text-gray-900 dark:text-gray-100 underline"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,17 +70,15 @@ export default function About() {
             </a>
             &nbsp;I work at ▲Vercel as a Solutions Architect.
           </p>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p>
             I’ve spoken across the country at conferences and meet-ups about
             front-end development, design, and recruiting. I write about
             development, tech careers, and my personal life on&nbsp;
             <Link href="/newsletter">
-              <a className="text-gray-900 dark:text-gray-100 underline">
-                my newsletter.
-              </a>
+              <a>my newsletter.</a>
             </Link>
           </p>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p>
             I grew up in small-town Iowa and went to school at Iowa State,
             graduating with a degree in Computer Engineering. I spend my free
             time playing music, creating videos, and enjoying time with friends
