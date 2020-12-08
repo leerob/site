@@ -1,6 +1,4 @@
-import 'tailwindcss/tailwind.css';
 import '@/styles/global.css';
-import '@/styles/prism.css';
 
 import { MDXProvider } from '@mdx-js/react';
 import { ThemeProvider } from 'next-themes';
