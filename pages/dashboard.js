@@ -25,15 +25,7 @@ export default function Dashboard() {
         openGraph={{
           url,
           title,
-          description,
-          images: [
-            {
-              url: 'https://leerob.io/static/images/dashboard.jpg',
-              alt: description,
-              width: 1280,
-              height: 720
-            }
-          ]
+          description
         }}
       />
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

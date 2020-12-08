@@ -101,6 +101,7 @@ pre::-webkit-scrollbar {
 pre {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  overflow-x: auto;
 }
 
 .remark-code-title {
