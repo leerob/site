@@ -127,3 +127,15 @@ input[type='email'] {
   -moz-appearance: none;
   appearance: none;
 }
+
+.metric-card > a {
+  @apply no-underline;
+}
+
+.metric-card > p {
+  @apply my-2;
+}
+
+.step > h3 {
+  @apply my-0;
+}

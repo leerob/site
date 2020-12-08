@@ -8,8 +8,6 @@ import Gumroad from '@/components/metrics/Gumroad';
 import Unsplash from '@/components/metrics/Unsplash';
 import Analytics from '@/components/metrics/Analytics';
 import YouTube from '@/components/metrics/Youtube';
-import ProjectCard from '@/components/ProjectCard';
-import TopTracks from '@/components/TopTracks';
 import Step from '@/components/Step';
 
 const CustomLink = (props) => {
@@ -37,11 +35,9 @@ const MDXComponents = {
   Analytics,
   ConsCard,
   Gumroad,
-  ProjectCard,
   ProsCard,
   Step,
   Tweet,
-  TopTracks,
   Unsplash,
   YouTube
 };
