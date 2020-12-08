@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 
-import googleAuth from '../../lib/google/auth';
+import googleAuth from '@/lib/google/auth';
 
 export default async (_, res) => {
   const auth = await googleAuth.getClient();
