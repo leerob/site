@@ -21,23 +21,23 @@ export default function ProjectCard({ title, description, href, icon }) {
     >
       <div className="flex items-center border border-gray-200 dark:border-gray-800 rounded p-4">
         {icon == 'react2025' && (
-          <>
+          <div className="h-8 w-8 ml-2 mr-4">
             <span className="sr-only">React 2025</span>
             <svg
-              className="ml-2 mr-4 h-8 w-8 text-gray-900 dark:text-gray-100"
+              className="h-8 w-8 min-w-sm text-gray-900 dark:text-gray-100"
               viewBox="0 0 267 305"
             >
               <g fill="currentColor">
                 <path d="M0 296V8.5H231.5V89L170.5 150L258.5 238H174L86 150L170.5 65.5H58V238L0 296Z" />
               </g>
             </svg>
-          </>
+          </div>
         )}
         {icon == 'nextjs' && (
-          <>
+          <div className="h-8 w-8 ml-2 mr-4">
             <span className="sr-only">Learn Next.js</span>
             <svg
-              className="ml-2 mr-4 h-8 w-8 text-gray-900 dark:text-gray-100"
+              className="h-8 w-8 min-w-lg text-gray-900 dark:text-gray-100"
               viewBox=".5 -.2 1023 1024.1"
             >
               <g fill="currentColor">
@@ -45,13 +45,13 @@ export default function ProjectCard({ title, description, href, icon }) {
                 <path d="m784.3 945.1c-3.5 2.2-4.6 3.7-1.5 2 2.2-1.3 5.8-4 5.2-4.1-.3 0-2 1-3.7 2.1zm-6.9 4.5c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-7.6 4c-3.8 2-3.6 2.8.2.9 1.7-.9 3-1.8 3-2 0-.7-.1-.6-3.2 1.1z" />
               </g>
             </svg>
-          </>
+          </div>
         )}
         {icon == 'fastfeedback' && (
-          <>
+          <div className="h-8 w-8 ml-2 mr-4">
             <span className="sr-only">Fast Feedback</span>
             <svg
-              className="ml-2 mr-4 h-8 w-8 text-gray-900 dark:text-gray-100"
+              className="h-8 w-8 min-w-sm text-gray-900 dark:text-gray-100"
               viewBox="0 0 46 32"
             >
               <path
@@ -59,7 +59,7 @@ export default function ProjectCard({ title, description, href, icon }) {
                 fill="currentColor"
               />
             </svg>
-          </>
+          </div>
         )}
         <div>
           <h4 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-100">
