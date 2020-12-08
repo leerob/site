@@ -13,7 +13,7 @@ export default function Container({ children }) {
 
   return (
     <div className="bg-white dark:bg-black">
-      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto">
+      <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60">
         <button
           aria-label="Toggle Dark Mode"
           type="button"
