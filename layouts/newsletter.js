@@ -1,80 +1,46 @@
-import React from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { parseISO, format } from 'date-fns';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  Avatar
-} from '@chakra-ui/core';
 
-import Container from '../components/Container';
-import Subscribe from '../components/Subscribe';
-import BlogSeo from '../components/BlogSeo';
+import Container from '@/components/Container';
+import Subscribe from '@/components/Subscribe';
+import BlogSeo from '@/components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
-  const slug = frontMatter.__resourcePath
-    .replace('newsletter/', '')
-    .replace('.mdx', '');
-
-  const { colorMode } = useColorMode();
-  const textColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
+  const router = useRouter();
+  const slug = router.asPath.replace('/newsletter', '');
 
   return (
     <Container>
       <BlogSeo url={`https://leerob.io/newsletter/${slug}`} {...frontMatter} />
-      <Stack
-        as="article"
-        spacing={8}
-        justifyContent="center"
-        alignItems="flex-start"
-        m="0 auto 4rem auto"
-        maxWidth="700px"
-        w="100%"
-      >
-        <Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          maxWidth="700px"
-          w="100%"
-        >
-          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-            {frontMatter.title}
-          </Heading>
-          <Flex
-            justify="space-between"
-            align={['initial', 'center']}
-            direction={['column', 'row']}
-            mt={2}
-            w="100%"
-            mb={4}
-          >
-            <Flex align="center">
-              <Avatar
-                size="xs"
-                name="Lee Robinson"
-                src="https://bit.ly/33vEjhB"
-                mr={2}
-              />
-              <Text fontSize="sm" color={textColor[colorMode]}>
-                {frontMatter.by}
-                {'Lee Robinson / '}
-                {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
-              </Text>
-            </Flex>
-            <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
-              {frontMatter.readingTime.text}
-            </Text>
-          </Flex>
-        </Flex>
-        {children}
-        <Subscribe />
-      </Stack>
+      <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          {frontMatter.title}
+        </h1>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-4">
+          <div className="flex items-center">
+            <Image
+              alt="Lee Robinson"
+              height={24}
+              width={24}
+              src="/avatar.jpg"
+              className="rounded-full"
+            />
+            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
+              {frontMatter.by}
+              {'Lee Robinson / '}
+              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+            </p>
+          </div>
+          <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+            {frontMatter.readingTime.text}
+          </p>
+        </div>
+        <div className="prose dark:prose-dark w-full">{children}</div>
+        <div className="mt-8">
+          <Subscribe />
+        </div>
+      </article>
     </Container>
   );
 }

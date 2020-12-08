@@ -1,0 +1,68 @@
+---
+title: 'The 10 Best Bars in Des Moines'
+publishedAt: '2015-12-13'
+summary: 'Using data to determine where to drink.'
+image: '/static/images/best-bars-in-des-moines/banner.png'
+---
+
+<Image
+  alt={`Des Moines, Iowa`}
+  src={`/static/images/best-bars-in-des-moines/banner.png`}
+  width={1800}
+  height={1200}
+  priority
+/>
+
+I’m always on the lookout for a better solution to problems I face. Often, that involves using my knowledge of programming to quickly gather relevant information and create a solution. While browsing Google trying to decide where to grab a drink in Des Moines, I noticed a lot of bars weren’t being accurately represented by their ratings. They might have a 4.5/5.0, but only three people had written a review. On the opposite end of the spectrum, they might have a terrible rating written by a single angry customer. This led me to check other sources to see if what I’d found matched up with others.
+
+After browsing [Yelp](https://www.yelp.com) and [Foursquare](https://www.foursquare.com), I noticed a handful of cases where ratings and reviews didn’t match up. Wouldn’t it be convenient if there was an overall rating that combined all of these sources? This led me to create [Guesstimator](https://github.com/leerob/Guesstimator), a program that accomplishes just that. With this newly created tool, I set out to compile a list of the 10 best bars in Des Moines. Here’s what I found:
+
+| Name                         | Rating | Sources |
+| :--------------------------- | :----: | ------: |
+| El Bait Shop                 |  8.93  |       3 |
+| Hessen Haus                  |  8.43  |       3 |
+| The Royal Mile               |  8.28  |       2 |
+| Confluence Brewing Company   |  9.15  |       1 |
+| High Life Lounge             |  8.53  |       2 |
+| Louie’s Wine Dive            |  8.45  |       2 |
+| Up-Down                      |  8.42  |       2 |
+| Exile Brewing Company        |  8.88  |       1 |
+| Court Avenue Brewing Company |  8.26  |       2 |
+| The Lift                     |  8.57  |       1 |
+
+---
+
+### Summary
+
+Overall, this list looks pretty solid. Cross-referencing it with lists from [Yelp](https://www.yelp.com/c/des-moines/bars), [TripAdvisor](https://www.tripadvisor.com/Attractions-g37835-Activities-c20-Des_Moines_Iowa.html), [BeerAdvocate](https://www.beeradvocate.com/place/list/?city=Des+Moines&c_id=US&s_id=IA), [Zomato](https://www.zomato.com/des-moines-ia/restaurants/bar-food), and [Roadtrippers](https://roadtrippers.com/lists-itinerary/des-moines-bars-and-pubs/2376349?lat=40.80972&lng=-96.67528&z=5) we see a lot of similarities. In total, I looked at:
+
+- **113** different businesses
+- **~9,000** unique ratings
+- **~40,000** check-ins on Foursquare
+
+Combining all of this data, I was able to create a list that more accurately represents the ratings of bars given the number of reviews. It’s important to remember this list is based on statistical data. This is simply one approach to how the best bars are perceived. However, remember it’s all subjective. My (expert) opinion would be to try them all out and decide for yourself.
+
+There’s a few exceptions to this list that stick out to me. Joker’s, The Exchange, and Beer Can Alley are all nowhere to be found. These are definitely popular spots and have been winning [CityView](http://www.dmcityview.com/cover-story/2015/02/25/25967/) awards. Unfortunately, the list doesn’t reflect that. Even with a variety of sources, there wasn’t enough data to accurately map the popularity of these newer establishments.
+
+---
+
+### Behind The Rating
+
+After researching similar rating strategies, I settled on using a [Bayesian estimate](https://en.wikipedia.org/wiki/Bayes_estimator). This is how [IMDb](http://www.imdb.com/help/show_leaf?votestopfaq) and [BeerAdvocate](https://www.beeradvocate.com/lists/top/) rank their Top 250 lists. This essentially normalizes ratings based on the number of ratings for each business.
+
+```bash
+Weighted Rating (WR) = (v ÷ (v + m)) × R + (m ÷ (v + m)) × C
+Where:
+R = rating average for this business
+v = number of ratings for this business
+m = minimum ratings required
+C = the mean rating across the entire list
+```
+
+After analyzing the raw output from Guesstimator, I filtered the results removing establishments that were primarily restaurants and re-sorted ranks accounting for the number of data sources.
+
+---
+
+### Conclusion
+
+Hopefully this list helps you discover some new spots or revisit an old favorite. If you’re curious about how I created Guesstimator, you can read my article [here](/blog/google-yelp-foursquare-apis-python). Let me know if you agree with the list!

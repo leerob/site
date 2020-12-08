@@ -1,3 +1,5 @@
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fleerob.io)
+
 # leerob.io
 
 My portfolio has transformed over the years - from a static HTML site, to Jekyll, to Hugo, and finally to Next.js/React/MDX. My personal slice of the internet provides a platform for my writing and to showcase my latest work.
@@ -18,11 +20,11 @@ $ yarn
 $ yarn dev
 ```
 
-Create a `.env.local` file similar to [`.env`](https://github.com/leerob/leerob.io/blob/master/.env).
+Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/master/.env.example).
 
 ## Built Using
 
 - [Next.js](https://nextjs.org/)
 - [Vercel](https://vercel.com)
 - [MDX](https://github.com/mdx-js/mdx)
-- [Chakra UI](https://chakra-ui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)

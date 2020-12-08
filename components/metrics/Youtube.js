@@ -1,13 +1,10 @@
-import React from 'react';
 import useSWR from 'swr';
 import format from 'comma-number';
-import { SimpleGrid } from '@chakra-ui/core';
 
-import fetcher from '../../lib/fetcher';
+import fetcher from '@/lib/fetcher';
+import MetricCard from '@/components/metrics/Card';
 
-import MetricCard from './Card';
-
-const YouTube = () => {
+export default function YouTube() {
   const { data } = useSWR('/api/youtube', fetcher);
 
   const subscriberCount = format(data?.subscriberCount);
@@ -15,15 +12,13 @@ const YouTube = () => {
   const link = 'https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw';
 
   return (
-    <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
       <MetricCard
         header="YouTube Subscribers"
         link={link}
         metric={subscriberCount}
       />
       <MetricCard header="YouTube Views" link={link} metric={viewCount} />
-    </SimpleGrid>
+    </div>
   );
-};
-
-export default YouTube;
+}

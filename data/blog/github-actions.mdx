@@ -1,0 +1,111 @@
+---
+title: 'Why I Switched From CircleCI to GitHub Actions'
+publishedAt: '2019-09-15'
+summary: 'Can GitHub Actions relace CircleCI entirely? Find out why I decided to switch CI/CD providers to GitHub Actions.'
+image: '/static/images/github-actions/banner.png'
+---
+
+<Image
+  alt={`GitHub Actions Checks`}
+  src={`/static/images/github-actions/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+I recently switched my Continuous Integration ([CI](https://en.wikipedia.org/wiki/Continuous_integration))
+provider from [CircleCI](https://circleci.com/) to [GitHub Actions](https://github.com/features/actions).
+My primary use for CI is running linting/tests on every pull request. Nothing too crazy.
+
+I've used CircleCI as my go-to provider for a while now. When I'm trying to get a project off the ground,
+I don't want to worry about reinventing the wheel every time I need to set up CI.
+
+GitHub recently came out with Actions, which appeared to solve the same problem without relying on an external service.
+Then, there was a [security incident](https://support.circleci.com/hc/en-us/articles/360034852194-Security-Incident-on-8-31-2019-Details-and-FAQs-) with CircleCI on August 31st.
+I decided to sign up for the beta of GitHub Actions and give it a shot.
+
+## CircleCI
+
+Here's the CircleCI config I was using. It installs the dependencies and runs `yarn test`.
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15.0
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restoring dependencies
+          keys:
+            - dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Installing dependencies
+          command: yarn
+      - save_cache:
+          name: Saving dependencies
+          paths:
+            - ~/.cache/yarn
+            - node_modules
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Running tests
+          command: yarn test
+```
+
+## GitHub Actions
+
+> GitHub Actions supports Node.js, Python, Java, Ruby, PHP, Go, Rust, .NET, and more. Build, test, and deploy applications in your language of choice.
+
+I can achieve the **exact configuration** as CircleCI with GitHub Actions 🎉
+
+```yml:.github/workflows/workflow.yml
+name: CI
+on: pull_request
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.15.0
+      - name: Installing dependencies
+        run: yarn install --frozen-lockfile
+      - name: Running tests
+        run: yarn test
+```
+
+After adding this file at `.github/workflows/workflow.yml`, you'll be able to see each run show up under the "Actions" tab.
+
+<Image
+  alt={`GitHub Actions Tab`}
+  src={`/static/images/github-actions/actions-tab.png`}
+  width={1000}
+  height={548}
+/>
+
+I've defined my check to happen on every pull request.
+
+<Image
+  alt={`GitHub Actions Checks`}
+  src={`/static/images/github-actions/checks.png`}
+  width={1000}
+  height={444}
+/>
+
+## Conclusion
+
+GitHub Actions has been excellent so far. Plus, there's a lot more I could do with Actions.
+You can run a workflow on any GitHub event (e.g. push, issue creation, releases, etc) and even:
+
+- [Deploy to AWS/Kubernetes](https://github.com/actions/aws)
+- [Publish a package to NPM](https://github.com/actions/npm)
+- [Create a ticket in JIRA](https://github.com/atlassian/gajira)
+- [Label and close stale issues and pull requests](https://github.com/actions/stale)
+
+I'm looking forward to seeing the adoption of GitHub Actions as it releases to the public.

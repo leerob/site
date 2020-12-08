@@ -1,57 +1,25 @@
-import React from 'react';
-import { Box, Link, Stack, Text, useColorMode } from '@chakra-ui/core';
-
-const Track = (track) => {
-  const { colorMode } = useColorMode();
-  const borderColor = {
-    light: 'gray.100',
-    dark: 'gray.800'
-  };
-  const rankingColor = {
-    light: 'gray.400',
-    dark: 'gray.600'
-  };
-
+export default function Track(track) {
   return (
-    <Box
-      mb={4}
-      display="flex"
-      flexDirection="row"
-      alignItems="baseline"
-      borderBottom="1px solid"
-      borderColor={borderColor[colorMode]}
-      p={2}
-      maxWidth="600px"
-      w="full"
-    >
-      <Text fontSize="sm" fontWeight="bold" color={rankingColor[colorMode]}>
+    <div className="flex flex-row items-baseline border-b border-gray-100 dark:border-gray-800 max-w-3xl w-full mt-8">
+      <p className="text-sm font-bold text-gray-400 dark:text-gray-600">
         {track.ranking}
-      </Text>
-      <Stack spacing={0} ml={3}>
-        <Link
-          fontWeight="medium"
-          maxWidth={['250px', '600px']}
-          whiteSpace="nowrap"
-          overflow="hidden"
-          textOverflow="ellipsis"
+      </p>
+      <div className="flex flex-col pl-3">
+        <a
+          className="font-medium text-gray-900 dark:text-gray-100 truncate w-60 sm:w-96 md:w-full"
           href={track.songUrl}
-          isExternal
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {track.title}
-        </Link>
-        <Text
+        </a>
+        <p
+          className="text-gray-500 mb-4 truncate w-60 sm:w-96 md:w-full"
           color="gray.500"
-          mb={4}
-          maxWidth={['250px', '600px']}
-          whiteSpace="nowrap"
-          overflow="hidden"
-          textOverflow="ellipsis"
         >
           {track.artist}
-        </Text>
-      </Stack>
-    </Box>
+        </p>
+      </div>
+    </div>
   );
-};
-
-export default Track;
+}

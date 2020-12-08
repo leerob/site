@@ -1,13 +1,10 @@
-import React from 'react';
 import useSWR from 'swr';
 import format from 'comma-number';
-import { SimpleGrid } from '@chakra-ui/core';
 
-import fetcher from '../../lib/fetcher';
+import fetcher from '@/lib/fetcher';
+import MetricCard from '@/components/metrics/Card';
 
-import MetricCard from './Card';
-
-const Unsplash = () => {
+export default function Unsplash() {
   const { data } = useSWR('/api/unsplash', fetcher);
 
   const downloads = format(data?.downloads);
@@ -15,11 +12,9 @@ const Unsplash = () => {
   const link = 'https://unsplash.com/@leerob';
 
   return (
-    <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
       <MetricCard header="Unsplash Downloads" link={link} metric={downloads} />
       <MetricCard header="Unsplash Views" link={link} metric={views} />
-    </SimpleGrid>
+    </div>
   );
-};
-
-export default Unsplash;
+}

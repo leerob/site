@@ -1,0 +1,141 @@
+---
+title: 'Create a Dashboard with Next.js API Routes - Unsplash API'
+publishedAt: '2020-02-04'
+summary: 'Learn how to use Next.js API routes to integrate with the Unsplash API and retrieve statistics about a user.'
+image: '/static/images/og.jpg'
+---
+
+> In this series, you will learn how to [create a dashboard](/dashboard) using Next.js API routes and integrate with third-party APIs.
+
+<Unsplash />
+
+## Overview
+
+[Unsplash](https://unsplash.com) is the largest source of high-quality images on the internet.
+Amateur and professional photographers give back by allowing their photos to be used [100% free](https://unsplash.com/license) for commercial and non-commercial usage.
+
+They also provide a [fantastic API](https://unsplash.com/developers), which gives you access to millions of photographs and a variety of metrics.
+As an [Unsplash contributor](https://unsplash.com/@leerob), I wanted to see how many times my photos have been viewed and downloaded.
+
+## Getting Access to Unsplash
+
+To gain access to the Unsplash API, you need to:
+
+- [Create an account.](https://unsplash.com/documentation#creating-a-developer-account)
+- Go to [your applications](https://unsplash.com/oauth/applications).
+- Click “New Application.”
+- Accept the terms of usage.
+- Fill in the required details.
+- Retrieve the secret key for your new application.
+
+**That's it!** 🎉 You now have access to make requests to the Unsplash API with your secret key.
+
+## Creating an environment variable
+
+To securely access the API, we need to include the secret with each request.
+We also _do not_ want to commit secrets to git. Thus, we should use an environment variable.
+
+Since I'm deploying with [Vercel](https://vercel.com), I can add the secret via their CLI.
+
+```bash
+$ vc secret add unsplash-access-token
+```
+
+To reference it locally when using `vc dev` it needs to be added to your `.env` file.
+
+```bash
+UNSPLASH_ACCESS_TOKEN=042d344
+```
+
+Finally, we need to add our new secret to `vercel.json`.
+
+```json:vercel.json
+{
+  "env": {
+    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key"
+  }
+}
+```
+
+We can now reference the secret via `process.env.UNSPLASH_ACCESS_KEY` in our API route.
+
+## Creating the API Route
+
+Let's start by creating a new API route at `pages/api/unsplash.js`.
+
+```js
+export default (req, res) => {
+  return res.status(200).json({});
+};
+```
+
+To make server-side requests to Unsplash, we can install the [unsplash-js](https://github.com/unsplash/unsplash-js) library.
+
+**Note:** `v7.0+` of this library has major breaking changes.
+
+```bash
+$ yarn add unsplash-js@6.3.0
+```
+
+Then, we can initialize `unsplash-js` inside our API route.
+
+```js
+import Unsplash, { toJson } from 'unsplash-js';
+
+let unsplash;
+
+export default async (_, res) => {
+  if (!unsplash) {
+    unsplash = new Unsplash({
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
+    });
+  }
+
+  return res.status(200).json({});
+};
+```
+
+Finally, we want to pull statistics for a given user and return the total number of downloads and views.
+
+```js
+import Unsplash, { toJson } from 'unsplash-js';
+
+let unsplash;
+
+export default async (_, res) => {
+  if (!unsplash) {
+    unsplash = new Unsplash({
+      accessKey: process.env.UNSPLASH_ACCESS_KEY
+    });
+  }
+
+  const userStats = await unsplash.users.statistics('leerob');
+  const { downloads, views } = await toJson(userStats);
+
+  return res.status(200).json({
+    downloads: downloads.total,
+    views: views.total
+  });
+};
+```
+
+## Example
+
+The two cards below talk to `/api/unsplash` and pull back stats about my Unsplash account.
+
+_Bonus_: You can cache the API route with the [cache-control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header.
+
+```bash
+Cache-Control: public, max-age=120, stale-while-revalidate=60
+```
+
+<Unsplash />
+
+## Keep Reading
+
+**Create a Dashboard with Next.js API Routes**
+
+- Part 1 - [Unsplash API](/blog/unsplash-api-nextjs)
+- Part 2 - [YouTube API](/blog/youtube-api-nextjs)
+- Part 3 - [Google Analytics API](/blog/google-analytics-api-nextjs)
+- Part 4 - [Fetching Data with SWR](/blog/fetching-data-with-swr)

@@ -1,0 +1,86 @@
+---
+title: 'Gumroad API with Node.js'
+publishedAt: '2020-04-15'
+summary: 'The missing documentation for making requests to the Gumroad API from Node.js.'
+image: '/static/images/gumroad-node-api/banner.jpg'
+---
+
+While exploring the [Gumroad API](https://gumroad.com/api) for my [personal dashboard](/dashboard),
+I struggled to find any examples using Node.js. Yes, there was a cURL example.
+
+```http
+curl https://api.gumroad.com/v2/products/sDpG \
+  -d "access_token=ACCESS_TOKEN" \
+  -X GET
+```
+
+However, [converting that](https://kigiri.github.io/fetch/) into a `fetch` was not working as I'd expect.
+
+```js
+fetch('https://api.gumroad.com/v2/products/sDpG', {
+  body: 'access_token=ACCESS_TOKEN',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  method: 'POST'
+});
+```
+
+First, I was getting a `404` because it was expecting a `GET` instead of `POST`.
+Then, I got a `401` since the authorization was incorrect. After a bit of fumbling,
+I was able to get the Gumroad API working with Node.js. Here's an example fetching
+information about a specific product.
+
+```js:pages/api/gumroad.js
+export default async (_, res) => {
+  const API_KEY = process.env.GUMROAD_API_KEY;
+  const response = await fetch(`https://api.gumroad.com/v2/products/sDpG`, {
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  });
+
+  const { product } = await response.json();
+  const sales = product.sales_usd_cents / 100;
+
+  return res.status(200).json({ sales });
+};
+```
+
+Here's another example fetching all of the sales for a user.
+
+```js
+let url = '/v2/sales';
+const allSales = [];
+const API_KEY = process.env.GUMROAD_API_KEY;
+
+while (url) {
+  const response = await fetch(`https://api.gumroad.com${url}`, {
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    method: 'GET'
+  });
+
+  const { sales, next_page_url: nextPageUrl } = await response.json();
+
+  allSales.push(sales);
+
+  if (nextPageUrl) {
+    url = nextPageUrl;
+  } else {
+    break;
+  }
+}
+
+return res.status(200).json({ sales: allSales });
+```
+
+The first example allowed me to fetch my total sales and display it on my dashboard. Hooray! 🎉
+
+<div className="mb-4">
+  <Gumroad />
+</div>

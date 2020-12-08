@@ -1,0 +1,196 @@
+---
+title: 'Going Serverless with Next.js and Firebase'
+publishedAt: '2019-07-19'
+summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Vercel.'
+image: '/static/images/nextjs-firebase-serverless/banner.jpg'
+---
+
+<Image
+  alt={`Next.js + Firebase + Vercel`}
+  src={`/static/images/nextjs-firebase-serverless/banner.png`}
+  width={1000}
+  height={571}
+  priority
+/>
+
+A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
+
+[BeyondHQ](https://beyondhq.co/) is an early-stage startup that helps companies expand outside of San Francisco. Think "Expansion-as-a-Service" - finding the right city, opening an office, growing your team, etc. They needed a basic website explaining who, what, and why - as well as a platform to build their SaaS solutions on top of. That's where I came in.
+
+## The Requirements
+
+For the main website, the requirements were fairly straight forward:
+
+- Basic splash page with information about the product.
+- About page with information on the employees.
+- Frequently asked questions page.
+- Save off information from a contact form.
+- Cheap hosting. Ideally free.
+
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/landing.png`}
+  width={1000}
+  height={498}
+/>
+
+They also wanted a platform to build SaaS on. That meant I needed to consider more requirements, as it would be the next bit of functionality I would create.
+
+The first step towards their full-featured SaaS product was a [location evaluation tool](https://beyondhq.co/geo-eval). Users could enter information like their company size, the number of employees, and potential expansion locations to get a list of their top city matches. Then, they could explore each city and see metrics about what made it an attractive option to expand to. Those requirements were a bit more complex:
+
+- Resilient, highly available, and fast.
+- Cheap storage. Ideally free.
+- Great SEO (Search Engine Optimization).
+- City pages should be dynamic and pull from a database.
+- The ability for non-technical people to easily edit data.
+- Save off lead generation information from user input.
+
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/questions.png`}
+  width={1000}
+  height={398}
+/>
+
+## The Technology
+
+Given these requirements, what technical choices did I make and why? Let's take a look.
+
+### React
+
+[React](https://reactjs.org/) is the industry-standard for building modern web applications. Of 90,000 developers [surveyed by Stack Overflow](https://insights.stackoverflow.com/survey/2019), React was the most loved and most wanted. This technology provides a platform for the main website, as well as any future SaaS.
+
+### Next.js
+
+[Next.js](https://nextjs.org/) makes it easy to build scalable, performant React code. It's blazing fast and uses server-side rendering to improve SEO. On top of that, it simplifies the developer experience and provides a future-proof platform for the BeyondHQ team.
+
+### Vercel
+
+Deploying serverless applications couldn't be easier with [Vercel](https://vercel.com). It's resilient, [highly available](https://vercel.com/smart-cdn), and fault-tolerant. Plus, it has an excellent [free tier](https://vercel.com/pricing) with the ability to scale as needed.
+
+### Firebase
+
+[Firebase](https://firebase.google.com/) is the industry standard [NoSQL](https://en.wikipedia.org/wiki/NoSQL) platform. It has a sufficient user/permissions system and an easy interface for non-technical users. Did it mention it has a generous [free tier](https://firebase.google.com/pricing)? Firebase's [Cloud Firestore](https://firebase.google.com/products/firestore/) product allowed us to save off contact info, city information, and user's lead gen input. It was a no-brainer!
+
+Why use NoSQL? There weren't any requirements which needed a relational database. If there were, I might have considered [Postgres on Hasura](https://hasura.io/) instead.
+
+## The Solution
+
+After reviewing the requirements and choosing the technology, the next step was to begin implementing a solution. But first, mockups!
+
+<Image
+  alt={`BeyondHQ`}
+  src={`/static/images/nextjs-firebase-serverless/geo-eval.png`}
+  width={1000}
+  height={438}
+/>
+
+I iterated over a handful of designs and went back and forth with the team, tweaking things based on their feedback. We eventually agreed on a mockup and the coding commenced.
+
+### API Route
+
+To use Firebase, we need to create an [API route](https://nextjs.org/docs/api-routes/introduction).
+This will allow us to use `firebase-admin` to communicate with our Cloud Firestore database.
+
+**Note:** You need to generate and download a service account in Firebase.
+
+```js:lib/firebase.js
+import admin from 'firebase-admin';
+
+try {
+  admin.initializeApp({
+    credential: admin.credential.cert({
+      project_id: process.env.FIREBASE_PROJECT_ID,
+      private_key: process.env.FIREBASE_PRIVATE_KEY,
+      client_email: process.env.FIREBASE_CLIENT_EMAIL
+    }),
+    databaseURL: 'https://vercel-serverless.firebaseio.com'
+  });
+} catch (error) {
+  /*
+   * We skip the "already exists" message which is
+   * not an actual error when we're hot-reloading.
+   */
+  if (!/already exists/u.test(error.message)) {
+    // eslint-disable-next-line no-console
+    console.error('Firebase admin initialization error', error.stack);
+  }
+}
+
+export default admin.firestore();
+```
+
+```js:pages/api/city/[name].js
+import firebase from '../../../lib/firebase';
+
+export default (req, res) => {
+  firebase
+    .collection('cities')
+    .doc(req.query.name)
+    .get()
+    .then((doc) => {
+      res.json(doc.data());
+    })
+    .catch((error) => {
+      res.json({ error });
+    });
+};
+```
+
+Let's break this down.
+
+- A request is made to `/api/city/des-moines`
+- A connection to Firestore is created with your service account
+- We query the `cities` collection
+- `req.query.name` has the [dynamic route](https://nextjs.org/docs/routing/dynamic-routes) value of `des-moines`
+- We return the data for that document
+
+### The Client
+
+For each city, we want to pass the name as a route (e.g. `/city/des-moines`) and fetch data from our API.
+Let's create `pages/city/[name].js` using [dynamic routing](https://nextjs.org/docs/routing/dynamic-routes) and [SWR](/blog/fetching-data-with-swr).
+
+```js:/pages/city/[name].js
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+
+const fetcher = async (...args) => {
+  const res = await fetch(...args);
+
+  return res.json();
+};
+
+function City() {
+  const router = useRouter();
+  const { name } = router.query;
+  const { data } = useSWR(`/api/city/${name}`, fetcher);
+
+  if (!data) {
+    return 'Loading...';
+  }
+
+  return (
+    <div>
+      <p>Population: {data.population}</p>
+    </div>
+  );
+}
+
+export default City;
+```
+
+This gives you the flexibility to add a loading state or placeholder to improve your user experience.
+
+<Image
+  alt={`Loading Placeholder`}
+  src={`/static/images/nextjs-firebase-serverless/loading.gif`}
+  width={2548}
+  height={1640}
+/>
+
+Much better! 🎉
+
+## Conclusion
+
+If you find yourself with similar requirements, you can now consider using this stack to provide an elegant solution.
+You can view the [source code here](https://github.com/leerob/nextjs-vercel-firebase).

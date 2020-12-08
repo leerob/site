@@ -1,0 +1,407 @@
+---
+title: 'Real-Time Blog Post Views With React and Firebase'
+publishedAt: '2019-08-21'
+summary: 'Want more accurate page view counts? Learn how to create your own microservice for tracking real-time view counts using Firebase and then visualize those counts using React.'
+image: '/static/images/real-time-post-views/banner.jpg'
+---
+
+<Image
+  alt={`Blog Post Views`}
+  src={`/static/images/real-time-post-views/chart.png`}
+  width={1110}
+  height={624}
+  priority
+/>
+
+One metric for a website's success is the amount of traffic it receives.
+For a blog, this translates to page views. Articles with lots of views indicate the content your readers care most about.
+This helps drive future articles.
+
+Most people measure view counts via analytics (like [Google Analytics](https://analytics.google.com/analytics/web/)).
+However, with the rise of ad-blocking browser extensions, these counts are likely [~10% off](https://moz.com/blog/analytics-black-holes) (especially if your target market is tech).
+What if we could have better accuracy, better performance, and better privacy for our users?
+
+## Table of Contents
+
+1. [Who Is This For?](#who-is-this-for)
+1. [Technical Overview](#technical-overview)
+1. [Setting Up Firebase](#setting-up-firebase)
+1. [Creating The Microservice](#creating-the-microservice)
+1. [Deploying and Testing View Counts](#deploying-and-testing-view-counts)
+1. [Lazy-Loading Firebase Client Side](#lazy-loading-firebase-client-side)
+1. [Real-Time View Count Updates](#real-time-view-count-updates)
+1. [Conclusion](#conclusion)
+
+## Who Is This For?
+
+Anyone running their own blog, whether that's using
+vanilla React or a static-site generator like [Gatsby](https://www.gatsbyjs.com/) or [Next.js](https://nextjs.org/features/static-exporting).
+
+## Technical Overview
+
+### Objective
+
+Display a real-time view count for a given blog post.
+This should not block the page load and should log views asynchronously.
+The client should automatically update when it receives a new count from the server.
+
+### Server
+
+To track views, we will be creating a serverless microservice with [Micro](https://github.com/zeit/micro) and a [Firebase Realtime Database](https://firebase.google.com/docs/database).
+Given an ID query parameter (`/?id=$id`) our microservice should increment views for the corresponding post in Firebase.
+It should also prevent abuse by logging IPs.
+
+### Client
+
+Our client application should [lazy-load](https://nextjs.org/learn/excel/lazy-loading-components) the [Firebase JavaScript SDK](https://firebase.google.com/docs/reference/js) on page load and subscribe to view counts.
+When it receives a new count, the counter should highlight and update.
+
+We can host and deploy this entire solution **for free** using Firebase's [free tier](https://firebase.google.com/pricing/) and [Vercel](https://vercel.com). Amazing.
+
+## Setting Up Firebase
+
+1.  If you do not have a Firebase account, create one first.
+2.  Create a new project.
+3.  Navigate to "Database" and click "Create Database".
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step1.png`}
+      width={1000}
+      height={534}
+    />
+4.  Start in test mode and click next.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step2.png`}
+      width={1000}
+      height={533}
+    />
+5.  Choose your database location and click done.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step3.png`}
+      width={1000}
+      height={532}
+    />
+6.  In the top left, click on "Project Settings".
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step4.png`}
+      width={979}
+      height={386}
+    />
+7.  Navigate to "Service Accounts" tab and click "Generate new private key". Save the `.json` file. You will need this later.
+    <Image
+      alt={`Create Firebase Database`}
+      src={`/static/images/real-time-post-views/firebase/step5.png`}
+      width={1000}
+      height={535}
+    />
+
+We're finished! 🎉 You have successfully set up a realtime database, as well as generated credentials for your microservice to connect to the database.
+
+## Creating The Microservice
+
+> Update 2020: I've switched my microservice to an [API route](https://github.com/leerob/leerob.io/blob/master/pages/api/increment-views.js) inside my Next.js application. If you're using Next.js, I would recommend this approach.
+
+This blog post was inspired by Guillermo Rauch's [blog](https://github.com/rauchg/blog), where he open-sourced [his code](https://github.com/rauchg/blog-views). I've updated some things but this is largely inspired by his work 🎉
+
+You can view the entire source code [here](https://github.com/leerob/blog-views). I'll be explaining some key concepts for how the microservice works.
+
+### Connecting To Firebase
+
+Before we can log views, we need to connect to our Firebase Realtime Database.
+Place your `service-account.json` in the root of the repo.
+This file is inside `.gitignore` so it won't be committed to GitHub. We can connect to the database using [firebase-admin](). Make sure you update the `databaseURL`.
+
+```js
+const admin = require('firebase-admin');
+const { join } = require('path');
+const cert = join(__dirname, '../service-account.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(cert),
+  databaseURL: 'https://your-blog.firebaseio.com'
+});
+
+module.exports = admin.database();
+```
+
+### Tracking Views
+
+To track a view, we need to look at the database for `views -> id`.
+
+```js
+const db = require('./db');
+
+module.exports = function incrementViews(id) {
+  const ref = db.ref('views').child(id);
+  return ref.transaction((currentViews) => {
+    // if it has never been set it returns null
+    if (currentViews === null) currentViews = 0;
+    return currentViews + 1;
+  });
+};
+```
+
+### Putting It All Together
+
+The entry point into the application sets CORS headers, checks for a valid request, parses the `id` query parameter, and increments the value for the given `id`. Make sure to update the URL for your blog.
+
+```js
+const verify = require('./lib/verify');
+const { parse } = require('url');
+const increment = require('./lib/increment-views');
+
+module.exports = async (req, res) => {
+  const orig = req.headers.origin;
+  if (/https:\/\/(.*\.)?leerob\.io/.test(orig)) {
+    res.setHeader('Access-Control-Allow-Origin', orig);
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+  }
+
+  // ensure no duplicate views
+  verify(req);
+  const {
+    query: { id }
+  } = parse(req.url, true);
+
+  if (!id) {
+    const err = new Error('Missing `id` parameter');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  const { snapshot } = await increment(id);
+  return { total: snapshot.val() };
+};
+```
+
+## Deploying and Testing View Counts
+
+After you've [cloned the repo](https://github.com/leerob/blog-views) and followed the steps above to substitute your values, run `yarn dev` to start the microservice.
+
+Using your favorite REST client or your browser, you can now hit `http://localhost:3000?id=blog-post` to log a view.
+
+<Image
+  alt={`Testing Microservice`}
+  src={`/static/images/real-time-post-views/microservice.jpg`}
+  width={1000}
+  height={420}
+/>
+
+We can confirm it was logged correctly by checking Firebase.
+
+<Image
+  alt={`Testing Firebase`}
+  src={`/static/images/real-time-post-views/testing-database.png`}
+  width={1000}
+  height={562}
+/>
+
+### Deployment with Vercel
+
+We can configure our microservice to deploy with [Vercel](https://vercel.com) through a `vercel.json` file.
+Update the `name` and `alias` to be unique for your microservice.
+
+```json
+{
+  "version": 2,
+  "name": "your-blog-views",
+  "alias": "your-blog-views",
+  "builds": [{ "src": "index.js", "use": "now-micro" }]
+}
+```
+
+After installing the [Vercel CLI](https://vercel.com/download), you can deploy in _one command_ 🚀
+
+```bash
+$ vc --prod
+```
+
+You should now be able to hit `https://your-blog-views.now.sh/`.
+
+## Lazy-Loading Firebase Client Side
+
+Firebase is a large module. In fact, it's larger than `react`, `react-dom` and `next` _combined_.
+We only want to load the parts of Firebase we need (`firebase/app` and `firebase/database`) and we don't want to block the page load.
+
+Let's lazy-load the Firebase JavaScript SDK.
+
+```js
+export default async function loadDb() {
+  const firebase = await import('firebase/app');
+
+  await import('firebase/database');
+
+  try {
+    firebase.initializeApp({
+      databaseURL: 'https://your-blog.firebaseio.com'
+    });
+  } catch (error) {
+    /*
+     * We skip the "already exists" message which is
+     * not an actual error when we're hot-reloading.
+     */
+    if (!/already exists/.test(error.message)) {
+      console.error('Firebase initialization error', error.stack);
+    }
+  }
+
+  return firebase.database().ref('views');
+}
+```
+
+## Real-Time View Count Updates
+
+Now that our microservice is deployed, we can instruct our client to asynchronously log a view when the page loads. We also need to subscribe to the view counts for the given blog post ID so the client updates every time the value changes.
+
+Let's create a `<ViewCounter />` component.
+
+**Note**: The `<Views />` component will be created next.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+import loadDb from '../lib/load-db';
+
+import Views from './views';
+
+function ViewCounter({ id }) {
+  const [views, setViews] = useState('');
+
+  // Subscribe to view count updates
+  useEffect(() => {
+    const onViews = (newViews) => setViews(newViews.val());
+    let db;
+
+    const fetchData = async () => {
+      db = await loadDb();
+      db.child(id).on('value', onViews);
+    };
+
+    fetchData();
+
+    return function cleanup() {
+      db.child(id).off('value', onViews);
+    };
+  }, [id]);
+
+  // Asynchronously log a view
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`https://your-blog-views.now.sh/?id=${encodeURIComponent(id)}`);
+
+    registerView();
+  }, [id]);
+
+  return <Views views={views} />;
+}
+
+export default ViewCounter;
+```
+
+Now, let's look at `<Views />`.
+This component should accept a prop `views` and display a formatted string that highlights when the value updates.
+
+- For styling, I'm using [styled-components](https://www.styled-components.com/).
+- For formatting, I'm using [comma-number](https://www.npmjs.com/package/comma-number).
+
+First, let's look at the styles. A `highlight` prop controls a CSS animation.
+
+```cs
+const highlightBackgound = keyframes`
+    from {
+        background-color: yellow;
+    }
+    to {
+        background-color: #fff;
+    }
+`;
+
+const StyledViews = styled.span`
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    ${(props) =>
+        props.highlight &&
+        css`
+            animation-name: ${highlightBackgound};
+            animation-duration: 1s;
+        `}
+`;
+```
+
+When a new `views` prop is passed to the component, it sets the highlight state to `true`.
+After 2 seconds, it resets the highlight state.
+
+```jsx
+import format from 'comma-number';
+import React, { useState, useEffect } from 'react';
+import styled, { css, keyframes } from 'styled-components';
+
+function Views(props) {
+  const [highlight, setHighlight] = useState(false);
+
+  useEffect(() => {
+    if (props.views) {
+      setHighlight(true);
+    }
+
+    setTimeout(() => {
+      setHighlight(false);
+    }, 2000);
+  }, [props.views]);
+
+  const formattedViews = `${format(props.views)} views`;
+
+  return (
+    <Container>
+      <StyledViews highlight={highlight}>{` - ${
+        props.views && formattedViews
+      }`}</StyledViews>
+    </Container>
+  );
+}
+
+export default Views;
+```
+
+Finally, we can consume the view counter in our blog post and pass in the ID.
+
+```jsx
+<ViewCounter id="post-id" />
+```
+
+You can see a completed client-side example by checking out [this blog post's source code](https://github.com/leerob/leerob.io).
+
+## Conclusion
+
+It works! 🎉
+
+<Image
+  alt={`Blog Post Views Example Gif`}
+  src={`/static/images/real-time-post-views/example.gif`}
+  width={2194}
+  height={1418}
+/>
+
+I was able to migrate my page views from Google Analytics into Firebase via their web interface.
+
+<Image
+  alt={`Blog Post Views`}
+  src={`/static/images/real-time-post-views/blog-post-views.png`}
+  width={1000}
+  height={599}
+/>
+
+**Note**: If your site receives a lot of traffic, you'll need to upgrade from the Spark plan (free) to Blaze (pay-as-you-go).
+On Spark, you can only have 100 simultaneous connections. With Blaze, you can have 100k.
+
+<Image
+  alt={`Database Usage`}
+  src={`/static/images/real-time-post-views/db-usage.png`}
+  width={1000}
+  height={529}
+/>

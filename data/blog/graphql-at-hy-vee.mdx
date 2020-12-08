@@ -1,0 +1,224 @@
+---
+title: 'GraphQL at Hy-Vee'
+publishedAt: '2019-10-30'
+summary: "Learn about how we've adopted GraphQL at Hy-Vee to improve developer efficiency and enhance our user experience."
+image: '/static/images/graphql-at-hy-vee/banner.jpg'
+---
+
+<Image
+  alt={`GraphQL at Hy-Vee`}
+  src={`/static/images/graphql-at-hy-vee/banner.jpg`}
+  width={1500}
+  height={857}
+  priority
+/>
+
+APIs are the backbone of Hy-Vee.
+
+Products, locations, lists, coupons - the data sources that power our company are all powered through APIs.
+
+We’ve traditionally used a [RESTful](https://restfulapi.net/) approach to creating APIs. Over the past 6 months, we’ve adopted [GraphQL](https://graphql.org/learn/) for every new microservice API we create.
+
+Why? Let’s find out.
+
+## What is GraphQL?
+
+> GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine, but is instead backed by your existing code and data.
+
+Let’s unpack that a bit. It’s an open-source [specification](https://graphql.github.io/graphql-spec/June2018/) for how to query your APIs. It’s language/framework agnostic, which means it works with almost every language you can imagine.
+
+Simply put, **GraphQL makes it easier for us to create performant, scalable APIs.**
+
+<Image
+  alt={`Hy-Vee Aisles Online Mobile App`}
+  src={`/static/images/graphql-at-hy-vee/app.png`}
+  width={1200}
+  height={600}
+/>
+
+## What Problem Are We Trying to Solve?
+
+A few months ago, we launched our new Aisles Online mobile app ([iOS](https://apps.apple.com/us/app/hy-vee-aisles-online/id1401371704) and [Android](https://play.google.com/store/apps/details?id=com.hyvee.grocery&hl=en_US)). In the process of evaluating which tech to use, we identified a major requirement:
+
+**The application needed to be blazing fast. Pages should load quickly and interactions should appear to happen in near real-time.**
+
+When our home screen loads, it needs to retrieve data from a variety of places. This would typically require a handful of API calls. This can be slow.
+
+Enter GraphQL. With a single query, we can fetch data about our customer, products, locations, and more. It’s blazing fast. Plus, we can utilize [Optimistic UI](https://www.apollographql.com/docs/react/features/optimistic-ui/) to make interactions feel instantaneous.
+
+## Fetching Data
+
+Let’s say we’re dealing with a user’s shopping lists. When our page loads, we want to load all of the users' lists.
+
+```graphql
+query {
+  lists {
+    listId
+    name
+    isPrimary
+    lastModified
+    listItems {
+      isChecked
+      listItemId
+      productId
+    }
+  }
+}
+```
+
+This request will only fetch what is needed. The response conforms to the same structure as the query and returns a JSON object.
+
+```graphql
+{
+  "data": {
+    "lists": [
+      {
+        "listId": "d2bf5976-c4e0-4e4a-833a-8bc32549aeff",
+        "name": "My List",
+        "isPrimary": true,
+        "lastModified": "2019-09-09T20:03:55.607Z",
+        "listItems": [
+          {
+            "isChecked": false,
+            "listItemId": "69381a3c-89fe-4f42-a14e-8da955aa9dce",
+            "productId": 123
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+There are a variety of other options available on the list model we can add or remove as necessary. GraphQL will only return what we explicitly asked for.
+
+## Modifying Data
+
+If fetching is the equivalent of a GET request, a [Mutation](https://graphql.org/learn/queries/) is the equivalent of a PUT or POST request. Here’s a simple example of how we might create a new shopping list.
+
+```graphql
+mutation {
+  createList(
+    createListInput: {
+      listId: "415cefed-1624-4977-96c3-f835ad2369d4"
+      name: "Snacks"
+      created: "2018-10-05T14:48:00.000Z"
+      lastModified: "2018-10-05T14:48:00.000Z"
+      isPrimary: false
+      isRemoved: false
+    }
+  ) {
+    listId
+    name
+    isPrimary
+    lastModified
+    listItems {
+      listItemId
+    }
+  }
+}
+```
+
+If successful, this mutation will return a JSON response of the fields we’ve defined above.
+
+```graphql
+{
+  "data": {
+    "createList": {
+      "listId": "415cefed-1624-4977-96c3-f835ad2369d4",
+      "name": "Snacks",
+      "isPrimary": false,
+      "lastModified": "2018-10-05T14:48:00.000Z",
+      "listItems": []
+    }
+  }
+}
+```
+
+## GraphQL API
+
+As the number of our microservice APIs began to grow, we recognized a problem. We had followed best practices for creating APIs with a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), but this meant we had multiple entry points to retrieve data. Clients had to stitch together resources from each of these APIs to paint the full picture. There had to be a [better way](https://principledgraphql.com/).
+
+Enter the GraphQL API. Unlike our other APIs, the **GraphQL API is not backed by a database.** This API acts as a proxy between all of our other services, providing one unified schema. This led to an improved developer experience for our consumers and the ability to easily stitch together pieces of information across multiple APIs. We currently have almost 10 different graphs being combined into one simple interface for developers.
+
+With the GraphQL API, we can easily link a list item to a product, which is a completely separate API. Since the list item contains a `productId`, we can make a query to fetch the product.
+
+```graphql
+query {
+  product(productId: $productId) {
+    productId
+    productImages(where: { isPrimary: true, size: $size }) {
+      size
+      uri
+      isPrimary
+    }
+  }
+}
+```
+
+This allows us to retrieve the associated product image for the list item.
+
+```graphql
+{
+  "data": {
+    "product": {
+      "productId": "37191",
+      "productImages": [
+        {
+          "size": "THUMBNAIL",
+          "uri": "https://example.com/image-123.jpg",
+          "isPrimary": true
+        }
+      ]
+    }
+  }
+}
+```
+
+To achieve the GraphQL API, we’re using a custom solution - but it’s similar to the idea behind [Apollo Federation](https://blog.apollographql.com/apollo-federation-f260cf525d21).
+
+```js
+const { ApolloGateway } = require('@apollo/gateway');
+
+const gateway = new ApolloGateway({
+  serviceList: [
+    { name: 'accounts', url: 'accounts-api.company.com/graphql' },
+    { name: 'reviews', url: 'reviews-api.company.com/graphql' },
+    { name: 'products', url: 'products-api.company.com/graphql' },
+    { name: 'inventory', url: 'inventory-api.company.com/graphql' }
+  ]
+});
+```
+
+## Consuming Our APIs
+
+All new web applications at Hy-Vee are being created with [React](https://reactjs.org/). For our mobile applications, this means [React Native](https://facebook.github.io/react-native/). Thus, we needed a solution that would work across both web and mobile to consume GraphQL.
+
+[Apollo Client](https://www.apollographql.com/docs/react/) is a complete state management library for JavaScript apps. Write a GraphQL query and Apollo Client will take care of requesting and caching your data, as well as updating your UI.
+
+The `useQuery` [hook](https://www.apollographql.com/docs/react/api/react-hooks/) provides a concise way to query your APIs.
+
+```jsx
+function Lists() {
+  const { loading, error, data } = useQuery(GET_LISTS);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  return (
+    <ul>
+      {data.lists.map((list) => (
+        <li key={list.listId}>{list.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Conclusion
+
+Adopting GraphQL has been a huge win for developer productivity and ultimately our user experience.
+
+Common issues like [batching requests](https://github.com/graphql/dataloader) and [caching](https://www.apollographql.com/docs/react/advanced/caching/) have already been solved through the amazing open-source community around GraphQL. We’ve even started experimenting with TypeScript and [auto-generating types](https://github.com/apollographql/apollo-tooling) based on our GraphQL schemas.
+
+GraphQL at Hy-Vee is here to stay — and it’s only getting better 🚀

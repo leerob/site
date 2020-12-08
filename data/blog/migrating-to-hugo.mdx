@@ -1,0 +1,106 @@
+---
+title: 'Migrating to Hugo'
+publishedAt: '2017-09-29'
+summary: 'Why I chose this static site generator and the benefits you can receive.'
+image: '/static/images/migrating-to-hugo/banner.png'
+---
+
+<Image
+  alt={`Hugo`}
+  src={`/static/images/migrating-to-hugo/hugo.png`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+Recently my writing itch has been in full force and I found myself producing more content than ever. My portfolio (hosted on [GitHub Pages](https://pages.github.com/)) was just a static website primarily used to display my resume and work experience. The blog portion was never really a focus and thus I hadn't spent much time on it. That's where Hugo came in.
+
+## What is Hugo?
+
+[Hugo](http://gohugo.io/) describes itself as "the world’s fastest framework for building websites". Based on my experience with another static site generator called [Jekyll](https://jekyllrb.com/), I would have to agree. At <1 ms per page, the average site builds in less than a second. Hugo allows me to write my blog posts in [Markdown](https://en.wikipedia.org/wiki/Markdown) and have them compiled to create a static website. It also includes pre-made templates for common add-ons like SEO (Search Engine Optimization), comments, analytics, and more.
+
+## Migrating Content
+
+All of my previous blog posts were written in HTML. I utilized [this wonderful tool](https://domchristie.github.io/to-markdown/) to easily convert these pages into Markdown. Once I had refined how things looked, I needed to add a ["front matter"](https://gohugo.io/content-management/front-matter/) to the post so Hugo knew how to interpret it. Here's the front matter for this post:
+
+```YAML
+---
+title: Migrating to Hugo
+description: Why I chose this static site generator and the benefits you can receive.
+date: 2017-09-29
+images: ["http://www.leejamesrobinson.com/static/images/migrating-to-hugo/hugo.png"]
+categories:
+  - code
+---
+```
+
+Most of these parameters are self-explanatory. By populating these it creates the corresponding `og` and `<meta>` tags to utilize [Open Graph](http://ogp.me/) and improve SEO.
+
+```html
+<meta property="og:title" content="Migrating to Hugo - Lee Robinson" />
+<meta
+  property="og:description"
+  content="Why I chose this static site generator and the benefits you can receive."
+/>
+<meta
+  property="og:url"
+  content="http://www.leejamesrobinson.com/blog/migrating-to-hugo/"
+/>
+<meta property="og:site_name" content="Lee Robinson" />
+<meta property="og:type" content="article" />
+<meta
+  property="og:image"
+  content="http://www.leejamesrobinson.com/static/images/migrating-to-hugo/hugo.png"
+/>
+<meta property="article:section" content="Blog" />
+<meta property="article:published_time" content="2017-09-29T00:00:00Z" />
+<meta property="article:modified_time" content="2017-09-29T00:00:00Z" />
+```
+
+## Increasing Performance
+
+Another motivation for re-writing my portfolio was to decrease the page load time and improve the user experience. I really wanted to strip back the flashy appearance and focus on a minimal design that was typography focused. Previously, I was utilizing [Bootstrap](https://v4-alpha.getbootstrap.com/) for the structure of my website. Along with that, it required a myriad of libraries and additions including jQuery, Font Awesome, Prism (syntax highlighting), and more. These dependencies were increasing the size of my portfolio and decreasing the performance. By switching to Hugo, I was able to remove this bloat. Along with that, I also:
+
+- Removed Google Analytics in favor of CloudFlare's analytics
+- Dropped legacy support for IE8
+- Used SVGs instead of fonts whenever possible
+
+### Website Size (gzip)
+
+Before
+
+<Image
+  alt={`Website Size Before (gzipped)`}
+  src={`/static/images/migrating-to-hugo/before-size.png`}
+  width={2212}
+  height={465}
+/>
+
+After
+
+<Image
+  alt={`Website Size After (gzipped)`}
+  src={`/static/images/migrating-to-hugo/after-size.png`}
+  width={1100}
+  height={233}
+/>
+
+### Website Speed (Google Lighthouse)
+
+Before
+
+<Image
+  alt={`Website Speed Before`}
+  src={`/static/images/migrating-to-hugo/before-speed.png`}
+  width={1449}
+  height={280}
+/>
+
+After
+
+<Image
+  alt={`Website Speed After`}
+  src={`/static/images/migrating-to-hugo/after-speed.png`}
+  width={1110}
+  height={214}
+/>

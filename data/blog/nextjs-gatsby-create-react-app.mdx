@@ -1,0 +1,125 @@
+---
+title: 'Next.js vs. Gatsby vs. Create React App'
+publishedAt: '2019-11-12'
+summary: 'Which is the best for building React applications? Explore the pros and cons for all three options to make the right choice.'
+image: '/static/images/nextjs-gatsby-create-react-app/banner.jpg'
+---
+
+<Image
+  alt={`Next.js Trend`}
+  src={`/static/images/nextjs-gatsby-create-react-app/banner.jpg`}
+  width={1500}
+  height={857}
+  priority
+/>
+
+It's never been a [better time](/blog/learn-nextjs) to learn React.
+If you're just getting started, you might have heard about these three options:
+
+- [Next.js](https://nextjs.org)
+- [Gatsby](https://www.gatsbyjs.org/)
+- [Create React App (CRA)](https://create-react-app.dev/)
+
+However, it's not exactly clear when or why you would choose one over the other.
+This post will highlight the key similarities and differences between the three solutions.
+
+## Next.js
+
+Next.js is the React framework that evolves with your product.
+
+- **Static Sites** – Blazing-fast JAMstack websites.
+- **Server Side Rendering** – Great for SEO and load performance.
+- **Pre-Rendering** – Best of both worlds. Blazing-fast website + scale traffic effortlessly.
+
+Next is unique among front-end and JAMstack frameworks because it seamlessly allows developers to grow from static sites to server-rendered sites as requirements change.
+It's also rapidly growing in popularity.
+
+- 350k+ Next.js devs (30% of all React devs)
+- 60+ Alexa top 10k sites built using Next.js
+- Over 35,000 production sites
+- 300k weekly NPM downloads
+- Used by companies like Nike, Uber, Hulu, Twitch, and GitHub
+
+**Pros**
+
+- ✅ Server-side rendering out of the box
+- ✅ Support for full applications, as well as static sites
+- ✅ Built-in TypeScript support
+- ✅ Incredible developer experience
+
+**Cons**
+
+- ⛔️ Framework-specific knowledge (`_app.js`, `_document.js`)
+- ⛔️ No plugin system ([yet](https://github.com/vercel/next.js/issues/9133))
+- ⛔️ Server-rendering adds complexity
+
+## Gatsby
+
+The key difference between Next.js and Gatsby is that Gatsby doesn't use a server.
+While Gatsby's main use case is for static sites, it can also re-hydrate into a fully-functional React application.
+Many other Next.js vs. Gatsby comparisons miss the fact that Next.js can also be used as a static site generator.
+
+Gatsby comes bundled with GraphQL for data fetching. Here's a short example.
+
+```jsx
+import React from 'react';
+import { graphql } from 'gatsby';
+
+const HomePage = ({ data }) => {
+  return <div>{data.site.siteMetadata.description}</div>;
+};
+
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        description
+      }
+    }
+  }
+`;
+
+export default HomePage;
+```
+
+You can use [Gatsby without GraphQL](https://www.gatsbyjs.org/docs/using-gatsby-without-graphql/) if you absolutely must/want, but it's one of the key features it promotes.
+
+**Pros**
+
+- ✅ Robust [plugin library](https://www.gatsbyjs.org/plugins/)
+- ✅ GraphQL integration
+- ✅ Well-written documentation & tutorials
+
+**Cons**
+
+- ⛔️ GraphQL knowledge potentially needed
+- ⛔️ Potentially large build times (e.g. lots of images/fetches)
+
+## Create React App
+
+CRA helps you get started building React apps immediately with client-side rendering (CSR). There's much less to digest and understand.
+Unfortunately, that also means there's less you get for free as you scale your application.
+
+**Pros**
+
+- ✅ Easiest to learn (no extra framework)
+- ✅ Created & maintained by React team
+- ✅ Built-in TypeScript support
+
+**Cons**
+
+- ⛔️ No server-side rendering
+- ⛔️ No code-splitting out of the box ([can be configured](https://create-react-app.dev/docs/code-splitting/))
+- ⛔️ Requires client-side routing library (e.g. React Router)
+- ⛔️ "Ejecting" for custom use cases can add complexity
+
+## Conclusion
+
+Still not sure which one to choose? I would highly recommend reading [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) for a deep-dive on where your rendering logic should live.
+
+<Image
+  alt={`Rendering on the Web`}
+  src={`/static/images/nextjs-gatsby-create-react-app/rendering.png`}
+  width={2164}
+  height={1434}
+/>

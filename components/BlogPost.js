@@ -1,52 +1,29 @@
-import React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import useSWR from 'swr';
 import format from 'comma-number';
-import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
 
-import fetcher from '../lib/fetcher';
+import fetcher from '@/lib/fetcher';
 
-const BlogPost = (frontMatter) => {
-  const { title, summary } = frontMatter;
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
-
-  const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
-    .replace('.mdx', '');
-
+const BlogPost = ({ title, summary, slug }) => {
   const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
   const views = data?.total;
 
   return (
-    <NextLink href={`blog/${slug}`} passHref>
-      <Link w="100%" _hover={{ textDecoration: 'none' }}>
-        <Box mb={8} display="block" width="100%">
-          <Flex
-            width="100%"
-            align="flex-start"
-            justifyContent="space-between"
-            flexDirection={['column', 'row']}
-          >
-            <Heading size="md" as="h3" mb={2} fontWeight="medium">
+    <Link href={`/blog/${slug}`}>
+      <a className="w-full">
+        <div className="mb-8 w-full">
+          <div className="flex flex-col md:flex-row justify-between">
+            <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
               {title}
-            </Heading>
-            <Text
-              color="gray.500"
-              minWidth="105px"
-              textAlign={['left', 'right']}
-              mb={[4, 0]}
-            >
+            </h4>
+            <p className="text-gray-500 text-left md:text-right w-32 mb-4 md:mb-0">
               {`${views ? format(views) : '–––'} views`}
-            </Text>
-          </Flex>
-          <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
-        </Box>
-      </Link>
-    </NextLink>
+            </p>
+          </div>
+          <p className="text-gray-600 dark:text-gray-400">{summary}</p>
+        </div>
+      </a>
+    </Link>
   );
 };
 

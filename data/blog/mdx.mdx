@@ -1,0 +1,244 @@
+---
+title: 'Improving My Next.js MDX Blog'
+publishedAt: '2020-03-29'
+summary: 'I revamped my personal site, adding a variety of improvements for the ideal Next.js + MDX blogging experience.'
+image: '/static/images/mdx/banner.jpg'
+---
+
+I recently decided to redesign and revamp my site. I had a few main goals:
+
+1. Easier content management for blog posts
+1. Simplified, minimal design
+1. Dark mode support
+
+## Simplified Design
+
+Before this redesign, I hand-rolled all of my components using [styled-components](https://styled-components.com/).
+I was trying to maintain a consistent design, so I'd extract shared values out into a theme.
+
+```js
+export const colors = {
+  accent: '#ff5252',
+  background: '#0a6159',
+  border: '#dcdcdc',
+  grey: {
+      100: '#F5F7FA',
+      200: '#E4E7EB',
+      300: '#CBD2D9',
+      400: '#9AA5B1',
+      500: '#7B8794',
+      600: '#616E7C',
+      700: '#52606D',
+      800: '#3E4C59',
+      900: '#323F4B',
+      1000: '#1F2933'
+  },
+  light: '#606060',
+  text: '#101010'
+};
+
+export const spacing = {
+  extrasmall: '0.5em',
+  small: '1em'
+  normal: '1.5em',
+  large: '2em',
+  extralarge: '2.5em',
+};
+```
+
+Front-end tooling has rapidly progressed, and projects like [styled-system](https://styled-system.com/) and [Theme UI](https://theme-ui.com/) make it easy
+to create components that easily adhere to your design system.
+
+My site isn't anything crazy – mostly a few simple static pages and blog posts. While coding everything myself is a
+fun learning experience, there are plenty of component libraries that contain everything necessary to achieve the
+design I was aiming for. That's why I chose to adopt [Chakra UI](https://chakra-ui.com/) for my redesign.
+
+- It uses styled-system under the hood, allowing me to use style props
+- The theme is extendable, allowing me to change fonts and add icons easily
+- It includes a great set of accessible components out of the box
+- Works well with Next.js and supports dark mode
+
+Here's a quick example of Chakra UI and styled-system. This is part of the source for
+the newsletter subscription at the bottom of this post.
+
+```js:components/Subscribe.js
+<Box
+  border="1px solid"
+  borderColor="blue.200"
+  bg="blue.50"
+  borderRadius={4}
+  padding={6}
+  my={4}
+>
+  <Heading as="h5" size="lg" mb={2}>
+    Subscribe to the newsletter
+  </Heading>
+  <Text>
+    Get emails from me about web development, tech, and early access to new
+    articles.
+  </Text>
+  <InputGroup size="md" mt={4}>
+    <Input
+      aria-label="Email for newsletter"
+      placeholder="tim@apple.com"
+      type="email"
+    />
+    <InputRightElement width="6.75rem">
+      <Button fontWeight="bold" h="1.75rem" size="sm">
+        Subscribe
+      </Button>
+    </InputRightElement>
+  </InputGroup>
+</Box>
+```
+
+Using [style props](https://styled-system.com/getting-started), I'm able to easily style my components while pulling values directly from
+my design system. For example, `mb` (short for `margin-bottom`) of `2` will translate to `0.5rem` or `~8px`.
+
+## Improved Content Management
+
+I wanted to decrease the amount of friction it took to create new articles,
+as well as improve maintainability over time.
+
+Previously, I maintained a JSON file containing all my articles.
+
+```js:data/articles.json
+export default [
+  {
+    date: 'February 24, 2020',
+    slug: 'fetching-data-with-swr',
+    title: 'Create a Dashboard with Next.js API Routes - Fetching Data with SWR'
+  },
+  {
+    date: 'February 18, 2020',
+    slug: 'google-analytics-api-nextjs',
+    title: 'Create a Dashboard with Next.js API Routes - Google Analytics API'
+  }
+];
+```
+
+Then, I iterated over this list to display all articles when viewing `leerob.io/blog`.
+This approach worked, but it meant that I had two sources of truth.
+
+Each `.mdx` blog post already contained this information, as well as other metadata passed to `<Post />`.
+Every time I added a new article, I had to change two places.
+
+```js
+export const meta = {
+  date: '2019-12-26',
+  description: 'Highlights and reflections on 2019 and a look forward to 2020.',
+  image: '/static/images/2019/banner.jpg',
+  slug: '2019',
+  title: '2019 Year in Review'
+};
+
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+```
+
+We can do better. I decided to use [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) for
+front matter and layout support. Now, each `.mdx` file looks like this:
+
+```js
+---
+title: '2019 Year in Review'
+publishedAt: '2019-12-26'
+summary: 'Highlights and reflections on 2019 and a look forward to 2020.'
+image: '/static/images/2019/banner.jpg'
+---
+```
+
+You'll notice I removed `slug`. That's because I'm able to dynamically retrieve the value using
+[next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) inside the layout.
+Anything added to your front matter will be converted into an object and passed to the layout.
+
+```js{5,6,7}:layouts/index.js
+import React from 'react';
+
+export default (frontMatter) => {
+  return ({ children }) => {
+    const slug = frontMatter.__resourcePath
+      .replace('blog/', '')
+      .replace('.mdx', '');
+
+    return (
+      <>
+        <h1>{frontMatter.title}</h1>
+        {children}
+      </>
+    );
+  };
+};
+```
+
+Thanks to [babel-plugin-import-glob-array](https://github.com/jescalan/babel-plugin-import-glob-array), I can make the file system
+the source of truth.
+
+```js:pages/blog.js
+import { frontMatter as blogPosts } from './blog/**/*.mdx';
+
+const Blog = () => (
+    blogPosts.map((frontMatter) => (
+        <BlogPost key={frontMatter.title} {...frontMatter} />
+    ))}
+);
+```
+
+## MDX Plugins
+
+MDX uses [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype) under the hood and allows you to provide external plugins to hook into the compilation process.
+Some of the plugins I added were:
+
+- [remark-autolink-headings](https://github.com/remarkjs/remark-autolink-headings)
+- [remark-slug](https://github.com/remarkjs/remark-slug)
+- [remark-code-titles](https://github.com/mottox2/remark-code-titles)
+- [remark-capitalize](https://github.com/zeit/remark-capitalize)
+
+I also extended [next-mdx-enhanced's](https://github.com/hashicorp/next-mdx-enhanced) front matter using [reading-time](https://www.npmjs.com/package/reading-time).
+This gave me some features I had wanted.
+
+- Hover over a heading and click on `#` to link directly to it.
+- Use `language:title` to add titles to code snippets.
+- Run [title](https://github.com/zeit/title) over headings to auto-capitalize based on [The Chicago Manual of Style](https://www.chicagomanualofstyle.org/home.html).
+- Reading time of articles.
+
+## Better Syntax Highlighting
+
+Previously, I directly imported a `prism.css` theme alongside `react-syntax-highlighter` to provide syntax highlighting.
+This approach did not allow me to easily change styles based on the theme. Thus, I kept the code style always dark.
+
+Instead, I switched to [mdx-prism](https://github.com/j0lv3r4/mdx-prism) (which is a fork of `@mapbox/rehype-prism`)
+and created two prism themes for dark/light mode. mdx-prism also adds line highlighting capabilities 🎉
+
+```js:styles/prism.js
+import { css } from '@emotion/react';
+import { theme } from '@chakra-ui/react';
+
+const prismBaseTheme = css`
+  // Base styling
+`;
+
+export const prismLightTheme = css`
+  // Light mode
+`;
+
+export const prismDarkTheme = css`
+  // Dark mode
+`;
+```
+
+```js:_app.js
+const { colorMode } = useColorMode();
+const prismTheme = colorMode === 'light' ? prismLightTheme : prismDarkTheme;
+```
+
+## Summary
+
+Outside of my main goals, I was able to sneak in some other fun additions:
+
+- Show [view counts](https://github.com/leerob/leerob.io/blob/master/components/BlogPost.js) for all blog posts, dynamically pulled from Firebase
+- Faster page load times
+- Switched to [Inter](https://fonts.google.com/specimen/Inter) as my main font
+- Fewer files, and a _lot_ of deleted code!
+- Switched to [Next SEO](https://github.com/leerob/leerob.io/blob/master/next-seo.config.js) instead of doing it manually
+
+The best part? [**It's all open source**](https://github.com/leerob/leerob.io) 🚀

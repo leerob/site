@@ -1,0 +1,382 @@
+---
+title: 'Which Back End Should I Use As A Front-End Developer?'
+publishedAt: '2020-08-09'
+summary: 'Choosing a service to store data can be confusing and overwhelming for a front-end developer. This comprehensive guide is a choose your own adventure dive into creating your backend.'
+image: '/static/images/backend/og.png'
+---
+
+Choosing a service to store data can be confusing and overwhelming for a front-end developer.
+What are all these acronyms? Are the Amazon services named strange on purpose? These and many other questions
+await your journey into the back-end.
+
+As a front-end developer turned full-stack, I've spent more time than I'd like to admit trying to figure out the backend.
+Because the backend is harder to _visualize_, I struggled to understand how the pieces fit together. Luckily, I soon found
+out I wasn't alone. There's a support group when confused front-end engineers meet called Twitter.
+
+Consider this article a "choose your own adventure" piece. I'll ask questions about your requirements
+and then present a few options. Before we can begin our journey, I must first explain the basics. You can
+also jump to the [list of services](#list-of-services) directly.
+
+## Table of Contents
+
+- [Backend Basics](#backend-basics)
+- [Do You Even Need a Database?](#do-you-even-need-a-database)
+- [Low Code Solutions](#low-code-solutions)
+- [Terms To Understand](#terms-to-understand)
+  - [SQL / NoSQL](#sql--nosql)
+  - [GraphQL / REST](#graphql--rest)
+  - [Authentication / Authorization](#authentication--authorization)
+  - [Hosted / Self-Hosted](#hosted--self-hosted)
+  - [Serverless](#serverless)
+  - [Data Modeling](#data-modeling)
+- [Levels of Abstraction](#levels-of-abstraction)
+- [List of Services](#list-of-services)
+  - [Backend (as a Service)](#backend-as-a-service)
+    - [Firebase](#firebase)
+    - [Hasura](#hasura)
+  - [Build Your Own Backend](#build-your-own-backend)
+    - [Prisma](#prisma)
+  - [Others](#others)
+- [Should You Use a CMS?](#should-you-use-a-cms)
+- [Starting From Scratch](#starting-from-scratch)
+- [Conclusion / Resources](#conclusion--resources)
+
+## Backend Basics
+
+What is this scary place, **the back-end?** You can boil it down to this:
+
+- You need a place to store data ([database](https://dataguide.prisma.io/intro/what-are-databases))
+- You need a method of retrieving the data ([API](https://en.wikipedia.org/wiki/Application_programming_interface))
+
+As a front-end engineer, you've probably worked with APIs before. They allow you to fetch data from some database, somewhere.
+On a long enough timeline, you'll eventually need to build your own API or
+work with an existing codebase that has a back-end. This brings us to our first question.
+
+## Do You Even Need a Database?
+
+You need a place to store data, right? Here are some questions to consider:
+
+- Can the data live alongside the code?
+- Can the data be tracked with source control?
+- Do non-technical people need to modify the data?
+- Do you need different levels of access?
+
+If you can store your data with your code in [source control](https://aws.amazon.com/devops/source-control),
+you might be fine using [Markdown](https://guides.github.com/features/mastering-markdown/)
+with [git](https://git-scm.com/) – that's what [this blog](https://github.com/leerob/leerob.io) uses.
+It's also worth mentioning you _could_ use JSON files as a pseudo-database if you fall into this category.
+
+However, you're likely reading this article because **you need a database**. Before we start learning about how you can create
+your own backend, you might also consider a low-code solution.
+
+## Low Code Solutions
+
+Since you're a front-end developer, you might be able to utilize a low code solution.
+These low code tools are arguably the fastest way to get access to some remote data.
+
+Common examples include [Google Sheets](https://github.com/franciscop/use-spreadsheet) or [Airtable](https://www.gatsbyjs.org/packages/gatsby-source-airtable/)
+as a database. There are other services that provide an [API abstraction](https://nocodeapi.com/) on a variety of data sources.
+
+<ProsCard
+  title="low code"
+  pros={[
+    'You are very familiar with spreadsheets',
+    'You only have a basic understanding of web development',
+    'You want the quickest solution possible',
+    'You need to collaborate with many people on data entry'
+  ]}
+/>
+
+<ConsCard
+  title="low code"
+  cons={[
+    'Higher probability of needing to change services at scale',
+    'Some low code tools require paid plans'
+  ]}
+/>
+
+## Terms To Understand
+
+Okay, so you need a database and it's going to require code.
+First, I need to explain some terms you'll likely run into.
+
+### SQL / NoSQL
+
+A SQL database contains [relational data](https://dataguide.prisma.io/intro/comparing-database-types#relational-databases-working-with-tables-as-a-standard-solution-to-organize-well-structured-dataauthentication). Consider a social media site with a table for `users` and `posts`.
+Every user represents a row in the `users` table.
+Each user can have many different `posts`. There is a **relation** between a post and the user.
+These relations makes it easy to look up different pieces of data through queries.
+
+NoSQL databases are (generally) document-oriented. Unlike a SQL database, there are no tables or rows.
+Instead, you store data in documents, which get organized into collections.
+For example, in [Firestore](https://firebase.google.com/docs/firestore/data-model) each document contains a set of key-value pairs.
+This is a great option for large collections of small documents.
+
+### GraphQL / REST
+
+APIs allow programs to talk to each other. [REST](https://restfulapi.net/) and [GraphQL](https://graphql.org/learn/) are simply two different ways to fetch data. For example, here's a
+`GET` request to fetch the number of views for a blog post.
+
+```bash
+$ curl https://leerob.io/api/page-views?id=databases
+
+{ "total": 1234 }
+```
+
+GraphQL is an open-source [specification](https://graphql.github.io/graphql-spec/June2018/) for how to query your APIs.
+Converting the previous example from REST to a GraphQL query might look like this.
+
+```graphql
+{
+  post(id: "databases") {
+    views
+  }
+}
+```
+
+If you want to learn more, [here's an excellent resource](https://hasura.io/learn/graphql/intro-graphql/graphql-vs-rest/).
+
+### Authentication / Authorization
+
+[Authentication](https://dataguide.prisma.io/postgresql/authentication-and-authorization/intro-to-authn-and-authz#what-are-authentication-and-authorization) verifies who a user is, while [authorization](https://dataguide.prisma.io/postgresql/authentication-and-authorization/intro-to-authn-and-authz#what-are-authentication-and-authorization) verifies what they have access to.
+You'll commonly see this abbreviated as AuthN (Authentication) and AuthZ (Authorization).
+
+If you're building any application that has users or requires limiting access to certain areas, you'll need to consider both of these.
+
+### Hosted / Self-Hosted
+
+Your database can either be hosted (managed by someone else) or self-hosted.
+When backend services are open-source, it generally means there is an option to self-host.
+
+If you don't want to deal with infrastructure, use a hosted service.
+
+### Serverless
+
+Serverless allows you to write and deploy code without the hassle of worrying about the underlying infrastructure.
+You only pay when your code runs. With a traditional server, it's always running.
+In general, serverless should have less maintenance. There are, however, [tradeoffs](https://www.serverless.com/blog/when-why-not-use-serverless).
+
+It's worth mentioning how you deploy your front-end might impact which back-end service you choose.
+For example, if you use [Next.js](/blog/learn-nextjs) and server-side rendering, each page generates a [serverless function](https://www.pubnub.com/blog/what-is-a-serverless-function/).
+At a large enough scale, you'll run into issues where there are too many open connections to your database. A common solution
+for this is connection pooling. For more information, check out [Prisma's deployment documentation](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/deployment).
+
+### Data Modeling
+
+When learning about databases, you might hear terms like [one-to-many](<https://en.wikipedia.org/wiki/One-to-many_(data_model)>)
+and [many-to-many](<https://en.wikipedia.org/wiki/Many-to-many_(data_model)>). These are ways of modeling your database relationships.
+[Database normalization](https://dataguide.prisma.io/intro/intro-to-schemas) is
+how you organize a database into tables and columns.
+
+## Levels of Abstraction
+
+Every situation is unique. There are _many_ tools that exist to solve the same problem. By understanding what you're looking for,
+it will help you choose the right solution. First, let's understand _what_ you're trying to build.
+
+- Are you building this backend for yourself?
+- Will other people need to use it / support it?
+- Are you trying to build a [Minimum Viable Product (MVP)](https://en.wikipedia.org/wiki/Minimum_viable_product)?
+
+Personally, I like to experiment with new technologies when I'm creating personal projects. If I'm
+picking a tool for my day job, I'll likely default to one that's well-adopted in the industry and has
+robust support. There's more control picking a backend when you're a solo-founder building the entire
+tech stack yourself. As you introduce other engineers into the mix, things get more complicated.
+
+If you need something fast, you'll want a higher-level abstraction. These services typically provide a client or API
+out of the box that reduces the amount of boilerplate code you need to write. This is commonly referred to as
+automating the [CRUD (Create, read, update and delete)](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) portion of your backend.
+
+Let's assume you want something more high-level, ideally with a website or interface to manage your data.
+If you want complete control, you might consider [building your own](#build-your-own-backend).
+
+## List of Services
+
+I've crowdsourced a list of services you might consider using. Below, I'll give further insights into a few services I know well.
+The reality is that each service listed here has its own tradeoffs. Hopefully this gives you a high-level overview to research more.
+It's also worth mentioning the service you already know well might be your best choice.
+Here's some questions to consider.
+
+- Does your backend need to be built on open-source technology?
+- What level of vendor lock-in are you comfortable with?
+- Are there are security considerations your company/client has?
+- How much do you want to build yourself vs. rely on a service?
+- Do you need social login? (Sign in with Google, Facebook, etc.)
+- Do you have an existing database you're trying to improve access to?
+
+### Backend (as a Service)
+
+These are (typically) managed services that automate the creation of code based on your [database schema](https://www.youtube.com/watch?v=3BZz8R7mqu0).
+You might see these referred to as "in a box" solutions. For example, Hasura provides a GraphQL API in a box as part of the platform.
+
+- ✅ &nbsp;Yes, or included directly in the platform
+- ⛔️ &nbsp;Not supported or available
+- 🚧 &nbsp;Requires some work
+
+| Name                                           | Type     | Open Source | Self Hosted Option | AuthN Included | GraphQL |
+| ---------------------------------------------- | -------- | ----------- | ------------------ | -------------- | ------- |
+| [Firebase](https://firebase.google.com/)       | NoSQL    | ⛔️         | ⛔️                | ✅             | ⛔️     |
+| [MongoDB](https://www.mongodb.com/)            | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
+| [Fauna](https://fauna.com/)                    | NoSQL    | ⛔️         | ⛔️                | ✅             | ✅      |
+| [Userbase](https://userbase.com/)              | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
+| [Hasura](https://hasura.io/)                   | Postgres | ✅          | ✅                 | 🚧             | ✅      |
+| [Nhost](https://nhost.io/)                     | Postgres | ✅          | ✅                 | ✅             | ✅      |
+| [Supabase](https://supabase.io/)               | Postgres | ✅          | ✅                 | ✅             | ⛔️     |
+| [AWS Amplify](https://aws.amazon.com/amplify/) | Both     | ✅          | ✅                 | ✅             | ✅      |
+
+### Firebase
+
+Firebase is a well-established, proven platform. It has (arguably) the best developer experience of any other solutions listed.
+
+<ProsCard
+  title="Firebase"
+  pros={[
+    'You need to launch an application quick',
+    'You want authentication included',
+    'You need to support social logins',
+    'You need real-time data',
+    'You want an established community with many examples'
+  ]}
+/>
+
+<ConsCard
+  title="Firebase"
+  cons={[
+    'Your backend needs to be open source',
+    'You have very relational data',
+    `You don't want any sort of vendor lock-in`
+  ]}
+/>
+
+**Resources**
+
+- You can mitigate some non-relational pain with [composite indexes](https://firebase.google.com/docs/firestore/query-data/index-overview).
+- [Model Relational Data in Firestore NoSQL](https://www.youtube.com/watch?v=jm66TSlVtcc)
+- [Going Serverless with Next.js and Firebase](/blog/nextjs-firebase-serverless)
+
+### Hasura
+
+Hasura allows you to create an instant GraphQL API based on Postgres. With [Hasura Cloud](https://hasura.io/cloud/), it's easy
+to go from an idea to a live API. I love that you can create your database models directly through their console.
+
+If you haven't looked at Hasura since they've launched their managed service, give it another look. One of the
+issues I had before Hasura Cloud was [cold starts](https://medium.com/faun/on-the-serverless-cold-start-problem-2fc0797da5cc) with the [Heroku](https://heroku.com/) free tier. Hasura Cloud prevents this while remaining
+on the free tier.
+
+While Hasura generally recommends using Auth0 for authorization, it's possible to [roll your own](https://hasura.io/docs/1.0/graphql/manual/auth/index.html).
+If you want authentication included with Hasura, consider [Nhost](https://nhost.io/).
+
+<ProsCard
+  title="Hasura"
+  pros={[
+    'You need to launch an application quick',
+    'You want to use GraphQL',
+    'You need an easy watch to extend an existing service (Remote Schema)',
+    `You don't already have a database`
+  ]}
+/>
+
+<ConsCard
+  title="Hasura"
+  cons={[
+    `You'll need lots of custom backend logic`,
+    'You want authentication included zero-config'
+  ]}
+/>
+
+### Build Your Own Backend
+
+These are libraries and tools to build your own API and back-end logic. In general, I wouldn't recommend these
+for absolute beginners. Personally, I learn best by _doing_. My entry into back-end development came through
+building real applications and trying out different technologies. You want some quick wins at the start so you can
+feel like you're progressing.
+
+When you lose a level of abstraction, there are other pieces you need to consider.
+
+- How distributed is my userbase?
+- How reliable does my database / backend need to be?
+- What kind of tooling does the solution provide (for example, [database migrations](https://www.alooma.com/blog/what-is-database-migration))
+
+It's also worth mentioning you can use [AWS RDS](https://aws.amazon.com/rds/) to self-host any SQL-based database.
+It's [proven technology](http://boringtechnology.club/) that even has [credits available](https://aws.amazon.com/about-aws/whats-new/2020/02/aws-launches-activate-founders-package/)
+for founder/startups.
+
+| Name                                                         | Type      | Open Source | Self Hosting? | AuthN Included | GraphQL |
+| ------------------------------------------------------------ | --------- | ----------- | ------------- | -------------- | ------- |
+| [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ✅            | ⛔️            | ⛔️     |
+| [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅            | ⛔️            | ⛔️     |
+| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅            | 🚧             | ✅      |
+
+_Honorable Mentions: Laravel, Rails. I wanted to keep this JavaScript focused._
+
+### Prisma
+
+Prisma provides an auto-generated and type-safe query builder based on your database schema.
+It currently supports PostgreSQL, MySQL, and SQLite databases.
+
+There are frameworks like [Redwood](https://redwoodjs.com/) and [Blitz](https://blitzjs.com/) built on-top of Prisma.
+If you want to build a GraphQL API with Prisma, you can pair it with [Nexus](https://nexus.js.org/). Nexus has [plug-ins](https://nexus.js.org/docs/api-plugins)
+for authentication / authorization.
+
+<ProsCard
+  title="Prisma"
+  pros={[
+    'You have an existing database',
+    'You want to use TypeScript',
+    'You have highly relational data',
+    'You want the freedom of choosing any SQL-based solution'
+  ]}
+/>
+
+<ConsCard
+  title="Prisma"
+  cons={[
+    `You want a solution that provides the API for you`,
+    `You don't want to worry about self-hosting`
+  ]}
+/>
+
+### Others
+
+I haven't worked closely with the other services listed, but here's some general information you might want to know.
+
+- MongoDB can support GraphQL with [Stitch](https://developer.mongodb.com/how-to/graphql-support-atlas-stitch)
+- Supabase is still in alpha at the time of writing this post.
+- If you're interested in Fauna, you might want to learn their query language [FQL](https://fauna.com/blog/getting-started-with-fql-faunadbs-native-query-language-part-1).
+
+## Should You Use a CMS?
+
+A [Content Management System (CMS)](https://en.wikipedia.org/wiki/Content_management_system)
+allows you to manage the creation and modification of your data, which typically includes a database.
+For example, [WordPress](https://wordpress.org/) might use a MySQL database to store the content.
+Should you use a CMS or just use a database directly? More questions.
+
+- Are you dealing with images or document storage?
+- Do any non-technical users need to manage the data?
+- Do you need to [localize](https://www.w3.org/International/questions/qa-i18n) the data?
+- Do you need drafts / previews of content (like blog posts)?
+
+If you answered yes to any of those questions, you might want to [explore a CMS](https://bejamas.io/blog/headless-cms/).
+
+## Starting From Scratch
+
+Some (usually more experienced) full-stack developers end up wanting full control over their infrastructure and prefer to work directly with databases.
+This typically requires a more fundamental understanding of the back-end. There's entire books on this subject, which include the following list of buzzwords.
+
+- [Object-relational mappers (ORMs)](https://dataguide.prisma.io/types/relational/comparing-sql-query-builders-and-orms#what-are-orms)
+- [Manually sharing / replicating](<https://en.wikipedia.org/wiki/Shard_(database_architecture)>)
+- [Scaling instances](https://aws.amazon.com/blogs/database/scaling-your-amazon-rds-instance-vertically-and-horizontally/)
+- [Provisioning servers](https://www.redhat.com/en/topics/automation/what-is-provisioning)
+- [Transactions](https://documentation.progress.com/output/ua/OpenEdge_latest/aswsp/what-is-a-database-transaction-3f.html) / [ACID](https://en.wikipedia.org/wiki/ACID)
+- [Containers](https://www.docker.com/why-docker)
+
+Don't feel overwhelmed. As front-end developers, we know that we don't need to know _everything_. Both the front-end and back-end are complex, dense areas.
+Start small, learn intently, and soon you will be crafting your own APIs with ease.
+
+## Conclusion / Resources
+
+Would you change anything? Do you have any resources for learning the back-end? If so, leave a comment below and I'll update this list.
+
+- [How to Become a Good Backend Engineer (Fundamentals)](https://www.youtube.com/watch?v=V3ZPPPKEipA)
+- [What are web servers and how do they work?](https://www.youtube.com/watch?v=JhpUch6lWMw)
+- [Best GraphQL Stack for Node.js](https://www.benawad.com/what-is-the-best-graphql-stack-for-nodejs/)
+- [GraphQL Code Generator](https://graphql-code-generator.com/)

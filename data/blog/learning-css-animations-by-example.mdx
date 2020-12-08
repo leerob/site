@@ -1,0 +1,117 @@
+---
+title: 'Learning CSS Animations by Example'
+publishedAt: '2017-11-04'
+summary: 'A quick tutorial for making a logo swirl.'
+image: '/static/images/learning-css-animations-by-example/banner.png'
+---
+
+<Image
+  alt={`CSS Animations`}
+  src={`/static/images/learning-css-animations-by-example/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+I'm constantly inspired by innovative website designs. In my opinion, no one does a better job than [Stripe](/blog/how-stripe-designs-beautiful-websites). After reading their article about how they redesigned [Connect](https://stripe.com/blog/connect-front-end-experience), I was determined to learn more about creating animations using only CSS.
+
+I've found I learn best by doing - creating tangible examples where I have to apply the skills I've studied. My mission was to learn more about CSS animations. To achieve that goal, I came up with a fun idea to make an Iowa State logo animated to swirl like a tornado.
+
+### Creating The Logo
+
+The Cyclone's logo in the late 80's to early 90's represented a tornado. Here's the base I started with.
+
+<Image
+  alt={`Iowa State Cyclones Logo`}
+  src={`/static/images/learning-css-animations-by-example/isu-logo.png`}
+  width={1003}
+  height={700}
+/>
+
+I took this .png into Adobe Illustrator to create an SVG [(Scalable Vector Graphic)](https://svgontheweb.com/). SVGs look crisp at all screen resolutions, have super small file sizes, and can be easily edited and modified. I traced the path of the tornado as seen below and created the .svg file.
+
+<Image
+  alt={`Adobe Illustrator SVG Creation`}
+  src={`/static/images/learning-css-animations-by-example/illustrator.png`}
+  width={1593}
+  height={1319}
+/>
+
+### Learning About Animations
+
+CSS3 animations allow you to gradually change from one style to another. To define how those styles change at certain times, we use a `@keyframes` rule. In the example below, I've created a `keyframes` rule entitled "color" to change the `fill` selector to different colors based on the percentage complete. This will change the logo from cardinal → gold → cardinal.
+
+```css
+@keyframes color {
+  0% {
+    fill: #99002f;
+  }
+  50% {
+    fill: #ffc426;
+  }
+  100% {
+    fill: #99002f;
+  }
+}
+```
+
+We need to specify which element we want to bind this animation to. Using the `animation` property, we can apply the `color` rule and configure how it runs. Animations have six different properties:
+
+- `animation-name`
+- `animation-duration`
+- `animation-timing-function`
+- `animation-delay`
+- `animation-iteration-count`
+- `animation-direction`
+- `animation-fill-mode`
+
+For more information on the specifics of each property, check out the [full documentation](https://www.w3schools.com/css/css3_animations.asp). Here's how we would apply these properties to make our logo change colors.
+
+```css
+svg path {
+  animation-name: color;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.85, 0.01, 0.25, 1);
+}
+```
+
+You can also use the short-hand version.
+
+```css
+svg path {
+  animation: color 2s infinite cubic-bezier(0.85, 0.01, 0.25, 1);
+}
+```
+
+This applies the "color" `@keyframes` rule to the SVG's path which will repeat forever in 2-second increments using the [cubic-bezier](http://cubic-bezier.com/#.17,.67,.83,.67) timing function. We can apply this same idea to make the logo spin. First, let's create another `@keyframes` rule for spinning.
+
+```css
+@keyframes spin {
+  0% {
+    transform: rotateX(-20deg) rotateY(20deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(740deg);
+  }
+}
+```
+
+Finally, let's apply this rule to our container element.
+
+```css
+.container {
+  animation: spin 2s infinite cubic-bezier(0.85, 0.01, 0.25, 1);
+}
+```
+
+### Final Result 🎉
+
+<Image
+  alt={`Iowa State Animated Logo`}
+  src={`/static/images/learning-css-animations-by-example/isu-logo.gif`}
+  width={801}
+  height={209}
+/>
+
+You can view the code and a live example on [CodePen](https://codepen.io/leerob/pen/BmGZZQ?editors=1100).

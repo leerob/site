@@ -1,38 +1,23 @@
-import React from 'react';
+import Link from 'next/link';
 import { NextSeo } from 'next-seo';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  SimpleGrid
-} from '@chakra-ui/core';
 
-import Analytics from '../components/metrics/Analytics';
-import Buttondown from '../components/metrics/Buttondown';
-import Container from '../components/Container';
-import GitHub from '../components/metrics/Github';
-import Gumroad from '../components/metrics/Gumroad';
-import Unsplash from '../components/metrics/Unsplash';
-import YouTube from '../components/metrics/Youtube';
-import TopTracks from '../components/TopTracks';
-import { CustomLink } from '../components/MDXComponents';
+import Analytics from '@/components/metrics/Analytics';
+import Buttondown from '@/components/metrics/Buttondown';
+import Container from '@/components/Container';
+import GitHub from '@/components/metrics/Github';
+import Gumroad from '@/components/metrics/Gumroad';
+import Unsplash from '@/components/metrics/Unsplash';
+import YouTube from '@/components/metrics/Youtube';
+import TopTracks from '@/components/TopTracks';
 
 const url = 'https://leerob.io/dashboard';
 const title = 'Dashboard – Lee Robinson';
 const description =
   'My personal dashboard, built with Next.js API routes deployed as serverless functions.';
 
-const Dashboard = () => {
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
-
+export default function Dashboard() {
   return (
-    <>
+    <Container>
       <NextSeo
         title={title}
         description={description}
@@ -40,75 +25,47 @@ const Dashboard = () => {
         openGraph={{
           url,
           title,
-          description,
-          images: [
-            {
-              url: 'https://leerob.io/static/images/dashboard.jpg',
-              alt: description,
-              width: 1280,
-              height: 720
-            }
-          ]
+          description
         }}
       />
-      <Container>
-        <Stack
-          as="main"
-          spacing={8}
-          justifyContent="center"
-          alignItems="flex-start"
-          m="0 auto 4rem auto"
-          maxWidth="700px"
-        >
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            maxWidth="700px"
-          >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-              Dashboard
-            </Heading>
-            <Text color={secondaryTextColor[colorMode]}>
-              This is my personal dashboard, built with Next.js API routes
-              deployed as serverless functions. I use this dashboard to track
-              various metrics across platforms like Unsplash, YouTube, GitHub,
-              and more. Want to build your own? Check out my&nbsp;
-              <CustomLink href="/blog/fetching-data-with-swr">
+      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          Dashboard
+        </h1>
+        <div className="mb-8">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            This is my personal dashboard, built with Next.js API routes
+            deployed as serverless functions. I use this dashboard to track
+            various metrics across platforms like Unsplash, YouTube, GitHub, and
+            more. Want to build your own? Check out my&nbsp;
+            <Link href="/blog/fetching-data-with-swr">
+              <a className="text-gray-900 dark:text-gray-100 underline">
                 blog series.
-              </CustomLink>
-            </Text>
-          </Flex>
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            maxWidth="700px"
-            mt={8}
-          >
-            <Unsplash />
-            <YouTube />
-            <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
-              <Analytics />
-              <GitHub />
-            </SimpleGrid>
-            <SimpleGrid columns={[1, 1, 2]} spacing={4} mb={4}>
-              <Gumroad />
-              <Buttondown />
-            </SimpleGrid>
-          </Flex>
-          <Heading letterSpacing="tight" as="h2" size="xl">
-            Top Tracks
-          </Heading>
-          <Text color={secondaryTextColor[colorMode]}>
-            Curious what I'm currently jamming to? Here's my top tracks on
-            Spotify updated daily.
-          </Text>
-          <TopTracks />
-        </Stack>
-      </Container>
-    </>
+              </a>
+            </Link>
+          </p>
+        </div>
+        <div className="flex flex-col w-full">
+          <Unsplash />
+          <YouTube />
+        </div>
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+          <Analytics />
+          <GitHub />
+        </div>
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+          <Gumroad />
+          <Buttondown />
+        </div>
+        <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
+          Top Tracks
+        </h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
+          Curious what I'm currently jamming to? Here's my top tracks on Spotify
+          updated daily.
+        </p>
+        <TopTracks />
+      </div>
+    </Container>
   );
-};
-
-export default Dashboard;
+}

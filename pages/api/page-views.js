@@ -1,4 +1,4 @@
-import db from '../../lib/db-admin';
+import db from '@/lib/db-admin';
 
 export default (req, res) => {
   if (!req.query.id) {

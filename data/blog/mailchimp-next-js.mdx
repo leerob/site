@@ -1,0 +1,208 @@
+---
+title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+publishedAt: '2019-11-10'
+summary: 'Learn how to integrate Next.js and React with Mailchimp to build a newsletter subscription form.'
+image: '/static/images/mailchimp-next-js/banner.png'
+---
+
+<Image
+  alt={`Next.js and Mailchimp`}
+  src={`/static/images/mailchimp-next-js/banner.png`}
+  width={1500}
+  height={857}
+  priority
+/>
+
+_The year is 2030. Everyone has a newsletter. Email has overtaken social media. 95% of coding is done via drag-and-drop tools._
+
+Okay, most of that probably isn't true. Except the [no-code tools](https://webflow.com/).
+Unless you've been living under a rock, you've probably noticed the rise of newsletters (especially in the developer community).
+
+_Why?_ Well, they're an excellent way to promote content to those who really want to read it. If you've ever thought about starting a newsletter, then you've found the right article 🎉
+
+## Mailchimp vs. The World
+
+If you're just starting a newsletter, you probably want something with a free tier.
+That was my rationale for adopting [TinyLetter](https://tinyletter.com/). It was simple, easy to set up, and didn't require an API route. Perfect!
+
+However, it wasn't exactly a frictionless sign-up process. When a user clicked "subscribe", it launched a pop-up window where they had to confirm their email address again.
+Again, _it works_, but we can do better.
+
+I started to explore using [Mailchimp](https://mailchimp.com/) as an alternative. It also has a [free tier](https://mailchimp.com/pricing/) if you have less than 2,000 subscribers. Perfect.
+
+## Why Next.js?
+
+[Next.js](https://nextjs.org/) is the [easiest way](https://masteringnextjs.com/learn-next-js) to build applications in React. One of my favorite features is API routes.
+
+API routes provide a straightforward solution for building an API inside Next.js.
+All you need to get started is an `api/` folder inside your main `pages/` folder where your routes live.
+
+Every file inside `pages/api/` is mapped to `/api/*`. This is where we'll communicate with Mailchimp.
+First, we need to set up an account.
+
+## Setting up Mailchimp
+
+After [creating an account](https://mailchimp.com/help/create-an-account/), you'll need to fetch your [API key](https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key). You can utilize their [API Playground](https://us1.api.mailchimp.com/playground/?_ga=2.231663199.1180055433.1567349670-195619933.1565803046) to test requests.
+
+When a user clicks "subscribe", we'll want to add their email address to the mailing list. This is through the [List Members POST](https://developer.mailchimp.com/documentation/mailchimp/reference/lists/members/#create-post_lists_list_id_members) endpoint.
+
+According to their [API documentation](https://developer.mailchimp.com/documentation/mailchimp/guides/get-started-with-mailchimp-api-3/), we'll need to send a request to:
+
+```bash
+https://<dc>.api.mailchimp.com/3.0
+```
+
+Where `dc` is the datacenter. This is the last 3 characters of your API key we retrieved earlier. We'll also need to fetch the [Audience ID](https://mailchimp.com/help/find-audience-id/) (or List ID) for the mailing list.
+
+## Environment Variables
+
+Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Vercel](https://vercel.com), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
+You can use similar a [similar approach](https://create-react-app.dev/docs/adding-custom-environment-variables) for [any framework](https://www.gatsbyjs.org/docs/environment-variables/) to add your secrets to `process.env`.
+
+```bash
+$ vc secret add MAILCHIMP_LIST_ID <secret-value>
+$ vc secret add MAILCHIMP_API_KEY <secret-value>
+```
+
+Then, we can expose them via our `vercel.json` file.
+
+```json:vercel.json
+{
+  "env": {
+    "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
+    "MAILCHIMP_API_KEY": "@mailchimp-api-key"
+  }
+}
+```
+
+These variables will be available at build time. To test locally, we'll also want to create a `.env` file since Vercel Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `vc dev`.
+
+```bash:.env
+MAILCHIMP_LIST_ID=<secret-value>
+MAILCHIMP_API_KEY=<secret-value>
+```
+
+**Note:** Don't forget to add `.env` to your `.gitignore`. We don't want to commit our secrets.
+
+## Creating The Request
+
+Now that we have the API Key and the List ID available as environment variables, we can create an API route at `pages/api/subscribe.js` to add a member to our list.
+
+```js:pages/api/subscribe.js
+export default async (req, res) => {
+  // 1. Destructure the email address from the request body.
+  const { email } = req.body;
+
+  if (!email) {
+    // 2. Throw an error if an email wasn't provided.
+    return res.status(400).json({ error: 'Email is required' });
+  }
+
+  try {
+    // 3. Fetch the environment variables.
+    const LIST_ID = process.env.MAILCHIMP_LIST_ID;
+    const API_KEY = process.env.MAILCHIMP_API_KEY;
+    // 4. API keys are in the form <key>-us3.
+    const DATACENTER = API_KEY.split('-')[1];
+
+    // 5. The status of 'subscribed' is equivalent to a double opt-in.
+    const data = {
+      email_address: email,
+      status: 'subscribed'
+    };
+
+    // 6. Send a POST request to Mailchimp.
+    const response = await fetch(
+      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
+      {
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: `apikey ${API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }
+    );
+
+    // 7. Swallow any errors from Mailchimp and return a better error message.
+    if (response.status >= 400) {
+      return res.status(400).json({
+        error: `There was an error subscribing to the newsletter. Shoot me an email at [me@leerob.io] and I'll add you to the list.`
+      });
+    }
+
+    // 8. If we made it this far, it was a success! 🎉
+    return res.status(201).json({ error: '' });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || error.toString() });
+  }
+};
+```
+
+## Creating A Form Input
+
+Now that our API is created, we need a way to gather user input. Let's create a component to send a request to our API.
+
+```js:components/Subscribe.js
+import React, { useRef, useState } from 'react';
+
+function Subscribe() {
+  // 1. Create a reference to the input so we can fetch/clear it's value.
+  const inputEl = useRef(null);
+  // 2. Hold a message in state to handle the response from our API.
+  const [message, setMessage] = useState('');
+
+  const subscribe = async (e) => {
+    e.preventDefault();
+
+    // 3. Send a request to our API with the user's email address.
+    const res = await fetch('/api/subscribe', {
+      body: JSON.stringify({
+        email: inputEl.current.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    });
+
+    const { error } = await res.json();
+
+    if (error) {
+      // 4. If there was an error, update the message in state.
+      setMessage(error);
+
+      return;
+    }
+
+    // 5. Clear the input value and show a success message.
+    inputEl.current.value = '';
+    setMessage('Success! 🎉 You are now subscribed to the newsletter.');
+  };
+
+  return (
+    <form onSubmit={subscribe}>
+      <label htmlFor="email-input">{'Email Address'}</label>
+      <input
+        id="email-input"
+        name="email"
+        placeholder="you@awesome.com"
+        ref={inputEl}
+        type="email"
+      />
+      <div>
+        {message
+          ? message
+          : `I'll only send emails when new content is posted. No spam.`}
+      </div>
+      <button type="submit">{'✨ Subscribe 💌'}</button>
+    </form>
+  );
+}
+```
+
+## Conclusion
+
+If you'd like to see a completed example, the entire source code for my blog is [open source](https://github.com/leerob/leerob.io/blob/bfbd33a822fbcbbafd4027aa45884446f6f8ff3c/pages/api/subscribe.js).
+
+Curious if it actually works? Try out the form below 😉

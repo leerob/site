@@ -2,7 +2,6 @@
 .DS_Store
 .next
 node_modules
-.env.*
+.env.local
 public/sitemap.xml
-.mdx-data
 .vercel

@@ -12,6 +12,11 @@ export default async (_, res) => {
     return accumulator + repository['stargazers_count'];
   }, 0);
 
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
+
   return res.status(200).json({
     followers: user.followers,
     stars

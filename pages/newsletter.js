@@ -1,35 +1,18 @@
-import React from 'react';
 import { NextSeo } from 'next-seo';
-import {
-  useColorMode,
-  Heading,
-  Text,
-  Flex,
-  Stack,
-  List
-} from '@chakra-ui/core';
 
-import Container from '../components/Container';
-import Subscribe from '../components/Subscribe';
-import NewsletterLink from '../components/NewsletterLink';
-
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import { frontMatter as newsletters } from './newsletter/**/*.mdx';
+import Container from '@/components/Container';
+import Subscribe from '@/components/Subscribe';
+import NewsletterLink from '@/components/NewsletterLink';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
 
 const url = 'https://leerob.io/newsletter';
 const title = 'Newsletter – Lee Robinson';
 const description =
   'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
 
-const Newsletter = () => {
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  };
-
+export default function Newsletter({ newsletters }) {
   return (
-    <>
+    <Container>
       <NextSeo
         title={title}
         description={description}
@@ -40,58 +23,39 @@ const Newsletter = () => {
           description
         }}
       />
-      <Container>
-        <Stack
-          as="main"
-          spacing={8}
-          justifyContent="center"
-          alignItems="flex-start"
-          m="0 auto 4rem auto"
-          maxWidth="700px"
-        >
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            maxWidth="700px"
-          >
-            <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-              Newsletter
-            </Heading>
-            <Text color={secondaryTextColor[colorMode]}>
-              My newsletter provides a behind-the-scenes look into what I'm
-              working on and writing about. I frequently share some of my
-              favorite articles I've read, as well as anything fascinating about
-              technology.
-            </Text>
-          </Flex>
-          <Subscribe />
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            maxWidth="700px"
-            mt={8}
-          >
-            <Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
-              Archive
-            </Heading>
-            <List styleType="disc">
-              {newsletters
-                .sort(
-                  (a, b) =>
-                    Number(new Date(b.publishedAt)) -
-                    Number(new Date(a.publishedAt))
-                )
-                .map((frontMatter) => (
-                  <NewsletterLink key={frontMatter.title} {...frontMatter} />
-                ))}
-            </List>
-          </Flex>
-        </Stack>
-      </Container>
-    </>
+      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          Newsletter
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
+          My newsletter provides a behind-the-scenes look into what I'm working
+          on and writing about. I frequently share some of my favorite articles
+          I've read, as well as anything fascinating about technology.
+        </p>
+        <Subscribe />
+        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
+          Archive
+        </h3>
+        <div className="prose dark:prose-dark">
+          <ul>
+            {newsletters
+              .sort(
+                (a, b) =>
+                  Number(new Date(b.publishedAt)) -
+                  Number(new Date(a.publishedAt))
+              )
+              .map((frontMatter) => (
+                <NewsletterLink key={frontMatter.title} {...frontMatter} />
+              ))}
+          </ul>
+        </div>
+      </div>
+    </Container>
   );
-};
+}
 
-export default Newsletter;
+export async function getStaticProps() {
+  const newsletters = await getAllFilesFrontMatter('newsletter');
+
+  return { props: { newsletters } };
+}

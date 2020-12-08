@@ -1,0 +1,220 @@
+---
+title: "Things I've Learned Building Next.js Apps"
+publishedAt: '2019-02-15'
+summary: 'CSS-in-JS, Font Loading, Polyfills, Dynamic Imports, MDX, and more!'
+image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg'
+---
+
+<Image
+  alt={`Next.js`}
+  src={`/static/images/things-ive-learned-building-nextjs-apps/nextjs.png`}
+  width={1800}
+  height={600}
+  priority
+/>
+
+I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
+
+- I ported over my personal site from [Hugo](/blog/migrating-to-hugo) to [Next.js + MDX](https://github.com/leerob/leerob.io).
+- I created [dsmtech.io](https://dsmtech.io/) (and explored using [Mapbox](/blog/using-mapbox-with-next-js)).
+- A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
+
+Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
+
+## CSS-in-JS
+
+I used to be strongly against CSS-in-JS. If you didn't like CSS, then use SASS/LESS. _Why mix styling with your code_?
+
+Well, turns out I was wrong. **Styling is code** and I have never felt more productive styling components than I do using CSS-in-JS.
+Next.js comes preloaded with [styled-jsx](https://github.com/zeit/styled-jsx), which is fine, but I prefer [styled-components](https://www.styled-components.com/) 💅
+
+If you want learn more, check out [Building a UI Component Library with Styled Components](/blog/ui-component-library-with-styled-components).
+
+## Font Loading
+
+Performant font loading is much, much more difficult than I thought. I'm immensely grateful to Zach Leatherman for his
+[Comprehensive Guide on Web Fonts.](https://www.zachleat.com/web/comprehensive-webfonts)
+One approach I've taken is to use `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display).
+
+This approach allows me prevent FOUT (Flash of Unstyled Text) but still has FOIT (Flash of Invisible Text). Yes, FOIT is undeserable, but thanks to Next.js my [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+performance score is still almost 100.
+
+```css
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('/fonts/FiraSans-Bold.ttf');
+  font-weight: bold;
+  font-display: auto;
+  font-style: normal;
+}
+```
+
+Another approach I've used with Google Fonts is to include the `link` in the `Head` of my document.
+
+```js:pages/_document.js
+import Document, { Head, Main, NextScript } from 'next/document';
+import React from 'react';
+
+class CustomDocument extends Document {
+  render() {
+    return (
+      <html lang="en">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    );
+  }
+}
+
+export default CustomDocument;
+```
+
+Becoming informed about all the different options and their tradeoffs has been a worthy investment.
+
+## Dynamic Imports and Testing
+
+It's likely that at some point in scaling your Next.js app, you'll want to use an external package
+that doesn't work well server-side rendered. For me, this package was [react-select](https://react-select.com).
+
+When SSR this component, it simply did not work in Safari. Until that bug is fixed, I needed a workaround. Thanks
+to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy to import a component and disable SSR.
+
+```jsx
+import dynamic from 'next/dynamic';
+
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+  ssr: false
+});
+
+export default () => (
+  <>
+    <Header />
+    <ReactSelectNoSSR />
+    <Footer />
+  </>
+);
+```
+
+While this works, we can go a step further and provide a [loading placeholder](/blog/loading-placeholder-with-sass) to make the user experience better.
+
+```jsx
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+  loading: () => <Input />,
+  ssr: false
+});
+```
+
+Much better 🎉 Now, how do we test it?
+
+My preferred testing library is [Jest](https://jestjs.io/). The dynamic import support offered by Next.js **does not** expose a way to preload the dynamically imported components in Jest’s environment.
+However, thanks to [jest-next-dynamic](https://github.com/FormidableLabs/jest-next-dynamic), we can render the full component tree instead of the loading placeholder. Perfect!
+
+You'll need to add [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) to your `.babelrc` like so.
+
+```js:.babelrc
+{
+  "plugins": ["babel-plugin-dynamic-import-node"]
+}
+```
+
+Then, you can use `preloadAll()` to render the component instead of the loading placeholder.
+
+```jsx
+import preloadAll from 'jest-next-dynamic';
+import ReactSelect from './select';
+
+beforeAll(async () => {
+  await preloadAll();
+});
+```
+
+## MDX
+
+My [portfolio](https://github.com/leerob/leerob.io) has transformed quite a bit since I started it in 2014. Originally, it was
+just static HTML & CSS. Then, I [switched over to Hugo](/blog/migrating-to-hugo) so I could write my posts in Markdown.
+This worked well for a while, but I wanted full control over my layouts and felt much more comfortable with JavaScript.
+That's what led me to Next.js and MDX.
+
+With [MDX](https://github.com/mdx-js/mdx), I can use JSX components inside my Markdown documents with ease. This way, if I want to do
+something custom, it's as simple as importing a React component. I've also started writing my presentations with MDX and [code-surfer](https://github.com/pomber/code-surfer) 🏄
+
+## Link Prefetching
+
+For maximum performance, you can use the `prefetch` [attribute](https://nextjs.org/docs#prefetching-pages) on Next's `<Link>` component. This will give the perception
+the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `prefetch` uses `<link rel="preload">` instead of a `<script>` tag. It also only starts prefetching after `onload` to allow the browser to manage resources.
+
+```jsx
+<Link prefetch href="/">
+  <a>Home</a>
+</Link>
+```
+
+**Update:** Next.js 9 will [automatically prefetch](https://nextjs.org/blog/next-9#prefetching-in-viewport-links) `<Link>` components as they appear in-viewport. You no longer need to explicitly say `prefetch`.
+
+## Polyfills
+
+Next.js supports IE10 and all modern browsers out of the box using `@babel/preset-env`.
+However, it's possible that your own code or external NPM dependencies might use features not supported in your target browsers. In this case,
+you will need to add polyfills. This requires changes in a couple of places.
+
+First, you will need to create/override your `next.config.js` file to customize Webpack.
+
+```js:next.config.js
+module.exports = {
+  webpack: function (cfg) {
+    const originalEntry = cfg.entry;
+    cfg.entry = async () => {
+      const entries = await originalEntry();
+
+      if (
+        entries['main.js'] &&
+        !entries['main.js'].includes('./client/polyfills.js')
+      ) {
+        entries['main.js'].unshift('./client/polyfills.js');
+      }
+
+      return entries;
+    };
+
+    return cfg;
+  }
+};
+```
+
+Then, create `/client/polyfills.js` and include whichever polyfills you need.
+
+```js
+import '@babel/polyfill';
+```
+
+## Vercel
+
+[Vercel](https://vercel.com) is hands down the **easiest way to deploy applications** I've ever used.
+It's incredibly easy to get started and their GitHub integration will automatically deploy your app on pull requests and leave a link
+for you to review the changes. If everything looks good, it will deploy to prod when the PR is merged. Simple as that.
+
+The icing on the cake is how well the Vercel ecosystem works together. Their [domain service](https://vercel.com/domains) allows you
+to buy domains _from the command line_. I've never been able to go from an idea to a live, deployed application
+hosted on a domain so fast.
+
+**Bonus:** I was even able to [setup email forwarding](https://spectrum.chat/zeit/now/redirection-email-domain~b5e1b613-ae92-42f9-bc49-e8c824a8a7f2?m=MTUzNDE5OTg3MzMwMw==) for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
+
+## Where To Get Help
+
+The Next.js and Vercel community support is _fantastic_. They're very responsive to emails, issues, or any other form
+of contact. My preferred method would be [GitHub Discussions](https://github.com/zeit/next.js/discussions). Thanks to Discussions, all
+questions and answers are indexed, searchable, and easy to find. Their [tutorials](https://nextjs.org/learn/) and [docs](https://nextjs.org/docs) are also fantastic and well-written.
+
+## Additional Resources
+
+- [Next.js Resources](https://masteringnextjs.com/resources)
+- [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
+- [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)

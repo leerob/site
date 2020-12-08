@@ -1,0 +1,218 @@
+---
+title: 'Building a UI Component Library with Styled Components'
+publishedAt: '2019-02-12'
+summary: 'At Hy-Vee, we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products.'
+image: '/static/images/ui-component-library-with-styled-components/banner.jpg'
+---
+
+<Image
+  alt={`Building a UI Component Library with Styled Components`}
+  src={`/static/images/ui-component-library-with-styled-components/banner.jpg`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+Don’t repeat yourself. It’s a principle that engineers strive to adhere to — preventing code duplication by abstracting shared functionality out into its own place.
+
+At [Hy-Vee](/blog/joining-hy-vee), we reached a point where we were spinning up new teams extremely quickly and needed to maintain consistency across products. How could we ensure every person created a button that looked and functioned the same way across all digital properties?
+
+Our first step in tackling this problem was having UI/UX define a style guide that all consumers should implement. We needed a simple approach to ensure the adoption of our style guide and a set of shared components consumers could use without having to worry about styling.
+
+## Developing a Plan
+
+We decided to build a reusable UI component library which will be consumed in all of our client-facing applications. This project had a few main goals:
+
+1. **Create consistency across the organization**
+
+   - All digital properties should look and feel the same, implementing our agreed upon style guide.
+
+2. **Improve the overall quality of our codebase**
+
+   - Having a shared set of UI components means less custom code for consumers.
+   - We can ensure all components meet our accessibility requirements.
+   - Components become hardened by multiple teams contributing to bug fixes and improvements.
+
+3. **Increase developer proficiency**
+
+   - Developers not specialized in CSS don’t have to worry about CSS quirks or cross-browser issues.
+   - Allow us to ship new products and rewrite legacy products faster.
+   - Decrease the amount of time it takes new employees to build UIs correctly.
+
+To accomplish these goals, we chose to use [styled-components](https://www.styled-components.com/) as the base of the library. styled-components uses ES6 tagged template literals and CSS to allow you to write _real_ CSS code in your components instead of using JS objects.
+
+It’s used by companies like Bloomberg, Atlassian, Reddit, Patreon, Target, Coinbase, and [more](https://github.com/styled-components/awesome-styled-components/blob/master/README.md#real-apps). There’s a variety of CSS in JS solutions, as outlined very succinctly [here](https://github.com/MicheleBertoli/css-in-js). After reviewing this list and reading the styled-components documentation, it seemed like a no-brainer for our use case. Some big wins for us:
+
+- Feels like writing traditional CSS vs. JavaScript objects
+- React & React Native support
+- Auto-prefixing vendor styles
+- Scoped styles eliminate global CSS conflicts
+
+## Building the Library
+
+Let’s take a look at a simple example: a button.
+
+```jsx
+const BaseButton = styled.button`
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 32px;
+`;
+```
+
+If it looks familiar, that’s because it should. It’s truly CSS without anything extra on top. Using the template string, [it invokes the styled.button function](https://mxstbr.blog/2016/11/styled-components-magic-explained/) and passes in the CSS string. This button makes it extremely easy for consumers to use (as shown below).
+
+```jsx
+<BaseButton>{'Hello World!'}</BaseButton>
+```
+
+A component library doesn’t have just one type of button, though. Let’s explore how we can extend this `BaseButton` component.
+
+```js
+const Button = styled(BaseButton)`
+  background: #e21c11;
+  border: none;
+  color: #fff;
+
+  :hover,
+  :focus {
+    background: #af0000;
+  }
+`;
+```
+
+We can pass the existing `BaseButton` into `styled` to build our primary colored button using our main brand color.
+
+## Using Props
+
+Extending isn’t the only way we can modify our base component.
+We can also conditionally change styles based on the props passed in.
+Let’s explore adding a `disabled` state to our `Button` component.
+
+```jsx
+${(props) => props.disabled && css`
+    opacity: 0.25;
+    cursor: not-allowed;
+`}
+```
+
+Then, we can pass in `disabled` as a prop when invoking the component.
+
+```jsx
+<Button disabled>{'Hello World!'}</Button>
+```
+
+## Utilizing JavaScript & React
+
+There’s so much more we can do with our components.
+
+Let’s look at a more complicated example. We want to build an `Input` component, but abstract away the tricky parts for consumers.
+All inputs should have a label, which needs to reference the actual `<input>` element by ID.
+We also need to ensure the proper `aria-labels` are added for accessibility.
+
+```jsx
+const Input = ({ disabled, id, label, placeholder, required }) => (
+  <Container>
+    <Label htmlFor={id} required={required}>
+      {label}
+    </Label>
+    <Input
+      aria-label={label}
+      aria-required={required}
+      disabled={disabled}
+      id={id}
+      placeholder={placeholder}
+      type="text"
+    />
+  </Container>
+);
+```
+
+Now, it’s much easier for consumers to properly build accessible forms with the correct styling.
+
+```jsx
+<Input
+  disabled={false}
+  id="first-name"
+  label="First Name"
+  placeholder="Please enter your name"
+  required
+/>
+```
+
+## Testing
+
+We utilize [Jest](https://jestjs.io/) for [Snapshot testing](https://jestjs.io/docs/en/snapshot-testing#snapshot-testing-with-jest). This works particularly well with this library because it’s presentational. Our snapshots are expecting the visual properties (i.e. CSS styling) are being correctly conditionally applied.
+
+For each permutation of a component (e.g. different props), we have a separate snapshot such that all conditions are covered.
+Snapshot output is made more readable using [jest-styled-components](https://github.com/styled-components/jest-styled-components).
+For more information, read _“[Effective testing of styled-components with Jest Snapshots](https://medium.com/styled-components/effective-testing-for-styled-components-67982eb7d42b)”_.
+
+Snapshots do not cover every scenario, however.
+If we were to add `onClick` logic to a `Button` for example, we would want to utilize traditional testing methods to ensure the correct actions happen.
+
+## Distributing
+
+Using [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/), we can compile and generate a `dist` that can be published to [NPM](https://www.npmjs.com/).
+
+Thanks to [babel-plugin-styled-components](https://github.com/styled-components/babel-plugin-styled-components), we get these (and more) for free:
+
+- Generated class names are prefixed with the file and component name for an improved debugging experience.
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) shows `Button` instead of `styled.button`.
+
+Here’s our `.babelrc` file.
+
+```js:.babelrc
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": ["babel-plugin-styled-components"]
+}
+```
+
+## Contributing
+
+We wanted to make it as easy as possible for others at Hy-Vee to contribute. That’s why all formatting and linting is taken care of with:
+
+- [ESLint](https://eslint.org/)
+- [Stylelint](https://github.com/stylelint/stylelint)
+- [Prettier](https://prettier.io/)
+
+Thanks to git pre-commit hooks with [husky](https://github.com/typicode/husky), we’re ensured all code is formatted correctly before getting pushed to GitHub.
+
+## IDE Integration
+
+There are even extensions for your favorite IDE to have CSS syntax highlighting inside of the JS template strings. Thanks, styled-components! 🎉
+
+- [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+- [webstorm-styled-components](https://github.com/styled-components/webstorm-styled-components)
+- [Other IDEs](https://www.styled-components.com/docs/tooling#syntax-highlighting)
+
+## Storybook
+
+[Storybook](https://storybook.js.org/) provides us with an interactive UI playground for our components. This makes development a breeze and also allows us to publish our Storybook to GitHub Pages using the [Storybook Deployer](https://github.com/storybooks/storybook-deployer#readme). That way anyone can explore the components and see consumption examples without having to dive into the code.
+
+Another bonus feature of using Storybook are its add-ons. You’ll notice in the bottom pane we’ve chosen to use:
+
+- [Story Source](https://github.com/storybooks/storybook/tree/master/addons/storysource) for showing code consumption examples
+- [Viewport](https://github.com/storybooks/storybook/tree/master/addons/viewport) for allowing us to test different screen sizes and devices
+- [a11y](https://github.com/storybooks/storybook/tree/next/addons/a11y) for ensuring our components are accessible
+- [storybook-readme](https://github.com/tuchk4/storybook-readme) so our documentation lives alongside the component
+- [addon-knobs](https://www.npmjs.com/package/@storybook/addon-knobs) so we can dynamically edit props
+
+<Image
+  alt={`Storybook Example`}
+  src={`/static/images/ui-component-library-with-styled-components/example.gif`}
+  width={1575}
+  height={1027}
+/>
+
+## Future Plans & Roadmap
+
+We’re working to have this library adopted across all web and mobile applications at Hy-Vee.
+
+As we’ve built out this library, it’s prompted us to think deeply about our component architecture and strategy. We’re working to define what set of components makes sense for all consumers to implement and which should be their own separate entities.
+
+This has inspired us to implement a [Monorepo](/blog/monorepo-lerna-yarn-workspaces) design where we can easily develop and publish a large number of packages.
+
+Want to learn more? [Read the next post](/blog/monorepo-lerna-yarn-workspaces) where I'll create a Monorepo with [Lerna](https://lernajs.io/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).

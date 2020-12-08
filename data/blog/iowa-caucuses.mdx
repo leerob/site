@@ -1,0 +1,122 @@
+---
+title: 'Iowa Caucuses Should Not Have Used An App'
+publishedAt: '2020-02-07'
+summary: "Four days later, the Iowa Caucuses have finally finished. Yet, we're just now seeing the results. What the hell happened?"
+image: '/static/images/iowa-caucuses/phone.jpg'
+---
+
+<Image
+  alt={`Iowa Caucuses`}
+  src={`/static/images/iowa-caucuses/phone.jpg`}
+  width={1000}
+  height={630}
+  priority
+/>
+
+Four days later, the Iowa Caucuses have finally finished.
+Yet, we're just now seeing the results. _What the hell happened?_
+
+As an Iowan (and a Software Engineer), I was disappointed to hear it was a failure by technology.
+I was surprised that our tech community would have let this happen.
+So, I did a little digging.
+
+If you don't read anything else in this article, know that:
+
+- **The caucus app was not made in Iowa, or by Iowans.**
+- **The mismanaged, under-budgeted app had no chance of success.**
+
+To understand the full story, we have to first go back to 2016.
+
+## 2016 Election
+
+After the close race in 2016, new reporting standards were introduced to provide more clarity on the caucus numbers.
+Precinct leaders were now required to submit three numbers – including the number of backers on the first _and_ second alignment.
+Previously, they only had to submit one.
+
+**There are over 1,600 precincts in the state of Iowa.**
+
+This change meant it would take longer to gather the data on the night of the caucus.
+So naturally, party leaders looked for a solution.
+Is there a tech solution that will simplify the reporting process and improve our confidence in the results?
+
+## The App
+
+Enter [Shadow](https://shadowinc.io/), a Denver based company contracted to build a reporting app for precinct leaders.
+This app would simplify the reporting process to allow caucus results to be submitted the same night, even with the heightened reporting standards.
+
+Why not hire developers in Iowa? (_Hint: Money_).
+
+In my opinion, this was the first failure by Democratic party leadership.
+There are plenty of development shops in Iowa which could have executed flawlessly.
+But, hindsight is 20/20. So what happened?
+
+## What Went Wrong
+
+The night before the caucuses, the [Iowa Democratic Party chair](https://theweek.com/speedreads/893600/iowa-democratic-party-chair-monday-most-prepared-weve-ever-been) seemed pretty confident.
+
+> "[We are] the most prepared we've ever been as a party for these caucuses. We've run through a few different scenarios, but I can tell you, we're ready."
+
+In reality, some of the precinct chairs weren't able to test the voting app until a few weeks before the caucuses.
+As you can imagine, that didn't turn out well.
+
+> Speaking anonymously to the New York Times, [two Acronym sources](https://fortune.com/2020/02/06/shadow-app-acronym-iowa-caucus-results/) said that they released Shadow through TestFairy because they ran out of time for the app stores to approve it.
+
+<Tweet id="1224773796307050497" />
+
+---
+
+To [report results](https://www.vice.com/en_ca/article/y3m33x/heres-the-shadow-inc-app-that-failed-in-iowa-last-night) in the app, you had to:
+
+- Sign in with email and password.
+- Open Google Authenticator for two-factor authentication.
+- Enter a one-time code from the app.
+- Return to the voting app.
+- Enter his precinct PIN.
+- Report the results.
+
+_But they didn't make it that far._
+
+When trying to enter the one-time code back into the voting app, it failed.
+This frustration prompted many precinct chairs across the state to [abandon the app](https://www.nytimes.com/2020/02/03/us/politics/iowa-caucus-app.html)
+and call the telephone hotline to report their results.
+
+In the wake of national media collectively losing their minds, Iowa's democratic leadership [failed to communicate effectively](https://www.nytimes.com/2020/02/03/us/politics/iowa-caucuses.html).
+
+> "This is simply a reporting issue, the app did not go down and this is not a hack or an intrusion." - Mandy McClure
+
+But the app did fail to work as intended, causing the phone hotline to be overloaded and reporting delays to ensue.
+The app can't take the full blame. Ideally, the phone hotline as a backup should have prevented the delay.
+
+<Tweet id="1224731127824424961" />
+
+## What should have been done?
+
+**The app shouldn't have been built.**
+
+Did the steps to submit results in the app seem over-complicated?
+They did to me. There are many ways you could verify vote counts digitally.
+
+Hell, a Google Sheet would probably suffice.
+
+<Tweet id="1224820390398005250" />
+
+Firebase? React Native? Talk about over-engineering.
+Shadow's budget was **$60K** from Iowa and **$58K** from Nevada.
+
+For what they were trying to accomplish (even if it was the wrong choice), that budget wasn't going to cut it.
+Employing even a few Software Engineers is going to blow that budget almost immediately – let alone think about best practices.
+
+I have empathy for the engineers at Shadow. Some were new and inexperienced.
+They lacked the leadership and direction to understand they were making poor technical decisions.
+
+<Tweet id="1224821360897097728" />
+
+## So Now What?
+
+- We need to rethink how we're funding tech initiatives in politics.
+- Iowa Democratic leadership needs to understand the core issues and prevent this from happening again.
+- Encourage the use of [open-source software in politics](https://blogs.microsoft.com/on-the-issues/2019/09/24/electionguard-available-today-to-enable-secure-verifiable-voting/).
+- Fund tech efforts for politics in-between cycles.
+- Improve training and preparation for volunteers.
+
+We're not ready for voting apps. Then again, we may never be.

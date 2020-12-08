@@ -1,0 +1,281 @@
+---
+title: 'Building My First Electron App'
+publishedAt: '2017-10-29'
+summary: 'Learn how I created a simple application to convert and download YouTube videos as MP3s.'
+image: '/static/images/building-my-first-electron-app/banner.png'
+---
+
+<Image
+  alt={`YouTube To MP3 Logo`}
+  src={`/static/images/building-my-first-electron-app/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+In my free time, I like to create videos. As part of my process for creating new videos, I usually need to download some audio to accompany the visuals. That might be the main song, some sound effects, or vocal tracks. I typically find the video on YouTube (copyright free, of course) and navigate to a website where I can convert and download the video as a .mp3 file. It's not a broken process, but it could be improved. I wasn't particularly fond of any of the user interfaces these websites had. It shouldn't be _that_ difficult to download one song. So why not just build something myself?
+
+Whenever I have an idea for a new project, I immediately want to dive into the code and start piecing together the start of the application. This is actually the **completely wrong approach**. I've found that it takes me less time to complete the work when I have the design already figured out ahead of time versus throwing it together as I go. I decided to put my money where my mouth is and jump into Photoshop.
+
+### Creating Mockups
+
+I defined a rough list of requirements for what my design should contain:
+
+- A macOS application versus a website
+- A large input that allows the user to enter a YouTube URL
+- A button to start the conversion process and begin the download
+- The input should transform into a progress bar after clicking the button
+
+Here are the mockups I created for my application:
+
+<Image
+  alt={`YouTube To MP3 Mockup 1`}
+  src={`/static/images/building-my-first-electron-app/mock1.png`}
+  width={919}
+  height={525}
+/>
+<Image
+  alt={`YouTube To MP3 Mockup 2`}
+  src={`/static/images/building-my-first-electron-app/mock2.png`}
+  width={919}
+  height={525}
+/>
+
+I strived to create a simple but visually appealing design. The soft, green to blue gradient in the background provides contrast against the large, rounded input. I emphasized the little things like:
+
+- Adding box shadows around the input and button
+- Using a crisp, clear font ([San Francisco](https://developer.apple.com/fonts/))
+- Using a complementary color for the button to offset the background
+
+Overall, I'm pretty happy with how it turned out. This gave me a great base to begin with.
+
+### Building The Application
+
+I knew I wanted to use [Electron](https://electron.atom.io/) to create this application, which is a framework created by GitHub.
+Electron enables developers to easily build cross-platform applications using JavaScript, HTML, and CSS. My editor of choice, [VS Code](https://code.visualstudio.com/), is built with Electron.
+
+I also wanted to gain more experience with React and the JavaScript tooling that accompanies it (Babel? What is that again?). Let's look at the dependencies section of my [package.json](https://docs.npmjs.com/getting-started/using-a-package.json). This file documents all of the packages my project uses.
+
+```JSON
+"dependencies": {
+  "axios": "^0.9.1",
+  "babel-preset-es2015": "^6.6.0",
+  "babel-preset-react": "^6.5.0",
+  "babelify": "^7.2.0",
+  "electron-reload": "^0.2.0",
+  "electron-prebuilt": "^0.36.0",
+  "react": "^0.14.8",
+  "react-dom": "^0.14.7"
+},
+"devDependencies": {
+  "electron-packager": "^9.1.0",
+  "node-sass": "^4.5.3",
+  "watchify": "^3.9.0"
+}
+```
+
+Let's look at what I've defined here:
+
+- [Axios](https://github.com/axios/axios) - Send HTTP requests from the browser
+- [Babel](https://babeljs.io/) - Use the latest JavaScript features and compile your code to support older browsers
+- [React](https://github.com/facebook/react) - A JavaScript library for building user interfaces
+- [Sass](https://github.com/sass/sass) - CSS with superpowers
+
+These libraries will be the building blocks of my application.
+
+Electron requires you to specify a main entry point into your application. It's mostly boilerplate, but here's a snippet that sets up the browser window and loads the HTML file. I will include a link to the full source code at the end of this post.
+
+```js
+const browserOptions = {
+  width: 800,
+  height: 600,
+  maximizeable: false,
+  icon: path.join(__dirname, '/public/img/logo.png')
+};
+
+mainWindow = new BrowserWindow(browserOptions);
+mainWindow.loadURL('file://' + __dirname + '/index.html');
+```
+
+Here's the entirety of the `index.html` file it renders. This file simply includes the bundled JavaScript and CSS and not much else.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="public/css/global.css" />
+    <title>Youtube To MP3</title>
+  </head>
+  <body>
+    <div class="root center" id="root"></div>
+    <script src="public/js/bundle.js"></script>
+  </body>
+</html>
+```
+
+Notice the `root` div. This is where the React code will be rendered into. All of the JavaScript code for this application will be compiled together and bundled into `bundle.js`.
+
+Electron is set up and there's a place for the React code to be written. Let's jump into creating some components.
+
+### Creating The Interface
+
+The entry point for the React application is inside `app.js`. This file loads our components and renders them into `index.html`.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AppContainer from './containers/app.container';
+
+class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+// Render to index.html
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+You'll notice I've defined `AppContainer`, which is the top-level class containing all the working pieces of the application. It's generally best practice to break up your components into two categories - smart and visual components (others might use different wording).
+
+For example, the `AppContainer` is a smart component. It will contain the logic for making HTTP requests to retrieve YouTube videos, incrementing the progress bar, and initiating the file download. Inside of this component, you'll find the visual components which don't do any of the heavy lifting. Here's what the `AppContainer` renders.
+
+```jsx
+render() {
+  if (this.state.showProgressBar) {
+    return <ProgressBar progress={this.state.progress} />;
+  } else {
+    return <LinkInput startDownload={this.startDownload} />;
+  }
+}
+```
+
+`ProgressBar` and `LinkInput` are the two visual components used in this application. The link input is initially shown which looks something like this.
+
+```jsx
+render() {
+  let className = `link__input${this.state.showError ? '--error' : ''}`;
+  return <div>
+    <input className={className} onChange={this.updateInputValue} placeholder='https://www.youtube.com/watch?v=zmXUWKwxDg4' />
+    <div className='center'>
+      <button className='link__button' onClick={this.startDownload}>Convert to .mp3</button>
+    </div>
+  </div>;
+}
+```
+
+One of my favorites features of [ES6](https://github.com/lukehoban/es6features) is string template literals.
+
+```jsx
+`link__input${this.state.showError ? '--error' : ''}`;
+```
+
+It's much easier to create strings with dynamic content now. You'll notice that if there's an error, I'm changing the class name to reflect that. I'm using [BEM](http://getbem.com/naming/) (Base-Element-Modifier) to define the naming structure of my CSS. Here's a snippet from the `link` base class in my global `.scss` file.
+
+```css
+.link {
+  &__input {
+    width: 510px;
+    height: 60px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: $shadow;
+    color: $grey;
+    font-size: $font-size;
+    text-indent: 15px;
+    font-weight: 200;
+
+    &--error {
+      @extend .link__input;
+      box-shadow: 0 0 0 2pt rgba(255, 0, 0, 0.53);
+    }
+  }
+
+  &__button {
+    height: 50px;
+    width: 200px;
+    box-shadow: $shadow;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: $font-size;
+    background: $pink;
+    margin-top: 10px;
+    font-weight: 200;
+    cursor: pointer;
+  }
+}
+```
+
+Sass will transform this code into three classes: `link__input`, `link__input--error`, and `link__button`. Notice `link` is the "base", the input is the "element", and error is one "modifier".
+
+The `ProgressBar` component displays a loading bar disguised as an input which updates based on the percentage value passed in from its parent `AppContainer`. When it's nearing completion, the text color changes to white so there's sufficient contrast.
+
+```jsx
+import React, { Component } from 'react';
+
+class ProgressBar extends Component {
+  render() {
+    let percentComplete = `${this.props.progress}%`;
+    let color = '#747373';
+
+    if (this.props.progress > 90) {
+      color = 'white';
+    }
+
+    return (
+      <div>
+        <div className="progress">
+          <div className="progress__bar" style={{ width: percentComplete }} />
+          <div className="progress__percentage" style={{ color: color }}>
+            {percentComplete}
+          </div>
+        </div>
+        <div className="center">
+          <span className="progress__info">
+            The video is currently being processed.
+          </span>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ProgressBar;
+```
+
+As previously mentioned, the `AppContainer` will handle the heavy lifting of fetching the videos from YouTube. I utilized an existing API for processing videos to MP3 to reduce duplication of efforts.
+
+```jsx
+fetchVideo(id) {
+  let _this = this;
+  Axios.get(`http://www.yt-mp3.com/fetch?v=${id}&apikey=${this.api_key}`)
+    .then(function (response) {
+      if (response.data.status === 'timeout') {
+        _this.retryDownload(id);
+      } else if (response.data.url) {
+        _this.downloadFinished(response.data.url);
+      } else {
+        _this.retryDownload(id);
+      }
+    })
+    .catch(function (err) {
+      alert('There was an error retrieving the video. Please restart the application.');
+    });
+}
+```
+
+### Final Product 🎉
+
+<Image
+  alt={`YouTube To MP3 Example`}
+  src={`/static/images/building-my-first-electron-app/example.gif`}
+  width={796}
+  height={596}
+/>
+
+### Source Code
+
+You can [view the entire source code here](https://github.com/leerob/youtube-to-mp3). Happy coding! 😄

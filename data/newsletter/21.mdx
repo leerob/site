@@ -1,0 +1,66 @@
+---
+title: 'React 2025 release date & Next.js 9.5! (#21)'
+publishedAt: '2020-07-27'
+summary: "An archived verison of Lee Robinson's newsletter – subscribe to get early access."
+image: '/static/images/og.jpg'
+---
+
+### Next.js 9.5
+
+[Next.js 9.5](https://nextjs.org/blog/next-9-5) was released today, including many great additions. Here are a few of my favorites:
+
+- [Stable Incremental Static Regeneration](https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration): Re-build static pages after you've deployed, in milliseconds.
+- [Customizable Base Path](https://nextjs.org/blog/next-9-5#customizable-base-path): Easily host Next.js projects on subpaths of your domain.
+- [Support for Rewrites, Redirects, and Headers](https://nextjs.org/blog/next-9-5#support-for-rewrites-redirects-and-headers): Rewrite vanity URLs, redirect old URLs, and add headers to static pages.
+
+I'm always impressed with Next's release cadence and their approach towards marketing open-source software. Through [blog posts](https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation) and [Twitter threads](https://twitter.com/rauchg/status/1287792732472135680), they manage to make each version a marketable opportunity. Next.js is reaching [peak popularity](https://twitter.com/_ericelliott/status/1285908721588150272) as more and more companies start to adopt it ([Apple](https://twitter.com/rauchg/status/1286769353027801088), [Tailwind CSS](https://blog.tailwindcss.com/building-the-tailwind-blog), [Egghead.io](https://twitter.com/jhooks/status/1287612404893794306)). Even the [React core team is using it](https://twitter.com/dan_abramov/status/1286437936309968896).
+
+[NextAuth.js 3.0](https://next-auth.js.org/) was also released, a library for adding authentication & authorization to Next.js apps. The new version has some solid improvements, plus support for [Prisma](https://www.prisma.io). [Here's a quick example](https://next-auth.js.org/getting-started/example) of how you'd add NextAuth through an API route.
+
+```js
+// pages/api/auth/[...nextauth].js
+
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
+
+const options = {
+  // Configure one or more authentication providers
+  providers: [
+    Providers.GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET
+    })
+    // ...add more providers here
+  ],
+
+  // A database is optional, but required to persist accounts in a database
+  database: process.env.DATABASE_URL
+};
+
+export default (req, res) => NextAuth(req, res, options);
+```
+
+### React 2025
+
+I'm happy to share the release date for [React 2025](https://react2025.com/) -- **August 24th**! Over the past month, I've been building [Fast Feedback](https://fastfeedback.io/) -- the product we're launching in the course.
+
+[![React 2025](https://buttondown.s3.us-west-2.amazonaws.com/images/770c7632-e547-4c8c-a32e-332fce9218a3.png)](https://react2025.com/)
+
+We've done so much, including:
+
+- Complete user management with Firebase Authentication (GitHub & Google sign-in)
+- [Static regeneration](https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation) of feedback pages to ensure no downtime and fresh content
+- Integration with Stripe for subscriptions and their customer portal
+- Improved SEO, added logging, and even started integration tests
+
+There have been 10 streams (each ~1 hour long) covering every aspect from start to finish. I'm also creating the written version at the same time. Fast Feedback is currently using a test Stripe account, so feel free to try it out with `4242 4242 4242 4242` and any CVC, postal code, and future expiration date. You can also watch this [demo](https://www.youtube.com/watch?v=VFQZW8UGB3k).
+
+If you want to learn more about React 2025, I'm making the [first](https://youtu.be/MxR5I5_hOKk?t=155) [four](https://www.youtube.com/watch?v=AGl52moyISU) [streams](https://www.youtube.com/watch?v=3g6-v3_BNbM) [available](https://www.youtube.com/watch?v=u8iv_yhSRI8). These streams should help you understand if the course is right for you. Don't forget to [check out the code](https://github.com/leerob/fastfeedback)!
+
+### Dashboard + Spotify
+
+I had a little fun with my [dashboard](https://leerob.io/dashboard), adding my currently playing song and top tracks from Spotify. If you're curious, I wrote a new blog post [Using the Spotify API with Next.js](https://leerob.io/blog/spotify-api-nextjs) 🚀
+
+![Personal Dashboard](https://i.imgur.com/IFlwZHc.png)
+
+Feel free to reach out if you have any questions, thoughts, or comments on anything here! I'd love to hear from you 😄

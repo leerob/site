@@ -1,0 +1,140 @@
+---
+title: 'Analyzing 10+ Years of My Facebook Data'
+publishedAt: '2018-04-04'
+summary: 'Which year was I the most active? Who has commented on my pictures the most? How many songs have I streamed?'
+image: '/static/images/analyzing-10-years-of-facebook-data/banner.png'
+---
+
+<Image
+  alt={`Facebook`}
+  src={`/static/images/analyzing-10-years-of-facebook-data/banner.png`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+I joined Facebook in May 2007. Over the past 10+ years, my activity has ranged from being heavily involved to barely using it for over a year. In the wake of the [#DeleteFacebook](https://twitter.com/hashtag/deletefacebook) uproar, I started to think about my social media footprint. I’m not naive to the amount of data Facebook and other social media platforms have on me, but it’s easy to forget things you said 10 years ago.
+
+Facebook has an option to export a data dump of “everything” they have stored for your profile. I decided to download this and see what juicy details I could find. As it turns out, there wasn’t a lot of juicy information - just some really old, embarrassing stuff and a few trips down memory lane. I thought I’d summarize some interesting numbers and elaborate on some of the more unexpected finds.
+
+### Overview 📝
+
+My data dump was surprisingly only **500mb**. All of the pictures and videos were heavily compressed, so if you were wanting to keep higher quality copies of these, I’d recommend downloading them separately. In total, I had:
+
+- 292 photos
+- 245 videos
+- 5,917 posts & comments
+- 43,511 songs streamed
+
+The main file, `timeline.html`, is a massive clobber of information. Individual entries are generally structured like this:
+
+```html
+<div class="meta">Friday, March 9, 2018 at 11:53pm UTC+11</div>
+<div class="comment">Some post, comment, song, or link shared</div>
+```
+
+I was able to parse through the contents of this file to create a chart of my facebook activity over time.
+
+<Image
+  alt={`Timeline Activity`}
+  src={`/static/images/analyzing-10-years-of-facebook-data/activity.png`}
+  width={1296}
+  height={872}
+/>
+
+**Note:** The full source code to retrieve this information for your own data export will be linked at the bottom of this post.
+
+You'll notice my activity picks up a lot after 2012 - I'm guessing most of this is from starting my Spotify premium subscription. For a while, I had my Facebook account linked with Spotify to show what I was currently listening to.
+
+### Photos 📸
+
+Inside of the `/photos` folder, you'll find a folder for each photo album, as well as an accompanying HTML file to visualize the photos. There's also metadata in the HTML file about what kind of camera was used to take the photo, as well at latitude & longitude information if available. If you wanted, you could probably build a photo map from this.
+
+I wanted to know four main statistics:
+
+- Total number of photos
+- Total number of comments
+- Average comments per photo
+- Top 10 commenters
+
+To achieve this, I was able to recursively walk through the directory and sum the total number of pictures per photo album. To analyze the comments, I needed to look at the HTML file. Here's an example of the comment structure:
+
+```html
+<div class="comment">
+  <span class="user">Probably My Mom</span>Love this photo! ✈️ 🙌🏻 📷
+  <div class="meta">Wednesday, May 17, 2017 at 7:08am UTC+10</div>
+</div>
+```
+
+From here, I was able to build a map of the top commenters to determine the necessary statistics. Here's what the output looks like:
+
+```bash
+Number of Photos: 292
+Number of Comments: 90
+Average Comments Per Photo: 0.31
+Top 10 Commenters:
+ - My Mom: 17
+ - Another Person: 15
+..
+```
+
+### Videos 📹
+
+I used a similar approach to parse the `/videos` folder to find the total number of videos.
+
+```bash
+Number of Videos: 175
+```
+
+I did end up finding something interesting with this one. Back in the day when posting on other's walls was a thing, I would occasionally record a song and send it to my friends. What I didn't realize is that Facebook was saving _every attempt I made_ to record the song. This was somewhat disheartening to re-watch as I failed to play a song over and over. I think I audibly said "Okay, 100th take" a couple of times. Turns out, [others have noticed this as well.](http://nymag.com/selectall/2018/03/facebook-secretly-saved-videos-users-deleted.html) Here's the thumbnails from a series of failed attempts. Not great.
+
+<Image
+  alt={`Facebook Video Thumbnails`}
+  src={`/static/images/analyzing-10-years-of-facebook-data/videos.png`}
+  width={1100}
+  height={676}
+/>
+
+### Friends List 🙋🏼‍♂️
+
+Inside of the `friends.html` file, you can find the exact dates you added or removed someone as a friend. **Note:** it doesn’t look like people you’ve blocked or have been blocked by are showing up here. I parsed this file to aggregate the number of friends added per year.
+
+<Image
+  alt={`Timeline Activity`}
+  src={`/static/images/analyzing-10-years-of-facebook-data/friends-added.png`}
+  width={1302}
+  height={876}
+/>
+
+The data dump also shows everyone you've been in a relationship with on Facebook. It was pretty obvious to spot where things might have started and ended based on the dates you added or removed friends 👀
+
+### The Script 🎉
+
+The structure of the data export appears to be consistent, so I made a Python script to parse and aggregate the statistics mentioned in this post using [BeautifulSoup](https://pypi.python.org/pypi/beautifulsoup4) to traverse the DOM of the HTML files. To use this script on your own Facebook data dump, first [export your data](https://www.facebook.com/help/131112897028467) and then go to my [GitHub repo](https://github.com/leerob/facebook-data-analyzer) and download the `facebook.py` file. From there, you should place this file in the same folder as your Facebook data dump. To run the script, open the terminal and enter:
+
+```bash
+$ pip install bs4 lxml
+$ python facebook.py
+..
+..
+Number of Videos: 175
+Number of Photos: 292
+Number of Comments: 90
+..
+..
+```
+
+If you don't want to install those packages globally, you can use a virtual environment. I purposely made this only work locally so you wouldn't have to upload your exported information anywhere (that's kind of against the point, right?). Hopefully it works well for you - let me know what you think.
+
+### Conclusion 👏🏼
+
+If you feel like taking the script further, here are some other ideas:
+
+- Find the total number of people you’ve messaged
+- Create a chart of who you've messaged the most
+- Find the total number of events you've attended
+- Analyze the tone of all posts to determine mood (positive / negative)
+- Find your top friends based on the number of timeline interactions
+
+If you now feel like deleting all your Facebook posts/comments, I found a [Google Chrome extension](https://chrome.google.com/webstore/detail/social-book-post-manager/ljfidlkcmdmmibngdfikhffffdmphjae?hl=en-US) that should help.
+Thanks for reading!

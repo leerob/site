@@ -1,0 +1,128 @@
+---
+title: 'Using Mapbox with Next.js (Instead of Google Maps)'
+publishedAt: '2019-01-13'
+summary: 'Learn how to use Mapbox with Next.js to create a non-SSR map component that is free up to 50,000 map views per month.'
+image: '/static/images/using-mapbox-with-next-js/banner.png'
+---
+
+In the process of selecting a mapping library for [dsmtech.io](https://dsmtech.io), I ran into a
+number of roadblocks. First and foremost, Google Maps has **drastically** changed their [pricing structure](https://cloud.google.com/maps-platform/user-guide/pricing-changes/).
+
+> "On June 11, 2018, we launched new Maps, Routes and Places functionality, which changes the way certain APIs and features are billed. Then on July 16, 2018, all API and feature prices changed to align with our pricing table."
+
+As you can imagine, a lot of people [are upset](http://geoawesomeness.com/developers-up-in-arms-over-google-maps-api-insane-price-hike/). In the past 6 months, I've stumbled onto a lot of projects that were
+using Google Maps that no longer work. This really puts a hindrance on side projects. Thus, I needed a different solution for my mapping library.
+
+## Mapbox
+
+Ultimately, I decided to use [Mapbox](https://www.mapbox.com/).
+
+- It uses [OpenStreetMap](https://www.openstreetmap.org/) under the hood, which is [open-source](/blog/why-i-create-open-source-software).
+- It has simple pay-as-you-go pricing.
+- It's free up to _50,000 map views per month_.
+
+<Image
+  alt={`Mapbox Pricing`}
+  src={`/static/images/using-mapbox-with-next-js/mapbox-pricing.png`}
+  width={817}
+  height={339}
+/>
+
+## Next.js
+
+I love [Next.js](https://nextjs.org/). This blog is actually [written with it](https://github.com/leerob/leerob.io). If you've never
+heard of Next, here are some of the big wins for me.
+
+- Automatic transpilation and bundling (with [Webpack](https://webpack.js.org/) and [Babel](https://babeljs.io/)).
+- Automatic code splitting.
+- Hot code reloading.
+- Server-side rendering ([SSR](https://medium.com/@benjburkholder/javascript-seo-server-side-rendering-vs-client-side-rendering-bc06b8ca2383)) out of the box.
+- Static file serving.
+
+If that sounds awesome, follow their [quick-start guide](https://nextjs.org/docs/) to get an application up and running.
+For now, let's assume you already have your Next application working.
+
+_**Just want the code?** You can view a working example [here](https://next-mapbox-demo.now.sh) and the code [here](https://github.com/leerob/next-mapbox-demo)._
+
+## Mapbox + Next.js
+
+We'll take advantage of the wonderful [react-map-gl](https://github.com/visgl/react-map-gl) library created by Uber.
+
+```bash
+yarn add react-map-gl
+```
+
+Now, let's create a simple Map component at `components/Map.js`.
+
+```jsx
+import { Component } from 'react';
+import ReactMapGL from 'react-map-gl';
+
+class Map extends Component {
+  state = {
+    viewport: {
+      width: '100vw',
+      height: '100vh',
+      latitude: 41.5868,
+      longitude: -93.625,
+      zoom: 13
+    }
+  };
+
+  render() {
+    return (
+      <ReactMapGL
+        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapboxApiAccessToken="YOUR_MAPBOX_TOKEN_HERE"
+        onViewportChange={(viewport) => this.setState({ viewport })}
+        {...this.state.viewport}
+      />
+    );
+  }
+}
+
+export default Map;
+```
+
+**Note:** You will need to create a Mapbox account and generate a [token](https://github.com/uber/react-map-gl#about-mapbox-tokens).
+
+Mapbox uses the global `window` object under the hood, which means it can't be server-side rendered. Thus, we need to make some modifications to get things working.
+
+Next now supports [dynamic imports](https://nextjs.org/docs/#dynamic-import), which make it easy to selectively render components
+on the client-side. Let's modify our `pages/index.js` file, or whichever route you want to render the `Map` component.
+
+```jsx
+import dynamic from 'next/dynamic';
+
+const DynamicComponentWithNoSSR = dynamic(() => import('../components/Map'), {
+  ssr: false
+});
+
+export default () => <DynamicComponentWithNoSSR />;
+```
+
+Finally, you'll need to include the Mapbox CSS file in your application. You can do this in a variety of ways.
+I chose to override `_app.js` and include it in the `<head>` [like so](https://github.com/leerob/next-mapbox-demo/blob/master/pages/_app.js#L29).
+
+```jsx
+<link
+  href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+  rel="stylesheet"
+/>
+```
+
+At this point, you should be able to run `yarn dev` (which runs `next`) to see the map working.
+
+<Image
+  alt={`Mapbox Demo with Next.js`}
+  src={`/static/images/using-mapbox-with-next-js/map.png`}
+  width={1000}
+  height={645}
+/>
+
+## Going Further
+
+Okay, we've got a map. Now what? Here are some other ideas for going further.
+
+- When importing dynamic components, you can supply a [loading placeholder](https://nextjs.org/docs/#2-with-custom-loading-component). [Here's an example](/blog/loading-placeholder-with-sass) of one you could create.
+- You can use [Marker](https://uber.github.io/react-map-gl/#/Documentation/api-reference/marker) from `react-map-gl` to place items on the map.
