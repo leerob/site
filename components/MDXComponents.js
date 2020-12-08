@@ -26,11 +26,7 @@ const CustomLink = (props) => {
 };
 
 const MDXComponents = {
-  Image: (props) => (
-    <div className="py-8">
-      <Image {...props} />
-    </div>
-  ),
+  Image,
   a: CustomLink,
   Analytics,
   ConsCard,

@@ -5,7 +5,15 @@ summary: "A deep-dive on everything I've learned in the past year building style
 image: '/static/images/style-guides-component-libraries-design-systems/banner.jpg'
 ---
 
-[![Ant Design Component Library](/static/images/style-guides-component-libraries-design-systems/component-library.png)](https://ant.design/)
+<a aria-label="Ant Design Component Library" href="https://ant.design/">
+  <Image
+    alt={`Ant Design Component Library`}
+    src={`/static/images/style-guides-component-libraries-design-systems/component-library.png`}
+    width={1080}
+    height={810}
+    priority
+  />
+</a>
 
 For the better part of the last year, I've been investing heavily in front-end development and design.
 When I started my new role at Hy-Vee, I identified a need for a component library and created it.
@@ -26,7 +34,14 @@ Since then, I've learned a lot about style guides, design systems, component lib
 
 Every website starts simple. There's maybe one page with a few distinct pieces. It has modest intentions.
 
-[![Website Mockup](/static/images/style-guides-component-libraries-design-systems/website.png)](https://refactoringui.com/)
+<a aria-label="Website Mockup" href="https://refactoringui.com/">
+  <Image
+    alt={`Website Mockup`}
+    src={`/static/images/style-guides-component-libraries-design-systems/website.png`}
+    width={1467}
+    height={878}
+  />
+</a>
 
 Then, slowly, it begins to scale.
 
@@ -46,7 +61,17 @@ Don't worry if you have no idea what I'm talking about yet. By the end of this a
 
 ## What Is a Style Guide?
 
-[![Style Guide](/static/images/style-guides-component-libraries-design-systems/style-guide.png)](https://dribbble.com/shots/6161977-BlueVine-Product-Style-Guide)
+<a
+  aria-label="Style Guide"
+  href="https://dribbble.com/shots/6161977-BlueVine-Product-Style-Guide"
+>
+  <Image
+    alt={`Style Guide`}
+    src={`/static/images/style-guides-component-libraries-design-systems/style-guide.png`}
+    width={1467}
+    height={110}
+  />
+</a>
 
 A **style guide** is a set of rules for how your brand should be displayed. This is both visual (design & imagery) as well as written content (voice & tone).
 
@@ -54,7 +79,14 @@ The purpose of a style guide is to **allow multiple contributors to create conte
 
 ## What is a Component Library?
 
-[![Component Library](/static/images/style-guides-component-libraries-design-systems/components.png)](https://eva.design/)
+<a aria-label="Component Library" href="https://eva.design/">
+  <Image
+    alt={`Component Library`}
+    src={`/static/images/style-guides-component-libraries-design-systems/components.png`}
+    width={1467}
+    height={110}
+  />
+</a>
 
 A **component library** is living, breathing implementation of your style guide. It's a shared set of UI components that developers can consume to build applications reflecting your brand. Some notable benefits:
 
@@ -67,7 +99,17 @@ A **component library** is living, breathing implementation of your style guide.
 
 A **design system** is a complete set of standards, documentation, and principles along with the components to achieve those standards. It is the **marriage between your style guide and component library**. One of the most popular design systems is Google's [Material Design](https://material.io/design/).
 
-[![Design System](/static/images/style-guides-component-libraries-design-systems/design-system.png)](https://www.uxpin.com/studio/blog/design-systems-vs-pattern-libraries-vs-style-guides-whats-difference/)
+<a
+  aria-label="Design System"
+  href="ttps://www.uxpin.com/studio/blog/design-systems-vs-pattern-libraries-vs-style-guides-whats-difference/"
+>
+  <Image
+    alt={`Design System`}
+    src={`/static/images/style-guides-component-libraries-design-systems/design-system.png`}
+    width={1400}
+    height={900}
+  />
+</a>
 
 A design system should contain:
 
@@ -114,7 +156,14 @@ My recommendation would be **Sketch**, but it's ultimately up to your team and c
 
 ### Define your design tokens.
 
-[![Design Tokens](/static/images/style-guides-component-libraries-design-systems/design-tokens.png)](https://www.antforfigma.com/)
+<a aria-label="Design Tokens" href="https://www.antforfigma.com/">
+  <Image
+    alt={`Design Tokens`}
+    src={`/static/images/style-guides-component-libraries-design-systems/design-system.png`}
+    width={1080}
+    height={810}
+  />
+</a>
 
 > Design tokens are the visual design atoms of the design system --- specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
 
@@ -156,7 +205,17 @@ There is now a shared language between designers and developers.
 
 ### Create or identify an icon set.
 
-[![Icon Set](/static/images/style-guides-component-libraries-design-systems/icons.png)](https://dribbble.com/shots/6632346-Zoom-Redesign-Icon-Library)
+<a
+  aria-label="Icon set"
+  href="https://dribbble.com/shots/6632346-Zoom-Redesign-Icon-Library"
+>
+  <Image
+    alt={`Icon set`}
+    src={`/static/images/style-guides-component-libraries-design-systems/icons.png`}
+    width={800}
+    height={600}
+  />
+</a>
 
 If you already have existing icons, you'll need to determine which to keep. It might not make sense to create your own icons depending on the size and priorities of your company. You might be better off utilizing an open-source icon library. Here are some examples:
 
@@ -198,7 +257,17 @@ I would recommend Webpack, as it's the industry standard.
 
 A [Monorepo](https://www.toptal.com/front-end/guide-to-monorepos) allows you to build and publish multiple libraries from a single repo.  While it does solve some very real problems, it also creates others. It's important to understand the pros and cons.
 
-[![Monorepo](/static/images/style-guides-component-libraries-design-systems/monorepo.png)](https://www.toptal.com/front-end/guide-to-monorepos)
+<a
+  aria-label="Monorepo"
+  href="https://www.toptal.com/front-end/guide-to-monorepos"
+>
+  <Image
+    alt={`Monorepo`}
+    src={`/static/images/style-guides-component-libraries-design-systems/monorepo.png`}
+    width={1467}
+    height={583}
+  />
+</a>
 
 <ProsCard
   title="a monorepo"
@@ -260,7 +329,14 @@ Regardless of the technology you choose, I would recommend using [CSS variables]
 With your technical requirements defined and your style guide started, you should now be able
 to begin constructing a component library. My recommendation would be to use **React alongside [Storybook](https://storybook.js.org/)**.
 
-[![Component Driven Development](/static/images/style-guides-component-libraries-design-systems/component-driven-development.jpg)](https://storybook.js.org/)
+<a aria-label="Component Driven Development" href="https://storybook.js.org/">
+  <Image
+    alt={`Component Driven Development`}
+    src={`/static/images/style-guides-component-libraries-design-systems/component-driven-development.jpg`}
+    width={1000}
+    height={537}
+  />
+</a>
 
 **Creating a component library is much more than just translating the style guide into code.**
 
@@ -268,7 +344,14 @@ You'll need to think about how consumers will interact with your components.
 What sort of API would they expect? What provides the most clarity and is self-documenting?
 For example, consider buttons. You have different variations of buttons - primary, secondary, etc.
 
-[![Buttons](/static/images/style-guides-component-libraries-design-systems/buttons.png)](https://eva.design/)
+<a aria-label="Buttons" href="https://eva.design/">
+  <Image
+    alt={`Buttons`}
+    src={`/static/images/style-guides-component-libraries-design-systems/buttons.png`}
+    width={1000}
+    height={641}
+  />
+</a>
 
 Should you have separate components for each?
 

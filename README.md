@@ -27,4 +27,4 @@ Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob
 - [Next.js](https://nextjs.org/)
 - [Vercel](https://vercel.com)
 - [MDX](https://github.com/mdx-js/mdx)
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)

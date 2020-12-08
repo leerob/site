@@ -50,7 +50,7 @@ export default function About() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           About Me
         </h1>
-        <div className="mb-8 prose leading-6">
+        <div className="mb-8 prose leading-6 text-gray-600 dark:text-gray-400">
           <p>
             Hey, I’m Lee. I'm a developer, writer, and the creator of&nbsp;
             <a
