@@ -47,8 +47,10 @@ export default function BlogLayout({ children, frontMatter }) {
           </p>
         </div>
         <div className="prose dark:prose-dark">{children}</div>
-        <Subscribe />
-        <div>
+        <div className="mt-8">
+          <Subscribe />
+        </div>
+        <div className="text-sm text-gray-700 dark:text-gray-300">
           <a href={discussUrl(slug)} target="_blank" rel="noopener noreferrer">
             {'Discuss on Twitter'}
           </a>

@@ -37,7 +37,9 @@ export default function NewsletterLayout({ children, frontMatter }) {
           </p>
         </div>
         <div className="prose dark:prose-dark">{children}</div>
-        <Subscribe />
+        <div className="mt-8">
+          <Subscribe />
+        </div>
       </article>
     </Container>
   );
