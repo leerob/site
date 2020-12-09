@@ -106,7 +106,7 @@ export default function Footer() {
         <Link href="/uses">
           <a className="text-sm text-gray-500">/uses</a>
         </Link>
-        <a className="text-sm text-gray-500">/photos</a>
+        <ExternalLink href="https://photos.leerob.io">/photos</ExternalLink>
         <Link href="/newsletter">
           <a className="text-sm text-gray-500">/newsletter</a>
         </Link>
