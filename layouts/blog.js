@@ -8,10 +8,10 @@ import ViewCounter from '@/components/ViewCounter';
 import BlogSeo from '@/components/BlogSeo';
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
+  `https://github.com/leerob/leerob.io/edit/master/pages/blog${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
+    `https://leerob.io/blog${slug}`
   )}`;
 
 export default function BlogLayout({ children, frontMatter }) {
