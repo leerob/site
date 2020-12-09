@@ -16,7 +16,7 @@ const discussUrl = (slug) =>
 
 export default function BlogLayout({ children, frontMatter }) {
   const router = useRouter();
-  const slug = router.asPath.replace('/blog', '');
+  const slug = router.asPath.replace('/blog', '').split('#')[0];
 
   return (
     <Container>
