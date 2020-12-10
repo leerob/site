@@ -90,7 +90,7 @@ export default function About() {
         </h2>
         <Talk
           title="Data Fetching with Next.js"
-          link="https://www.reactathon.com/schedule/day-3"
+          link="https://www.youtube.com/watch?v=Sz7SImkdIpo&feature=youtu.be&t=6063"
         >
           Next.js is a hybrid React framework allowing you to choose your data
           fetching strategy on a per-page basis. In this talk, you’ll learn more
