@@ -4,7 +4,7 @@ import NowPlaying from '@/components/NowPlaying';
 
 const ExternalLink = ({ href, children }) => (
   <a
-    className="text-sm text-gray-500 hover:text-gray-700 transition"
+    className="text-sm text-gray-500 hover:text-gray-600 transition"
     target="_blank"
     rel="noopener noreferrer"
     href={href}
@@ -104,14 +104,16 @@ export default function Footer() {
       </div>
       <div className="space-x-3">
         <Link href="/uses">
-          <a className="text-sm text-gray-500">/uses</a>
+          <a className="text-sm text-gray-500 hover:text-gray-600">/uses</a>
         </Link>
         <ExternalLink href="https://photos.leerob.io">/photos</ExternalLink>
         <Link href="/newsletter">
-          <a className="text-sm text-gray-500">/newsletter</a>
+          <a className="text-sm text-gray-500 hover:text-gray-600">
+            /newsletter
+          </a>
         </Link>
         <Link href="/snippets">
-          <a className="text-sm text-gray-500">/snippets</a>
+          <a className="text-sm text-gray-500 hover:text-gray-600">/snippets</a>
         </Link>
       </div>
     </footer>
