@@ -4,7 +4,7 @@ import NowPlaying from '@/components/NowPlaying';
 
 const ExternalLink = ({ href, children }) => (
   <a
-    className="text-gray-500 hover:text-gray-700 transition"
+    className="text-sm text-gray-500 hover:text-gray-700 transition"
     target="_blank"
     rel="noopener noreferrer"
     href={href}
