@@ -202,7 +202,7 @@ to the database. Don't worry – Prisma has you covered 😎
 e.g. by creating new tables or adding columns to existing tables.
 These changes are called _schema migrations_.
 
-Prisma Migrate generates `.sql` migration files with changes which you can apply to your database.
+Prisma Migrate generates `.sql` migration files which you can apply to your database.
 
 Let's add some new fields to our schema.
 
@@ -238,7 +238,7 @@ Let's create and run the migration:
 $ npx prisma migrate dev --preview-feature
 ```
 
-This creates a `migration.sql` file and runs it against your database:
+This creates a `migration.sql` file and runs it against your database.
 Finally, we need to update our Prisma Client API (`node_modules/@prisma/client`)
 to recognize the new changes.
 
