@@ -17,6 +17,9 @@
     "dev": "next",
     "start": "next start"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "dependencies": {
     "@mapbox/rehype-prism": "0.5.0",
     "@mdx-js/loader": "1.6.22",
