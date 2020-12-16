@@ -8,7 +8,7 @@ import BlogSeo from '@/components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
   const router = useRouter();
-  const slug = router.asPath.replace('/newsletter', '').split('#')[0];
+  const slug = router.asPath.replace('/newsletter', '').split(/[?#]/)[0];
 
   return (
     <Container>

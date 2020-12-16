@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 
 export default function SnippetLayout({ children, frontMatter }) {
   const router = useRouter();
-  const slug = router.asPath.replace('/snippets', '').split('#')[0];
+  const slug = router.asPath.replace('/snippets', '').split(/[?#]/)[0];
   const title = `${frontMatter.title} - Code Snippet`;
   const url = `https://leerob.io/snippets/${slug}`;
 
