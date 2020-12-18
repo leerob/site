@@ -1,16 +1,6 @@
 import db from '@/lib/firebase';
 
 export default async (req, res) => {
-  console.log({ env: process.env.NODE_ENV });
-  console.log({ origin: req.headers.origin });
-
-  if (
-    process.env.NODE_ENV === 'production' &&
-    req.headers.origin !== 'https://leerob.io'
-  ) {
-    return res.status(403);
-  }
-
   if (req.method === 'POST') {
     const ref = db.ref('views').child(req.query.slug);
     const { snapshot } = await ref.transaction((currentViews) => {
