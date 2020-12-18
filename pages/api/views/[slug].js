@@ -2,7 +2,7 @@ import db from '@/lib/firebase';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
-    const ref = db.ref('views').child(req.query.id);
+    const ref = db.ref('views').child(req.query.slug);
     const { snapshot } = await ref.transaction((currentViews) => {
       if (currentViews === null) {
         return 1;
