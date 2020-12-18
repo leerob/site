@@ -8,7 +8,7 @@ export default async (req, res) => {
     process.env.NODE_ENV === 'production' &&
     req.headers.origin !== 'https://leerob.io'
   ) {
-    return res.status(403).text('Unauthorized');
+    return res.status(403);
   }
 
   if (req.method === 'POST') {
