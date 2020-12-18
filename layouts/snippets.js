@@ -1,14 +1,11 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 
 import Container from '@/components/Container';
 
 export default function SnippetLayout({ children, frontMatter }) {
-  const router = useRouter();
-  const slug = router.asPath.replace('/snippets', '').split(/[?#]/)[0];
   const title = `${frontMatter.title} - Code Snippet`;
-  const url = `https://leerob.io/snippets/${slug}`;
+  const url = `https://leerob.io/snippets/${frontMatter.slug}`;
 
   return (
     <Container>
