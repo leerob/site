@@ -1,35 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 import format from 'comma-number';
 
-import loadDb from '@/lib/db';
+import fetcher from '@/lib/fetcher';
 
-export default function ViewCounter({ id }) {
-  const [views, setViews] = useState('');
-
-  useEffect(() => {
-    const onViews = (newViews) => setViews(newViews.val());
-    let db;
-
-    const fetchData = async () => {
-      db = await loadDb();
-      db.child(id).on('value', onViews);
-    };
-
-    fetchData();
-
-    return () => {
-      if (db) {
-        db.child(id).off('value', onViews);
-      }
-    };
-  }, [id]);
+export default function ViewCounter({ slug }) {
+  const { data } = useSWR(`/api/views/${slug}`, fetcher);
+  const views = data?.total;
 
   useEffect(() => {
     const registerView = () =>
-      fetch(`/api/increment-views?id=${encodeURIComponent(id)}`);
+      fetch(`/api/views/${slug}`, {
+        method: 'POST'
+      });
 
     registerView();
-  }, [id]);
+  }, [slug]);
 
   return `${views ? format(views) : '–––'} views`;
 }

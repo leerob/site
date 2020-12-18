@@ -5,7 +5,7 @@ import fetcher from '@/lib/fetcher';
 import MetricCard from '@/components/metrics/Card';
 
 export default function Analytics() {
-  const { data } = useSWR('/api/page-views', fetcher);
+  const { data } = useSWR('/api/views', fetcher);
 
   const pageViews = format(data?.total);
   const link = 'https://leerob.io';

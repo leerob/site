@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { parseISO, format } from 'date-fns';
 
 import Container from '@/components/Container';
@@ -7,12 +6,12 @@ import Subscribe from '@/components/Subscribe';
 import BlogSeo from '@/components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
-  const router = useRouter();
-  const slug = router.asPath.replace('/newsletter', '').split(/[?#]/)[0];
-
   return (
     <Container>
-      <BlogSeo url={`https://leerob.io/newsletter/${slug}`} {...frontMatter} />
+      <BlogSeo
+        url={`https://leerob.io/newsletter/${frontMatter.slug}`}
+        {...frontMatter}
+      />
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}
