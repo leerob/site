@@ -118,7 +118,7 @@ to communicate with our database and increment the views for a given `id`.
 All you need to get started is an `api/` folder inside your main `pages/` folder where your routes live. Every file inside `pages/api/` is mapped to `/api/*`.
 
 ```js:pages/api/views/[slug].js
-import db from '@/lib/firebase';
+import db from '../../lib/firebase';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
@@ -172,7 +172,7 @@ $ yarn add swr
 Next, we need to update our API Route to fetch the views for a given post.
 
 ```js:pages/api/views/[slug].js
-import db from '@/lib/firebase';
+import db from '../../lib/firebase';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
@@ -194,8 +194,6 @@ export default async (req, res) => {
     const snapshot = await db.ref('views').child(req.query.slug).once('value');
     const views = snapshot.val();
 
-    console.log(views);
-
     return res.status(200).json({ total: views });
   }
 };
@@ -203,15 +201,6 @@ export default async (req, res) => {
 
 ## View Counter
 
-To use SWR, we can import the hook and define which route to fetch.
-
-```js
-import useSWR from 'swr';
-
-const { data } = useSWR('/api/views/id', fetcher);
-```
-
-`fetcher` is a small wrapper around `fetch` returning `json`. `data` will contain the JSON response from our API route.
 Let's create a `ViewCounter` component to use SWR. I'm also using a helpful package [comma-number](https://www.npmjs.com/package/comma-number) for formatting, but you don't need this.
 
 ```jsx:components/ViewCounter.js
