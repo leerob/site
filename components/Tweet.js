@@ -2,6 +2,11 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import comma from 'comma-number';
 
+/**
+ * Supports plain text, images, quote tweets.
+ *
+ * Needs support for images, GIFs, and replies maybe?
+ */
 export default function Tweet({
   text,
   id,
@@ -12,7 +17,6 @@ export default function Tweet({
   referenced_tweets
 }) {
   const authorUrl = `https://twitter.com/${author.username}`;
-
   const likeUrl = `https://twitter.com/intent/like?tweet_id=${id}`;
   const retweetUrl = `https://twitter.com/intent/retweet?tweet_id=${id}`;
   const replyUrl = `https://twitter.com/intent/tweet?in_reply_to=${id}`;
