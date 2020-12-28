@@ -4,4 +4,6 @@
 node_modules
 .env.local
 public/sitemap.xml
+public/search.toml
+public/search-index.st
 .vercel

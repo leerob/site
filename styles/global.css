@@ -128,6 +128,10 @@ input[type='email'] {
   appearance: none;
 }
 
+.stork-close-button {
+  display: none;
+}
+
 .metric-card > a {
   @apply no-underline;
 }
