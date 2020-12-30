@@ -1,0 +1,81 @@
+---
+title: 'React Server Components (#26)'
+publishedAt: '2020-12-30'
+summary: "An archived verison of Lee Robinson's newsletter – subscribe to get early access."
+image: '/static/images/banner.jpg'
+---
+
+With 2020 wrapping up, I'm looking forward to the new year. I'll be creating [more videos, blog posts, and courses](https://twitter.com/leeerob/status/1343962493622878209). In the past few weeks, I've created three new videos:
+
+- [Rebuilding the Twitter Embed Widget! (Next.js + Tailwind)](https://www.youtube.com/watch?v=xZ9OzPQORtw)
+- [Image Component and Image Optimization with Next.js](https://www.youtube.com/watch?v=h0gj4gOjz44)
+- [Internationalization (i18n) with Next.js](https://www.youtube.com/watch?v=SJDYCw5KC7s)
+
+I also wrote a [Twitter thread](https://twitter.com/leeerob/status/1341818949017735168) about React Server Components, which I'm working on turning into a blog post and video. My first attempt is the bulk of today's newsletter. Let me know what's clear, what could be improved, and what you enjoyed.
+
+---
+
+## React Server Components
+
+Last week, the React team [announced an experimental preview](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) of React Server Components. Server Components allow developers to build apps that span the server and client, combining the rich interactivity of client-side apps with the improved performance of traditional server rendering.
+
+React Server Components will change how we build React applications by reducing client bundle sizes and improving boot time. Further, they will simplify data fetching and access to data sources like databases and file systems. Server Components take inspiration from existing solutions (PHP, Ruby on Rails) while providing more flexibility.
+
+Here's why you should be excited about the future of React and the web.
+
+## The Case for Hybrid Applications
+
+Developers want to create fast applications. They need to be pragmatic about performance, without sacrificing user experience. While the promise of a silver bullet for web architecture is appealing, it's far from reality.
+
+As web applications have matured, we've learned choosing a single rendering strategy (server-rendering or client-rendering) for your entire application isn't practical. Let's imagine rendering on the web as a [bicycle with gears](https://twitter.com/thomasankcorn/status/1343109433333854208).
+
+- Client-rendering is the high gear (most difficult over time).
+- Server-rendering is the low gear (easier to start fast).
+
+Pure server-rendered applications often lack a high level of interactivity. Inversely, entire client-side applications often struggle with slow boot times and large bundle sizes. **React Server Components allow us to easily switch gears.** You can mix server and client components, allowing you to choose the correct gear for your ride.
+
+Let's imagine you have a large React application that shows movies. You want to decrease the initial load time of the Movie page. This page loads large dependencies like markdown parsing for the movie summary and date formatting for the release date. Without Server Components, you would need to be conscious of these dependencies. React Server Components will allow you to keep these dependencies on the server and load less JavaScript on the client.
+
+## What about Server-Side Rendering (SSR)?
+
+SSR allows you to speed up the initial, non-interactive display of client components. You still need to pay the cost of downloading, parsing, and executing those components after the initial HTML is loaded.
+
+React Server Components are different but complementary to SSR. Server Components return a description of the rendered UI instead of HTML. This allows React to intelligently merge new data with existing client components. Server Components can also be refetched without losing the client state.
+
+Frameworks like Next.js will combine Server Components with SSR to stream the initial render as HTML, speeding up the initial, non-interactive display of a page. You'll have fast startups, while also reducing the amount of JavaScript needed on the client.
+
+For example, let's revisit our movie page. There's a list of the cast in a movie and the ability to filter results. Each row in the list is a Server Component. When filtering the cast list, the client-side state (current search value) is not lost.
+
+Most importantly, React Server Components **allow you to choose the client or server at the component level.** Next.js currently only allows access on a per-page level (e.g. `getServerSideProps`).
+
+React Server Components will be incrementally adoptable with newer versions of Next.js. Any pages that use SSR will have smaller bundles and faster response times.
+
+## Suspense and Concurrent Mode
+
+React Server Components use [Suspense (Experimental)](https://reactjs.org/docs/concurrent-mode-suspense.html) to allow you to wait for code to load and specify a loading state. Suspense prevents network requests from creating a waterfall.
+
+For example, we need to fetch information about the movie (`/movie`) and its cast (`/cast`) for our movie page. Without Suspense, each request happens in a sequence.
+
+![Network Waterfall](https://buttondown.s3.us-west-2.amazonaws.com/images/e7e67a2e-cb1c-4760-a684-aee8446d9116.png)
+
+With Suspense, we can make both requests without blocking our application from rendering a loading state. Suspense also helps prevent [race conditions.](https://reactjs.org/docs/concurrent-mode-suspense.html#suspense-and-race-conditions)
+
+![React Suspense](https://buttondown.s3.us-west-2.amazonaws.com/images/38c20895-42cc-4f7d-a60e-be94cbab7b50.png)
+
+React Server Components are also compatible with [Concurrent Mode](https://reactjs.org/docs/concurrent-mode-intro.html), which lets us start rendering Client Components as their data streams in, without waiting for the entire response to finish.
+
+With Concurrent mode, React can work on several state updates concurrently. In practice, this has some [notable](https://twitter.com/andrewgreenh/status/1187661386291265537) [performance improvements](https://twitter.com/jlongster/status/1054554506736910336).
+
+## Hosting Server Components
+
+Client-side rendering makes hosting React applications simple. There are many good, fast, and cheap solutions in this space.
+
+React Server Components introduce Node.js into the mix, requiring a server or serverless hosting provider. While this does introduce more complexity for hosting, the tradeoff is better performance. Server Components allows you to use the same language, framework, and components across the full stack. Support for other backend languages (PHP, Go, Python, etc.) will come later.
+
+---
+
+React Server Components make it easier to create performant, interactive client-side solutions, keeping client-side state with fast boots from the server.
+
+React Server Components are still experimental. Adoption will start with frameworks (e.g. Next.js). Once that's proven in production, custom setups will be more obtainable. Further, library authors will need to work on support before more extensive adoption in the ecosystem (e.g. CSS-in-JS).
+
+If you'd like to try an experimental preview, you can [view this demo with Next.js on Vercel](https://next-server-components.vercel.app/). For more information, you can view the [React Server Components RFC](https://github.com/reactjs/rfcs/blob/bf51f8755ddb38d92e23ad415fc4e3c02b95b331/text/0000-server-components.md).
