@@ -9,8 +9,6 @@ import SEO from '../next-seo.config';
 import MDXComponents from '@/components/MDXComponents';
 import { useAnalytics } from '@/lib/analytics';
 
-// TODO: Figure out prism styles
-
 export default function App({ Component, pageProps }) {
   useAnalytics();
 
