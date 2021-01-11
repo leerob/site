@@ -12,8 +12,13 @@ import Step from '@/components/Step';
 
 const CustomLink = (props) => {
   const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const isInternalLink = href && href.startsWith("/")
+  const isHeaderLink = href && href.startsWith("#")
 
+  if (isHeaderLink) {
+    return <a {...props} />
+  }
+  
   if (isInternalLink) {
     return (
       <Link href={href}>
