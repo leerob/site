@@ -44,7 +44,7 @@ Since October 2020, Chrome [no longer allows](https://developers.google.com/web/
 
 When self-hosting, ensure you cache your font with the `Cache-Control` HTTP header. `immutable` tells the browser the file will never change. When a request is made within the `max-age` (1 year), it avoids the roundtrip to ensure it's the latest content.
 
-```
+```bash
 Cache-Control: public, immutable, max-age=31536000
 ```
 
