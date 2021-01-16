@@ -121,8 +121,8 @@ export default function Guestbook({ initialEntries }) {
           <SuccessMessage>{form.message}</SuccessMessage>
         ) : (
           <p className="text-sm text-gray-800 dark:text-gray-200">
-            Your information is only used to display your name and profile
-            picture.
+            Your information is only used to display your name and reply by
+            email.
           </p>
         )}
       </div>
