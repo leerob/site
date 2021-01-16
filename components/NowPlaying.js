@@ -16,14 +16,20 @@ export default function NowPlaying() {
         src={data?.albumImageUrl || '/static/images/placeholder.jpg'}
       />
       <div className="flex flex-col justify-center items-start ml-3">
-        <a
-          className="text-gray-800 dark:text-gray-200 font-medium max-w-48 truncate w-48"
-          href={data?.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {data?.title ?? 'Not Playing'}
-        </a>
+        {data?.songUrl ? (
+          <a
+            className="text-gray-800 dark:text-gray-200 font-medium max-w-48 truncate w-48"
+            href={data.songUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {data.title}
+          </a>
+        ) : (
+          <p className="text-gray-800 dark:text-gray-200 font-medium max-w-48 truncate w-48">
+            Not Playing
+          </p>
+        )}
         <p className="text-gray-500 dark:text-gray-300 max-w-48 truncate w-48">
           {data?.artist ?? 'Spotify'}
         </p>
