@@ -113,14 +113,14 @@ This "JavaScript fatigue" prompted the creation of [Create React App](https://gi
 
 Did I mention Next.js can handle static sites, too?
 
-Running `next export` will transform your entire Next application into a static site.
-One more command, and it can be deployed immediately with [Vercel](https://vercel.com) or [Netlify](https://www.netlify.com/).
+Running `next build` will [pre-render](https://nextjs.org/docs/basic-features/pages#pre-rendering) routes without data fetching to static HTML.
+You can also use `getStaticProps` and `getStaticPaths` to generate a static site with dynamic data.
 
-Other frameworks force you to choose a React application or static site. Not Next.js. Your Next.js app and static site [can co-exist](https://nextjs.org/docs#automatic-static-optimization), both living in the same codebase!
+Plus, you can deploy in a few clicks to [Vercel](https://vercel.com/new).
 
 ### Conclusion
 
-Next has [so many features](https://nextjs.org/#automatic-code-splitting) it's hard to capture the breadth in a single article.
+Next has [so many features](https://nextjs.org) it's hard to capture the breadth in a single article.
 I would highly recommend checking out their website, trying out an example, and seeing if Next.js can help you build web applications faster.
 
 ```bash
