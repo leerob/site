@@ -8,7 +8,7 @@ const url = 'https://leerob.io/guestbook';
 const title = 'Guestbook – Lee Robinson';
 const description = 'Sign my digital guestbook and share some wisdom.';
 
-export default function GuestbookPage() {
+export default function GuestbookPage({ initialEntries }) {
   return (
     <Container>
       <NextSeo
@@ -29,7 +29,7 @@ export default function GuestbookPage() {
           Leave a comment below. It could be anything – appreciation,
           information, wisdom, or even humor. Surprise me!
         </p>
-        <Guestbook />
+        <Guestbook initialEntries={initialEntries} />
       </div>
     </Container>
   );
