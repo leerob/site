@@ -16,7 +16,7 @@ image: '/static/images/style-guides-component-libraries-design-systems/banner.jp
 </a>
 
 For the better part of the last year, I've been investing heavily in front-end development and design.
-When I started my new role at Hy-Vee, I identified a need for a component library and created it.
+When I started my new role, I identified a need for a component library and created it.
 Since then, I've learned a lot about style guides, design systems, component libraries, and their best practices. This post will be a deep-dive on everything I've learned in the past year.
 
 ## Table of Contents
@@ -147,12 +147,12 @@ This should start to paint a picture of which pieces your style guide will need.
 
 It's time to translate these findings into the beginnings of a style guide. You can use tools like:
 
-- [Sketch](https://www.sketch.com/)
 - [Figma](https://www.figma.com/)
+- [Sketch](https://www.sketch.com/)
 - [Framer](https://www.framer.com/)
 - [Abobe XD](https://www.adobe.com/products/xd.html)
 
-My recommendation would be **Sketch**, but it's ultimately up to your team and company. Make sure you understand [best practices around Sketch symbols](https://novemberfive.co/blog/symbols-guidelines-in-sketch/) and when to use [nesting](https://www.sketch.com/docs/symbols/nested-symbols/).
+My recommendation would be **Figma**, but it's ultimately up to your team and company. Here's some helpful [Figma for Beginners](https://www.youtube.com/playlist?list=PLXDU_eVOJTx7QHLShNqIXL1Cgbxj7HlN4) tutorials.
 
 ### Define your design tokens.
 
@@ -251,11 +251,11 @@ a vanilla JavaScript application would need something like this in an HTML file.
 ```
 
 To achieve this, you can use either [Webpack](https://webpack.js.org/) or [Rollup](https://rollupjs.org/).
-I would recommend Webpack, as it's the industry standard.
+I would recommend Webpack, as it's the industry standard. I'd also recommend [TSDX](https://github.com/formium/tsdx) if you want to use TypeScript.
 
 ### Evaluate Monorepo vs. single package.
 
-A [Monorepo](https://www.toptal.com/front-end/guide-to-monorepos) allows you to build and publish multiple libraries from a single repo.  While it does solve some very real problems, it also creates others. It's important to understand the pros and cons.
+A [Monorepo](/blog/monorepo-lerna-yarn-workspaces) allows you to build and publish multiple libraries from a single repo.  While it does solve some very real problems, it also creates others. It's important to understand the pros and cons.
 
 <a
   aria-label="Monorepo"
@@ -296,20 +296,17 @@ Some questions that will help you identify which solution is right for your comp
 - Will it be open-source? Can you lean on others in the industry to help solve problems?
 - Do you see the need for multiple packages in the future? (e.g. icons, [codemods](https://github.com/facebook/jscodeshift), etc)
 
-For most smaller companies, I would argue that a Monorepo is unnecessary. It has its time and place. [We use it at Hy-Vee](/blog/monorepo-lerna-yarn-workspaces) (~150 developers) to distribute 10 different packages at once, spanning both internal and external apps.
+For most smaller companies, I would argue that a Monorepo is unnecessary. It has its time and place. [I've used it before](/blog/monorepo-lerna-yarn-workspaces) with (~150 developers) to distribute 10 different packages at once, spanning both internal and external apps.
 
 **Note:** Want to use a Monorepo? Check out [Creating a Monorepo with Lerna & Yarn Workspaces](/blog/monorepo-lerna-yarn-workspaces).
 
 ### Evaluate CSS/Sass vs. CSS-in-JS.
 
-I've come to prefer CSS-in-JS, especially [styled-components](https://www.styled-components.com/). There's a variety of different CSS-in-JS options outlined [here](https://github.com/MicheleBertoli/css-in-js). The major selling points for styled-components for our component library were:
+CSS-in-JS is the easiest solution for bundling styles and distributing through NPM.
+For optimal performance, consider using a near-zero runtime solution like [Stitches](https://stitches.dev/).
 
-- Feels like writing traditional CSS vs. JavaScript objects
-- React & React Native support
-- Auto-prefixing vendor styles
-- Scoped styles which eliminate global CSS conflicts
-
-If your component library needs to support outputting raw HTML/CSS as an option, I would recommend sticking with Sass. A great example of this is IBM's [Carbon Design System](https://www.carbondesignsystem.com/components/button/code).
+If your component library needs to output raw HTML/CSS, I'd recommend sticking with Sass. A great example of this is IBM's [Carbon Design System](https://www.carbondesignsystem.com/components/button/code).
+You can use [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to contain your [design tokens](https://www.lightningdesignsystem.com/design-tokens/).
 
 <Image
   alt={`Design System Button`}
@@ -322,7 +319,7 @@ If your component library needs to support outputting raw HTML/CSS as an option,
 <button class="bx--btn bx--btn--primary" type="button">Button</button>
 ```
 
-Regardless of the technology you choose, I would recommend using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to contain your [design tokens](https://www.lightningdesignsystem.com/design-tokens/).
+If you're using React, check out [How Should I Style My React Application?](/blog/css-with-react)
 
 ### Create a component library.
 
