@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 
 import redis from '@/lib/redis';
 import Container from '@/components/Container';
-import Guestbook from '@/components/guestbook';
+import Guestbook from '@/components/Guestbook';
 
 const url = 'https://leerob.io/guestbook';
 const title = 'Guestbook – Lee Robinson';

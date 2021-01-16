@@ -12,7 +12,6 @@ export default async (req, res) => {
     return res.redirect(
       `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&allow_signup=false`
     );
-    // return res.end();
   }
 
   try {
@@ -57,5 +56,4 @@ export default async (req, res) => {
   }
 
   return res.redirect('/guestbook');
-  // res.end();
 };
