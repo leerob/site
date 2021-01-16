@@ -6,14 +6,14 @@ export default async (req, res) => {
 
   const { id } = req.query;
   const { login, email } = req.session;
-  const note = JSON.parse((await redis.hget('guestbook', id)) || 'null');
+  const entry = JSON.parse((await redis.hget('guestbook', id)) || 'null');
 
   if (req.method === 'GET') {
-    return res.json(note);
+    return res.json(entry);
   }
 
   if (req.method === 'DELETE') {
-    if (!login || login !== note.created_by) {
+    if (!login || login !== entry.created_by) {
       return res.status(403).send('Unauthorized');
     }
 
@@ -22,7 +22,7 @@ export default async (req, res) => {
   }
 
   if (req.method === 'PUT') {
-    if (!login || login !== note.created_by) {
+    if (!login || login !== entry.created_by) {
       return res.status(403).send('Unauthorized');
     }
 
