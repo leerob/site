@@ -2,16 +2,8 @@
 title: 'Going Serverless with Next.js and Firebase'
 publishedAt: '2019-07-19'
 summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Vercel.'
-image: '/static/images/nextjs-firebase-serverless/banner.jpg'
+image: '/static/images/nextjs-firebase-serverless/banner.png'
 ---
-
-<Image
-  alt={`Next.js + Firebase + Vercel`}
-  src={`/static/images/nextjs-firebase-serverless/banner.png`}
-  width={1000}
-  height={571}
-  priority
-/>
 
 A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
 
@@ -97,24 +89,15 @@ This will allow us to use `firebase-admin` to communicate with our Cloud Firesto
 ```js:lib/firebase.js
 import admin from 'firebase-admin';
 
-try {
+if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
-      project_id: process.env.FIREBASE_PROJECT_ID,
+      project_id: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
       private_key: process.env.FIREBASE_PRIVATE_KEY,
       client_email: process.env.FIREBASE_CLIENT_EMAIL
     }),
-    databaseURL: 'https://vercel-serverless.firebaseio.com'
+    databaseURL: 'YOUR_DATABASE_URL_HERE'
   });
-} catch (error) {
-  /*
-   * We skip the "already exists" message which is
-   * not an actual error when we're hot-reloading.
-   */
-  if (!/already exists/u.test(error.message)) {
-    // eslint-disable-next-line no-console
-    console.error('Firebase admin initialization error', error.stack);
-  }
 }
 
 export default admin.firestore();
@@ -193,4 +176,4 @@ Much better! 🎉
 ## Conclusion
 
 If you find yourself with similar requirements, you can now consider using this stack to provide an elegant solution.
-You can view the [source code here](https://github.com/leerob/nextjs-vercel-firebase).
+For more information, check out [Real-Time Blog Post Views With Next.js and Firebase](/blog/real-time-post-views).
