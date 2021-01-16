@@ -56,33 +56,17 @@ Where `dc` is the datacenter. This is the last 3 characters of your API key we r
 
 ## Environment Variables
 
-Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Vercel](https://vercel.com), I'll need to set up some [environment variables](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets).
-You can use similar a [similar approach](https://create-react-app.dev/docs/adding-custom-environment-variables) for [any framework](https://www.gatsbyjs.org/docs/environment-variables/) to add your secrets to `process.env`.
+Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Vercel](https://vercel.com), I'll need to set up some [environment variables](https://nextjs.org/docs/basic-features/environment-variables).
+First, let's create `.env.local` for testing locally.
 
-```bash
-$ vc secret add MAILCHIMP_LIST_ID <secret-value>
-$ vc secret add MAILCHIMP_API_KEY <secret-value>
-```
-
-Then, we can expose them via our `vercel.json` file.
-
-```json:vercel.json
-{
-  "env": {
-    "MAILCHIMP_LIST_ID": "@mailchimp-list-id",
-    "MAILCHIMP_API_KEY": "@mailchimp-api-key"
-  }
-}
-```
-
-These variables will be available at build time. To test locally, we'll also want to create a `.env` file since Vercel Secrets [aren't available](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) locally running `vc dev`.
-
-```bash:.env
+```bash:.env.local
 MAILCHIMP_LIST_ID=<secret-value>
 MAILCHIMP_API_KEY=<secret-value>
 ```
 
-**Note:** Don't forget to add `.env` to your `.gitignore`. We don't want to commit our secrets.
+Finally, [add these environment variables in Vercel](https://vercel.com/docs/environment-variables) so they're available on pull requests (Preview) and in Production.
+
+**Note:** Don't forget to add `.env.local` to your `.gitignore`. We don't want to commit our secrets.
 
 ## Creating The Request
 
@@ -188,6 +172,7 @@ function Subscribe() {
         name="email"
         placeholder="you@awesome.com"
         ref={inputEl}
+        required
         type="email"
       />
       <div>
