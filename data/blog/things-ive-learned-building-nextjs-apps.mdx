@@ -1,17 +1,9 @@
 ---
 title: "Things I've Learned Building Next.js Apps"
 publishedAt: '2019-02-15'
-summary: 'CSS-in-JS, Font Loading, Polyfills, Dynamic Imports, MDX, and more!'
+summary: 'CSS Modules, Font Loading, Polyfills, Dynamic Imports, MDX, and more!'
 image: '/static/images/things-ive-learned-building-nextjs-apps/banner.jpg'
 ---
-
-<Image
-  alt={`Next.js`}
-  src={`/static/images/things-ive-learned-building-nextjs-apps/nextjs.png`}
-  width={1800}
-  height={600}
-  priority
-/>
 
 I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
 
@@ -21,63 +13,61 @@ I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.
 
 Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
 
-## CSS-in-JS
+## CSS Modules
 
-I used to be strongly against CSS-in-JS. If you didn't like CSS, then use SASS/LESS. _Why mix styling with your code_?
+I've worked with CSS, Sass, CSS-in-JS, and now CSS Modules. For most applications, I'd recommend CSS Modules.
 
-Well, turns out I was wrong. **Styling is code** and I have never felt more productive styling components than I do using CSS-in-JS.
-Next.js comes preloaded with [styled-jsx](https://github.com/zeit/styled-jsx), which is fine, but I prefer [styled-components](https://www.styled-components.com/) 💅
+CSS Modules prevent naming collisions and keep you from loading excess styling.
+They're built [directly into Next.js](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css), making it easy to get started.
 
-If you want learn more, check out [Building a UI Component Library with Styled Components](/blog/ui-component-library-with-styled-components).
+For more information, check out [How Should I Style My React Application?](/blog/css-with-react)
 
 ## Font Loading
 
-Performant font loading is much, much more difficult than I thought. I'm immensely grateful to Zach Leatherman for his
-[Comprehensive Guide on Web Fonts.](https://www.zachleat.com/web/comprehensive-webfonts)
-One approach I've taken is to use `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display).
-
-This approach allows me prevent FOUT (Flash of Unstyled Text) but still has FOIT (Flash of Invisible Text). Yes, FOIT is undeserable, but thanks to Next.js my [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
-performance score is still almost 100.
+By using `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display), I can prevent FOUT (Flash of Unstyled Text) and FOIT (Flash of Invisible Text).
 
 ```css
 @font-face {
-  font-family: 'Fira Sans';
-  src: url('/fonts/FiraSans-Bold.ttf');
-  font-weight: bold;
-  font-display: auto;
+  font-family: 'Inter';
   font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/inter-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 ```
 
-Another approach I've used with Google Fonts is to include the `link` in the `Head` of my document.
+Further, I can [preload](https://web.dev/preload-critical-assets/) my optimized font file in the `Head` of my document.
 
 ```js:pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document';
-import React from 'react';
-
-class CustomDocument extends Document {
+class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            href="/fonts/inter-var-latin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
 
-export default CustomDocument;
+export default MyDocument;
 ```
 
-Becoming informed about all the different options and their tradeoffs has been a worthy investment.
+**Update:** For more information, check out [Web Fonts in 2021](/blog/fonts).
 
 ## Dynamic Imports and Testing
 
@@ -144,7 +134,7 @@ This worked well for a while, but I wanted full control over my layouts and felt
 That's what led me to Next.js and MDX.
 
 With [MDX](https://github.com/mdx-js/mdx), I can use JSX components inside my Markdown documents with ease. This way, if I want to do
-something custom, it's as simple as importing a React component. I've also started writing my presentations with MDX and [code-surfer](https://github.com/pomber/code-surfer) 🏄
+something custom, it's as simple as importing a React component.
 
 ## Link Prefetching
 
@@ -161,38 +151,23 @@ the page loads instantly. As of [Next.js 8](https://nextjs.org/blog/next-8/), `p
 
 ## Polyfills
 
-Next.js supports IE10 and all modern browsers out of the box using `@babel/preset-env`.
+Next.js supports IE11 and all modern browsers (Edge, Firefox, Chrome, Safari, Opera) out of the box.
 However, it's possible that your own code or external NPM dependencies might use features not supported in your target browsers. In this case,
-you will need to add polyfills. This requires changes in a couple of places.
+you will need to [add polyfills](https://nextjs.org/docs/basic-features/supported-browsers-features#custom-polyfills).
 
-First, you will need to create/override your `next.config.js` file to customize Webpack.
+You'll need to add a top-level import for the specific polyfill you need in your Custom `<App>` or the individual component.
 
-```js:next.config.js
-module.exports = {
-  webpack: function (cfg) {
-    const originalEntry = cfg.entry;
-    cfg.entry = async () => {
-      const entries = await originalEntry();
+```js:pages/_app.js
 
-      if (
-        entries['main.js'] &&
-        !entries['main.js'].includes('./client/polyfills.js')
-      ) {
-        entries['main.js'].unshift('./client/polyfills.js');
-      }
+// Add your polyfills here or at the component level.
+// For example...
+// import 'resize-observer-polyfill'
 
-      return entries;
-    };
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
 
-    return cfg;
-  }
-};
-```
-
-Then, create `/client/polyfills.js` and include whichever polyfills you need.
-
-```js
-import '@babel/polyfill';
+export default MyApp
 ```
 
 ## Vercel
@@ -203,9 +178,9 @@ for you to review the changes. If everything looks good, it will deploy to prod 
 
 The icing on the cake is how well the Vercel ecosystem works together. Their [domain service](https://vercel.com/domains) allows you
 to buy domains _from the command line_. I've never been able to go from an idea to a live, deployed application
-hosted on a domain so fast.
+hosted on a domain so fast. I was even able to setup email forwarding for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
 
-**Bonus:** I was even able to [setup email forwarding](https://spectrum.chat/zeit/now/redirection-email-domain~b5e1b613-ae92-42f9-bc49-e8c824a8a7f2?m=MTUzNDE5OTg3MzMwMw==) for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
+**Update:** I work at Vercel now. This was written before, but still holds true 😁
 
 ## Where To Get Help
 
@@ -215,6 +190,6 @@ questions and answers are indexed, searchable, and easy to find. Their [tutorial
 
 ## Additional Resources
 
-- [Next.js Resources](https://masteringnextjs.com/resources)
-- [5 Tips for Building a Next.js App](https://medium.com/zerostories/5-tips-for-building-a-next-js-app-576fd1f7c065)
-- [Building a Blog With Next.js and styled-components](https://medium.com/styled-components/building-a-blog-with-next-js-359cf1236574)
+- [Mastering Next.js](https://masteringnextjs.com/)
+- [React 2025](https://react2025.com/)
+- [Official Learn Tutorial](http://nextjs.org/learn)
