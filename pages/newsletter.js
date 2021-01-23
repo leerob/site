@@ -1,28 +1,14 @@
-import { NextSeo } from 'next-seo';
-
 import Container from '@/components/Container';
 import Subscribe from '@/components/Subscribe';
 import NewsletterLink from '@/components/NewsletterLink';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 
-const url = 'https://leerob.io/newsletter';
-const title = 'Newsletter – Lee Robinson';
-const description =
-  'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
-
 export default function Newsletter({ newsletters }) {
   return (
-    <Container>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description
-        }}
-      />
+    <Container
+      title="Newsletter – Lee Robinson"
+      description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
+    >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Newsletter

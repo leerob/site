@@ -3,15 +3,15 @@ import { parseISO, format } from 'date-fns';
 
 import Container from '@/components/Container';
 import Subscribe from '@/components/Subscribe';
-import BlogSeo from '@/components/BlogSeo';
 
 export default function NewsletterLayout({ children, frontMatter }) {
   return (
-    <Container>
-      <BlogSeo
-        url={`https://leerob.io/newsletter/${frontMatter.slug}`}
-        {...frontMatter}
-      />
+    <Container
+      title={`${frontMatter.title} – Lee Robinson`}
+      description={frontMatter.summary}
+      date={new Date(frontMatter.publishedAt).toISOString()}
+      type="article"
+    >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}

@@ -1,22 +1,13 @@
 import Image from 'next/image';
-import { NextSeo } from 'next-seo';
 
 import Container from '@/components/Container';
 
 export default function SnippetLayout({ children, frontMatter }) {
-  const title = `${frontMatter.title} - Code Snippet`;
-  const url = `https://leerob.io/snippets/${frontMatter.slug}`;
-
   return (
-    <Container>
-      <NextSeo
-        title={title}
-        canonical={url}
-        openGraph={{
-          url,
-          title
-        }}
-      />
+    <Container
+      title={`${frontMatter.title} - Code Snippet`}
+      description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
+    >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <div className="flex justify-between w-full mb-8">
           <div>

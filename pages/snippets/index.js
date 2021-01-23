@@ -1,23 +1,13 @@
-import { NextSeo } from 'next-seo';
-
 import Container from '@/components/Container';
 import FunctionCard from '@/components/FunctionCard';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 
-const url = 'https://leerob.io/snippets';
-const title = 'Code Snippets – Lee Robinson';
-
 export default function Snippets({ snippets }) {
   return (
-    <Container>
-      <NextSeo
-        title={title}
-        canonical={url}
-        openGraph={{
-          url,
-          title
-        }}
-      />
+    <Container
+      title="Code Snippets – Lee Robinson"
+      description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
+    >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Code Snippets

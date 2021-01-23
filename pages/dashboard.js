@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { NextSeo } from 'next-seo';
 
 import Analytics from '@/components/metrics/Analytics';
 import Buttondown from '@/components/metrics/Buttondown';
@@ -10,24 +9,12 @@ import Unsplash from '@/components/metrics/Unsplash';
 import YouTube from '@/components/metrics/Youtube';
 import TopTracks from '@/components/TopTracks';
 
-const url = 'https://leerob.io/dashboard';
-const title = 'Dashboard – Lee Robinson';
-const description =
-  'My personal dashboard, built with Next.js API routes deployed as serverless functions.';
-
 export default function Dashboard() {
   return (
-    <Container>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description
-        }}
-      />
+    <Container
+      title="Dashboard – Lee Robinson"
+      description="My personal dashboard, built with Next.js API routes deployed as serverless functions."
+    >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Dashboard

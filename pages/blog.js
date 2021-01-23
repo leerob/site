@@ -1,14 +1,8 @@
 import { useState } from 'react';
-import { NextSeo } from 'next-seo';
 
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
-
-const url = 'https://leerob.io/blog';
-const title = 'Blog – Lee Robinson';
-const description =
-  'Thoughts on the software industry, programming, tech, videography, music, and my personal life.';
 
 export default function Blog({ posts }) {
   const [searchValue, setSearchValue] = useState('');
@@ -22,17 +16,10 @@ export default function Blog({ posts }) {
     );
 
   return (
-    <Container>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title,
-          description
-        }}
-      />
+    <Container
+      title="Blog – Lee Robinson"
+      description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
+    >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Blog
