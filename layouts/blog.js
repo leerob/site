@@ -4,7 +4,6 @@ import { parseISO, format } from 'date-fns';
 import Container from '@/components/Container';
 import Subscribe from '@/components/Subscribe';
 import ViewCounter from '@/components/ViewCounter';
-import BlogSeo from '@/components/BlogSeo';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/master/data/blog/${slug}.mdx`;
@@ -15,11 +14,13 @@ const discussUrl = (slug) =>
 
 export default function BlogLayout({ children, frontMatter }) {
   return (
-    <Container>
-      <BlogSeo
-        url={`https://leerob.io/blog/${frontMatter.slug}`}
-        {...frontMatter}
-      />
+    <Container
+      title={`${frontMatter.title} – Lee Robinson`}
+      description={frontMatter.summary}
+      image={`https://leerob.io${frontMatter.image}`}
+      date={new Date(frontMatter.publishedAt).toISOString()}
+      type="article"
+    >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}

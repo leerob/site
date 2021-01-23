@@ -1,16 +1,13 @@
-import { NextSeo } from 'next-seo';
-
 import redis from '@/lib/redis';
 import Container from '@/components/Container';
 import Guestbook from '@/components/Guestbook';
 
-const url = 'https://leerob.io/guestbook';
-const title = 'Guestbook – Lee Robinson';
-const description = 'Sign my digital guestbook and share some wisdom.';
-
 export default function GuestbookPage({ initialEntries }) {
   return (
-    <Container>
+    <Container
+      title="Guestbook – Lee Robinson"
+      description="Sign my digital guestbook and share some wisdom."
+    >
       <NextSeo
         title={title}
         description={description}
