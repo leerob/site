@@ -58,6 +58,7 @@
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
+    "rss": "1.2.2",
     "unified": "9.2.0",
     "unist-util-visit": "2.0.3"
   },
