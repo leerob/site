@@ -1,0 +1,114 @@
+---
+title: 'Update MDX Meta'
+description: 'Change last updated time.'
+logo: 'mdx.png'
+---
+
+```js
+const { parse, resolve } = require('path');
+const remark = require('remark');
+const mdx = require('remark-mdx');
+const mdxMetadata = require('remark-mdx-metadata');
+const stringify = require('remark-stringify');
+const { read, write } = require('to-vfile');
+const { add, getStagedFiles } = require('git-jiggy');
+
+const getMdxFilesFromCommit = async () => {
+  const files = (await getStagedFiles()).map((file) => {
+    return resolve(__dirname, '../../', file);
+  });
+
+  return files.filter(
+    (file) =>
+      parse(file).ext === '.mdx' &&
+      (file.includes('pages/docs') || file.includes('pages/guides'))
+  );
+};
+
+const updateMeta = async (paths) => {
+  await Promise.all(
+    paths.map(async (path) => {
+      const file = await read(path);
+      const result = await remark()
+        .use(mdx)
+        .use(mdxMetadata, {
+          meta: {
+            lastEdited: new Date().toISOString()
+          }
+        })
+        .use(stringify, {
+          fences: true,
+          listItemIndent: '1'
+        })
+        .process(file);
+
+      const contents = result.toString();
+
+      await write({
+        path,
+        contents
+      });
+    })
+  );
+};
+
+const updateModifiedFiles = async () => {
+  // Get modified .mdx files
+  const paths = await getMdxFilesFromCommit();
+
+  if (paths.length) {
+    // Update the lastEdited metadata
+    await updateMeta(paths);
+    // Add these changes to the staged commit
+    await add(paths);
+  }
+};
+
+updateModifiedFiles();
+```
+
+## Usage
+
+<Step number={1} title="Install the Required Packages" />
+
+To read & modify MDX files, as well as transform their metadata, we need to install a few pacakges.
+
+- `remark`
+- `remark-mdx`
+- `remark-mdx-metadata`
+- `remark-stringify`
+- `to-vfile`
+- `git-jiggy`
+
+<Step number={2} title="Add MDX Metadata" />
+
+For this script to work, you'll need to define your metadata inside your `.mdx` file.
+
+```js
+export const meta = {
+  editUrl: 'pages/docs/api/endpoint.mdx',
+  lastEdited: '2021-01-24T12:12:12.000Z'
+};
+```
+
+`lastUpdated` will be changed by the Node script.
+You could also use frontmatter and parse with [gray-matter](https://www.npmjs.com/package/gray-matter).
+
+<Step number={3} title="Run the Script" />
+
+You can either run this script inside your `package.json` like `node scripts/update-mdx-meta` or as part of your build process.
+For example, with Next.js:
+
+```js
+module.exports = {
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      require('./scripts/update-mdx-meta');
+    }
+
+    return config;
+  }
+};
+```
+
+Credit to [Michael Novotny](https://manovotny.com/) for these helpful packages!
