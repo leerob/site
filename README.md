@@ -4,6 +4,8 @@
 
 My portfolio has transformed over the years - from a static HTML site, to Jekyll, to Hugo, and finally to Next.js/React/MDX. My personal slice of the internet provides a platform for my writing and to showcase my latest work.
 
+If you want to understand this repo better, I did a [one-hour live stream](https://www.youtube.com/watch?v=xXQsF0q8KUg) walking through the codebase.
+
 ## Overview
 
 - `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://leerob.io/dashboard), newsletter subscription, and post views.
