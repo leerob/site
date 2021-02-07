@@ -48,7 +48,7 @@ const Index = () => {
           </Heading>
           <ProjectCard
             title="DevSkills"
-            description="Practical developer hiring that saves time."
+            description="Efficient developer hiring that saves time."
             href="https://devskills.co/"
             icon="devskills"
           />
