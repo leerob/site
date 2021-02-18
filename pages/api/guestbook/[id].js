@@ -9,7 +9,9 @@ export default async (req, res) => {
   const entry = JSON.parse((await redis.hget('guestbook', id)) || 'null');
 
   if (req.method === 'GET') {
-    return res.json(entry);
+    const { email, ...restOfEntry } = entry;
+
+    return res.json(restOfEntry);
   }
 
   if (req.method === 'DELETE') {

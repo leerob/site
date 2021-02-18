@@ -8,7 +8,11 @@ export default async (req, res) => {
 
   if (req.method === 'GET') {
     const entries = (await redis.hvals('guestbook'))
-      .map((entry) => JSON.parse(entry))
+      .map((entry) => {
+        const { email, ...restOfEntry } = JSON.parse(entry);
+
+        return restOfEntry;
+      })
       .sort((a, b) => b.id - a.id);
 
     return res.json(entries);
