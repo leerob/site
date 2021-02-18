@@ -24,7 +24,11 @@ export default function GuestbookPage({ initialEntries }) {
 
 export async function getStaticProps() {
   const entries = (await redis.hvals('guestbook'))
-    .map((entry) => JSON.parse(entry))
+    .map((entry) => {
+      const { email, ...restOfEntry } = JSON.parse(entry);
+
+      return restOfEntry;
+    })
     .sort((a, b) => b.id - a.id);
 
   return {
