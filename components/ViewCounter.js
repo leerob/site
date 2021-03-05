@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 
@@ -17,5 +16,5 @@ export default function ViewCounter({ slug }) {
     registerView();
   }, [slug]);
 
-  return `${views ? format(views) : '–––'} views`;
+  return `${views ? new Intl.NumberFormat().format(views) : '–––'} views`;
 }
