@@ -77,7 +77,7 @@ export default function Subscribe() {
         <SuccessMessage>{form.message}</SuccessMessage>
       ) : (
         <p className="text-sm text-gray-800 dark:text-gray-200">
-          {`${subscriberCount || '-'} subscribers – `}
+          {`${subscriberCount > 0 || '-'} subscribers – `}
           <Link href="/newsletter">
             <a>28 issues</a>
           </Link>

@@ -26,7 +26,7 @@ export default function MetricCard({ header, link, metric }) {
         </div>
       </a>
       <p className="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white">
-        {metric || '-'}
+        {metric > 0 || '-'}
       </p>
     </div>
   );
