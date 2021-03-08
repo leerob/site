@@ -157,3 +157,8 @@ input[type='email'] {
 .step > h3 {
   @apply my-0;
 }
+
+table {
+  display: block;
+  overflow-y: scroll;
+}
