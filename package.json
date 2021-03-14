@@ -51,6 +51,7 @@
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {
+    "critters": "^0.0.8",
     "globby": "11.0.2",
     "image-size": "0.9.3",
     "prettier": "2.2.1",
