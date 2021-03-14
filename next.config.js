@@ -1,4 +1,7 @@
 module.exports = {
+  experimental: {
+    optimizeCss: true
+  },
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
