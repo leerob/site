@@ -51,6 +51,7 @@
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "^0.0.0-3cf38849c",
     "globby": "11.0.2",
     "image-size": "0.9.3",
     "prettier": "2.2.1",
