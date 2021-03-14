@@ -5,15 +5,7 @@ summary: 'Which is the best for building React applications? Explore the pros an
 image: '/static/images/nextjs-gatsby-create-react-app/banner.jpg'
 ---
 
-<Image
-  alt={`Next.js Trend`}
-  src={`/static/images/nextjs-gatsby-create-react-app/banner.jpg`}
-  width={1500}
-  height={857}
-  priority
-/>
-
-It's never been a [better time](/blog/learn-nextjs) to learn React.
+There's never been a [better time](/blog/learn-nextjs) to learn React.
 If you're just getting started, you might have heard about these three options:
 
 - [Next.js](https://nextjs.org)
@@ -25,39 +17,28 @@ This post will highlight the key similarities and differences between the three 
 
 ## Next.js
 
-Next.js is the React framework that evolves with your product.
+Next.js is a hybrid React framework that evolves with your product.
+With Next, you can have static pages, server-rendered pages, and more all within the same framework.
 
-- **Static Sites** – Blazing-fast JAMstack websites.
-- **Server Side Rendering** – Great for SEO and load performance.
-- **Pre-Rendering** – Best of both worlds. Blazing-fast website + scale traffic effortlessly.
-
-Next is unique among front-end and JAMstack frameworks because it seamlessly allows developers to grow from static sites to server-rendered sites as requirements change.
-It's also rapidly growing in popularity.
-
-- 350k+ Next.js devs (30% of all React devs)
-- 60+ Alexa top 10k sites built using Next.js
-- Over 35,000 production sites
-- 300k weekly NPM downloads
-- Used by companies like Nike, Uber, Hulu, Twitch, and GitHub
+> **Update (2020):** I now work at Vercel, so I'm biased towards Next.js. The cons listed below are the
+> most common pain points from the community.
 
 **Pros**
 
-- ✅ Server-side rendering out of the box
-- ✅ Support for full applications, as well as static sites
-- ✅ Built-in TypeScript support
-- ✅ Incredible developer experience
+- ✅ Supports static sites and server-side rendering
+- ✅ Best DX out of the three (Webpack support, Fast Refresh, error handling)
+- ✅ Create full-stack apps with [API Routes](https://nextjs.org/docs/api-routes/introduction)
 
 **Cons**
 
-- ⛔️ Framework-specific knowledge (`_app.js`, `_document.js`)
-- ⛔️ No plugin system ([yet](https://github.com/vercel/next.js/issues/9133))
+- ⛔️ Lack of built-in support for layouts
+- ⛔️ Limited plugin system ([RFC](https://github.com/vercel/next.js/issues/9133))
 - ⛔️ Server-rendering adds complexity
 
 ## Gatsby
 
 The key difference between Next.js and Gatsby is that Gatsby doesn't use a server.
 While Gatsby's main use case is for static sites, it can also re-hydrate into a fully-functional React application.
-Many other Next.js vs. Gatsby comparisons miss the fact that Next.js can also be used as a static site generator.
 
 Gatsby comes bundled with GraphQL for data fetching. Here's a short example.
 
@@ -82,29 +63,30 @@ export const query = graphql`
 export default HomePage;
 ```
 
-You can use [Gatsby without GraphQL](https://www.gatsbyjs.org/docs/using-gatsby-without-graphql/) if you absolutely must/want, but it's one of the key features it promotes.
+You can use [Gatsby without GraphQL](https://www.gatsbyjs.org/docs/using-gatsby-without-graphql/) if you absolutely must, but it's one of the key features it promotes.
 
 **Pros**
 
 - ✅ Robust [plugin library](https://www.gatsbyjs.org/plugins/)
 - ✅ GraphQL integration
-- ✅ Well-written documentation & tutorials
 
 **Cons**
 
 - ⛔️ GraphQL knowledge potentially needed
+- ⛔️ Debugging plugin issues can be difficult
 - ⛔️ Potentially large build times (e.g. lots of images/fetches)
 
 ## Create React App
 
 CRA helps you get started building React apps immediately with client-side rendering (CSR). There's much less to digest and understand.
-Unfortunately, that also means there's less you get for free as you scale your application.
+Unfortunately, that also means there's less you get for free as you scale your application. When building large-scale React applications,
+especially those with marketing pages, having server-rendering in the framework is very helpful.
 
 **Pros**
 
-- ✅ Easiest to learn (no extra framework)
-- ✅ Created & maintained by React team
-- ✅ Built-in TypeScript support
+- ✅ Easiest to learn
+- ✅ Best choice for guaranteed single-page applications
+- ✅ More hosting options (since a server isn't required)
 
 **Cons**
 
