@@ -61,7 +61,6 @@ html {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
-  display: block;
 }
 
 .token.comment,
