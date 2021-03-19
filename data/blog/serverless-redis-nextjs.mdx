@@ -43,7 +43,7 @@ Alternatively, you can manually create an `.env.local` file in the root of your 
 REDIS_URL=redis://:password@endpoint:port
 ```
 
-We'll use [iodredis](https://github.com/luin/ioredis), a Node.js Redis client with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) support, to connect to Redis.
+We'll use [ioredis](https://github.com/luin/ioredis), a Node.js Redis client with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) support, to connect to Redis.
 
 ```jsx:lib/redis.js
 import Redis from 'ioredis';
@@ -77,12 +77,12 @@ In the demo application, we use Redis for the following:
 1. When adding features or emails, a `POST` request is sent to an [API Route](https://nextjs.org/docs/api-routes/introduction) to update Redis.
 1. Adding/upvoting features will mutate the client-side cache for [optimistic UI updates](https://swr.vercel.app/docs/mutation).
 
-You can view the entire `ioredis` API [here](https://github.com/luin/ioredis). For more advanced Redis usage, see the Redis API compatibility with Upstash [here](https://docs.upstash.com/docs/overall/rediscompatibility/).
+You can view the entire Redis API [here](https://redis.io/commands). For more advanced Redis usage, see the Redis API compatibility with Upstash [here](https://docs.upstash.com/docs/overall/rediscompatibility/).
 
 ### Conclusion
 
-I frequently need to store data, somewhere. It doesn't always need to be complex. Often, a small key/value store will suffice.
-After working more with Upstash, Redis is now my preferred solution for this.
+I frequently need to store data, somewhere. It doesn't always need to be complex – a key/value store will often suffice.
+After working more with Upstash, Redis is now my preferred solution for this (and apparently [many other people's as well](https://www.freecodecamp.org/news/stack-overflow-developer-survey-2020-programming-language-framework-salary-data/)).
 
 - [View the demo ✨](https://roadmap-redis.vercel.app/)
 - [Deploy your own 🚀](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-redis&project-name=redis-roadmap&repository-name=redis-roadmap&demo-title=Redis%20Roadmap&demo-description=Create%20and%20upvote%20features%20for%20your%20product.&demo-url=https%3A%2F%2Froadmap-redis.vercel.app%2F&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
