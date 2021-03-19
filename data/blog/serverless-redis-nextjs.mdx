@@ -40,7 +40,7 @@ $ vercel env pull .env.local
 Alternatively, you can manually create an `.env.local` file in the root of your repository and add the Redis connection string.
 
 ```jsx:.env.local
-REDIS_URL=redis://password@endpoint:port
+REDIS_URL=redis://:password@endpoint:port
 ```
 
 We'll use [iodredis](https://github.com/luin/ioredis), a Node.js Redis client with [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) support, to connect to Redis.
