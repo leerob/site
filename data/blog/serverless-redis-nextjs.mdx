@@ -30,14 +30,16 @@ By default, both Vercel and Upstash use the `us-east-1` region for Serverless Fu
 
 ### Connecting to Redis
 
-After cloning our repo locally, we need to connect to our Redis instance. The `REDIS_URL` environment variable was added by the Upstash Integration while deploying. To run the application locally, we'll need to pull our environment variables locally using the [Vercel CLI](https://vercel.com/download).
+If you're using Vercel, you can clone the git repository created during deployment.
+The `REDIS_URL` environment variable was added by the Upstash Integration while deploying. To run the application locally, we'll need to pull our environment variables locally using the [Vercel CLI](https://vercel.com/download).
 
 ```jsx
 $ vercel link
 $ vercel env pull .env.local
 ```
 
-Alternatively, you can manually create an `.env.local` file in the root of your repository and add the Redis connection string.
+If you're not using Vercel, you can clone this demo locally using `npx create-next-app --example with-redis roadmap`.
+Then, create an `.env.local` file in the root of your repository and add the Redis connection string.
 
 ```jsx:.env.local
 REDIS_URL=redis://:password@endpoint:port
