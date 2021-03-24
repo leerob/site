@@ -149,7 +149,7 @@ Another debate is mutable vs. immutable state. There's no right answers, just op
 
 Immutable state gained a lot of popularity with React. The immutable crowd argues that allowing your state management solution of choice to mutate state directly results in more bugs. The mutable crowd argues it's not worth the complexity trade-off. Direct manipulation will always be less safe than indirect manipulation. It's a tradeoff between convenience and risk, which is up to you and your team.
 
-Solutions like [Immer](https://overreacted.io/on-let-vs-const/) allow you to write mutable code but _execute_ it immutably. Fancy. The basic idea is you apply your changes to a _draft state_, which is a proxy of the _current state_. Once the mutations have completed Immer will produce the _next state_ based on the changes to the draft state.
+Solutions like [Immer](https://immerjs.github.io/immer/) allow you to write mutable code but _execute_ it immutably. Fancy. The basic idea is you apply your changes to a _draft state_, which is a proxy of the _current state_. Once the mutations have completed Immer will produce the _next state_ based on the changes to the draft state.
 
 <Image
   alt={`Immer Immutable State`}
@@ -218,7 +218,7 @@ This is not a comprehensive list. It's also open-source, so please open a PR if 
 
 ### Server Cache State
 
-Regardless or experience or team size, both [SWR](https://swr.vercel.app/) and [React Query](https://react-query.tanstack.com/) are excellent solutions. You'll be happy with either. If you're using GraphQL, you probably already know about [Apollo](https://www.apollographql.com/).
+Regardless of experience or team size, both [SWR](https://swr.vercel.app/) and [React Query](https://react-query.tanstack.com/) are excellent solutions. You'll be happy with either. If you're using GraphQL, you probably already know about [Apollo](https://www.apollographql.com/).
 
 ### That's all, folks!
 
