@@ -48,9 +48,9 @@ export default function Subscribe() {
 
   return (
     <div className="border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-blue-50 dark:bg-blue-opaque">
-      <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
+      <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
         Subscribe to the newsletter
-      </h5>
+      </p>
       <p className="my-1 text-gray-800 dark:text-gray-200">
         Get emails from me about web development, tech, and early access to new
         articles.
