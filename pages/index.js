@@ -1,12 +1,35 @@
 import Link from 'next/link';
+import { google } from 'googleapis';
 
+import googleAuth from '@/lib/google/auth';
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
+import VideoCard from '../components/VideoCard';
 
-export default function Home() {
+export async function getStaticProps() {
+  const auth = await googleAuth.getClient();
+  const youtube = google.youtube({
+    auth,
+    version: 'v3'
+  });
+
+  const response = await youtube.videos.list({
+    id: 'Pd2tVxhFnO4,FytxaSVQROc,u_o09PD_qAs',
+    part: 'snippet,statistics'
+  });
+
+  return {
+    props: {
+      videos: response.data.items
+    },
+    revalidate: 60 * 60 // 1 hour
+  };
+}
+
+export default function Home({ videos }) {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
@@ -40,7 +63,7 @@ export default function Home() {
           slug="monorepo-lerna-yarn-workspaces"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
-          Projects
+          Courses
         </h3>
         <ProjectCard
           title="React 2025"
@@ -54,12 +77,12 @@ export default function Home() {
           href="https://masteringnextjs.com/"
           icon="nextjs"
         />
-        <ProjectCard
-          title="Fast Feedback"
-          description="The easiest way to add comments or reviews to your static site. Built as part of React 2025."
-          href="https://fastfeedback.io/"
-          icon="fastfeedback"
-        />
+        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-12 text-black dark:text-white">
+          Recent Videos
+        </h3>
+        {videos.map((video) => (
+          <VideoCard key={video.id} {...video} />
+        ))}
         <Timeline />
         <Subscribe />
       </div>

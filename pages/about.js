@@ -59,7 +59,8 @@ export default function About() {
             >
               React 2025.
             </a>
-            &nbsp;I work at ▲Vercel as a Solutions Architect.
+            &nbsp;I work at ▲Vercel as a Solutions Architect and lead DevRel for
+            Next.js.
           </p>
           <p>
             I’ve spoken across the country at conferences and meet-ups about
