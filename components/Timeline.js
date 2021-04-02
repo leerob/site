@@ -154,6 +154,18 @@ export default function Timeline() {
       <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
         Timeline
       </h3>
+      <Year>2021</Year>
+      <ul>
+        <Step title="10,000 YouTube Subscribers 🎥">
+          After many years on YouTube, I've started to figure this whole video
+          thing out.
+        </Step>
+        <Step title="5,000 Newsletter Subscribers 💌">
+          If you want to stay up-to-date on my latest work, it usually hits the
+          newsletter first. I try to send an update once a month.
+        </Step>
+      </ul>
+      <Divider />
       <Year>2020</Year>
       <ul>
         <Step title="Joined ▲Vercel">
