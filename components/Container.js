@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
@@ -63,7 +63,7 @@ export default function Container(props) {
               stroke="currentColor"
               className="h-4 w-4 text-gray-800 dark:text-gray-200"
             >
-              {theme === 'dark' ? (
+              {resolvedTheme === 'dark' ? (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
