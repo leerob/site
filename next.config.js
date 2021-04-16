@@ -12,11 +12,7 @@ module.exports = {
   async headers() {
     return [
       {
-        source: '/',
-        headers: securityHeaders
-      },
-      {
-        source: '/:path*',
+        source: '/(.*)',
         headers: securityHeaders
       }
     ];
@@ -84,8 +80,9 @@ const securityHeaders = [
     value: 'max-age=31536000; includeSubDomains; preload'
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+  // Opt-out of Google FLoC: https://amifloced.org/
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()'
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
   }
 ];
