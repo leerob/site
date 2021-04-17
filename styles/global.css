@@ -164,6 +164,11 @@ input[type='email'] {
   @apply my-0;
 }
 
+.prose .tweet a {
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+
 table {
   display: block;
   overflow-y: scroll;
