@@ -1,15 +1,15 @@
-import hydrate from 'next-mdx-remote/hydrate';
+import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import SnippetLayout from '@/layouts/snippets';
 import MDXComponents from '@/components/MDXComponents';
 
 export default function Snippet({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, {
-    components: MDXComponents
-  });
-
-  return <SnippetLayout frontMatter={frontMatter}>{content}</SnippetLayout>;
+  return (
+    <SnippetLayout frontMatter={frontMatter}>
+      <MDXRemote {...mdxSource} components={MDXComponents} />
+    </SnippetLayout>
+  );
 }
 
 export async function getStaticPaths() {
