@@ -156,7 +156,7 @@ export default function Timeline() {
       </h3>
       <Year>2021</Year>
       <ul>
-        <Step title="Head of Developer Relations 👨‍👩‍👧‍👦">
+        <Step title="Head of Developer Relations at Vercel 👨‍👩‍👧‍👦">
           I'm extremely excited about this new role helping grow the Next.js and
           Vercel community.
         </Step>
