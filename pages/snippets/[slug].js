@@ -2,12 +2,11 @@ import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import SnippetLayout from '@/layouts/snippets';
-import MDXComponents from '@/components/MDXComponents';
 
 export default function Snippet({ mdxSource, frontMatter }) {
   return (
     <SnippetLayout frontMatter={frontMatter}>
-      <MDXRemote {...mdxSource} components={MDXComponents} />
+      <MDXRemote {...mdxSource} />
     </SnippetLayout>
   );
 }

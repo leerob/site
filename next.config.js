@@ -3,6 +3,10 @@ module.exports = {
     webpack5: true,
     strictPostcssConfiguration: true
   },
+  reactStrictMode: true,
+  experimental: {
+    turboMode: true
+  },
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art

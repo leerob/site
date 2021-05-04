@@ -2,12 +2,11 @@ import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import NewsletterLayout from '@/layouts/newsletter';
-import MDXComponents from '@/components/MDXComponents';
 
 export default function Newsletter({ mdxSource, frontMatter }) {
   return (
     <NewsletterLayout frontMatter={frontMatter}>
-      <MDXRemote {...mdxSource} components={MDXComponents} />
+      <MDXRemote {...mdxSource} />
     </NewsletterLayout>
   );
 }
