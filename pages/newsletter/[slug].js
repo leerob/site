@@ -1,16 +1,13 @@
-import hydrate from 'next-mdx-remote/hydrate';
+import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import NewsletterLayout from '@/layouts/newsletter';
-import MDXComponents from '@/components/MDXComponents';
 
 export default function Newsletter({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, {
-    components: MDXComponents
-  });
-
   return (
-    <NewsletterLayout frontMatter={frontMatter}>{content}</NewsletterLayout>
+    <NewsletterLayout frontMatter={frontMatter}>
+      <MDXRemote {...mdxSource} />
+    </NewsletterLayout>
   );
 }
 
