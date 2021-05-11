@@ -1,7 +1,7 @@
 import redis from '@/lib/redis';
 import session from '@/lib/session';
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   session(req, res);
 
   const { id } = req.query;
@@ -41,4 +41,4 @@ export default async (req, res) => {
   }
 
   return res.send('Method not allowed.');
-};
+}
