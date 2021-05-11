@@ -3,7 +3,7 @@ import session from '@/lib/session';
 const CLIENT_ID = process.env.OAUTH_CLIENT_KEY;
 const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   session(req, res);
 
   const { code } = req.query;
@@ -56,4 +56,4 @@ export default async (req, res) => {
   }
 
   return res.redirect('/guestbook');
-};
+}

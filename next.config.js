@@ -5,7 +5,8 @@ module.exports = {
   },
   reactStrictMode: true,
   experimental: {
-    turboMode: true
+    turboMode: true,
+    eslint: true
   },
   images: {
     domains: [

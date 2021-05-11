@@ -2,7 +2,7 @@ import Unsplash, { toJson } from 'unsplash-js';
 
 let unsplash;
 
-export default async (_, res) => {
+export default async function handler(_, res) {
   if (!unsplash) {
     unsplash = new Unsplash({
       accessKey: process.env.UNSPLASH_ACCESS_KEY
@@ -21,4 +21,4 @@ export default async (_, res) => {
     downloads: downloads.total,
     views: views.total
   });
-};
+}
