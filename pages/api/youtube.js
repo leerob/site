@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 
 import googleAuth from '@/lib/google/auth';
 
-export default async (_, res) => {
+export default async function handler(_, res) {
   const auth = await googleAuth.getClient();
   const youtube = google.youtube({
     auth,
@@ -26,4 +26,4 @@ export default async (_, res) => {
     subscriberCount,
     viewCount
   });
-};
+}

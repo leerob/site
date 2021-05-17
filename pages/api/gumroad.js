@@ -14,7 +14,7 @@ const getProductSales = async (id) => {
   return new Big(product.sales_usd_cents).div(100);
 };
 
-export default async (_, res) => {
+export default async function handler(_, res) {
   const masteringNextSales = await getProductSales('sDpG');
   const react2025Sales = await getProductSales('TifxZ');
 
@@ -26,4 +26,4 @@ export default async (_, res) => {
   return res.status(200).json({
     sales: masteringNextSales.plus(react2025Sales).toFixed(0)
   });
-};
+}
