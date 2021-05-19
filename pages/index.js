@@ -17,7 +17,7 @@ export async function getStaticProps() {
   });
 
   const response = await youtube.videos.list({
-    id: 'Pd2tVxhFnO4,FytxaSVQROc,u_o09PD_qAs',
+    id: 'nrfuN_Hyd3Y,FytxaSVQROc,u_o09PD_qAs',
     part: 'snippet,statistics'
   });
 
