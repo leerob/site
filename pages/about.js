@@ -59,8 +59,7 @@ export default function About() {
             >
               React 2025.
             </a>
-            &nbsp;I work at ▲Vercel as a Solutions Architect and lead DevRel for
-            Next.js.
+            &nbsp;I work at ▲Vercel as the Head of Developer Relations.
           </p>
           <p>
             I’ve spoken across the country at conferences and meet-ups about
@@ -80,9 +79,20 @@ export default function About() {
         <h2 className="font-bold text-3xl tracking-tight mb-4 text-black dark:text-white">
           Conference Talks
         </h2>
+
+        <Talk
+          title="How Core Web Vitals Will Impact Google Rankings in 2021"
+          link="https://vercel.com/blog/core-web-vitals"
+        >
+          Landing a top spot on Google can have a multi-million dollar impact on
+          your business. Starting in June 2021, the performance of your site
+          (determined by Core Web Vitals) will be critical to your search
+          ranking. Learn how Next.js can help you optimize your site’s
+          performance, user experience, and SEO.
+        </Talk>
         <Talk
           title="Data Fetching with Next.js"
-          link="https://www.youtube.com/watch?v=Sz7SImkdIpo&feature=youtu.be&t=6063"
+          link="https://www.youtube.com/watch?v=f1rF9YKm1Ms"
         >
           Next.js is a hybrid React framework allowing you to choose your data
           fetching strategy on a per-page basis. In this talk, you’ll learn more

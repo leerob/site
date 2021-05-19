@@ -47,10 +47,9 @@ export default function Tweet({
         </a>
         <a
           href={authorUrl}
-          className="author"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col ml-4 !no-underline"
+          className="author flex flex-col ml-4 !no-underline"
         >
           <span
             className="flex items-center font-bold !text-gray-900 dark:!text-gray-100 leading-5"
@@ -96,7 +95,13 @@ export default function Tweet({
         {formattedText}
       </div>
       {media && media.length ? (
-        <div className="inline-grid grid-cols-2 gap-x-2 gap-y-2 my-2">
+        <div
+          className={
+            media.length === 1
+              ? 'inline-grid grid-cols-1 gap-x-2 gap-y-2 my-2'
+              : 'inline-grid grid-cols-2 gap-x-2 gap-y-2 my-2'
+          }
+        >
           {media.map((m) => (
             <Image
               key={m.media_key}
