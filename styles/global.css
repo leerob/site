@@ -37,6 +37,10 @@ html {
   transition: background-color 0.1 ease-in-out;
 }
 
+.skip-nav {
+  @apply absolute px-4 py-2 transition-transform duration-200 transform -translate-y-12 focus:translate-y-3 -top-8;
+}
+
 @supports not (backdrop-filter: none) {
   .sticky-nav {
     backdrop-filter: none;
@@ -45,7 +49,7 @@ html {
 }
 
 .prose pre {
-  @apply bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-900;
+  @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900;
 }
 
 .prose code {
@@ -133,7 +137,7 @@ pre {
 }
 
 .remark-code-title {
-  @apply text-gray-800 dark:text-gray-200 px-5 py-3 border border-b-0 border-gray-200 dark:border-gray-700 rounded-t bg-gray-200 dark:bg-gray-800 text-sm font-mono font-bold;
+  @apply px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
 }
 
 .remark-code-title + pre {
@@ -141,7 +145,7 @@ pre {
 }
 
 .mdx-marker {
-  @apply block -mx-4 px-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-blue-500;
+  @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
 }
 
 /* Remove Safari input shadow on mobile */
