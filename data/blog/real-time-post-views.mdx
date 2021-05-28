@@ -201,12 +201,11 @@ export default async (req, res) => {
 
 ## View Counter
 
-Let's create a `ViewCounter` component to use SWR. I'm also using a helpful package [comma-number](https://www.npmjs.com/package/comma-number) for formatting, but you don't need this.
+Let's create a `ViewCounter` component to use SWR.
 
 ```jsx:components/ViewCounter.js
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import format from 'comma-number';
 
 async function fetcher(...args) {
   const res = await fetch(...args);
@@ -216,7 +215,7 @@ async function fetcher(...args) {
 
 export default function ViewCounter({ slug }) {
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const views = new Number(data?.total);
 
   useEffect(() => {
     const registerView = () =>
@@ -227,7 +226,7 @@ export default function ViewCounter({ slug }) {
     registerView();
   }, [slug]);
 
-  return `${views ? format(views) : '–––'} views`;
+  return `${views > 0 ? views.toLocaleString() : '–––'} views`;
 }
 
 ```

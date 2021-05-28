@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
-import format from 'comma-number';
 import { trackGoal } from 'fathom-client';
 
 import fetcher from '@/lib/fetcher';
@@ -13,7 +12,7 @@ export default function Subscribe() {
   const [form, setForm] = useState(false);
   const inputEl = useRef(null);
   const { data } = useSWR('/api/subscribers', fetcher);
-  const subscriberCount = format(data?.count);
+  const subscriberCount = new Number(data?.count);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -78,7 +77,9 @@ export default function Subscribe() {
         <SuccessMessage>{form.message}</SuccessMessage>
       ) : (
         <p className="text-sm text-gray-800 dark:text-gray-200">
-          {`${subscriberCount || '-'} subscribers – `}
+          {`${
+            subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
+          } subscribers – `}
           <Link href="/newsletter">
             <a>30 issues</a>
           </Link>

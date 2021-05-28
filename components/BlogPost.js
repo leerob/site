@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 
@@ -17,7 +16,7 @@ const BlogPost = ({ title, summary, slug }) => {
               {title}
             </h4>
             <p className="text-gray-500 text-left md:text-right w-32 mb-4 md:mb-0">
-              {`${views ? format(views) : '–––'} views`}
+              {`${views ? new Number(views).toLocaleString() : '–––'} views`}
             </p>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>

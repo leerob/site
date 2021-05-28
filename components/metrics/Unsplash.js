@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 import MetricCard from '@/components/metrics/Card';
@@ -7,8 +6,8 @@ import MetricCard from '@/components/metrics/Card';
 export default function Unsplash() {
   const { data } = useSWR('/api/unsplash', fetcher);
 
-  const downloads = format(data?.downloads);
-  const views = format(data?.views);
+  const downloads = new Number(data?.downloads);
+  const views = new Number(data?.views);
   const link = 'https://unsplash.com/@leerob';
 
   return (

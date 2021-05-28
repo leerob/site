@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 import MetricCard from '@/components/metrics/Card';
@@ -7,8 +6,8 @@ import MetricCard from '@/components/metrics/Card';
 export default function YouTube() {
   const { data } = useSWR('/api/youtube', fetcher);
 
-  const subscriberCount = format(data?.subscriberCount);
-  const viewCount = format(data?.viewCount);
+  const subscriberCount = new Number(data?.subscriberCount);
+  const viewCount = new Number(data?.viewCount);
   const link = 'https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw';
 
   return (
