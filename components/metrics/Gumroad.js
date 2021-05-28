@@ -10,10 +10,6 @@ export default function Gumroad() {
   const link = 'https://gumroad.com/leerob';
 
   return (
-    <MetricCard
-      header="Gumroad Sales"
-      link={link}
-      metric={sales && `$${sales}`}
-    />
+    <MetricCard header="Gumroad Sales" link={link} metric={sales} isCurrency />
   );
 }

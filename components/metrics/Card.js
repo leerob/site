@@ -1,4 +1,4 @@
-export default function MetricCard({ header, link, metric }) {
+export default function MetricCard({ header, link, metric, isCurrency }) {
   return (
     <div className="metric-card border border-gray-200 dark:border-gray-800 rounded p-4 max-w-72 w-full">
       <a
@@ -26,6 +26,7 @@ export default function MetricCard({ header, link, metric }) {
         </div>
       </a>
       <p className="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white">
+        {isCurrency && '$'}
         {metric > 0 ? metric.toLocaleString() : '-'}
       </p>
     </div>
