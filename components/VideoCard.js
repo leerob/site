@@ -1,5 +1,3 @@
-import format from 'comma-number';
-
 export default function VideoCard({ id, snippet, statistics }) {
   return (
     <a
@@ -15,7 +13,7 @@ export default function VideoCard({ id, snippet, statistics }) {
             {snippet.title}
           </h4>
           <p className="text-gray-500 text-left md:text-right w-32 mb-4 md:mb-0">
-            {`${format(statistics.viewCount)} views`}
+            {`${new Number(statistics.viewCount).toLocaleString()} views`}
           </p>
         </div>
         <p className="text-gray-600 dark:text-gray-400">

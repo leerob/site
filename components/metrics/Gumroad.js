@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 import MetricCard from '@/components/metrics/Card';
@@ -7,7 +6,7 @@ import MetricCard from '@/components/metrics/Card';
 export default function Gumroad() {
   const { data } = useSWR('/api/gumroad', fetcher);
 
-  const sales = format(data?.sales);
+  const sales = new Number(data?.sales);
   const link = 'https://gumroad.com/leerob';
 
   return (
