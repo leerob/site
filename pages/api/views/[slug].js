@@ -1,25 +1,38 @@
-import db from '@/lib/firebase';
+import db from '@/lib/planetscale';
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const ref = db.ref('views').child(req.query.slug);
-    const { snapshot } = await ref.transaction((currentViews) => {
-      if (currentViews === null) {
-        return 1;
+  try {
+    if (req.method === 'POST') {
+      const [result] = await db.query(`
+        INSERT INTO views (slug) VALUES("${req.query.slug}")
+        ON DUPLICATE KEY
+        UPDATE count = last_insert_id(count + 1), updated_at = now();
+      `);
+
+      const isNewValue = result['insertId'] === 0;
+      if (isNewValue) {
+        return res.status(200).json({
+          total: 1
+        });
       }
 
-      return currentViews + 1;
-    });
+      const [rows] = await db.query(`SELECT last_insert_id();`);
+      const newCount = rows[0]['last_insert_id()'];
 
-    return res.status(200).json({
-      total: snapshot.val()
-    });
-  }
+      return res.status(200).json({
+        total: newCount
+      });
+    }
 
-  if (req.method === 'GET') {
-    const snapshot = await db.ref('views').child(req.query.slug).once('value');
-    const views = snapshot.val();
+    if (req.method === 'GET') {
+      const [rows] = await db.query(`
+        SELECT * FROM views
+        WHERE slug = "${req.query.slug}";
+      `);
 
-    return res.status(200).json({ total: views });
+      return res.status(200).json({ total: rows[0].count });
+    }
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
   }
 }

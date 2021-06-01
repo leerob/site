@@ -1,17 +1,20 @@
-import redis from '@/lib/redis';
+import db from '@/lib/planetscale';
 import session from '@/lib/session';
 
 export default async function handler(req, res) {
   session(req, res);
 
   const { id } = req.query;
-  const { login, email } = req.session;
-  const entry = JSON.parse((await redis.hget('guestbook', id)) || 'null');
+  const { login } = req.session;
+
+  const [rows] = await db.query(`
+    SELECT id, body, created_by FROM guestbook
+    WHERE id = "${id}";
+  `);
+  const entry = rows[0];
 
   if (req.method === 'GET') {
-    const { email, ...restOfEntry } = entry;
-
-    return res.json(restOfEntry);
+    return res.json(entry);
   }
 
   if (req.method === 'DELETE') {
@@ -19,7 +22,10 @@ export default async function handler(req, res) {
       return res.status(403).send('Unauthorized');
     }
 
-    await redis.hdel('guestbook', id);
+    await db.query(`
+      DELETE FROM guestbook
+      WHERE id = "${id}";
+    `);
     return res.status(204).json({});
   }
 
@@ -28,16 +34,18 @@ export default async function handler(req, res) {
       return res.status(403).send('Unauthorized');
     }
 
-    const updated = {
-      id,
-      email,
-      updated_at: Date.now(),
-      body: (req.body.body || '').slice(0, 500),
-      created_by: login
-    };
+    const body = (req.body.body || '').slice(0, 500);
+    await db.query(`
+      UPDATE guestbook
+      SET body = "${body}", updated_at = now()
+      WHERE id = "${id}";
+    `);
 
-    await redis.hset('guestbook', id, JSON.stringify(updated));
-    return res.status(201).json(updated);
+    const [rows] = await db.query(`
+      SELECT * FROM guestbook WHERE id = last_insert_id();
+    `);
+
+    return res.status(201).json(rows[0]);
   }
 
   return res.send('Method not allowed.');
