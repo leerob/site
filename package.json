@@ -31,7 +31,6 @@
     "gray-matter": "4.0.3",
     "mdx-prism": "0.3.3",
     "micro-cookie-session": "^2.0.0-beta.1",
-    "net": "^1.0.2",
     "next": "^10.2.3",
     "next-mdx-remote": "^3.0.2",
     "next-themes": "^0.0.14",
