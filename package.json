@@ -27,7 +27,6 @@
     "big.js": "6.1.1",
     "date-fns": "2.21.3",
     "fathom-client": "3.0.0",
-    "fs": "^0.0.1-security",
     "googleapis": "48.0.0",
     "gray-matter": "4.0.3",
     "mdx-prism": "0.3.3",
