@@ -7,10 +7,13 @@ export default async function handler(req, res) {
   const { id } = req.query;
   const { login } = req.session;
 
-  const [rows] = await db.query(`
+  const [rows] = await db.query(
+    `
     SELECT id, body, created_by FROM guestbook
-    WHERE id = "${id}";
-  `);
+    WHERE id = ?;
+  `,
+    [id]
+  );
   const entry = rows[0];
 
   if (req.method === 'GET') {
@@ -22,10 +25,13 @@ export default async function handler(req, res) {
       return res.status(403).send('Unauthorized');
     }
 
-    await db.query(`
+    await db.query(
+      `
       DELETE FROM guestbook
-      WHERE id = "${id}";
-    `);
+      WHERE id = ?;
+    `,
+      [id]
+    );
     return res.status(204).json({});
   }
 
@@ -35,11 +41,14 @@ export default async function handler(req, res) {
     }
 
     const body = (req.body.body || '').slice(0, 500);
-    await db.query(`
+    await db.query(
+      `
       UPDATE guestbook
-      SET body = "${body}", updated_at = now()
-      WHERE id = "${id}";
-    `);
+      SET body = ?, updated_at = now()
+      WHERE id = ?;
+    `,
+      [body, id]
+    );
 
     const [rows] = await db.query(`
       SELECT * FROM guestbook WHERE id = last_insert_id();

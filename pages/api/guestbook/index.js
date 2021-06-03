@@ -21,12 +21,15 @@ export default async function handler(req, res) {
     }
 
     const body = (req.body.body || '').slice(0, 500);
-    await db.query(`
+    await db.query(
+      `
       INSERT INTO guestbook (email, body, created_by)
-      VALUES ("${email}", "${body}", "${login}")
+      VALUES (?, ?, ?)
       ON DUPLICATE KEY
       UPDATE updated_at = now();
-    `);
+    `,
+      [email, body, login]
+    );
 
     const [rows] = await db.query(`
       SELECT * FROM guestbook WHERE id = last_insert_id();

@@ -23,15 +23,25 @@ export default function GuestbookPage({ initialEntries }) {
 }
 
 export async function getStaticProps() {
-  // this needs to be able to be serialized
-  // const [rows] = await db.query(`
-  //   SELECT id, body, created_by FROM guestbook
-  //   ORDER BY id;
-  // `);
+  const [rows] = await db.query(`
+    SELECT * FROM guestbook
+    ORDER BY id;
+  `);
+
+  const entries = rows.map(
+    ({ id, email, body, created_by, created_at, updated_at }) => ({
+      id: id,
+      body: String(body),
+      email: String(email),
+      created_at: String(created_at),
+      created_by: String(created_by),
+      updated_at: String(updated_at)
+    })
+  );
 
   return {
     props: {
-      initialEntries: []
+      initialEntries: entries
     },
     revalidate: 60
   };

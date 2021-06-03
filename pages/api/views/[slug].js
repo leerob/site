@@ -3,11 +3,14 @@ import db from '@/lib/planetscale';
 export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
-      const [result] = await db.query(`
-        INSERT INTO views (slug) VALUES("${req.query.slug}")
+      const [result] = await db.query(
+        `
+        INSERT INTO views (slug) VALUES(?)
         ON DUPLICATE KEY
         UPDATE count = last_insert_id(count + 1), updated_at = now();
-      `);
+      `,
+        [req.query.slug]
+      );
 
       const isNewValue = result['insertId'] === 0;
       if (isNewValue) {
@@ -25,10 +28,13 @@ export default async function handler(req, res) {
     }
 
     if (req.method === 'GET') {
-      const [rows] = await db.query(`
+      const [rows] = await db.query(
+        `
         SELECT * FROM views
-        WHERE slug = "${req.query.slug}";
-      `);
+        WHERE slug = ?;
+      `,
+        [req.query.slug]
+      );
 
       return res.status(200).json({ total: rows[0].count });
     }
