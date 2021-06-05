@@ -109,7 +109,7 @@ After authorizing, you'll be redirected back to your `redirect_uri`.
 In the URL, there's a `code` query parameter. Save this value.
 
 ```bash
-http://localhost:3000/callback?code=NApCCg..BkWtQ
+http://localhost:3000/?code=NApCCg..BkWtQ
 ```
 
 Next, we'll need to retrieve the refresh token. You'll need to generate a Base 64 encoded string containing the client ID and secret from earlier. You can use [this tool](https://www.base64encode.org/) to encode it online. The format should be `client_id:client_secret`.
