@@ -43,13 +43,13 @@ export default function About() {
         </h1>
         <div className="mb-8 prose leading-6 text-gray-600 dark:text-gray-400">
           <p>
-            Hey, I’m Lee. I'm a developer, writer, and the creator of&nbsp;
+            Hey, I’m Joao. I'm a frontend developer, part time creator of&nbsp;
             <a
-              href="https://masteringnextjs.com"
+              href="https://www.haynet.vet/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Mastering Next.js
+              Haynet
             </a>
             &nbsp;and&nbsp;
             <a
@@ -57,85 +57,50 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              React 2025.
+              many themeforest themes.
             </a>
-            &nbsp;I work at ▲Vercel as the Head of Developer Relations.
+            &nbsp;I work at jobiqo as a senior frontend developer.
           </p>
           <p>
-            I’ve spoken across the country at conferences and meet-ups about
-            front-end development, design, and recruiting. I write about
-            development, tech careers, and my personal life on&nbsp;
-            <Link href="/newsletter">
-              <a>my newsletter.</a>
-            </Link>
+            I’ve spoken in some local meetups and some onlin conferences like
+            DrupalCon Europe from topics like visual regression testing,
+            components architectures and javascript (React and Angular).
           </p>
           <p>
-            I grew up in small-town Iowa and went to school at Iowa State,
-            graduating with a degree in Computer Engineering. I spend my free
-            time playing music, creating videos, and enjoying time with friends
-            and family in Des Moines, IA.
+            I grew up in in Cascais, close to Lisbon in Portugal. I am
+            passionate about coding and javascript, surfing, computer games and
+            food.
           </p>
         </div>
+
         <h2 className="font-bold text-3xl tracking-tight mb-4 text-black dark:text-white">
           Conference Talks
         </h2>
 
         <Talk
-          title="How Core Web Vitals Will Impact Google Rankings in 2021"
-          link="https://vercel.com/blog/core-web-vitals"
+          title="Visual regression testing"
+          link="https://events.drupal.org/europe2020/sessions/visual-regression-testing"
         >
-          Landing a top spot on Google can have a multi-million dollar impact on
-          your business. Starting in June 2021, the performance of your site
-          (determined by Core Web Vitals) will be critical to your search
-          ranking. Learn how Next.js can help you optimize your site’s
-          performance, user experience, and SEO.
+          In this session I presented what visual regression testing is,
+          including information on how it can be adapted to your use case and
+          how it can be included in your day to day workflow as a developer and
+          as a team. I have shown tools in action and how they can improve the
+          quality of your work in terms of design, accessibility and usability
+          amongst other benefits.
         </Talk>
         <Talk
-          title="Data Fetching with Next.js"
-          link="https://www.youtube.com/watch?v=f1rF9YKm1Ms"
+          title="Angular Universal"
+          link="https://www.meetup.com/Angular-Portugal/events/239795446/"
         >
-          Next.js is a hybrid React framework allowing you to choose your data
-          fetching strategy on a per-page basis. In this talk, you’ll learn more
-          about CSR (Client-Side Rendering), SSR (Server-Side Rendering), SSG
-          (Static-Site Generation), ISR (Incremental Static Regeneration), and
-          when to use each one. I’ll also give a quick introduction to Next.js
-          and share some of the main features of the framework.
+          In this talk I covered what is Universal rendering, what that means
+          for the web today, the benefits / challenges and how that can be
+          accomplished with Angular. With Angular 4.0 what was previously a
+          community-only effort (Angular Universal) was moved to Angular core
+          making the API cleaner, easier to use, and maintaining better
+          compatibility with the rest of the framework. We discussed what the
+          new API looks like and what are the best ways to start using it today.
+          The talk will focus on version 4.x.
         </Talk>
-        <Talk
-          title="Building Static Sites with Prisma and Next.js"
-          link="https://youtu.be/z3rmZbOEBCM?t=273"
-        >
-          During this workshop, you'll learn how to integrate Prisma with
-          Next.js and build a statically-generated site that displays a list of
-          your favorite songs. We'll use Chakra UI for styling and deploy our
-          site with Vercel.
-        </Talk>
-        <Talk
-          title="Building Component Libraries with a Monorepo"
-          link="/building-component-libraries-with-a-monorepo.pdf"
-        >
-          Learn why your organization needs a component library and discover the
-          best practices for building, scaling, and adopting it across all
-          platforms. We'll be using industry-standard technology (React,
-          JavaScript, Storybook) alongside cutting-edge solutions (CSS-in-JS,
-          Monorepo).
-        </Talk>
-        <Talk
-          title="Recruiting Engineers (From An Engineer's Perspective)"
-          link="/recruiting-engineers-talent42-lee-robinson.pdf"
-        >
-          Hiring talent is becoming increasingly difficult with low unemployment
-          rates and the tech industry booming. What you can do to stick out?
-          Learn from an engineer who's been involved on both sides - both as a
-          candidate and with hiring - on what candidates really want out of a
-          position.
-        </Talk>
-        <iframe
-          height="280"
-          src="https://www.google.com/maps/d/embed?mid=1QOGi-u8d4vwoQ4vC4zQjKxrSfsDIQdOK&hl=en"
-          title="Lee's Travel Map"
-          width="100%"
-        />
       </div>
     </Container>
   );
