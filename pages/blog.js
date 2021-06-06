@@ -17,7 +17,7 @@ export default function Blog({ posts }) {
 
   return (
     <Container
-      title="Blog – Lee Robinson"
+      title="Blog – Joao Garin"
       description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
@@ -77,11 +77,11 @@ export default function Blog({ posts }) {
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           All Posts
         </h3>
-        {!filteredBlogPosts.length && 
+        {!filteredBlogPosts.length && (
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             No posts found.
           </p>
-        }
+        )}
         {filteredBlogPosts.map((frontMatter) => (
           <BlogPost key={frontMatter.title} {...frontMatter} />
         ))}

@@ -1,30 +1,11 @@
 import Link from 'next/link';
-import { google } from 'googleapis';
-
-import googleAuth from '@/lib/google/auth';
-import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
-import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
-import VideoCard from '../components/VideoCard';
 
 export async function getStaticProps() {
-  const auth = await googleAuth.getClient();
-  const youtube = google.youtube({
-    auth,
-    version: 'v3'
-  });
-
-  const response = await youtube.videos.list({
-    id: 'nrfuN_Hyd3Y,FytxaSVQROc,u_o09PD_qAs',
-    part: 'snippet,statistics'
-  });
-
   return {
-    props: {
-      videos: response.data.items
-    },
+    props: {},
     revalidate: 60 * 60 // 1 hour
   };
 }
@@ -34,16 +15,12 @@ export default function Home({ videos }) {
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Hey, I’m Lee Robinson
+          Hey, I’m Joao Garin
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
           I'm a developer, writer, and creator. I work as the Head of Developer
           Relations at Vercel. You’ve found my personal slice of the internet
           –&nbsp;
-          <Link href="/guestbook">
-            <a>sign my guestbook</a>
-          </Link>
-          {" while you're here or "}
           <Link href="/about">
             <a>learn more about me.</a>
           </Link>
@@ -81,14 +58,6 @@ export default function Home({ videos }) {
           href="https://masteringnextjs.com/"
           icon="nextjs"
         />
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-12 text-black dark:text-white">
-          Recent Videos
-        </h3>
-        {videos.map((video) => (
-          <VideoCard key={video.id} {...video} />
-        ))}
-        <Timeline />
-        <Subscribe />
       </div>
     </Container>
   );
