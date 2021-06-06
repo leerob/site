@@ -18,15 +18,15 @@ export default function Home({ videos }) {
           Hey, I’m Joao Garin
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
-          I'm a developer, writer, and creator. I work as the Head of Developer
-          Relations at Vercel. You’ve found my personal slice of the internet
-          –&nbsp;
+          I'm a frontend developer, creator and javascript enthusiast. I work as
+          a senior Frontend Developer at jobiqo. You’ve found my personal slice
+          of the internet –&nbsp;
           <Link href="/about">
             <a>learn more about me.</a>
           </Link>
         </h2>
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
-          Most Popular
+          Most Popular articles
         </h3>
         <BlogPost
           title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
@@ -44,19 +44,17 @@ export default function Home({ videos }) {
           slug="monorepo-lerna-yarn-workspaces"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
-          Courses
+          Latest projects
         </h3>
         <ProjectCard
-          title="React 2025"
-          description="Build and deploy a modern Jamstack application using the most popular open-source software."
-          href="https://react2025.com/"
-          icon="react2025"
+          title="Haynet"
+          description="Sass application for ambulatory vets, based on Nextjs, GraphQL and Drupal. Launched in late 2020, currently not completely self service."
+          href="https://www.haynet.vet/"
         />
         <ProjectCard
-          title="Learn Next.js"
-          description="A free video course for building static and server-side rendered applications with Next.js and React."
-          href="https://masteringnextjs.com/"
-          icon="nextjs"
+          title="Themeforest"
+          description="Between 2014 and 2017 I worked on many themes selling on themeforest. From Drupal themes to angular themes and also pure HTML themes."
+          href="https://themeforest.net/user/monkey_themes"
         />
       </div>
     </Container>
