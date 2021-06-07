@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import format from 'comma-number';
 
 import fetcher from '@/lib/fetcher';
 
 export default function ViewCounter({ slug }) {
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
-  const views = data?.total;
+  const views = new Number(data?.total);
 
   useEffect(() => {
     const registerView = () =>
@@ -17,5 +16,5 @@ export default function ViewCounter({ slug }) {
     registerView();
   }, [slug]);
 
-  return `${views ? format(views) : '–––'} views`;
+  return `${views > 0 ? views.toLocaleString() : '–––'} views`;
 }

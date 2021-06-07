@@ -1,4 +1,4 @@
-export default async (_, res) => {
+export default async function handler(_, res) {
   const userResponse = await fetch('https://api.github.com/users/leerob');
   const userReposResponse = await fetch(
     'https://api.github.com/users/leerob/repos?per_page=100'
@@ -21,4 +21,4 @@ export default async (_, res) => {
     followers: user.followers,
     stars
   });
-};
+}

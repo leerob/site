@@ -17,7 +17,7 @@ export async function getStaticProps() {
   });
 
   const response = await youtube.videos.list({
-    id: 'Pd2tVxhFnO4,FytxaSVQROc,u_o09PD_qAs',
+    id: 'nrfuN_Hyd3Y,FytxaSVQROc,u_o09PD_qAs',
     part: 'snippet,statistics'
   });
 
@@ -37,12 +37,16 @@ export default function Home({ videos }) {
           Hey, I’m Lee Robinson
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
-          I’m a developer, writer, and creator. I work at ▲Vercel as a Solutions
-          Architect. You’ve found my personal slice of the internet –&nbsp;
+          I'm a developer, writer, and creator. I work as the Head of Developer
+          Relations at Vercel. You’ve found my personal slice of the internet
+          –&nbsp;
           <Link href="/guestbook">
-            <a>sign my guestbook&nbsp;</a>
+            <a>sign my guestbook</a>
           </Link>
-          while you're here.
+          {" while you're here or "}
+          <Link href="/about">
+            <a>learn more about me.</a>
+          </Link>
         </h2>
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           Most Popular
