@@ -1,7 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
-import { getTweets } from '@/lib/twitter';
 import BlogLayout from '@/layouts/blog';
 import Tweet from '@/components/Tweet';
 import MDXComponents from '@/components/MDXComponents';
@@ -40,7 +39,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
-  const tweets = await getTweets(post.tweetIDs);
+  const tweets = [];
 
   return { props: { ...post, tweets } };
 }
