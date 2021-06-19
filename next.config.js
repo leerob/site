@@ -26,6 +26,7 @@ module.exports = {
     if (isServer) {
       require('./scripts/generate-sitemap');
       require('./scripts/generate-rss');
+      require('./scripts/ensure-env');
     }
 
     // Replace React with Preact only in client production build
