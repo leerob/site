@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "next build",
-    "dev": "next",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start"
   },
   "dependencies": {
