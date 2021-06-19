@@ -9,7 +9,11 @@ import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
 import VideoCard from '../components/VideoCard';
 
-export async function getStaticProps() {
+async function getYoutubeVideos() {
+  if (!googleAuth) {
+    return [];
+  }
+
   const auth = await googleAuth.getClient();
   const youtube = google.youtube({
     auth,
@@ -21,9 +25,13 @@ export async function getStaticProps() {
     part: 'snippet,statistics'
   });
 
+  return response.data.items;
+}
+
+export async function getStaticProps() {
   return {
     props: {
-      videos: response.data.items
+      videos: await getYoutubeVideos()
     },
     revalidate: 60 * 60 // 1 hour
   };
