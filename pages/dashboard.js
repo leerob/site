@@ -4,7 +4,6 @@ import Analytics from '@/components/metrics/Analytics';
 import Buttondown from '@/components/metrics/Buttondown';
 import Container from '@/components/Container';
 import GitHub from '@/components/metrics/Github';
-import Gumroad from '@/components/metrics/Gumroad';
 import Unsplash from '@/components/metrics/Unsplash';
 import YouTube from '@/components/metrics/Youtube';
 import TopTracks from '@/components/TopTracks';
@@ -41,7 +40,6 @@ export default function Dashboard() {
           <GitHub />
         </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-          <Gumroad />
           <Buttondown />
         </div>
         <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
