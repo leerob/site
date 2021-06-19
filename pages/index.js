@@ -1,43 +1,12 @@
 import Link from 'next/link';
-import { google } from 'googleapis';
 
-import googleAuth from '@/lib/google/auth';
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 import Subscribe from '../components/Subscribe';
 import ProjectCard from '../components/ProjectCard';
-import VideoCard from '../components/VideoCard';
 
-async function getYoutubeVideos() {
-  if (!googleAuth) {
-    return [];
-  }
-
-  const auth = await googleAuth.getClient();
-  const youtube = google.youtube({
-    auth,
-    version: 'v3'
-  });
-
-  const response = await youtube.videos.list({
-    id: 'nrfuN_Hyd3Y,FytxaSVQROc,u_o09PD_qAs',
-    part: 'snippet,statistics'
-  });
-
-  return response.data.items;
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      videos: await getYoutubeVideos()
-    },
-    revalidate: 60 * 60 // 1 hour
-  };
-}
-
-export default function Home({ videos }) {
+export default function Home() {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
@@ -92,9 +61,6 @@ export default function Home({ videos }) {
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-12 text-black dark:text-white">
           Recent Videos
         </h3>
-        {videos.map((video) => (
-          <VideoCard key={video.id} {...video} />
-        ))}
         <Timeline />
         <Subscribe />
       </div>
