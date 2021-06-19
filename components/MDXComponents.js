@@ -4,7 +4,6 @@ import Image from 'next/image';
 import ProsCard from '@/components/ProsCard';
 import ConsCard from '@/components/ConsCard';
 import Analytics from '@/components/metrics/Analytics';
-import YouTube from '@/components/metrics/Youtube';
 import Step from '@/components/Step';
 import ImageWithTheme from '@/components/ImageWithTheme';
 
@@ -30,8 +29,7 @@ const MDXComponents = {
   Analytics,
   ConsCard,
   ProsCard,
-  Step,
-  YouTube
+  Step
 };
 
 export default MDXComponents;
