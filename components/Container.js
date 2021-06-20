@@ -80,6 +80,9 @@ export default function Container(props) {
             </svg>
           )}
         </button>
+        <div className="text-red-900"> Warning: This site is in the progress of migrating from Lee Robinson to Nick Crews. See
+          <NextLink href="github.com/NickCrews/blahg"> github.com/NickCrews/blahg</NextLink>
+        </div>
         <div>
           <NextLink href="/dashboard">
             <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">
