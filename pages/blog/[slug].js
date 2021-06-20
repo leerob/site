@@ -2,22 +2,16 @@ import { MDXRemote } from 'next-mdx-remote';
 
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import BlogLayout from '@/layouts/blog';
-import Tweet from '@/components/Tweet';
 import MDXComponents from '@/components/MDXComponents';
 
-export default function Blog({ mdxSource, tweets, frontMatter }) {
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
-  };
+export default function Blog({ mdxSource, frontMatter }) {
 
   return (
     <BlogLayout frontMatter={frontMatter}>
       <MDXRemote
         {...mdxSource}
         components={{
-          ...MDXComponents,
-          StaticTweet
+          ...MDXComponents
         }}
       />
     </BlogLayout>
@@ -39,7 +33,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
-  const tweets = [];
 
-  return { props: { ...post, tweets } };
+  return { props: { ...post } };
 }
