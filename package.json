@@ -1,16 +1,16 @@
 {
-  "name": "leerob.io",
+  "name": "NickCrewsBlahg",
   "description": "My personal website.",
   "version": "0.0.0",
   "author": {
-    "name": "Lee Robinson",
-    "email": "me@leerob.io",
-    "url": "https://leerob.io"
+    "name": "Nick Crews",
+    "email": "nicholas.b.crews@gmail.com",
+    "url": "https://github.com/NickCrews/blahg"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leerob/leerob.io.git"
+    "url": "git+https://github.com/NickCrews/blahg.git"
   },
   "scripts": {
     "build": "next build",
