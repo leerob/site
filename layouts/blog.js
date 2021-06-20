@@ -6,11 +6,7 @@ import Subscribe from '@/components/Subscribe';
 import ViewCounter from '@/components/ViewCounter';
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
-  )}`;
+  `https://github.com/NickCrews/blahg/edit/main/data/blog/${slug}.mdx`;
 
 export default function BlogLayout({ children, frontMatter }) {
   return (
@@ -53,14 +49,6 @@ export default function BlogLayout({ children, frontMatter }) {
           <Subscribe />
         </div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
-          <a
-            href={discussUrl(frontMatter.slug)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Discuss on Twitter'}
-          </a>
-          {` • `}
           <a
             href={editUrl(frontMatter.slug)}
             target="_blank"
