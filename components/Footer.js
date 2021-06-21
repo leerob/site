@@ -28,11 +28,6 @@ export default function Footer() {
               About
             </a>
           </Link>
-          <Link href="/newsletter">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Newsletter
-            </a>
-          </Link>
         </div>
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://github.com/NickCrews">GitHub</ExternalLink>
