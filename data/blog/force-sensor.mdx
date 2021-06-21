@@ -26,17 +26,15 @@ So, in ignorance of commercially available options, I decided to make my own, sa
   src={`/static/images/force-sensor/GUI.png`}
   width={1366}
   height={768}
-  priority
 />
 
 ## Theory and Overview
 
 <Image
-  alt={`Screenshot of a computer program window. There is a plot of force over time, and a sidebar for controlling calibration and settings.`}
+  alt={`The force sensor with 6 parts labeled`}
   src={`/static/images/force-sensor/labeled-parts.jpg`}
   width={1100}
   height={718}
-  priority
 />
 
 Force is applied to the eyebolts (1), which strains (stretches) the strain gauge (2) glued to the base of the "U." The electrical resistance of the strain gauge changes, and the Wheatstone bridge circuit (3) converts this change in resistance into a change in voltage. An Arduino microcontroller (4) (tiny computer) reads this change in voltage using an HX711 amplifier and analog-to-digital converter (5). The Arduino finally streams the readings to a laptop for storage and processing using a Bluetooth antenna (6).
@@ -66,7 +64,6 @@ Quickly, some terms:
   src={`/static/images/force-sensor/stress-strain.jpg`}
   width={620}
   height={405}
-  priority
 />
 
 On the left side of the figure, at small amounts of strain, the rubber band has a linear stress-strain curve relationship: doubling the stretch results in double the restoring force. If you stretch too far, past the yield strength of the material, then the material might not rebound all the way back to the original shape. If you go past the ultimate strength, then the stress peters off, and it gets easier the farther you go.
@@ -88,7 +85,6 @@ We measure the strain by using something called a strain gauge. A strain gauge i
   src={`/static/images/force-sensor/strain-gauge-theory.jpg`}
   width={540}
   height={225}
-  priority
 />
 
 Electrical conductors behave a lot like water hoses in terms of their resistance. It's a lot easier to push water through a short garden how than it is to push water through a really long straw. Similarly, it's a lot easier to push electrons through a short, fat chunk of metal than it is through a long, skinny wire. Thus, as the aluminum stretches, the strain gauge does too, and the length of the wires change, which changes the electrical resistance of the wire. Because the wires are etched asymmetrically on the pad, the gauge is only sensitive to strains along one direction.
@@ -106,7 +102,6 @@ We use a circuit called a Wheatstone Bridge to convert the resistance change to 
   src={`/static/images/force-sensor/wheatstone-bridge-circuit.png`}
   width={1031}
   height={614}
-  priority
 />
 
 Don't panic if you don't know anything about electronics, it's not too complicated! The lines are wires, the squiggly things, R1, R2, and R3 are resistors whose electrical resistances are constant, the pancake thing on the left is a battery which supplies a voltage, RG is the strain gauge whose resistance changes, and VMeas is the voltage difference between the - and +, where we read our output.
@@ -134,7 +129,6 @@ Once the Arduino has read the scale, the Arduino can send that data to the compu
   src={`/static/images/force-sensor/hardware-overview.jpg`}
   width={1000}
   height={668}
-  priority
 />
 
 The hardware of the sensor consists of a “U” shaped block of aluminum, with two eyebolts attached to either side of the U. You clip onto these two eyebolts and use them to pull or push on either side of the U. As you do this, the inner part of the elbow of the U gets either squished or stretched, depending on which way you are applying the force. Glued onto the inner surface of the elbow is a tiny sensor called a strain gauge. It is a wafer thin foil tab about the size of a pinky nail, with electrically conductive wires drawn onto it. As the aluminum stretches, the strain gauge stretches too, which changes the electrical resistance of the wires etched onto its surface. Using a circuit, we can measure this change in electrical resistance to determine how much the aluminum U was getting stretched, and thus how much force was applied.
@@ -144,7 +138,6 @@ The hardware of the sensor consists of a “U” shaped block of aluminum, with 
   src={`/static/images/force-sensor/cutting-block-with-bandsaw.jpg`}
   width={1280}
   height={960}
-  priority
 />
 
 ### How Big Should it be?
@@ -162,7 +155,6 @@ I also decided to make a second U with an even thicker elbow, in case the first 
   src={`/static/images/force-sensor/drilling-block.jpg`}
   width={1280}
   height={960}
-  priority
 />
 
 ### Shaping the Block
@@ -177,7 +169,6 @@ Next, I took this “donut” and used the bandsaw to cut out a slice of the don
   src={`/static/images/force-sensor/blocks-with-eyebolts.jpg`}
   width={1280}
   height={960}
-  priority
 />
 
 ### Attaching the Strain Gauge
@@ -195,7 +186,6 @@ I soldered some beefy cable to the leads of the strain gauges and then zip-tied 
   src={`/static/images/force-sensor/gluing-strain-gauge.jpg`}
   width={1280}
   height={960}
-  priority
 />
 
 ## Circuitry
@@ -216,10 +206,7 @@ I made the Arduino and Bluetooth module easily removable from the rest of the ci
   src={`/static/images/force-sensor/circuitry.jpg`}
   width={1000}
   height={668}
-  priority
 />
-
-![](force_sensor/circuitry.jpg)
 
 Above is a picture of all the circuitry. The red rectangle is the HX711 Load Cell Amplifier Breakout Board from Sparkfun. The two smaller green cylinders are two of the resistors of the Wheatstone bridge. The other two resistors are the actual strain gauges on the force sensor, hooked up remotely. The dangly thing off right is the bluetooth antenna. The blue board underneath the brown board is the Arduino.
 
@@ -256,7 +243,6 @@ All of the code can be found on a [GitHub](http://github.com/NickCrews/boa), as 
   src={`/static/images/force-sensor/GUI.png`}
   width={1280}
   height={960}
-  priority
 />
 
 ### Arduino Code
@@ -302,7 +288,6 @@ A large fall using an 85 kg dummy weight on a dynamic (stretchy) climbing rope.
   src={`/static/images/force-sensor/big-fall-plot.png`}
   width={1067}
   height={515}
-  priority
 />
 
 The sensor mostly managed to capture the signal of the fall, though perhaps the sample rate wasn't high enough, and it missed the peak force. It looks like the peak force was 6.5kN.
@@ -313,7 +298,12 @@ A smaller fall, still on a dynamic rope, with me as the weight (80 kg).
 
 <!-- <iframe src="https://drive.google.com/file/d/0B3llCHJfA43FQXVwc3pDTkhmbjA/preview" width="640" height="480"></iframe> -->
 
-![](force_sensor/me_small_fall_plot.png)
+<Image
+  alt={`Plot of a Force vs time for a small fall`}
+  src={`/static/images/force-sensor/me-small-fall-plot.png`}
+  width={1067}
+  height={515}
+/>
 
 It looks like the peak force was nearly 6kN, almost the same as the huge fall above! Tiny falls can rip out your pieces of protection just as much as huge falls! This is why we care about the fall factor, and not the actual fall distance.
 
@@ -325,6 +315,11 @@ Using the 85kg dummy weight I was able to break a static (non-stretchy) dyneema 
 
 <!-- <iframe src="https://drive.google.com/file/d/0B3llCHJfA43FSHhmeTZTN0VSWHc/preview" width="640" height="480"></iframe> -->
 
-![](force_sensor/dyneema_break_plot.png)
+<Image
+  alt={`Plot of a Force vs time for a small fall`}
+  src={`/static/images/force-sensor/dyneema-break-plot.png`}
+  width={1067}
+  height={515}
+/>
 
 The sensor sample rate definitely isn't high enough, it definitely missed the peak force. The sling definitely broke at more than the 3kN that the sensor reported.
