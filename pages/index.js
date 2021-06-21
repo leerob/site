@@ -26,19 +26,9 @@ export default function Home() {
           Featured Stories
         </h3>
         <BlogPost
-          title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-          summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
-          slug="style-guides-component-libraries-design-systems"
-        />
-        <BlogPost
-          title="How Stripe Designs Beautiful Websites"
-          summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
-          slug="how-stripe-designs-beautiful-websites"
-        />
-        <BlogPost
-          title="Creating a Monorepo with Lerna & Yarn Workspaces"
-          summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
-          slug="monorepo-lerna-yarn-workspaces"
+          title="Homemade Force Sensor"
+          summary="Learn about the high-strength, wireless force sensor I fabricated and programmed."
+          slug="force-sensor"
         />
         <Timeline />
       </div>
