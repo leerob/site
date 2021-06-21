@@ -54,11 +54,17 @@ export default function Subscribe() {
         Get emails from me about web development, tech, and early access to new
         articles.
       </p>
-      <form className="relative my-4" onSubmit={subscribe}>
+      <form
+        action="/api/subscribe"
+        method="post"
+        className="relative my-4"
+        onSubmit={subscribe}
+      >
         <input
           ref={inputEl}
           aria-label="Email for newsletter"
           placeholder="tim@apple.com"
+          name="email"
           type="email"
           autoComplete="email"
           required

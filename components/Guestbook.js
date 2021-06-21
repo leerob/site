@@ -92,9 +92,15 @@ export default function Guestbook({ initialEntries }) {
           Share a message for a future visitor of my site.
         </p>
         {user?.name ? (
-          <form className="relative my-4" onSubmit={leaveEntry}>
+          <form
+            action="/api/guestbook"
+            method="post"
+            className="relative my-4"
+            onSubmit={leaveEntry}
+          >
             <input
               ref={inputEl}
+              name="body"
               aria-label="Your message"
               placeholder="Your message..."
               required
