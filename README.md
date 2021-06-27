@@ -1,10 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fleerob.io)
-
-# leerob.io
-
-My portfolio has transformed over the years - from a static HTML site, to Jekyll, to Hugo, and finally to Next.js/React/MDX. My personal slice of the internet provides a platform for my writing and to showcase my latest work.
-
-If you want to understand this repo better, I did a [one-hour live stream](https://www.youtube.com/watch?v=xXQsF0q8KUg) walking through the codebase.
+# joaogarin.com
 
 ## Overview
 
