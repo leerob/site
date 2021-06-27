@@ -52,13 +52,13 @@ core: 8.x
 package: Custom
 dependencies:
   - graphql
-{% endhighlight %}
+```
 
 Lets now create our mutation plugin. Create the folder "Plugin" and inside a "GraphQL" folder to contain our mutation plugins.
 
 Because GraphQL is a typed language we need to provide information about our Client and what kind of data our plugins will be receiving. We will create a folder "InputTypes" and inside place a file called ClientInput.php :
 
-{% highlight php %}
+```php
 <?php
 
 namespace Drupal\graphql_custom_mutations\Plugin\GraphQL\InputTypes;
@@ -80,13 +80,13 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
 class ClientInput extends InputTypePluginBase {
 
 }
-{% endhighlight %}
+```
 
 This file will be used by our Create Client mutation (will will get to it soon) and it will tell which data and type to expect. In our case the client has an id, a name and two fields which are the email and telephone fields we mentioned above. Both are of type ```String```.
 
 Next we will do our mutations, let's make a folder inside our "Plugin/GraphQL" folder called "Mutations". Inside lets first place our Create Client mutation to handle creating a new client. Let's make a file called "AddClient.php" :
 
-{% highlight php %}
+```php
 <?php
 
 namespace Drupal\graphql_custom_mutations\Plugin\GraphQL\Mutations;
@@ -124,7 +124,7 @@ class AddClient extends CreateEntityBase {
     ];
   }
 }
-{% endhighlight %}
+```
 
 As we can see it uses our Input created above to know what kind of data the fields are, it also contains some information about itself like a name (mutation name), id, what kind of entity we are performing mutation on (node) and what bundle (Client).
 
@@ -132,7 +132,7 @@ we then create a function "extractEntityInput" that will simply return the data 
 
 lets now do another mutation for deleting a Client. This one is fairly simple as all we actually need is the id of the client to be delete. Add the file "DeleteClient.php" in the same folder as the CreateClient.php file :
 
-{% highlight php %}
+```php
 <?php
 
 namespace Drupal\graphql_custom_mutations\Plugin\GraphQL\Mutations;
@@ -160,7 +160,7 @@ use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\DeleteEntityBase;
 class DeleteClient extends DeleteEntityBase {
 
 }
-{% endhighlight %}
+```
 
 Thats it!! we have a module that has a simple create and delete mutation, and we can move to Apollo in our Angular app to run this mutation.
 
@@ -170,19 +170,19 @@ To handle adding a new client in our Angular app I will be creating a separate m
 
 {% highlight bash %}
 ng generate component components/add-client
-{% endhighlight %}
+```
 
 Lets now add this component to our root component (app.component.ts) so that it shows up in our app :
 
-{% highlight html %}
+```html
 ...
 <app-add-client></app-add-client>
 ...
-{% endhighlight %}
+```
 
 Inside our add-client.component.ts file we can now add the appropriate methods to perform the mutation we created in our backend :
 
-{% highlight javascript %}
+```javascript
 import { Component, OnInit } from '@angular/core';
 
 import { Apollo } from 'apollo-angular';
@@ -225,7 +225,7 @@ export class AddClientComponent implements OnInit {
   }
 }
 
-{% endhighlight %}
+```
 
 Lets see what we did here. We first created our graphql mutation, again wrapping it in a graphql-tag similar to how we did with queries. In our Drupal module our mutation had the name "addClient" so that's what we call here, but we have something here that's a bit different ```mutation submitClient($title: String!, $email: String!)```.
 
@@ -237,7 +237,7 @@ That's it, if authenticated with a user that has permissions to add Clients (see
 
 Another great thing about GraphQL is being able to provide information on what exactly you wish to receive when doing mutations. If you look at the example above :
 
-{% highlight javascript %}
+```javascript
 mutation submitClient($title: String!, $email: String!) {
   addClient(input:{title:$title, email:$email}){
     entity{
@@ -249,7 +249,7 @@ mutation submitClient($title: String!, $email: String!) {
     }
   }
 }
-{% endhighlight %}
+```
 
 We provide what we want to receive from the backend when the operation is finished, in this case we want to get the id of the newly created Client, their title and the email that was inserted. We could easily provide more fields or less fields making it super simple to make a controlled and logical flow while building the frontend.
 
@@ -259,7 +259,7 @@ Lets see how we can do a delete using the mutation we created in our custom modu
 
 For this we will create a button next to each of our app's component where we list clients so that we can call a mutation to delete each row. First in our app.component.ts lets add the delete mutation and its method :
 
-{% highlight javascript %}
+```javascript
 ...
 export class AppComponent {
   ...
@@ -285,13 +285,13 @@ export class AppComponent {
   }
 ...
 }
-{% endhighlight %}
+```
 
 As you can see its pretty much like the mutation for adding a client, except we provide only the id here. The Id must be a number(integer) or you will receive an error from GraphQL.
 
 in the template for each client we are listing we then add a button to call the mutation:
 
-{% highlight html %}
+```html
 <ul>
   <li *ngFor="let client of clients | async">
     <div>
@@ -308,7 +308,7 @@ in the template for each client we are listing we then add a button to call the 
     </div>
   </li>
 </ul>
-{% endhighlight %}
+```
 
 Now for each client we can remove it by clicking the button "delete me" which will call the mutation with the right id.
 

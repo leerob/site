@@ -40,7 +40,7 @@ So we have an app, it has 2 modules let’s assume. It has a main **AppModule** 
 This is the definition of our main app NgModule()
 
 
-{% highlight javascript %}
+```javascript
 ...
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,7 +67,7 @@ export const routes: Routes = [
 })
 export class AppModule { }
 ...
-{% endhighlight %}
+```
 
 
 It imports the BrowserModule and the SharedModule (ignore for now the forRoot() call on the sharedModule we will go over this in the end of the article), it also declares some components and bootstraps on the AppComponent. But let’s focus on the declaration of the routes for a moment.
@@ -76,7 +76,7 @@ It imports the BrowserModule and the SharedModule (ignore for now the forRoot() 
 This main NgModule() defines some routes, and a specific route (the one we want to lazy load) we use the following route definition :
 
 
-{% highlight javascript %}
+```javascript
 ...
 {
     path: 'projects', loadChildren: () => System.import('./components/container/projects').then((comp: any) => {
@@ -85,7 +85,7 @@ This main NgModule() defines some routes, and a specific route (the one we want 
     ,
   },
 ...
-{% endhighlight %}
+```
 
 
 By using **loadChildren** we are telling Angular that we want to lazy load a module into this route (/projects) and that module will define the *children* of this route, meaning anything after “/projects” will be defined by the module inside the path **'./components/container/projects'**.
@@ -103,7 +103,7 @@ Now that we have things ready in our main AppModule it’s time to define our la
 This is how the definition for this module looks like :
 
 
-{% highlight javascript %}
+```javascript
 ...
 export const routes: Routes = [
     { path: '', component: NewProjectComponent, pathMatch: 'full' },
@@ -129,7 +129,7 @@ export default class ProjectModule {
     static routes = routes;
 }
 ...
-{% endhighlight %}
+```
 
 
 Similarly to the main module the **ProjectsModule** imports the Modules it needs (the **CommonModule** and the **SharedModule**) and declares some components, in this case three components.
@@ -150,9 +150,9 @@ So the actual URL for these routes are :
 Notice one important thing we mentioned earlier, due to how System.import() works we need to export the Module using default exports for the modules we want to lazy load, in this last snippet we see :
 
 
-{% highlight javascript %}
+```javascript
 export default class ProjectModule
-{% endhighlight %}
+```
 
 
 If you don’t export it using default export webpack will not be able to understand and load your module at runtime using System import.
@@ -224,7 +224,7 @@ The first thing we need to do is to register the providers in the forRoot() meth
 This looks like the following :
 
 
-{% highlight javascript %}
+```javascript
 ...
 @NgModule({
     imports: [
@@ -248,7 +248,7 @@ export class SharedModule {
     }
 }
 ...
-{% endhighlight %}
+```
 
 
 Here is a sample **SharedModule** that imports CommonModule and declares and exports a generic ButtonComponent. It registers the *APIService* service inside the forRoot() method and lets look at how each Module includes this **SharedModule** so that a duplicate instance of APIService is not created.
@@ -260,7 +260,7 @@ Here is a sample **SharedModule** that imports CommonModule and declares and exp
 In our main module where we want this service to be available and where we want the instanace of **APIService** to be created as a singleton (application-wide service) we use the forRoot() when including **SharedModule**. We saw this before when we defined our **AppModule**.
 
 
-{% highlight javascript %}
+```javascript
 ...
 @NgModule({
     imports: [
@@ -275,7 +275,7 @@ In our main module where we want this service to be available and where we want 
 })
 export class AppModule { }
 ...
-{% endhighlight %}
+```
 
 
 This makes sure that this service is included in the instance of the **SharedModule** we are creating. This is like saying **“give me everything in the **SharedModule** including whatever is defined inside the forRoot() method”**
@@ -290,7 +290,7 @@ In our lazy loaded module nothing changes, we just include the **SharedModule** 
 This looks just like previously when we included the **SharedModule** in our **ProjectsModule**
 
 
-{% highlight javascript %}
+```javascript
 ...
 @NgModule({
     imports: [
@@ -309,7 +309,7 @@ export default class ProjectModule {
     static routes = routes;
 }
 ...
-{% endhighlight %}
+```
 
 
 Here the **SharedModule** will be included but whatever is registered inside forRoot() will not be included.

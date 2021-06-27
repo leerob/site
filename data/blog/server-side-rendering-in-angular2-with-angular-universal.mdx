@@ -84,7 +84,7 @@ Like mentioned previously it is really simple to port a client side only app to 
 
 ### It always starts with an index.html
 
-{% highlight html %}
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -102,7 +102,7 @@ Like mentioned previously it is really simple to port a client side only app to 
   <script src="/dist/client/bundle.js"></script>
 </body>
 </html>
-{% endhighlight %}
+```
 
 This client bundle is really just a compilation of our client bootstrap that I will show bellow in the client.ts file and the app component which for this is really not important. It can be any app, for now just think of it as your own Angular2 app.
 
@@ -110,7 +110,7 @@ This client bundle is really just a compilation of our client bootstrap that I w
 
  First important thing is that the Universal project provides its own *bootstrap* and *bindings* so you will need to include them in your *server.ts* file.
 
-{% highlight javascript %}
+```javascript
 import 'angular2-universal/polyfills';
 import {
   provide,
@@ -123,22 +123,22 @@ import {
   NODE_HTTP_PROVIDERS,
   ExpressEngineConfig
 } from 'angular2-universal';
-{% endhighlight %}
+```
 
 You can then start a server engine such as express to deliver your app server side. This looks just like any normal *express app*
 
-{% highlight javascript %}
+```javascript
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 // Express View
 app.engine('.html', expressEngine);
 app.set('views', __dirname);
 app.set('view engine', 'html');
-{% endhighlight %}
+```
 
 In the third step you then provide the express app with a configuration for the universal app including directives, providers such as HTTP or other providers your app might require.
 
-{% highlight javascript %}
+```javascript
 function ngApp(req, res) {
   let baseUrl = '/';
   let url = req.originalUrl || '/';
@@ -158,32 +158,32 @@ function ngApp(req, res) {
   };
   res.render('index', config);
 }
-{% endhighlight %}
+```
 
 We also tell express to render our app from the index.html above
 
-{% highlight javascript %}
+```javascript
 // Serve static files
 app.use(express.static(ROOT, {index: false}));
-{% endhighlight %}
+```
 
 You can also pass in routes to the app by doing the following
 
-{% highlight javascript %}
+```javascript
 // Routes
 app.use('/', ngApp);
 app.use('/about', ngApp);
 app.use('/home', ngApp);
-{% endhighlight %}
+```
 
 Finally you make your app listen on a specific *port*. This will launch your express app and put it live under this port.
 
-{% highlight javascript %}
+```javascript
 // Server
 app.listen(3000, () => {
   console.log('Listen on http://localhost:3000');
 });
-{% endhighlight %}
+```
 
 This might be a good time and look at the starter full [server.ts file](https://github.com/angular/universal-starter/blob/master/src/server.ts)
 
@@ -194,7 +194,7 @@ On our *client.ts* file the code looks maybe more familiar to a normal Angular2 
 
 This is actually the whole *client.ts* file :
 
-{% highlight javascript %}
+```javascript
 import 'angular2-universal/polyfills';
 import {bootstrap, enableProdMode, BROWSER_ROUTER_PROVIDERS, BROWSER_HTTP_PROVIDERS} from 'angular2-universal';
 import {App} from './app/app.component';
@@ -203,7 +203,7 @@ bootstrap(App, [
   ...BROWSER_ROUTER_PROVIDERS,
   ...BROWSER_HTTP_PROVIDERS
 ]);
-{% endhighlight %}
+```
 
 
 ## The app
@@ -218,11 +218,11 @@ There are especially two key aspects of a server side app to take in mind.
 
 This looks something like this
 
-{% highlight javascript %}
+```javascript
 constructor(element: ElementRef, renderer: Renderer) {
   renderer.setElementStyle(element.nativeElement, 'font-size', 'x-large');
 }
-{% endhighlight %}
+```
 
 ### Know the difference of attributes and properties and how they relate to the DOM
 

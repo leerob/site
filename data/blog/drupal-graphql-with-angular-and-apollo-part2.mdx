@@ -31,11 +31,11 @@ The first step is to install Apollo Angular. Following the [Instructions on the 
 
 {% highlight bash %}
 npm install apollo-angular apollo-angular-link-http apollo-client apollo-cache-inmemory graphql-tag graphql --save
-{% endhighlight %}
+```
 
 Next we import the ApolloModule into our app's root module (app.module.ts) and configure the Apollo Client. The Client is what we will be using to call queries, mutations and so on to our graphql backend. Because we will be setting up our client to use authentication we need to configure Apollo Client with a specific link (Apollo Link) that will append the token we receive from Drupal (see previous authentication blog post) to all of the requests being made. You can find more information about Authentication in the [official documentation for Apollo Angular](https://www.apollographql.com/docs/angular/recipes/authentication.html)
 
-{% highlight javascript %}
+```javascript
 import { Apollo, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { setContext } from 'apollo-link-context';
@@ -79,7 +79,7 @@ export class AppModule {
     });
   }
 }
-{% endhighlight %}
+```
 
 There are a couple of things going on here, let's break this down into pieces :
 
@@ -89,7 +89,7 @@ We configure our http link by providing our backend api URL (contenta graphql en
 
 In our previous blog post we had a little snippet to kickstart our authentication, we need to adapt this to save our token in localStorage so that it is available for us here. In our app.component.ts change the method "configureWithNewConfigApi" to :
 
-{% highlight javascript %}
+```javascript
 private configureWithNewConfigApi() {
   this.oauthService.configure(authConfig);
   this.oauthService.setStorage(sessionStorage);
@@ -99,11 +99,11 @@ private configureWithNewConfigApi() {
     this.authenticated = this.oauthService.hasValidAccessToken();
   });
 }
-{% endhighlight %}
+```
 
 We also need to make sure to dispose it when we logout, so adapt the logout() method with :
 
-{% highlight javascript %}
+```javascript
 public logoff() {
   this.oauthService.logOut();
   localStorage.removeItem('token');
@@ -111,7 +111,7 @@ public logoff() {
   // reset the store after that
   this.apollo.getClient().resetStore();
 }
-{% endhighlight %}
+```
 
 ok! At this point Apollo is fully configured, we can start making queries. Also notice that by doing it this way we need to make sure that the roles that we are using (see previous blog post about Authentication) have the needed access rights to read / write or whatever you need to do to the correct entities.
 
@@ -132,18 +132,18 @@ Before I do any frontend work (like mentioned above) I tested my query in Graphi
 
 Now that the query works in GraphiQl the first step we can do to start working with clients in the frontend is creating a model for Clients. Inside src/app/ create a folder "models" with a file called client.model.ts :
 
-{% highlight javascript %}
+```javascript
 export interface Client {
     entityId: number,
     entityLabel: string;
     email: string;
     telephone: string;
 }
-{% endhighlight %}
+```
 
 Now in the app.component.ts (our root component for simplicity sake) let's do a simple query to fetch clients. Our query will return an observable of our response (a list of clients) we can then pipe this in our template using the `async` pipe.
 
-{% highlight javascript %}
+```javascript
 ...
 
 import { Observable } from 'rxjs/observable';
@@ -195,22 +195,22 @@ export class AppComponent {
   ...
 }
 
-{% endhighlight %}
+```
 
 In our template we append a little button to run the Query :
 
-{% highlight html %}
+```html
 ...
 <button (click)="runQuery()">query</button>
 ...
 }
-{% endhighlight %}
+```
 
 We query our data using Apollo Client and wrapping our graphql in graphql-tag. The query is exactly the same we used in the GraphiQL playground. We map the response and get the entities out of the data received and assign it to our observable of type `clients: Observable<Client[]>;`.
 
 In our template we then can easily list these out :
 
-{% highlight html %}
+```html
 ...
 <ul>
   <li *ngFor="let client of clients | async">
@@ -227,13 +227,13 @@ In our template we then can easily list these out :
 </ul>
 ...
 }
-{% endhighlight %}
+```
 
 ## All together now
 
 The full app.module.ts with authentication and apollo client and link configured looks like this :
 
-{% highlight javascript %}
+```javascript
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -285,11 +285,11 @@ export class AppModule {
     });
   }
 }
-{% endhighlight %}
+```
 
 Our root app.component.ts where we have our query for clients :
 
-{% highlight javascript %}
+```javascript
 import { Client } from './models/Client';
 import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -361,11 +361,11 @@ export class AppComponent {
     this.apollo.getClient().resetStore();
   }
 }
-{% endhighlight %}
+```
 
 and our template for this component where we render the full list of clients we get from graphql :
 
-{% highlight html %}
+```html
 <h1>
   Hello Contenta Graphql
 </h1>
@@ -406,7 +406,7 @@ and our template for this component where we render the full list of clients we 
     </div>
   </li>
 </ul>
-{% endhighlight %}
+```
 
 That's it! That's all there is too queries with graphql and contenta using simple auth as the authentication mechanism. You can find all the things you can do with queries including creating fragments for shared parts of queries across multiple places of you app and other more advanced query features in the [Official documentation site](https://www.apollographql.com/docs/angular/).
 

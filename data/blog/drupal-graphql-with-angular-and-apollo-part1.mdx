@@ -42,7 +42,7 @@ The first thing we need to do is to have an installation of [Contenta](http://ww
 php -r "readfile('https://raw.githubusercontent.com/contentacms/contenta_jsonapi/8.x-1.x/installer.sh');" > contentacms.sh
 chmod a+x contentacms.sh
 ./contentacms.sh
-{% endhighlight %}
+```
 
 One you have installed Contenta, the Drupal graphql module will already be available for you to start using. It is an experimental module in Contenta so take your cautions while using it although it works pretty well and it's already used in production by several companies.
 
@@ -62,9 +62,9 @@ Lets go deeper and start setting up a frontend and configure things for authenti
 
 The first thing we need to do in order to get started with our frontend is to create our angular app. Using the [Angular CLI](https://github.com/angular/angular-cli) this is essentially just running :
 
-{% highlight javascript %}
+```javascript
 ng new PROJECT-NAME
-{% endhighlight %}
+```
 
 And we have our angular app. The next step is to setup authentication using drupal [simple auth module](https://www.drupal.org/project/simple_oauth) and [OAuth 2 and OpenId Connect (OIDC)](https://github.com/manfredsteyer/angular-oauth2-oidc).
 
@@ -91,7 +91,7 @@ For connecting Angular to our Drupal backend we will be using [OAuth 2 and OpenI
 
 The first thing to be done is import the NgModule provided by the package in our application. In your app.module.ts file (in src/app) add the NgModule :
 
-{% highlight javascript %}
+```javascript
 import { OAuthModule } from 'angular-oauth2-oidc';
 [...]
 
@@ -112,11 +112,11 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 })
 export class AppModule {
 }
-{% endhighlight %}
+```
 
 Next we will follow the [instructions](https://github.com/manfredsteyer/angular-oauth2-oidc#configuring-for-implicit-flow) to configure the module for implicit flow by providing a auth.config.ts file that the package will use. this file can be located in the src/app/ folder.
 
-{% highlight javascript %}
+```javascript
 import { environment } from './../environments/environment';
 import { AuthConfig } from 'angular-oauth2-oidc';
 
@@ -138,7 +138,7 @@ export const authConfig: AuthConfig = {
   strictDiscoveryDocumentValidation: false,
   showDebugInformation: true,
 }
-{% endhighlight %}
+```
 
 A couple of things to note here :
 
@@ -152,7 +152,7 @@ The configuration has a couple of extra options you can use so make sure to refe
 
 Now we need to connect the config with the app in our app's root component (app.component.ts) :
 
-{% highlight javascript %}
+```javascript
 import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { JwksValidationHandler } from 'angular-oauth2-oidc';
@@ -188,11 +188,11 @@ export class AppComponent {
     this.authenticated = false;
   }
 }
-{% endhighlight %}
+```
 
 Now we just need our template to call the login and logout methods :
 
-{% highlight html %}
+```html
 <h1>
   Hello Contenta Graphql
 </h1>
@@ -213,18 +213,18 @@ Now we just need our template to call the login and logout methods :
     </button>
   </div>
 </ng-template>
-{% endhighlight %}
+```
 
 That's it!! At this point authentication is working. You should be able to run the app by running :
 
 {% highlight bash %}
 npm start
-{% endhighlight %}
+```
 
 and click the button "login" in order to get redirected to Contenta, provide your authentication credentials and get redirected back to the app. The token provided by simple auth is then registered in the oauth package we used and you can access it inside your app by doing :
 
-{% highlight javascript %}
+```javascript
 this.oauthService.getAccessToken()
-{% endhighlight %}
+```
 
 In the [next post](/posts/drupal-graphql-with-angular-and-apollo-part2) we  will see how you can connect Apollo and GraphQL to our authentication in order to provide authorization / controlled access for Queries and Mutations.

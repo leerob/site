@@ -40,7 +40,7 @@ So let’s start by the first step, creating a simple component to inject the dy
 This part is the simple part. You just create a component just like any other component, with only one particular thing. It will have sort of a placeholder to inject the component in. There are different ways to accomplish this injecting part using @ViewChild or using ReflectiveInjector, for this case we will use the ReflectiveInjector service.
 
 
-{% highlight javascript %}
+```javascript
 /*
  * Angular 2 decorators and services
  */
@@ -81,7 +81,7 @@ export class DynamicOutlet implements OnInit, OnChanges {
     });
   }
 }
-{% endhighlight %}
+```
 
 Step 2 here is hardcoded, but you could here use your service call via http or something that would make these things dynamic like the styles or the name of the component to be rendered. Essencially provide these as an object (simillar to how its used when using the @component decorator).
 
@@ -89,7 +89,7 @@ Step 2 here is hardcoded, but you could here use your service call via http or s
 
 In this step we will create the service used previously to generate the component factory by at runtime registering a new module and attaching the newly created component to that module.
 
-{% highlight javascript %}
+```javascript
 import { Injectable, Component, Input, ComponentFactory, ComponentFactoryResolver, NgModule } from '@angular/core';
 import { } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -137,7 +137,7 @@ export class ComponentGenerator {
         });
     }
 }
-{% endhighlight %}
+```
 
 Let’s analyze what was done in this service for a moment so we can better understand the concept behind it.
 
@@ -157,7 +157,7 @@ Finally we compile it and return the factory. The trick here is because a module
 
 On step one after we get the component factory from our service’s **createComponentFactory** method we have to inject it into our view. Lets take a look at that.
 
-{% highlight javascript %}
+```javascript
  // get the ComponentFactory from our service so we can inject it into the view
     this.componentGenerator.createComponentFactory(componentDecorator, (factory) => {
       if (factory) {
@@ -169,7 +169,7 @@ On step one after we get the component factory from our service’s **createComp
         this.cmpRef.instance['name'] = 'Some dynamic name';
       }
     });
-{% endhighlight %}
+```
 
 As we can see here we use the ReflectiveInjector to inject our component into the view and this is pretty straightforward. We can then also inject dynamically inputs and other things into this component by accessing the component reference instance.
 

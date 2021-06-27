@@ -22,13 +22,13 @@ The steps are really easy and enables you to have rich sharing links in you app 
 
 Facebook and all the major social media platforms expect your page to have some specific metatags to better display Images, description and other information about the link you are sharing. The most common from facebook is the OpenGraph protocol. it looks something like this :
 
-{% highlight html %}
+```html
  <head>
     <meta property="og:title" content="Your own page title" />
     <meta property="og:description" content="A description of the page you are sharing." />
     <meta property="og:image" content="http://www.mysite.com/dist/images/nice_picture.jpg" />
  </head>
-{% endhighlight %}
+```
 
 Twitter uses something simillar but with "twitter:" prefix instead of "og:". Once you submit a page to be shared the crawler from facebook or twitter is going to start scan your page to find these tags, and also scan the regular HTML to find some images or tags that it can use to better display the link.
 
@@ -39,7 +39,7 @@ The problem with angular is that the page is rendered in Javascript and so there
 {% highlight bash %}
  metadata.title
  metadata.description
-{% endhighlight %}
+```
 
 Because the crawler does not understand javascript and is expecting a immediate response of static content from the server, which he does not get he essencially cant resolve anything.
 
@@ -64,7 +64,7 @@ In this example I have my own blog in which URL's for specific pages match the o
     RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
     RewriteRule ^blog/(.*)$ http://joaogarin.com/blog_backoffice/$1 [P]
 </ifModule>
-{% endhighlight %}
+```
 
 One you have this it will check the user agent for the correspondent crwalers, in this case Facebook, twitter, pinterest and google plus and it will redirect to the blog_backoffice directory where drupal is. You could essencially use anything here as long as you can map between them somehow. In my case its very easy since the URL's follow the same pattern.
 

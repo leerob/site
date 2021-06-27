@@ -42,7 +42,7 @@ We should have 3 main folders that represent 3 high level modules, Root ,Compone
 
 The Root module starts with a Root component that defines the base element for the whole app. It can also and most probably will, define a router outlet.
 
-{% highlight javascript %}
+```javascript
 // app.component.js
 const AppComponent = {
   template: `
@@ -58,13 +58,13 @@ const AppComponent = {
   `
 };
 export default AppComponent;
-{% endhighlight %}
+```
 
 Notice how the component definition object is exported using ES6 export as default to be then imported into our module js file.
 
 Now we register our app with all the “Common” and “Component” type components (which include their own modules) and registered using .component(app, AppComponent) with our imported Component definition from the file app.component.js we showed right before this.
 
-{% highlight javascript %}
+```javascript
 // app.js
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
@@ -80,7 +80,7 @@ const root = angular
   ])
   .component('app', AppComponent);
 export default root;
-{% endhighlight %}
+```
 
 
 ## Component module
@@ -89,7 +89,7 @@ Component module is the responsible for loading all the reusable components of t
 
 It looks like something like the following :
 
-{% highlight javascript %}
+```javascript
 import angular from 'angular';
 import Calendar from './calendar';
 import Events from './events';
@@ -100,7 +100,7 @@ const components = angular
   ])
   .name;
 export default components;
-{% endhighlight %}
+```
 
 So what is going on in there is we are importing first angular, then all our single lower level component modules like calendar, events and we register our module with all these lower level components as dependencies. We then export so that it can be imported in the root module.
 
@@ -110,7 +110,7 @@ The common module is somewhat similar to the component module, the difference be
 
 The common module looks like this :
 
-{% highlight javascript %}
+```javascript
 import angular from 'angular';
 import Nav from './nav';
 import Footer from './footer';
@@ -121,7 +121,7 @@ const common = angular
   ])
   .name;
 export default common;
-{% endhighlight %}
+```
 
 Once again what we are doing here is first of all loading angular, then we load each of our single app specific module components and register them in a module that we call app.common. And export so that this can be imported up in the root module.
 
@@ -131,7 +131,7 @@ We saw earlier that each of these modules loads lower level component modules ei
 
 A simple component file could look like this for a Calendar Component. We import the component definition object from calendar.component.js like shown previously and register the module, component and set the routing definition in this file (index.js).
 
-{% highlight javascript %}
+```javascript
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import CalendarComponent from './calendar.component';
@@ -150,7 +150,7 @@ const calendar = angular
   })
   .name;
 export default calendar;
-{% endhighlight %}
+```
 
 ## Naming conventions for files
 
@@ -158,7 +158,7 @@ But sometimes a lower level module contains directives, services and not only a 
 
 Everything should be pretty simple and explicit, using the component name followed by name of the type of file. We then use the index.js to import these and put them all together in the module definition.
 
-{% highlight javascript %}
+```javascript
 index.js
 calendar.controller.js
 calendar.component.js
@@ -166,7 +166,7 @@ calendar.service.js
 calendar.directive.js
 calendar.filter.js
 calendar.spec.js
-{% endhighlight %}
+```
 
 ## Controllers
 
@@ -174,7 +174,7 @@ Controllers should *ONLY* be used alongside components and not anywhere else. Yo
 
 A controller class that injects a service will look something like this :
 
-{% highlight javascript %}
+```javascript
 /* ----- todo/todo.controller.js ----- */
 class TodoController {
   constructor(TodoService) {
@@ -199,7 +199,7 @@ class TodoController {
 }
 TodoController.$inject = ['TodoService'];
 export default TodoController;
-{% endhighlight %}
+```
 
 
 ## One way data flow and Events
@@ -219,7 +219,7 @@ We should distinguish stateless from stateful components as it is an important d
 
 Stateful components are components that fetch or get state in some form, normally through a service that is injected to them. This normally happens in the controller, a service is injected into the controller and some kind of communication happens. This makes this component normally what we called a “Common” module component as it is dependent of the app itself.
 
-{% highlight javascript %}
+```javascript
 /* ----- todo/todo.controller.js ----- */
 class TodoController {
   constructor(TodoService) {
@@ -238,7 +238,7 @@ class TodoController {
 TodoController.$inject = ['TodoService'];
 
 export default TodoController;
-{% endhighlight %}
+```
 
 One important idea is that stateful components since they have to have this knowledge of data and data dependency, they should do exactly that and delegate the rendering to stateless components, so you should not use directives such as ng-repeat or things like that in this kind of components. Instead they get the data, and pass it down to child components that we will go through next.
 
@@ -248,7 +248,7 @@ Stateless components on the other hand are what are also called “Dumb” compo
 
 They use bindings to define inputs and outputs. Inputs is data that comes in through the form of attribute bindings and outputs is data that goes out through events.
 
-{% highlight javascript %}
+```javascript
 /* ----- todo/todo-form/todo-form.component.js ----- */
 import controller from './todo-form.controller';
 
@@ -308,7 +308,7 @@ const todoForm = angular
 
 export default todoForm;
 
-{% endhighlight %}
+```
 
 Some things to notice here. First of all the component fetches no state, it does not use service of any kind.
 
@@ -329,7 +329,7 @@ Services are basically where you wrap app logic that components should not have 
 
 Here is an example of a service class :
 
-{% highlight javascript %}
+```javascript
 /* ----- todo/todo.service.js ----- */
 class TodoService {
   constructor($http) {
@@ -357,7 +357,7 @@ const todo = angular
 
 export default todo;
 
-{% endhighlight %}
+```
 
 We essentially define our class with a constructor getting the external dependencies passed in and we define our methods that will be called from our controllers such as the getTodos() method here that simply does an http request to some API. We then import the service in the index.js file and register it there together with all the other parts of our module like component(), filters or any other things that compose our module.
 

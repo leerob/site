@@ -34,7 +34,7 @@ First things first, we need to import dependencies and setup or package.json so 
 
 The important part of the package.json looks like this :
 
-{% highlight javascript %}
+```javascript
 ...
 "dependencies": {
     "@angular/http": "2.0.0-rc.0",
@@ -53,14 +53,14 @@ The important part of the package.json looks like this :
     "webpack-target-electron-renderer": "^0.4.0"
   }
 ...
-{% endhighlight %}
+```
 
 
 In the repository you will find some other things like development dependencies so that ts files can be compiled and redux for managing state. But these are really the important pieces that you have to have in your package.json file.
 
 Other interesting part of the package.json file is the tasks. They look like this :
 
-{% highlight javascript %}
+```javascript
 ...
 "scripts": {
     "watch": "npm run watch:dev",
@@ -74,7 +74,7 @@ Other interesting part of the package.json file is the tasks. They look like thi
     "electron": "electron src/app"
   }
 ...
-{% endhighlight %}
+```
 
 You can see the full file [here](https://github.com/joaogarin/angular2-electron/blob/master/package.json)
 
@@ -87,7 +87,7 @@ The webpack file is pretty straight forward, and if you have been using webpack 
 
 The only specific thing here out of any other ordinary webpack config file is that we are targeting electron using the **webpack-target-electron-renderer** package.
 
-{% highlight javascript %}
+```javascript
 ...
 /**
  * Target Electron
@@ -95,11 +95,11 @@ The only specific thing here out of any other ordinary webpack config file is th
 config.target = webpackTargetElectronRenderer(config);
 module.exports = config;
 ...
-{% endhighlight %}
+```
 
 Other than that we are telling webpack to compile our app into a app.js file that will be used by electron. We also compile some polyfill and vendor packages like rxjs using the CommonsChunkPlugin plugin from webpack.
 
-{% highlight javascript %}
+```javascript
 ...
 // our angular app
     entry: {
@@ -116,7 +116,7 @@ Other than that we are telling webpack to compile our app into a app.js file tha
         chunkFilename: '[id].chunk.js'
     },
 …
-{% endhighlight %}
+```
 
 You can see the full file [here](https://github.com/joaogarin/angular2-electron/blob/master/webpack.config.js)
 
@@ -126,17 +126,17 @@ Everything for our app will live inside the folder src/app and as we saw that is
 
 In this folder we will need a package.json file as well, but this one will be used only by electron, it will provide some basic information like the name, version and where the entry point of the app is. The electron script will look for this file to bootstrap the electron app. This file looks like this :
 
-{% highlight javascript %}
+```javascript
 {
   "name": "app",
   "version": "0.0.1",
   "main": "main.js"
 }
-{% endhighlight %}
+```
 
 We then need to create our main.js file. This file tells electron where the app is, where the entry html file is and provides some basic methods for initializing and closing our app when the user closes the window. This is the full file :
 
-{% highlight javascript %}
+```javascript
 /**
  * Include our app
  */
@@ -164,11 +164,11 @@ app.on('ready', function () {
     mainWindow = null;
   });
 });
-{% endhighlight %}
+```
 
 Next step is to create our angular app. This will be just a normal angular app. Create an app.ts file inside this folder with the following :
 
-{% highlight javascript %}
+```javascript
 /*
  * Providers provided by Angular
  */
@@ -200,11 +200,11 @@ export class App {}
 bootstrap(App, [
     provide(LocationStrategy, { useClass: HashLocationStrategy })
 ]).catch(err => console.error(err));
-{% endhighlight %}
+```
 
 We will also need an index.html file.
 
-{% highlight html %}
+```html
 <!DOCTYPE html>
 <html lang="">
 
@@ -228,7 +228,7 @@ We will also need an index.html file.
 </body>
 </html>
 
-{% endhighlight %}
+```
 
 ## Running the app
 
@@ -236,13 +236,13 @@ You can now run :
 
 {% highlight bash %}
  npm run build
-{% endhighlight %}
+```
 
 And that will build the app. And if after you run
 
 {% highlight bash %}
  npm run electron
-{% endhighlight %}
+```
 
 that will start electron with your app.
 
@@ -253,7 +253,7 @@ You can now head over to [this repo](https://github.com/joaogarin/angular2-elect
 
 You need to provide a config.json file inside the **src/app** folder that should look like :
 
-{% highlight javascript %}
+```javascript
 {
     "github": {
         "client_id": "yourclientID",
@@ -264,7 +264,7 @@ You need to provide a config.json file inside the **src/app** folder that should
         ]
     }
 }
-{% endhighlight %}
+```
 
 Notice the warning on the repo :
 

@@ -36,11 +36,11 @@ We will now go on to how you can accomplish this in technical terms using [LoadC
 
 When you use a normal CSS link tag to include the CSS in the header of your webpage as the below snippet this tells the browser that when reading this page it should block everything and fetch that specific CSS file from the server.
 
-{% highlight html %}
+```html
 <head>
 <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
-{% endhighlight %}
+```
 
 This means making an extra request, waiting for the response and if you have multiple CSS files this means then multiple requests and for mobile devices where the network latency can be bigger this becomes to be a real burden for the user, sometimes waiting several seconds before actually seeing a single pixel on the page.
 
@@ -52,16 +52,16 @@ The first step of the process is to move the CSS out of the blocking zone (link 
 
 Because loading CSS and other files being loaded asynchronously using :
 
-{% highlight html %}
+```html
 <link rel="preload">
-{% endhighlight %}
+```
 
 [W3Spec]("https://www.w3.org/TR/2015/WD-preload-20150721") is being implemented in some browsers, but not all by using loadCSS in the following way you make sure to take advantage of this and use loadCSS to polyfill browsers that don’t support this feature.
 
-{% highlight html %}
+```html
 <link rel="preload" href="path/to/mystylesheet.css" as="style" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="path/to/mystylesheet.css"></noscript>
-{% endhighlight %}
+```
 
 Since rel="preload" does not apply the CSS on its own (it merely fetches it), there is an onload handler on the link that will do that for us as soon as the CSS finishes loading. Since this step requires JavaScript, you may want to include an ordinary reference to your CSS file as well, using a noscript element to ensure it only applies in non-JavaScript settings.
 
@@ -79,7 +79,7 @@ CritialCSS allows you to specify a URL, a stylesheet, some optional settings lik
 
 This is how it looks in VanillaJs :
 
-{% highlight javascript %}
+```javascript
 var request = require('request');
 var path = require( 'path' );
 var criticalcss = require("criticalcss");
@@ -102,11 +102,11 @@ request(cssUrl).pipe(fs.createWriteStream(cssPath)).on('close', function() {
     }
   });
 });
-{% endhighlight %}
+```
 
 ## Step 3 - Saving the critical CSS
 
-{% highlight javascript %}
+```javascript
 gulp.task 'critical', ->
   request = require('request')
   util = require ('gulp-util')
@@ -131,7 +131,7 @@ gulp.task 'critical', ->
                 throw new Error(err)
               console.log 'Critical for jobs written to include!'
       return
-{% endhighlight %}
+```
 
 There is a couple of things going on here. On the first part we initialise some variables like critical-css, util, path etc. Then we set up the CSS path to fetch the CSS from and the IncludePath which is where the final css will be created on which includes only the above the fold css.
 
@@ -143,7 +143,7 @@ This step can depend a lot depending on where and on what you are building your 
 
 If you are living in CMS world this tipically means doing some kind of preprocess to fetch this CSS and put it directly into the page, for example in Drupal it would look somewhat like this :
 
-{% highlight php %}
+```php
 /**
  * Implements hook_process_page().
  */
@@ -160,7 +160,7 @@ $critical_css_file = 'critical.css';
     // Inline the CSS.
     drupal_add_css(file_get_contents(drupal_get_path('theme', 'my_theme') . '/dist/css/' . $critical_css_file), $critical_css_options);
 }
-{% endhighlight %}
+```
 
 It’s important to keep the amount of the CriticalCSS short, so that the first response does not take too long to be delivered but usually the amount of criticalCSS is a very small portion of the overall CSS so the impact you will see can be that the user now is seeing the content a couple of seconds earlier.
 

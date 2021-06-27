@@ -34,28 +34,28 @@ The first step is to install the angular2-template-loader
 
 {% highlight bash %}
 npm install angular2-template-loader --save-dev
-{% endhighlight %}
+```
 
 And inside a component the code would look like this :
 
-{% highlight javascript %}
+```javascript
 @Component({
   selector: 'simple-component',
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
 export class SimpleComponent { }
-{% endhighlight %}
+```
 
 In your webpack config the loader must be set to use the angular2-template-loader for .ts files like the following :
 
-{% highlight javascript %}
+```javascript
 {
       test: /\.ts$/,
       loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
       exclude: [/\.(spec|e2e)\.ts$/]
     },
-{% endhighlight %}
+```
 
 This is essencially like using the normal [styleUrls](https://angular.io/docs/ts/latest/guide/component-styles.html#!#loading-styles) property that normally works only for **.css** files, but this time with a **.scss** file. Webpack will take care of compiling that sass to css and embedding it into the component using Angular’s internal styling system.
 
@@ -73,22 +73,22 @@ The first step again is to install :
 
 {% highlight bash %}
 npm install @ngtools/webpack --save-dev
-{% endhighlight %}
+```
 
 Its simple to use, in your template you use it like in the angular2-template-loader :
 
-{% highlight javascript %}
+```javascript
 @Component({
   selector: 'simple-component',
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
 export class SimpleComponent { }
-{% endhighlight %}
+```
 
 In the webpack config you would set the following :
 
-{% highlight javascript %}
+```javascript
 import {AotPlugin} from '@ngtools/webpack'
 exports = { /* ... */
   module: {
@@ -106,7 +106,7 @@ exports = { /* ... */
     })
   ]
 }
-{% endhighlight %}
+```
 
 The part that is relevant to the styling is the .ts files loader, where ngtools/webpack is being used as a loader, and notice that it replaces both awesome-typescript-loader (the actually parsing of typescript) and the angular2-template-loader combining them both into one single loader that also does AOT.
 
@@ -118,14 +118,14 @@ Of course the third option is to use the [Angular-cli](https://github.com/angula
 
 The way you would use it is exactly as mentioned above (as it uses behind the scenes the same plugins) :
 
-{% highlight javascript %}
+```javascript
 @Component({
   selector: 'simple-component',
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
 export class SimpleComponent { }
-{% endhighlight %}
+```
 
 The difference here is you don’t need to do anything on the webpack side. The cli will take care of that for you so this code will just work when dealing with the Cli.
 

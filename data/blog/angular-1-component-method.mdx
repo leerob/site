@@ -20,20 +20,20 @@ Now if you are really like me you like one specific type of markup and that is *
 
 ## Normal markup
 
-{% highlight html %}
+```html
 <div class=”friend”>
   <div class=”friend__image”>
   </div>
   <div class=”friend__name”>
   </div>
 </div>
-{% endhighlight %}
+```
 
 ## Semantic markup
 
-{% highlight html %}
+```html
 <friend name=”friend-name” image=”friend-image”></friend>
-{% endhighlight %}
+```
 
 Call me crazy I do really like the second one so much better. This is a very simple example but think of more complex set of inner markup for this “friend” item and it takes this into a much more drastic proportion.
 
@@ -43,7 +43,7 @@ This was when Angular striked to me as a game changer. I could actually start do
 
 This is what a typical directive would look like
 
-{% highlight javascript %}
+```javascript
 angular.module('docsSimpleDirective', [])
 .controller('Controller', ['$scope', function($scope) {
   $scope.customer = {
@@ -56,15 +56,15 @@ angular.module('docsSimpleDirective', [])
     template: 'Name: {{customer.name}} Address: {{customer.address}}'
   };
 });
-{% endhighlight %}
+```
 
 You can then do this in your HTML
 
-{% highlight html %}
+```html
 <div ng-controller="Controller">
   <my-customer></my-customer>
 </div>
-{% endhighlight %}
+```
 
 That looks quite good right? That’s what I am talking about. Using markup that makes sense and really explains what's under it. without giving all the layout implementation details.
 
@@ -92,27 +92,27 @@ And this is how an app based on components looks like in Angular 1.5
 
 ### Index.html
 
-{% highlight html %}
+```html
 <!-- components match only elements -->
 <div ng-controller="mainCtrl as ctrl">
   <b>Hero</b><br>
   <hero-detail hero="ctrl.hero"></hero-detail>
 </div>
-{% endhighlight %}
+```
 
 ### Main.js
 
-{% highlight javascript %}
+```javascript
 angular.module('heroApp', []).controller('mainCtrl', function() {
   this.hero = {
     name: 'Spawn'
   };
 });
-{% endhighlight %}
+```
 
 ### HeroDetail.js
 
-{% highlight javascript %}
+```javascript
 function HeroDetailController() {
 }
 angular.module('heroApp').component('heroDetail', {
@@ -122,13 +122,13 @@ angular.module('heroApp').component('heroDetail', {
     hero: '='
   }
 });
-{% endhighlight %}
+```
 
 ### heroDetail.html
 
-{% highlight html %}
+```html
 <span>Name: {{$ctrl.hero.name}}</span>
-{% endhighlight %}
+```
 
 There are a couple of interesting things here and some interesting things under the hood that are worth going over. Let’s take a look at them one by one starting with the index.html.
 
@@ -140,17 +140,17 @@ Notice the comment *“components match only elements”*. That’s exactly what
 
 Notice the arguments on the component. In directives we have :
 
-{% highlight javascript %}
+```javascript
 module.directive(name, fn);
-{% endhighlight %}
+```
 
 Where in the first argument we have the name of the directive and the second argument we have the directive definition function which then returned the directive definition object.
 
 And in components we have
 
-{% highlight javascript %}
+```javascript
 module.component(name, options);
-{% endhighlight %}
+```
 
 Where we have the name in the first argument as in directives but in the second argument we have the object definition itself directly in there. This makes it a bit simpler and cleaner when writing components.
 
@@ -160,11 +160,11 @@ In directives we have a *scope* where like we mentioned we can have inherited sc
 
 In components we have the bindings keyword which lets us just pass in directly the properties we want from the controller removing the unnecessary boilerplate from having to go through all that scope and bindToController and just assume by default we use an isolated scope.
 
-{% highlight javascript %}
+```javascript
 bindings: {
     hero: '='
 }
-{% endhighlight %}
+```
 
 
 ### controller and controllerAs
@@ -175,44 +175,44 @@ Now this can depend a little on how and where you get your controller from. Esse
 
 1 . create the controller on the fly as we have seen before
 
-{% highlight javascript %}
+```javascript
 {
   ...
   controller: function () {}
   ...
 }
-{% endhighlight %}
+```
 
 2 . Using a component from somewhere else
 
-{% highlight javascript %}
+```javascript
 {
   ...
   controller: 'MyCtrl'
   ...
 }
-{% endhighlight %}
+```
 
 In this case if we want to use controllerAs we can do it by using
 
-{% highlight javascript %}
+```javascript
 ...
   controller: 'MyCtrl',
   controllerAs: 'thecontroller'
   ...
-{% endhighlight %}
+```
 
 This would allow us to use thecontroller.property inside the template for this component to use certain properties of the controller.
 
 In Angular 1.5 however we can also define controllerAs in the component method in an easier way by doing
 
-{% highlight javascript %}
+```javascript
 {
   ...
   controller: 'SomeCtrl as something'
   ...
 }
-{% endhighlight %}
+```
 
 Saving us the trouble of having to define controllerAs. But you can still use it in case you want and if you want to keep some backward compatibility with previous versions.
 
@@ -220,13 +220,13 @@ Saving us the trouble of having to define controllerAs. But you can still use it
 
 In Angular 1.5 as we said in component() method a controllerAs is set by default to the keyword $ctrl so you can skip defining controller name at all and just do
 
-{% highlight javascript %}
+```javascript
 {
   ...
   controller: function () {}
   ...
 }
-{% endhighlight %}
+```
 
 and in the template use $ctrl.property to access any property of the controller.
 
@@ -241,7 +241,7 @@ Just as directives, components can use the require keyword to “require the con
 
 This will look something like
 
-{% highlight javascript %}
+```javascript
 .component('myComponent', {
   ...
   require: {
@@ -249,13 +249,13 @@ This will look something like
   },
   ...
 });
-{% endhighlight %}
+```
 
 ### One way Bindings
 
 Like we said earlier to get the full performance and useful restraints in your app development you should start using one way bindings, they were introduced also in Angular 1.5 and you can use them as following
 
-{% highlight javascript %}
+```javascript
 .component('myComponent', {
   ...
   bindings: {
@@ -264,7 +264,7 @@ Like we said earlier to get the full performance and useful restraints in your a
   },
   ...
 });
-{% endhighlight %}
+```
 
 
 ## Are components replacing directives? When to use or not use them?

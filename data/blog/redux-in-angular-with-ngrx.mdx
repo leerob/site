@@ -46,25 +46,25 @@ What this means is that instead of subscribing to the whole store as you typical
 
 In Redux :
 
-{% highlight javascript %}
+```javascript
 store.subscribe(() =>
   console.log(store.getState())
 )
-{% endhighlight %}
+```
 
 Although a view binding would probably be used when using [redux with react](https://github.com/reactjs/react-redux) but still if you need to manipulate that value you would do it imperatively
 
 ngRx :
 
-{% highlight javascript %}
+```javascript
 this.counter = store.select('counter');
-{% endhighlight %}
+```
 
 Which means you are subscribing directly to a specific item in your store which is really usefull, and because this is an observable you can use the Angular [async pipe](https://angular.io/docs/ts/latest/guide/pipes.html#async-pipe)
 
 In your template this would simply look like this :
 
-{% highlight javascript %}
+```javascript
 ...
 @Component({
     selector: 'my-app',
@@ -75,7 +75,7 @@ In your template this would simply look like this :
     `
 })
 ...
-{% endhighlight %}
+```
 
 ## Effects
 
@@ -84,7 +84,7 @@ NgRx also comes with some redux saga-like implementation and that can be found i
 In ngRx effects you can orchestrate and manage complex asynchronous operations such as as login or other things that happen on an async bases. This makes testing for asyncronous actions a lot easier and it can look like this :
 
 
-{% highlight javascript %}
+```javascript
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
@@ -106,11 +106,11 @@ export class AuthEffects {
         .catch(() => Observable.of({ type: 'LOGIN_FAILED' }));
       );
 }
-{% endhighlight %}
+```
 
 And to test this service you could write something like :
 
-{% highlight javascript %}
+```javascript
 import {
   MOCK_EFFECTS_PROVIDERS,
   MockStateUpdates
@@ -140,7 +140,7 @@ describe('Auth Effects', function() {
     });
   });
 });
-{% endhighlight %}
+```
 
 ## Wrapping up
 
