@@ -1,11 +1,18 @@
 ---
 title: "Create components at runtime with Angular"
+publishedAt: '2016-07-09'
 summary: "Dynamically rendering angular components using the runtime compiler."
 image: "/assets/images/posts/cycle.jpg"
 tags: [web, angular, javascript]
 ---
 
-{% include image.html path="posts/cycle.jpg" path-detail="posts/cycle.jpg" alt="Cycle" %}
+<Image
+  alt={`Man Cicling`}
+  src={`/static/images/posts/cycle.jpg`}
+  width={1200}
+  height={630}
+  priority
+/>
 
 The last couple of months I have been on and off trying to get [carte blanche](https://github.com/carteb/carte-blanche) working with Angular 2 by making a [Carte-blanche-angular2 plugin](https://github.com/joaogarin/carte-blanche-angular2). This has provided some interesting challenges especially on how to render dynamically components at runtime using the Angular runtime compiler. The approach I took went through several changes during RC periods but I will focus on the last one which is the one compatible with the final release of Angular2 using NgModules.
 

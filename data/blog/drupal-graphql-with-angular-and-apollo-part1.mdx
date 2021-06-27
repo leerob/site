@@ -5,7 +5,13 @@ image: "/assets/images/posts/net.jpg"
 tags: [web, angular, javascript, drupal]
 ---
 
-{% include image.html path="posts/net.jpg" path-detail="posts/net.jpg" alt="net" %}
+<Image
+  alt={`Net`}
+  src={`/static/images/posts/net.jpg`}
+  width={1200}
+  height={630}
+  priority
+/>
 
 Lately I have been experimenting a lot with different setups for working in decoupled architectures with drupal and javascript. During 2017 I have joined efforts with [Matt Davis](https://twitter.com/johnmattdavis) to create a [Angular app](https://github.com/contentacms/contenta_angular) for [Contenta](http://www.contentacms.org/) as one of the demos the distribution provides as default for new users, and also have been doing some side projects where I get to explore Contenta and decoupled drupal in general.
 

@@ -1,11 +1,18 @@
 ---
 title: "Using loadCSS to remove render blocking CSS"
+publishedAt: '2016-04-16'
 summary: "Improve performance by removing blocking scripts like CSS from rendering other parts of your website."
 image: "/assets/images/posts/app.jpg"
 tags: [web, drupal, css]
 ---
 
-{% include image.html path="posts/app.jpg" path-detail="posts/app.jpg" alt="Angularjs components" %}
+<Image
+  alt={`Application`}
+  src={`/static/images/posts/app.jpg`}
+  width={1200}
+  height={630}
+  priority
+/>
 
 When doing frontend performance optimizations for your website or app one of the important things to consider is when are visitors actually getting content delivered to them, to be able to interact and see when they visit your site for the first time.
 
