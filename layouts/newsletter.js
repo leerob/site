@@ -7,7 +7,7 @@ import Subscribe from '@/components/Subscribe';
 export default function NewsletterLayout({ children, frontMatter }) {
   return (
     <Container
-      title={`${frontMatter.title} – Lee Robinson`}
+      title={`${frontMatter.title} – Joao Garin`}
       description={frontMatter.summary}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
@@ -19,7 +19,7 @@ export default function NewsletterLayout({ children, frontMatter }) {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
           <div className="flex items-center">
             <Image
-              alt="Lee Robinson"
+              alt="Joao Garin"
               height={24}
               width={24}
               src="/avatar.jpg"
@@ -27,7 +27,7 @@ export default function NewsletterLayout({ children, frontMatter }) {
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
               {frontMatter.by}
-              {'Lee Robinson / '}
+              {'Joao Garin / '}
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
