@@ -10,7 +10,7 @@ const editUrl = (slug) =>
 export default function BlogLayout({ children, frontMatter }) {
   return (
     <Container
-      title={`${frontMatter.title} – Nick Crews`}
+      titlePrefix={frontMatter.title}
       description={frontMatter.summary}
       image={`https://nickcrews.me${frontMatter.image}`}
       date={new Date(frontMatter.publishedAt).toISOString()}
