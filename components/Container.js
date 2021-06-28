@@ -81,7 +81,7 @@ export default function Container(props) {
           )}
         </button>
         <div className="text-red-900"> Warning: This site is in the progress of migrating from Lee Robinson to Nick Crews. See
-          <NextLink href="github.com/NickCrews/blahg"> github.com/NickCrews/blahg</NextLink>
+          <NextLink href="https://github.com/NickCrews/blahg"> github.com/NickCrews/blahg</NextLink>
         </div>
         <div>
           <NextLink href="/dashboard">
