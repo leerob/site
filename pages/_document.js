@@ -37,12 +37,12 @@ class MyDocument extends Document {
             type="image/png"
           />
           <link
-            color="#4a9885"
+            color="#440d54"
             href="/static/favicons/safari-pinned-tab.svg"
             rel="mask-icon"
           />
-          <meta content="#ffffff" name="theme-color" />
-          <meta content="#ffffff" name="msapplication-TileColor" />
+          <meta name="theme-color" content="#440d54"  />
+          <meta name="msapplication-TileColor" content="#440d54"  />
           <meta
             content="/static/favicons/browserconfig.xml"
             name="msapplication-config"
