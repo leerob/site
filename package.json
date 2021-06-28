@@ -1,16 +1,16 @@
 {
-  "name": "leerob.io",
+  "name": "joaogarin.com",
   "description": "My personal website.",
   "version": "0.0.0",
   "author": {
     "name": "Joao Garin",
-    "email": "me@leerob.io",
-    "url": "https://leerob.io"
+    "email": "joao.garin@gmail.com",
+    "url": "https://joaogarin.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leerob/leerob.io.git"
+    "url": "git+https://github.com/joaogarin/blogjoaogarin"
   },
   "scripts": {
     "build": "next build",

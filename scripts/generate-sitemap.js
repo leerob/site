@@ -11,7 +11,7 @@ const prettier = require('prettier');
     '!data/*.mdx',
     '!pages/_*.js',
     '!pages/api',
-    '!pages/404.js',
+    '!pages/404.js'
   ]);
 
   const sitemap = `
@@ -28,7 +28,7 @@ const prettier = require('prettier');
 
                 return `
                         <url>
-                            <loc>${`https://leerob.io${route}`}</loc>
+                            <loc>${`https://joaogarin.com${route}`}</loc>
                         </url>
                     `;
               })

@@ -18,7 +18,7 @@ export default function Container(props) {
   const meta = {
     title: 'Joao Garin – Developer, writer, creator.',
     description: `Front-end developer, JavaScript enthusiast, and course creator.`,
-    image: 'https://leerob.io/static/images/banner.png',
+    image: 'https://joaogarin.com/static/images/banner.png',
     type: 'website',
     ...customMeta
   };
@@ -29,8 +29,11 @@ export default function Container(props) {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
-        <link rel="canonical" href={`https://leerob.io${router.asPath}`} />
+        <meta
+          property="og:url"
+          content={`https://joaogarin.com${router.asPath}`}
+        />
+        <link rel="canonical" href={`https://joaogarin.com${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Joao Garin" />
         <meta property="og:description" content={meta.description} />
@@ -96,7 +99,6 @@ export default function Container(props) {
           <NextLink href="/about">
             <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">About</a>
           </NextLink>
-
         </div>
       </nav>
       <main

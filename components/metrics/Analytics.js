@@ -7,7 +7,7 @@ export default function Analytics() {
   const { data } = useSWR('/api/views', fetcher);
 
   const pageViews = new Number(data?.total);
-  const link = 'https://leerob.io';
+  const link = 'https://joaogarin.com';
 
   return <MetricCard header="All-Time Views" link={link} metric={pageViews} />;
 }
