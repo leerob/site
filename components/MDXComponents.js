@@ -6,6 +6,7 @@ import ConsCard from '@/components/ConsCard';
 import Analytics from '@/components/metrics/Analytics';
 import Step from '@/components/Step';
 import ImageWithTheme from '@/components/ImageWithTheme';
+import ResponsiveIframe from '@/components/ReponsiveIframe';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -29,6 +30,7 @@ const MDXComponents = {
   Analytics,
   ConsCard,
   ProsCard,
+  ResponsiveIframe,
   Step
 };
 
