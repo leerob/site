@@ -3,11 +3,13 @@ const path = require('path');
 const RSS = require('rss');
 const matter = require('gray-matter');
 
+const constants = require('../lib/constants');
+
 async function generate() {
   const feed = new RSS({
-    title: 'Lee Robinson',
-    site_url: 'https://leerob.io',
-    feed_url: 'https://leerob.io/feed.xml'
+    title: constants.title,
+    site_url: constants.url,
+    feed_url: `${constants.url}/feed.xml`
   });
 
   const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'));
@@ -21,7 +23,7 @@ async function generate() {
 
       feed.item({
         title: frontmatter.data.title,
-        url: 'https://leerob.io/blog/' + name.replace(/\.mdx?/, ''),
+        url: `${constants.url}/blog/` + name.replace(/\.mdx?/, ''),
         date: frontmatter.data.publishedAt,
         description: frontmatter.data.summary
       });

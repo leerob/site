@@ -15,7 +15,7 @@ Forked from https://github.com/leerob/leerob.io
 
 ```bash
 $ git clone https://github.com/NickCrews/blahg
-$ cd leerob.io
+$ cd blahg
 $ yarn
 $ yarn dev
 ```

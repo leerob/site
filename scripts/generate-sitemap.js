@@ -3,6 +3,8 @@ const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
 
+const constants = require('../lib/constants');
+
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
@@ -28,7 +30,7 @@ const prettier = require('prettier');
 
                 return `
                         <url>
-                            <loc>${`https://leerob.io${route}`}</loc>
+                            <loc>${`${constants.url}${route}`}</loc>
                         </url>
                     `;
               })

@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://leerob.io/sitemap.xml
+Sitemap: https://nickcrews.me/sitemap.xml
