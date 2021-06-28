@@ -1,8 +1,8 @@
 ---
-title: "Styling in Angular part1 Sass"
+title: 'Styling in Angular part1 Sass'
 publishedAt: '2017-02-20'
-summary: "This is the first part of a series of posts that will approach different ways of styling []Angular applications."
-image: "/assets/images/posts/bridge.jpg"
+summary: 'This is the first part of a series of posts that will approach different ways of styling []Angular applications.'
+image: '/assets/images/posts/bridge.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -22,17 +22,17 @@ A second important note is that this will also not be about [Component styles](h
 
 ## Angular with Sass
 
-The first part of this series will target [SASS](http://sass-lang.com/). Sass has been around for quite a long time, it’s very familiar to both developers and designers and is one of the easiest ways to gain some flexibility on how to style any  application, so naturally this applies also to Angular applications.
+The first part of this series will target [SASS](http://sass-lang.com/). Sass has been around for quite a long time, it’s very familiar to both developers and designers and is one of the easiest ways to gain some flexibility on how to style any application, so naturally this applies also to Angular applications.
 
 To get started with SASS in Angular it’s pretty easy and there are a couple of ways you can do it.
 
 ### Angular2 template loader
 
-The first option is to use the [Angular2 template loader](https://github.com/TheLarkInn/angular2-template-loader). This is a [webpack](https://webpack.github.io/) loader created by [Sean Larkin](https://twitter.com/thelarkinn?lang=en) from the webpack core team. It allows you to use **.scss** files like you would normally do in any normal web application but still be able to use those **.scss** files inside the components [styleUrls](https://angular.io/docs/ts/latest/guide/component-styles.html#!#loading-styles)  property.
+The first option is to use the [Angular2 template loader](https://github.com/TheLarkInn/angular2-template-loader). This is a [webpack](https://webpack.github.io/) loader created by [Sean Larkin](https://twitter.com/thelarkinn?lang=en) from the webpack core team. It allows you to use **.scss** files like you would normally do in any normal web application but still be able to use those **.scss** files inside the components [styleUrls](https://angular.io/docs/ts/latest/guide/component-styles.html#!#loading-styles) property.
 
 The first step is to install the angular2-template-loader
 
-{% highlight bash %}
+```
 npm install angular2-template-loader --save-dev
 ```
 
@@ -44,7 +44,7 @@ And inside a component the code would look like this :
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
-export class SimpleComponent { }
+export class SimpleComponent {}
 ```
 
 In your webpack config the loader must be set to use the angular2-template-loader for .ts files like the following :
@@ -71,7 +71,7 @@ This tool includes both an AOT plugin for webpack and also a template loader, wh
 
 The first step again is to install :
 
-{% highlight bash %}
+```
 npm install @ngtools/webpack --save-dev
 ```
 
@@ -83,19 +83,20 @@ Its simple to use, in your template you use it like in the angular2-template-loa
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
-export class SimpleComponent { }
+export class SimpleComponent {}
 ```
 
 In the webpack config you would set the following :
 
 ```javascript
-import {AotPlugin} from '@ngtools/webpack'
-exports = { /* ... */
+import { AotPlugin } from '@ngtools/webpack';
+exports = {
+  /* ... */
   module: {
     rules: [
       {
         test: /\.ts$/,
-        loader: '@ngtools/webpack',
+        loader: '@ngtools/webpack'
       }
     ]
   },
@@ -105,7 +106,7 @@ exports = { /* ... */
       entryModule: 'path/to/app.module#AppModule'
     })
   ]
-}
+};
 ```
 
 The part that is relevant to the styling is the .ts files loader, where ngtools/webpack is being used as a loader, and notice that it replaces both awesome-typescript-loader (the actually parsing of typescript) and the angular2-template-loader combining them both into one single loader that also does AOT.
@@ -124,24 +125,23 @@ The way you would use it is exactly as mentioned above (as it uses behind the sc
   template: `<div class=”simple-div-comp”></button>`,
   styleUrls: [`./simple-component.scss`]
 })
-export class SimpleComponent { }
+export class SimpleComponent {}
 ```
 
 The difference here is you don’t need to do anything on the webpack side. The cli will take care of that for you so this code will just work when dealing with the Cli.
 
-
 ## Advantages in using sass with Angular
 
-*  Sass is still very popular and probably one of the most popular ways of handling CSS in Angular projects so any issues will always be quickly resolved
-*  Easy to onboard new people into the application since they are most likely already familiar with the language
-*  Sass includes some very high-end css functionality like variables, functions and mixins that regular CSS misses.
-*  Possibility to include and use frameworks like bootstrap or foundations that support sass and make it easier to kickstart your projects in term of styling
+- Sass is still very popular and probably one of the most popular ways of handling CSS in Angular projects so any issues will always be quickly resolved
+- Easy to onboard new people into the application since they are most likely already familiar with the language
+- Sass includes some very high-end css functionality like variables, functions and mixins that regular CSS misses.
+- Possibility to include and use frameworks like bootstrap or foundations that support sass and make it easier to kickstart your projects in term of styling
 
 ## Disadvantages in using sass
 
-*  The need to use a sass compiler and a set of extra tools or webpack plugins to handle sass, as Angular by default does not provide this
-*  The need to compile sass into CSS also results in some delay when it comes to development as sass files need to be recompiled
-*  For small apps this might be an overkill as the need for styling is so small that it doesn’t provide enough value for all the boilerplate and extra setup
-*  Sass still lacks a proper way of handling with dead-code-elimination and /or tree shaking that other ways of styling (mostly using javascript) already have accomplished to minimize the amount of code that is lost because one fails to account for what is already being used in terms of scss code.
+- The need to use a sass compiler and a set of extra tools or webpack plugins to handle sass, as Angular by default does not provide this
+- The need to compile sass into CSS also results in some delay when it comes to development as sass files need to be recompiled
+- For small apps this might be an overkill as the need for styling is so small that it doesn’t provide enough value for all the boilerplate and extra setup
+- Sass still lacks a proper way of handling with dead-code-elimination and /or tree shaking that other ways of styling (mostly using javascript) already have accomplished to minimize the amount of code that is lost because one fails to account for what is already being used in terms of scss code.
 
 We will go over other techniques on how to style Angular applications, but SASS is definitely a valid option and will continue to be so for the upcoming years. So keep posted for the other ones that I will go over in the upcoming weeks.

@@ -1,8 +1,8 @@
 ---
-title: "Rich sharing links in your angularJs headless drupal application"
+title: 'Rich sharing links in your angularJs headless drupal application'
 publishedAt: '2015-11-09'
-summary: "Learn how to enable rich sharing links in your AngularJs application."
-image: "/assets/images/posts/image-angular-social.jpg"
+summary: 'Learn how to enable rich sharing links in your AngularJs application.'
+image: '/assets/images/posts/image-angular-social.jpg'
 tags: [web, drupal]
 ---
 
@@ -23,11 +23,17 @@ The steps are really easy and enables you to have rich sharing links in you app 
 Facebook and all the major social media platforms expect your page to have some specific metatags to better display Images, description and other information about the link you are sharing. The most common from facebook is the OpenGraph protocol. it looks something like this :
 
 ```html
- <head>
-    <meta property="og:title" content="Your own page title" />
-    <meta property="og:description" content="A description of the page you are sharing." />
-    <meta property="og:image" content="http://www.mysite.com/dist/images/nice_picture.jpg" />
- </head>
+<head>
+  <meta property="og:title" content="Your own page title" />
+  <meta
+    property="og:description"
+    content="A description of the page you are sharing."
+  />
+  <meta
+    property="og:image"
+    content="http://www.mysite.com/dist/images/nice_picture.jpg"
+  />
+</head>
 ```
 
 Twitter uses something simillar but with "twitter:" prefix instead of "og:". Once you submit a page to be shared the crawler from facebook or twitter is going to start scan your page to find these tags, and also scan the regular HTML to find some images or tags that it can use to better display the link.
@@ -36,7 +42,7 @@ Twitter uses something simillar but with "twitter:" prefix instead of "og:". Onc
 
 The problem with angular is that the page is rendered in Javascript and so there is no place where it can actually print a metatag with the correct information. Even if you do it dinamically via some service you would still render something like
 
-{% highlight bash %}
+```
  metadata.title
  metadata.description
 ```
@@ -49,16 +55,15 @@ Since you don't care how the page displays to these crawlers but rather just hav
 
 ### We will be needing
 
-*   A web server capable of URL rewriting. In this case, we are using Apache and the mod_rewrite module but we could use another option.
-*   A server-side page to generate our crawler-friendly pages. Because we are using Drupal, and these are nodes we basically have this for free. We just point the crawler to the Drupal node page and voilla,&nbsp;Meta info and a nice server side page. We can also enhance it with custom modules&nbsp;for better meta data as well.
-*   The Angular app must be using “html5mode” its URLs. This is because the # portion of a URL does not get sent to the server, so makes server-side redirection based on the Angular page impossible
-
+- A web server capable of URL rewriting. In this case, we are using Apache and the mod_rewrite module but we could use another option.
+- A server-side page to generate our crawler-friendly pages. Because we are using Drupal, and these are nodes we basically have this for free. We just point the crawler to the Drupal node page and voilla,&nbsp;Meta info and a nice server side page. We can also enhance it with custom modules&nbsp;for better meta data as well.
+- The Angular app must be using “html5mode” its URLs. This is because the # portion of a URL does not get sent to the server, so makes server-side redirection based on the Angular page impossible
 
 ## Apache Configuration
 
 In this example I have my own blog in which URL's for specific pages match the ones in my blog_backoffice. So I have an angular page in&nbsp;http://joaogarin.com/blog/whats-coming-with-angular-2 and I simply point it to&nbsp;http://joaogarin.com/blog_backoffice/whats-coming-with-angular-2 which is the Drupal node for this page.
 
-{% highlight bash %}
+```
 <ifModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
@@ -72,9 +77,9 @@ One you have this it will check the user agent for the correspondent crwalers, i
 
 You can now go ahead and test it out in each of the platforms.
 
-*   [Facebook Open Graph Object Debugger](https://developers.facebook.com/tools/debug/)
-*   [Twitter Card Validator](https://dev.twitter.com/docs/cards/validation/validator)
-*   [Pinterest Rich Pin Validator](https://developers.pinterest.com/rich_pins/validator/)
-*   [Google Structured Data Testing tool](http://www.google.com/webmasters/tools/richsnippets)
+- [Facebook Open Graph Object Debugger](https://developers.facebook.com/tools/debug/)
+- [Twitter Card Validator](https://dev.twitter.com/docs/cards/validation/validator)
+- [Pinterest Rich Pin Validator](https://developers.pinterest.com/rich_pins/validator/)
+- [Google Structured Data Testing tool](http://www.google.com/webmasters/tools/richsnippets)
 
 Enjoy your Angular App with Drupal backoffice.

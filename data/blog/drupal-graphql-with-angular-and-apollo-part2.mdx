@@ -1,8 +1,8 @@
 ---
-title: "Drupal GraphQL with Contenta, Angular and Apollo Part 2 - Queries"
+title: 'Drupal GraphQL with Contenta, Angular and Apollo Part 2 - Queries'
 publishedAt: '2018-01-07'
-summary: "Using Apollo Angular to query entities from Contenta and GraphQL."
-image: "/assets/images/posts/net.jpg"
+summary: 'Using Apollo Angular to query entities from Contenta and GraphQL.'
+image: '/assets/images/posts/net.jpg'
 tags: [web, angular, javascript, drupal]
 ---
 
@@ -29,7 +29,7 @@ The code samples can be found in Github. It includes all the frontend code and a
 
 The first step is to install Apollo Angular. Following the [Instructions on the official docs site](https://www.apollographql.com/docs/angular/) we start by installing it via npm :
 
-{% highlight bash %}
+```
 npm install apollo-angular apollo-angular-link-http apollo-client apollo-cache-inmemory graphql-tag graphql --save
 ```
 
@@ -42,23 +42,22 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     OAuthModule.forRoot(),
     ApolloModule,
-    HttpLinkModule,
+    HttpLinkModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(apollo: Apollo,
-    httpLink: HttpLink) {
-    const http = httpLink.create({ uri: `${environment.contenta_url}${environment.graphql}`});
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    const http = httpLink.create({
+      uri: `${environment.contenta_url}${environment.graphql}`
+    });
 
     const auth = setContext((_, { headers }) => {
       // get the authentication token from local storage if it exists
@@ -68,14 +67,16 @@ export class AppModule {
         return {};
       } else {
         return {
-          headers: new HttpHeaders().append('Authorization', `Bearer ${token}`).append('Content-Type', 'application/json')
+          headers: new HttpHeaders()
+            .append('Authorization', `Bearer ${token}`)
+            .append('Content-Type', 'application/json')
         };
       }
     });
 
     apollo.create({
       link: auth.concat(http),
-      cache: new InMemoryCache(),
+      cache: new InMemoryCache()
     });
   }
 }
@@ -121,8 +122,8 @@ Querying with Apollo is extremely easy, I suggest getting started by playing wit
 
 For this example I will assume a content type called "Client" exists in the Drupal installation (just setup a content type with name Client, machine name should be client). Also this content type should have some fields created :
 
--  email
--  telephone
+- email
+- telephone
 
 ### Querying a list of clients
 
@@ -134,10 +135,10 @@ Now that the query works in GraphiQl the first step we can do to start working w
 
 ```javascript
 export interface Client {
-    entityId: number,
-    entityLabel: string;
-    email: string;
-    telephone: string;
+  entityId: number;
+  entityLabel: string;
+  email: string;
+  telephone: string;
 }
 ```
 
@@ -202,8 +203,7 @@ In our template we append a little button to run the Query :
 ```html
 ...
 <button (click)="runQuery()">query</button>
-...
-}
+... }
 ```
 
 We query our data using Apollo Client and wrapping our graphql in graphql-tag. The query is exactly the same we used in the GraphiQL playground. We map the response and get the entities out of the data received and assign it to our observable of type `clients: Observable<Client[]>;`.
@@ -214,19 +214,12 @@ In our template we then can easily list these out :
 ...
 <ul>
   <li *ngFor="let client of clients | async">
-    <div>
-      Name: {{client.entityLabel}}
-    </div>
-    <div>
-      Email: {{client.email}}
-    </div>
-    <div>
-      Telephone: {{client.telephone}}
-    </div>
+    <div>Name: {{client.entityLabel}}</div>
+    <div>Email: {{client.email}}</div>
+    <div>Telephone: {{client.telephone}}</div>
   </li>
 </ul>
-...
-}
+... }
 ```
 
 ## All together now
@@ -247,24 +240,22 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     OAuthModule.forRoot(),
     ApolloModule,
-    HttpLinkModule,
+    HttpLinkModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(apollo: Apollo,
-    httpLink: HttpLink) {
-    const http = httpLink.create({ uri: `${environment.contenta_url}${environment.graphql}` //?XDEBUG_SESSION_START=PHPSTORM
-   });
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    const http = httpLink.create({
+      uri: `${environment.contenta_url}${environment.graphql}` //?XDEBUG_SESSION_START=PHPSTORM
+    });
 
     const auth = setContext((_, { headers }) => {
       // get the authentication token from local storage if it exists
@@ -274,14 +265,16 @@ export class AppModule {
         return {};
       } else {
         return {
-          headers: new HttpHeaders().append('Authorization', `Bearer ${token}`).append('Content-Type', 'application/json')
+          headers: new HttpHeaders()
+            .append('Authorization', `Bearer ${token}`)
+            .append('Content-Type', 'application/json')
         };
       }
     });
 
     apollo.create({
       link: auth.concat(http),
-      cache: new InMemoryCache(),
+      cache: new InMemoryCache()
     });
   }
 }
@@ -366,9 +359,7 @@ export class AppComponent {
 and our template for this component where we render the full list of clients we get from graphql :
 
 ```html
-<h1>
-  Hello Contenta Graphql
-</h1>
+<h1>Hello Contenta Graphql</h1>
 
 <div *ngIf="authenticated;else unauth">
   <h2>Status : Authenticated</h2>
@@ -387,23 +378,15 @@ and our template for this component where we render the full list of clients we 
   </div>
 </ng-template>
 
-<h2>
-  Clients
-</h2>
+<h2>Clients</h2>
 
 <button (click)="runQuery()">query</button>
 
 <ul>
   <li *ngFor="let client of clients | async">
-    <div>
-      Name: {{client.entityLabel}}
-    </div>
-    <div>
-      Email: {{client.email}}
-    </div>
-    <div>
-      Telephone: {{client.telephone}}
-    </div>
+    <div>Name: {{client.entityLabel}}</div>
+    <div>Email: {{client.email}}</div>
+    <div>Telephone: {{client.telephone}}</div>
   </li>
 </ul>
 ```

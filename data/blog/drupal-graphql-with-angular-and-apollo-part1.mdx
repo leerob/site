@@ -1,8 +1,8 @@
 ---
-title: "Drupal GraphQL with Contenta, Angular and Apollo Part 1 - Authentication"
+title: 'Drupal GraphQL with Contenta, Angular and Apollo Part 1 - Authentication'
 publishedAt: '2018-01-07'
-summary: "Getting started using Contenta with GraphQL powered by Apollo and Angular."
-image: "/assets/images/posts/net.jpg"
+summary: 'Getting started using Contenta with GraphQL powered by Apollo and Angular.'
+image: '/assets/images/posts/net.jpg'
 tags: [web, angular, javascript, drupal]
 ---
 
@@ -22,9 +22,9 @@ In this post I want to focus on explaining how you can get started using [GraphQ
 
 I will go through three of the most common things when it comes to building an app using these technologies together :
 
--  Authentication
--  Queries
--  Mutations
+- Authentication
+- Queries
+- Mutations
 
 So let's get started with part 1, Authentication!!
 
@@ -39,7 +39,7 @@ The code samples can be found in Github. It includes all the frontend code and a
 
 The first thing we need to do is to have an installation of [Contenta](http://www.contentacms.org/). There are informations on the page how to install but you can run the quick install by running the following command :
 
-{% highlight bash %}
+```
 php -r "readfile('https://raw.githubusercontent.com/contentacms/contenta_jsonapi/8.x-1.x/installer.sh');" > contentacms.sh
 chmod a+x contentacms.sh
 ./contentacms.sh
@@ -81,8 +81,8 @@ The first thing we need to do with Contenta in order to get authentication worki
 
 There are however a couple things I found could go a bit more "wrong" when setting this up so make sure to pay attention to :
 
--  Private and public key's permissions (warnings will be give in reports if configured wrong)
--  make sure the role for the user has permissions to simple auth extras ("Allow using the AuthCode grant")
+- Private and public key's permissions (warnings will be give in reports if configured wrong)
+- make sure the role for the user has permissions to simple auth extras ("Allow using the AuthCode grant")
 
 At this point authentication is setup on the server (Drupal) and we can move on to configuring it on the client.
 
@@ -122,7 +122,6 @@ import { environment } from './../environments/environment';
 import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authConfig: AuthConfig = {
-
   // Url of the Identity Provider
   loginUrl: `${environment.contenta_url}/oauth/authorize`,
 
@@ -137,8 +136,8 @@ export const authConfig: AuthConfig = {
   scope: 'content_administrator',
   oidc: false,
   strictDiscoveryDocumentValidation: false,
-  showDebugInformation: true,
-}
+  showDebugInformation: true
+};
 ```
 
 A couple of things to note here :
@@ -194,9 +193,7 @@ export class AppComponent {
 Now we just need our template to call the login and logout methods :
 
 ```html
-<h1>
-  Hello Contenta Graphql
-</h1>
+<h1>Hello Contenta Graphql</h1>
 
 <div *ngIf="authenticated;else unauth">
   <h2>Status : Authenticated</h2>
@@ -218,14 +215,14 @@ Now we just need our template to call the login and logout methods :
 
 That's it!! At this point authentication is working. You should be able to run the app by running :
 
-{% highlight bash %}
+```
 npm start
 ```
 
 and click the button "login" in order to get redirected to Contenta, provide your authentication credentials and get redirected back to the app. The token provided by simple auth is then registered in the oauth package we used and you can access it inside your app by doing :
 
 ```javascript
-this.oauthService.getAccessToken()
+this.oauthService.getAccessToken();
 ```
 
-In the [next post](/posts/drupal-graphql-with-angular-and-apollo-part2) we  will see how you can connect Apollo and GraphQL to our authentication in order to provide authorization / controlled access for Queries and Mutations.
+In the [next post](/posts/drupal-graphql-with-angular-and-apollo-part2) we will see how you can connect Apollo and GraphQL to our authentication in order to provide authorization / controlled access for Queries and Mutations.

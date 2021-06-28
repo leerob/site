@@ -1,8 +1,8 @@
 ---
-title: "Building Desktop apps with Angular2 and Electron"
+title: 'Building Desktop apps with Angular2 and Electron'
 publishedAt: '2016-05-06'
-summary: "Build incredible desktop experiences with electron and angular"
-image: "/assets/images/posts/electron.jpg"
+summary: 'Build incredible desktop experiences with electron and angular'
+image: '/assets/images/posts/electron.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -55,7 +55,6 @@ The important part of the package.json looks like this :
 ...
 ```
 
-
 In the repository you will find some other things like development dependencies so that ts files can be compiled and redux for managing state. But these are really the important pieces that you have to have in your package.json file.
 
 Other interesting part of the package.json file is the tasks. They look like this :
@@ -79,7 +78,6 @@ Other interesting part of the package.json file is the tasks. They look like thi
 You can see the full file [here](https://github.com/joaogarin/angular2-electron/blob/master/package.json)
 
 For now let’s focus on the build task and the electron. It just compiles the app with the default webpack.config.js file and the electron task simply runs electron and the source of the electron app, in this case **src/app**.
-
 
 ## Webpack config
 
@@ -172,24 +170,20 @@ Next step is to create our angular app. This will be just a normal angular app. 
 /*
  * Providers provided by Angular
  */
-import {provide} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic'
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { provide } from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // Decorators
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-    // The selector is what angular internally uses
-    selector: 'app', // <app></app>,
-    template: `
-    <div>
-        Hello Electron
-    </div>
-    `
+  // The selector is what angular internally uses
+  selector: 'app', // <app></app>,
+  template: ` <div>Hello Electron</div> `
 })
 export class App {}
 
@@ -198,8 +192,8 @@ export class App {}
  * our Services and Providers into Angular's dependency injection
  */
 bootstrap(App, [
-    provide(LocationStrategy, { useClass: HashLocationStrategy })
-]).catch(err => console.error(err));
+  provide(LocationStrategy, { useClass: HashLocationStrategy })
+]).catch((err) => console.error(err));
 ```
 
 We will also need an index.html file.
@@ -207,40 +201,34 @@ We will also need an index.html file.
 ```html
 <!DOCTYPE html>
 <html lang="">
+  <head>
+    <title>Angular 2 Electron</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Simple electron angular2" />
+  </head>
 
-<head>
-    <title>
-        Angular 2 Electron
-    </title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Simple electron angular2">
-</head>
-
-<body>
-    <app>
-        Loading...
-    </app>
+  <body>
+    <app> Loading... </app>
     <script src="dist/polyfills.js"></script>
     <script src="dist/vendor.js"></script>
     <script src="dist/app.js"></script>
-</body>
+  </body>
 </html>
-
 ```
 
 ## Running the app
 
 You can now run :
 
-{% highlight bash %}
+```
  npm run build
 ```
 
 And that will build the app. And if after you run
 
-{% highlight bash %}
+```
  npm run electron
 ```
 
@@ -249,7 +237,7 @@ that will start electron with your app.
 You now have an angular2 app running inside electron. You will notice that is basically looks pretty much like a Chrome browser running on a destkop window. And that is more or less what is happening.
 
 You can now head over to [this repo](https://github.com/joaogarin/angular2-electron)
- Where I am doing a little more than just this. Here I am doing a basic connection to the github api.
+Where I am doing a little more than just this. Here I am doing a basic connection to the github api.
 
 You need to provide a config.json file inside the **src/app** folder that should look like :
 
@@ -268,7 +256,7 @@ You need to provide a config.json file inside the **src/app** folder that should
 
 Notice the warning on the repo :
 
-***Don’t use this in production as for production you should have a safe server side URI and not have your secret key in the app folder.***
+**_Don’t use this in production as for production you should have a safe server side URI and not have your secret key in the app folder._**
 
 However this is a good way to start playing around with the browserWindow object from electron and other things that electron provides. You can check more on this in the [electron documentation](http://electron.atom.io/docs/v0.37.8/)
 
@@ -286,6 +274,6 @@ I encourage you to have a look and try out a sample app and you will see how eas
 
 Some useful links :
 
-*   [Auth0 image uploader app](https://auth0.com/blog/2015/12/15/create-a-desktop-app-with-angular-2-and-electron/)
-*   [My github auth repo](https://github.com/joaogarin/angular2-electron)
-*   [Electron documentation](http://electron.atom.io/docs/v0.37.8/)
+- [Auth0 image uploader app](https://auth0.com/blog/2015/12/15/create-a-desktop-app-with-angular-2-and-electron/)
+- [My github auth repo](https://github.com/joaogarin/angular2-electron)
+- [Electron documentation](http://electron.atom.io/docs/v0.37.8/)

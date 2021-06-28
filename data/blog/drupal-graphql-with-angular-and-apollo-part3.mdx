@@ -1,8 +1,8 @@
 ---
-title: "Drupal GraphQL with Contenta, Angular and Apollo Part 3 - Mutations"
+title: 'Drupal GraphQL with Contenta, Angular and Apollo Part 3 - Mutations'
 publishedAt: '2018-01-07'
-summary: "Using Apollo Angular to perform GraphQL mutations on Contenta."
-image: "/assets/images/posts/mutation.jpg"
+summary: 'Using Apollo Angular to perform GraphQL mutations on Contenta.'
+image: '/assets/images/posts/mutation.jpg'
 tags: [web, angular, javascript, drupal]
 ---
 
@@ -39,8 +39,8 @@ We will be creating a custom module to handle our mutations for the "Client" con
 
 For this example I will assume a content type called "Client" exists in the Drupal installation (just setup a content type with name Client, machine name should be client). Also this content type should have some fields created :
 
--  email
--  telephone
+- email
+- telephone
 
 In your modules folder create a "custom" folder and inside it we are going to place our module inside, lets call it "graphql_custom_mutations". We start by adding its graphql_custom_mutations.info.yml file :
 
@@ -51,8 +51,10 @@ summary: A collection of custom GraphQL Mutations
 core: 8.x
 package: Custom
 dependencies:
-  - graphql
-```
+
+- graphql
+
+````
 
 Lets now create our mutation plugin. Create the folder "Plugin" and inside a "GraphQL" folder to contain our mutation plugins.
 
@@ -80,9 +82,9 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
 class ClientInput extends InputTypePluginBase {
 
 }
-```
+````
 
-This file will be used by our Create Client mutation (will will get to it soon) and it will tell which data and type to expect. In our case the client has an id, a name and two fields which are the email and telephone fields we mentioned above. Both are of type ```String```.
+This file will be used by our Create Client mutation (will will get to it soon) and it will tell which data and type to expect. In our case the client has an id, a name and two fields which are the email and telephone fields we mentioned above. Both are of type `String`.
 
 Next we will do our mutations, let's make a folder inside our "Plugin/GraphQL" folder called "Mutations". Inside lets first place our Create Client mutation to handle creating a new client. Let's make a file called "AddClient.php" :
 
@@ -168,7 +170,7 @@ Thats it!! we have a module that has a simple create and delete mutation, and we
 
 To handle adding a new client in our Angular app I will be creating a separate module for this. With the CLI run the following command :
 
-{% highlight bash %}
+```
 ng generate component components/add-client
 ```
 
@@ -227,9 +229,9 @@ export class AddClientComponent implements OnInit {
 
 ```
 
-Lets see what we did here. We first created our graphql mutation, again wrapping it in a graphql-tag similar to how we did with queries. In our Drupal module our mutation had the name "addClient" so that's what we call here, but we have something here that's a bit different ```mutation submitClient($title: String!, $email: String!)```.
+Lets see what we did here. We first created our graphql mutation, again wrapping it in a graphql-tag similar to how we did with queries. In our Drupal module our mutation had the name "addClient" so that's what we call here, but we have something here that's a bit different `mutation submitClient($title: String!, $email: String!)`.
 
-Because we are getting data from the app we normally want to pass it to the mutation itself, we do that using variables. $title and $email are variables that we pass to our mutation. When we call the mutation we pass them using the ```variables```parameter.
+Because we are getting data from the app we normally want to pass it to the mutation itself, we do that using variables. $title and $email are variables that we pass to our mutation. When we call the mutation we pass them using the `variables`parameter.
 
 That's it, if authenticated with a user that has permissions to add Clients (see content type permissions) you should now see the new user in your backend.
 
@@ -294,15 +296,9 @@ in the template for each client we are listing we then add a button to call the 
 ```html
 <ul>
   <li *ngFor="let client of clients | async">
-    <div>
-      Name: {{client.entityLabel}}
-    </div>
-    <div>
-      Email: {{client.email}}
-    </div>
-    <div>
-      Telephone: {{client.telephone}}
-    </div>
+    <div>Name: {{client.entityLabel}}</div>
+    <div>Email: {{client.email}}</div>
+    <div>Telephone: {{client.telephone}}</div>
     <div>
       <button (click)="deleteClient(client.entityId)">Delete me</button>
     </div>
