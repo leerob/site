@@ -1,8 +1,8 @@
 ---
-title: "Using loadCSS to remove render blocking CSS"
+title: 'Using loadCSS to remove render blocking CSS'
 publishedAt: '2016-04-16'
-summary: "Improve performance by removing blocking scripts like CSS from rendering other parts of your website."
-image: "/assets/images/posts/app.jpg"
+summary: 'Improve performance by removing blocking scripts like CSS from rendering other parts of your website.'
+image: '/static/images/posts/app.jpg'
 tags: [web, drupal, css]
 ---
 
@@ -30,7 +30,7 @@ When you think about this it actually makes a huge impact and immediately sounds
 
 Google has a great tip on this on the [Google performance optimization page]("https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent"). Take a look I am sure it will be extremely helpful.
 
-We will now go on to how you can accomplish this in technical terms using [LoadCSS]("https://github.com/filamentgroup/loadCSS")  and [Critial-CSS]("https://github.com/filamentgroup/criticalCSS")
+We will now go on to how you can accomplish this in technical terms using [LoadCSS]("https://github.com/filamentgroup/loadCSS") and [Critial-CSS]("https://github.com/filamentgroup/criticalCSS")
 
 ##How it works - Moving all CSS out of the blocking zone
 
@@ -38,7 +38,7 @@ When you use a normal CSS link tag to include the CSS in the header of your webp
 
 ```html
 <head>
-<link rel="stylesheet" type="text/css" href="theme.css">
+  <link rel="stylesheet" type="text/css" href="theme.css" />
 </head>
 ```
 
@@ -53,14 +53,19 @@ The first step of the process is to move the CSS out of the blocking zone (link 
 Because loading CSS and other files being loaded asynchronously using :
 
 ```html
-<link rel="preload">
+<link rel="preload" />
 ```
 
 [W3Spec]("https://www.w3.org/TR/2015/WD-preload-20150721") is being implemented in some browsers, but not all by using loadCSS in the following way you make sure to take advantage of this and use loadCSS to polyfill browsers that don’t support this feature.
 
 ```html
-<link rel="preload" href="path/to/mystylesheet.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="path/to/mystylesheet.css"></noscript>
+<link
+  rel="preload"
+  href="path/to/mystylesheet.css"
+  as="style"
+  onload="this.rel='stylesheet'"
+/>
+<noscript><link rel="stylesheet" href="path/to/mystylesheet.css" /></noscript>
 ```
 
 Since rel="preload" does not apply the CSS on its own (it merely fetches it), there is an onload handler on the link that will do that for us as soon as the CSS finishes loading. Since this step requires JavaScript, you may want to include an ordinary reference to your CSS file as well, using a noscript element to ensure it only applies in non-JavaScript settings.
@@ -81,27 +86,33 @@ This is how it looks in VanillaJs :
 
 ```javascript
 var request = require('request');
-var path = require( 'path' );
-var criticalcss = require("criticalcss");
+var path = require('path');
+var criticalcss = require('criticalcss');
 var fs = require('fs');
 var tmpDir = require('os').tmpdir();
 var cssUrl = 'http://site.com/style.css';
-var cssPath = path.join( tmpDir, 'style.css' );
-request(cssUrl).pipe(fs.createWriteStream(cssPath)).on('close', function() {
-  criticalcss.getRules(cssPath, function(err, output) {
-    if (err) {
-      throw new Error(err);
-    } else {
-      criticalcss.findCritical("https://site.com/", { rules: JSON.parse(output) }, function(err, output) {
-        if (err) {
-          throw new Error(err);
-        } else {
-          console.log(output);
-        }
-      });
-    }
+var cssPath = path.join(tmpDir, 'style.css');
+request(cssUrl)
+  .pipe(fs.createWriteStream(cssPath))
+  .on('close', function () {
+    criticalcss.getRules(cssPath, function (err, output) {
+      if (err) {
+        throw new Error(err);
+      } else {
+        criticalcss.findCritical(
+          'https://site.com/',
+          { rules: JSON.parse(output) },
+          function (err, output) {
+            if (err) {
+              throw new Error(err);
+            } else {
+              console.log(output);
+            }
+          }
+        );
+      }
+    });
   });
-});
 ```
 
 ## Step 3 - Saving the critical CSS
@@ -178,10 +189,10 @@ This will also greatly impact the Webpagespeed test from google since one of the
 
 This is only one of many improvements you can make on the frontend. Other improvements I might write about in the future :
 
-*   Minifying CSS
-*   Minifying and Uglifying your Javascript
-*   Using picture HTML tag to deliver images to different medias (device sizes)
-*   Optimizing images by removing any metadata from them before delivering them
-*   Remove render blocking javascript
+- Minifying CSS
+- Minifying and Uglifying your Javascript
+- Using picture HTML tag to deliver images to different medias (device sizes)
+- Optimizing images by removing any metadata from them before delivering them
+- Remove render blocking javascript
 
 Read more about some tips on the [google page speed insights]("https://developers.google.com/speed/docs/insights/about")

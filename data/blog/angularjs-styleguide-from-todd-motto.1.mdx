@@ -1,8 +1,8 @@
 ---
-title: "Create components at runtime with Angular"
+title: 'Create components at runtime with Angular'
 publishedAt: '2016-07-09'
-summary: "Dynamically rendering angular components using the runtime compiler."
-image: "/assets/images/posts/cycle.jpg"
+summary: 'Dynamically rendering angular components using the runtime compiler.'
+image: '/static/images/posts/cycle.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -28,17 +28,16 @@ Before jumping into the technical aspects and code for the solution I think it�
 
 The solution has 4 essential steps to it :
 
-*   1 ) Create a dynamic component outlet / wrapper(call it dynamic-outlet
-*   2 ) Get the necessary parts of what makes a component (style, template, inputs etc..)
-*   3 ) Dynamically generate the Component Factory with the Angular runtime compiler
-*   4 ) Inject the component factory into the dynamic outlet component template using [viewContainerRef](https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html)
+- 1 ) Create a dynamic component outlet / wrapper(call it dynamic-outlet
+- 2 ) Get the necessary parts of what makes a component (style, template, inputs etc..)
+- 3 ) Dynamically generate the Component Factory with the Angular runtime compiler
+- 4 ) Inject the component factory into the dynamic outlet component template using [viewContainerRef](https://angular.io/docs/ts/latest/api/core/index/ViewContainerRef-class.html)
 
 So let’s start by the first step, creating a simple component to inject the dynamically created component in. Because it needs to go somewhere right? This could totally be you root angular app or any other component where you need to place this dynamic component in.
 
 ### 1 & 2 - Create a dynamic component outlet and get dynamic data
 
 This part is the simple part. You just create a component just like any other component, with only one particular thing. It will have sort of a placeholder to inject the component in. There are different ways to accomplish this injecting part using @ViewChild or using ReflectiveInjector, for this case we will use the ReflectiveInjector service.
-
 
 ```javascript
 /*
@@ -143,9 +142,9 @@ Let’s analyze what was done in this service for a moment so we can better unde
 
 We start by calling **createComponentFactory**, which is a function that takes what we call the decorator data simulating what we normally send to a @component decorator :
 
-*   Selector
-*   Styles
-*   Template
+- Selector
+- Styles
+- Template
 
 This could have more things like change detection strategy and any other @component decorator properties but for simplicity we have these which are the most common ones being used.
 
@@ -153,22 +152,28 @@ The second step is to create the component with the metadata and the class (an e
 
 Finally we compile it and return the factory. The trick here is because a module contains multiple components (normally) we filter this by the one that has the class that we just created in order to return only the component we need.
 
-### Step 4 -  Inject the component into the dynamic outlet component template using viewContainerRef
+### Step 4 - Inject the component into the dynamic outlet component template using viewContainerRef
 
 On step one after we get the component factory from our service’s **createComponentFactory** method we have to inject it into our view. Lets take a look at that.
 
 ```javascript
- // get the ComponentFactory from our service so we can inject it into the view
-    this.componentGenerator.createComponentFactory(componentDecorator, (factory) => {
-      if (factory) {
-        this.vcRef.clear();
-        const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
-        this.cmpRef = this.vcRef.createComponent(factory, -1, injector, []);
-        // Here we can populate inputs
-        // This has to be dynamic for every input
-        this.cmpRef.instance['name'] = 'Some dynamic name';
-      }
-    });
+// get the ComponentFactory from our service so we can inject it into the view
+this.componentGenerator.createComponentFactory(
+  componentDecorator,
+  (factory) => {
+    if (factory) {
+      this.vcRef.clear();
+      const injector = ReflectiveInjector.fromResolvedProviders(
+        [],
+        this.vcRef.parentInjector
+      );
+      this.cmpRef = this.vcRef.createComponent(factory, -1, injector, []);
+      // Here we can populate inputs
+      // This has to be dynamic for every input
+      this.cmpRef.instance['name'] = 'Some dynamic name';
+    }
+  }
+);
 ```
 
 As we can see here we use the ReflectiveInjector to inject our component into the view and this is pretty straightforward. We can then also inject dynamically inputs and other things into this component by accessing the component reference instance.

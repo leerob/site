@@ -1,8 +1,8 @@
 ---
-title: "Angularjs styleguide from Todd Motto"
+title: 'Angularjs styleguide from Todd Motto'
 publishedAt: '2016-07-09'
-summary: "A style guide that covers mainly the topics of Architecture, file structure, components, one-way data flow and best practices"
-image: "/assets/images/posts/style.jpg"
+summary: 'A style guide that covers mainly the topics of Architecture, file structure, components, one-way data flow and best practices'
+image: '/static/images/posts/style.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -26,17 +26,15 @@ The style guide covers mainly the topics of Architecture, file structure, compon
 
 While this approach makes it easier for you go converge into Angular 2, I am not going to get too much into that. I think a lot of the apps will not really be converted into Angular 2 and I don’t think you should consider this approach only if you are thinking about going to Angular 2. The reason for considering this approach is because you want a solid and maintainable Angular 1 app, and that just by itself should be enough.
 
-
-
 ## A Modular architecture
 
 In Angular 1 think of every module of your application as a module component. A module component is the definition of the module that encapsulates all the logic, templates, routing and also all the child components of that component. This will be reflected in the folder structure of the app.
 
 We should have 3 main folders that represent 3 high level modules, Root ,Component and Common.
 
-*  Root  - The Root of our app that bootstraps and kicks our app off, all the components are imported into this Root component.
-*  Component - Reusable components, they should be generic components that can easily be imported into a different app, they have no app specific logic in them.
-*  Common - App specific components. They are components that contain some app specific logic in them.
+- Root - The Root of our app that bootstraps and kicks our app off, all the components are imported into this Root component.
+- Component - Reusable components, they should be generic components that can easily be imported into a different app, they have no app specific logic in them.
+- Common - App specific components. They are components that contain some app specific logic in them.
 
 ## Root module
 
@@ -73,15 +71,10 @@ import Components from './components/components';
 import Common from './common/common';
 
 const root = angular
-  .module('app', [
-    Components,
-    Common,
-    uiRouter
-  ])
+  .module('app', [Components, Common, uiRouter])
   .component('app', AppComponent);
 export default root;
 ```
-
 
 ## Component module
 
@@ -93,12 +86,7 @@ It looks like something like the following :
 import angular from 'angular';
 import Calendar from './calendar';
 import Events from './events';
-const components = angular
-  .module('app.components', [
-    Calendar,
-    Events
-  ])
-  .name;
+const components = angular.module('app.components', [Calendar, Events]).name;
 export default components;
 ```
 
@@ -114,12 +102,7 @@ The common module looks like this :
 import angular from 'angular';
 import Nav from './nav';
 import Footer from './footer';
-const common = angular
-  .module('app.common', [
-    Nav,
-    Footer
-  ])
-  .name;
+const common = angular.module('app.common', [Nav, Footer]).name;
 export default common;
 ```
 
@@ -136,19 +119,15 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import CalendarComponent from './calendar.component';
 const calendar = angular
-  .module('calendar', [
-    uiRouter
-  ])
+  .module('calendar', [uiRouter])
   .component('calendar', CalendarComponent)
   .config(($stateProvider, $urlRouterProvider) => {
-    $stateProvider
-      .state('calendar', {
-        url: '/calendar',
-        component: 'calendar'
-      });
+    $stateProvider.state('calendar', {
+      url: '/calendar',
+      component: 'calendar'
+    });
     $urlRouterProvider.otherwise('/');
-  })
-  .name;
+  }).name;
 export default calendar;
 ```
 
@@ -159,18 +138,18 @@ But sometimes a lower level module contains directives, services and not only a 
 Everything should be pretty simple and explicit, using the component name followed by name of the type of file. We then use the index.js to import these and put them all together in the module definition.
 
 ```javascript
-index.js
-calendar.controller.js
-calendar.component.js
-calendar.service.js
-calendar.directive.js
-calendar.filter.js
-calendar.spec.js
+index.js;
+calendar.controller.js;
+calendar.component.js;
+calendar.service.js;
+calendar.directive.js;
+calendar.filter.js;
+calendar.spec.js;
 ```
 
 ## Controllers
 
-Controllers should *ONLY* be used alongside components and not anywhere else. You should also use ES6 classes for controllers. [The styleguide controller topic](https://github.com/toddmotto/angular-styleguide#controllers) provides some good suggestion for using classes in the controllers including using the constructor for dependency injection, exporting only the name property and not the class itself, using arrow functions, taking advantage of the lifecycle hooks and more.
+Controllers should _ONLY_ be used alongside components and not anywhere else. You should also use ES6 classes for controllers. [The styleguide controller topic](https://github.com/toddmotto/angular-styleguide#controllers) provides some good suggestion for using classes in the controllers including using the constructor for dependency injection, exporting only the name property and not the class itself, using arrow functions, taking advantage of the lifecycle hooks and more.
 
 A controller class that injects a service will look something like this :
 
@@ -186,7 +165,7 @@ class TodoController {
       selected: false
     };
     this.todos = [];
-    this.todoService.getTodos.then(response => this.todos = response);
+    this.todoService.getTodos.then((response) => (this.todos = response));
   }
   addTodo({ todo }) {
     if (!todo) return;
@@ -201,15 +180,14 @@ TodoController.$inject = ['TodoService'];
 export default TodoController;
 ```
 
-
 ## One way data flow and Events
 
 Angular 1.5 introduced one way data flow to allow for better communication between components. Again I would [refer to the styleguide](https://github.com/toddmotto/angular-styleguide#one-way-dataflow-and-events) for some good suggestions on this, but some of the key things here are :
 
-*  always use one-way databinding syntax '<'
-*  Components that have bindings should use $onChanges to clone the one-way binding data *  to break Objects passing by reference and updating the parent data
-*  Use $event as a function argument in the parent method
-*  Pass an $event: {} Object back up from a stateless component
+- always use one-way databinding syntax '<'
+- Components that have bindings should use $onChanges to clone the one-way binding data \* to break Objects passing by reference and updating the parent data
+- Use $event as a function argument in the parent method
+- Pass an $event: {} Object back up from a stateless component
 
 ## Stateful vs Stateless components
 
@@ -312,7 +290,7 @@ export default todoForm;
 
 Some things to notice here. First of all the component fetches no state, it does not use service of any kind.
 
-Data is passed to him through bindings, it then uses the $onChanges lifecycle hook to create a new instance for the todo binding to avoid reflection on the parent and instead only pass the data through the event *onAddTodo* avoiding any kind of automatic update (two way binding) in the parent.
+Data is passed to him through bindings, it then uses the $onChanges lifecycle hook to create a new instance for the todo binding to avoid reflection on the parent and instead only pass the data through the event _onAddTodo_ avoiding any kind of automatic update (two way binding) in the parent.
 
 It should be very explicit how the data is sent and the parent should be responsible for doing with that event what he intends to do with it.
 
@@ -321,7 +299,6 @@ It should be very explicit how the data is sent and the parent should be respons
 Just a quick word on directives. Components do not replace all types of directives. But they do replace a considerable amount of them in any Angular 1 app. We should think carefully on when to use a directive and also what to include in it now that Directives and Components provide similar things.
 
 But essentially the idea is that directives should not declare templates and controllers anymore and they should also not receive data through bindings. They should be used only for manipulating the DOM by extending normal HTML created from components. So you should use it when you need custom DOM Events or API’s, and you should binding it to something inside a template of a component(). You should also always restrict it to “A” (Attribute) (like ng-repeat, ng-class etc do).
-
 
 ## Services
 
@@ -361,9 +338,8 @@ export default todo;
 
 We essentially define our class with a constructor getting the external dependencies passed in and we define our methods that will be called from our controllers such as the getTodos() method here that simply does an http request to some API. We then import the service in the index.js file and register it there together with all the other parts of our module like component(), filters or any other things that compose our module.
 
-
 ## Wrapping things up
 
 This is a very good approach to building solid apps with Angular 1. If you have an Angular 1 app, and you are expecting to maintain it for a large amount of time you should definitely consider this approach. It uses some of the most modern things in the Javascript specs like Classes, constants, and module imports and exports and some best practices like component based architecture and one way data flow and a lot of other good ideas like keeping a nice folder structure that really represents your app.
 
-If you are or migrating to Angular 2 then I would say this is also a very good way to start thinking in Angular 2 way,  Classes, Components, Inputs, Output events are all concepts you will be seeing regularly in Angular 2 so it’s a good way to get familiar with them in a app you already know, your own.
+If you are or migrating to Angular 2 then I would say this is also a very good way to start thinking in Angular 2 way, Classes, Components, Inputs, Output events are all concepts you will be seeing regularly in Angular 2 so it’s a good way to get familiar with them in a app you already know, your own.

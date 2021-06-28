@@ -1,8 +1,8 @@
 ---
-title: "Angularjs Component method"
+title: 'Angularjs Component method'
 publishedAt: '2016-04-29'
-summary: "Analyzing how to use components with angular 1.5+"
-image: "/assets/images/posts/comp.jpg"
+summary: 'Analyzing how to use components with angular 1.5+'
+image: '/static/images/posts/comp.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -16,23 +16,21 @@ tags: [web, angular, javascript]
 
 If you are anything like me, you love markup and HTML. It was one of the first things that got me into web development in the first place, the idea that with some of this syntax I could bring ideas to life in the browser and put it together with CSS and Javascript and create real experiences for users in apps or websites.
 
-Now if you are really like me you like one specific type of markup and that is *semantic markup*. Markup that really makes sense and tells the story when you see it instead of distracting you will the layout implementation details. Think of it this way. What looks best to you :
+Now if you are really like me you like one specific type of markup and that is _semantic markup_. Markup that really makes sense and tells the story when you see it instead of distracting you will the layout implementation details. Think of it this way. What looks best to you :
 
 ## Normal markup
 
 ```html
-<div class=”friend”>
-  <div class=”friend__image”>
-  </div>
-  <div class=”friend__name”>
-  </div>
+<div class="”friend”">
+  <div class="”friend__image”"></div>
+  <div class="”friend__name”"></div>
 </div>
 ```
 
 ## Semantic markup
 
 ```html
-<friend name=”friend-name” image=”friend-image”></friend>
+<friend name="”friend-name”" image="”friend-image”"></friend>
 ```
 
 Call me crazy I do really like the second one so much better. This is a very simple example but think of more complex set of inner markup for this “friend” item and it takes this into a much more drastic proportion.
@@ -44,18 +42,22 @@ This was when Angular striked to me as a game changer. I could actually start do
 This is what a typical directive would look like
 
 ```javascript
-angular.module('docsSimpleDirective', [])
-.controller('Controller', ['$scope', function($scope) {
-  $scope.customer = {
-    name: 'Naomi',
-    address: '1600 Amphitheatre'
-  };
-}])
-.directive('myCustomer', function() {
-  return {
-    template: 'Name: {{customer.name}} Address: {{customer.address}}'
-  };
-});
+angular
+  .module('docsSimpleDirective', [])
+  .controller('Controller', [
+    '$scope',
+    function ($scope) {
+      $scope.customer = {
+        name: 'Naomi',
+        address: '1600 Amphitheatre'
+      };
+    }
+  ])
+  .directive('myCustomer', function () {
+    return {
+      template: 'Name: {{customer.name}} Address: {{customer.address}}'
+    };
+  });
 ```
 
 You can then do this in your HTML
@@ -76,9 +78,9 @@ While that above sample looks pretty straightforward and okay to understand. It 
 
 But when I say that directives are hard it’s not just that you have to actually make this but they are really kind of hard to understand and some of what I think makes them complex are :
 
-*   Creating new scope (Isolated scope) vs inheriting scope from the controller
-*   Bind to element, attribute, class name or comment with the **restrict** key word
-*   Link, PreLink, PostLink functions can make it confusing
+- Creating new scope (Isolated scope) vs inheriting scope from the controller
+- Bind to element, attribute, class name or comment with the **restrict** key word
+- Link, PreLink, PostLink functions can make it confusing
 
 ## Angular 1.5 and the component() method
 
@@ -95,7 +97,7 @@ And this is how an app based on components looks like in Angular 1.5
 ```html
 <!-- components match only elements -->
 <div ng-controller="mainCtrl as ctrl">
-  <b>Hero</b><br>
+  <b>Hero</b><br />
   <hero-detail hero="ctrl.hero"></hero-detail>
 </div>
 ```
@@ -103,7 +105,7 @@ And this is how an app based on components looks like in Angular 1.5
 ### Main.js
 
 ```javascript
-angular.module('heroApp', []).controller('mainCtrl', function() {
+angular.module('heroApp', []).controller('mainCtrl', function () {
   this.hero = {
     name: 'Spawn'
   };
@@ -113,8 +115,7 @@ angular.module('heroApp', []).controller('mainCtrl', function() {
 ### HeroDetail.js
 
 ```javascript
-function HeroDetailController() {
-}
+function HeroDetailController() {}
 angular.module('heroApp').component('heroDetail', {
   templateUrl: 'heroDetail.html',
   controller: HeroDetailController,
@@ -134,7 +135,7 @@ There are a couple of interesting things here and some interesting things under 
 
 ### Elements only
 
-Notice the comment *“components match only elements”*. That’s exactly what it means, you can not use components as you use directives matching for example attributes or class names. Components bind only to the element itself and that is the only way you should use them, directives on the other hand are meant to decorate and so they can be used in other ways. We will get to some sort of comparison for the two of them in the end.
+Notice the comment _“components match only elements”_. That’s exactly what it means, you can not use components as you use directives matching for example attributes or class names. Components bind only to the element itself and that is the only way you should use them, directives on the other hand are meant to decorate and so they can be used in other ways. We will get to some sort of comparison for the two of them in the end.
 
 ### module.component(name, options);
 
@@ -156,16 +157,15 @@ Where we have the name in the first argument as in directives but in the second 
 
 ### Bindings
 
-In directives we have a *scope* where like we mentioned we can have inherited scope or isolated (new) scope for the directive. Usually and this has kind of become the standard you create an isolated scope for the directives and use *bindToController* to pass in the necessary properties we want to pass from the controller to the directive.
+In directives we have a _scope_ where like we mentioned we can have inherited scope or isolated (new) scope for the directive. Usually and this has kind of become the standard you create an isolated scope for the directives and use _bindToController_ to pass in the necessary properties we want to pass from the controller to the directive.
 
 In components we have the bindings keyword which lets us just pass in directly the properties we want from the controller removing the unnecessary boilerplate from having to go through all that scope and bindToController and just assume by default we use an isolated scope.
 
 ```javascript
 bindings: {
-    hero: '='
+  hero: '=';
 }
 ```
-
 
 ### controller and controllerAs
 
@@ -230,7 +230,6 @@ In Angular 1.5 as we said in component() method a controllerAs is set by default
 
 and in the template use $ctrl.property to access any property of the controller.
 
-
 ## Other features of component
 
 The component method has a couple more things that are worth going over and that quite honestly I am still discovering while refactoring some apps from directive approach to component approach but let’s go over some of them.
@@ -266,7 +265,6 @@ Like we said earlier to get the full performance and useful restraints in your a
 });
 ```
 
-
 ## Are components replacing directives? When to use or not use them?
 
 Components were not introduced to replace directives altogether, but rather to replace on particular use case of directives and make that use case easier to make.
@@ -274,16 +272,16 @@ So when do you know when to use component and when to use directives?
 
 Components are like mentioned only one use case of directives and they simplify the creating method of this use case. If you are looking for a clean way to lay your app in a semantic component based way, components are the way to go. They :
 
-*   Are simple to configure
-*   promote best practices like controllerAs and isolated scope
-*   Optimized for component based architecture
-*   Easier to upgrade to Angular2
+- Are simple to configure
+- promote best practices like controllerAs and isolated scope
+- Optimized for component based architecture
+- Easier to upgrade to Angular2
 
 when you should **NOT** use components as read in the [angular component documentation](https://docs.angularjs.org/guide/component)
 
-*   for directives that rely on DOM manipulation, adding event listeners etc, because the compile and link functions are unavailable
-*   when you need advanced directive definition options like priority, terminal, multi-element
-*   when you want a directive that is triggered by an attribute or CSS class, rather than an element
+- for directives that rely on DOM manipulation, adding event listeners etc, because the compile and link functions are unavailable
+- when you need advanced directive definition options like priority, terminal, multi-element
+- when you want a directive that is triggered by an attribute or CSS class, rather than an element
 
 ## Wrap up
 
@@ -293,9 +291,8 @@ Give it a try and you will realise how easy it is to get started with them.
 
 I used the following articles as reference for this blog post :
 
+- [https://docs.angularjs.org/guide/component](https://docs.angularjs.org/guide/component)
 
-* [https://docs.angularjs.org/guide/component](https://docs.angularjs.org/guide/component)
-
-* [https://toddmotto.com/exploring-the-angular-1-5-component-method/](https://toddmotto.com/exploring-the-angular-1-5-component-method/)
-* [https://toddmotto.com/one-way-data-binding-in-angular-1-5/](https://toddmotto.com/one-way-data-binding-in-angular-1-5/)
-* [https://gist.github.com/toddmotto/5b4de6c777d3e446e6410fdadb824522](https://gist.github.com/toddmotto/5b4de6c777d3e446e6410fdadb824522)
+- [https://toddmotto.com/exploring-the-angular-1-5-component-method/](https://toddmotto.com/exploring-the-angular-1-5-component-method/)
+- [https://toddmotto.com/one-way-data-binding-in-angular-1-5/](https://toddmotto.com/one-way-data-binding-in-angular-1-5/)
+- [https://gist.github.com/toddmotto/5b4de6c777d3e446e6410fdadb824522](https://gist.github.com/toddmotto/5b4de6c777d3e446e6410fdadb824522)

@@ -1,8 +1,8 @@
 ---
-title: "Redux in angular with ngrx"
+title: 'Redux in angular with ngrx'
 publishedAt: '2016-06-12'
-summary: "Redux, Mobx, RxJs, ngRx. These are some of the most common ways to handle state management in today’s Javascript modern applications."
-image: "/assets/images/posts/ocean.jpg"
+summary: 'Redux, Mobx, RxJs, ngRx. These are some of the most common ways to handle state management in today’s Javascript modern applications.'
+image: '/static/images/posts/ocean.jpg'
 tags: [web, angular, javascript]
 ---
 
@@ -47,9 +47,7 @@ What this means is that instead of subscribing to the whole store as you typical
 In Redux :
 
 ```javascript
-store.subscribe(() =>
-  console.log(store.getState())
-)
+store.subscribe(() => console.log(store.getState()));
 ```
 
 Although a view binding would probably be used when using [redux with react](https://github.com/reactjs/react-redux) but still if you need to manipulate that value you would do it imperatively
@@ -82,7 +80,6 @@ In your template this would simply look like this :
 NgRx also comes with some redux saga-like implementation and that can be found in [ngRx Effects](https://github.com/ngrx/effects)
 
 In ngRx effects you can orchestrate and manage complex asynchronous operations such as as login or other things that happen on an async bases. This makes testing for asyncronous actions a lot easier and it can look like this :
-
 
 ```javascript
 import { Injectable } from '@angular/core';
