@@ -1,0 +1,119 @@
+---
+title: 'Finding the perfect side project stack'
+publishedAt: '2021-07-04'
+summary: 'Documenting as of july how I am starting side projects.'
+image: '/static/images/posts/stack.jpeg'
+tags: [projects, javascript]
+---
+
+<Image
+  alt={`Envato`}
+  src={`/static/images/posts/stack.jpeg`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+In this blog post I will document how I am going at with starting new projects, or how I would start a real project in July 2021. These are obviously very personal choices and this is not the stack I work with on my day job even. that being said, I do enjoy the search
+for a stack that allows focusing on developing an idea that I have leaving as much as possible all the annoiances behind.
+
+## Motivations and preferences
+
+Before we get into the tech choices I thought would be good to first of all put in here my thought process of the things I find value and I did want to very explicitely have in the stack I was looking for.
+
+### Sass (software as a service)
+
+Most of the things I am trying nowadays would fall into the Sass (software as a service) category, there is just something so appealing about the subscription model. Having one product to work on and improve, discuss problems with clients,
+try to solve real world problems with software, that is afterall what I really like doing.
+
+So some of the choices will be made based on this fact, that the end result has to have some sort of built-in sass features (pricing, auth etc..)
+
+### Development speed
+
+The choices I make here are for side projects, some will live longer, some will not even see the light of day, some others might live for just a little while. Mostly I am trying either real ideas to see if they have any kind of interest so its quite important that
+I can do this as fast as possible.
+
+### Backend as a service
+
+I am a frontend developer, and I can't possibly say with enough emphasis how much I dread databases. I really do, I hate them. It's a must for me that I am not directly maintaining any kind of database myself for these projects. So this is a pretty big
+thing in my choice process, that I need some sort of backend as a service (hasura, firebase, supabase etc.)
+
+### Simplicity
+
+This is kind of difficult to express, and its very tied to the Development speed motivation, the stack needs to be simple, I need to already know it (I want to solve a business problem not a technology problem or learn a new language) so I need to keep things simple, maintainable and small.
+
+### Authentication
+
+This is a funny one, somewhat related to the Backend as a service motivation, whatever backend as a service I choose should have authentication built-in. Its just not a problem I am really interested in solving. If the backend does not have it I would have to use some other
+pre-made service for authentication. I just don't want to handle authentication myself for these projects.
+
+### Simple hosting (as a service)
+
+Hosting must also be a non-issue. It needs to be a git based hosting solution where I basically push my code and boom, its live.
+
+### Open source
+
+As much as possible keep things in the open source, you never know tomorrow, companies have pricing models that then change, I can't guarantee that any of this has possibility for me to pay for, so I need to make sure it's only my time
+I am playing with.
+
+## Tech choices
+
+Ok, now that we are clear on what my motivations are, lets dig into the actual techonologies and tools I am using.
+
+### Next.js
+
+Alright, how can I say this without sounding like a total next fanboy..well, honestly I don't care about sounding like that since it's exactly what I am. [Next.js](https://nextjs.org/) is the first choice I made, and its because honestly I love working with it.
+I use [Next.js](https://nextjs.org/) in my day job and on all the years I have been doing web development (with serveral framworks from .net, umbraco, wordpress, joomla, cakephp, drupal, angular) nothing gives me the amount of flexibility, opinions and direction that [Next.js](https://nextjs.org/) gives me. It just puts me right on the pit of success in terms
+of user experience, developer experience, speed of development and best practices.
+
+I honestly don't see myself working on anything else (ofc I would if I would have to, but I don't need when I am making these kind of choices) because it just makes me so happy and feels so right on everything that I do.
+
+The other reason I love [Next.js](https://nextjs.org/) is that they just have the same mental model and motivations that I have. They believe (and I believe too) that product and product experience should drive the tech decisions and not the other way around. It's very well suited for
+developing products and so its for me a non-negotiable choice.
+
+### Vercel
+
+Lets get to hosting cause this one is also a quick one. I love working with [Vercel](https://vercel.com/), I admit [Netlify](https://www.netlify.com/) (which I also use at work) is pretty nice as well, but when I debate the two of them (and this might sound ridiculous) I choose vercel because they "gave birth" to [Next.js](https://nextjs.org/) and its a "very" small way
+of me to thank them, and if I get to pay them for this I will be happy.
+
+Using [Vercel](https://vercel.com/) is simple, its quick, for hosting my requirements are indeed small but [Vercel](https://vercel.com/) ticks all the boxes perfectly.
+
+### Supabase
+
+This is a recent choice, I previously was doing everything in Drupal when it comes to the backend because its something I have worked with for so many years, I am familiar with it. But recently Drupal has grown way to complex for my needs here and like I mentioned Before
+I don't want to maintain a database (and also a different tech stack for the backend) so "something as a service" was my need.
+
+So I tried some things
+
+#### Strapi
+
+I really like CMS's, I have worked with CMS's (especially Drupal) for a very long time and so I gave [strapi](https://strapi.io/) a spin, it was really great. The admin interface is great, modeling data is super easy, and its javascript which keeps everything in the same language ([Next.js](https://nextjs.org/) is also javascript) and so it
+seemed like a great choice. Unfortunately there were some things that led me to choose something else :
+
+- No authentication built in (but was easy to setup with next-auth.js)
+- No cloud hosting (I would have to host it myself)
+
+Given this I dediced to look for something more "out of the box".
+
+#### Hasura
+
+was excited about [hasura](https://hasura.io/), I am a big fan of GraphQL and that is something I was purposly chasing since it would allow me to keep the stack fairly close to my normal working setup. However Hasura does not have authentication,
+and the docs sounded like a bit more than I wanted to invest on (simplicity). I must admit I might give Hasura a try some day.
+
+#### firebase
+
+I have used [firebase](https://firebase.google.com/) in the past, its pretty nice and very close to what I wanted, however its not open source and getting data out of it or migrating away from it can be complicated (did this already in the past).
+
+#### Supabase 🏆
+
+Given all of this [supabase](https://supabase.io/) was a standout. It had basically all the things I wanted
+
+- Simple
+- Cloud hosting
+- Open source
+- Integration with vercel (bonus)
+- Authetication
+
+The biggest letdown was not using GraphQL but given the simplicity I though was well worth the shot. been using it for a while and I am really enjoying it.
+
+## Bonus - vercel subscription starterkit
