@@ -14,80 +14,91 @@ tags: [projects, javascript]
   priority
 />
 
-In this blog post I will document how I am going at with starting new projects, or how I would start a real project in July 2021. These are obviously very personal choices and this is not the stack I work with on my job. That being said, I do enjoy the search
+In this blog post I will document a recent research for a tech stack for my side projects, or really just how I would start a real project in July 2021. These are obviously very personal choices and this is not the stack I work with on my job. That being said, I do enjoy the search
 for a stack that allows focusing on developing an idea that I have, leaving as much as possible all the annoiances behind.
+
+## Side projects
+
+I work on side projects all the time, I have made themes in themeforest, started apps on android store, launched a sass app for teams to share revenue (mostly for Envato users), launched last year [Haynet](https://www.haynet.vet/) which is still in it's infancy and trying to find some sort of market fit,
+and I am starting to work on a new project for an idea I have been dabling with for a while. However, this time I wanted to take some time and invest a bit into a research on what tech stack to go with for the next years building this kind of projects.
+
+The choices made here are naturally very driven by the fact that I am a frontend developer who just enjoys working with React and components in general, so take it as you like. I did already start my last project in this new stack and so far
+it's going out really great and becuase it took some time to find the right pieces I though would be useful to share them with you.
 
 ## Motivations and preferences
 
-Before we get into the tech choices I thought would be good to first of all put in here my thought process of the things I find value and I did want to very explicitely have in the stack I was looking for.
+Before we get into the tech choices, I thought would be good to first discuss a bit the things I find value in for this kind of project (where its just me working on it), and things I did want to very explicitely have in the stack I was looking for.
 
 ### Sass (software as a service)
 
-Most of the things I am trying nowadays would fall into the Sass (software as a service) category, there is just something so appealing about the subscription model. Having one product to work on and improve, discuss problems with clients,
-try to solve real world problems with software, that is afterall what I really like doing.
+Most of the things I am trying nowadays would fall into the Sass (software as a service) category, there is just something so appealing about the subscription model and the whole recurring revenue, having one product to work on and improve and iterate on, discuss problems with clients,
+solve real world problems with software. That is afterall what I really like doing.
 
-So some of the choices will be made based on this fact, that the end result has to have some sort of built-in sass features (pricing, auth etc..)
+So some of the choices made here are based on this fact, that the end result has to have some sort of built-in sass features (pricing, auth etc..)
 
 ### Development speed
 
-The choices I make here are for side projects, some will live longer, some will not even see the light of day, some others might live for just a little while. Mostly I am trying either real ideas to see if they have any kind of interest so its quite important that
-I can do this as fast as possible.
+The choices I make here are for side projects. Some will live longer, some will not even see the light of day, some others might live for just a little while. Mostly I am trying real ideas to see if they have any kind of interest, or sometimes just to see if I can even make them start to finish.
+
+So its quite important that I can do this as fast as possible.
 
 ### Backend as a service
 
 I am a frontend developer, and I can't possibly say with enough emphasis how much I dread databases. I really do, I hate them. It's a must for me that I am not directly maintaining any kind of database myself for these projects. So this is a pretty big
-thing in my choice process, that I need some sort of backend as a service (hasura, firebase, supabase etc.)
+factor in my choice process, that I need some sort of backend as a service (hasura, firebase, supabase etc.)
 
 ### Simplicity
 
-This is kind of difficult to express, and its very tied to the Development speed motivation, the stack needs to be simple, I need to already know it (I want to solve a business problem not a technology problem or learn a new language) so I need to keep things simple, maintainable and small.
+This is kind of a difficult one to express, and its very tied to the Development speed motivation. The stack needs to be simple (I know right?), I need to already know it (I want to solve a business / idea problem not wrestling a new technology or language) so I need to keep things simple, maintainable and small.
 
 ### Authentication
 
-This is a funny one, somewhat related to the Backend as a service motivation, whatever backend as a service I choose should have authentication built-in. Its just not a problem I am really interested in solving. If the backend does not have it I would have to use some other
+This is a funny one, somewhat related to previous motivations as well I guess.
+
+Whatever backend as a service I choose should have authentication built-in. Its just not a problem I am really interested in solving (again). If the backend does not have it I would have to use some other
 pre-made service for authentication. I just don't want to handle authentication myself for these projects.
 
-### Simple hosting (as a service)
+### Simple (very simple) hosting
 
 Hosting must also be a non-issue. It needs to be a git based hosting solution where I basically push my code and boom, its live.
 
 ### Open source
 
-As much as possible keep things in the open source, you never know tomorrow, companies have pricing models that then change, I can't guarantee that any of this has possibility for me to pay for, so I need to make sure it's only my time
+As much as possible keep things in the open source world. You never know what tomorrow brings, companies have pricing models that change on your feet, companies disapear because they took too much funding and let projects die, etc.. I can't guarantee that any of these projects will actually make real money (most do not), so I need to make sure it's only my time
 I am playing with.
 
 ## Tech choices
 
-Ok, now that we are clear on what my motivations are, lets dig into the actual techonologies and tools I am using.
+Ok, now that we are clear on where my motivations lay, let's dig into the actual techonologies and tools I am using.
 
 ### Next.js
 
 Alright, how can I say this without sounding like a total next fanboy..well, honestly I don't care about sounding like that since it's exactly what I am. [Next.js](https://nextjs.org/) is the first choice I made, and its because honestly I love working with it.
-I use [Next.js](https://nextjs.org/) in my day job and on all the years I have been doing web development (with serveral framworks from .net, umbraco, wordpress, joomla, cakephp, drupal, angular) nothing gives me the amount of flexibility, opinions and direction that [Next.js](https://nextjs.org/) gives me. It just puts me right on the pit of success in terms
-of user experience, developer experience, speed of development and best practices.
+I use [Next.js](https://nextjs.org/) in my day job and on all the years I have been doing web development (with serveral framworks from .net, umbraco, wordpress, joomla, cakephp, drupal, angular) nothing strikes to right amount of flexibility, opinions and direction that [Next.js](https://nextjs.org/) strikes for me. Working with it (and largely due to React as well) I just feel so productive and quick. It just puts me right on the pit of success in terms
+of end user experience, developer experience, speed of development and best practices.
 
-I honestly don't see myself working on anything else (ofc I would if I would have to, but I don't need when I am making these kind of choices) because it just makes me so happy and feels so right on everything that I do.
+I honestly don't see myself working on anything else (ofc I would if I would have to, but I don't need when I am making these kind of choices) since this started clicking for me.
 
-The other reason I love [Next.js](https://nextjs.org/) is that they just have the same mental model and motivations that I have. They believe (and I believe too) that product and product experience should drive the tech decisions and not the other way around. It's very well suited for
+The other reason I love [Next.js](https://nextjs.org/) is that they just have the same mental model and motivations that I have on this kind of project (and any project really..). They believe (and I believe too) that product and product experience should drive the tech decisions and not the other way around. It's very well suited for
 developing products and so its for me a non-negotiable choice.
 
 ### Vercel
 
-Lets get to hosting cause this one is also a quick one. I love working with [Vercel](https://vercel.com/), I admit [Netlify](https://www.netlify.com/) (which I also use at work) is pretty nice as well, but when I debate the two of them (and this might sound ridiculous) I choose vercel because they "gave birth" to [Next.js](https://nextjs.org/) and its a "very" small way
-of me to thank them, and if I get to pay them for this I will be happy.
+Lets get to hosting because this one is also a quick one. I love working with [Vercel](https://vercel.com/), I admit [Netlify](https://www.netlify.com/) (which I also use at work) is pretty nice as well, but when I debate the two of them (and this might sound ridiculous) I choose vercel because they "gave birth" to [Next.js](https://nextjs.org/) and its a "very" small way
+of me to thank them, and if I get to pay them for this I will be happy to do so.
 
-Using [Vercel](https://vercel.com/) is simple, its quick, for hosting my requirements are indeed small but [Vercel](https://vercel.com/) ticks all the boxes perfectly.
+Using [Vercel](https://vercel.com/) is simple, its quick, and I admit that my hosting requirements are indeed small but [Vercel](https://vercel.com/) ticks all the boxes perfectly.
 
 ### Supabase
 
-This is a recent choice, I previously was doing everything in Drupal when it comes to the backend because its something I have worked with for so many years, I am familiar with it. But recently Drupal has grown way to complex for my needs here and like I mentioned Before
+This is a recent choice, I previously was doing everything in [Drupal](https://www.drupal.org) when it comes to the backend because its something I have worked with for so many years, I am familiar with it. But recently Drupal has grown way to complex for my needs here and like I mentioned before
 I don't want to maintain a database (and also a different tech stack for the backend) so "something as a service" was my need.
 
-So I tried some things
+So I tried some things to solve this particular part of the puzzle. And because I knew because its where my weakness is at, I would need something really simple and powerfull.
 
 #### Strapi
 
-I really like CMS's, I have worked with CMS's (especially Drupal) for a very long time and so I gave [strapi](https://strapi.io/) a spin, it was really great. The admin interface is great, modeling data is super easy, and its javascript which keeps everything in the same language ([Next.js](https://nextjs.org/) is also javascript) and so it
+I really like CMS's, I have worked with CMS's (especially Drupal) for a very long time (almost my entire professional career) and so I gave [strapi](https://strapi.io/) a spin, it was really great. The admin interface is great, modeling data is super easy, and it's javascript which keeps everything in the same language ([Next.js](https://nextjs.org/) is also javascript) and so it
 seemed like a great choice. Unfortunately there were some things that led me to choose something else :
 
 - No authentication built in (but was easy to setup with next-auth.js)
@@ -97,38 +108,39 @@ Given this I dediced to look for something more "out of the box".
 
 #### Hasura
 
-was excited about [hasura](https://hasura.io/), I am a big fan of GraphQL and that is something I was purposly chasing since it would allow me to keep the stack fairly close to my normal working setup. However Hasura does not have authentication,
-and the docs sounded like a bit more than I wanted to invest on (simplicity). I must admit I might give Hasura a try some day.
+I was (and still partially am) excited about [Hasura](https://hasura.io/). I am a big fan of [GraphQL](https://graphql.org/) and that is something I was purposly chasing since it would allow me to keep the stack fairly close to my normal working setup. However [Hasura](https://hasura.io/) does not have authentication,
+and the docs sounded like a bit more than I wanted to invest on (simplicity). I must admit I might give Hasura a try some day if I do regret steping away from GraphQL.
 
-#### firebase
+#### Firebase
 
-I have used [firebase](https://firebase.google.com/) in the past, its pretty nice and very close to what I wanted, however its not open source and getting data out of it or migrating away from it can be complicated (did this already in the past).
+I have used [Firebase](https://firebase.google.com/) in the past, it's pretty nice and very close to what I wanted, however it's not open source and getting data out of it, or migrating away from it, can be complicated. I did this already in the past and don't really feel like going through that again.
 
 #### Supabase 🏆
 
-Given all of this [supabase](https://supabase.io/) was a standout. It had basically all the things I wanted
+Given all of this [supabase](https://supabase.io/) was a standout. It had basically all the things I wanted :
 
 - Simple
 - Cloud hosting
+- Authetication
 - Open source
 - Integration with vercel (bonus)
-- Authetication
 
-The biggest letdown was not using GraphQL but given the simplicity I though was well worth the shot. been using it for a while and I am really enjoying it.
+The biggest letdown was not using [GraphQL](https://graphql.org/) but given the simplicity I though was well worth the shot. been using it for a while and I am really enjoying it.
 
-## Bonus - vercel subscription starterkit
+## Bonus - Vercel subscription & payments starterkit
 
 As a bonus I recently found (and this helped a little bit with the supabase choice) that [Vercel](https://vercel.com/) has a [starterkit](https://github.com/vercel/nextjs-subscription-payments) for sass and subscription projects
-with already built-in support for [supabase](https://supabase.io/), [stripe](https://stripe.com/) (not included in my choices because I think as I find if there is market or not I can always find workarounds for charging but on the only project I am currently charging I am using stripe) and also [tailwind](https://tailwindcss.com/) which
-is also something I have started using recently.
+with already built-in support for [supabase](https://supabase.io/), [stripe](https://stripe.com/) (which I did not included in my choices because I think its not a deal breaker and usually I wouldn't even start with it, but in the only project I am currently charging I am using stripe) and also [tailwind](https://tailwindcss.com/) which
+is also something I have started trying out recently.
 
-[Tailwind](https://tailwindcss.com/) was a hard pill to swallow but for this kind of projects I don't want to really have as much of the creative process as I usually want to have. I just need to make something look really nice as quick as possible and so I bought a subscription of [Tailwindui](https://tailwindui.com/) which is actually money very well spent since not only I use the
-components on my side projects it works also as a very nice inspiration source for work related ui things (even though we don't use tailwind).
+[Tailwind](https://tailwindcss.com/) was a hard pill to swallow, I must admit, but for this kind of projects I don't want to really have as much of the wotk on the creative part as I usually want to have. I just need to make something look really good as quick as possible and so I bought a subscription of [Tailwindui](https://tailwindui.com/) which is actually money very well spent since not only I use the
+components on my side projects, but it works also as a very nice source of inspiration for work related UI things I have to work on (even though we don't use tailwind at work). At work for example Tailwind is not something I would suggest because the learning curve is so steep for something that I don't know exactly what it will look like in 5 years. And I have been bitten by the bootstrap bug before, having classes for a specific framework
+spread around the entire codebase (and drupal even in the database) is no easy thing to get away from (I know that tailwindw `@apply` is a thing but honestly still pretty fresh on it).
 
 [Find more about this project here](https://github.com/vercel/nextjs-subscription-payments)
 
 ## Let me know what you think
 
-That is it. That's basically my recent process to choose what technology to use on new ideas and side projects, if you have some thoughts feel free to DM or ping me on [twitter](https://twitter.com/joaogarin) or [Polywork](https://www.polywork.com/joaogarin)
+That is it! That's basically what my recent process was like to choose what technology to use on new ideas and side projects. If you have some thoughts feel free to DM or ping me on [twitter](https://twitter.com/joaogarin) or [Polywork](https://www.polywork.com/joaogarin)
 
 🙌🙌🙌
