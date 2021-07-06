@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'indigo-opaque': 'rgb(13 42 148 / 18%)'
+        'blue-opaque': 'rgb(13 42 148 / 18%)'
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans]
