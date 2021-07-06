@@ -29,6 +29,11 @@ export default function Home({ videos }) {
           Latest articles
         </h3>
         <BlogPost
+          title="Finding the perfect side project stack"
+          summary="In this blog post I will document a recent research for a tech stack for my side projects, or really just how I would start a real project in July 2021."
+          slug="finding-the-perfetc-sidestack"
+        />
+        <BlogPost
           title="Ships"
           summary="Big ships are cool, they have pools and bar and tenis courts. But small ships, they are fast, exciting and easy to move around."
           slug="ships"
