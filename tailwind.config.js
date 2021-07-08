@@ -17,14 +17,14 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.indigo.500'),
+              color: theme('colors.green.500'),
               '&:hover': {
-                color: theme('colors.indigo.700')
+                color: theme('colors.green.700')
               },
-              code: { color: theme('colors.indigo.400') }
+              code: { color: theme('colors.green.400') }
             },
             'h2,h3,h4': {
-              color: theme('colors.indigo.700'),
+              color: theme('colors.green.700'),
               'scroll-margin-top': spacing[32]
             },
             code: { color: theme('colors.pink.500') },
@@ -36,18 +36,18 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.indigo.400'),
+              color: theme('colors.green.400'),
               '&:hover': {
-                color: theme('colors.indigo.600')
+                color: theme('colors.green.600')
               },
-              code: { color: theme('colors.indigo.400') }
+              code: { color: theme('colors.green.400') }
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.700'),
               color: theme('colors.gray.300')
             },
             'h2,h3,h4': {
-              color: theme('colors.indigo.300'),
+              color: theme('colors.green.300'),
               'scroll-margin-top': spacing[32]
             },
             hr: { borderColor: theme('colors.gray.700') },
