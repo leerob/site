@@ -55,5 +55,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to auth.' });
   }
 
-  return res.redirect('/guestbook');
+  return res.redirect(
+    'https://leerob-git-planetscale-leerob1.vercel.app/guestbook'
+  );
 }
