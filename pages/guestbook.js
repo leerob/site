@@ -25,15 +25,11 @@ export default function GuestbookPage({ initialEntries }) {
 export async function getStaticProps() {
   const [rows] = await db.query(`
     SELECT * FROM guestbook
-    ORDER BY id;
+    ORDER BY updated_at DESC;
   `);
-
-  console.log(rows);
 
   // Serialize the data
   const entries = Object.values(JSON.parse(JSON.stringify(rows)));
-
-  console.log(entries);
 
   return {
     props: {

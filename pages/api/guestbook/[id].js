@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   const [rows] = await db.query(
     `
-    SELECT id, body, created_by FROM guestbook
+    SELECT * FROM guestbook
     WHERE id = ?;
   `,
     [id]

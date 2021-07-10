@@ -8,8 +8,8 @@ export default async function handler(req, res) {
 
   if (req.method === 'GET') {
     const [rows] = await db.query(`
-      SELECT id, body, created_by FROM guestbook
-      ORDER BY id;
+      SELECT * FROM guestbook
+      ORDER BY updated_at DESC;
     `);
 
     return res.json(rows);
