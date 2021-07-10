@@ -28,16 +28,12 @@ export async function getStaticProps() {
     ORDER BY id;
   `);
 
-  const entries = rows.map(
-    ({ id, email, body, created_by, created_at, updated_at }) => ({
-      id: id,
-      body: String(body),
-      email: String(email),
-      created_at: String(created_at),
-      created_by: String(created_by),
-      updated_at: String(updated_at)
-    })
-  );
+  console.log(rows);
+
+  // Serialize the data
+  const entries = Object.values(JSON.parse(JSON.stringify(rows)));
+
+  console.log(entries);
 
   return {
     props: {
