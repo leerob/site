@@ -15,7 +15,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "0.7.0",
