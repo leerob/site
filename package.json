@@ -68,5 +68,9 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "none"
+  },
+  "nextBundleAnalysis": {
+    "budget": 102400,
+    "budgetPercentIncreaseRed": 20
   }
 }
