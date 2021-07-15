@@ -5,13 +5,12 @@ export default async function handler(req, res) {
   session(req, res);
 
   const { login, email } = req.session;
+  const [rows] = await db.query(`
+    SELECT * FROM guestbook
+    ORDER BY updated_at DESC;
+  `);
 
   if (req.method === 'GET') {
-    const [rows] = await db.query(`
-      SELECT * FROM guestbook
-      ORDER BY updated_at DESC;
-    `);
-
     return res.json(rows);
   }
 
@@ -21,19 +20,21 @@ export default async function handler(req, res) {
     }
 
     const body = (req.body.body || '').slice(0, 500);
-    await db.query(
+    const [insert] = await db.query(
       `
       INSERT INTO guestbook (email, body, created_by)
-      VALUES (?, ?, ?)
-      ON DUPLICATE KEY
-      UPDATE updated_at = now();
+      VALUES (?, ?, ?);
     `,
       [email, body, login]
     );
 
-    const [rows] = await db.query(`
-      SELECT * FROM guestbook WHERE id = last_insert_id();
-    `);
+    const [rows] = await db.query(
+      `
+      SELECT * FROM guestbook
+      WHERE id = ?;
+    `,
+      [insert.insertId]
+    );
 
     return res.status(200).json(rows[0]);
   }

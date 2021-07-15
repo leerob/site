@@ -50,11 +50,10 @@ export default async function handler(req, res) {
       [body, id]
     );
 
-    const [rows] = await db.query(`
-      SELECT * FROM guestbook WHERE id = last_insert_id();
-    `);
-
-    return res.status(201).json(rows[0]);
+    return res.status(201).json({
+      ...entry,
+      body
+    });
   }
 
   return res.send('Method not allowed.');

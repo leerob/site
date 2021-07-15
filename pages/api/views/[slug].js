@@ -10,8 +10,6 @@ export default async function handler(req, res) {
       [req.query.slug]
     );
 
-    console.log({ rows });
-
     if (req.method === 'POST') {
       if (rows.length == 0) {
         await db.query(
