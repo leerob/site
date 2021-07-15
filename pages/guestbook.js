@@ -1,4 +1,4 @@
-import redis from '@/lib/redis';
+import db from '@/lib/planetscale';
 import Container from '@/components/Container';
 import Guestbook from '@/components/Guestbook';
 
@@ -23,13 +23,13 @@ export default function GuestbookPage({ initialEntries }) {
 }
 
 export async function getStaticProps() {
-  const entries = (await redis.hvals('guestbook'))
-    .map((entry) => {
-      const { email, ...restOfEntry } = JSON.parse(entry);
+  const [rows] = await db.query(`
+    SELECT * FROM guestbook
+    ORDER BY updated_at DESC;
+  `);
 
-      return restOfEntry;
-    })
-    .sort((a, b) => b.id - a.id);
+  // Serialize the data
+  const entries = Object.values(JSON.parse(JSON.stringify(rows)));
 
   return {
     props: {
