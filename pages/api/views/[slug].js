@@ -2,40 +2,46 @@ import db from '@/lib/planetscale';
 
 export default async function handler(req, res) {
   try {
-    if (req.method === 'POST') {
-      const [result] = await db.query(
-        `
-        INSERT INTO views (slug) VALUES(?)
-        ON DUPLICATE KEY
-        UPDATE count = last_insert_id(count + 1), updated_at = now();
-      `,
-        [req.query.slug]
-      );
+    const [rows] = await db.query(
+      `
+      SELECT * FROM views
+      WHERE slug = ?;
+    `,
+      [req.query.slug]
+    );
 
-      const isNewValue = result['insertId'] === 0;
-      if (isNewValue) {
+    console.log({ rows });
+
+    if (req.method === 'POST') {
+      if (rows.length == 0) {
+        await db.query(
+          `
+          INSERT INTO views (slug)
+          VALUES (?);
+        `,
+          [req.query.slug]
+        );
+
         return res.status(200).json({
           total: 1
         });
+      } else {
+        await db.query(
+          `
+          UPDATE views
+          SET count = count + 1
+          WHERE slug = ?;
+        `,
+          [req.query.slug]
+        );
+
+        return res.status(200).json({
+          total: rows[0].count + 1
+        });
       }
-
-      const [rows] = await db.query(`SELECT last_insert_id();`);
-      const newCount = rows[0]['last_insert_id()'];
-
-      return res.status(200).json({
-        total: newCount
-      });
     }
 
     if (req.method === 'GET') {
-      const [rows] = await db.query(
-        `
-        SELECT * FROM views
-        WHERE slug = ?;
-      `,
-        [req.query.slug]
-      );
-
       return res.status(200).json({ total: rows[0].count });
     }
   } catch (e) {
