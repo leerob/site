@@ -34,24 +34,13 @@ export const CheckIcon = () => (
 );
 
 const Code = ({ children }) => {
-  const tempId = nanoid(10);
-  const copyFunction = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const copyText = document.getElementById(id).textContent;
-      const textArea = document.createElement('textarea');
-      textArea.textContent = copyText;
-      document.body.append(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      textArea.remove();
-      if (!copy) {
-        setCopy(true);
-        setTimeout(() => {
-          setCopy(false);
-        }, 3000);
-      }
-    }
+  const textRef = React.useRef(null);
+  const copyFunction = () => {
+    setCopy(true);
+    navigator.clipboard.writeText(textRef.current.textContent);
+    setTimeout(() => {
+      setCopy(false);
+    }, 2000);
   };
   const [copy, setCopy] = React.useState(false);
   return (
@@ -59,12 +48,12 @@ const Code = ({ children }) => {
       <button
         className="absolute right-2"
         aria-label="Copy to Clipboard"
-        onClick={() => copyFunction(tempId)}
+        onClick={() => copyFunction()}
         type="button"
       >
         {copy ? <CheckIcon /> : <CopyIcon />}
       </button>
-      <div id={tempId}>{children}</div>
+      <div ref={textRef}>{children}</div>
     </div>
   );
 };
