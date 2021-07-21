@@ -30,8 +30,12 @@
       "destination": "/blog/nextjs-firebase-serverless"
     },
     {
-      "source": "/30min",
+      "source": "/30",
       "destination": "https://calendly.com/lee-vercel/30min"
+    },
+    {
+      "source": "/15",
+      "destination": "https://calendly.com/lee-vercel/15min"
     },
     {
       "source": "/youtube",
