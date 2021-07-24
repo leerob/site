@@ -1,9 +1,15 @@
-import db from '@/lib/firebase';
+import db from '@/lib/planetscale';
 
 export default async function handler(_, res) {
-  const snapshot = await db.ref('views').once('value');
-  const views = snapshot.val();
-  const allViews = Object.values(views).reduce((total, value) => total + value);
+  try {
+    const [rows] = await db.query(`
+      SELECT SUM(count) as total
+      FROM views;
+    `);
 
-  return res.status(200).json({ total: allViews });
+    const total = rows[0]['total'];
+    return res.status(200).json({ total });
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
 }
