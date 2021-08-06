@@ -16,7 +16,7 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Joao Garin – Developer, writer, creator.',
+    title: 'Joao Garin – Frontend web development',
     description: `Front-end developer, JavaScript enthusiast, and course creator.`,
     image: 'https://joaogarin.com/static/images/banner.png',
     type: 'website',

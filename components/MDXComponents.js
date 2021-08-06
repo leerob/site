@@ -9,6 +9,7 @@ import Analytics from '@/components/metrics/Analytics';
 import YouTube from '@/components/metrics/Youtube';
 import Step from '@/components/Step';
 import ImageWithTheme from '@/components/ImageWithTheme';
+import Quote from '@/components/Quote';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -35,7 +36,8 @@ const MDXComponents = {
   ProsCard,
   Step,
   Unsplash,
-  YouTube
+  YouTube,
+  Quote
 };
 
 export default MDXComponents;
