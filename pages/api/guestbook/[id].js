@@ -9,16 +9,15 @@ export default async function handler(req, res) {
 
   const [rows] = await db.query(
     `
-    SELECT * FROM guestbook
+    SELECT id, body, created_by, updated_at FROM guestbook
     WHERE id = ?;
   `,
     [id]
   );
   const entry = rows[0];
-  const { email, ...entryWithoutEmail } = entry;
 
   if (req.method === 'GET') {
-    return res.json(entryWithoutEmail);
+    return res.json(entry);
   }
 
   if (req.method === 'DELETE') {
@@ -52,7 +51,7 @@ export default async function handler(req, res) {
     );
 
     return res.status(201).json({
-      ...entryWithoutEmail,
+      ...entry,
       body
     });
   }
