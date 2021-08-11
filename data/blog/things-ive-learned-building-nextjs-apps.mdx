@@ -102,30 +102,6 @@ const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
 });
 ```
 
-Much better 🎉 Now, how do we test it?
-
-My preferred testing library is [Jest](https://jestjs.io/). The dynamic import support offered by Next.js **does not** expose a way to preload the dynamically imported components in Jest’s environment.
-However, thanks to [jest-next-dynamic](https://github.com/FormidableLabs/jest-next-dynamic), we can render the full component tree instead of the loading placeholder. Perfect!
-
-You'll need to add [babel-plugin-dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) to your `.babelrc` like so.
-
-```js:.babelrc
-{
-  "plugins": ["babel-plugin-dynamic-import-node"]
-}
-```
-
-Then, you can use `preloadAll()` to render the component instead of the loading placeholder.
-
-```jsx
-import preloadAll from 'jest-next-dynamic';
-import ReactSelect from './select';
-
-beforeAll(async () => {
-  await preloadAll();
-});
-```
-
 ## MDX
 
 My [portfolio](https://github.com/leerob/leerob.io) has transformed quite a bit since I started it in 2014. Originally, it was
