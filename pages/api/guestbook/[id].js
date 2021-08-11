@@ -15,9 +15,10 @@ export default async function handler(req, res) {
     [id]
   );
   const entry = rows[0];
+  const { email, ...entryWithoutEmail } = entry;
 
   if (req.method === 'GET') {
-    return res.json(entry);
+    return res.json(entryWithoutEmail);
   }
 
   if (req.method === 'DELETE') {
@@ -51,7 +52,7 @@ export default async function handler(req, res) {
     );
 
     return res.status(201).json({
-      ...entry,
+      ...entryWithoutEmail,
       body
     });
   }
