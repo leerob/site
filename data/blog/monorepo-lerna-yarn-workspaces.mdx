@@ -101,7 +101,7 @@ Next, let’s add all of the dependencies we will need for Babel 7.
 $ yarn add --dev -W @babel/cli @babel/core @babel/preset-react @babel/preset-env babel-core@7.0.0-bridge.0 babel-loader babel-plugin-styled-components webpack
 ```
 
-Using `-w` instructs Yarn to install the given dependencies for the _entire_ workspace. These dependencies are usually shared between all packages.
+Using `-W` instructs Yarn to install the given dependencies for the _entire_ workspace. These dependencies are usually shared between all packages.
 
 Since `yarn` has ran, you have a `/node_modules` folder. We don’t want to commit any of these packages, so let’s add a `.gitignore`.
 
