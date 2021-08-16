@@ -197,6 +197,6 @@ input[type='email'] {
 }
 
 table {
-  display: block;
+  display: table;
   overflow-y: scroll;
 }

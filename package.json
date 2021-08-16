@@ -41,6 +41,7 @@
     "rehype-code-titles": "1.0.3",
     "rehype-prism-plus": "^0.0.5",
     "rehype-slug": "5.0.0",
+    "remark-gfm": "^2.0.0",
     "rss": "1.2.2"
   },
   "prettier": {
