@@ -28,7 +28,7 @@ Preventing CLS required a mental model shift. Previously, my images used normal 
 
 I wanted to avoid using the `height` and `width` props of `next/image`, if possible. The `Image` component exposes different [layout props](https://nextjs.org/docs/api-reference/next/image#layout) like `layout=fill`, which led to me believe I could [escape defining sizes](https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/layout-fill.js). In reality, there's no way to avoid layout shift unless you explicitly tell the layout how much space to allocate. Once that clicked in my head, the `Image` component made sense.
 
-This meant switching from Markdown image syntax (shown above) to using `next/image` via MDX. Since I had hundreds of Markdown files, I wanted to automate this. I created a [Node script using remark](https://github.com/leerob/leerob.io/blob/master/scripts/markdown-to-next-image.js) that transformed every image and read the dimensions from the file system. For example, the above Markdown image was transformed to:
+This meant switching from Markdown image syntax (shown above) to using `next/image` via MDX. Since I had hundreds of Markdown files, I wanted to automate this. I created a [Node script using remark](https://github.com/leerob/leerob.io/blob/fb9c02b76128d91717a226e5c118b5c56e11696e/scripts/markdown-to-next-image.js) that transformed every image and read the dimensions from the file system. For example, the above Markdown image was transformed to:
 
 ```jsx
 <Image alt="Siamese Cat" src="/cat.png" height={50} width={50} />
