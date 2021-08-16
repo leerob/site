@@ -95,6 +95,8 @@ the newsletter subscription at the bottom of this post.
 Using [style props](https://styled-system.com/getting-started), I'm able to easily style my components while pulling values directly from
 my design system. For example, `mb` (short for `margin-bottom`) of `2` will translate to `0.5rem` or `~8px`.
 
+> **Update 2020:** I've [switched to Tailwind](/blog/tailwind) now.
+
 ## Improved Content Management
 
 I wanted to decrease the amount of friction it took to create new articles,
@@ -135,79 +137,107 @@ export const meta = {
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 ```
 
-We can do better. I decided to use [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) for
-front matter and layout support. Now, each `.mdx` file looks like this:
+I decided to use Markdown front matter instead. Now, each `.mdx` file has a top section like this:
 
 ```js
----
-title: '2019 Year in Review'
-publishedAt: '2019-12-26'
-summary: 'Highlights and reflections on 2019 and a look forward to 2020.'
-image: '/static/images/2019/banner.jpg'
----
+title: '2019 Year in Review';
+publishedAt: '2019-12-26';
+summary: 'Highlights and reflections on 2019 and a look forward to 2020.';
+image: '/static/images/2019/banner.jpg';
 ```
 
-You'll notice I removed `slug`. That's because I'm able to dynamically retrieve the value using
-[next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) inside the layout.
-Anything added to your front matter will be converted into an object and passed to the layout.
+Now, I can use native Next.js functionality like `getStaticProps` and `getStaticPaths` to fetch my MDX content:
 
-```js{5,6,7}:layouts/index.js
-import React from 'react';
+```js:pages/blog/[slug].js
+export async function getStaticPaths() {
+  const posts = await getFiles('blog');
 
-export default (frontMatter) => {
-  return ({ children }) => {
-    const slug = frontMatter.__resourcePath
-      .replace('blog/', '')
-      .replace('.mdx', '');
-
-    return (
-      <>
-        <h1>{frontMatter.title}</h1>
-        {children}
-      </>
-    );
+  return {
+    paths: posts.map((p) => ({
+      params: {
+        slug: p.replace(/\.mdx/, '')
+      }
+    })),
+    fallback: false
   };
-};
+}
+
+export async function getStaticProps({ params }) {
+  const post = await getFileBySlug('blog', params.slug);
+
+  return { props: { ...post } };
+}
 ```
 
-Thanks to [babel-plugin-import-glob-array](https://github.com/jescalan/babel-plugin-import-glob-array), I can make the file system
-the source of truth.
-
-```js:pages/blog.js
-import { frontMatter as blogPosts } from './blog/**/*.mdx';
-
-const Blog = () => (
-    blogPosts.map((frontMatter) => (
-        <BlogPost key={frontMatter.title} {...frontMatter} />
-    ))}
-);
-```
+> **Update 2021:** I've moved to [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
 
 ## MDX Plugins
 
-MDX uses [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype) under the hood and allows you to provide external plugins to hook into the compilation process.
-Some of the plugins I added were:
+`mdx-bundler` allows you to extend [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype), providing external plugins to hook into the compilation process. Some plugins I've added:
 
-- [remark-autolink-headings](https://github.com/remarkjs/remark-autolink-headings)
-- [remark-slug](https://github.com/remarkjs/remark-slug)
-- [remark-code-titles](https://github.com/mottox2/remark-code-titles)
-- [remark-capitalize](https://github.com/zeit/remark-capitalize)
+- [rehype-slug](https://github.com/rehypejs/rehype-slug)
+- [rehype-code-titles](https://github.com/josestg/rehype-code-title)
+- [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings)
+- [rehype-prism-plus](https://github.com/Val-istar-Guo/rehype-prism)
 
-I also extended [next-mdx-enhanced's](https://github.com/hashicorp/next-mdx-enhanced) front matter using [reading-time](https://www.npmjs.com/package/reading-time).
-This gave me some features I had wanted.
+```js:lib/mdx.js
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import { bundleMDX } from 'mdx-bundler';
+import readingTime from 'reading-time';
+
+import rehypeSlug from 'rehype-slug';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrism from 'rehype-prism-plus';
+
+export async function getFileBySlug(type, slug) {
+  const source = readFileSync(join(process.cwd(), 'data', type, `${slug}.mdx`), 'utf8');
+  const { code, frontmatter } = await bundleMDX(source, {
+    xdmOptions(options) {
+      options.rehypePlugins = [
+        ...(options?.rehypePlugins ?? []),
+        rehypeSlug,
+        rehypeCodeTitles,
+        rehypePrism,
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: ['anchor']
+            }
+          }
+        ]
+      ];
+      return options;
+    }
+  });
+
+  return {
+    code,
+    frontMatter: {
+      wordCount: source.split(/\s+/gu).length,
+      readingTime: readingTime(source),
+      slug: slug || null,
+      ...frontmatter
+    }
+  };
+}
+```
+
+This added some nice additional features:
 
 - Hover over a heading and click on `#` to link directly to it.
 - Use `language:title` to add titles to code snippets.
-- Run [title](https://github.com/zeit/title) over headings to auto-capitalize based on [The Chicago Manual of Style](https://www.chicagomanualofstyle.org/home.html).
-- Reading time of articles.
+- [Reading time](https://www.npmjs.com/package/reading-time) of articles.
 
 ## Better Syntax Highlighting
 
 Previously, I directly imported a `prism.css` theme alongside `react-syntax-highlighter` to provide syntax highlighting.
 This approach did not allow me to easily change styles based on the theme. Thus, I kept the code style always dark.
 
-Instead, I switched to [mdx-prism](https://github.com/j0lv3r4/mdx-prism) (which is a fork of `@mapbox/rehype-prism`)
-and created two prism themes for dark/light mode. mdx-prism also adds line highlighting capabilities 🎉
+Instead, I switched to [rehype-prism-plus](https://github.com/Val-istar-Guo/rehype-prism)
+and created two prism themes for dark/light mode. `rehype-prism-plus` also adds line highlighting capabilities 🎉
 
 ```js:styles/prism.js
 import { css } from '@emotion/react';
@@ -231,6 +261,8 @@ const { colorMode } = useColorMode();
 const prismTheme = colorMode === 'light' ? prismLightTheme : prismDarkTheme;
 ```
 
+> **Update 2020:** I've [switched to Tailwind](/blog/tailwind) now and use the native Dark Mode support.
+
 ## Summary
 
 Outside of my main goals, I was able to sneak in some other fun additions:
@@ -239,6 +271,5 @@ Outside of my main goals, I was able to sneak in some other fun additions:
 - Faster page load times
 - Switched to [Inter](https://fonts.google.com/specimen/Inter) as my main font
 - Fewer files, and a _lot_ of deleted code!
-- Switched to [Next SEO](https://github.com/leerob/leerob.io/blob/master/next-seo.config.js) instead of doing it manually
 
 The best part? [**It's all open source**](https://github.com/leerob/leerob.io) 🚀

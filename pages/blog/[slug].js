@@ -1,12 +1,13 @@
-import { MDXRemote } from 'next-mdx-remote';
-
+import { useMemo } from 'react';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import { getTweets } from '@/lib/twitter';
+import components from '@/components/MDXComponents';
 import BlogLayout from '@/layouts/blog';
 import Tweet from '@/components/Tweet';
-import MDXComponents from '@/components/MDXComponents';
 
-export default function Blog({ mdxSource, tweets, frontMatter }) {
+export default function Blog({ code, tweets, frontMatter }) {
+  const Component = useMemo(() => getMDXComponent(code), [code]);
   const StaticTweet = ({ id }) => {
     const tweet = tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
@@ -14,10 +15,9 @@ export default function Blog({ mdxSource, tweets, frontMatter }) {
 
   return (
     <BlogLayout frontMatter={frontMatter}>
-      <MDXRemote
-        {...mdxSource}
+      <Component
         components={{
-          ...MDXComponents,
+          ...components,
           StaticTweet
         }}
       />
