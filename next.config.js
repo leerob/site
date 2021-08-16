@@ -1,7 +1,5 @@
 module.exports = {
-  future: {
-    strictPostcssConfiguration: true
-  },
+  experimental: { esmExternals: true },
   reactStrictMode: true,
   images: {
     domains: [
