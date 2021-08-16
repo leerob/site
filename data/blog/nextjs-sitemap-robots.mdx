@@ -20,12 +20,12 @@ This is a basic `.xml` file defining the content of your site. Here's a simple e
 
 ```xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://leerob.io</loc>
-    </url>
-    <url>
-        <loc>https://leerob.io/blog</loc>
-    </url>
+  <url>
+      <loc>https://leerob.io</loc>
+  </url>
+  <url>
+      <loc>https://leerob.io/blog</loc>
+  </url>
 </urlset>
 ```
 
@@ -42,69 +42,74 @@ First, let's add `globby` so we can fetch a list of routes.
 $ yarn add --dev globby
 ```
 
-Next, we can create a Node script at `scripts/generate-sitemap.js`.
+> **Note:** `globby` [might not work](https://github.com/leerob/leerob.io/issues/293) on Windows.
+
+Next, we can create a Node script at `scripts/generate-sitemap.mjs`.
 This file will dynamically build a sitemap based on your `/pages` directory.
 
 ```js
-const fs = require('fs');
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import prettier from 'prettier';
 
-const globby = require('globby');
-const prettier = require('prettier');
-
-(async () => {
+async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
-
-  // Ignore Next.js specific files (e.g., _app.js) and API routes.
   const pages = await globby([
-    'pages/**/*{.js,.mdx}',
+    'pages/*.js',
+    'data/**/*.mdx',
+    '!data/*.mdx',
     '!pages/_*.js',
-    '!pages/api'
+    '!pages/api',
+    '!pages/404.js'
   ]);
-  const sitemap = `
-        <?xml version="1.0" encoding="UTF-8"?>
-        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-            ${pages
-              .map((page) => {
-                const path = page
-                  .replace('pages', '')
-                  .replace('.js', '')
-                  .replace('.mdx', '');
-                const route = path === '/index' ? '' : path;
 
-                return `
-                        <url>
-                            <loc>${`https://yoursitehere.com${route}`}</loc>
-                        </url>
-                    `;
-              })
-              .join('')}
-        </urlset>
+  const sitemap = `
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${pages
+          .map((page) => {
+            const path = page
+              .replace('pages', '')
+              .replace('data', '')
+              .replace('.js', '')
+              .replace('.mdx', '');
+            const route = path === '/index' ? '' : path;
+
+            return `
+              <url>
+                  <loc>${`https://leerob.io${route}`}</loc>
+              </url>
+            `;
+          })
+          .join('')}
+    </urlset>
     `;
 
-  // If you're not using Prettier, you can remove this.
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html'
   });
 
-  fs.writeFileSync('public/sitemap.xml', formatted);
-})();
+  // eslint-disable-next-line no-sync
+  writeFileSync('public/sitemap.xml', formatted);
+}
+
+generate();
 ```
 
-Finally, override your `next.config.js` to run this script as part of the build process.
-Your generated file gets created at `public/sitemap.xml` which then gets moved to the
-root of your site (requires [Next v9.0+](https://github.com/vercel/next.js/releases/tag/v9.0.0)).
+Finally, add `postbuild` script in your `package.json` to run this script after `next build` completes.
+Your generated file gets created at `public/sitemap.xml` which is then accessible from the root of your site.
 
-```js
-module.exports = {
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      require('./scripts/generate-sitemap');
-    }
-
-    return config;
+```json
+{
+  "scripts": {
+    "build": "next build",
+    "postbuild": "node ./scripts/generate-sitemap.mjs",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint"
   }
-};
+}
 ```
 
 ## External Content
@@ -145,10 +150,10 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
         ${posts
           .map(({ id }) => {
             return `
-                    <url>
-                        <loc>${`${EXTERNAL_DATA_URL}/${id}`}</loc>
-                    </url>
-                `;
+                <url>
+                    <loc>${`${EXTERNAL_DATA_URL}/${id}`}</loc>
+                </url>
+            `;
           })
           .join('')}
     </urlset>
@@ -172,12 +177,12 @@ Here's a condensed example of the output.
 
 ```xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://jsonplaceholder.typicode.com/posts/1</loc>
-    </url>
-    <url>
-        <loc>https://jsonplaceholder.typicode.com/posts/2</loc>
-    </url>
+  <url>
+      <loc>https://jsonplaceholder.typicode.com/posts/1</loc>
+  </url>
+  <url>
+      <loc>https://jsonplaceholder.typicode.com/posts/2</loc>
+  </url>
 </urlset>
 ```
 

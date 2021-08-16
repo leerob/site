@@ -1,12 +1,15 @@
-import { MDXRemote } from 'next-mdx-remote';
-
+import { useMemo } from 'react';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { getFiles, getFileBySlug } from '@/lib/mdx';
+import components from '@/components/MDXComponents';
 import NewsletterLayout from '@/layouts/newsletter';
 
-export default function Newsletter({ mdxSource, frontMatter }) {
+export default function Newsletter({ code, frontMatter }) {
+  const Component = useMemo(() => getMDXComponent(code), [code]);
+
   return (
     <NewsletterLayout frontMatter={frontMatter}>
-      <MDXRemote {...mdxSource} />
+      <Component components={components} />
     </NewsletterLayout>
   );
 }
