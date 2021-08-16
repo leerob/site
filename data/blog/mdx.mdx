@@ -149,7 +149,7 @@ You'll notice I removed `slug`. That's because I'm able to dynamically retrieve 
 [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) inside the layout.
 Anything added to your front matter will be converted into an object and passed to the layout.
 
-```js{5,6,7}:layouts/index.js
+```js:layouts/index.js
 import React from 'react';
 
 export default (frontMatter) => {
