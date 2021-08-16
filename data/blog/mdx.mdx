@@ -149,7 +149,7 @@ You'll notice I removed `slug`. That's because I'm able to dynamically retrieve 
 [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) inside the layout.
 Anything added to your front matter will be converted into an object and passed to the layout.
 
-```js:layouts/index.js
+```js {5,6,7}:layouts/index.js
 import React from 'react';
 
 export default (frontMatter) => {
@@ -237,6 +237,5 @@ Outside of my main goals, I was able to sneak in some other fun additions:
 - Faster page load times
 - Switched to [Inter](https://fonts.google.com/specimen/Inter) as my main font
 - Fewer files, and a _lot_ of deleted code!
-- Switched to [Next SEO](https://github.com/leerob/leerob.io/blob/master/next-seo.config.js) instead of doing it manually
 
 The best part? [**It's all open source**](https://github.com/leerob/leerob.io) 🚀
