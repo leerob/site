@@ -20,12 +20,12 @@ This is a basic `.xml` file defining the content of your site. Here's a simple e
 
 ```xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://leerob.io</loc>
-    </url>
-    <url>
-        <loc>https://leerob.io/blog</loc>
-    </url>
+  <url>
+      <loc>https://leerob.io</loc>
+  </url>
+  <url>
+      <loc>https://leerob.io/blog</loc>
+  </url>
 </urlset>
 ```
 
@@ -42,14 +42,15 @@ First, let's add `globby` so we can fetch a list of routes.
 $ yarn add --dev globby
 ```
 
+> **Note:** `globby` [might not work](https://github.com/leerob/leerob.io/issues/293) on Windows.
+
 Next, we can create a Node script at `scripts/generate-sitemap.js`.
 This file will dynamically build a sitemap based on your `/pages` directory.
 
 ```js
-const fs = require('fs');
-
-const globby = require('globby');
-const prettier = require('prettier');
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import prettier from 'prettier';
 
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -61,24 +62,24 @@ const prettier = require('prettier');
     '!pages/api'
   ]);
   const sitemap = `
-        <?xml version="1.0" encoding="UTF-8"?>
-        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-            ${pages
-              .map((page) => {
-                const path = page
-                  .replace('pages', '')
-                  .replace('.js', '')
-                  .replace('.mdx', '');
-                const route = path === '/index' ? '' : path;
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${pages
+          .map((page) => {
+            const path = page
+              .replace('pages', '')
+              .replace('.js', '')
+              .replace('.mdx', '');
+            const route = path === '/index' ? '' : path;
 
-                return `
-                        <url>
-                            <loc>${`https://yoursitehere.com${route}`}</loc>
-                        </url>
-                    `;
-              })
-              .join('')}
-        </urlset>
+            return `
+              <url>
+                  <loc>${`https://yoursitehere.com${route}`}</loc>
+              </url>
+            `;
+          })
+          .join('')}
+    </urlset>
     `;
 
   // If you're not using Prettier, you can remove this.
@@ -87,7 +88,7 @@ const prettier = require('prettier');
     parser: 'html'
   });
 
-  fs.writeFileSync('public/sitemap.xml', formatted);
+  writeFileSync('public/sitemap.xml', formatted);
 })();
 ```
 
@@ -172,12 +173,12 @@ Here's a condensed example of the output.
 
 ```xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://jsonplaceholder.typicode.com/posts/1</loc>
-    </url>
-    <url>
-        <loc>https://jsonplaceholder.typicode.com/posts/2</loc>
-    </url>
+  <url>
+      <loc>https://jsonplaceholder.typicode.com/posts/1</loc>
+  </url>
+  <url>
+      <loc>https://jsonplaceholder.typicode.com/posts/2</loc>
+  </url>
 </urlset>
 ```
 
