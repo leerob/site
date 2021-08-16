@@ -19,7 +19,7 @@
     "googleapis": "48.0.0",
     "gray-matter": "4.0.3",
     "micro-cookie-session": "^2.0.0-beta.1",
-    "next": "^11.0.1",
+    "next": "^11.1.0",
     "next-mdx-remote": "^3.0.2",
     "next-themes": "^0.0.15",
     "planetscale-node": "^0.1.0",
