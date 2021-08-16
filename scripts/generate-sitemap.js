@@ -1,7 +1,6 @@
-const fs = require('fs');
-
-const globby = require('globby');
-const prettier = require('prettier');
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import prettier from 'prettier';
 
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -11,7 +10,7 @@ const prettier = require('prettier');
     '!data/*.mdx',
     '!pages/_*.js',
     '!pages/api',
-    '!pages/404.js',
+    '!pages/404.js'
   ]);
 
   const sitemap = `
@@ -27,10 +26,10 @@ const prettier = require('prettier');
                 const route = path === '/index' ? '' : path;
 
                 return `
-                        <url>
-                            <loc>${`https://leerob.io${route}`}</loc>
-                        </url>
-                    `;
+                    <url>
+                        <loc>${`https://leerob.io${route}`}</loc>
+                    </url>
+                `;
               })
               .join('')}
         </urlset>
@@ -42,5 +41,5 @@ const prettier = require('prettier');
   });
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap.xml', formatted);
+  writeFileSync('public/sitemap.xml', formatted);
 })();

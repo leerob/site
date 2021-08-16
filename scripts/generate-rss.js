@@ -1,7 +1,7 @@
-const { promises: fs } = require('fs');
-const path = require('path');
-const RSS = require('rss');
-const matter = require('gray-matter');
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import RSS from 'rss';
+import matter from 'gray-matter';
 
 async function generate() {
   const feed = new RSS({
@@ -10,25 +10,20 @@ async function generate() {
     feed_url: 'https://leerob.io/feed.xml'
   });
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'));
+  const posts = readdirSync(join(__dirname, '..', 'data', 'blog'));
+  posts.map((name) => {
+    const content = readFileSync(join(__dirname, '..', 'data', 'blog', name));
+    const frontmatter = matter(content);
 
-  await Promise.all(
-    posts.map(async (name) => {
-      const content = await fs.readFile(
-        path.join(__dirname, '..', 'data', 'blog', name)
-      );
-      const frontmatter = matter(content);
+    feed.item({
+      title: frontmatter.data.title,
+      url: 'https://leerob.io/blog/' + name.replace(/\.mdx?/, ''),
+      date: frontmatter.data.publishedAt,
+      description: frontmatter.data.summary
+    });
+  });
 
-      feed.item({
-        title: frontmatter.data.title,
-        url: 'https://leerob.io/blog/' + name.replace(/\.mdx?/, ''),
-        date: frontmatter.data.publishedAt,
-        description: frontmatter.data.summary
-      });
-    })
-  );
-
-  await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }));
+  writeFileSync('./public/feed.xml', feed.xml({ indent: true }));
 }
 
 generate();

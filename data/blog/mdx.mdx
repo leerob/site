@@ -136,15 +136,13 @@ export default ({ children }) => <Post meta={meta}>{children}</Post>;
 ```
 
 We can do better. I decided to use [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) for
-front matter and layout support. Now, each `.mdx` file looks like this:
+front matter and layout support. Now, each `.mdx` file has a front matter like this:
 
 ```js
----
-title: '2019 Year in Review'
-publishedAt: '2019-12-26'
-summary: 'Highlights and reflections on 2019 and a look forward to 2020.'
-image: '/static/images/2019/banner.jpg'
----
+title: '2019 Year in Review';
+publishedAt: '2019-12-26';
+summary: 'Highlights and reflections on 2019 and a look forward to 2020.';
+image: '/static/images/2019/banner.jpg';
 ```
 
 You'll notice I removed `slug`. That's because I'm able to dynamically retrieve the value using
