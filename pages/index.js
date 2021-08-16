@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { google } from 'googleapis';
 
-import googleAuth from '@/lib/google/auth';
+import googleAuth from '@/lib/google';
 import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
