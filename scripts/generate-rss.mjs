@@ -10,9 +10,9 @@ async function generate() {
     feed_url: 'https://leerob.io/feed.xml'
   });
 
-  const posts = readdirSync(join(__dirname, '..', 'data', 'blog'));
+  const posts = readdirSync(join(process.cwd(), 'data', 'blog'));
   posts.map((name) => {
-    const content = readFileSync(join(__dirname, '..', 'data', 'blog', name));
+    const content = readFileSync(join(process.cwd(), 'data', 'blog', name));
     const frontmatter = matter(content);
 
     feed.item({

@@ -2,7 +2,7 @@ import { writeFileSync } from 'fs';
 import { globby } from 'globby';
 import prettier from 'prettier';
 
-(async () => {
+async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
     'pages/*.js',
@@ -42,4 +42,6 @@ import prettier from 'prettier';
 
   // eslint-disable-next-line no-sync
   writeFileSync('public/sitemap.xml', formatted);
-})();
+}
+
+generate();
