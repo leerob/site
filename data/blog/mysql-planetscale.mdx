@@ -5,7 +5,7 @@ summary: 'Learn how I migrated my Next.js website to use MySQL with PlanetScale,
 image: '/static/images/mysql-planetscale/banner.png'
 ---
 
-A few weeks ago, I [moved this site](https://github.com/leerob/leerob.io/pull/326) from using [Firebase](/blog/real-time-post-views) and [Redis](/blog/serverless-redis-nextjs) to PlanetScale. [PlanetScale](planetscale.com) is a serverless database platform built on MySQL and Vitess. Here's why I picked PlanetScale:
+A few weeks ago, I [moved this site](https://github.com/leerob/leerob.io/pull/326) from using [Firebase](/blog/real-time-post-views) and [Redis](/blog/serverless-redis-nextjs) to PlanetScale. [PlanetScale](https://planetscale.com) is a serverless database platform built on MySQL and Vitess. Here's why I picked PlanetScale:
 
 - **Database Branching:** I'm able to use my database with the same mental model as git. For each change to my database schema, I open a deploy request. Then, I can merge those changes back into my main database branch.
 - **Prisma Support:** In combination with Prisma, it's _so easy_ to handle database migrations. I haven't moved to Prisma (yet) but will soon.
