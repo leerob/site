@@ -56,11 +56,11 @@ React Server Components use [Suspense (Experimental)](https://reactjs.org/docs/
 
 For example, we need to fetch information about the movie (`/movie`) and its cast (`/cast`) for our movie page. Without Suspense, each request happens in a sequence.
 
-![Network Waterfall](https://buttondown.s3.us-west-2.amazonaws.com/images/e7e67a2e-cb1c-4760-a684-aee8446d9116.png)
+![Network Waterfall](/static/images/buttondown/waterfall.png)
 
 With Suspense, we can make both requests without blocking our application from rendering a loading state. Suspense also helps prevent [race conditions.](https://reactjs.org/docs/concurrent-mode-suspense.html#suspense-and-race-conditions)
 
-![React Suspense](https://buttondown.s3.us-west-2.amazonaws.com/images/38c20895-42cc-4f7d-a60e-be94cbab7b50.png)
+![React Suspense](/static/images/buttondown/react-suspense.png)
 
 React Server Components are also compatible with [Concurrent Mode](https://reactjs.org/docs/concurrent-mode-intro.html), which lets us start rendering Client Components as their data streams in, without waiting for the entire response to finish.
 
