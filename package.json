@@ -16,7 +16,7 @@
     "googleapis": "48.0.0",
     "mdx-bundler": "^6.0.1",
     "micro-cookie-session": "2.0.0-beta.1",
-    "next": "11.1",
+    "next": "^11.1.3-canary.13",
     "next-themes": "0.0.15",
     "planetscale-node": "0.1.0",
     "preact": "10.5.14",
