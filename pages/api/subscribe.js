@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const API_KEY = process.env.BUTTONDOWN_API_KEY;
+    const API_KEY = process.env.REVUE_API_KEY;
     const response = await fetch(
       `https://api.buttondown.email/v1/subscribers`,
       {

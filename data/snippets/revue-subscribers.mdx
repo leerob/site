@@ -1,12 +1,12 @@
 ---
-title: 'Buttondown'
+title: 'Revue'
 description: 'Get all subscribers.'
-logo: 'buttondown.png'
+logo: 'revue.png'
 ---
 
 ```js
 export default async (req, res) => {
-  const API_KEY = process.env.BUTTONDOWN_API_KEY;
+  const API_KEY = process.env.REVUE_API_KEY;
   const response = await fetch('https://api.buttondown.email/v1/subscribers', {
     headers: {
       Authorization: `Token ${API_KEY}`,
@@ -23,13 +23,13 @@ export default async (req, res) => {
 
 ## Usage
 
-<Step number={1} title="Create Buttondown Account" />
+<Step number={1} title="Create Revue Account" />
 
-First, [create a Buttondown account](https://buttondown.email).
+First, [create a Revue account](https://www.getrevue.co).
 
 <Step number={2} title="Find API Key" />
 
-From the [Settings page](https://buttondown.email/settings), retrieve your API key.
+From the [Integrations page](https://www.getrevue.co/app/integrations), retrieve your API key at the bottom.
 
 <Step number={3} title="Add Environment Variables" />
 
