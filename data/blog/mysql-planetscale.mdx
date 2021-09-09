@@ -153,6 +153,26 @@ export default async function handler(req, res) {
 }
 ```
 
+Here's my PlanetScale schema for tracking post views and guestbook entries.
+
+```sql
+CREATE TABLE `views` (
+  `slug` varchar(128) NOT NULL,
+  `count` bigint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`slug`)
+)
+
+CREATE TABLE `guestbook` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(256) NOT NULL,
+  `body` varchar(500) NOT NULL,
+  `created_by` varchar(256) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updated_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`)
+)
+```
+
 ## Results
 
 I've been monitoring the performance of my production APIs connecting to PlanetScale with [Checkly](https://www.checklyhq.com). Checkly allows me to set alerts if there's downtime or if performance decreases below my accepted threshold. For the last week, I've seen latency of `~150ms` for my Next.js API Routes, deployed as serverless functions on [Vercel](https://vercel.com) in `us-east`.
