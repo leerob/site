@@ -58,7 +58,7 @@ export default redis;
 Finally, we can use this inside any page or API Route to retrieve information from Redis.
 
 ```jsx
-import redis from '@/lib/redis';
+import redis from 'lib/redis';
 
 const value = JSON.parse(await redis.hget('feedback', id));
 ```
