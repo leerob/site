@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { format } from 'date-fns';
 import { signIn, useSession } from 'next-auth/react';
-import useSWR, { mutate } from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 
 import fetcher from 'lib/fetcher';
 import { Form, IFormState } from 'lib/types';
@@ -10,6 +10,7 @@ import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
 
 function GuestbookEntry({ entry, user }) {
+  const { mutate } = useSWRConfig();
   const deleteEntry = async (e) => {
     e.preventDefault();
 
@@ -47,10 +48,11 @@ function GuestbookEntry({ entry, user }) {
 
 export default function Guestbook({ initialEntries }) {
   const { data: session } = useSession();
+  const { mutate } = useSWRConfig();
   const [form, setForm] = useState<IFormState>({ state: Form.Initial });
   const inputEl = useRef(null);
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
-    initialData: initialEntries
+    fallbackData: initialEntries
   });
 
   const leaveEntry = async (e) => {
