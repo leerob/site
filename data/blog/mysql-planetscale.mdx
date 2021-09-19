@@ -86,8 +86,8 @@ There are likely better ways to do this, but my hacky solution to migrate data i
 Here are the two scripts I used, for reference.
 
 ```jsx:pages/api/migrate-redis.js
-import db from '@/lib/planetscale';
-import guestbookData from '@/data/guestbook';
+import db from 'lib/planetscale';
+import guestbookData from 'data/guestbook';
 
 export default async function handler(req, res) {
   const toISOString = (unixTimestampInMs) =>
@@ -126,8 +126,8 @@ export default async function handler(req, res) {
 ```
 
 ```jsx:pages/api/migrate-firebase.js
-import db from '@/lib/planetscale';
-import viewsData from '@/data/views';
+import db from 'lib/planetscale';
+import viewsData from 'data/views';
 
 export default async function handler(req, res) {
   let query = `INSERT INTO views (slug, count)

@@ -91,7 +91,6 @@ To reference these values locally when using `vc dev`, they need to be added to 
 ```bash
 GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nDVOW4c=\n-----END PRIVATE KEY-----\n"
 GOOGLE_CLIENT_EMAIL=my-account@project.iam.gserviceaccount.com
-GOOGLE_CLIENT_ID=721877721877
 ```
 
 Finally, we need to add the secrets to our `vercel.json`.
@@ -100,8 +99,7 @@ Finally, we need to add the secrets to our `vercel.json`.
 {
   "env": {
     "GOOGLE_PRIVATE_KEY": "@google-private-key",
-    "GOOGLE_CLIENT_EMAIL": "@google-client-email",
-    "GOOGLE_CLIENT_ID": "@google-client-id"
+    "GOOGLE_CLIENT_EMAIL": "@google-client-email"
   }
 }
 ```
@@ -123,7 +121,7 @@ export default (req, res) => {
 To make server-side requests to Google Analytics, we can install the [googleapis](https://github.com/googleapis/google-api-nodejs-client) library.
 
 ```bash
-$ yarn add googleapis
+$ yarn add googleapis@48.0.0
 ```
 
 Then, we can initialize `googleapis` inside our API route.
@@ -137,7 +135,6 @@ export default async (_, res) => {
   googleAuth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      client_id: process.env.GOOGLE_CLIENT_ID,
       private_key: process.env.GOOGLE_PRIVATE_KEY
     },
     scopes: ['https://www.googleapis.com/auth/analytics.readonly']
@@ -170,7 +167,6 @@ export default async (_, res) => {
   googleAuth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      client_id: process.env.GOOGLE_CLIENT_ID,
       private_key: process.env.GOOGLE_PRIVATE_KEY
     },
     scopes: ['https://www.googleapis.com/auth/analytics.readonly']
