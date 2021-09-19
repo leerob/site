@@ -46,13 +46,13 @@ function GuestbookEntry({ entry, user }) {
   );
 }
 
-export default function Guestbook({ initialEntries }) {
+export default function Guestbook({ fallbackData }) {
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
   const [form, setForm] = useState<IFormState>({ state: Form.Initial });
   const inputEl = useRef(null);
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
-    fallbackData: initialEntries
+    fallbackData
   });
 
   const leaveEntry = async (e) => {

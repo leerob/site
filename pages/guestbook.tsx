@@ -1,8 +1,8 @@
-import db from 'lib/planetscale';
+import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 
-export default function GuestbookPage({ initialEntries }) {
+export default function GuestbookPage({ fallbackData }) {
   return (
     <Container
       title="Guestbook – Lee Robinson"
@@ -16,27 +16,29 @@ export default function GuestbookPage({ initialEntries }) {
           Leave a comment below. It could be anything – appreciation,
           information, wisdom, or even humor. Surprise me!
         </p>
-        <Guestbook initialEntries={initialEntries} />
+        <Guestbook fallbackData={fallbackData} />
       </div>
     </Container>
   );
 }
 
 export async function getStaticProps() {
-  const [rows] = await db.query(
-    `
-    SELECT id, body, created_by, updated_at FROM guestbook
-    ORDER BY updated_at DESC;
-  `,
-    []
-  );
+  const entries = await prisma.guestbook.findMany({
+    orderBy: {
+      updated_at: 'desc'
+    }
+  });
 
-  // Serialize the data
-  const entries = Object.values(JSON.parse(JSON.stringify(rows)));
+  const fallbackData = entries.map((entry) => ({
+    id: entry.id.toString(),
+    body: entry.body,
+    created_by: entry.created_by.toString(),
+    updated_at: entry.updated_at.toString()
+  }));
 
   return {
     props: {
-      initialEntries: entries
+      fallbackData
     },
     revalidate: 60
   };
