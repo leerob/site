@@ -3,7 +3,7 @@
 # leerob.io
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [PlanetScale](planetscale.com)
+- **Database**: [PlanetScale](https://planetscale.com)
 - **ORM**: [Prisma](https://prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
