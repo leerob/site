@@ -2,7 +2,7 @@ import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 
-export default function GuestbookPage({ initialEntries }) {
+export default function GuestbookPage({ fallbackData }) {
   return (
     <Container
       title="Guestbook – Lee Robinson"
@@ -16,7 +16,7 @@ export default function GuestbookPage({ initialEntries }) {
           Leave a comment below. It could be anything – appreciation,
           information, wisdom, or even humor. Surprise me!
         </p>
-        <Guestbook initialEntries={initialEntries} />
+        <Guestbook fallbackData={fallbackData} />
       </div>
     </Container>
   );
