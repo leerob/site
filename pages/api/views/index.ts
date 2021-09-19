@@ -12,9 +12,7 @@ export default async function handler(
       }
     });
 
-    return res
-      .status(200)
-      .json({ totalViews: totalViews._sum.count.toString() });
+    return res.status(200).json({ total: totalViews._sum.count.toString() });
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }
