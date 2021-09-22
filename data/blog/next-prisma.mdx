@@ -118,13 +118,13 @@ model Artist {
 
 I've pre-populated the `dev.db` with some songs and artists.
 
-| id                |      name       |  artist  | artistId |
-| :---------------- | :-------------: | :------: | -------: |
-| NJ                | Chelsea Cutler  | [Artist] |        1 |
-| Take It Easy      |    Surfaces     | [Artist] |        2 |
-| always, i'll care |  Jeremy Zucker  | [Artist] |        3 |
-| Heartless         |   The Weeknd    | [Artist] |        4 |
-| Daphne Blue       | The Band CAMINO | [Artist] |        5 |
+| id                |      name       |   artist   | artistId |
+| :---------------- | :-------------: | :--------: | -------: |
+| NJ                | Chelsea Cutler  | `[Artist]` |        1 |
+| Take It Easy      |    Surfaces     | `[Artist]` |        2 |
+| always, i'll care |  Jeremy Zucker  | `[Artist]` |        3 |
+| Heartless         |   The Weeknd    | `[Artist]` |        4 |
+| Daphne Blue       | The Band CAMINO | `[Artist]` |        5 |
 
 ## Querying Data
 
@@ -164,7 +164,7 @@ client, we can fetch all songs using `findMany`. One of the best features of Pri
 is how simple it makes working with relations. We can retrieve the corresponding
 `Artist` for the `Song` using `include`.
 
-```js{1,4,5,6,7}:pages/index.js
+```js {1,4,5,6,7}:pages/index.js
 import { PrismaClient } from '@prisma/client';
 
 export async function getStaticProps() {
@@ -206,7 +206,7 @@ Prisma Migrate generates `.sql` migration files which you can apply to your data
 
 Let's add some new fields to our schema.
 
-```js{13,14}:prisma/schema.prisma
+```js {13,14}:prisma/schema.prisma
 datasource db {
   provider = "sqlite"
   url      = "file:dev.db"
@@ -339,7 +339,7 @@ Now, let's hook this up to real data.
 - `getStaticProps` will query song data for the given `id`
 - `getStaticPaths` will generate a page for each song in the database
 
-```js{1,4,5,6,7,8,9,10,14,20,21,24,25,26,27}:pages/songs/[id].js
+```js {1,4,5,6,7,8,9,10,14,20,21,24,25,26,27}:pages/songs/[id].js
 import { PrismaClient } from '@prisma/client';
 
 export async function getStaticProps({ params }) {

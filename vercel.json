@@ -30,6 +30,10 @@
       "destination": "/blog/nextjs-firebase-serverless"
     },
     {
+      "source": "/blog/vercel-env-variables-size-limit",
+      "destination": "https://vercel.com/support/articles/how-do-i-workaround-vercel-s-4-kb-environment-variables-limit"
+    },
+    {
       "source": "/30",
       "destination": "https://calendly.com/lee-vercel/30min"
     },
