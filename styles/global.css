@@ -79,6 +79,10 @@ html {
   @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 border border-gray-100 dark:border-gray-800 rounded-md bg-gray-100 dark:bg-gray-900;
 }
 
+.prose pre code {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
 .prose img {
   /* Don't apply styles to next/image */
   @apply m-0;
