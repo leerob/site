@@ -5,7 +5,7 @@ module.exports = {
   experimental: {
     esmExternals: true,
     swcLoader: true,
-    swcMinify: true
+    swcMinify: false
   },
   reactStrictMode: true,
   images: {
