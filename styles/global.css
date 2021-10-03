@@ -21,6 +21,7 @@ html {
 }
 
 #__next {
+  @apply bg-gray-50 dark:bg-gray-900;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

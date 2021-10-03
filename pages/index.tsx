@@ -10,7 +10,7 @@ export default function Home({ videos }) {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <div className="flex items-center">
+        <div className="flex flex-col-reverse sm:flex-row items-center">
           <div className="flex flex-col pr-8">
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
               Lee Robinson
@@ -24,7 +24,7 @@ export default function Home({ videos }) {
               development, serverless, and React / Next.js.
             </p>
           </div>
-          <div className="w-[176px] relative">
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             {/* <span className="border border-gray-300 dark:border-gray-600 rounded-full w-[150px] h-[150px] absolute top-[-9px] left-[-9px]" />
             <span className="border border-gray-200 dark:border-gray-800 rounded-full w-[170px] h-[170px] absolute top-[-19px] left-[-19px]" /> */}
             <Image
@@ -84,6 +84,12 @@ export default function Home({ videos }) {
           href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
           length="1:08:30"
           title="Designing & Building the Dashboard"
+        />
+        <VideoCard
+          index="04"
+          href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
+          length="1:13:45"
+          title="Firebase Admin with Next.js + SWR"
         />
         <span className="h-16" />
         {/* <Timeline /> */}

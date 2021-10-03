@@ -72,7 +72,7 @@ module.exports = {
                 '&:before': { backgroundColor: theme('colors.gray.500') }
               }
             },
-            strong: { color: theme('colors.gray.300') },
+            strong: { color: theme('colors.gray.100') },
             thead: {
               color: theme('colors.gray.100')
             },
