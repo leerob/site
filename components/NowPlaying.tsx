@@ -1,10 +1,10 @@
 import useSWR from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { INowPlayingSong } from 'lib/types';
+import { NowPlayingSong } from 'lib/types';
 
 export default function NowPlaying() {
-  const { data } = useSWR<INowPlayingSong>('/api/now-playing', fetcher);
+  const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher);
 
   return (
     <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">

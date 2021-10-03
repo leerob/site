@@ -5,52 +5,52 @@ export enum Form {
   Error
 }
 
-export interface IFormState {
+export type FormState = {
   state: Form;
   message?: string;
-}
+};
 
-export interface ISubscribers {
+export type Subscribers = {
   count: number;
-}
+};
 
-export interface IViews {
+export type Views = {
   total: number;
-}
+};
 
-export interface ISong {
+export type Song = {
   songUrl: string;
   artist: string;
   title: string;
-}
+};
 
-export interface INowPlayingSong {
+export type NowPlayingSong = {
   album: string;
   albumImageUrl: string;
   artist: string;
   isPlaying: boolean;
   songUrl: string;
   title: string;
-}
+};
 
-export interface ITopTracks {
-  tracks: ISong[];
-}
+export type TopTracks = {
+  tracks: Song[];
+};
 
-export interface IYouTube {
+export type YouTube = {
   subscriberCount: number;
   viewCount: number;
-}
+};
 
-export interface IGitHub {
+export type GitHub = {
   stars: number;
-}
+};
 
-export interface IGumroad {
+export type Gumroad = {
   sales: number;
-}
+};
 
-export interface IUnsplash {
+export type Unsplash = {
   downloads: number;
   views: number;
-}
+};

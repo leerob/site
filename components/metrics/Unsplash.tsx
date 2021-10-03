@@ -1,11 +1,11 @@
 import useSWR from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { IUnsplash } from 'lib/types';
+import { Unsplash } from 'lib/types';
 import MetricCard from 'components/metrics/Card';
 
-export default function Unsplash() {
-  const { data } = useSWR<IUnsplash>('/api/unsplash', fetcher);
+export default function UnsplashCard() {
+  const { data } = useSWR<Unsplash>('/api/unsplash', fetcher);
 
   const downloads = new Number(data?.downloads);
   const views = new Number(data?.views);

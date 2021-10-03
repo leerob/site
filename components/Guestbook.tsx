@@ -4,7 +4,7 @@ import { signIn, useSession } from 'next-auth/react';
 import useSWR, { useSWRConfig } from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { Form, IFormState } from 'lib/types';
+import { Form, FormState } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
@@ -49,7 +49,7 @@ function GuestbookEntry({ entry, user }) {
 export default function Guestbook({ fallbackData }) {
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
-  const [form, setForm] = useState<IFormState>({ state: Form.Initial });
+  const [form, setForm] = useState<FormState>({ state: Form.Initial });
   const inputEl = useRef(null);
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData
