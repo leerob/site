@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
 import Subscribe from '../components/Subscribe';
@@ -25,8 +24,6 @@ export default function Home({ videos }) {
             </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
-            {/* <span className="border border-gray-300 dark:border-gray-600 rounded-full w-[150px] h-[150px] absolute top-[-9px] left-[-9px]" />
-            <span className="border border-gray-200 dark:border-gray-800 rounded-full w-[170px] h-[170px] absolute top-[-19px] left-[-19px]" /> */}
             <Image
               alt="Lee Robinson"
               height={176}
@@ -89,7 +86,6 @@ export default function Home({ videos }) {
           title="Firebase Admin with Next.js + SWR"
         />
         <span className="h-16" />
-        {/* <Timeline /> */}
         <Subscribe />
       </div>
     </Container>
