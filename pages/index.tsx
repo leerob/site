@@ -63,7 +63,7 @@ export default function Home({ videos }) {
         </p>
         <VideoCard
           index="01"
-          href="https://www.youtube.com/watch?list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
+          href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
           length="1:02:45"
           title="Introduction to React 2025"
         />
