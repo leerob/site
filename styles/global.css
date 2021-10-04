@@ -208,6 +208,8 @@ input[type='email'] {
 }
 
 table {
-  display: table;
-  overflow-y: scroll;
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
 }
