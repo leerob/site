@@ -1,12 +1,12 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["planetScaleMode"]
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-  planetScaleMode = true
+  referentialIntegrity = "prisma"
 }
 
 model guestbook {

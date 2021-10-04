@@ -40,13 +40,13 @@ export default function BlogLayout({ children, frontMatter }) {
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+          <p className="text-sm text-gray-600 dark:text-gray-400 min-w-32 mt-2 md:mt-0">
             {frontMatter.readingTime.text}
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
           </p>
         </div>
-        <div className="prose dark:prose-dark max-w-none w-full">
+        <div className="prose dark:prose-dark max-w-none w-full mt-4">
           {children}
         </div>
         <div className="mt-8">

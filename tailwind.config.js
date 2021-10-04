@@ -7,10 +7,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-opaque': 'rgb(13 42 148 / 18%)'
+        'blue-opaque': 'rgb(13 42 148 / 18%)',
+        gray: {
+          0: '#fff',
+          100: '#fafafa',
+          200: '#eaeaea',
+          300: '#999999',
+          400: '#888888',
+          500: '#666666',
+          600: '#444444',
+          700: '#333333',
+          800: '#222222',
+          900: '#111111'
+        }
       },
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans]
+        sans: ['IBM Plex Sans', ...fontFamily.sans]
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -33,7 +45,7 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.300'),
+            color: theme('colors.gray.200'),
             a: {
               color: theme('colors.blue.400'),
               '&:hover': {
@@ -60,7 +72,7 @@ module.exports = {
                 '&:before': { backgroundColor: theme('colors.gray.500') }
               }
             },
-            strong: { color: theme('colors.gray.300') },
+            strong: { color: theme('colors.gray.100') },
             thead: {
               color: theme('colors.gray.100')
             },
