@@ -54,7 +54,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '150ms' }}
           >
             <Link href="/">
-              <a className="">Home</a>
+              <a className="flex w-auto pb-4">Home</a>
             </Link>
           </li>
           <li
@@ -62,7 +62,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '175ms' }}
           >
             <Link href="/guestbook">
-              <a className="">Guestbook</a>
+              <a className="flex w-auto pb-4">Guestbook</a>
             </Link>
           </li>
           <li
@@ -70,7 +70,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '200ms' }}
           >
             <Link href="/dashboard">
-              <a className="">Dashboard</a>
+              <a className="flex w-auto pb-4">Dashboard</a>
             </Link>
           </li>
           <li
@@ -78,7 +78,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '250ms' }}
           >
             <Link href="/blog">
-              <a className="">Blog</a>
+              <a className="flex w-auto pb-4">Blog</a>
             </Link>
           </li>
           <li
@@ -86,7 +86,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '275ms' }}
           >
             <Link href="/snippets">
-              <a className="">Snippets</a>
+              <a className="flex w-auto pb-4">Snippets</a>
             </Link>
           </li>
           <li
@@ -94,7 +94,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '300ms' }}
           >
             <Link href="/newsletter">
-              <a className="">Newsletter</a>
+              <a className="flex w-auto pb-4">Newsletter</a>
             </Link>
           </li>
           <li
@@ -102,7 +102,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '325ms' }}
           >
             <Link href="/tweets">
-              <a className="">Tweets</a>
+              <a className="flex w-auto pb-4">Tweets</a>
             </Link>
           </li>
           <li
@@ -110,7 +110,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '350ms' }}
           >
             <Link href="/uses">
-              <a className="">Uses</a>
+              <a className="flex w-auto pb-4">Uses</a>
             </Link>
           </li>
         </ul>

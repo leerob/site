@@ -33,7 +33,6 @@
 }
 
 .menu li {
-  padding-bottom: 16px;
   transform: translateX(-16px);
   opacity: 0;
   transition: opacity 300ms ease, transform 300ms ease, width 300ms ease,
