@@ -23,7 +23,7 @@ export default function VideoCard({ href, length, title, index }) {
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 text-gray-700 dark:text-gray-100"
+              className="h-4 w-4 text-gray-500 dark:text-gray-100"
               viewBox="0 0 20 20"
               fill="currentColor"
             >

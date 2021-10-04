@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import useSWR from 'swr';
+import cn from 'classnames';
 
 import fetcher from 'lib/fetcher';
 import { Views } from 'lib/types';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function BlogPostCard({ title, summary, slug, gradient }) {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
@@ -15,7 +12,7 @@ export default function BlogPostCard({ title, summary, slug, gradient }) {
   return (
     <Link href={`/blog/${slug}`}>
       <a
-        className={classNames(
+        className={cn(
           'rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1',
           gradient
         )}

@@ -3,9 +3,28 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
+import cn from 'classnames';
 
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
+
+function NavItem({ href, text }) {
+  const router = useRouter();
+  const isActive = router.asPath === href;
+
+  return (
+    <NextLink href={href}>
+      <a
+        className={cn(
+          isActive ? 'font-semibold' : 'font-normal',
+          'hidden md:inline-flex p-1 text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+        )}
+      >
+        {text}
+      </a>
+    </NextLink>
+  );
+}
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
@@ -53,36 +72,11 @@ export default function Container(props) {
           </a>
           <div className="ml-[-0.60rem]">
             <MobileMenu />
-            <NextLink href="/">
-              <a className="hidden md:inline-flex p-1 font-semibold text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Home
-              </a>
-            </NextLink>
-            <NextLink href="/guestbook">
-              <a className="hidden md:inline-flex p-1 font-normal text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Guestbook
-              </a>
-            </NextLink>
-            <NextLink href="/dashboard">
-              <a className="hidden md:inline-flex p-1 font-normal text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Dashboard
-              </a>
-            </NextLink>
-            <NextLink href="/videos">
-              <a className="hidden md:inline-flex p-1 font-normal text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Videos
-              </a>
-            </NextLink>
-            <NextLink href="/blog">
-              <a className="hidden md:inline-flex p-1 font-normal text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Blog
-              </a>
-            </NextLink>
-            <NextLink href="/snippets">
-              <a className="hidden md:inline-flex p-1 font-normal text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all">
-                Snippets
-              </a>
-            </NextLink>
+            <NavItem href="/" text="Home" />
+            <NavItem href="/guestbook" text="Guestbook" />
+            <NavItem href="/dashboard" text="Dashboard" />
+            <NavItem href="/blog" text="Blog" />
+            <NavItem href="/snippets" text="Snippets" />
           </div>
           <button
             aria-label="Toggle Dark Mode"
