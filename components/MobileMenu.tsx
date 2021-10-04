@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import useDelayedRender from 'use-delayed-render';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from 'styles/mobile-menu.module.css';
 
 export default function MobileMenu() {
@@ -23,6 +23,12 @@ export default function MobileMenu() {
       document.body.style.overflow = 'hidden';
     }
   }
+
+  useEffect(() => {
+    return function cleanup() {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <>

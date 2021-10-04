@@ -16,8 +16,10 @@ function NavItem({ href, text }) {
     <NextLink href={href}>
       <a
         className={cn(
-          isActive ? 'font-semibold' : 'font-normal',
-          'hidden md:inline-flex p-1 text-gray-800 sm:px-3 sm:py-2 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+          isActive
+            ? 'font-semibold text-gray-800 dark:text-gray-200'
+            : 'font-normal text-gray-600 dark:text-gray-400',
+          'hidden md:inline-flex p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
         )}
       >
         {text}
@@ -66,7 +68,7 @@ export default function Container(props) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-2xl mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50 sticky-nav dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+        <nav className="flex items-center justify-between w-full max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50 sticky-nav dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
           <a href="#skip" className="skip-nav">
             Skip to content
           </a>
