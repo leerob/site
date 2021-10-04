@@ -10,7 +10,7 @@ export default function Home({ videos }) {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <div className="flex flex-col-reverse sm:flex-row items-center">
+        <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
               Lee Robinson
@@ -42,20 +42,17 @@ export default function Home({ videos }) {
         <div className="flex gap-6 flex-col md:flex-row">
           <BlogPostCard
             title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-            summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
             slug="style-guides-component-libraries-design-systems"
             gradient="from-[#D8B4FE] to-[#818CF8]"
           />
           <BlogPostCard
-            title="How Stripe Designs Beautiful Websites"
-            summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
-            slug="how-stripe-designs-beautiful-websites"
+            title="Past, Present, and Future of React State Management"
+            slug="react-state-management"
             gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
           <BlogPostCard
-            title="Creating a Monorepo with Lerna & Yarn Workspaces"
-            summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
-            slug="monorepo-lerna-yarn-workspaces"
+            title="Which Back End Should I Use As A Front-End Developer?"
+            slug="backend"
             gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
           />
         </div>

@@ -62,12 +62,6 @@ html {
 
 .prose a {
   @apply transition-all;
-  border-bottom: 0.12rem #60a5fa dashed;
-  text-decoration: none;
-}
-
-.prose a:hover {
-  border-bottom: 0.12rem #2563eb dashed;
 }
 
 .prose .anchor:after {
