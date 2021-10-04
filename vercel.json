@@ -18,6 +18,14 @@
       "destination": "/robinson-resume-2019.pdf"
     },
     {
+      "source": "/robinson-resume-2019.pdf",
+      "destination": "https://read.cv/leerob"
+    },
+    {
+      "source": "/resume",
+      "destination": "https://read.cv/leerob"
+    },
+    {
       "source": "/projects",
       "destination": "/about"
     },
