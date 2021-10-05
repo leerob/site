@@ -178,6 +178,11 @@ pre {
   @apply mt-0 rounded-t-none;
 }
 
+/* in case using the custom code block component, it does have a div parent before pre */
+.rehype-code-title + div > pre {
+  @apply mt-0 rounded-t-none;
+}
+
 .highlight-line {
   @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
 }
