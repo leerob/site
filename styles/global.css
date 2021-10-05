@@ -41,7 +41,11 @@ html {
 }
 
 .skip-nav {
-  @apply absolute px-4 py-2 transition-transform duration-200 transform -translate-y-12 left-1/4 focus:top-4 focus:translate-y-3 -top-8;
+  @apply absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 -left-1/4 focus:top-4 focus:translate-y-3 -top-8;
+}
+
+#skip {
+  scroll-margin-top: 1.125rem;
 }
 
 @supports not (backdrop-filter: none) {
