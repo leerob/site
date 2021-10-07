@@ -26,4 +26,4 @@ $ yarn
 $ yarn dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/master/.env.example).
+Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
