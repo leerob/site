@@ -72,29 +72,29 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@contentlayer/cli@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@contentlayer/cli/-/cli-0.0.25.tgz#84dc687f8f89a7b867cb7c44f666bac25046e4f2"
-  integrity sha512-1QL2BEHxCUZjMIcPM/R1ixpAdIX8kMXK5AZMbVgcbVtSjGGOWG9TSM5QVJ8MI0AQz3C7BZrcJntI84voTFZiew==
+"@contentlayer/cli@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@contentlayer/cli/-/cli-0.0.26.tgz#673ad7d2faf41160f7a756be30360d3774dae960"
+  integrity sha512-qzQuixj7cyGoWJn4GcPu226RIbeBHHVFGKp3inHIjLArRrkL89Q0nEwBklmCDzwyeGEaiSenYX6tv51ClpzABQ==
   dependencies:
-    "@contentlayer/core" "0.0.25"
-    "@contentlayer/utils" "0.0.25"
+    "@contentlayer/core" "0.0.26"
+    "@contentlayer/utils" "0.0.26"
     clipanion "^3.2.0-rc.3"
     typanion "^3.5.0"
 
-"@contentlayer/client@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@contentlayer/client/-/client-0.0.25.tgz#7ce96315f563cdb72f220f3f78cb6a9818a99c16"
-  integrity sha512-L7xdIJv3mGZD3vtW1BDkxr+8vUyEtZQJ9RTky+o03ktmtrDO6YdOG93bg/Ucuq0fcoW6EXF3DyjxAHfQgZTrYQ==
+"@contentlayer/client@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@contentlayer/client/-/client-0.0.26.tgz#a0d509f67ad7817bf39ee6690b02750f8a0109e7"
+  integrity sha512-+5MC1NMHwSANf+IIdsCUndxu2tnJNXFGSnUjo5KgpHKqV76QzY6iwoGD7b0NZ7AKLKl5KLXYkW76pTDzGAXbew==
   dependencies:
-    "@contentlayer/core" "0.0.25"
+    "@contentlayer/core" "0.0.26"
 
-"@contentlayer/core@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@contentlayer/core/-/core-0.0.25.tgz#6f349e192284d0e9222dd448c775e756c0dcbcd4"
-  integrity sha512-5YI7WEXw8hAhbCw3UCmEMQwmP13GAUYWFJpFD9VDMVELbKdjTwecw8zbmzVJeZB1gR0hJlUz8cRcSywxtO4sIA==
+"@contentlayer/core@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@contentlayer/core/-/core-0.0.26.tgz#bfff9ad9c68669041fadb642b1d1b9ab1e600b6d"
+  integrity sha512-GVny2fEMsDT/S0GeBk9RqsCzi4renRFnmzN+i2k04gbvra3l3uilg1jEG+mU0VRPAs+0rp2vOUyegKvdf+6f7w==
   dependencies:
-    "@contentlayer/utils" "0.0.25"
+    "@contentlayer/utils" "0.0.26"
     camel-case "^4.1.2"
     esbuild "0.11.x || 0.12.x"
     gray-matter "^4.0.3"
@@ -108,13 +108,13 @@
     type-fest "^1.2.1"
     unified "^10.1.0"
 
-"@contentlayer/source-files@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@contentlayer/source-files/-/source-files-0.0.25.tgz#77b0ab0a068c9b209e85b1dd0fe9167ce635586e"
-  integrity sha512-DnJ120dpqnq4mmlIIdT1denG3VNXeUp1H/M5N9vp1wJIjuSAEkgB6Q4kpWG9A2l55tXsv8SWuO8wl8hj9rqcnw==
+"@contentlayer/source-files@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@contentlayer/source-files/-/source-files-0.0.26.tgz#7fdf788622f66d7bbc278dc029577d4e0e5e01c3"
+  integrity sha512-/9wTYlRilQcZ6WoUp4WggMJ12AvQdzZpFStFSYxJyJaLHVCWAbdJVQxiOANMF8oNxyCnaZGSUnV9qBKDf3ueTA==
   dependencies:
-    "@contentlayer/core" "0.0.25"
-    "@contentlayer/utils" "0.0.25"
+    "@contentlayer/core" "0.0.26"
+    "@contentlayer/utils" "0.0.26"
     chokidar "^3.5.2"
     glob "^7.1.7"
     glob-promise "^4.1.0"
@@ -124,10 +124,10 @@
     unified "^10.1.0"
     yaml "^1.10.2"
 
-"@contentlayer/utils@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@contentlayer/utils/-/utils-0.0.25.tgz#95b4c4af64bbe99bb126124057a9aabdcec6ec96"
-  integrity sha512-guWG8PqkCgkjDR9Gmov2T+5dBTGyVtoluKdmcbRIoYDsw2fKRAOf8Sgn7iYFQx7giI8P1wkkkQKi1XtNOKGsog==
+"@contentlayer/utils@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@contentlayer/utils/-/utils-0.0.26.tgz#eb01e6f15fc3d6256db31481b2aec60736b1c8ba"
+  integrity sha512-gUV7rfEWNT2Z15SsLbhLiByH/FnIulFnpx2HAYFELu9BQZPJhckm8dSAf37XMnPkDppoK07NloxCnt+2WxrfDg==
   dependencies:
     "@effect-ts/core" "^0.44.4"
     "@effect-ts/otel" next
@@ -1368,16 +1368,16 @@ constants-browserify@1.0.0, constants-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
-contentlayer@^0.0.25:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/contentlayer/-/contentlayer-0.0.25.tgz#b7204c4118c2a7c413ebd7e5cc9e4e5e747c494d"
-  integrity sha512-g5HVPlIiBno+F91lQvmzIQMbtS9MmbtsG3mvAKRbLQn26apJXM9nmznIVo+qeO9g2mcCVZ6lN0ovxqxxNFcyiQ==
+contentlayer@^0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/contentlayer/-/contentlayer-0.0.26.tgz#df75061f4bb76a145f482cb0c23b8d5a4744096b"
+  integrity sha512-JwBLPkWoygvXDsGQpgDsdIQvfTpt40/4MdG9772g4ytenyH41D7f7x5seEzfg1v6UuJZiJrB2ViCa1SyaWblvA==
   dependencies:
-    "@contentlayer/cli" "0.0.25"
-    "@contentlayer/client" "0.0.25"
-    "@contentlayer/core" "0.0.25"
-    "@contentlayer/source-files" "0.0.25"
-    "@contentlayer/utils" "0.0.25"
+    "@contentlayer/cli" "0.0.26"
+    "@contentlayer/client" "0.0.26"
+    "@contentlayer/core" "0.0.26"
+    "@contentlayer/source-files" "0.0.26"
+    "@contentlayer/utils" "0.0.26"
 
 convert-source-map@1.7.0:
   version "1.7.0"
@@ -4158,13 +4158,13 @@ next-auth@4.0.0-beta.2:
     preact "^10.5.13"
     preact-render-to-string "^5.1.19"
 
-next-contentlayer@^0.0.25:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/next-contentlayer/-/next-contentlayer-0.0.25.tgz#6f12d4fd98307c0a275fc6317200b835298b786f"
-  integrity sha512-MNKSRl3gIqbDIvgpXrjkWxMVY2Me8asmZ1Ej1uuEV2h+xnmNIiF1RYzscQG+fan8GXyLP7ChoV7Vw2D1EfvvHg==
+next-contentlayer@^0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/next-contentlayer/-/next-contentlayer-0.0.26.tgz#1828710b1ee59920dd90f893daad54a34b2df494"
+  integrity sha512-wcpi2EeheGpwceOgwCjlc9zdf5sAJhiGm9GfHoEZ1ieE/3TRkXVP2fKAje9KG/q2pDEnnmLTL20AbfRVNVUytA==
   dependencies:
-    "@contentlayer/core" "0.0.25"
-    "@contentlayer/utils" "0.0.25"
+    "@contentlayer/core" "0.0.26"
+    "@contentlayer/utils" "0.0.26"
     rxjs "^7.1.0"
 
 next-themes@0.0.15:
