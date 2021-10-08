@@ -31,7 +31,6 @@ export default function NewsletterLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {/* {newsletter.by} */}
               {'Lee Robinson / '}
               {format(parseISO(newsletter.publishedAt), 'MMMM dd, yyyy')}
             </p>
