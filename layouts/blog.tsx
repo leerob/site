@@ -4,6 +4,8 @@ import { parseISO, format } from 'date-fns';
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
+import type { PropsWithChildren } from 'react';
+import type { Blog } from '.contentlayer/types';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
@@ -12,20 +14,23 @@ const discussUrl = (slug) =>
     `https://leerob.io/blog/${slug}`
   )}`;
 
-export default function BlogLayout({ children, frontMatter }) {
+export default function BlogLayout({
+  children,
+  post
+}: PropsWithChildren<{ post: Blog }>) {
   return (
     <Container
-      title={`${frontMatter.title} – Lee Robinson`}
-      description={frontMatter.summary}
-      image={`https://leerob.io${frontMatter.image}`}
-      date={new Date(frontMatter.publishedAt).toISOString()}
+      title={`${post.title} – Lee Robinson`}
+      description={post.summary}
+      image={`https://leerob.io${post.image}`}
+      date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          {frontMatter.title}
+      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+          {post.title}
         </h1>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2">
+        <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
           <div className="flex items-center">
             <Image
               alt="Lee Robinson"
@@ -34,19 +39,18 @@ export default function BlogLayout({ children, frontMatter }) {
               src="/avatar.jpg"
               className="rounded-full"
             />
-            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
-              {frontMatter.by}
+            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
               {'Lee Robinson / '}
-              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+              {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 min-w-32 mt-2 md:mt-0">
-            {frontMatter.readingTime.text}
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+            {post.readingTime.text}
             {` • `}
-            <ViewCounter slug={frontMatter.slug} />
+            <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <div className="prose dark:prose-dark max-w-none w-full mt-4">
+        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
           {children}
         </div>
         <div className="mt-8">
@@ -54,7 +58,7 @@ export default function BlogLayout({ children, frontMatter }) {
         </div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
-            href={discussUrl(frontMatter.slug)}
+            href={discussUrl(post.slug)}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -62,7 +66,7 @@ export default function BlogLayout({ children, frontMatter }) {
           </a>
           {` • `}
           <a
-            href={editUrl(frontMatter.slug)}
+            href={editUrl(post.slug)}
             target="_blank"
             rel="noopener noreferrer"
           >

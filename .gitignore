@@ -6,3 +6,6 @@ public/sitemap.xml
 public/feed.xml
 .vercel
 .env
+
+# Contentlayer
+.contentlayer

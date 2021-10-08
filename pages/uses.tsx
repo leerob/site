@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { getFileBySlug } from 'lib/mdx';
 import components from 'components/MDXComponents';
 import UsesLayout from 'layouts/uses';
+import { allOtherPages } from '.contentlayer/data';
+import type { OtherPage } from '.contentlayer/types';
 
-export default function Uses({ code, frontMatter }) {
+export default function Uses({ body: { code } }: OtherPage) {
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -15,7 +16,7 @@ export default function Uses({ code, frontMatter }) {
 }
 
 export async function getStaticProps() {
-  const uses = await getFileBySlug('uses');
+  const uses = allOtherPages.find((page) => page.slug === 'uses')!;
 
   return { props: uses };
 }

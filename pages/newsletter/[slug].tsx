@@ -1,34 +1,36 @@
 import { useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { getFiles, getFileBySlug } from 'lib/mdx';
 import components from 'components/MDXComponents';
 import NewsletterLayout from 'layouts/newsletter';
+import { allNewsletters } from '.contentlayer/data';
+import type { Newsletter } from '.contentlayer/types';
 
-export default function Newsletter({ code, frontMatter }) {
-  const Component = useMemo(() => getMDXComponent(code), [code]);
+export default function Newsletter(newsletter: Newsletter) {
+  const Component = useMemo(
+    () => getMDXComponent(newsletter.body.code),
+    [newsletter.body.code]
+  );
 
   return (
-    <NewsletterLayout frontMatter={frontMatter}>
+    <NewsletterLayout newsletter={newsletter}>
       <Component components={components as any} />
     </NewsletterLayout>
   );
 }
 
 export async function getStaticPaths() {
-  const newsletters = await getFiles('newsletter');
-
   return {
-    paths: newsletters.map((newsletter) => ({
-      params: {
-        slug: newsletter.replace(/\.mdx/, '')
-      }
+    paths: allNewsletters.map((newsletter) => ({
+      params: { slug: newsletter.slug }
     })),
     fallback: false
   };
 }
 
 export async function getStaticProps({ params }) {
-  const newsletter = await getFileBySlug('newsletter', params.slug);
+  const newsletter = allNewsletters.find(
+    (newsletter) => newsletter.slug === params.slug
+  );
 
   return { props: newsletter };
 }

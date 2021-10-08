@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +12,7 @@
     "@prisma/client": "^3.1.1",
     "@tailwindcss/typography": "0.4.1",
     "big.js": "6.1.1",
+    "contentlayer": "^0.0.26",
     "date-fns": "2.24.0",
     "esbuild": "^0.13.3",
     "fathom-client": "3.2.0",
@@ -19,6 +20,7 @@
     "mdx-bundler": "^6.0.2",
     "next": "^11.1.3-canary.41",
     "next-auth": "4.0.0-beta.2",
+    "next-contentlayer": "^0.0.26",
     "next-themes": "0.0.15",
     "preact": "10.5.14",
     "react": "17.0.2",
@@ -34,7 +36,6 @@
     "eslint": "7.32.0",
     "eslint-config-next": "^11.1.3-canary.41",
     "globby": "12.0.2",
-    "gray-matter": "^4.0.3",
     "postcss": "^8.3.8",
     "prettier": "2.4.1",
     "prisma": "3.1.1",
