@@ -40,7 +40,6 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {/* {post.by} */}
               {'Lee Robinson / '}
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
             </p>
