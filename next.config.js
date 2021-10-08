@@ -7,7 +7,7 @@ module.exports = withContentlayer()({
   experimental: {
     esmExternals: true,
     swcLoader: true,
-    swcMinify: false
+    swcMinify: true
   },
   reactStrictMode: true,
   images: {
