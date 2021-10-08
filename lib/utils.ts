@@ -1,3 +1,5 @@
+// NOTE The functionality below (incl. TS types) will soon become part of Contentlayer itself. Please don't mind its existence. 😎
+
 type ConvertUndefined<T> = OrUndefined<{
   [K in keyof T as undefined extends T[K] ? K : never]-?: T[K];
 }>;
