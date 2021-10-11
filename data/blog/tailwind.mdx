@@ -76,7 +76,7 @@ Tailwind 2.0 makes using dark mode painless. Enable the `dark` [variant](https:/
 <div class="bg-white dark:bg-gray-800" />
 ```
 
-I was able to keep a [dark mode toggle](https://github.com/leerob/leerob.io/blob/master/components/Container.js) in the navigation thanks to [next-themes](https://github.com/pacocoursey/next-themes). Tailwind and `next-themes` [pair well](https://github.com/pacocoursey/next-themes#with-tailwind) together.
+I was able to keep a [dark mode toggle](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/components/Container.tsx) in the navigation thanks to [next-themes](https://github.com/pacocoursey/next-themes). Tailwind and `next-themes` [pair well](https://github.com/pacocoursey/next-themes#with-tailwind) together.
 
 ```jsx
 import { useTheme } from 'next-themes';
@@ -96,7 +96,7 @@ const ThemeChanger = () => {
 
 I hit a few issues along the way adding dark mode to Tailwind Typography. The documentation felt a bit disjointed from the rest of Tailwind. I would have expected more guidance on pairing the two together.
 
-After digging through GitHub Issues, I was able to [get things working](https://github.com/leerob/leerob.io/blob/master/tailwind.config.js). It wasn't obvious I needed `dark:prose-dark`. I also managed to get [syntax highlighting](https://github.com/leerob/leerob.io/blob/master/styles/global.css) working through some custom styles.
+After digging through GitHub Issues, I was able to [get things working](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/tailwind.config.js). It wasn't obvious I needed `dark:prose-dark`. I also managed to get [syntax highlighting](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/styles/global.css) working through some custom styles.
 
 ## Performance
 
