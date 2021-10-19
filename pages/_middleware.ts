@@ -23,7 +23,7 @@ export default function middleware(ev: NextFetchEvent) {
     media-src 'none';
     connect-src *;
     font-src 'self';
-    `;
+  `;
 
   // https://nextjs.org/docs/advanced-features/security-headers
   ev.respondWith(
