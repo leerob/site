@@ -7,7 +7,7 @@ import Tweet from 'components/Tweet';
 import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
 
-export default function Blog({ post, tweets }: { post: Blog; tweets: any[] }) {
+export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
   const Component = useMemo(
     () => getMDXComponent(post.body.code),
     [post.body.code]

@@ -5,7 +5,7 @@ import SnippetLayout from 'layouts/snippets';
 import { allSnippets } from '.contentlayer/data';
 import type { Snippet } from '.contentlayer/types';
 
-export default function Snippet(snippet: Snippet) {
+export default function SnippetPage(snippet: Snippet) {
   const Component = useMemo(
     () => getMDXComponent(snippet.body.code),
     [snippet.body.code]

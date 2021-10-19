@@ -5,7 +5,7 @@ import NewsletterLayout from 'layouts/newsletter';
 import { allNewsletters } from '.contentlayer/data';
 import type { Newsletter } from '.contentlayer/types';
 
-export default function Newsletter(newsletter: Newsletter) {
+export default function NewsletterPage(newsletter: Newsletter) {
   const Component = useMemo(
     () => getMDXComponent(newsletter.body.code),
     [newsletter.body.code]
