@@ -1,15 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "headers": [
+  "builds": [
     {
-      "source": "/fonts/ibm-plex-sans-var.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "package.json",
+      "use": "@vercelruntimes/next@0.0.1-dev.36"
     }
   ],
   "redirects": [
