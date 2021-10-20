@@ -1,7 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-
+  "build": {
+    "env": {
+      "FORCE_RUNTIME_TAG": "canary"
+    }
+  },
   "redirects": [
     {
       "source": "/LeeRobinson.pdf",
