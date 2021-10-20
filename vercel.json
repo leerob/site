@@ -1,7 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-
   "redirects": [
     {
       "source": "/LeeRobinson.pdf",
