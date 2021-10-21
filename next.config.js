@@ -5,7 +5,9 @@ const { withContentlayer } = require('next-contentlayer');
  */
 module.exports = withContentlayer()({
   experimental: {
-    esmExternals: true
+    esmExternals: true,
+    // swcMinify: true,
+    swcLoader: true
   },
   reactStrictMode: true,
   images: {

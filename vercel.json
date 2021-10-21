@@ -1,12 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercelruntimes/next@0.0.1-dev.36"
+  "build": {
+    "env": {
+      "FORCE_RUNTIME_TAG": "canary"
     }
-  ],
+  },
   "redirects": [
     {
       "source": "/LeeRobinson.pdf",
