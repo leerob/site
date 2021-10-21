@@ -16,6 +16,7 @@
 - `pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
 - `pages/dashboard` - [Personal dashboard](https://leerob.io/dashboard) containing metrics like sales, views, and subscribers.
 - `pages/*` - All other static pages.
+- `data/*` - Blog posts, newsletters, code snippets.
 
 ## Running Locally
 
