@@ -1,19 +1,6 @@
-import type { NextFetchEvent } from 'next/server';
-import { NextResponse as Response } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
 
-export default function middleware(ev: NextFetchEvent) {
-  // Cache my self-hosted font for-ev-er
-  if (ev.request.nextUrl.pathname === '/fonts/ibm-plex-sans-var.woff2') {
-    return ev.respondWith(
-      new Response(null, {
-        headers: {
-          ...ev.request.headers,
-          'Cache-Control': 'public, max-age=31536000, immutable'
-        }
-      })
-    );
-  }
-
+export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
@@ -25,21 +12,18 @@ export default function middleware(ev: NextFetchEvent) {
     font-src 'self';
   `;
 
-  // https://nextjs.org/docs/advanced-features/security-headers
-  ev.respondWith(
-    new Response(null, {
-      headers: {
-        ...ev.request.headers,
-        'Content-Security-Policy': ContentSecurityPolicy.replace(/\n/g, ''),
-        'Referrer-Policy': 'origin-when-cross-origin',
-        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-        'Strict-Transport-Security':
-          'max-age=31536000; includeSubDomains; preload',
-        'X-Frame-Options': 'DENY',
-        'X-Content-Type-Options': 'nosniff',
-        'X-DNS-Prefetch-Control': 'on',
-        'X-Edge': 'true'
-      }
-    })
-  );
+  return new Response(null, {
+    headers: {
+      ...Object.fromEntries(req.headers),
+      'Content-Security-Policy': ContentSecurityPolicy.replace(/\n/g, ''),
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+      'Strict-Transport-Security':
+        'max-age=31536000; includeSubDomains; preload',
+      'X-middleware-next': '1',
+      'X-Frame-Options': 'DENY',
+      'X-Content-Type-Options': 'nosniff',
+      'X-DNS-Prefetch-Control': 'on'
+    }
+  });
 }
