@@ -4,11 +4,7 @@ const { withContentlayer } = require('next-contentlayer');
  * @type {import('next').NextConfig}
  */
 module.exports = withContentlayer()({
-  experimental: {
-    esmExternals: true,
-    // swcMinify: true,
-    swcLoader: true
-  },
+  swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: [
