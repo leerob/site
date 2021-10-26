@@ -1,19 +1,7 @@
-import type { NextFetchEvent } from 'next/server';
-import { NextResponse as Response } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export default function middleware(ev: NextFetchEvent) {
-  // Cache my self-hosted font for-ev-er
-  if (ev.request.nextUrl.pathname === '/fonts/ibm-plex-sans-var.woff2') {
-    return ev.respondWith(
-      new Response(null, {
-        headers: {
-          ...ev.request.headers,
-          'Cache-Control': 'public, max-age=31536000, immutable'
-        }
-      })
-    );
-  }
-
+export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
@@ -25,21 +13,24 @@ export default function middleware(ev: NextFetchEvent) {
     font-src 'self';
   `;
 
-  // https://nextjs.org/docs/advanced-features/security-headers
-  ev.respondWith(
-    new Response(null, {
-      headers: {
-        ...ev.request.headers,
-        'Content-Security-Policy': ContentSecurityPolicy.replace(/\n/g, ''),
-        'Referrer-Policy': 'origin-when-cross-origin',
-        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-        'Strict-Transport-Security':
-          'max-age=31536000; includeSubDomains; preload',
-        'X-Frame-Options': 'DENY',
-        'X-Content-Type-Options': 'nosniff',
-        'X-DNS-Prefetch-Control': 'on',
-        'X-Edge': 'true'
-      }
-    })
-  );
+  const response = NextResponse.next();
+
+  // response.headers.set(
+  //   'Content-Security-Policy',
+  //   ContentSecurityPolicy.replace(/\n/g, '')
+  // );
+  response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
+  // response.headers.set(
+  //   'Permissions-Policy',
+  //   'camera=(), microphone=(), geolocation=()'
+  // );
+  // response.headers.set(
+  //   'Strict-Transport-Security',
+  //   'max-age=31536000; includeSubDomains; preload'
+  // );
+  // response.headers.set('X-Frame-Options', 'DENY');
+  // response.headers.set('X-Content-Type-Options', 'nosniff');
+  // response.headers.set('X-DNS-Prefetch-Control', 'on');
+
+  return response;
 }
