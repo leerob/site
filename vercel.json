@@ -6,6 +6,17 @@
       "FORCE_RUNTIME_TAG": "canary"
     }
   },
+  "headers": [
+    {
+      "source": "/fonts/ibm-plex-sans-var.woff2",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/LeeRobinson.pdf",
