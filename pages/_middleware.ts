@@ -1,4 +1,5 @@
 import type { NextFetchEvent, NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
@@ -12,18 +13,24 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     font-src 'self';
   `;
 
-  return new Response(null, {
-    headers: {
-      ...Object.fromEntries(req.headers),
-      'Content-Security-Policy': ContentSecurityPolicy.replace(/\n/g, ''),
-      'Referrer-Policy': 'origin-when-cross-origin',
-      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-      'Strict-Transport-Security':
-        'max-age=31536000; includeSubDomains; preload',
-      'X-middleware-next': '1',
-      'X-Frame-Options': 'DENY',
-      'X-Content-Type-Options': 'nosniff',
-      'X-DNS-Prefetch-Control': 'on'
-    }
-  });
+  const response = NextResponse.next();
+
+  response.headers.set(
+    'Content-Security-Policy',
+    ContentSecurityPolicy.replace(/\n/g, '')
+  );
+  response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
+  response.headers.set(
+    'Permissions-Policy',
+    'camera=(), microphone=(), geolocation=()'
+  );
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains; preload'
+  );
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-DNS-Prefetch-Control', 'on');
+
+  return response;
 }
