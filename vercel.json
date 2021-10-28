@@ -1,11 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "build": {
-    "env": {
-      "FORCE_RUNTIME_TAG": "canary"
-    }
-  },
   "headers": [
     {
       "source": "/fonts/ibm-plex-sans-var.woff2",
