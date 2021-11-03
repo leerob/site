@@ -4,7 +4,7 @@ import { allBlogs } from '.contentlayer/data';
 
 async function generate() {
   const feed = new RSS({
-    title: 'Lee Robinson',
+    title: 'svirins',
     site_url: 'https://leerob.io',
     feed_url: 'https://leerob.io/feed.xml'
   });
