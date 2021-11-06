@@ -1,12 +1,13 @@
-import ErrorMessage from 'components/ErrorMessage';
-import LoadingSpinner from 'components/LoadingSpinner';
-import SuccessMessage from 'components/SuccessMessage';
+import { useState, useRef } from 'react';
+import Link from 'next/link';
+import useSWR from 'swr';
 import { trackGoal } from 'fathom-client';
+
 import fetcher from 'lib/fetcher';
 import { Form, FormState, Subscribers } from 'lib/types';
-import Link from 'next/link';
-import { useRef, useState } from 'react';
-import useSWR from 'swr';
+import SuccessMessage from 'components/SuccessMessage';
+import ErrorMessage from 'components/ErrorMessage';
+import LoadingSpinner from 'components/LoadingSpinner';
 
 export default function Subscribe() {
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
