@@ -1,5 +1,4 @@
-import { useMemo } from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { getTweets } from 'lib/twitter';
 import components from 'components/MDXComponents';
 import BlogLayout from 'layouts/blog';
@@ -8,10 +7,7 @@ import { allBlogs } from '.contentlayer/data';
 import type { Blog } from '.contentlayer/types';
 
 export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
-  const Component = useMemo(
-    () => getMDXComponent(post.body.code),
-    [post.body.code]
-  );
+  const Component = useMDXComponent(post.body.code);
   const StaticTweet = ({ id }) => {
     const tweet = tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;

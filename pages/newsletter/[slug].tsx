@@ -1,15 +1,11 @@
-import { useMemo } from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
 import NewsletterLayout from 'layouts/newsletter';
 import { allNewsletters } from '.contentlayer/data';
 import type { Newsletter } from '.contentlayer/types';
 
 export default function NewsletterPage(newsletter: Newsletter) {
-  const Component = useMemo(
-    () => getMDXComponent(newsletter.body.code),
-    [newsletter.body.code]
-  );
+  const Component = useMDXComponent(newsletter.body.code);
 
   return (
     <NewsletterLayout newsletter={newsletter}>
