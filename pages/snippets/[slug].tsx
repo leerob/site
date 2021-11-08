@@ -1,15 +1,11 @@
-import { useMemo } from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
 import SnippetLayout from 'layouts/snippets';
 import { allSnippets } from '.contentlayer/data';
 import type { Snippet } from '.contentlayer/types';
 
 export default function SnippetPage(snippet: Snippet) {
-  const Component = useMemo(
-    () => getMDXComponent(snippet.body.code),
-    [snippet.body.code]
-  );
+  const Component = useMDXComponent(snippet.body.code);
 
   return (
     <SnippetLayout snippet={snippet}>
