@@ -112,7 +112,7 @@ Currently, it's hard to find a Rust library or framework for your favorite servi
 
 ## The Future of JavaScript Tooling
 
-I believe Rust is the future of JavaScript tooling. [Next.js 12](http://nextjs.org/12) started our transition to fully place Babel (transpilation) and Terser (minification) with SWC and Rust. Why?
+I believe Rust is the future of JavaScript tooling. [Next.js 12](http://nextjs.org/12) started our transition to fully replace Babel (transpilation) and Terser (minification) with SWC and Rust. Why?
 
 - **Extensibility:** SWC can be used as a Crate inside Next.js, without having to fork the library or workaround design constraints.
 - **Performance:** We were able to achieve ~3x faster Fast Refresh and ~5x faster builds in Next.js by switching to SWC, with more room for optimization still in progress.
@@ -122,7 +122,7 @@ I believe Rust is the future of JavaScript tooling. [Next.js 12](http://nextjs.o
 It's not just Next.js adopting SWC, either:
 
 - [Deno’s](https://deno.land/) linter, code formatter, and docs generator are [built using SWC](https://twitter.com/devongovett/status/1369033422002389000).
-- [Rome](https://rome.tools/) is [rewriting in Rust](https://twitter.com/rometools/status/1422616144763097091) and planning on using SWC,
+- [Rome](https://rome.tools/) is [rewriting in Rust](https://twitter.com/rometools/status/1422616144763097091) and planning on using SWC.
 - [dprint](https://github.com/devongovett/dprint-node), built on SWC, is a [30x faster](https://twitter.com/devongovett/status/1400138335721455617) code formatting replacement for Prettier.
 - [Parcel](https://parceljs.org/) improved overall build performance by [up to 10x](https://v2.parceljs.org/blog/beta3/) with SWC.
 
