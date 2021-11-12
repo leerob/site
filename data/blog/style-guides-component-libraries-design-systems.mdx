@@ -280,7 +280,7 @@ A [Monorepo](/blog/monorepo-lerna-yarn-workspaces) allows you to build and publi
   title="a monorepo"
   cons={[
     'Additional tooling and infrastructure needed.',
-    'Consumers are required to import from a variety of packages instead of one single component library.',
+    `Consumers are required to import from a variety of packages instead of one single component library. You can, however, create [presets of componetns](/blog/style-guides-component-libraries-design-systems#presets-of-components) to mitigate this issue.`,
     `Cutting edge technology. There is industry adoption, but you can run into issues very few have experienced without a clear path for a solution.`
   ]}
 />
@@ -295,6 +295,10 @@ Some questions that will help you identify which solution is right for your comp
 - Do you see the need for multiple packages in the future? (e.g. icons, [codemods](https://github.com/facebook/jscodeshift), etc)
 
 For most smaller companies, I would argue that a Monorepo is unnecessary. It has its time and place. [I've used it before](/blog/monorepo-lerna-yarn-workspaces) with (~150 developers) to distribute 10 different packages at once, spanning both internal and external apps.
+
+#### Presets of components
+
+When you choose to go with a Monorepo, you can create a preset package that exports multiple other packages. The preset package enables its consumers to avoid having to manage all versions of internal packages.
 
 **Note:** Want to use a Monorepo? Check out [Creating a Monorepo with Lerna & Yarn Workspaces](/blog/monorepo-lerna-yarn-workspaces).
 
