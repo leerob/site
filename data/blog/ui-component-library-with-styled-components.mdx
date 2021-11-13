@@ -147,7 +147,7 @@ We utilize [Jest](https://jestjs.io/) for [Snapshot testing](https://jestjs.io/d
 
 For each permutation of a component (e.g. different props), we have a separate snapshot such that all conditions are covered.
 Snapshot output is made more readable using [jest-styled-components](https://github.com/styled-components/jest-styled-components).
-For more information, read _“[Effective testing of styled-components with Jest Snapshots](https://medium.com/styled-components/effective-testing-for-styled-components-67982eb7d42b)”_.
+For more information, read _"[Effective testing of styled-components with Jest Snapshots](https://medium.com/styled-components/effective-testing-for-styled-components-67982eb7d42b)"_.
 
 Snapshots do not cover every scenario, however.
 If we were to add `onClick` logic to a `Button` for example, we would want to utilize traditional testing methods to ensure the correct actions happen.
