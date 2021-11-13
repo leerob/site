@@ -6,13 +6,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const entries = await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: 'desc'
-    }
-  });
-
   if (req.method === 'GET') {
+    const entries = await prisma.guestbook.findMany({
+      orderBy: {
+        updated_at: 'desc'
+      }
+    });
+
     return res.json(
       entries.map((entry) => ({
         id: entry.id.toString(),
