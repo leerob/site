@@ -15,7 +15,7 @@ Rust helps developers write fast software that's memory-efficient. It's a modern
 
 Rust is quite different than JavaScript. JavaScript tries to find variables or objects not in use and automatically clears them from memory. This is called [Garbage Collection](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>). The language abstracts the developer from thinking about manual memory management.
 
-With Rust, developers have more control over memory allocation, without it being as painful as C++ or Go.
+With Rust, developers have more control over memory allocation, without it being as painful as C++.
 
 > Rust uses a relatively unique memory management approach that incorporates the idea of memory “ownership”. Basically, Rust keeps track of who can read and write to memory. It knows when the program is using memory and immediately frees the memory once it is no longer needed. It enforces memory rules at compile time, making it virtually impossible to have runtime memory bugs. You do not need to manually keep track of memory. The compiler takes care of it. – [Discord](https://blog.discord.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f)
 
@@ -76,7 +76,15 @@ Why rewrite everything, then?
 
 > Making the necessary modifications to Babel to allow for it to be a reliable base for other tools would have required changes to absolutely everything. The architecture is bound to the initial design choices I made in 2014 when I was learning about parsers, ASTs, and compilers. - Sebastian ([Source](https://rome.tools/blog/2020/08/08/introducing-rome))
 
-Rome is currently written in TypeScript and runs on Node.js. But they're now working on [rewriting in Rust](https://twitter.com/rometools/status/1422616144763097091).
+Rome is currently written in TypeScript and runs on Node.js. But they're now working on [rewriting in Rust](https://twitter.com/rometools/status/1422616144763097091) using RSLint parser and their own visitor system for AST traversal.
+
+### NAPI
+
+Rust’s integration with Node.js is better than other low-level languages.
+
+[napi-rs](https://napi.rs/) allows you to build pre-compiled Node.js add-ons with Rust. It provides an out-of-the-box solution for cross-compilation and publishing native binaries to NPM, without needing `node-gyp` or `postinstall` scripts.
+
+You can build a Rust module that can be called directly from Node.js, without needing to create a child process like esbuild.
 
 ## Rust + WebAssembly
 
@@ -102,6 +110,9 @@ It's Rust all the way down.
 
 Rust has a steep learning curve. It's a lower level of abstraction than what most web developers are used to.
 
+Once you're on native code (through Rust, Go, Zig, or other low-level languages),
+the algorithms and data structures are [more important](https://twitter.com/devongovett/status/1457945506332692482) than the language choice. It's not a silver bullet.
+
 > Rust makes you think about dimensions of your code that matter tremendously for systems programming. It makes you think about how memory is shared or copied. It makes you think about real but unlikely corner cases and make sure that they’re handled. It helps you write code that’s incredibly efficient in every possible way. – Tom MacWright ([Source](https://macwright.com/2021/01/15/rust.html))
 
 Further, Rust's usage in the web community is still niche. It hasn't reached critical adoption. Even though learning Rust for JavaScript tooling will be a barrier to entry, interestingly developers would rather have a [faster tool that's harder to contribute to](https://twitter.com/devongovett/status/1261379312898306048). [Fast software wins](https://craigmod.com/essays/fast_software/).
@@ -120,7 +131,6 @@ I believe Rust is the future of JavaScript tooling. [Next.js 12](http://nextjs.o
 It's not just Next.js adopting SWC, either:
 
 - [Deno’s](https://deno.land/) linter, code formatter, and docs generator are [built using SWC](https://twitter.com/devongovett/status/1369033422002389000).
-- [Rome](https://rome.tools/) is [rewriting in Rust](https://twitter.com/rometools/status/1422616144763097091) and planning on using SWC.
 - [dprint](https://github.com/devongovett/dprint-node), built on SWC, is a [30x faster](https://twitter.com/devongovett/status/1400138335721455617) code formatting replacement for Prettier.
 - [Parcel](https://parceljs.org/) improved overall build performance by [up to 10x](https://v2.parceljs.org/blog/beta3/) with SWC.
 
@@ -128,7 +138,7 @@ It's not just Next.js adopting SWC, either:
 
 It's early days for Rust – a few important pieces are still being figured out:
 
-- **Plugins:** Writing plugins in Rust isn't as approachable for many JavaScript developers. At the same time, exposing a plugin system in JavaScript could negate performance gains. A definitive solution hasn't emerged yet.
+- **Plugins:** Writing plugins in Rust isn't as approachable for many JavaScript developers. At the same time, exposing a plugin system in JavaScript could negate performance gains. A definitive solution hasn't emerged yet. Ideally, the future combines both JavaScript and Rust. If you want to write a plugin with JavaScript, it’s possible with a tradeoff for speed. Need more performance? Use the Rust plugin API.
 - **Bundling:** One interesting area of development is `swcpack`, which is SWC's replacement for Webpack. It's still under development but could be very promising.
 - **WebAssembly:** As mentioned above, the prospect of writing Rust and compiling to WASM is enticing, but there's still work to be done.
 
