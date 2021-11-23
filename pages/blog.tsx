@@ -30,7 +30,7 @@ export default function Blog({
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           {`I've been writing online since 2014, mostly about web development and tech careers.
-            In total, I've written ${posts.length} articles on this site.
+            In total, I've written ${posts.length} articles on my blog.
             Use the search below to filter by title.`}
         </p>
         <div className="relative w-full mb-4">
