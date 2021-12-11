@@ -99,7 +99,8 @@ html {
 }
 
 .prose pre code {
-  @apply text-gray-800 dark:text-gray-200;
+  @apply text-gray-800 dark:text-gray-200 p-0;
+  border: initial;
 }
 
 .prose img {
