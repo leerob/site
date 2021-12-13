@@ -16,7 +16,7 @@ export default function Home({ videos }) {
               Lee Robinson
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Head of Developer Relations at{' '}
+              Director of Developer Relations at{' '}
               <span className="font-semibold">Vercel</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">

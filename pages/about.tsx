@@ -28,7 +28,7 @@ export default function About() {
             >
               React 2025.
             </a>
-            &nbsp;I work at ▲Vercel as the Head of Developer Relations.
+            &nbsp;I work at ▲Vercel as the Director of Developer Relations.
           </p>
           <p>
             I’ve spoken across the country at conferences and meet-ups about
