@@ -10,14 +10,9 @@ export default function Blog({
   posts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts
-    .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-    )
-    .filter((post) =>
-      post.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
+  const filteredBlogPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <Container
@@ -95,9 +90,12 @@ export default function Blog({
 }
 
 export function getStaticProps() {
-  const posts = allBlogs.map((post) =>
-    pick(post, ['slug', 'title', 'summary', 'publishedAt'])
-  );
+  const posts = allBlogs
+    .map((post) => pick(post, ['slug', 'title', 'summary', 'publishedAt']))
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    );
 
   return { props: { posts } };
 }
