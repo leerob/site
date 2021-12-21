@@ -8,7 +8,7 @@ import cn from 'classnames';
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
 
-function NavItem({ href, text }) {
+const NavItem = ({ href, text }: { href: string; text: string }) => {
   const router = useRouter();
   const isActive = router.asPath === href;
 
@@ -26,7 +26,7 @@ function NavItem({ href, text }) {
       </a>
     </NextLink>
   );
-}
+};
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
