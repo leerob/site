@@ -1,10 +1,45 @@
 import type { NextFetchEvent, NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest, ev: NextFetchEvent) {
+async function logPageView(req: NextRequest) {
+  // Only track views in production and
+  // ignore static assets from being tracked
+  if (
+    process.env.NODE_ENV !== 'production' ||
+    req.nextUrl.pathname.startsWith('/static') ||
+    req.nextUrl.pathname.startsWith('/api') ||
+    req.nextUrl.pathname.startsWith('/fonts') ||
+    req.nextUrl.pathname.startsWith('/logos')
+  ) {
+    return;
+  }
+
+  const body = JSON.stringify({
+    slug: req.nextUrl.pathname,
+    ua: req.ua.ua,
+    ...req.geo
+  });
+
+  const request = await fetch(`${process.env.SUPABASE_URL}/rest/v1/analytics`, {
+    headers: {
+      apikey: process.env.SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    },
+    body,
+    method: 'POST'
+  });
+
+  if (request.status !== 201) {
+    console.error('Error logging analytics: ', body);
+  }
+
+  return;
+}
+
+function addSecurityHeaders(response) {
   const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
     child-src *.youtube.com *.google.com *.twitter.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;
@@ -12,8 +47,6 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     connect-src *;
     font-src 'self';
   `;
-
-  const response = NextResponse.next();
 
   response.headers.set(
     'Content-Security-Policy',
@@ -33,4 +66,16 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
   response.headers.set('X-DNS-Prefetch-Control', 'on');
 
   return response;
+}
+
+export function middleware(req: NextRequest, ev: NextFetchEvent) {
+  // Runs after the response has been returned
+  // so tracking analytics doesn't block rendering
+  ev.waitUntil(
+    (async () => {
+      logPageView(req);
+    })()
+  );
+
+  return addSecurityHeaders(NextResponse.next());
 }

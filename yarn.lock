@@ -2293,11 +2293,6 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fathom-client@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/fathom-client/-/fathom-client-3.2.0.tgz#781c0b11db90e0ffc5061709dc890a1d2b94ef62"
-  integrity sha512-WF/qA5wXYSuA5K8uiIhGNbErOcTAmfLEWrBxWP2px2dEc9waH9zxjdh9k0F907VCBhdJrv+f7V3HT/Pmro40zA==
-
 fault@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fault/-/fault-2.0.0.tgz#ad2198a6e28e344dcda76a7b32406b1039f0b707"
