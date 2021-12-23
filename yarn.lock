@@ -5869,10 +5869,10 @@ url-template@^2.0.8:
   resolved "https://registry.yarnpkg.com/url-template/-/url-template-2.0.8.tgz#fc565a3cccbff7730c775f5641f9555791439f21"
   integrity sha1-/FZaPMy/93MMd19WQflVV5FDnyE=
 
-use-delayed-render@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/use-delayed-render/-/use-delayed-render-0.0.7.tgz#3d35ab7c26cadc1b31b8cb4ec58342c88c3b082e"
-  integrity sha512-Lb4Sd4P50CYRQ5k2Y9SRjMDTBG3Ous7TmfCGOzabKZf3ibQwIuyF3M2q6iiGLH+BicXZJumXgJDeHRnAfZM7Gg==
+use-delayed-render@0.1.0-beta.0:
+  version "0.1.0-beta.0"
+  resolved "https://registry.yarnpkg.com/use-delayed-render/-/use-delayed-render-0.1.0-beta.0.tgz#470bc55b2a93eddb3435dbe5c7de9657eaffdd34"
+  integrity sha512-od0cAN8v/JCmKdHOgy72oFbnZgfX0yjgJZDC9k7QVIRhSyoN6Q02SHVBOqlFIZNNVaLRSlLhLZiXSSP+eu+8jA==
 
 use-subscription@1.5.1:
   version "1.5.1"
