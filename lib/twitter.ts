@@ -1,11 +1,9 @@
-import querystring from 'querystring';
-
 export const getTweets = async (ids) => {
   if (ids.length === 0) {
     return [];
   }
 
-  const queryParams = querystring.stringify({
+  const queryParams = new URLSearchParams({
     ids: ids.join(','),
     expansions:
       'author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id',
