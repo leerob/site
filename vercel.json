@@ -1,6 +1,5 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
   "headers": [
     {
       "source": "/fonts/ibm-plex-sans-var.woff2",
