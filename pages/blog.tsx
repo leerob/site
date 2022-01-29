@@ -57,14 +57,14 @@ export default function Blog({
               Most Popular
             </h3>
             <BlogPost
+              title="Rust Is The Future of JavaScript Infrastructure"
+              summary="Why is Rust being used to replace parts of the JavaScript web ecosystem like minification (Terser), transpilation (Babel), formatting (Prettier), bundling (webpack), linting (ESLint), and more?"
+              slug="rust"
+            />
+            <BlogPost
               title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
               summary="A deep-dive on everything I've learned in the past year building style guides, design systems, component libraries, and their best practices."
               slug="style-guides-component-libraries-design-systems"
-            />
-            <BlogPost
-              title="How Stripe Designs Beautiful Websites"
-              summary="Examining the tips and tricks used to make Stripe's website design a notch above the rest."
-              slug="how-stripe-designs-beautiful-websites"
             />
             <BlogPost
               title="Creating a Monorepo with Lerna & Yarn Workspaces"
