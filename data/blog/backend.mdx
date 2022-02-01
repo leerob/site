@@ -293,20 +293,19 @@ It's also worth mentioning you can use [AWS RDS](https://aws.amazon.com/rds/) to
 It's [proven technology](http://boringtechnology.club/) that even has [credits available](https://aws.amazon.com/about-aws/whats-new/2020/02/aws-launches-activate-founders-package/)
 for founder/startups.
 
-| Name                                                         | Type      | Open Source | Self Hosting? | AuthN Included | GraphQL |
-| ------------------------------------------------------------ | --------- | ----------- | ------------- | -------------- | ------- |
-| [AWS DynamoDB](https://aws.amazon.com/dynamodb/)             | NoSQL     | ✅          | ✅            | ⛔️            | ⛔️     |
-| [Prisma](https://prisma.io)                                  | SQL-based | ✅          | ✅            | ⛔️            | ⛔️     |
-| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/) | SQL-based | ✅          | ✅            | 🚧             | ✅      |
+| Name                                                                | Type      | Open Source | Self Hosting? | AuthN Included | GraphQL |
+| ------------------------------------------------------------------- | --------- | ----------- | ------------- | -------------- | ------- |
+| [AWS DynamoDB](https://aws.amazon.com/dynamodb/)                    | NoSQL     | ✅          | ✅            | ⛔️            | ⛔️     |
+| [Prisma](https://prisma.io)                                         | SQL-based | ✅          | ✅            | ⛔️            | ⛔️     |
+| [Prisma](https://prisma.io) + [Nexus](https://nexus.js.org/)        | SQL-based | ✅          | ✅            | 🚧             | ✅      |
+| [Prisma](https://prisma.io) + [NextAuth](https://next-auth.js.org/) | SQL-based | ✅          | ✅            | ✅             | ⛔️     |
 
 _Honorable Mentions: Laravel, Rails. I wanted to keep this JavaScript focused._
 
 ### Prisma
 
-Prisma provides an auto-generated and type-safe query builder based on your database schema.
-It currently supports PostgreSQL, MySQL, and SQLite databases.
+Prisma provides an auto-generated and type-safe query builder based on your database schema. It currently supports PostgreSQL, MySQL, SQL Server, SQLite and MongoDB.
 
-There are frameworks like [Redwood](https://redwoodjs.com/) and [Blitz](https://blitzjs.com/) built on-top of Prisma.
 If you want to build a GraphQL API with Prisma, you can pair it with [Nexus](https://nexus.js.org/). Nexus has [plug-ins](https://nexus.js.org/docs/api-plugins)
 for authentication / authorization.
 
