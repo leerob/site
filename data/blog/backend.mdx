@@ -217,41 +217,34 @@ You might see these referred to as "in a box" solutions. For example, Hasura pro
 | [MongoDB](https://www.mongodb.com/)            | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
 | [Fauna](https://fauna.com/)                    | NoSQL    | ⛔️         | ⛔️                | ✅             | ✅      |
 | [Userbase](https://userbase.com/)              | NoSQL    | ✅          | ✅                 | ✅             | ⛔️     |
-| [PlanetScale](https://www.planetscale.com/)    | SQL      | ✅          | ⛔️                | 🚧             | ⛔️      |
+| [PlanetScale](https://www.planetscale.com/)    | SQL      | ✅          | ⛔️                | 🚧             | ⛔️     |
 | [Hasura](https://hasura.io/)                   | Postgres | ✅          | ✅                 | 🚧             | ✅      |
 | [Nhost](https://nhost.io/)                     | Postgres | ✅          | ✅                 | ✅             | ✅      |
-| [Supabase](https://supabase.io/)               | Postgres | ✅          | ✅                 | ✅             | ⛔️     |
+| [Supabase](https://supabase.io/)               | Postgres | ✅          | ✅                 | ✅             | ✅      |
 | [AWS Amplify](https://aws.amazon.com/amplify/) | Both     | ✅          | ✅                 | ✅             | ✅      |
 
-### Firebase
+### Supabase
 
-Firebase is a well-established, proven platform. It has (arguably) the best developer experience of any other solutions listed.
+Supabase is an open-source alternative to Firebase. But it's really much more than that. If you want Postgres, you'll want Supabase, hands down. They also have [authentication](https://supabase.com/auth), [storage](https://supabase.com/storage), and support for [GraphQL](https://supabase.com/blog/2021/12/03/pg-graphql).
 
 <ProsCard
-  title="Firebase"
+  title="Supabase"
   pros={[
     'You need to launch an application quick',
     'You want authentication included',
     'You need to support social logins',
     'You need real-time data',
-    'You want an established community with many examples'
+    'You want to use Postgres'
   ]}
 />
 
 <ConsCard
-  title="Firebase"
+  title="Supabase"
   cons={[
-    'Your backend needs to be open source',
-    'You have very relational data',
-    `You don't want any sort of vendor lock-in`
+    'You want to use MySQL instead of Postgres',
+    `You don't want to bet on an earlier stage company`
   ]}
 />
-
-**Resources**
-
-- You can mitigate some non-relational pain with [composite indexes](https://firebase.google.com/docs/firestore/query-data/index-overview).
-- [Model Relational Data in Firestore NoSQL](https://www.youtube.com/watch?v=jm66TSlVtcc)
-- [Going Serverless with Next.js and Firebase](/blog/nextjs-firebase-serverless)
 
 ### Hasura
 
