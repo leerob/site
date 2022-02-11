@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
-import type { Newsletter } from '.contentlayer/types';
+import type { Newsletter } from 'contentlayer/generated';
 
 export default function NewsletterLink({
   slug,
