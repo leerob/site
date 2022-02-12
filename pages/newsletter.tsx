@@ -1,7 +1,7 @@
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
 import NewsletterLink from 'components/NewsletterLink';
-import { allNewsletters } from '.contentlayer/data';
+import { allNewsletters } from 'contentlayer/generated';
 import { pick } from 'lib/utils';
 
 export default function Newsletter({ newsletters }) {

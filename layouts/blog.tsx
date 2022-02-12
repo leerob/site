@@ -5,7 +5,7 @@ import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
 import type { PropsWithChildren } from 'react';
-import type { Blog } from '.contentlayer/types';
+import type { Blog } from 'contentlayer/generated';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
