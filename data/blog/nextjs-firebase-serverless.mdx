@@ -1,140 +1,83 @@
 ---
-title: 'Going Serverless with Next.js and Firebase'
+title: 'Using Firebase with Next.js'
 publishedAt: '2019-07-19'
-summary: 'Learn how to build a serverless application with Next.js, Firebase, Cloud Firestore, and easily deploy it with Vercel.'
-image: '/static/images/nextjs-firebase-serverless/banner.png'
+summary: 'Learn how to use Firebase with Next.js and deploy it to Vercel.'
+image: 'https://og-image.vercel.app/Using%20**Firebase**%20with%20Next.js.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-white-logo.svg&images=https%3A%2F%2Ffirebase.google.com%2Fdownloads%2Fbrand-guidelines%2FSVG%2Flogo-logomark.svg'
 ---
 
-A critical step in freelance development is assessing your client's business problem and finding the best technology to solve it. "Best" could mean a variety of things depending on the client: cheap, fast, robust, future-proof, or industry standard. This post will outline how I assessed a business problem, chose the "best" technology, and delivered a timely solution to my client.
+This guide will show you how to use Firebase 9+ with Next.js and deploy it to Vercel.
 
-[BeyondHQ](https://beyondhq.co/) is an early-stage startup that helps companies expand outside of San Francisco. Think "Expansion-as-a-Service" - finding the right city, opening an office, growing your team, etc. They needed a basic website explaining who, what, and why - as well as a platform to build their SaaS solutions on top of. That's where I came in.
+### Connecting to Firebase
 
-## The Requirements
+1. Create a project in [Firebase](https://firebase.google.com/docs/firestore/quickstart).
+1. In the Firebase console, open Settings > Service Accounts.
+1. Click Generate New Private Key, then confirm by clicking Generate Key.
+1. Download and open the JSON file containing your service account.
+1. Create a new file `.env.local` and add environment variables with those values.
 
-For the main website, the requirements were fairly straight forward:
+```bash:.env.local
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=replace-me
+FIREBASE_CLIENT_EMAIL=replace-me
+FIREBASE_PRIVATE_KEY=replace-me
+```
 
-- Basic splash page with information about the product.
-- About page with information on the employees.
-- Frequently asked questions page.
-- Save off information from a contact form.
-- Cheap hosting. Ideally free.
-
-<Image
-  alt={`BeyondHQ`}
-  src={`/static/images/nextjs-firebase-serverless/landing.png`}
-  width={1000}
-  height={498}
-/>
-
-They also wanted a platform to build SaaS on. That meant I needed to consider more requirements, as it would be the next bit of functionality I would create.
-
-The first step towards their full-featured SaaS product was a [location evaluation tool](https://beyondhq.co/geo-eval). Users could enter information like their company size, the number of employees, and potential expansion locations to get a list of their top city matches. Then, they could explore each city and see metrics about what made it an attractive option to expand to. Those requirements were a bit more complex:
-
-- Resilient, highly available, and fast.
-- Cheap storage. Ideally free.
-- Great SEO (Search Engine Optimization).
-- City pages should be dynamic and pull from a database.
-- The ability for non-technical people to easily edit data.
-- Save off lead generation information from user input.
-
-<Image
-  alt={`BeyondHQ`}
-  src={`/static/images/nextjs-firebase-serverless/questions.png`}
-  width={1000}
-  height={398}
-/>
-
-## The Technology
-
-Given these requirements, what technical choices did I make and why? Let's take a look.
-
-### React
-
-[React](https://reactjs.org/) is the industry-standard for building modern web applications. Of 90,000 developers [surveyed by Stack Overflow](https://insights.stackoverflow.com/survey/2019), React was the most loved and most wanted. This technology provides a platform for the main website, as well as any future SaaS.
-
-### Next.js
-
-[Next.js](https://nextjs.org/) makes it easy to build scalable, performant React code. It's blazing fast and uses server-side rendering to improve SEO. On top of that, it simplifies the developer experience and provides a future-proof platform for the BeyondHQ team.
-
-### Vercel
-
-Deploying serverless applications couldn't be easier with [Vercel](https://vercel.com). It's resilient, [highly available](https://vercel.com/smart-cdn), and fault-tolerant. Plus, it has an excellent [free tier](https://vercel.com/pricing) with the ability to scale as needed.
-
-### Firebase
-
-[Firebase](https://firebase.google.com/) is the industry standard [NoSQL](https://en.wikipedia.org/wiki/NoSQL) platform. It has a sufficient user/permissions system and an easy interface for non-technical users. Did it mention it has a generous [free tier](https://firebase.google.com/pricing)? Firebase's [Cloud Firestore](https://firebase.google.com/products/firestore/) product allowed us to save off contact info, city information, and user's lead gen input. It was a no-brainer!
-
-Why use NoSQL? There weren't any requirements which needed a relational database. If there were, I might have considered [Postgres on Hasura](https://hasura.io/) instead.
-
-## The Solution
-
-After reviewing the requirements and choosing the technology, the next step was to begin implementing a solution. But first, mockups!
-
-<Image
-  alt={`BeyondHQ`}
-  src={`/static/images/nextjs-firebase-serverless/geo-eval.png`}
-  width={1000}
-  height={438}
-/>
-
-I iterated over a handful of designs and went back and forth with the team, tweaking things based on their feedback. We eventually agreed on a mockup and the coding commenced.
-
-### API Route
-
-To use Firebase, we need to create an [API route](https://nextjs.org/docs/api-routes/introduction).
-This will allow us to use `firebase-admin` to communicate with our Cloud Firestore database.
-
-**Note:** You need to generate and download a service account in Firebase.
+Create `lib/firebase.js` to connect to Firebase using your credentials:
 
 ```js:lib/firebase.js
-import admin from 'firebase-admin';
+import * as admin from 'firebase-admin';
 
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
-      project_id: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-      private_key: process.env.FIREBASE_PRIVATE_KEY,
-      client_email: process.env.FIREBASE_CLIENT_EMAIL
-    }),
-    databaseURL: 'YOUR_DATABASE_URL_HERE'
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+    })
   });
 }
 
-export default admin.firestore();
+const db = admin.firestore();
+
+export { db };
 ```
 
-```js:pages/api/city/[name].js
-import firebase from '../../../lib/firebase';
+### Fetching Data from Firebase
 
-export default (req, res) => {
-  firebase
-    .collection('cities')
-    .doc(req.query.name)
-    .get()
-    .then((doc) => {
-      res.json(doc.data());
-    })
-    .catch((error) => {
-      res.json({ error });
-    });
-};
+We can fetch data on the server from Firebase using an [API Route](https://nextjs.org/docs/api-routes/introduction) in Next.js. You'll need to create a new collection `users` and add a document `leerob` with a `name` string field if you're following this guide, but you can change that to whatever you want.
+
+```js:pages/api/user.js
+import { db } from '../../lib/firebase';
+
+export default async function handler(req, res) {
+  const user = await db.collection('users').doc('leerob').get();
+
+  if (!user.exists) {
+    return res.status(404).json({});
+  }
+
+  return res.status(404).json({ id: user.id, ...user.data() });
+}
 ```
 
-Let's break this down.
+Let's break this down:
 
-- A request is made to `/api/city/des-moines`
-- A connection to Firestore is created with your service account
-- We query the `cities` collection
-- `req.query.name` has the [dynamic route](https://nextjs.org/docs/routing/dynamic-routes) value of `des-moines`
-- We return the data for that document
+1. You'll make a request to `/api/users` from your frontend
+1. A connection to Firestore is created using your service account
+1. The API Route queries the `users` collection and returns the `leerob` document
+1. We return the data for that document in the response
 
-### The Client
+### Displaying Data on the Client
 
-For each city, we want to pass the name as a route (e.g. `/city/des-moines`) and fetch data from our API.
-Let's create `pages/city/[name].js` using [dynamic routing](https://nextjs.org/docs/routing/dynamic-routes) and [SWR](/blog/fetching-data-with-swr).
+First, we need to install the correct dependencies:
 
-```js:/pages/city/[name].js
-import { useRouter } from 'next/router';
+```bash
+$ npm i swc next@latest react@rc react-dom@rc
+```
+
+Finally, let's make a request to our API Route on the client-side using [SWR](https://swr.vercel.app) and Suspense:
+
+```js:pages/index.js
+import { Suspense } from 'react';
 import useSWR from 'swr';
 
 const fetcher = async (...args) => {
@@ -143,37 +86,35 @@ const fetcher = async (...args) => {
   return res.json();
 };
 
-function City() {
-  const router = useRouter();
-  const { name } = router.query;
-  const { data } = useSWR(`/api/city/${name}`, fetcher);
-
-  if (!data) {
-    return 'Loading...';
-  }
-
-  return (
-    <div>
-      <p>Population: {data.population}</p>
-    </div>
-  );
+function Profile() {
+  const { data } = useSWR('/api/user', fetcher, { suspense: true });
+  return <div>Hello, {data.name}!</div>;
 }
 
-export default City;
+export default function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Profile />
+    </Suspense>
+  );
+}
 ```
 
-This gives you the flexibility to add a loading state or placeholder to improve your user experience.
+Let's break this down:
 
-<Image
-  alt={`Loading Placeholder`}
-  src={`/static/images/nextjs-firebase-serverless/loading.gif`}
-  width={2548}
-  height={1640}
-/>
-
-Much better! 🎉
+1. When you request the root route (`/`) in your application, `pages/index.js` is rendered
+1. React suspends the rendering of the page while fetching from `/api/user`
+1. The fallback state (`<div>Loading...</div>`) is rendered while the data is being fetched
+1. After the data is fetched, the fallback state is removed and the page is re-rendered
+1. The `<Profile />` component shows `Hello, Lee Robinson!`
 
 ## Conclusion
 
-If you find yourself with similar requirements, you can now consider using this stack to provide an elegant solution.
-For more information, check out [Real-Time Blog Post Views With Next.js and Firebase](/blog/real-time-post-views).
+- [View the code](https://github.com/leerob/nextjs-vercel-firebase)
+- [View the demo](https://nextjs-vercel-firebase.vercel.app/)
+- [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fnextjs-vercel-firebase&env=NEXT_PUBLIC_FIREBASE_PROJECT_ID,FIREBASE_CLIENT_EMAIL,FIREBASE_PRIVATE_KEY&project-name=nextjs-firebase&repo-name=nextjs-firebase)
+
+Related articles:
+
+- [Real-Time Blog Post Views With Next.js and Firebase](/blog/real-time-post-views)
+- [Which Back End Should I Use As A Front-End Developer?](/blog/backend)
