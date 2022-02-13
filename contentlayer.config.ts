@@ -36,7 +36,7 @@ const computedFields: ComputedFields = {
 const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
-  contentType: 'mdx',
+  bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
@@ -49,7 +49,7 @@ const Blog = defineDocumentType(() => ({
 const Newsletter = defineDocumentType(() => ({
   name: 'Newsletter',
   filePathPattern: 'newsletter/*.mdx',
-  contentType: 'mdx',
+  bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
@@ -62,7 +62,7 @@ const Newsletter = defineDocumentType(() => ({
 const Snippet = defineDocumentType(() => ({
   name: 'Snippet',
   filePathPattern: 'snippets/*.mdx',
-  contentType: 'mdx',
+  bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
@@ -74,7 +74,7 @@ const Snippet = defineDocumentType(() => ({
 const OtherPage = defineDocumentType(() => ({
   name: 'OtherPage',
   filePathPattern: '*.mdx',
-  contentType: 'mdx',
+  bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true }
   },

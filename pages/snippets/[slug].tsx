@@ -1,8 +1,8 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
 import SnippetLayout from 'layouts/snippets';
-import { allSnippets } from 'contentlayer/generated';
-import type { Snippet } from 'contentlayer/generated';
+import { allSnippets } from '.contentlayer/data';
+import type { Snippet } from '.contentlayer/types';
 
 export default function SnippetPage(snippet: Snippet) {
   const Component = useMDXComponent(snippet.body.code);
