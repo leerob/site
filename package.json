@@ -6,7 +6,7 @@
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lintf"
   },
   "dependencies": {
     "@prisma/client": "^3.9.2",
