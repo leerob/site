@@ -64,7 +64,7 @@ html {
 }
 
 .prose .anchor {
-  @apply absolute invisible;
+  @apply absolute invisible no-underline;
 
   margin-left: -1em;
   padding-right: 0.5em;
@@ -74,7 +74,7 @@ html {
 }
 
 .anchor:hover {
-  @apply visible no-underline;
+  @apply visible;
 }
 
 .prose a {
@@ -87,7 +87,7 @@ html {
 }
 
 .prose *:hover > .anchor {
-  @apply visible no-underline;
+  @apply visible;
 }
 
 .prose pre {
