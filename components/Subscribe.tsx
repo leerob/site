@@ -82,7 +82,7 @@ export default function Subscribe() {
             subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
           } subscribers – `}
           <Link href="/newsletter">
-            <a>34 issues</a>
+            <a>35 issues</a>
           </Link>
         </p>
       )}
