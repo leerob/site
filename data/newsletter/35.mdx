@@ -1,0 +1,74 @@
+---
+title: 'Launch days are the best days (#35)'
+publishedAt: '2022-02-17'
+summary: "An archived verison of Lee Robinson's newsletter – subscribe to get early access."
+image: '/static/images/banner.png'
+---
+
+We just released [Next.js 12.1](https://nextjs.org/12-1) with one of the most requested features in Next.js: on-demand Incremental Static Regeneration (ISR).
+
+This feature is a total gamechanger for anyone using Next.js. And it's one of many exciting updates in 12.1, including support for styled-components, Relay, Jest, and more with the Rust-based Next.js Compiler.
+
+_I'm incredibly excited._ Launch days are fun. On top of writing the blog post, I also created a [walkthrough video](https://youtu.be/BGexHR1tuOA) and a [fun demo using on-demand ISR](https://on-demand-isr.vercel.app/).
+
+## New Videos
+
+- [Turborepo Demo and Walkthrough (High-Performance Monorepos)](https://www.youtube.com/watch?v=YX5yoApjI3M)
+- [The Future of Svelte (Interview with Rich Harris)](https://www.youtube.com/watch?v=uQntFkK8Z54)
+
+## How can I optimize my frontend for the fastest page load times?
+
+Aiming for sub-100ms load times globally with a server-rendered application. What would the architecture and infrastructure look like?
+
+Let's talk about latency. [You can't beat the speed of light](https://rauchg.com/2014/7-principles-of-rich-web-applications#pre-rendered-pages-are-not-optional), so the first requirement is to place your code physically closer to your visitor. This minimizes the time of a roundtrip between your client and server.
+
+To reduce latency, you need a fleet of servers distributed around the world, close to your visitors. This is what a CDN provides. You can replicate your HTML, CSS, and JavaScript to every region, minimizing the distance of a round trip and decreasing latency.
+
+Running thousands of machines yourself distributed across hundreds of locations is not only expensive but unfeasible for almost everyone. What managed infrastructure can we use, then?
+
+To optimize for the fastest page load time, you can't boot up an entire container on the server. You need the smallest amount of compute possible to generate some HTML and return it back to the visitor. Enter Edge compute.
+
+Edge compute can use V8 isolates -- small sandboxes to securely execute your code. They start around 100x faster than a Node.js process on a container or virtual machine. Take your CDN and add Edge compute at every location -- congratulations, you now have an Edge Network.
+
+[Edge compute](https://vercel.com/edge) makes it cheaper, faster, and safer to run code in every region.
+
+- **Cheaper:** Only pay for when your code runs, not for idle server time.
+- **Faster:** 100x faster startups than a container or virtual machine.
+- **Safer:** [Isolated sandboxes](https://developers.cloudflare.com/workers/learning/how-workers-works).
+
+Managed Edge infrastructure like Vercel and Cloudflare enable you to server-render web applications with Edge compute. While this solves the lower bound of latency, the actual response time still varies based on the size of data transferred.
+
+To consistently hit sub-100ms load times, you'll need to minimize the amount of JavaScript sent to the client and stream HTML as it becomes available. Edge-first frameworks like Next.js, SvelteKit, and Remix are working to make this a reality.
+
+You'll also need to have your data as close to the Edge servers as possible. This could be through [database replication or sharding](https://planetscale.com/blog/planetscale-on-vitess), or having a caching layer with something like Redis.
+
+## How can I optimize my frontend for the best availability?
+
+I want to guarantee customers will almost never see a broken page. What would the architecture and infrastructure look like?
+
+If you optimize for server-rendering + caching, you're making a tradeoff for availability. Let's assume your app fetches data from a headless CMS on every request. If there's an error retrieving data during rendering, your app will have downtime.
+
+Cache-Control headers can mitigate but not solve reliability. There's also no guarantee you'll have a cache hit. Your SLA is now dependent on the uptime of your server and any services used during rendering. What's the best possible SLA you could optimize for?
+
+With S3's SLA for availability (99.99%) and durability (99.999999999%), there's almost no risk of rendering a broken page once your data has been stored. Further, just because a server-rendered page worked in the past _does not_ guarantee it will work in the future.
+
+Static assets ensure a successful render is captured and stored as a snapshot in time. For certain [application holotypes](https://jasonformat.com/application-holotypes/), it's feasible to prerender every page into static storage during the build. But what if you have thousands of pages?
+
+Incremental Static Regeneration (ISR) can give you the same reliability guarantees without having to prerender every page to static storage during the build. The first visit to any generated page is bound to the S3 SLAs – not the underlying data source.
+
+What about pages being updated, though -- wouldn't they still be bound to the SLA of the data source? Nope. ISR can regenerate pages with fresh data in the background without needing a full rebuild. This means higher availability.
+
+If your database or CMS was down, ISR keeps the last successfully generated page up. If (and only if) the background page regeneration was successful will traffic be routed to the newly generated page.
+
+But everything has tradeoffs, and maybe availability isn't what you're optimizing for. SSR + component-level caching should improve cache hit rates – will be a strong option in the future and prevent all-or-nothing page caching.
+
+## Links
+
+- [Vercel's 2021 and a look into the future](https://vercel.com/blog/how-the-web-evolves)
+- [Platforms Starter Kit: a template for site builders, multi-tenant platforms, and low-code tools](https://demo.vercel.pub/platforms-starter-kit)
+- [Learn how to contribute to Next.js](https://twitter.com/leeerob/status/1482519857195274242)
+- [50+ Vercel and Next.js swag photos](https://swag.vercel.app/)
+- [Next.js PWA template](https://github.com/mvllow/next-pwa-template)
+- [Using AI to generate landscapes](https://twitter.com/_Approximated_/status/1481690004808212484)
+- ["The Gap" short video on being a creative](https://vimeo.com/85040589)
+- [Pika: create screenshots and browser mockups](https://pika.rishimohan.me/)
