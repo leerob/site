@@ -59,6 +59,11 @@ export default function Guestbook({ fallbackData }) {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
+    if (inputEl.current.value.trim().length === 0) {
+      setForm({ state: Form.Error, message: 'Please enter a message' });
+      return;
+    }
+    
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({
         body: inputEl.current.value
