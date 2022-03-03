@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fleerob.io)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fleerob.io&env=UNSPLASH_ACCESS_KEY,GOOGLE_PRIVATE_KEY,GOOGLE_CLIENT_EMAIL,REVUE_API_KEY,GUMROAD_API_KEY,NEXT_PUBLIC_FATHOM_SITE_ID,SPOTIFY_CLIENT_ID,SPOTIFY_CLIENT_SECRET,SPOTIFY_REFRESH_TOKEN,OAUTH_CLIENT_KEY,OAUTH_CLIENT_SECRET,TWITTER_API_KEY,DATABASE_URL,NEXTAUTH_URL)
 
 # leerob.io
 
