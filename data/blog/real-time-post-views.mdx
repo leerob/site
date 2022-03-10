@@ -74,39 +74,36 @@ First, we need to install the `firebase-admin` server-side SDK.
 $ yarn add firebase-admin
 ```
 
-Next, we need to modify our `.env` and `.env.local` files to add the values for the Firebase service account `.json` file.
-Specifically, `private_key` and `client_email`.
+Next, we need to create an `.env.local` file to add the values for the Firebase service account `.json` file.
+Specifically, `private_key`, `project_id`, and `client_email`.
 
-```js:.env
-FIREBASE_PRIVATE_KEY=
-FIREBASE_CLIENT_EMAIL=
+```bash:.env
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=replace-me
+FIREBASE_CLIENT_EMAIL=replace-me
+FIREBASE_PRIVATE_KEY="replace-me"
 ```
 
-```js:.env.local
-FIREBASE_PRIVATE_KEY="your-value-here"
-FIREBASE_CLIENT_EMAIL=your-value-here
-```
-
-Make sure you include the quotes around "your-value-here" for `FIREBASE_PRIVATE_KEY`.
+Make sure you include the quotes around "replace-me" for `FIREBASE_PRIVATE_KEY`.
 
 You will need to restart your application to load new environment variables.
 Create a new file `lib/firebase.js` to initialize the application and establish a connection.
 
 ```js:lib/firebase.js
-import admin from 'firebase-admin';
+import * as admin from 'firebase-admin';
 
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
-      project_id: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-      private_key: process.env.FIREBASE_PRIVATE_KEY,
-      client_email: process.env.FIREBASE_CLIENT_EMAIL
-    }),
-    databaseURL: 'YOUR_DATABASE_URL_HERE'
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+    })
   });
 }
 
-export default admin.database();
+const db = admin.firestore();
+
+export { db };
 ```
 
 ## Tracking Views
@@ -118,7 +115,7 @@ to communicate with our database and increment the views for a given `id`.
 All you need to get started is an `api/` folder inside your main `pages/` folder where your routes live. Every file inside `pages/api/` is mapped to `/api/*`.
 
 ```js:pages/api/views/[slug].js
-import db from '../../lib/firebase';
+import { db } from '../../lib/firebase';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
@@ -157,7 +154,7 @@ We can confirm it was logged correctly by checking Firebase.
 
 ## Fetching Data from Firebase
 
-[SWR](https://swr.now.sh/) is a React Hooks library for remote data fetching.
+[SWR](https://swr.vercel.app/) is a React Hooks library for remote data fetching.
 SWR first returns the data from cache (stale), then sends the fetch request (revalidate), and finally comes with the up-to-date data again.
 
 This will allow us to fetch view counts from Firebase.
@@ -172,7 +169,7 @@ $ yarn add swr
 Next, we need to update our API Route to fetch the views for a given post.
 
 ```js:pages/api/views/[slug].js
-import db from '../../lib/firebase';
+import { db } from '../../lib/firebase';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
