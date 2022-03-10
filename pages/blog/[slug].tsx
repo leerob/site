@@ -3,8 +3,8 @@ import { getTweets } from 'lib/twitter';
 import components from 'components/MDXComponents';
 import BlogLayout from 'layouts/blog';
 import Tweet from 'components/Tweet';
-import { allBlogs } from '.contentlayer/data';
-import type { Blog } from '.contentlayer/types';
+import { allBlogs } from 'contentlayer/generated';
+import type { Blog } from 'contentlayer/generated';
 
 export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
   const Component = useMDXComponent(post.body.code);

@@ -1,4 +1,4 @@
-import { allSnippets } from '.contentlayer/data';
+import { allSnippets } from 'contentlayer/generated';
 import Container from 'components/Container';
 import FunctionCard from 'components/FunctionCard';
 import { pick } from 'lib/utils';

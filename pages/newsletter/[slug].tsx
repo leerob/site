@@ -1,8 +1,8 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
 import NewsletterLayout from 'layouts/newsletter';
-import { allNewsletters } from '.contentlayer/data';
-import type { Newsletter } from '.contentlayer/types';
+import { allNewsletters } from 'contentlayer/generated';
+import type { Newsletter } from 'contentlayer/generated';
 
 export default function NewsletterPage(newsletter: Newsletter) {
   const Component = useMDXComponent(newsletter.body.code);
