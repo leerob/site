@@ -254,7 +254,7 @@ const { data } = await supabaseAdmin.from('images').select('*');
 
 We'll fetch this data inside `getStaticProps`. [This function](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) allows you to fetch data on the server and return it as props for the default React component exported in the Page:
 
-```jsx {8-15,17}:pages/index.tsx
+```jsx {8-15,17-25}:pages/index.tsx
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseAdmin = createClient(
@@ -271,6 +271,14 @@ export async function getStaticProps() {
   };
 }
 
+type Image = {
+  id: number
+  href: string
+  imageSrc: string
+  name: string
+  username: string
+}
+
 export default function Gallery({ images }: { images: Image[] }) {
   return (
     <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -282,7 +290,7 @@ export default function Gallery({ images }: { images: Image[] }) {
 }
 ```
 
-Next, we can update our placeholder for images to use the data fetched from Supabase. We'll also use our new `BlurImage` component, which makes use of `next/image` under the hood:
+We'll also add a type for our `Image` data returned from Supabase. Next, we can update our placeholder for images to use the real data. We'll also use our new `BlurImage` component, which makes use of `next/image` under the hood:
 
 ```jsx {5-7}:pages/index.tsx
 export default function Gallery({ images }: { images: Image[] }) {
@@ -429,5 +437,6 @@ After hitting "Save", you should see your deployed application **update instantl
 
 In this tutorial, we were able to create a Next.js application showing a list of images fetched dynamically from Supabase and instantly update our deployed application whenever data changes.
 
-- [View the complete code](https://github.com/leerob/image-gallery-supabase-tailwind-nextjs)
-- [Try the demo](https://swag.vercel.app)
+- [View the code](https://github.com/leerob/image-gallery-supabase-tailwind-nextjs)
+- [View the demo](https://swag.vercel.app)
+- [Try On-Demand ISR](https://on-demand-isr.vercel.app/)
