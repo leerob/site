@@ -244,6 +244,11 @@ await supabaseAdmin.from('images').insert([{
 });
 ```
 
+<Callout emoji="💡">
+  You could also use [Supabase Storage](https://supabase.com/storage) to save
+  the images.
+</Callout>
+
 ## Fetching Data from Supabase
 
 We've already set up our Supabase client in the file, so we can `select` all images from our `images` table:
@@ -254,7 +259,7 @@ const { data } = await supabaseAdmin.from('images').select('*');
 
 We'll fetch this data inside `getStaticProps`. [This function](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) allows you to fetch data on the server and return it as props for the default React component exported in the Page:
 
-```jsx {8-15,17-25}:pages/index.tsx
+```jsx {8-15,17-23,25}:pages/index.tsx
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseAdmin = createClient(
