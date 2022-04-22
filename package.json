@@ -19,7 +19,7 @@
     "googleapis": "48.0.0",
     "motion": "^10.6.2",
     "next": "^12.1.0",
-    "next-auth": "4.2.1",
+    "next-auth": "4.3.2",
     "next-contentlayer": "^0.1.0",
     "next-themes": "0.0.15",
     "preact": "^10.6.6",
