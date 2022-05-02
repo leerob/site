@@ -14,25 +14,14 @@ export default function Document(props) {
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
         <link
-          rel="preconnect"
-          href="https://cdn.usefathom.com"
-          crossOrigin=""
-        />
-        <link
-          href="/static/favicons/apple-touch-icon.png"
+          href="/static/favicons/favicon.png"
           rel="apple-touch-icon"
           sizes="180x180"
         />
         <link
-          href="/static/favicons/favicon-32x32.png"
+          href="/static/favicons/favicon.png"
           rel="icon"
-          sizes="32x32"
-          type="image/png"
-        />
-        <link
-          href="/static/favicons/favicon-16x16.png"
-          rel="icon"
-          sizes="16x16"
+          sizes="1633x1633"
           type="image/png"
         />
         <link

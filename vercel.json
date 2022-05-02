@@ -23,52 +23,16 @@
   ],
   "redirects": [
     {
-      "source": "/LeeRobinson.pdf",
-      "destination": "/robinson-resume-2019.pdf"
-    },
-    {
-      "source": "/robinson-resume-2019.pdf",
-      "destination": "https://read.cv/leerob"
-    },
-    {
       "source": "/resume",
-      "destination": "https://read.cv/leerob"
+      "destination": "https://standardresume.co/r/satvik"
     },
     {
       "source": "/projects",
       "destination": "/about"
     },
     {
-      "source": "/blog/now-env-variables-size-limit",
-      "destination": "/blog/vercel-env-variables-size-limit"
-    },
-    {
-      "source": "/blog/going-serverless-next-firebase-now",
-      "destination": "/blog/nextjs-firebase-serverless"
-    },
-    {
-      "source": "/blog/my-essential-software-hardware-list",
-      "destination": "/uses"
-    },
-    {
-      "source": "/blog/vercel-env-variables-size-limit",
-      "destination": "https://vercel.com/support/articles/how-do-i-workaround-vercel-s-4-kb-environment-variables-limit"
-    },
-    {
-      "source": "/30",
-      "destination": "https://calendly.com/lee-vercel/30min"
-    },
-    {
-      "source": "/15",
-      "destination": "https://calendly.com/lee-vercel/15min"
-    },
-    {
       "source": "/youtube",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw"
-    },
-    {
-      "source": "/live",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw/live"
+      "destination": "https://www.youtube.com/channel/UC7C8Kc8fU4s0UpWQqlJ4ocA"
     }
   ]
 }

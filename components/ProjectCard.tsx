@@ -1,20 +1,8 @@
-import * as Fathom from 'fathom-client';
-
-const trackGoal = (title) => {
-  const goalCodes = {
-    'React 2025': '5WGDOKV0',
-    'Mastering Next.js': 'HV9HDL0O'
-  };
-
-  Fathom.trackGoal(goalCodes[title], 0);
-};
-
 export default function ProjectCard({ title, description, href, icon }) {
   return (
     <a
       className="mb-4 hover:shadow"
       href={href}
-      onClick={() => trackGoal(title)}
       aria-label={title}
       target="_blank"
       rel="noopener noreferrer"
