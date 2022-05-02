@@ -18,11 +18,11 @@ export default async function handler(
   }
 
   const isPlaying = song.is_playing;
-  const title = song.name;
-  const artist = song.artists.map((_artist) => _artist.name).join(', ');
+  const title = song.track_name;
+  const artist = song.artists;
   const album = song.album;
   const albumImageUrl = song.album_image_url;
-  const songUrl = song.url;
+  const songUrl = song.track_url;
 
   res.setHeader(
     'Cache-Control',
