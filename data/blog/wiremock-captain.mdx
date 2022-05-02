@@ -1,0 +1,31 @@
+---
+title: WireMock Captain
+publishedAt: '2022-01-06'
+tags: ['wiremock captain']
+summary: 'Origins of the WireMock based mocking library'
+image: '/static/images/wmc.png'
+---
+
+### WireMock Captain Stats
+
+[![npm](https://img.shields.io/npm/v/wiremock-captain?label=version&style=flat-square)](https://www.npmjs.com/package/wiremock-captain)
+
+[![npm](https://img.shields.io/npm/dm/wiremock-captain?style=flat-square)](https://www.npmjs.com/package/wiremock-captain)
+
+Testing is essential, and unit testing sometimes masks the biggest flaws present in our systems.
+
+I had never considered testing a critical part of the software engineering process as I do now
+(maybe not even when I initially thought of WireMock-Captain). It began when I discovered an update
+made to the Continuous Integration of the new projects. The update effectively led to the tests and the service instance running in separate containers. How did that change things? No longer was `nock` able to intercept
+outgoing requests as it used to when everything (service + tests) was running from the same container.
+
+To overcome the problem, I looked at already existing solutions and stumbled onto WireMock. It
+was a Java-based library that could run as a standalone and fit all the use cases I could think of.
+Alas, there was no well-maintained and well-typed implementation available on npm to leverage for the same.
+
+This led to the origin of an internal WireMock client library that I proposed, developed, and maintained. Fast-forward a couple of months, decent usage amongst other teams convinced us that
+this was a perfect opportunity to push for the project to be open-sourced and be HBO's first well-maintained
+contribution to the Open Source community. Countless hoops and documentation polishing later, WireMock-Captain was on npm.
+
+It has been a great learning experience to see the library grow and get iterative feedback from internal and external users. Looking forward to the growth of WireMock Captain in 2022 and a lot more open source
+contributions personally!

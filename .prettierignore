@@ -1,2 +1,5 @@
 .next
 .vercel
+.contentlayer
+package-lock.json
+public/

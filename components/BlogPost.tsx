@@ -1,13 +1,11 @@
 import type { Blog } from 'contentlayer/generated';
 import Link from 'next/link';
 
-
 export default function BlogPost({
   title,
   summary,
-  slug
+  slug,
 }: Pick<Blog, 'title' | 'summary' | 'slug'>) {
-
   return (
     <Link href={`/blog/${slug}`}>
       <a className="w-full">

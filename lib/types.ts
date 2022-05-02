@@ -2,7 +2,7 @@ export enum Form {
   Initial,
   Loading,
   Success,
-  Error
+  Error,
 }
 
 export type FormState = {

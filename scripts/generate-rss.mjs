@@ -6,7 +6,7 @@ async function generate() {
   const feed = new RSS({
     title: 'Satvik Shukla',
     site_url: 'https://doad.vercel.app',
-    feed_url: 'https://doad.vercel.app/feed.xml'
+    feed_url: 'https://doad.vercel.app/feed.xml',
   });
 
   allBlogs.map((post) => {
@@ -14,7 +14,7 @@ async function generate() {
       title: post.title,
       url: `https://doad.vercel.app/blog/${post.slug}`,
       date: post.publishedAt,
-      description: post.summary
+      description: post.summary,
     });
   });
 

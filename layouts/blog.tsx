@@ -7,7 +7,7 @@ import type { Blog } from 'contentlayer/generated';
 
 export default function BlogLayout({
   children,
-  post
+  post,
 }: PropsWithChildren<{ post: Blog }>) {
   return (
     <Container

@@ -13,7 +13,7 @@ export default function Home({ videos }) {
               Satvik Shukla
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Developer at {' '}
+              Developer at{' '}
               <span className="font-semibold">Warner Bros. Discovery</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
@@ -36,17 +36,17 @@ export default function Home({ videos }) {
         </h3>
         <div className="flex gap-6 flex-col md:flex-row">
           <IndexPostCard
-            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
+            title="What's the right opportunity out of college?"
             gradient="from-[#feac5e] via-[#c779d0] to-[#4bc0c8]"
-            link="/blog/style-guides-component-libraries-design-systems"
+            link="/blog/college-grad-decision"
           />
           <IndexPostCard
-            title="Rust Is The Future of JavaScript Infrastructure"
+            title="Infrastucture as Code using AWS CDK"
             gradient="from-[#004ff9] to-[#fff94c]"
-            link="/blog/rust"
+            link="/blog/aws-cdk-fun"
           />
           <IndexPostCard
-            title="YT video"
+            title="API development and testing at HBO Max"
             gradient="from-[#dc2424] to-[#4a569d]"
             link="https://youtu.be/K0atgOS_Yj0"
           />

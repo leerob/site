@@ -17,7 +17,7 @@ export default function SnippetPage(snippet: Snippet) {
 export function getStaticPaths() {
   return {
     paths: allSnippets.map((s) => ({ params: { slug: s.slug } })),
-    fallback: false
+    fallback: false,
   };
 }
 

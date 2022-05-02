@@ -2,13 +2,13 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
     method: 'GET',
     headers: {
-      Authorization: `Token ${process.env.REVUE_API_KEY}`
-    }
+      Authorization: `Token ${process.env.REVUE_API_KEY}`,
+    },
   });
   const data = await result.json();
 
@@ -18,7 +18,7 @@ export default async function handler(
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
+    'public, s-maxage=1200, stale-while-revalidate=600',
   );
 
   return res.status(200).json({ count: data.length });

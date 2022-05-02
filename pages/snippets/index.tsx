@@ -5,7 +5,7 @@ import { pick } from 'lib/utils';
 import type { InferGetStaticPropsType } from 'next';
 
 export default function Snippets({
-  snippets
+  snippets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container
@@ -38,7 +38,7 @@ export default function Snippets({
 
 export function getStaticProps() {
   const snippets = allSnippets.map((snippet) =>
-    pick(snippet, ['slug', 'title', 'logo', 'description'])
+    pick(snippet, ['slug', 'title', 'logo', 'description']),
   );
 
   return { props: { snippets } };

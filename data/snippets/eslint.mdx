@@ -1,0 +1,75 @@
+---
+title: 'ESLint'
+description: 'NodeJS project ESLint config'
+logo: 'eslint.png'
+---
+
+```js
+// .eslintrc.js
+
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'simple-import-sort'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:import/recommended',
+    'plugin:node/recommended',
+    'prettier',
+  ],
+  rules: {
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'node/no-missing-import': 'off',
+    'node/no-unsupported-features/es-syntax': 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+  },
+};
+```
+
+## Usage
+
+<Step number={1} title="Setup NodeJS project" />
+
+Create a new project using `npm init` or other command.
+
+<Step number={2} title="Install the dev dependencies" />
+
+Install the following dev dependencies to get the ESLint config to work
+
+```json
+// package.json
+
+"@typescript-eslint/eslint-plugin": "5.21.0",
+"@typescript-eslint/parser": "5.21.0",
+"eslint": "8.14.0",
+"eslint-config-prettier": "8.5.0",
+"eslint-plugin-eslint-comments": "3.2.0",
+"eslint-plugin-import": "2.26.0",
+"eslint-plugin-node": "11.1.0",
+"eslint-plugin-simple-import-sort": "7.0.0",
+"prettier": "2.6.2",
+```
+
+<Step number={3} title="Set up config files" />
+
+Copy the main config into `.eslintrc.js`
+
+Optionally, copy over this config to `.prettierrc.js`
+
+```js
+// .prettierrc.js
+
+module.exports = {
+  trailingComma: 'all',
+  useTabs: false,
+  tabWidth: 4,
+  semi: true,
+  singleQuote: true,
+};
+```

@@ -23,7 +23,7 @@ export default function Post({ post }: { post: Blog; tweets: any[] }) {
 export async function getStaticPaths() {
   return {
     paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
-    fallback: false
+    fallback: false,
   };
 }
 

@@ -7,11 +7,13 @@ import { pick } from 'lib/utils';
 import { allBlogs } from 'contentlayer/generated';
 
 export default function Blog({
-  posts
+  posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  const filteredBlogPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      post.tags.includes(searchValue.toLowerCase()),
   );
 
   return (
@@ -69,10 +71,12 @@ export default function Blog({
 
 export function getStaticProps() {
   const posts = allBlogs
-    .map((post) => pick(post, ['slug', 'title', 'summary', 'publishedAt']))
+    .map((post) =>
+      pick(post, ['slug', 'title', 'summary', 'publishedAt', 'tags']),
+    )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
 
   return { props: { posts } };

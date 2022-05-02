@@ -10,8 +10,8 @@ export default function MobileMenu() {
     isMenuOpen,
     {
       enterDelay: 20,
-      exitDelay: 300
-    }
+      exitDelay: 300,
+    },
   );
 
   function toggleMenu() {
@@ -46,7 +46,7 @@ export default function MobileMenu() {
           className={cn(
             styles.menu,
             'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
-            isMenuRendered && styles.menuRendered
+            isMenuRendered && styles.menuRendered,
           )}
         >
           <li

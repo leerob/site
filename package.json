@@ -6,7 +6,9 @@
     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "$(npm bin)/prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tailwindcss/typography": "0.5.2",
@@ -32,6 +34,8 @@
     "eslint": "8.9.0",
     "eslint-config-next": "^12.1.0",
     "globby": "12.0.2",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
     "postcss": "^8.4.6",
     "prettier": "2.5.1",
     "reading-time": "^1.4.0",
@@ -48,6 +52,11 @@
     "arrowParens": "always",
     "singleQuote": true,
     "tabWidth": 2,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "useTabs": false,
+    "semi": true
+  },
+  "lint-staged": {
+    "*.{js,css,md,mdx,ts,tsx,json}": "npm run prettier"
   }
 }

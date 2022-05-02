@@ -1,0 +1,24 @@
+---
+title: Infrastructure as well-typed code
+publishedAt: '2022-01-24'
+tags: ['infrastructure as code', 'aws cdk', 'lambda', 'api gateway v2']
+summary: 'First interaction with AWS CDK'
+---
+
+I relish a lot of aspects of engineering. One of them is thinking about the
+infrastructure. When I heard of AWS CDK, it sounded intriguing. I had used Terraform
+before. Although I never got the hang of the syntax, I liked the concept of
+infrastructure as code and wanted to explore how AWS CDK was trying to approach it.
+
+Integrating the Spotify Now Playing footer onto my blog was the perfect opportunity for that.
+Existing examples that I drew inspiration from like [leerob.io](https://leerob.io/) and
+[thvu.dev](https://www.thvu.dev/) used front-end exclusively to create Spotify API wrappers but
+I gravitated towards an over-engineered solution to try out CDK.
+
+It took me a few hours to figure out the right approach to make the HTTP API instead of
+the conventional REST API because fewer examples were available. Disregarding that, it
+has overall been a great experience to see infrastructure be so easily deployable and
+code controlled. I will highly recommend looking at CDK the next time there is a need to
+deploy infrastructure.
+
+Here is my GitHub repository for the same: https://github.com/satvik-s/spotify-lambda

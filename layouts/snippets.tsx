@@ -6,7 +6,7 @@ import type { Snippet } from 'contentlayer/generated';
 
 export default function SnippetLayout({
   children,
-  snippet
+  snippet,
 }: PropsWithChildren<{ snippet: Snippet }>) {
   return (
     <Container

@@ -1,7 +1,7 @@
 import {
   ComputedFields,
   defineDocumentType,
-  makeSource
+  makeSource,
 } from 'contentlayer/source-files';
 
 import readingTime from 'reading-time';
@@ -15,22 +15,22 @@ const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: 'number',
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
   },
   tweetIds: {
     type: 'json',
     resolve: (doc) => {
       const tweetMatches = doc.body.raw.match(
-        /<StaticTweet\sid="[0-9]+"\s\/>/g
+        /<StaticTweet\sid="[0-9]+"\s\/>/g,
       );
       const tweetIDs = tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]);
       return tweetIDs ?? [];
-    }
+    },
   },
   slug: {
     type: 'string',
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, '')
-  }
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -41,9 +41,10 @@ const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
     summary: { type: 'string', required: true },
-    image: { type: 'string', required: true }
+    image: { type: 'string', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
-  computedFields
+  computedFields,
 }));
 
 const Newsletter = defineDocumentType(() => ({
@@ -54,9 +55,9 @@ const Newsletter = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
     summary: { type: 'string', required: true },
-    image: { type: 'string', required: true }
+    image: { type: 'string', required: true },
   },
-  computedFields
+  computedFields,
 }));
 
 const Snippet = defineDocumentType(() => ({
@@ -66,9 +67,9 @@ const Snippet = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
-    logo: { type: 'string', required: true }
+    logo: { type: 'string', required: true },
   },
-  computedFields
+  computedFields,
 }));
 
 const OtherPage = defineDocumentType(() => ({
@@ -76,9 +77,9 @@ const OtherPage = defineDocumentType(() => ({
   filePathPattern: '*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true }
+    title: { type: 'string', required: true },
   },
-  computedFields
+  computedFields,
 }));
 
 const contentLayerConfig = makeSource({
@@ -94,12 +95,12 @@ const contentLayerConfig = makeSource({
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['anchor']
-          }
-        }
-      ]
-    ]
-  }
+            className: ['anchor'],
+          },
+        },
+      ],
+    ],
+  },
 });
 
 export default contentLayerConfig;
