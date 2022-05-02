@@ -3,3 +3,4 @@
 .contentlayer
 package-lock.json
 public/
+**.yml
