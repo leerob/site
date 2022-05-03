@@ -4,8 +4,8 @@
   "description": "Developer, creator, curious soul.",
   "icons": [
     {
-      "src": "/static/favicons/favicon.png",
-      "sizes": "1633x1633",
+      "src": "/static/favicons/favicon512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],

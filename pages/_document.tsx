@@ -14,14 +14,20 @@ export default function Document(props) {
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
         <link
-          href="/static/favicons/favicon.png"
+          href="/static/favicons/favicon512.png"
           rel="apple-touch-icon"
-          sizes="180x180"
+          sizes="512x512"
         />
         <link
-          href="/static/favicons/favicon.png"
+          href="/static/favicons/favicon32.png"
           rel="icon"
-          sizes="1633x1633"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          href="/static/favicons/favicon16.png"
+          rel="icon"
+          sizes="16x16"
           type="image/png"
         />
         <link
