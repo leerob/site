@@ -35,7 +35,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "postcss": "^8.4.6",
-    "prettier": "2.5.1",
+    "prettier": "2.6.2",
     "reading-time": "^1.4.0",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
