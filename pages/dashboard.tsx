@@ -21,8 +21,8 @@ export default function Dashboard() {
           Top Tracks
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Curious what I'm currently jamming to? Here's my top tracks on Spotify
-          from the past month
+          Curious what I'm currently listening to? Here's my top tracks on
+          Spotify from the past month
         </p>
         <TopTracks />
       </div>
