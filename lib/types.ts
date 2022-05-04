@@ -26,11 +26,17 @@ export type Song = {
 
 export type NowPlayingSong = {
   album: string;
+  albumUrl: string;
   albumImageUrl: string;
   artist: string;
   isPlaying: boolean;
   songUrl: string;
   title: string;
+};
+
+export type NowPlayingSongDetailed = NowPlayingSong & {
+  playlist?: string;
+  playlistUrl?: string;
 };
 
 export type TopTracks = {

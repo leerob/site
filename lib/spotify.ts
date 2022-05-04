@@ -7,6 +7,10 @@ export const getNowPlaying = async () => {
   return await fetch(NOW_PLAYING_ENDPOINT);
 };
 
+export const getNowPlayingDetailed = async () => {
+  return await fetch(NOW_PLAYING_ENDPOINT + '/?detailed=true');
+};
+
 export const getTopTracks = async () => {
   return await fetch(TOP_TRACKS_ENDPOINT);
 };

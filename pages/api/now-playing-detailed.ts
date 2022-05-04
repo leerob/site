@@ -1,11 +1,11 @@
+import { getNowPlayingDetailed } from 'lib/spotify';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getNowPlaying } from 'lib/spotify';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const response = await getNowPlaying();
+  const response = await getNowPlayingDetailed();
 
   if (response.status > 400) {
     return res.status(200).json({ isPlaying: false });
@@ -24,6 +24,8 @@ export default async function handler(
   const albumUrl = song.album_url;
   const albumImageUrl = song.album_image_url;
   const songUrl = song.track_url;
+  const playlist = song.playlist;
+  const playlistUrl = song.playlist_url;
 
   res.setHeader(
     'Cache-Control',
@@ -38,5 +40,7 @@ export default async function handler(
     isPlaying,
     songUrl,
     title,
+    playlist,
+    playlistUrl,
   });
 }

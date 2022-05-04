@@ -1,4 +1,5 @@
 import Container from 'components/Container';
+import CurrentPlayingDetailed from 'components/CurrentPlayingDetailed';
 import TopTracks from 'components/TopTracks';
 
 export default function Dashboard() {
@@ -17,6 +18,7 @@ export default function Dashboard() {
             deployed as serverless functions.
           </p>
         </div>
+        <CurrentPlayingDetailed />
         <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
           Top Tracks
         </h2>
