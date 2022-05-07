@@ -15,8 +15,6 @@ module.exports = withContentlayer()({
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
 
-    console.log(process.env.TWITTER_API_KEY);
-
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
         'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
