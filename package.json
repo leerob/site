@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "build2": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
