@@ -27,7 +27,6 @@
     "react-dom": "17.0.2",
     "swr": "1.2.1",
     "tailwindcss": "3.0.23",
-    "unsplash-js": "6.3.0",
     "use-delayed-render": "^0.0.7"
   },
   "devDependencies": {
