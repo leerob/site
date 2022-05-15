@@ -45,17 +45,19 @@ export const getTweets = async (ids) => {
     );
   };
 
-  return tweets.data.reduce((allTweets, tweet) => {
-    const tweetWithAuthor = {
-      ...tweet,
-      media:
-        tweet?.attachments?.media_keys.map((key) =>
-          tweets.includes.media.find((media) => media.media_key === key)
-        ) || [],
-      referenced_tweets: getReferencedTweets(tweet),
-      author: getAuthorInfo(tweet.author_id)
-    };
+  return (
+    tweets.data.reduce((allTweets, tweet) => {
+      const tweetWithAuthor = {
+        ...tweet,
+        media:
+          tweet?.attachments?.media_keys.map((key) =>
+            tweets.includes.media.find((media) => media.media_key === key)
+          ) || [],
+        referenced_tweets: getReferencedTweets(tweet),
+        author: getAuthorInfo(tweet.author_id)
+      };
 
-    return [tweetWithAuthor, ...allTweets];
-  }, []);
+      return [tweetWithAuthor, ...allTweets];
+    }, []) || [] // If the Twitter API key isn't set, don't break the build
+  );
 };
