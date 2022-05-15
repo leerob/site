@@ -1,10 +1,7 @@
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
-import NewsletterLink from 'components/NewsletterLink';
-import { allNewsletters } from 'contentlayer/generated';
-import { pick } from 'lib/utils';
 
-export default function Newsletter({ newsletters }) {
+export default function Newsletter() {
   return (
     <Container
       title="Newsletter – Lee Robinson"
@@ -20,31 +17,7 @@ export default function Newsletter({ newsletters }) {
           I've read, as well as anything fascinating about technology.
         </p>
         <Subscribe />
-        <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
-          Archive
-        </h3>
-        <div className="prose dark:prose-dark">
-          <ul>
-            {newsletters
-              .sort(
-                (a, b) =>
-                  Number(new Date(b.publishedAt)) -
-                  Number(new Date(a.publishedAt))
-              )
-              .map((newsletter) => (
-                <NewsletterLink key={newsletter.title} {...newsletter} />
-              ))}
-          </ul>
-        </div>
       </div>
     </Container>
   );
-}
-
-export async function getStaticProps() {
-  const newsletters = allNewsletters.map((newsletter) =>
-    pick(newsletter, ['slug', 'title', 'summary', 'publishedAt'])
-  );
-
-  return { props: { newsletters } };
 }

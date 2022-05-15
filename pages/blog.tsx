@@ -67,9 +67,9 @@ export default function Blog({
               slug="style-guides-component-libraries-design-systems"
             />
             <BlogPost
-              title="Creating a Monorepo with Lerna & Yarn Workspaces"
-              summary="In this guide, you will learn how to create a Monorepo to manage multiple packages with a shared build, test, and release process."
-              slug="monorepo-lerna-yarn-workspaces"
+              title="Building a Design System Monorepo with Turborepo"
+              summary="Manage multiple packages with a shared build, test, and release process using Turborepo, Changesets, Storybook, and more."
+              slug="turborepo-design-system-monorepo"
             />
           </>
         )}

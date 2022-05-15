@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
@@ -11,11 +11,9 @@
   "dependencies": {
     "@prisma/client": "^3.9.2",
     "@tailwindcss/typography": "0.5.2",
-    "big.js": "6.1.1",
     "classnames": "^2.3.1",
     "contentlayer": "^0.1.0",
     "date-fns": "2.28.0",
-    "fathom-client": "3.4.1",
     "googleapis": "48.0.0",
     "motion": "^10.6.2",
     "next": "^12.1.0",
@@ -27,7 +25,6 @@
     "react-dom": "17.0.2",
     "swr": "1.2.1",
     "tailwindcss": "3.0.23",
-    "unsplash-js": "6.3.0",
     "use-delayed-render": "^0.0.7"
   },
   "devDependencies": {
