@@ -79,9 +79,13 @@ export default function Subscribe() {
           {`${
             subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
           } subscribers – `}
-          <Link href="/newsletter">
-            <a>View all issues</a>
-          </Link>
+          <a
+            href="https://www.getrevue.co/profile/leerob"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View all issues
+          </a>
         </p>
       )}
     </div>
