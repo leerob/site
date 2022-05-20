@@ -14,7 +14,6 @@ export default async function handler(
 
   const unsplashdata = await response.json();
 
-  console.log({ unsplashdata });
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'

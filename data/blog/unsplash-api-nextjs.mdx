@@ -26,108 +26,65 @@ To gain access to the Unsplash API, you need to:
 - Click "New Application."
 - Accept the terms of usage.
 - Fill in the required details.
-- Retrieve the secret key for your new application.
+- Retrieve the access token for your new application.
 
-**That's it!** 🎉 You now have access to make requests to the Unsplash API with your secret key.
+**That's it!** 🎉 You now have access to make requests to the Unsplash API with your access token.
 
 ## Creating an environment variable
 
-To securely access the API, we need to include the secret with each request.
-We also _do not_ want to commit secrets to git. Thus, we should use an environment variable.
+To securely access the API, we need to include the access token with each request.
+We also _do not_ want to commit this value to git, so let's use an environment variable.
 
-Since I'm deploying with [Vercel](https://vercel.com), I can add the secret via their CLI.
-
-```bash
-$ vc secret add unsplash-access-token
-```
-
-To reference it locally when using `vc dev` it needs to be added to your `.env` file.
+Since I'm deploying with [Vercel](https://vercel.com), I can add the environment variable with the CLI.
 
 ```bash
-UNSPLASH_ACCESS_TOKEN=042d344
+$ vercel env add unsplash-access-token <value>
 ```
 
-Finally, we need to add our new secret to `vercel.json`.
+To use it when running locally, add it to your `.env` (or `.env.local`) file.
 
-```json:vercel.json
-{
-  "env": {
-    "UNSPLASH_ACCESS_KEY": "@unsplash-access-key"
-  }
-}
+```bash
+UNSPLASH_ACCESS_TOKEN=<value>
 ```
 
-We can now reference the secret via `process.env.UNSPLASH_ACCESS_KEY` in our API route.
+We can now reference the value via `process.env.UNSPLASH_ACCESS_KEY` in our API route.
 
 ## Creating the API Route
 
-Let's start by creating a new API route at `pages/api/unsplash.js`.
+Let's start by creating a new API Route at `pages/api/unsplash.js`.
+
+We want to pull statistics for a given user and return the total number of downloads and views.
+We can use the [Unsplash API](https://unsplash.com/documentation#get-a-users-statistics) to retrieve this information.
+
+_Bonus_: We can cache the API Route with the [cache-control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header.
 
 ```js
-export default (req, res) => {
-  return res.status(200).json({});
-};
-```
+export default async function handler(req, res) {
+  const accessToken = process.env.UNSPLASH_ACCESS_KEY;
+  const response = await fetch(
+    `https://api.unsplash.com/users/leerob/statistics?client_id=${accessToken}`,
+    {
+      method: 'GET'
+    }
+  );
 
-To make server-side requests to Unsplash, we can install the [unsplash-js](https://github.com/unsplash/unsplash-js) library.
+  const unsplashdata = await response.json();
 
-**Note:** `v7.0+` of this library has major breaking changes.
-
-```bash
-$ yarn add unsplash-js@6.3.0
-```
-
-Then, we can initialize `unsplash-js` inside our API route.
-
-```js
-import Unsplash, { toJson } from 'unsplash-js';
-
-let unsplash;
-
-export default async (_, res) => {
-  if (!unsplash) {
-    unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY
-    });
-  }
-
-  return res.status(200).json({});
-};
-```
-
-Finally, we want to pull statistics for a given user and return the total number of downloads and views.
-
-```js
-import Unsplash, { toJson } from 'unsplash-js';
-
-let unsplash;
-
-export default async (_, res) => {
-  if (!unsplash) {
-    unsplash = new Unsplash({
-      accessKey: process.env.UNSPLASH_ACCESS_KEY
-    });
-  }
-
-  const userStats = await unsplash.users.statistics('leerob');
-  const { downloads, views } = await toJson(userStats);
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
 
   return res.status(200).json({
-    downloads: downloads.total,
-    views: views.total
+    downloads: unsplashdata.downloads.total,
+    views: unsplashdata.views.total
   });
-};
+}
 ```
 
 ## Example
 
 The two cards below talk to `/api/unsplash` and pull back stats about my Unsplash account.
-
-_Bonus_: You can cache the API route with the [cache-control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) header.
-
-```bash
-Cache-Control: public, max-age=120, stale-while-revalidate=60
-```
 
 <Unsplash />
 
