@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
-import { trackGoal } from 'fathom-client';
 
 import fetcher from 'lib/fetcher';
 import { Form, FormState, Subscribers } from 'lib/types';
@@ -38,7 +37,6 @@ export default function Subscribe() {
       return;
     }
 
-    trackGoal('JYFUFMSF', 0);
     inputEl.current.value = '';
     setForm({
       state: Form.Success,
@@ -82,7 +80,7 @@ export default function Subscribe() {
             subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
           } subscribers – `}
           <Link href="/newsletter">
-            <a>35 issues</a>
+            <a>View all issues</a>
           </Link>
         </p>
       )}
