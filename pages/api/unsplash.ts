@@ -6,17 +6,15 @@ export default async function handler(
 ) {
   const accessToken = process.env.UNSPLASH_ACCESS_KEY;
   const response = await fetch(
-    'https://api.unsplash.com//users/leerob/statistics',
+    `https://api.unsplash.com/users/leerob/statistics?client_id=${accessToken}`,
     {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      },
       method: 'GET'
     }
   );
 
   const unsplashdata = await response.json();
 
+  console.log({ unsplashdata });
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'
