@@ -71,7 +71,7 @@
       "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw/live"
     },
     {
-      "source": "/newsletter/:path*",
+      "source": "/newsletter/(.*)",
       "destination": "/newsletter"
     },
     {
