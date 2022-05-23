@@ -46,6 +46,10 @@ export default function Document(props) {
           content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
           name="google-site-verification"
         />
+        <meta
+          content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          name="robots"
+        />
       </Head>
       <body className="bg-white dark:bg-black text-white dark:text-black">
         <Main />
