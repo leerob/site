@@ -12,6 +12,10 @@ module.exports = withContentlayer({
       'pbs.twimg.com' // Twitter Profile Picture
     ]
   },
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true
+  },
   async headers() {
     return [
       {
