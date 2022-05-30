@@ -93,7 +93,7 @@ As their Co-Founder James said, you “[dialed up the knob when you wanted to sc
 
 Heroku became one of the largest platforms for building and deploying code by providing:
 
-- Hosting for your frontend
+- Hosting for your app
 - One click button to add a database (including backups)
 - One click resizing/scaling of services
 - Support for background jobs
@@ -143,7 +143,7 @@ However, some developers were still ejecting from monolithic platforms due to co
 Why did some developers start to explore moving from their monolith to serverless?
 
 - **Container size:** As the size of your application grew, so did your container – often requiring a more expensive Dyno (container) to run on Heroku. Developers wanted to break their monolith into smaller, lightweight, stateless functions. This made even more sense as code-splitting became automatic in frontend tooling like webpack (and Next.js) where you would only invoke the compute necessary for the requested route, as well as only loading the minimum required JavaScript.
-- **Difficulty scaling:** While turning up the knobs works for some applications, it's difficult to apply that approach to all apps. For example, what happens when your container has background tasks? How do you dial up the knob? Certain types of application architecture did not evolve well with monoliths.
+- **Difficulty scaling:** While turning up the knobs works for some applications, it's difficult to apply that approach to all apps. For example, what happens when your container has background tasks? How do you dial up the knob? Certain types of application architecture did not evolve well with monoliths. Built-in autoscaling is also [not available on all plans on Heroku](https://devcenter.heroku.com/articles/scaling#autoscaling).
 - **Issues with state:** Containers required complex health checks to understand when they were entering a bad state, often requiring restarts. This could get messy if there was initialization logic to connect to external services.
 - **Distributed visitors:** Heroku is _not_ an Edge Network and instead required you to bring your own CDN. This led some teams back to DevOps, often building their own internal version of Heroku (but with a container orchestration system like Kubernetes). Further, Heroku's limited region options meant it was a non-starter for teams with specific regulatory requirements around data storage.
 
@@ -171,7 +171,7 @@ Expectations for both frontend and backend experience have risen, making some de
 
 I'm personally inspired by Heroku and have used the platform since 2012 for some side projects. We can learn a lot from their story and how it's shaped the software industry.
 
-- **Git push to URL is incredibly powerful:** When folks talk about Heroku 15 years later, they still mention `git push heroku main`. Heroku inspired platforms like Vercel with one command to deploy (`vercel`) your frontend globally.
+- **Git push to URL is incredibly powerful:** When folks talk about Heroku 15 years later, they still mention `git push heroku main`. Heroku inspired platforms like Vercel with one command (`vercel`) to deploy your frontend globally, while having a singular remote (origin) and creating deeper integrations into first-part git providers (e.g. GitHub).
 - **Editing code in browser lowers the barrier to entry:** While Heroku pivoted away from an in-browser IDE, their ideas have led (either directly or indirectly) to the creation of Codepen, CodeSandbox, GitHub CodeSpaces, Replit, StackBlitz, and more.
 - **Don't forget about solo developer productivity:** Some developers still deploy monolithic applications to Heroku or other services like Fly.io, Railway, and Render to colocate their backend and frontend. They don't need (or want) to have microservices.
 - **Platforms need to evolve over time:** You could make the argument Heroku would be even more popular today if it evolved to add support for scaling to zero, global deployments by default, and focused on the rapidly evolving JavaScript/TypeScript/React ecosystem.
@@ -182,6 +182,7 @@ I'm also biased, as I work at Vercel, in believing serverless and Edge platforms
 
 - On the **frontend**, you want to `git push` and have your code close to your visitors globally. Platforms like Vercel help you go from idea to global app in seconds.
 - On the **backend**, you (probably) don't want to scale Kubernetes yourself. There's now fully-managed Kubernetes ([AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine)), as well as [Google Cloud Run](https://cloud.google.com/run), which allows you to run and automatically scale stateless serverless containers.
+- **Serverless functions** don't need [health checks](https://devcenter.heroku.com/articles/production-check#dyno-redundancy) and are [highly available (multi-az)](https://docs.aws.amazon.com/lambda/latest/dg/security-resilience.html) without having to think about "[number of dynos](https://devcenter.heroku.com/articles/production-check#dyno-redundancy)". For each concurrent request, you get a function instance. Scaling is not something you spend time tuning or thinking much about. Entire categories of commands like `ps:stop`, `ps:restart`, and `ps:scale` disapper and become unnecessary.
 
 And that's all for now. Hopefully you now have a better appreciation how Heroku changed the software industry. If you see anything missing here about the story of Heroku, [let me know](https://twitter.com/leeerob).
 
