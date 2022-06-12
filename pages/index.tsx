@@ -6,7 +6,7 @@ import BlogPostCard from '../components/BlogPostCard';
 import Subscribe from '../components/Subscribe';
 import VideoCard from '../components/VideoCard';
 
-export default function Home({ videos }) {
+export default function Home() {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
@@ -16,7 +16,7 @@ export default function Home({ videos }) {
               Lee Robinson
             </h1>
             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Director of Developer Relations at{' '}
+              VP of Developer Experience at{' '}
               <span className="font-semibold">Vercel</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-16">
