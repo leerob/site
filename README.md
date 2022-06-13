@@ -39,6 +39,7 @@ $ cd leerob.io
 $ yarn
 $ yarn dev
 ```
+*Make sure you use Node 16.13.0*
 
 Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
 
