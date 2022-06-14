@@ -33,13 +33,14 @@ I've recorded two live streams walking through this repository and answering que
 
 ## Running Locally
 
+This application requires Node.js v16.13+.
+
 ```bash
 $ git clone https://github.com/leerob/leerob.io.git
 $ cd leerob.io
 $ yarn
 $ yarn dev
 ```
-*Make sure you use Node 16.13.0*
 
 Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
 
