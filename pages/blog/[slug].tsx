@@ -1,21 +1,23 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { getTweets } from 'lib/twitter';
-import components from 'components/MDXComponents';
+import { MDXRemote } from 'next-mdx-remote';
 import BlogLayout from 'layouts/blog';
 import Tweet from 'components/Tweet';
-import { allBlogs } from 'contentlayer/generated';
-import type { Blog } from 'contentlayer/generated';
+import components from 'components/MDXComponents';
+import { postQuery, postSlugsQuery } from 'lib/queries';
+import { getTweets } from 'lib/twitter';
+import { sanityClient, getClient } from 'lib/sanity-server';
+import { mdxToHtml } from 'lib/mdx';
+import { Post } from 'lib/types';
 
-export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
-  const Component = useMDXComponent(post.body.code);
+export default function PostPage({ post }: { post: Post }) {
   const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
+    const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
   };
 
   return (
     <BlogLayout post={post}>
-      <Component
+      <MDXRemote
+        {...post.content}
         components={
           {
             ...components,
@@ -28,15 +30,28 @@ export default function Post({ post, tweets }: { post: Blog; tweets: any[] }) {
 }
 
 export async function getStaticPaths() {
+  const paths = await sanityClient.fetch(postSlugsQuery);
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
-    fallback: false
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: 'blocking'
   };
 }
 
-export async function getStaticProps({ params }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
-  const tweets = await getTweets(post.tweetIds);
+export async function getStaticProps({ params, preview = false }) {
+  const { post } = await getClient(preview).fetch(postQuery, {
+    slug: params.slug
+  });
+  const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
+  const tweets = await getTweets(tweetIDs);
 
-  return { props: { post, tweets } };
+  return {
+    props: {
+      post: {
+        ...post,
+        content: html,
+        tweets,
+        readingTime
+      }
+    }
+  };
 }
