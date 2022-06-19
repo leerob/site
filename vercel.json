@@ -147,6 +147,10 @@
       "destination": "/blog"
     },
     {
+      "source": "/blog/resume",
+      "destination": "/blog"
+    },
+    {
       "source": "/blog/ui-component-library-with-styled-components",
       "destination": "/blog/turborepo-design-system-monorepo"
     },
