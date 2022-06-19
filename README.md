@@ -19,7 +19,6 @@ I've recorded two live streams walking through this repository and answering que
 
 ## Overview
 
-- `data/*` - MDX data that is used for blogs and code snippets.
 - `layouts/*` - The different page layouts each MDX category (blog, snippets) uses.
 - `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
 - `pages/api/*` - [API Routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://leerob.io/dashboard), newsletter subscription, guestbook, and post views.

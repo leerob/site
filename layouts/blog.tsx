@@ -8,13 +8,6 @@ import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
 import { urlForImage } from 'lib/sanity';
 
-const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
-  )}`;
-
 export default function BlogLayout({
   children,
   post
@@ -59,7 +52,9 @@ export default function BlogLayout({
         </div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
-            href={discussUrl(post.slug)}
+            href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
+              `https://leerob.io/blog/${post.slug}`
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -67,11 +62,11 @@ export default function BlogLayout({
           </a>
           {` • `}
           <a
-            href={editUrl(post.slug)}
+            href="https://github.com/leerob/leerob.io/issues"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {'Edit on GitHub'}
+            {'Report a typo'}
           </a>
         </div>
       </article>
