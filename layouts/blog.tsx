@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
+import type { PropsWithChildren } from 'react';
 
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
-import type { PropsWithChildren } from 'react';
-import type { Blog } from 'contentlayer/generated';
+import { Post } from 'lib/types';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
@@ -17,13 +17,13 @@ const discussUrl = (slug) =>
 export default function BlogLayout({
   children,
   post
-}: PropsWithChildren<{ post: Blog }>) {
+}: PropsWithChildren<{ post: Post }>) {
   return (
     <Container
       title={`${post.title} – Lee Robinson`}
-      description={post.summary}
-      image={`https://leerob.io${post.image}`}
-      date={new Date(post.publishedAt).toISOString()}
+      description={post.excerpt}
+      image={`https://leerob.io${post.coverImage}`}
+      date={new Date(post.date).toISOString()}
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
@@ -41,11 +41,11 @@ export default function BlogLayout({
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
               {'Lee Robinson / '}
-              {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
+              {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {post.readingTime.text}
+            {post.readingTime}
             {` • `}
             <ViewCounter slug={post.slug} />
           </p>

@@ -8,6 +8,7 @@ import Analytics from 'components/metrics/Analytics';
 import YouTube from 'components/metrics/Youtube';
 import Step from 'components/Step';
 import ImageWithTheme from 'components/ImageWithTheme';
+import { urlForImage } from 'lib/sanity';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -25,6 +26,7 @@ const CustomLink = (props) => {
 };
 
 function RoundedImage(props) {
+  // src={urlForImage(value).height(1000).width(2000).url()}
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
 }
 

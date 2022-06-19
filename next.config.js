@@ -1,15 +1,14 @@
-const { withContentlayer } = require('next-contentlayer');
-
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withContentlayer({
+module.exports = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com' // Twitter Profile Picture
+      'pbs.twimg.com', // Twitter Profile Picture
+      'cdn.sanity.io'
     ]
   },
   experimental: {
@@ -38,7 +37,7 @@ module.exports = withContentlayer({
 
     return config;
   }
-});
+};
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
