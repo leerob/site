@@ -29,3 +29,5 @@ export const postBySlugQuery = `
   ${postFields}
 }
 `;
+
+export const postUpdatedQuery = `*[_type == "post" && _id == $id].slug.current`;
