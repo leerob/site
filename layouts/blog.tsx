@@ -66,7 +66,7 @@ export default function BlogLayout({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {'Report a typo'}
+            {'Suggest Change'}
           </a>
         </div>
       </article>
