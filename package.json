@@ -6,8 +6,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "sanity-start": "sanity start",
-    "sanity-build": "sanity build"
+    "sanity-start": "sanity start"
   },
   "dependencies": {
     "@prisma/client": "^3.15.0",

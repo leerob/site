@@ -6,6 +6,7 @@ import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
+import { urlForImage } from 'lib/sanity';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/leerob.io/edit/main/data/blog/${slug}.mdx`;
@@ -22,7 +23,7 @@ export default function BlogLayout({
     <Container
       title={`${post.title} – Lee Robinson`}
       description={post.excerpt}
-      image={`https://leerob.io${post.coverImage}`}
+      image={`https://leerob.io${urlForImage(post.coverImage).url()}`}
       date={new Date(post.date).toISOString()}
       type="article"
     >
