@@ -7,11 +7,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req);
-  console.log(req.body);
-  // if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
-  //   return res.status(401).json({ message: 'Invalid request' });
-  // }
+  // This isn't working yet - not sure why
+  if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
+    return res.status(401).json({ message: 'Invalid request' });
+  }
 
   const { _id: id } = req.body;
   if (typeof id !== 'string' || !id) {
