@@ -8,10 +8,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   console.log(req);
-  console.log(JSON.stringify(req, null, 2));
-  if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
-    return res.status(401).json({ message: 'Invalid request' });
-  }
+  console.log(req.body);
+  // if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
+  //   return res.status(401).json({ message: 'Invalid request' });
+  // }
 
   const { _id: id } = req.body;
   if (typeof id !== 'string' || !id) {
