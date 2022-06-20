@@ -7,7 +7,6 @@
 - **ORM**: [Prisma](https://prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
-- **Content**: [MDX](https://github.com/mdx-js/mdx)
 - **CMS**: [Sanity](https://www.sanity.io/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 
