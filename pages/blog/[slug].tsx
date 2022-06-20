@@ -41,12 +41,13 @@ export async function getStaticProps({ params, preview = false }) {
   const { post } = await getClient(preview).fetch(postQuery, {
     slug: params.slug
   });
-  const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
-  const tweets = await getTweets(tweetIDs);
 
   if (!post) {
     return { notFound: true };
   }
+
+  const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
+  const tweets = await getTweets(tweetIDs);
 
   return {
     props: {

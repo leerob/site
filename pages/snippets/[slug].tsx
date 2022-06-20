@@ -26,11 +26,12 @@ export async function getStaticProps({ params, preview = false }) {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, {
     slug: params.slug
   });
-  const { html } = await mdxToHtml(snippet.content);
 
   if (!snippet) {
     return { notFound: true };
   }
+
+  const { html } = await mdxToHtml(snippet.content);
 
   return {
     props: {
