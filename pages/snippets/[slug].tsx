@@ -1,28 +1,39 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import components from 'components/MDXComponents';
+import { MDXRemote } from 'next-mdx-remote';
 import SnippetLayout from 'layouts/snippets';
-import { allSnippets } from 'contentlayer/generated';
-import type { Snippet } from 'contentlayer/generated';
+import components from 'components/MDXComponents';
+import { snippetsQuery, snippetSlugsQuery } from 'lib/queries';
+import { sanityClient, getClient } from 'lib/sanity-server';
+import { mdxToHtml } from 'lib/mdx';
+import { Snippet } from 'lib/types';
 
-export default function SnippetPage(snippet: Snippet) {
-  const Component = useMDXComponent(snippet.body.code);
-
+export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
   return (
     <SnippetLayout snippet={snippet}>
-      <Component components={components as any} />
+      <MDXRemote {...snippet.content} components={components} />
     </SnippetLayout>
   );
 }
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const paths = await sanityClient.fetch(snippetSlugsQuery);
   return {
-    paths: allSnippets.map((s) => ({ params: { slug: s.slug } })),
-    fallback: false
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: 'blocking'
   };
 }
 
-export function getStaticProps({ params }) {
-  const snippet = allSnippets.find((snippet) => snippet.slug === params.slug);
+export async function getStaticProps({ params, preview = false }) {
+  const { snippet } = await getClient(preview).fetch(snippetsQuery, {
+    slug: params.slug
+  });
+  const { html } = await mdxToHtml(snippet.content);
 
-  return { props: snippet };
+  return {
+    props: {
+      snippet: {
+        ...snippet,
+        content: html
+      }
+    }
+  };
 }

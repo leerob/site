@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { urlForImage } from 'lib/sanity';
 
 export default function FunctionCard({
   title,
@@ -18,7 +19,7 @@ export default function FunctionCard({
           alt={title}
           height={32}
           width={32}
-          src={`/logos/${logo}`}
+          src={urlForImage(logo).url()}
           className="rounded-full"
         />
         <h3 className="text-lg font-bold text-left mt-2 text-gray-900 dark:text-gray-100">
