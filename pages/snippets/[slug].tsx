@@ -28,6 +28,10 @@ export async function getStaticProps({ params, preview = false }) {
   });
   const { html } = await mdxToHtml(snippet.content);
 
+  if (!snippet) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       snippet: {
