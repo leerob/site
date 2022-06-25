@@ -1,6 +1,6 @@
 import Image from 'next/future/image';
 import { parseISO, format } from 'date-fns';
-import type { PropsWithChildren } from 'react';
+import { PropsWithChildren, Suspense } from 'react';
 
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
@@ -44,31 +44,33 @@ export default function BlogLayout({
             <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
-          {children}
-        </div>
-        <div className="mt-8">
-          <Subscribe />
-        </div>
-        <div className="text-sm text-gray-700 dark:text-gray-300">
-          <a
-            href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
-              `https://leerob.io/blog/${post.slug}`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Discuss on Twitter'}
-          </a>
-          {` • `}
-          <a
-            href="https://github.com/leerob/leerob.io/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Suggest Change'}
-          </a>
-        </div>
+        <Suspense fallback={null}>
+          <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+            {children}
+          </div>
+          <div className="mt-8">
+            <Subscribe />
+          </div>
+          <div className="text-sm text-gray-700 dark:text-gray-300">
+            <a
+              href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
+                `https://leerob.io/blog/${post.slug}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {'Discuss on Twitter'}
+            </a>
+            {` • `}
+            <a
+              href="https://github.com/leerob/leerob.io/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {'Suggest Change'}
+            </a>
+          </div>
+        </Suspense>
       </article>
     </Container>
   );
