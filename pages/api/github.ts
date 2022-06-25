@@ -1,9 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(req: NextRequest) {
   const userResponse = await fetch('https://api.github.com/users/leerob');
   const userReposResponse = await fetch(
     'https://api.github.com/users/leerob/repos?per_page=100'
@@ -17,13 +18,17 @@ export default async function handler(
     return accumulator + repository['stargazers_count'];
   }, 0);
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
+  return new Response(
+    JSON.stringify({
+      followers: user.followers,
+      stars
+    }),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+        'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600'
+      }
+    }
   );
-
-  return res.status(200).json({
-    followers: user.followers,
-    stars
-  });
 }

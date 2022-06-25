@@ -1,9 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(req: NextRequest) {
   const accessToken = process.env.UNSPLASH_ACCESS_KEY;
   const response = await fetch(
     `https://api.unsplash.com/users/leerob/statistics?client_id=${accessToken}`,
@@ -14,13 +15,17 @@ export default async function handler(
 
   const unsplashdata = await response.json();
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
+  return new Response(
+    JSON.stringify({
+      downloads: unsplashdata.downloads.total,
+      views: unsplashdata.views.total
+    }),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+        'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600'
+      }
+    }
   );
-
-  return res.status(200).json({
-    downloads: unsplashdata.downloads.total,
-    views: unsplashdata.views.total
-  });
 }
