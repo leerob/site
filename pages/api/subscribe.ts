@@ -1,13 +1,25 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { email } = req.body;
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const email = searchParams.get('email');
 
   if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
+    return new Response(
+      JSON.stringify({
+        error: 'Email is required'
+      }),
+      {
+        status: 400,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
   }
 
   const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
@@ -21,8 +33,28 @@ export default async function handler(
   const data = await result.json();
 
   if (!result.ok) {
-    return res.status(500).json({ error: data.error.email[0] });
+    return new Response(
+      JSON.stringify({
+        error: data.error.email[0]
+      }),
+      {
+        status: 500,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
   }
 
-  return res.status(201).json({ error: '' });
+  return new Response(
+    JSON.stringify({
+      error: ''
+    }),
+    {
+      status: 201,
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+  );
 }

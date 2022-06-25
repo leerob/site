@@ -1,10 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 import { getTopTracks } from 'lib/spotify';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(req: NextRequest) {
   const response = await getTopTracks();
   const { items } = await response.json();
 
@@ -14,10 +15,11 @@ export default async function handler(
     title: track.name
   }));
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=86400, stale-while-revalidate=43200'
-  );
-
-  return res.status(200).json({ tracks });
+  return new Response(JSON.stringify({ tracks }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+      'cache-control': 'public, s-maxage=86400, stale-while-revalidate=43200'
+    }
+  });
 }
