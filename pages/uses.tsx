@@ -1,5 +1,5 @@
 import Container from 'components/Container';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 export default function Uses() {
   return (
