@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { parseISO, format } from 'date-fns';
 import type { PropsWithChildren } from 'react';
 
