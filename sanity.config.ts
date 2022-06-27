@@ -4,9 +4,9 @@ import { markdownSchema } from 'sanity-plugin-markdown';
 
 export default createConfig({
   name: 'default',
-  title: 'leerob.io',
-  projectId: '56a8ffnw',
-  dataset: 'production',
+  title: 'svirins',
+  projectId: 'ipfftpbg',
+  dataset: 'development',
   plugins: [deskTool(), markdownSchema()],
   schema: {
     types: [
