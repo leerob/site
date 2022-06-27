@@ -3,5 +3,7 @@
 .next
 node_modules
 .vercel
+.env.local
+.env.development
 .env
 .sanity
