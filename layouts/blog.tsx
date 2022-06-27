@@ -3,7 +3,6 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
 import { urlForImage } from 'lib/sanity';
@@ -14,7 +13,7 @@ export default function BlogLayout({
 }: PropsWithChildren<{ post: Post }>) {
   return (
     <Container
-      title={`${post.title} – Lee Robinson`}
+      title={`${post.title} Dzmitry Sviryn`}
       description={post.excerpt}
       image={urlForImage(post.coverImage).url()}
       date={new Date(post.date).toISOString()}
@@ -27,7 +26,7 @@ export default function BlogLayout({
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
           <div className="flex items-center">
             <Image
-              alt="Lee Robinson"
+              alt="Dzmitry Sviryn"
               height={24}
               width={24}
               sizes="20vw"
@@ -49,13 +48,10 @@ export default function BlogLayout({
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
             {children}
           </div>
-          <div className="mt-8">
-            <Subscribe />
-          </div>
           <div className="text-sm text-gray-700 dark:text-gray-300">
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
-                `https://leerob.io/blog/${post.slug}`
+                `https://svirins.cf/blog/${post.slug}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
