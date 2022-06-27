@@ -28,15 +28,6 @@ export enum Form {
   Error
 }
 
-export type FormState = {
-  state: Form;
-  message?: string;
-};
-
-export type Subscribers = {
-  count: number;
-};
-
 export type Views = {
   total: number;
 };
@@ -56,20 +47,4 @@ export type NowPlayingSong = {
   title: string;
 };
 
-export type TopTracks = {
-  tracks: Song[];
-};
 
-export type YouTube = {
-  subscriberCount: number;
-  viewCount: number;
-};
-
-export type GitHub = {
-  stars: number;
-};
-
-export type Unsplash = {
-  downloads: number;
-  views: number;
-};
