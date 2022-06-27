@@ -23,7 +23,20 @@ module.exports = {
         headers: securityHeaders
       }
     ];
-  }
+  },
+  async rewrites() {
+    return [BEE_REWRITE, HIVE_REWRITE];
+  },
+};
+// Setting Splitbee analytics
+const BEE_REWRITE = {
+  source: "/bee.js",
+  destination: "https://cdn.splitbee.io/sb.js",
+};
+
+const HIVE_REWRITE = {
+  source: "/_hive/:slug",
+  destination: "https://hive.splitbee.io/:slug",
 };
 
 // https://nextjs.org/docs/advanced-features/security-headers

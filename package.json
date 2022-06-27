@@ -12,6 +12,7 @@
     "sanity-start": "sanity start"
   },
   "dependencies": {
+    "@panelbear/panelbear-nextjs": "^1.0.3",
     "@prisma/client": "^3.15.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^1.0.2",
@@ -25,6 +26,8 @@
     "next-mdx-remote": "^4.0.3",
     "next-sanity": "^0.5.2",
     "next-themes": "^0.2.0",
+    "pino": "^8.1.0",
+    "pino-logflare": "^0.3.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "dev-preview",
