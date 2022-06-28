@@ -18,7 +18,6 @@ export default async function handler(req: NextRequest) {
   }
 
   const song = await response.json();
-
   if (song.item === null) {
     return new Response(JSON.stringify({ isPlaying: false }), {
       status: 200,
@@ -34,6 +33,7 @@ export default async function handler(req: NextRequest) {
   const album = song.item.album.name;
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
+  console.log('currently playing:', isPlaying, title, artist, album, albumImageUrl, songUrl);
 
   return new Response(
     JSON.stringify({
