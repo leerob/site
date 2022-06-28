@@ -28,7 +28,7 @@ export default function Home() {
                 alt="Lee Robinson"
                 height={176}
                 width={176}
-                src="/avatar.jpg"
+                src="/avatar.jpeg"
                 sizes="30vw"
                 priority
                 className="rounded-full filter grayscale"

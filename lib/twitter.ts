@@ -13,7 +13,7 @@ export const getTweets = async (ids) => {
     'media.fields':
       'duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics'
   });
-
+  console.log('qp', queryParams)
   const response = await fetch(
     `https://api.twitter.com/2/tweets?${queryParams}`,
     {
