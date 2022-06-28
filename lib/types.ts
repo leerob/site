@@ -9,7 +9,6 @@ export type Post = {
   excerpt: string;
   coverImage: string;
   readingTime: string;
-  tweets: any[];
 };
 
 export type Snippet = {
@@ -21,12 +20,6 @@ export type Snippet = {
   logo: string;
 };
 
-export enum Form {
-  Initial,
-  Loading,
-  Success,
-  Error
-}
 
 export type Views = {
   total: number;

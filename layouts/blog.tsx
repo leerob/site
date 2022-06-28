@@ -30,11 +30,11 @@ export default function BlogLayout({
               height={24}
               width={24}
               sizes="20vw"
-              src="/avatar.jpeg"
+              src="/images/avatar.jpeg"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {'Lee Robinson / '}
+              {'Dzmitry Sviryn/ '}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function BlogLayout({
             </a>
             {` • `}
             <a
-              href="https://github.com/leerob/leerob.io/issues"
+              href="https://github.com/zvirinz//issues"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,3 +72,4 @@ export default function BlogLayout({
     </Container>
   );
 }
+ 

@@ -12,23 +12,22 @@ export default function Home() {
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
               <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-                Lee Robinson
+                Dzmitry Sviryn
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-                VP of Developer Experience at{' '}
-                <span className="font-semibold">Vercel</span>
+               Frontend engineer @{' '}
+                <span className="font-semibold">self-employed</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Helping developers build a faster web. Teaching about web
-                development, serverless, and React / Next.js.
+                Do some coding
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
               <Image
-                alt="Lee Robinson"
+                alt="Dzmitry Sviryn"
                 height={176}
                 width={176}
-                src="/avatar.jpeg"
+                src="/images/avatar.jpeg"
                 sizes="30vw"
                 priority
                 className="rounded-full filter grayscale"
