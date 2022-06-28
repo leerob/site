@@ -17,7 +17,7 @@ export default function Tweets({ tweets }) {
           bit, so I wanted a place to publicly share what inspires me, makes me
           laugh, and makes me think.
         </p>
-        {tweets.map((tweet) => (
+        {tweets ?? tweets.map((tweet) => (
           <Tweet key={tweet.id} {...tweet} />
         ))}
       </div>
@@ -26,9 +26,6 @@ export default function Tweets({ tweets }) {
 }
 
 export async function getStaticProps() {
-  const tweets = await getTweets([
-    '1189444653059174401',
-  ]);
-
+  const tweets = await getTweets(['1189444653059174401']);
   return { props: { tweets } };
 }

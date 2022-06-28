@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Container from 'components/Container';
-import avatar from 'public/avatar.jpeg';
 
 export default function About() {
   return (
@@ -15,20 +14,20 @@ export default function About() {
           <h2>Links</h2>
           <ul>
             <li>
-              Twitter: <a href="https://twitter.com/leeerob">@leeerob</a>
+              Twitter: <a href="https://twitter.com/svirins">@svirins</a>
             </li>
             <li>
-              GitHub: <a href="https://github.com/leerob">@leerob</a>
+              GitHub: <a href="https://github.com/svirins">@zvirinz</a>
             </li>
             <li>
               Website:{' '}
-              <Link href="https://leerob.io">
+              <Link href="https://svirins.cf">
                 <a>https://leerob.io</a>
               </Link>
             </li>
             <li>
               LinkedIn:{' '}
-              <a href="https://www.linkedin.com/in/leeerob/">
+              <a href="https://www.linkedin.com/in/svirins/">
                 https://www.linkedin.com/in/leeerob
               </a>
             </li>
@@ -71,17 +70,6 @@ export default function About() {
             Lee Robinson graduated from Iowa State University with a B.S. in
             Computer Engineering.
           </p>
-          <div className="flex space-x-8">
-            <a href="/avatar.jpeg">
-              <Image
-                alt="Dzmiry Sviryn"
-                width={400}
-                quality={100}
-                src={avatar}
-                className="rounded-md"
-              />
-            </a>
-          </div>
         </div>
       </div>
     </Container>
