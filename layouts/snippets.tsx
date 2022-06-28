@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 import Container from 'components/Container';
 import type { PropsWithChildren } from 'react';

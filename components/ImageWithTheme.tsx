@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
 export default function ImageWithTheme(props) {
