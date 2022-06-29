@@ -18,13 +18,8 @@ export default function Subscribe() {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
-    const res = await fetch('/api/subscribe', {
-      body: JSON.stringify({
-        email: inputEl.current.value
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    const email = inputEl.current.value;
+    const res = await fetch(`/api/subscribe?email=${email}`, {
       method: 'POST'
     });
 
