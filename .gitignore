@@ -7,3 +7,4 @@ node_modules
 .env.development
 .env
 .sanity
+out

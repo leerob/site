@@ -1,5 +1,8 @@
 {
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.tabSize": 2,
-  "editor.fontFamily": "Cascadia Code"
+  "editor.fontFamily": "JetBrains Mono",
+  "files.autoSave": "onFocusChange",
+  "editor.wordWrap": "on",
+  "editor.lineHeight": 0
 }
