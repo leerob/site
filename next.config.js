@@ -11,6 +11,12 @@ module.exports = {
       'cdn.sanity.io'
     ]
   },
+    webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+  },
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,

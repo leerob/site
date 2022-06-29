@@ -2,7 +2,7 @@ import Image from 'next/future/image';
 
 import Container from 'components/Container';
 import type { PropsWithChildren } from 'react';
-import { Snippet } from 'lib/types';
+import { Snippet } from 'typings/types';
 import { urlForImage } from 'lib/sanity';
 
 export default function SnippetLayout({

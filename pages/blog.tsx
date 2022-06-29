@@ -5,7 +5,7 @@ import BlogPost from 'components/BlogPost';
 import { InferGetStaticPropsType } from 'next';
 import { indexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
-import { Post } from 'lib/types';
+import { Post } from 'typings/types';
 
 export default function Blog({
   posts

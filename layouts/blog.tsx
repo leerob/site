@@ -3,8 +3,7 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from 'components/Container';
-import ViewCounter from 'components/ViewCounter';
-import { Post } from 'lib/types';
+import { Post } from 'typings/types';
 import { urlForImage } from 'lib/sanity';
 
 export default function BlogLayout({
@@ -34,14 +33,12 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {'Dzmitry Sviryn/ '}
+              {`Dzmitry Sviryn  • `}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime}
-            {` • `}
-            <ViewCounter slug={post.slug} />
           </p>
         </div>
         <Suspense fallback={null}>

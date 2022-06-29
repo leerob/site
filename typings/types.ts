@@ -1,4 +1,5 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { PropsWithChildren } from 'react';
 
 export type Post = {
   _id: string;
@@ -20,10 +21,6 @@ export type Snippet = {
   logo: string;
 };
 
-export type Views = {
-  total: number;
-};
-
 export type Song = {
   songUrl: string;
   artist: string;
@@ -38,3 +35,20 @@ export type NowPlayingSong = {
   songUrl: string;
   title: string;
 };
+
+export type TSocialIcon = {
+  kind: string;
+  href: string;
+  size?: number;
+};
+
+export type TEmoji = {
+  name: string;
+  size?: string;
+  className?: string;
+}
+
+export type TLinkProps = {
+  href: string;
+  children:  React.ReactNode;
+}
