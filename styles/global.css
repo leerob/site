@@ -104,7 +104,7 @@ html {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
+  /* Don't apply styles to next/future/image */
   @apply m-0;
 }
 
