@@ -15,7 +15,7 @@ export default function Home() {
                 Dzmitry Sviryn
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-                  Frontend engineer @{' '}
+                Frontend engineer @{' '}
                 <span className="font-semibold">self-employed</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">

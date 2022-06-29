@@ -1156,10 +1156,10 @@
     date-fns "^2.26.1"
     lodash "^4.17.21"
 
-"@sanity/webhook@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@sanity/webhook/-/webhook-1.0.2.tgz#4e8dc5e6475b7c1af7f9b33a17101244e6d203ea"
-  integrity sha512-WV31Y8XNKOULoYTgKe3BF5ErVDD8XlS81EcRjj0kNOKuPrVfHDzxwymop4HNTGt6vxrVnTTAfR/XoWL3jFeC5g==
+"@sanity/webhook@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@sanity/webhook/-/webhook-2.0.0.tgz#22e5916fd6ea616625b4105a68f2858408de8eee"
+  integrity sha512-KusHeWVy6yW3hcgVHbGx6qVv//bUj3CD9Nr0EOw086+mo/ESrUV21HjOCrNQ+AYqXvJ9H5qhqmMiuc8H5dXUGA==
   dependencies:
     base64url "^3.0.1"
     tslib "^2.3.1"
@@ -2798,9 +2798,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.4.172:
-  version "1.4.172"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.172.tgz#87335795a3dc19e7b6dd5af291038477d81dc6b1"
-  integrity sha512-yDoFfTJnqBAB6hSiPvzmsBJSrjOXJtHSJoqJdI/zSIh7DYupYnIOHt/bbPw/WE31BJjNTybDdNAs21gCMnTh0Q==
+  version "1.4.173"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.173.tgz#48f128dda49cd7f6317e65ac0085bd3a6b9b6e3b"
+  integrity sha512-Qo3LnVW6JRNhD32viSdPebxKI7K+3WeBDjU1+Q2yZS83zAh8C2LyPpzTimlciv6U74KpY9n/0ESAhUByRke0jw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"

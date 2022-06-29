@@ -58,7 +58,10 @@ export default function Blog({
               A common Header for a blog
             </h3>
             <p>
-              Why is Rust being used to replace parts of the JavaScript web ecosystem like minification (Terser), transpilation (Babel), formatting (Prettier), bundling (webpack), linting (ESLint), and more
+              Why is Rust being used to replace parts of the JavaScript web
+              ecosystem like minification (Terser), transpilation (Babel),
+              formatting (Prettier), bundling (webpack), linting (ESLint), and
+              more
             </p>
           </>
         )}

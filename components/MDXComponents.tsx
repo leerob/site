@@ -41,7 +41,7 @@ const MDXComponents = {
   Callout,
   ConsCard,
   ProsCard,
-  Step,
+  Step
 };
 
 export default MDXComponents;

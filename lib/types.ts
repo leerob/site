@@ -20,7 +20,6 @@ export type Snippet = {
   logo: string;
 };
 
-
 export type Views = {
   total: number;
 };
@@ -39,5 +38,3 @@ export type NowPlayingSong = {
   songUrl: string;
   title: string;
 };
-
-

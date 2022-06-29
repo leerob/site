@@ -34,7 +34,6 @@ export default function About() {
           </ul>
           <h2>Bio</h2>
           <h3>Job Title</h3>
-  
         </div>
       </div>
     </Container>
