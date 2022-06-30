@@ -15,7 +15,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "incremental": true,
-    "outDir": "out"
+    "outDir": "out",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {
