@@ -19,7 +19,7 @@ export default function Home() {
                 <span className="font-semibold">self-employed</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Do some coding
+              I work with React Ecosystem
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">

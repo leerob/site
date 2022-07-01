@@ -7,7 +7,6 @@ import Twitter from '/twitter.svg';
 import cn from 'classnames';
 
 import ExternalLink from '@/components/ExternalLink';
-import type { TSocialIcon } from '@/typings/types';
 
 const components = {
   mail: Mail,
@@ -18,13 +17,12 @@ const components = {
   twitter: Twitter
 };
 
-export default function SocialIcon({ kind, href, size = 8 }: TSocialIcon) {
+export default function SocialIcon({ kind, href, size = 8 }: {
+  kind: string;
+  href: string;
+  size?: number;
+}) {
   let SocialSvg = components[kind];
-  let attrs = {
-    href,
-    rel: 'noopener noreferrer',
-    target: kind !== 'mail' ? '_blank' : '_self'
-  };
 
   return (
     <ExternalLink href={href}>

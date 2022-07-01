@@ -4,7 +4,7 @@ import Emoji from '@/components/Emoji';
 
 export default function TypedBios() {
   const el = React.useRef(null);
-  const typed = React.useRef(null);
+  const typed = React.useRef<Typed | null>(null);
 
   React.useEffect(() => {
     const options = {

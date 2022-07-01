@@ -50,3 +50,8 @@ export default function BlogLayout({
     </Container>
   );
 }
+  let attrs = {
+    href,
+    rel: 'noopener noreferrer',
+    target: kind !== 'mail' ? '_blank' : '_self'
+  };

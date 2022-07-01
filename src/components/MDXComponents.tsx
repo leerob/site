@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
 
-import ProsCard from '@/components/ProsCard';
-import ConsCard from '@/components/ConsCard';
-import Step from '@/components/Step';
+
 import ImageWithTheme from '@/components/ImageWithTheme';
 
 const CustomLink = (props) => {
@@ -38,10 +36,7 @@ const MDXComponents = {
   Image: RoundedImage,
   ImageWithTheme,
   a: CustomLink,
-  Callout,
-  ConsCard,
-  ProsCard,
-  Step
+  Callout
 };
 
 export default MDXComponents;

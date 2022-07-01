@@ -8,7 +8,12 @@ export default function FunctionCard({
   slug,
   logo,
   ...rest
-}) {
+}: {
+  title: string;
+  description: string;
+  slug: string
+  logo: string
+})  {
   return (
     <Link href={`/snippets/${slug}`}>
       <a

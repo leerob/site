@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import cn from 'classnames';
 
-export default function BlogPostCard({ title, slug, gradient }) {
+
+export default function BlogPostCard({ title, slug, gradient }: {
+  title: string;
+  slug: string;
+  gradient: string;
+}) {
   return (
     <Link href={`/blog/${slug}`}>
       <a

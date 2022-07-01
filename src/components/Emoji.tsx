@@ -1,10 +1,13 @@
 // import styles from 'styles/emoji.css';
 import cn from 'classnames';
 import { kebabCase } from '@/lib/content-utils';
-import { TEmoji } from '@/typings/types';
 import styles from '@/styles/emoji.module.css';
 
-export default function Emoji({ name, size = 'twa-lg', className }: TEmoji) {
+export default function Emoji({ name, size = 'twa-lg', className }: {
+  name: string;
+  size?: string;
+  className?: string;
+}) {
   return (
     <i
       className={cn(
