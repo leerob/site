@@ -1,10 +1,11 @@
 import { type NextRequest } from 'next/server';
 import { getNowPlaying } from '@/lib/spotify';
+import { TCurrentlyPlayingTrack } from '@/typings/types';
 export const config = {
   runtime: 'experimental-edge'
 };
 
-export default async function handler(req: NextRequest) {
+export default async function handler(req: NextRequest): Promise<TCurrentlyPlayingTrack | Response> {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {

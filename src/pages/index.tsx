@@ -3,6 +3,7 @@ import Image from 'next/future/image';
 import Link from 'next/link';
 
 import Container from '@/components/Container';
+import TypingEffect from '@/components/Typewriter';
 
 export default function Home() {
   return (
@@ -57,7 +58,7 @@ export default function Home() {
               </svg>
             </a>
           </Link>
-
+          <TypingEffect />
           <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-16 text-black dark:text-white">
             Learn React & Next.js
           </h3>

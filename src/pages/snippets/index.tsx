@@ -1,17 +1,15 @@
 import Container from '@/components/Container';
 import FunctionCard from '@/components/FunctionCard';
 import { InferGetStaticPropsType } from 'next';
-import { allSnippetsQuery } from '@/lib/queries';
-import { getClient } from '@/lib/sanity-server';
-import { Snippet } from '@/typings/types';
+import { getSnippets } from '@/lib/sanity-api';
 
 export default function Snippets({
   snippets
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container
-      title="Code Snippets – Lee Robinson"
-      description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
+      title="Code Snippets – Dzmitry Sviryn"
+      description="A mix of snippets I've found usefull and want to share"
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -40,7 +38,7 @@ export default function Snippets({
 }
 
 export async function getStaticProps({ preview = false }) {
-  const snippets: Snippet[] = await getClient(preview).fetch(allSnippetsQuery);
+  const snippets = await getSnippets();
 
   return { props: { snippets } };
 }

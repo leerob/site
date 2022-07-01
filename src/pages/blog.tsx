@@ -3,9 +3,7 @@ import { Suspense, useState } from 'react';
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import { InferGetStaticPropsType } from 'next';
-import { indexQuery } from '@/lib/queries';
-import { getClient } from '@/lib/sanity-server';
-import { Post } from '@/typings/types';
+import { getPosts } from '@/lib/sanity-api';
 
 export default function Blog({
   posts
@@ -85,7 +83,7 @@ export default function Blog({
 }
 
 export async function getStaticProps({ preview = false }) {
-  const posts: Post[] = await getClient(preview).fetch(indexQuery);
+  const posts = await getPosts();
 
   return { props: { posts } };
 }

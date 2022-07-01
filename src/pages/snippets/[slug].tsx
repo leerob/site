@@ -1,12 +1,17 @@
 import { MDXRemote } from 'next-mdx-remote';
 import SnippetLayout from 'src/layouts/snippets';
 import components from '@/components/MDXComponents';
-import { snippetsQuery, snippetSlugsQuery } from '@/lib/queries';
-import { sanityClient, getClient } from '@/lib/sanity-server';
 import { mdxToHtml } from '@/lib/mdx';
-import { Snippet } from '@/typings/types';
+import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
+import type { ParsedUrlQuery } from "querystring";
 
-export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
+interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
+type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>["props"];
+
+export default function SnippetsPage({ snippet }: {snippet: Props}) {
   return (
     <SnippetLayout snippet={snippet}>
       <MDXRemote {...snippet.content} components={components} />
@@ -15,15 +20,15 @@ export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(snippetSlugsQuery);
+  const paths = await getSnippetSlugs();
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const { snippet } = await getClient(preview).fetch(snippetsQuery, {
+export async function getStaticProps({ params }: { params: IParams }) {
+  const snippet  = await getSnippet({
     slug: params.slug
   });
 

@@ -1,6 +1,6 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-export type Post = {
+export type TPost = {
   _id: string;
   slug: string;
   content: MDXRemoteSerializeResult;
@@ -11,7 +11,7 @@ export type Post = {
   readingTime: string;
 };
 
-export type Snippet = {
+export type TSnippet = {
   _id: string;
   slug: string;
   content: MDXRemoteSerializeResult;
@@ -20,7 +20,7 @@ export type Snippet = {
   logo: string;
 };
 
-export type CurrentlyPlayingTrack = {
+export type TCurrentlyPlayingTrack = {
   songUrl: string;
   artist: string;
   title: string;

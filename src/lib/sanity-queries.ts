@@ -59,8 +59,3 @@ export const snippetSlugsQuery = groq`
 *[_type == "snippet" && defined(slug.current)][].slug.current
 `;
 
-export const snippetBySlugQuery = groq`
-*[_type == "snippet" && slug.current == $slug][0] {
-  ${snippetFields}
-}
-`;

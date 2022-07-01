@@ -1,7 +1,6 @@
 import RSS from 'rss';
-import { sanityClient } from '@/lib/sanity-server';
-import { indexQuery } from '@/lib/queries';
-
+import { getPosts } from '@/lib/sanity-api';
+// TODO: add @types/
 export async function getServerSideProps({ res }) {
   const feed = new RSS({
     title: 'Dzmitry Sviryn',
@@ -9,7 +8,7 @@ export async function getServerSideProps({ res }) {
     feed_url: 'https://svirins.cf/feed.xml'
   });
 
-  const allPosts = await sanityClient.fetch(indexQuery);
+  const allPosts = await getPosts();
   allPosts.map((post) => {
     feed.item({
       title: post.title,

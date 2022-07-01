@@ -28,8 +28,7 @@
 //   return res.status(500).json({ message: err.message });
 // }
 // }
-import { sanityClient } from '@/lib/sanity-server';
-import { postUpdatedQuery } from '@/lib/queries';
+import { getUpdatedPostSlug } from '@/lib/sanity-api';
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const secret = process.env.SANITY_STUDIO_REVALIDATE_SECRET;
@@ -52,7 +51,7 @@ export default async function handler(
   }
 
   try {
-    const slug = await sanityClient.fetch(postUpdatedQuery, { id });
+    const slug = await getUpdatedPostSlug({id});
     await Promise.all([
       res.revalidate('/blog'),
       res.revalidate(`/blog/${slug}`)

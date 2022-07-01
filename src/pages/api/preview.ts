@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { postBySlugQuery } from '@/lib/queries';
-import { previewClient } from '@/lib/sanity-server';
+import { getPostBySlug } from '@/lib/sanity-api';
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +12,7 @@ export default async function handler(
     return res.status(401).json({ message: 'Invalid token' });
   }
 
-  const post = await previewClient.fetch(postBySlugQuery, {
+  const post = await getPostBySlug({
     slug: req.query.slug
   });
 
