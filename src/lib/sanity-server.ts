@@ -4,14 +4,15 @@
  * code that is not used on the client side.
  */
 import { createClient } from 'next-sanity';
-import { sanityConfig } from './sanity-config';
+import { SANITY_CONFIG } from '@/config';
 
-export const sanityClient = createClient(sanityConfig);
+export const sanityClient = createClient(SANITY_CONFIG);
 
 export const previewClient = createClient({
-  ...sanityConfig,
+  ...SANITY_CONFIG,
   useCdn: false,
   token: process.env.SANITY_API_TOKEN
 });
 
-export const getClient = (preview: boolean) => (preview ? previewClient : sanityClient);
+export const getClient = (preview: boolean) =>
+  preview ? previewClient : sanityClient;

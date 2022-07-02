@@ -5,7 +5,9 @@ export const config = {
   runtime: 'experimental-edge'
 };
 
-export default async function handler(req: NextRequest): Promise<TCurrentlyPlayingTrack | Response> {
+export default async function handler(
+  req: NextRequest
+): Promise<TCurrentlyPlayingTrack | Response> {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {
@@ -16,10 +18,10 @@ export default async function handler(req: NextRequest): Promise<TCurrentlyPlayi
       }
     });
   }
-  
+
   // TODO: fix missing 'artists' property
   const song: SpotifyApi.CurrentlyPlayingObject = await response.json();
-    if (song.item === null) {
+  if (song.item === null) {
     return new Response(JSON.stringify({ isPlaying: false }), {
       status: 200,
       headers: {

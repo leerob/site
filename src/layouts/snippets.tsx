@@ -2,13 +2,13 @@ import Image from 'next/future/image';
 
 import Container from '@/components/Container';
 import type { PropsWithChildren } from 'react';
-import { Snippet } from '@/typings/types';
-import { urlForImage } from '@/lib/sanity';
+import { TSnippet } from '@/typings/types';
+import { urlForImage } from '@/lib/sanity-client';
 
 export default function SnippetLayout({
   children,
   snippet
-}: PropsWithChildren<{ snippet: Snippet }>) {
+}: PropsWithChildren<{ snippet: TSnippet }>) {
   return (
     <Container
       title={`${snippet.title} - Code Snippet`}

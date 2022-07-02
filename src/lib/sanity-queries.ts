@@ -1,4 +1,4 @@
-import groq from "groq";
+import groq from 'groq';
 
 const postFields = `
   _id,
@@ -34,7 +34,7 @@ export const postBySlugQuery = groq`
 
 export const postUpdatedQuery = groq`*[_type == "post" && _id == $id].slug.current`;
 
-const snippetFields =groq`
+const snippetFields = groq`
   _id,
   title,
   description,
@@ -47,7 +47,7 @@ export const allSnippetsQuery = groq`
   ${snippetFields}
 }`;
 
-export const snippetsQuery =groq `
+export const snippetsQuery = groq`
 {
   "snippet": *[_type == "snippet" && slug.current == $slug] | order(_updatedAt desc) [0] {
     content,
@@ -58,4 +58,3 @@ export const snippetsQuery =groq `
 export const snippetSlugsQuery = groq`
 *[_type == "snippet" && defined(slug.current)][].slug.current
 `;
-

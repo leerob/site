@@ -8,7 +8,7 @@ import TypingEffect from '@/components/Typewriter';
 export default function Home() {
   return (
     <Suspense fallback={null}>
-      <Container>
+      <Container title="Index page | Dzmitry Sviryn">
         <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
@@ -20,7 +20,7 @@ export default function Home() {
                 <span className="font-semibold">self-employed</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-              I work with React Ecosystem
+                I work with React Ecosystem
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">

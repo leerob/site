@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
 
-
 import ImageWithTheme from '@/components/ImageWithTheme';
 
 const CustomLink = (props) => {

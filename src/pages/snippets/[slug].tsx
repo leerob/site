@@ -3,15 +3,15 @@ import SnippetLayout from 'src/layouts/snippets';
 import components from '@/components/MDXComponents';
 import { mdxToHtml } from '@/lib/mdx';
 import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
-import type { ParsedUrlQuery } from "querystring";
+import type { ParsedUrlQuery } from 'querystring';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
-type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>["props"];
+type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>['props'];
 
-export default function SnippetsPage({ snippet }: {snippet: Props}) {
+export default function SnippetsPage({ snippet }: { snippet: Props }) {
   return (
     <SnippetLayout snippet={snippet}>
       <MDXRemote {...snippet.content} components={components} />
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: IParams }) {
-  const snippet  = await getSnippet({
+  const snippet = await getSnippet({
     slug: params.slug
   });
 

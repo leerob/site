@@ -7,23 +7,19 @@ import Twitter from '/twitter.svg';
 import cn from 'classnames';
 
 import ExternalLink from '@/components/ExternalLink';
+import { TSocialIcon } from '@/typings/types';
 
-const components = {
-  mail: Mail,
-  github: Github,
-  facebook: Facebook,
-  youtube: Youtube,
-  linkedin: Linkedin,
-  twitter: Twitter
-};
-
-export default function SocialIcon({ kind, href, size = 8 }: {
-  kind: string;
-  href: string;
-  size?: number;
-}) {
-  let SocialSvg = components[kind];
-
+export default function SocialIcon({ kind, href, size = 8 }: TSocialIcon) {
+  // TODO: define typ e for svg component
+  const iconComponents = {
+    mail: Mail,
+    github: Github,
+    facebook: Facebook,
+    youtube: Youtube,
+    linkedin: Linkedin,
+    twitter: Twitter
+  };
+  let SocialSvg = iconComponents[kind];
   return (
     <ExternalLink href={href}>
       <SocialSvg

@@ -6,7 +6,8 @@ export default function TypingEffect() {
       <h3>GeeksforGeeks Typing Animation</h3>
       <Typewriter
         onInit={(typewriter) => {
-          typewriter.typeString('Hello World!')
+          typewriter
+            .typeString('Hello World!')
             .callFunction(() => {
               console.log('String typed out!');
             })

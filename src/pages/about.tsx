@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/future/image';
 
 import Container from '@/components/Container';
 

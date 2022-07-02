@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import cn from 'classnames';
-
-
-export default function BlogPostCard({ title, slug, gradient }: {
+// TODO: Consider possible use-cases for this component
+export default function BlogPostCard({
+  title,
+  slug,
+  gradient
+}: {
   title: string;
   slug: string;
   gradient: string;

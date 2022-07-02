@@ -26,5 +26,19 @@ export type TCurrentlyPlayingTrack = {
   title: string;
 };
 
+export type TContainerProps = {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  date?: string;
+  tags?: string[];
+  author?: string;
+  children: React.ReactNode;
+};
 
-
+export type TSocialIcon = {
+  kind: string;
+  href: string;
+  size?: number;
+};

@@ -3,13 +3,13 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from '@/components/Container';
-import { Post } from '@/typings/types';
-import { urlForImage } from '@/lib/sanity';
+import { TPost } from '@/typings/types';
+import { urlForImage } from '@/lib/sanity-client';
 
 export default function BlogLayout({
   children,
   post
-}: PropsWithChildren<{ post: Post }>) {
+}: PropsWithChildren<{ post: TPost }>) {
   return (
     <Container
       title={`${post.title} Dzmitry Sviryn`}
@@ -50,8 +50,3 @@ export default function BlogLayout({
     </Container>
   );
 }
-  let attrs = {
-    href,
-    rel: 'noopener noreferrer',
-    target: kind !== 'mail' ? '_blank' : '_self'
-  };

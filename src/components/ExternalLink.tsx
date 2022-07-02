@@ -1,4 +1,7 @@
-export default function ExternalLink({ href, children }: {
+export default function ExternalLink({
+  href,
+  children
+}: {
   href: string;
   children: React.ReactNode;
 }) {

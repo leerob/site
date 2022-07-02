@@ -23,6 +23,7 @@
     "next": "12.2.0",
     "next-mdx-remote": "^4.0.3",
     "next-sanity": "^0.5.2",
+    "next-seo": "^5.4.0",
     "next-themes": "^0.2.0",
     "pino": "^8.1.0",
     "pino-logflare": "^0.3.12",
