@@ -26,6 +26,11 @@
       "module": "CommonJS"
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./src/typings/*.**"],
-  "exclude": ["node_modules"]
+  "include": [
+    "custom-next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./src/typings/*.**"
+  ],
+  "exclude": ["node_modules", "next-env.d.ts"]
 }

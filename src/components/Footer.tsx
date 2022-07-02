@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import NowPlaying from '@/components/NowPlaying';
-import ExternalLink from '@/components/ExternalLink';
 import SocialIcon from './SocialIcon';
 
 export default function Footer() {

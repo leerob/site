@@ -18,7 +18,7 @@ module.exports = {
   //   });
   //   return config;
   // },
-    webpack(config) {
+  webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
       // issuer section restricts svg as component only to
@@ -29,12 +29,12 @@ module.exports = {
       issuer: { and: [/\.(js|ts|md)x?$/] },
       use: [
         {
-          loader: "@svgr/webpack",
+          loader: '@svgr/webpack',
           options: {
-            svgoConfig: { plugins: [{ removeViewBox: false }] },
-          },
-        },
-      ],
+            svgoConfig: { plugins: [{ removeViewBox: false }] }
+          }
+        }
+      ]
     });
     return config;
   },

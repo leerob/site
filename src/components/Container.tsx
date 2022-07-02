@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import ToggleMode from '@/components/toggleMode';
 
 import { NAV_LINKS } from '@/config';
-import { isItemMember } from 'sanity/lib/dts/src/form';
 
 export default function Container(props: TContainerProps) {
   // Preparing metadata passing into NextSeo
@@ -52,9 +51,7 @@ export default function Container(props: TContainerProps) {
           <a href="#skip" className="skip-nav">
             Skip to content
           </a>
-          <div
-            className="ml-[-0.60rem"
-          >
+          <div className="ml-[-0.60rem">
             <MobileMenu />
             {NAV_LINKS.map((item, index) => (
               <NavItem key={index} href={item.href} text={item.text} />

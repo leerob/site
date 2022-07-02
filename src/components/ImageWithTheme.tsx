@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes';
 import React from 'react';
 
 // TODO: finish image typings
-export default function ImageWithTheme(props: ImageProps & {src: string}) {
+export default function ImageWithTheme(props: ImageProps & { src: string }) {
   const { theme } = useTheme();
   return (
     <Image
