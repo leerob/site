@@ -1,4 +1,5 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import React from 'react';
 
 export type TPost = {
   _id: string;

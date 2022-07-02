@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
-import { urlForImage } from '@/lib/sanity';
+import { urlForImage } from '@/lib/sanity-client';
 
 export default function FunctionCard({
   title,

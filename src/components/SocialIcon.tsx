@@ -9,7 +9,7 @@ import cn from 'classnames';
 import ExternalLink from '@/components/ExternalLink';
 import { TSocialIcon } from '@/typings/types';
 
-export default function SocialIcon({ kind, href, size = 8 }: TSocialIcon) {
+export default function SocialIcon({ kind, href, size = 2 }: TSocialIcon) {
   // TODO: define typ e for svg component
   const iconComponents = {
     mail: Mail,
@@ -24,7 +24,7 @@ export default function SocialIcon({ kind, href, size = 8 }: TSocialIcon) {
     <ExternalLink href={href}>
       <SocialSvg
         className={cn(
-          'fill-current text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400',
+          'fill-current text-gray-700 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400',
           `h-${size}`,
           `w-${size}`
         )}

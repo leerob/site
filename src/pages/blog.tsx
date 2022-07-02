@@ -12,7 +12,7 @@ export default function Blog({
   const filteredBlogPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
-
+  // TODO: use gradient post cards
   return (
     <Container
       title="Blog – Dzmitry Svirynn"
@@ -50,19 +50,6 @@ export default function Blog({
             />
           </svg>
         </div>
-        {!searchValue && (
-          <>
-            <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
-              A common Header for a blog
-            </h3>
-            <p>
-              Why is Rust being used to replace parts of the JavaScript web
-              ecosystem like minification (Terser), transpilation (Babel),
-              formatting (Prettier), bundling (webpack), linting (ESLint), and
-              more
-            </p>
-          </>
-        )}
         <Suspense fallback={null}>
           <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
             All Posts
