@@ -1,9 +1,9 @@
-import Mail from '/mail.svg';
-import Github from '/github.svg';
-import Facebook from '/facebook.svg';
-import Youtube from '/youtube.svg';
-import Linkedin from '/linkedin.svg';
-import Twitter from '/twitter.svg';
+import Mail from '@/assets/mail.svg';
+import Github from '@/assets/github.svg';
+import Facebook from '@/assets/facebook.svg';
+import Youtube from '@/assets/youtube.svg';
+import Linkedin from '@/assets/linkedin.svg';
+import Twitter from '@/assets/twitter.svg';
 import cn from 'classnames';
 
 import ExternalLink from '@/components/ExternalLink';

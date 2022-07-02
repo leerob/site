@@ -34,3 +34,6 @@ export const SANITY_CONFIG = {
   useCdn: process.env.NODE_ENV !== 'production',
   apiVersion: '2021-03-25'
 };
+
+export const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+export const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
