@@ -1,4 +1,5 @@
 import { getPostSlugs } from '@/lib/sanity-api';
+import { type ServerResponse } from 'http';
 
 const createSitemap = (
   slugs: string[]
@@ -15,7 +16,7 @@ const createSitemap = (
           .join('')}
     </urlset>
 `;
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const allPosts = await getPostSlugs();
   const allPages = [
     ...allPosts.map((slug) => `blog/${slug}`),
