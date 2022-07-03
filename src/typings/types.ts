@@ -24,9 +24,9 @@ export type TSnippet = {
 };
 
 export type TCurrentlyPlayingTrack = {
-  songUrl: string;
-  artist: string;
-  title: string;
+  songUrl?: string;
+  artist?: string;
+  title?: string;
 };
 
 export type TContainerProps = {

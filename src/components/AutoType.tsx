@@ -15,8 +15,8 @@ export default function TypedBios() {
       backDelay: 1000
       // shuffle: true,
     };
-    typed.current = new Typed(el.current, options);
-    return () => typed.current.destroy();
+    typed.current = new Typed(el.current!, options);
+    return () => typed.current!.destroy();
   }, []);
 
   return (

@@ -10,7 +10,7 @@ import { DEFAULT_SEO } from '@/config';
 
 export default function App({ Component, pageProps }: AppProps) {
   usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID, {
-    enabled: process.env.NODE_ENV === 'production',
+    enabled: process.env.NODE_ENV === 'production'
   });
   return (
     <ThemeProvider attribute="class">
