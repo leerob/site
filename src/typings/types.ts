@@ -1,4 +1,6 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { ParsedUrlQuery } from 'querystring';
+
 import React from 'react';
 
 export type TPost = {
@@ -42,4 +44,12 @@ export type TSocialIcon = {
   kind: string;
   href: string;
   size?: number;
+};
+
+export interface IParams extends ParsedUrlQuery {
+  slug: string;
+}
+
+export type TSvg = {
+  [key: string]: React.SVGProps<SVGSVGElement>;
 };

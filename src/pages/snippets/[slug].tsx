@@ -1,17 +1,15 @@
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import SnippetLayout from 'src/layouts/snippets';
 import components from '@/components/MDXComponents';
 import { mdxToHtml } from '@/lib/mdx';
 import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
-import type { ParsedUrlQuery } from 'querystring';
+import { IParams, TSnippet } from '@/typings/types';
 
-interface IParams extends ParsedUrlQuery {
-  slug: string;
-}
-type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
-type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>['props'];
-
-export default function SnippetsPage({ snippet }: { snippet: Props }) {
+export default function SnippetsPage({
+  snippet
+}: {
+  snippet: TSnippet & { content: MDXRemoteSerializeResult };
+}) {
   return (
     <SnippetLayout snippet={snippet}>
       <MDXRemote {...snippet.content} components={components} />
@@ -27,10 +25,14 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: { params: IParams }) {
-  const snippet = await getSnippet({
-    slug: params.slug
-  });
+export async function getStaticProps({
+  params,
+  preview
+}: {
+  params: IParams;
+  preview: boolean;
+}) {
+  const snippet = await getSnippet(params.slug, preview);
 
   if (!snippet) {
     return { notFound: true };

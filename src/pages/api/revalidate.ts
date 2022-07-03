@@ -51,7 +51,7 @@ export default async function handler(
   }
 
   try {
-    const slug = await getUpdatedPostSlug({ id });
+    const slug = await getUpdatedPostSlug(id);
     await Promise.all([
       res.revalidate('/blog'),
       res.revalidate(`/blog/${slug}`)

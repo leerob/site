@@ -23,31 +23,28 @@ export const getPostSlugs = async (): Promise<string[]> => {
   return slugs;
 };
 
-export const getPost = async ({ slug }: { slug: string }): Promise<TPost> => {
+export const getPost = async (
+  slug: string,
+  preview: boolean
+): Promise<TPost> => {
   const { post } = await sanityClient.fetch(postQuery, { slug: slug });
   return post;
 };
 
-export const getPostBySlug = async ({
-  slug
-}: {
-  slug: string;
-}): Promise<TPost> => {
-  const preview = true;
+export const getPostBySlug = async (
+  slug: string,
+  preview: boolean
+): Promise<TPost> => {
   const { post } = await getClient(preview).fetch(postBySlugQuery, { slug });
   return post;
 };
-export const getUpdatedPostSlug = async ({
-  id
-}: {
-  id: string;
-}): Promise<string> => {
+export const getUpdatedPostSlug = async (id: string): Promise<string> => {
   const slug = sanityClient.fetch(postUpdatedQuery, { id });
   return slug;
 };
 
-export const getSnippets = async (): Promise<TSnippet[]> => {
-  const snippets = await sanityClient.fetch(allSnippetsQuery);
+export const getSnippets = async (preview: boolean): Promise<TSnippet[]> => {
+  const snippets = await getClient(preview).fetch(allSnippetsQuery);
   return snippets;
 };
 
@@ -56,11 +53,10 @@ export const getSnippetSlugs = async (): Promise<string[]> => {
   return slugs;
 };
 
-export const getSnippet = async ({
-  slug
-}: {
-  slug: string;
-}): Promise<TSnippet> => {
-  const { snippet } = await sanityClient.fetch(snippetsQuery, { slug });
+export const getSnippet = async (
+  slug: string,
+  preview: boolean
+): Promise<TSnippet> => {
+  const { snippet } = await getClient(preview).fetch(snippetsQuery, { slug });
   return snippet;
 };
