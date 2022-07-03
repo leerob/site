@@ -20,7 +20,7 @@ export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const allPosts = await getPostSlugs();
   const allPages = [
     ...allPosts.map((slug) => `blog/${slug}`),
-    ...['', 'about', 'blog']
+    ...['', 'about', 'blog', 'snippets']
   ];
 
   res.setHeader('Content-Type', 'text/xml');

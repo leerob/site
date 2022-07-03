@@ -51,5 +51,5 @@ export interface IParams extends ParsedUrlQuery {
 }
 
 export type TSvg = {
-  [key: string]: React.SVGProps<SVGSVGElement>;
+  [key: string]: React.ReactNode;
 };

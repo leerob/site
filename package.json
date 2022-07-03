@@ -46,7 +46,7 @@
     "@types/react": "^18.0.12",
     "@types/rss": "^0.0.29",
     "@types/spotify-api": "^0.0.16",
-    "@typescript-eslint/parser": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.4",
     "autoprefixer": "10.4.7",
     "cssnano": "^5.1.12",
     "eslint": "8.19.0",
