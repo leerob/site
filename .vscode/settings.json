@@ -1,8 +1,11 @@
 {
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.tabSize": 2,
   "editor.fontFamily": "JetBrains Mono",
   "files.autoSave": "onFocusChange",
   "editor.wordWrap": "on",
-  "editor.lineHeight": 0
+  "editor.lineHeight": 0,
+  "debug.console.fontSize": 13,
+  "markdown.preview.fontSize": 13,
+  "terminal.integrated.fontSize": 13
 }

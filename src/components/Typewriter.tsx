@@ -3,7 +3,6 @@ import Typewriter from 'typewriter-effect';
 export default function TypingEffect() {
   return (
     <div>
-      <h3>GeeksforGeeks Typing Animation</h3>
       <Typewriter
         onInit={(typewriter) => {
           typewriter
