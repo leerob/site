@@ -1,9 +1,9 @@
 import cn from 'classnames';
 
 import ExternalLink from '@/components/ExternalLink';
-import { TSocialIcon, TSvg } from '@/typings/types';
+import { ISocialIcon, ISvg } from '@/typings/types';
 
-export default function SocialIcon({ kind, href, size = 4 }: TSocialIcon) {
+export default function SocialIcon({ kind, href, size = 4 }: ISocialIcon) {
   return (
     <ExternalLink href={href}>
       <svg
@@ -21,7 +21,7 @@ export default function SocialIcon({ kind, href, size = 4 }: TSocialIcon) {
     </ExternalLink>
   );
 }
-const svgDictionary: TSvg = {
+const svgDictionary: ISvg = {
   facebook: (
     <>
       <title>Facebook icon</title>

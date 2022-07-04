@@ -1,7 +1,6 @@
 import { getUpdatedPostSlug } from '@/lib/sanity-api';
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Err } from '@/lib/error';
 const secret = process.env.SANITY_STUDIO_REVALIDATE_SECRET;
 
 export default async function handler(
@@ -30,8 +29,8 @@ export default async function handler(
     ]);
     return res.status(200).json({ message: `Updated ${slug}` });
   } catch (e) {
-    if (e instanceof Error) return Err(e.message);
-    return Err(`unknown error: ${JSON.stringify(e)}`);
+      if (e instanceof Error) return new Error(e.message);
+      return new Error(`unknown error: ${JSON.stringify(e)}`);
   }
 }
 

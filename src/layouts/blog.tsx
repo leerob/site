@@ -3,13 +3,13 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from '@/components/Container';
-import { TPost } from '@/typings/types';
+import { IPost } from '@/typings/types';
 import { urlForImage } from '@/lib/sanity-client';
 
 export default function BlogLayout({
   children,
   post
-}: PropsWithChildren<{ post: TPost }>) {
+}: PropsWithChildren<{ post: IPost }>) {
   return (
     <Container
       title={`${post.title} Dzmitry Sviryn`}

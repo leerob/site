@@ -12,7 +12,7 @@ export default function Blog({
   const filteredBlogPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
-  // TODO: use gradient post cards
+  // TODO: consider using gradient post cards
   return (
     <Container
       title="Blog – Dzmitry Svirynn"
@@ -23,8 +23,8 @@ export default function Blog({
           Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          {`I've been writing online since 2014, mostly about web development and tech careers.
-            In total, I've written ${posts.length} articles on my blog.
+          {`I've been writing online since 2022, mostly about web development and Linux thingss.
+            In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
             Use the search below to filter by title.`}
         </p>
         <div className="relative w-full mb-4">
@@ -50,11 +50,7 @@ export default function Blog({
             />
           </svg>
         </div>
-        <Suspense fallback={null}>
-          <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
-            All Posts
-          </h3>
-          src
+        <Suspense fallback={null}>         
           {filteredBlogPosts.map((post) => (
             <BlogPost
               key={post.title}
@@ -70,7 +66,7 @@ export default function Blog({
 }
 
 export async function getStaticProps({ preview = false }) {
-  const posts = await getPosts();
+  const posts = await getPosts(preview);
 
   return { props: { posts } };
 }

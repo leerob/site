@@ -1,4 +1,4 @@
-import type { TPost, TSnippet } from '@/typings/types';
+import  { IPost, ISnippet } from '@/typings/types';
 
 import { sanityClient, getClient } from './sanity-server';
 
@@ -13,8 +13,8 @@ import {
   snippetSlugsQuery
 } from './sanity-queries';
 
-export const getPosts = async (): Promise<TPost[]> => {
-  const posts = await sanityClient.fetch(indexQuery);
+export const getPosts = async (preview: boolean): Promise<IPost[]> => {
+  const posts = await getClient(preview).fetch(indexQuery);
   return posts;
 };
 
@@ -26,15 +26,15 @@ export const getPostSlugs = async (): Promise<string[]> => {
 export const getPost = async (
   slug: string,
   preview: boolean
-): Promise<TPost> => {
-  const { post } = await sanityClient.fetch(postQuery, { slug: slug });
+): Promise<IPost> => {
+  const { post } = await getClient(preview).fetch(postQuery, { slug: slug });
   return post;
 };
 
 export const getPostBySlug = async (
   slug: string,
   preview: boolean
-): Promise<TPost> => {
+): Promise<IPost> => {
   const { post } = await getClient(preview).fetch(postBySlugQuery, { slug });
   return post;
 };
@@ -43,7 +43,7 @@ export const getUpdatedPostSlug = async (id: string): Promise<string> => {
   return slug;
 };
 
-export const getSnippets = async (preview: boolean): Promise<TSnippet[]> => {
+export const getSnippets = async (preview: boolean): Promise<ISnippet[]> => {
   const snippets = await getClient(preview).fetch(allSnippetsQuery);
   return snippets;
 };
@@ -56,7 +56,7 @@ export const getSnippetSlugs = async (): Promise<string[]> => {
 export const getSnippet = async (
   slug: string,
   preview: boolean
-): Promise<TSnippet> => {
+): Promise<ISnippet> => {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, { slug });
   return snippet;
 };

@@ -1,14 +1,14 @@
 import { NextSeo } from 'next-seo';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
-import { TContainerProps } from '@/typings/types';
+import { IContainerProps } from '@/typings/types';
 import NavItem from '@/components/NavItem';
 import { useRouter } from 'next/router';
 import ToggleMode from '@/components/toggleMode';
 
 import { NAV_LINKS } from '@/config';
 
-export default function Container(props: TContainerProps) {
+export default function Container(props: IContainerProps) {
   // Preparing metadata passing into NextSeo
 
   const router = useRouter();

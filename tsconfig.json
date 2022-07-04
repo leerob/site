@@ -6,18 +6,21 @@
     "resolveJsonModule": true,
     "removeComments": true,
     "preserveConstEnums": true,
+
     "strict": true,
     "alwaysStrict": true,
-    "strictNullChecks": false,
-    "noUncheckedIndexedAccess": true,
 
-    "noImplicitAny": false,
+    "strictNullChecks": true,
+
+    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowUnreachableCode": false,
+
     "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
 
     "target": "es5",
     "outDir": "out",

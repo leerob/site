@@ -1,18 +1,20 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
 import SnippetLayout from 'src/layouts/snippets';
 import components from '@/components/MDXComponents';
 import { mdxToHtml } from '@/lib/mdx';
 import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
-import { IParams, TSnippet } from '@/typings/types';
+import { IParams, ISnippet } from '@/typings/types';
 
-export default function SnippetsPage({
-  snippet
-}: {
-  snippet: TSnippet & { content: MDXRemoteSerializeResult };
-}) {
+export default function SnippetsPage({snippet}: {snippet: ISnippet}) {
   return (
     <SnippetLayout snippet={snippet}>
-      <MDXRemote {...snippet.content} components={components} />
+      <MDXRemote
+        {...snippet.mdxContent!}        
+      components={
+          {
+            ...components
+          } as any
+        }/>
     </SnippetLayout>
   );
 }
@@ -44,7 +46,7 @@ export async function getStaticProps({
     props: {
       snippet: {
         ...snippet,
-        content: html
+        mdxContent: html
       }
     }
   };

@@ -1,4 +1,4 @@
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import Image, { type ImageProps } from 'next/future/image';
 
 const CustomLink = ({

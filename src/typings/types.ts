@@ -1,35 +1,37 @@
+// import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { ParsedUrlQuery } from 'querystring';
 
-import React from 'react';
-
-export type TPost = {
+export interface IPost {
   _id: string;
   slug: string;
-  content: MDXRemoteSerializeResult;
+  content: string;
   title: string;
   date: string;
   excerpt: string;
   coverImage: string;
-  readingTime: string;
+  readingTime?: string;
+  mdxContent?: MDXRemoteSerializeResult
 };
 
-export type TSnippet = {
+export interface ISnippet {
   _id: string;
   slug: string;
-  content: MDXRemoteSerializeResult;
+  content: string;
   title: string;
   description: string;
   logo: string;
+  mdxContent?: MDXRemoteSerializeResult
 };
 
-export type TCurrentlyPlayingTrack = {
+export interface ICurrentlyPlaying {
   songUrl?: string;
   artist?: string;
   title?: string;
+  isPlaying: boolean;
 };
 
-export type TContainerProps = {
+export interface IContainerProps {
   title: string;
   description?: string;
   image?: string;
@@ -40,7 +42,7 @@ export type TContainerProps = {
   children: React.ReactNode;
 };
 
-export type TSocialIcon = {
+export interface ISocialIcon  {
   kind: string;
   href: string;
   size?: number;
@@ -50,6 +52,6 @@ export interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export type TSvg = {
+export interface ISvg {
   [key: string]: React.ReactNode;
 };

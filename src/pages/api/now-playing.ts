@@ -1,13 +1,13 @@
-import { type NextRequest } from 'next/server';
 import { getNowPlaying } from '@/lib/spotify';
-import { TCurrentlyPlayingTrack } from '@/typings/types';
+import { ICurrentlyPlaying } from '@/typings/types';
+import { NextApiResponse } from 'next';
 export const config = {
   runtime: 'experimental-edge'
 };
 
 export default async function handler(
-  req: NextRequest
-): Promise<TCurrentlyPlayingTrack | Response> {
+  _: NextApiResponse
+): Promise<ICurrentlyPlaying | Response> {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {
@@ -18,8 +18,9 @@ export default async function handler(
       }
     });
   }
+
   // TODO: fix missing 'artists' property
-  const song: SpotifyApi.CurrentPlaybackResponse = await response.json();
+  const song = await response.json();
   if (song.item === null) {
     return new Response(JSON.stringify({ isPlaying: false }), {
       status: 200,
@@ -36,7 +37,8 @@ export default async function handler(
     JSON.stringify({
       artist,
       songUrl,
-      title
+      title,
+      isPlaying: true
     }),
     {
       status: 200,

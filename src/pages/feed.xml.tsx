@@ -10,7 +10,7 @@ export async function getServerSideProps({ res }: { res: ServerResponse }) {
     feed_url: 'https://svirins.cf/feed.xml'
   });
 
-  const allPosts = await getPosts();
+  const allPosts = await getPosts(false);
   allPosts.map((post) => {
     feed.item({
       title: post.title,

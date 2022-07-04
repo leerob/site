@@ -3,13 +3,14 @@ import BlogLayout from '@/layouts/blog';
 import components from '@/components/MDXComponents';
 import { getPost, getPostSlugs } from '@/lib/sanity-api';
 import { mdxToHtml } from '@/lib/mdx';
-import { IParams, TPost } from '@/typings/types';
+import { IParams, IPost } from '@/typings/types';
 
-export default function PostPage({ post }: { post: TPost }) {
+// TODO: consider lazy hydration for MDXRemote
+export default function PostPage({post}: {post: IPost}) {
   return (
     <BlogLayout post={post}>
       <MDXRemote
-        {...post.content}
+        {...post.mdxContent!}
         components={
           {
             ...components
@@ -30,7 +31,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
-  preview
+  preview = false
 }: {
   params: IParams;
   preview: boolean;
@@ -47,7 +48,7 @@ export async function getStaticProps({
     props: {
       post: {
         ...post,
-        content: html,
+        mdxContent: html,
         readingTime
       }
     }

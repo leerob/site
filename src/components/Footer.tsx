@@ -10,7 +10,7 @@ export default function Footer() {
         <SocialIcon kind="twitter" href="https://twitter.com/svirins" />
         <SocialIcon kind="github" href="https://github.com/zvirinz" />
       </div>
-      <div className=""></div>
+      <div className="text-gray-700 dark:text-gray-200">Thanks and credits here</div>
     </footer>
   );
 }
