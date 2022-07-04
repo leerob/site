@@ -1,6 +1,7 @@
 import { getNowPlaying } from '@/lib/spotify';
 import { ICurrentlyPlaying } from '@/typings/types';
 import { NextApiResponse } from 'next';
+
 export const config = {
   runtime: 'experimental-edge'
 };
@@ -19,7 +20,6 @@ export default async function handler(
     });
   }
 
-  // TODO: fix missing 'artists' property
   const song = await response.json();
   if (song.item === null) {
     return new Response(JSON.stringify({ isPlaying: false }), {
@@ -31,7 +31,7 @@ export default async function handler(
   }
 
   const title = song.item.name;
-  const artist = song.item.artists.map((_artist) => _artist.name).join(', ');
+  const artist = song.item.artists.map((_artist: { name: string; }) => _artist.name).join(', ');
   const songUrl = song.item.external_urls.spotify;
   return new Response(
     JSON.stringify({
