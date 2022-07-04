@@ -18,9 +18,8 @@ export default async function handler(
       }
     });
   }
-
   // TODO: fix missing 'artists' property
-  const song: SpotifyApi.CurrentlyPlayingObject = await response.json();
+  const song: SpotifyApi.CurrentPlaybackResponse = await response.json();
   if (song.item === null) {
     return new Response(JSON.stringify({ isPlaying: false }), {
       status: 200,
