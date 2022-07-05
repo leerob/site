@@ -1,0 +1,15 @@
+.bar {
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+.bar text {
+  color: black;
+}
+.bar:hover,
+.bar:focus {
+  fill: black;
+}
+.bar:hover text,
+.bar:focus text {
+  fill: red;
+}

@@ -1,4 +1,4 @@
-import { getNowPlaying } from '@/lib/spotify';
+import { getNowPlaying } from '@/lib/spotify-api';
 import { ICurrentlyPlaying } from '@/typings/types';
 import { NextApiResponse } from 'next';
 

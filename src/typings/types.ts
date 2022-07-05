@@ -55,3 +55,16 @@ export interface IParams extends ParsedUrlQuery {
 export interface ISvg {
   [key: string]: React.ReactNode;
 };
+
+export interface IWakaLangStats {
+  decimal: string;
+  digital: string;
+  hours: number;
+  minutes: number;
+  name: string;
+  percent: number;
+  text: string;
+  total_seconds: bigint;
+}
+
+

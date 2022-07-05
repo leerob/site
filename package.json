@@ -11,6 +11,11 @@
     "format": "prettier --write .",
     "sanity-start": "sanity start"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@panelbear/panelbear-nextjs": "^1.0.3",
     "@sanity/image-url": "^1.0.1",
@@ -38,24 +43,28 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@svgr/webpack": "^6.2.1",
     "@types/react": "^18.0.12",
     "@types/rss": "^0.0.29",
-    "@typescript-eslint/parser": "^5.30.4",
+    "@typescript-eslint/parser": "^5.30.5",
     "autoprefixer": "10.4.7",
     "cssnano": "^5.1.12",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "groq": "^2.29.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "next-sitemap": "^3.1.8",
+    "next-sitemap": "^3.1.10",
     "postcss": "^8.4.13",
     "prettier": "2.7.1",
     "reading-time": "^1.4.0",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
     "rehype-code-titles": "1.1.0",
-    "rehype-prism-plus": "^1.4.0",
+    "rehype-prism-plus": "^1.4.2",
     "rehype-slug": "5.0.1",
     "remark-gfm": "^3.0.1",
     "rss": "1.2.2",

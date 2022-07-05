@@ -1,10 +1,7 @@
 {
-  "extends": "next",
+  "extends": ["next", "next/core-web-vitals", "prettier"],
   "rules": {
-    "react/prop-types": 0,
-    "react/no-unescaped-entities": 0,
-    // for use in edge api routes
-    "@next/next/no-server-import-in-page": 0
+    "@next/next/no-html-link-for-pages": 0
   },
   "parser": "@typescript-eslint/parser"
 }

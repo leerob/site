@@ -1,23 +1,25 @@
-import Link from 'next/link';
 import Image from 'next/future/image';
-
+import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
+import { IWakaLangStats } from '@/typings/types';
+import WakaStats from '@/components/WakaStats';
 
-export default function About() {
+export default function About({stats}: {stats: IWakaLangStats[]}) {
   return (
     <Container title="About page | Dzmitry Sviryn">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          About Me
+          About me
         </h1>
-     <div className="flex flex-col-reverse sm:flex-row items-start">
-            <div className="flex flex-col pr-8">
-              <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-                Dzmitry Sviryn, Frontend engineer @{' '}
+        <div className="flex flex-col-reverse sm:flex-row items-start">
+            <div className="flex flex-col pr-8 mb-8 prose dark:prose-dark leading-6">
+              <h2 className="mb-4">
+                Hi I&apos;m Dzmitry, <em>freelance</em> full-stack developer.
                 <span className="font-semibold">self-employed</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                I work with React Ecosystem
+                I&apos;m a passionate Full-Stack  dmeveloper living in Tbilisi, Georgia.
+                During my free time I like swimming
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
@@ -32,9 +34,12 @@ export default function About() {
               />
             </div>
           </div>
-        
+
         <div className="mb-8 prose dark:prose-dark leading-6">
-          <h2>Links</h2>
+          <h2>Technologies I frequently use:</h2>
+        </div>
+        <div className="mb-8 prose dark:prose-dark leading-6">
+          <h2>Contact me:</h2>
           <ul>
             <li>
               Twitter: <a href="https://twitter.com/svirins">@svirins</a>
@@ -43,22 +48,23 @@ export default function About() {
               GitHub: <a href="https://github.com/svirins">@zvirinz</a>
             </li>
             <li>
-              Website:{' '}
-              <Link href="https://svirins.cf">
-                <a>https://svirins.cf</a>
-              </Link>
-            </li>
-            <li>
-              LinkedIn:{' '}
-              <a href="https://www.linkedin.com/in/svirins/">
-                https://www.linkedin.com/in/svirins
+              Mail:
+              <a href="mailto:svirins@gmail.com">
+                svirins@gmail.com
               </a>
             </li>
           </ul>
-          <h2>Bio</h2>
+          <h2>Bio</h2>        
           <h3>Job Title</h3>
+          <WakaStats stats={stats} />
         </div>
       </div>
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const { languages } = await getWakaStats();
+
+  return { props: { stats: languages }, revalidate: 86400 };
 }
