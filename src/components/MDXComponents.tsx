@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import Image, { type ImageProps } from 'next/future/image';
+import Step from '@/components/Step';
+import ProsCard from './ProsCard';
+import ConsCard from './ConsCard';
 
 const CustomLink = ({
   props,
@@ -44,7 +47,10 @@ function Callout({
 const MDXComponents = {
   Image: RoundedImage,
   a: CustomLink,
-  Callout
+  Callout,
+  ProsCard,
+  ConsCard,
+  Step
 };
 
 export default MDXComponents;

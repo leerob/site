@@ -3,6 +3,9 @@ import { useMemo } from 'react';
 import {
   SiAlgolia,
   SiAmazonaws,
+  SiChakraui,
+  SiCss3,
+  SiDebian,
   SiDocker,
   SiExpress,
   SiFigma,
@@ -13,21 +16,21 @@ import {
   SiLinux,
   SiMapbox,
   SiMysql,
+  SiNodedotjs,
+  SiNextdotjs,
   SiPostgresql,
   SiPrisma,
   SiPnpm,
   SiReact,
+  SiStripe,
   SiSupabase,
   SiTailwindcss,
+  SiTypescript,
   SiVercel
 } from 'react-icons/si';
 import ExternalLink from '@/components/ExternalLink';
 
-// import Sanity from '/sanity.svg';
-// import Nextjs from '/nextjs.svg';
-// import Typescript from '/yypescript.svg';
-
-export default function ExtraSkills() {
+export default function Skills() {
   const stacks = useMemo(
     () => [
       {
@@ -38,6 +41,19 @@ export default function ExtraSkills() {
         Icon: SiAmazonaws,
         url: 'https://golang.org/'
       },
+      {
+        Icon: SiChakraui,
+        url: 'https://golang.org/'
+      },
+      {
+        Icon: SiCss3,
+        url: 'https://golang.org/'
+      },
+      {
+        Icon: SiDebian,
+        url: 'https://kubernetes.io/'
+      },
+
       {
         Icon: SiDocker,
         url: 'https://kubernetes.io/'
@@ -68,6 +84,7 @@ export default function ExtraSkills() {
       },
       {
         Icon: SiLinux,
+        featured: true,
         url: 'https://www.terraform.io/'
       },
       {
@@ -76,6 +93,15 @@ export default function ExtraSkills() {
       },
       {
         Icon: SiMysql,
+        url: 'https://www.postgresql.org/'
+      },
+      {
+        Icon: SiNodedotjs,
+        url: 'https://www.postgresql.org/'
+      },
+      {
+        Icon: SiNextdotjs,
+        featured: true,
         url: 'https://www.postgresql.org/'
       },
       {
@@ -95,11 +121,20 @@ export default function ExtraSkills() {
         url: 'https://www.python.org/'
       },
       {
+        Icon: SiStripe,
+        url: 'https://www.python.org/'
+      },
+      {
         Icon: SiSupabase,
         url: 'https://www.python.org/'
       },
       {
         Icon: SiTailwindcss,
+        url: 'https://www.python.org/'
+      },
+      {
+        Icon: SiTypescript,
+        featured: true,
         url: 'https://www.python.org/'
       },
       {
@@ -111,11 +146,13 @@ export default function ExtraSkills() {
   );
 
   return (
-    <div className="grid-cols-8 gap-4 justify-center">
+    <div className="grid overflow-hidden grid-cols-10 grid-rows-2 gap-2 justify-center">
       {stacks.map(({ Icon, url }) => (
-        <ExternalLink href={url} key={url}>
-          <Icon className="w-8 h-8" />
-        </ExternalLink>
+        <div key={url}>
+          <ExternalLink href={url}>
+            <Icon className="w-8 h-8" />
+          </ExternalLink>
+        </div>
       ))}
     </div>
   );
