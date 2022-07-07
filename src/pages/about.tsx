@@ -3,7 +3,8 @@ import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings/types';
 import WakaStats from '@/components/WakaStats';
-import SkillsBox from '@/components/SkillsBox';
+import TopSkills from '@/components/TopSkills';
+import ExtraSkills from '@/components/ExtraSkills';
 
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   return (
@@ -40,7 +41,8 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
 
         <div className="mb-8 prose dark:prose-dark leading-6">
           <h2>Technologies I frequently use:</h2>
-          <SkillsBox />
+          <TopSkills />
+          <ExtraSkills />
         </div>
         <div className="mb-8 prose dark:prose-dark leading-6">
           <h2>Get in touch:</h2>

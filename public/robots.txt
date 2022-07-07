@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://svirins.cf/sitemap.xml
+Sitemap: https://svirins.codes/sitemap.xml

@@ -18,7 +18,7 @@ export const DEFAULT_SEO = {
     titleTemplate: 'Default description',
     description: 'Default description.',
     type: 'website',
-    url: 'https://www.svirins.cf/',
+    url: 'https://www.svirins.codes/',
     site_name: 'Default description'
   },
   twitter: {

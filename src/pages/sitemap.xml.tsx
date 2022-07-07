@@ -9,7 +9,7 @@ const createSitemap = (
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://svirins.cf/${slug}`}</loc>
+                    <loc>${`https://svirins.codes/${slug}`}</loc>
                 </url>
             `;
           })

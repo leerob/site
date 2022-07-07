@@ -4,7 +4,7 @@ import MobileMenu from '@/components/MobileMenu';
 import { IContainerProps } from '@/typings/types';
 import NavItem from '@/components/NavItem';
 import { useRouter } from 'next/router';
-import ToggleMode from '@/components/toggleMode';
+import ToggleMode from '@/components/ToggleMode';
 
 import { NAV_LINKS } from '@/config';
 
@@ -17,7 +17,7 @@ export default function Container(props: IContainerProps) {
       ? {
           publishedTime: props.date,
           tags: props.tags ? props.tags : ['dev-portfolio', 'personal-website'],
-          authors: ['https://svirins.cf/about'],
+          authors: ['https://svirins.codes/about'],
           description: props.description
         }
       : {};
@@ -28,12 +28,14 @@ export default function Container(props: IContainerProps) {
     openGraph: {
       title: props.title,
       article: articleMeta,
-      url: `https://www.svirins.cf${router.asPath}` ?? 'https://www.svirins.cf',
+      url:
+        `https://www.svirins.codes${router.asPath}` ??
+        'https://www.svirins.codes',
       type: props.type ?? 'page',
-      image: props.image ?? 'https://svirins.cf/static/images/banner.png',
+      image: props.image ?? 'https://svirins.codes/static/images/banner.png',
       images: [
         {
-          url: props.image ?? "https://svirins.cf/static/images/banner.png'",
+          url: props.image ?? "https://svirins.codes/static/images/banner.png'",
           alt: props.title
         }
       ]

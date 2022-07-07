@@ -26,7 +26,7 @@ import ExternalLink from '@/components/ExternalLink';
 // import Nextjs from '/nextjs.svg';
 // import Typescript from '/yypescript.svg';
 
-export default function SkillsBox() {
+export default function TopSkills() {
   const stacks = useMemo(
     () => [
       {

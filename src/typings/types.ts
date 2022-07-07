@@ -43,12 +43,6 @@ export interface IContainerProps {
   children: React.ReactNode;
 }
 
-export interface ISocialIcon {
-  kind: string;
-  href: string;
-  size?: number;
-}
-
 export interface IParams extends ParsedUrlQuery {
   slug: string;
 }
