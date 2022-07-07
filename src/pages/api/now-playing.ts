@@ -31,7 +31,9 @@ export default async function handler(
   }
 
   const title = song.item.name;
-  const artist = song.item.artists.map((_artist: { name: string; }) => _artist.name).join(', ');
+  const artist = song.item.artists
+    .map((_artist: { name: string }) => _artist.name)
+    .join(', ');
   const songUrl = song.item.external_urls.spotify;
   return new Response(
     JSON.stringify({

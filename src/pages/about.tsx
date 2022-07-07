@@ -3,8 +3,9 @@ import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings/types';
 import WakaStats from '@/components/WakaStats';
+import SkillsBox from '@/components/SkillsBox';
 
-export default function About({stats}: {stats: IWakaLangStats[]}) {
+export default function About({ stats }: { stats: IWakaLangStats[] }) {
   return (
     <Container title="About page | Dzmitry Sviryn">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
@@ -12,34 +13,38 @@ export default function About({stats}: {stats: IWakaLangStats[]}) {
           About me
         </h1>
         <div className="flex flex-col-reverse sm:flex-row items-start">
-            <div className="flex flex-col pr-8 mb-8 prose dark:prose-dark leading-6">
-              <h2 className="mb-4">
-                Hi I&apos;m Dzmitry, <em>freelance</em> full-stack developer.
-                <span className="font-semibold">self-employed</span>
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-16">
-                I&apos;m a passionate Full-Stack  dmeveloper living in Tbilisi, Georgia.
-                During my free time I like swimming
-              </p>
-            </div>
-            <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
-              <Image
-                alt="Dzmitry Sviryn"
-                height={176}
-                width={176}
-                src="/avatar.jpeg"
-                sizes="30vw"
-                priority
-                className="rounded-full filter grayscale"
-              />
-            </div>
+          <div className="flex flex-col pr-8 mb-8 prose dark:prose-dark leading-6">
+            <h2 className="mb-4">
+              Hi I&apos;m Dzmitry, <em>freelance</em> full-stack developer.
+              <span className="font-semibold">self-employed</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-16">
+              I&apos;m a passionate Full-Stack dmeveloper living in Tbilisi,
+              Georgia. During my free time I like swimming I&apos;m a Full Stack
+              developer with experience in React ecosystem. Currently
+              self-employed and living in Tbilisi.
+            </p>
           </div>
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+            <Image
+              alt="Dzmitry Sviryn"
+              height={176}
+              width={176}
+              src="/avatar.jpeg"
+              sizes="30vw"
+              priority
+              className="rounded-full filter grayscale"
+            />
+          </div>
+        </div>
 
         <div className="mb-8 prose dark:prose-dark leading-6">
           <h2>Technologies I frequently use:</h2>
+          <SkillsBox />
         </div>
         <div className="mb-8 prose dark:prose-dark leading-6">
-          <h2>Contact me:</h2>
+          <h2>Get in touch:</h2>
+          <p>Feel free to ask me anything!</p>
           <ul>
             <li>
               Twitter: <a href="https://twitter.com/svirins">@svirins</a>
@@ -49,12 +54,10 @@ export default function About({stats}: {stats: IWakaLangStats[]}) {
             </li>
             <li>
               Mail:
-              <a href="mailto:svirins@gmail.com">
-                svirins@gmail.com
-              </a>
+              <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
             </li>
           </ul>
-          <h2>Bio</h2>        
+          <h2>Bio</h2>
           <h3>Job Title</h3>
           <WakaStats stats={stats} />
         </div>

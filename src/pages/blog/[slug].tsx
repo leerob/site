@@ -6,7 +6,7 @@ import { mdxToHtml } from '@/lib/mdx';
 import { IParams, IPost } from '@/typings/types';
 
 // TODO: consider lazy hydration for MDXRemote
-export default function PostPage({post}: {post: IPost}) {
+export default function PostPage({ post }: { post: IPost }) {
   return (
     <BlogLayout post={post}>
       <MDXRemote

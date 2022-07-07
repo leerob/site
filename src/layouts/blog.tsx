@@ -14,7 +14,7 @@ export default function BlogLayout({
     <Container
       title={`${post.title} Dzmitry Sviryn`}
       description={post.excerpt}
-      image={urlForImage(post.coverImage).url()}
+      image={urlForImage(post.coverImage!).url()}
       date={new Date(post.date).toISOString()}
       type="article"
     >

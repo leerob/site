@@ -47,6 +47,15 @@ export default createConfig({
             name: 'date',
             title: 'Date',
             type: 'datetime'
+          },
+          {
+            title: 'Tags',
+            name: 'tags',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: {
+              layout: 'tags'
+            }
           }
         ]
       },

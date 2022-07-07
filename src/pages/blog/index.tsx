@@ -13,6 +13,7 @@ export default function Blog({
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
   // TODO: consider using gradient post cards
+  // TODO: replace search with algolia
   return (
     <Container
       title="Blog – Dzmitry Svirynn"
@@ -22,7 +23,7 @@ export default function Blog({
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Blog
         </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
+        <p className="mb-2 text-gray-600 dark:text-gray-400">
           {`I've been writing online since 2022, mostly about web development and Linux thingss.
             In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
             Use the search below to filter by title.`}
@@ -57,6 +58,7 @@ export default function Blog({
               slug={post.slug}
               title={post.title}
               excerpt={post.excerpt}
+              tags={post.tags}
             />
           ))}
         </Suspense>

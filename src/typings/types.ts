@@ -9,10 +9,11 @@ export interface IPost {
   title: string;
   date: string;
   excerpt: string;
-  coverImage: string;
+  tags?: string[];
+  coverImage?: string;
   readingTime?: string;
-  mdxContent?: MDXRemoteSerializeResult
-};
+  mdxContent?: MDXRemoteSerializeResult;
+}
 
 export interface ISnippet {
   _id: string;
@@ -21,15 +22,15 @@ export interface ISnippet {
   title: string;
   description: string;
   logo: string;
-  mdxContent?: MDXRemoteSerializeResult
-};
+  mdxContent?: MDXRemoteSerializeResult;
+}
 
 export interface ICurrentlyPlaying {
   songUrl?: string;
   artist?: string;
   title?: string;
   isPlaying: boolean;
-};
+}
 
 export interface IContainerProps {
   title: string;
@@ -40,13 +41,13 @@ export interface IContainerProps {
   tags?: string[];
   author?: string;
   children: React.ReactNode;
-};
+}
 
-export interface ISocialIcon  {
+export interface ISocialIcon {
   kind: string;
   href: string;
   size?: number;
-};
+}
 
 export interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -54,7 +55,7 @@ export interface IParams extends ParsedUrlQuery {
 
 export interface ISvg {
   [key: string]: React.ReactNode;
-};
+}
 
 export interface IWakaLangStats {
   decimal: string;
@@ -66,5 +67,3 @@ export interface IWakaLangStats {
   text: string;
   total_seconds: bigint;
 }
-
-

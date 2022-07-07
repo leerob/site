@@ -3,11 +3,13 @@ import Link from 'next/link';
 export default function BlogPost({
   slug,
   title,
-  excerpt
+  excerpt,
+  tags
 }: {
   slug: string;
   title: string;
   excerpt: string;
+  tags?: string[];
 }) {
   return (
     <Link href={`/blog/${slug}`}>
@@ -19,6 +21,7 @@ export default function BlogPost({
             </h4>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
+          {tags && tags.map((tag) => <p key={tag}>tag</p>)}
         </div>
       </a>
     </Link>

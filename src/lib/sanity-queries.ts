@@ -6,6 +6,7 @@ const postFields = `
   date,
   excerpt,
   coverImage,
+  tags,
   "slug": slug.current,
 `;
 

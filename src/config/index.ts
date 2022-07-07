@@ -40,3 +40,9 @@ export const SPOTIFY_NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/playe
 export const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 export const WAKATIME_API_ENDPOINT = `https://wakatime.com/api/v1/users/svirins/stats/last_7_days`;
+
+export const GRADIENTS = [
+  'from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
+  'from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]',
+  'from-[#D8B4FE] to-[#818CF8]'
+];

@@ -1,7 +1,9 @@
 import { SPOTIFY_TOKEN_ENDPOINT, SPOTIFY_NOW_PLAYING_ENDPOINT } from '@/config';
 
 const getAccessToken = async () => {
-  const basic = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64');
+  const basic = Buffer.from(
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  ).toString('base64');
 
   const response = await fetch(SPOTIFY_TOKEN_ENDPOINT, {
     method: 'POST',

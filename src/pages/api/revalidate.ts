@@ -29,8 +29,8 @@ export default async function handler(
     ]);
     return res.status(200).json({ message: `Updated ${slug}` });
   } catch (e) {
-      if (e instanceof Error) return new Error(e.message);
-      return new Error(`unknown error: ${JSON.stringify(e)}`);
+    if (e instanceof Error) return new Error(e.message);
+    return new Error(`unknown error: ${JSON.stringify(e)}`);
   }
 }
 

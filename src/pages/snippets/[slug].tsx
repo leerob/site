@@ -5,16 +5,17 @@ import { mdxToHtml } from '@/lib/mdx';
 import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
 import { IParams, ISnippet } from '@/typings/types';
 
-export default function SnippetsPage({snippet}: {snippet: ISnippet}) {
+export default function SnippetsPage({ snippet }: { snippet: ISnippet }) {
   return (
     <SnippetLayout snippet={snippet}>
       <MDXRemote
-        {...snippet.mdxContent!}        
-      components={
+        {...snippet.mdxContent!}
+        components={
           {
             ...components
           } as any
-        }/>
+        }
+      />
     </SnippetLayout>
   );
 }
