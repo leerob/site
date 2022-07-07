@@ -61,3 +61,6 @@ export interface IWakaLangStats {
   text: string;
   total_seconds: bigint;
 }
+export interface Views {
+  total: number;
+}

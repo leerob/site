@@ -12,6 +12,7 @@ import {
   SiJest,
   SiLinux,
   SiMapbox,
+  SiMysql,
   SiPostgresql,
   SiPrisma,
   SiPnpm,
@@ -71,6 +72,10 @@ export default function ExtraSkills() {
       },
       {
         Icon: SiMapbox,
+        url: 'https://www.postgresql.org/'
+      },
+      {
+        Icon: SiMysql,
         url: 'https://www.postgresql.org/'
       },
       {
