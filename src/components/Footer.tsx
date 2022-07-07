@@ -1,5 +1,5 @@
 import NowPlaying from '@/components/NowPlaying';
-import SocialIcon from './SocialIcon';
+import { SiTwitter, SiGithub, SiGmail } from 'react-icons/si';
 
 export default function Footer() {
   return (
@@ -7,8 +7,9 @@ export default function Footer() {
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
       <NowPlaying />
       <div className="w-full max-w-2xl grid grid-cols-4 gap-1 pb-16">
-        <SocialIcon kind="twitter" href="https://twitter.com/svirins" />
-        <SocialIcon kind="github" href="https://github.com/zvirinz" />
+        <SiTwitter href="https://twitter.com/svirins" />
+        <SiGithub href="https://github.com/zvirinz" />
+        <SiGmail href="mailto:svirins@gmail.com" />
       </div>
       <div className="text-gray-700 dark:text-gray-200">
         Thanks and credits here

@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 export default function ExternalLink({
   href,
   children
@@ -7,9 +9,9 @@ export default function ExternalLink({
 }) {
   return (
     <a
-      className="text-gray-500 hover:text-gray-600 transition"
-      target="_blank"
-      rel="noopener noreferrer"
+      className={cn(
+        'fill-current text-gray-700 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400 h-16 w-16'
+      )}
       href={href}
     >
       {children}
