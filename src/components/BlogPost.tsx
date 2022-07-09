@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Tags } from '@/components/Tags';
 
 export default function BlogPost({
   slug,
@@ -21,7 +22,7 @@ export default function BlogPost({
             </h4>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
-          {tags && tags.map((tag) => <p key={tag}>tag</p>)}
+          <Tags tags={tags} />
         </div>
       </a>
     </Link>

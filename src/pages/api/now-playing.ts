@@ -1,14 +1,12 @@
 import { getNowPlaying } from '@/lib/spotify-api';
 import { ICurrentlyPlaying } from '@/typings/types';
-import { NextApiResponse } from 'next';
+// import { NextApiRequest, NextApiResponse } from 'next';
 
 export const config = {
   runtime: 'experimental-edge'
 };
 
-export default async function handler(
-  _: NextApiResponse
-): Promise<ICurrentlyPlaying | Response> {
+export default async function handler(): Promise<ICurrentlyPlaying | Response> {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {

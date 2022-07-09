@@ -13,7 +13,8 @@ module.exports = {
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-    images: { allowFutureImage: true }
+    images: { allowFutureImage: true },
+    formats: ['image/webp']
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

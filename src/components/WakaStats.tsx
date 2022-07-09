@@ -24,7 +24,7 @@ const Chart = ({
 }) => (
   <svg viewBox={`0 0 ${width} ${height}`} height={height} width={width}>
     <title id="title">A bar chart showing information</title>
-    <desc id="desc">Dzmitry Sviryn top 5 programming languages/</desc>
+    <desc id="desc">Dzmitry Svirin top 5 programming languages/</desc>
     {children}
   </svg>
 );

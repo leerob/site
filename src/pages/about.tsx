@@ -7,7 +7,7 @@ import Skills from '@/components/Skills';
 
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   return (
-    <Container title="About page | Dzmitry Sviryn">
+    <Container title="About page | Dzmitry Svirin">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           About me
@@ -27,7 +27,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
-              alt="Dzmitry Sviryn"
+              alt="Dzmitry Svirin"
               height={176}
               width={176}
               src="/avatar.jpeg"
@@ -39,7 +39,9 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
         </div>
 
         <div className="mb-8 prose dark:prose-dark leading-6">
-          <h2>Technologies I use every day, frequently and from time to time:</h2>
+          <h2>
+            Technologies I use every day, frequently and from time to time:
+          </h2>
           <Skills />
           <p>and mention Sanity</p>
         </div>

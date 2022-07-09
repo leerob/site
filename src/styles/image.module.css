@@ -1,0 +1,13 @@
+.image-transition {
+  transition: all 700ms ease-in-out;
+}
+
+.image-loading {
+  filter: blur(48px);
+  transform: scale(1.1);
+}
+
+.image-loaded {
+  filter: blur(0);
+  transform: scale(1);
+}

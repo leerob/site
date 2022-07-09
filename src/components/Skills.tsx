@@ -10,6 +10,7 @@ import {
   SiExpress,
   SiFigma,
   SiFirebase,
+  SiFramer,
   SiGraphql,
   SiHeroku,
   SiJest,
@@ -68,6 +69,10 @@ export default function Skills() {
       },
       {
         Icon: SiFirebase,
+        url: 'https://aws.amazon.com/'
+      },
+      {
+        Icon: SiFramer,
         url: 'https://aws.amazon.com/'
       },
       {

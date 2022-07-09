@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 export default function Home() {
   return (
     <Suspense fallback={null}>
-      <Container title="Index page | Dzmitry Sviryn">
+      <Container title="Index page | Dzmitry Svirin">
         <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16 w-full">
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
@@ -14,7 +14,7 @@ export default function Home() {
                 Hi👏,my name is
               </h1>
               <h1 className="text-gray-700 dark:text-gray-200 mb-4 text-xl md:text-3xl">
-                Dzmitry Sviryn
+                Dzmitry Svirin
               </h1>
               <h1 className="text-gray-700 dark:text-gray-200 mb-4">
                 I <em>build</em> things for the web.
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
             <div className="w-[176px] sm:w-[256px] relative mb-8 sm:mb-0 mr-auto">
               <Image
-                alt="Dzmitry Sviryn"
+                alt="Dzmitry Svirin"
                 height={176}
                 width={176}
                 src="/avatar.jpeg"
