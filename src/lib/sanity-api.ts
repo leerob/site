@@ -60,3 +60,14 @@ export const getSnippet = async (
   const { snippet } = await getClient(preview).fetch(snippetsQuery, { slug });
   return snippet;
 };
+
+export const getTagSlugs = async (): Promise<string[]> => {
+  //
+  const slugs = ['foo'];
+  return slugs;
+};
+
+export const getPostsByTag = async (tag: string): Promise<IPost[]> => {
+  const posts = Array<IPost>;
+  return posts;
+};

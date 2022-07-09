@@ -49,13 +49,19 @@ export default createConfig({
             type: 'datetime'
           },
           {
-            title: 'Tags',
             name: 'tags',
+            title: 'Tags',
             type: 'array',
-            of: [{ type: 'string' }],
-            options: {
-              layout: 'tags'
-            }
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  {
+                    type: 'tag'
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -126,6 +132,26 @@ export default createConfig({
             name: 'image',
             title: 'Cover Image',
             type: 'image'
+          }
+        ]
+      },
+      {
+        name: 'tag',
+        type: 'document',
+        title: 'Tag',
+        fields: [
+          {
+            name: 'title',
+            title: 'Title',
+            type: 'string'
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title'
+            }
           }
         ]
       }
