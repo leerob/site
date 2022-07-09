@@ -18,7 +18,7 @@ export default function BlogLayout({
       image={urlForImage(post.coverImage!).url()}
       date={new Date(post.date).toISOString()}
       type="article"
-      tags={post.tags}
+      tags={post.tags?.map((tag) => tag.title)}
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
         <Tags tags={post.tags} />

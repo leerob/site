@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import { getTagSlugs, getPostsByTag } from '@/lib/sanity-api';
@@ -21,18 +19,15 @@ export default function TagPage({
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {`Posts for tag ${title}`}
         </h1>
-
-        <Suspense fallback={null}>
-          {posts.map((post) => (
-            <BlogPost
-              key={post.title}
-              slug={post.slug}
-              title={post.title}
-              excerpt={post.excerpt}
-              tags={post.tags}
-            />
-          ))}
-        </Suspense>
+        {posts.map((post) => (
+          <BlogPost
+            key={post.title}
+            slug={post.slug}
+            title={post.title}
+            excerpt={post.excerpt}
+            tags={post.tags}
+          />
+        ))}
       </div>
     </Container>
   );

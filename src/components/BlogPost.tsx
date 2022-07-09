@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Tags } from '@/components/Tags';
+import { ITag } from '@/typings/types';
 
 export default function BlogPost({
   slug,
@@ -10,7 +11,7 @@ export default function BlogPost({
   slug: string;
   title: string;
   excerpt: string;
-  tags?: string[];
+  tags?: ITag[];
 }) {
   return (
     <Link href={`/blog/${slug}`}>

@@ -15,7 +15,7 @@ export interface IPost {
   title: string;
   date: string;
   excerpt: string;
-  tags?: string[];
+  tags?: ITag[];
   coverImage?: string;
   readingTime?: string;
   mdxContent?: MDXRemoteSerializeResult;
