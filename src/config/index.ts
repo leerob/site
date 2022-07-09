@@ -51,3 +51,5 @@ export const IMAGES = {
   coverImageWidth: 672,
   coverImageHeight: 320
 };
+
+export const POSTS_LIMIT = 200;

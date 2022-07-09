@@ -10,7 +10,9 @@ import {
   postUpdatedQuery,
   allSnippetsQuery,
   snippetsQuery,
-  snippetSlugsQuery
+  snippetSlugsQuery,
+  tagSlugsQuery,
+  tagRelatedPosts
 } from './sanity-queries';
 
 export const getPosts = async (preview: boolean): Promise<IPost[]> => {
@@ -62,12 +64,16 @@ export const getSnippet = async (
 };
 
 export const getTagSlugs = async (): Promise<string[]> => {
-  //
-  const slugs = ['foo'];
+  const slugs = await sanityClient.fetch(tagSlugsQuery);
   return slugs;
 };
 
-export const getPostsByTag = async (tag: string): Promise<IPost[]> => {
-  const posts = Array<IPost>;
+export const getPostsByTag = async (
+  slug: string
+): Promise<{
+  title: string;
+  posts: IPost[];
+}> => {
+  const posts = await sanityClient.fetch(tagRelatedPosts, { slug });
   return posts;
 };

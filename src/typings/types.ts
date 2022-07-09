@@ -2,6 +2,12 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { ParsedUrlQuery } from 'querystring';
 
+export interface ITag {
+  _id: string;
+  title: string;
+  slug: string;
+}
+
 export interface IPost {
   _id: string;
   slug: string;

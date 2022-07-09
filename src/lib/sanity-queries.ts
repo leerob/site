@@ -1,14 +1,28 @@
 import groq from 'groq';
-
+import { POSTS_LIMIT } from '@/config';
 const postFields = `
   _id,
   title,
+  "slug": slug.current,
   date,
   excerpt,
   coverImage,
-  tags,
+  "tags": tags[] -> {
+    _id,
+    "tagName": title,
+    "tagSlug": slug.current
+  },
+`;
+
+const snippetFields = groq`
+  _id,
+  title,
+  description,
+  logo,
   "slug": slug.current,
 `;
+
+// post-related queries
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
@@ -32,16 +46,19 @@ export const postBySlugQuery = groq`
   ${postFields}
 }
 `;
+// FIXME
+export const tagRelatedPosts = groq`
+*[_type == "tag" && slug.current == $slug] {
+  title,
+  "posts":  *[_type == 'post' && references(^._id)] {
+    ${postFields}
+  } [0...${POSTS_LIMIT}]  | order(_createdAt desc)
+}[0]
+`;
 
 export const postUpdatedQuery = groq`*[_type == "post" && _id == $id].slug.current`;
 
-const snippetFields = groq`
-  _id,
-  title,
-  description,
-  logo,
-  "slug": slug.current,
-`;
+// snippet-related queries
 
 export const allSnippetsQuery = groq`
 *[_type == "snippet"] | order(date desc, _updatedAt desc) {
@@ -59,3 +76,9 @@ export const snippetsQuery = groq`
 export const snippetSlugsQuery = groq`
 *[_type == "snippet" && defined(slug.current)][].slug.current
 `;
+
+// tag-related queries
+
+export const tagSlugsQuery = groq`*[_type == 'tag'] {
+  "slug": slug.current,
+}`;
