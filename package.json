@@ -18,7 +18,7 @@
     "googleapis": "48.0.0",
     "motion": "^10.11.0",
     "next": "12.2.0",
-    "next-auth": "4.7.0",
+    "next-auth": "4.9.0",
     "next-mdx-remote": "^4.0.3",
     "next-sanity": "^0.5.2",
     "next-themes": "^0.2.0",
