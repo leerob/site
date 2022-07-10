@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Image from 'next/future/image';
 import Link from 'next/link';
 import Container from '@/components/Container';
+import Twemoji from '@/components/Twemoji';
 
 export default function Home() {
   return (
@@ -11,8 +12,11 @@ export default function Home() {
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
               <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-                Hi👏,my name is
+                Hi, <Twemoji emoji="waving-hand" size="twa-3x" />
+                my name is
               </h1>
+
+              <Twemoji emoji="grinning-face-with-sweat" size="twa-5x" />
               <h1 className="text-gray-700 dark:text-gray-200 mb-4 text-xl md:text-3xl">
                 Dzmitry Svirin
               </h1>

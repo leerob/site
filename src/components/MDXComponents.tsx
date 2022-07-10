@@ -2,6 +2,7 @@ import Step from '@/components/Step';
 import ProsCard from '@/components/ProsCard';
 import ConsCard from '@/components/ConsCard';
 import BlurredImage from '@/components/Image';
+import Twemoji from '@/components/Twemoji';
 
 const Callout = ({
   emoji,
@@ -23,7 +24,8 @@ const MDXComponents = {
   Callout,
   ProsCard,
   ConsCard,
-  Step
+  Step,
+  Twemoji
 };
 
 export default MDXComponents;
