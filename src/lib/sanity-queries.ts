@@ -9,8 +9,8 @@ const postFields = `
   coverImage,
   "tags": tags[] -> {
     _id,
-    "tagName": title,
-    "tagSlug": slug.current
+    title,
+    "slug": slug.current
   },
 `;
 

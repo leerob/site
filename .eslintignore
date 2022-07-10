@@ -2,6 +2,9 @@
 /node_modules
 
 # NextJS Files
-/build
-/public/*
-/.next
+build
+public
+.next
+
+# Sanity.io Files
+dist

@@ -1,4 +1,4 @@
-export const kebabCase = (str: string) =>
+export const toKebabCase = (str: string) =>
   str &&
   str
     .match(
