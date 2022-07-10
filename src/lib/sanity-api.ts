@@ -75,5 +75,6 @@ export const getPostsByTag = async (
   posts: IPost[];
 }> => {
   const posts = await sanityClient.fetch(tagRelatedPosts, { slug });
+  console.log('api called', slug, posts);
   return posts;
 };

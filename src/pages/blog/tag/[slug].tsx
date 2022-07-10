@@ -10,6 +10,8 @@ export default function TagPage({
   posts: IPost[];
   title: string;
 }) {
+  console.log('tag is:', title);
+  console.log('posts are', posts);
   return (
     <Container
       title={`Posts for tag ${title}`}
@@ -19,15 +21,21 @@ export default function TagPage({
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {`Posts for tag ${title}`}
         </h1>
-        {posts.map((post) => (
-          <BlogPost
-            key={post.title}
-            slug={post.slug}
-            title={post.title}
-            excerpt={post.excerpt}
-            tags={post.tags}
-          />
-        ))}
+        <p className="mb-2 text-gray-600 dark:text-gray-400">
+          {`I've been writing online since 2022, mostly about web development and Linux thingss.
+            In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
+            Use the search below to filter by title.`}
+        </p>
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <BlogPost
+              key={post.title}
+              slug={post.slug}
+              title={post.title}
+              excerpt={post.excerpt}
+              tags={post.tags}
+            />
+          ))}
       </div>
     </Container>
   );
@@ -36,13 +44,12 @@ export default function TagPage({
 export async function getStaticPaths() {
   const paths = await getTagSlugs();
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug) => ({ params: { slug: `/tag/${slug}` } })),
     fallback: 'blocking'
   };
 }
 
 export async function getStaticProps({ params }: { params: IParams }) {
-  const { title, posts } = await getPostsByTag(params.slug);
-
+  const { posts, title } = await getPostsByTag(params.slug);
   return { props: { posts, title } };
 }

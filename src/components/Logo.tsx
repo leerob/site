@@ -1,4 +1,4 @@
-import Svirins from '@/assets/svirins.svg';
+import Svirins from '@/assets/svirins-logo.svg';
 import Link from 'next/link';
 
 export default function Logo() {

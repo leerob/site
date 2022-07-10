@@ -27,24 +27,18 @@ export default function Footer() {
         <Link href="/">Dzmitry Svirin</Link>
       </div>
       <div className="text-sm text-gray-500 dark:text-gray-400">
-        <span className="font-bold">Credit : </span>
+        <span className="font-bold">Credit: </span>
+        <span>The code of this site was originally a fork of</span>
         <a
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-blue-500"
-          href="https://github.com/leerob/leerob.io"
+          href="https://leerob.io"
         >
           Lee Robinson
         </a>
-        <span> by </span>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-500"
-          href="https://twitter.com/leerob"
-        >
-          Timothy Lin
-        </a>
+        <span> personal site </span>
+        <span>though massivle refactored</span>
       </div>
       <div className="text-gray-700 dark:text-gray-200">
         The codebase of this site codebase was originally created from a forl a

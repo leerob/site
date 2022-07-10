@@ -30,7 +30,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
               alt="Dzmitry Svirin"
               height={176}
               width={176}
-              src="/avatar.jpeg"
+              src="/svirins.webp"
               sizes="30vw"
               priority
               className="rounded-full filter grayscale"
