@@ -15,7 +15,7 @@ export interface IPost {
   title: string;
   date: string;
   excerpt: string;
-  tags?: ITag[];
+  tags: ITag[];
   coverImage?: string;
   readingTime?: string;
   mdxContent?: MDXRemoteSerializeResult;
@@ -28,7 +28,7 @@ export interface ISnippet {
   title: string;
   description: string;
   logo: string;
-  mdxContent?: MDXRemoteSerializeResult;
+  mdxContent: MDXRemoteSerializeResult;
 }
 
 export interface ICurrentlyPlaying {

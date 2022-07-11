@@ -26,7 +26,8 @@ export default function TagPage({
             In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
             Use the search below to filter by title.`}
         </p>
-        {posts.length > 0 &&
+        {posts &&
+          posts.length > 0 &&
           posts.map((post) => (
             <BlogPost
               key={post.title}

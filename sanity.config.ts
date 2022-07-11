@@ -18,7 +18,8 @@ export default createConfig({
           {
             name: 'title',
             title: 'Title',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'slug',
@@ -26,7 +27,8 @@ export default createConfig({
             type: 'slug',
             options: {
               source: 'title'
-            }
+            },
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'content',
@@ -36,12 +38,14 @@ export default createConfig({
           {
             name: 'excerpt',
             title: 'Excerpt',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'coverImage',
             title: 'Cover Image',
-            type: 'image'
+            type: 'image',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'date',
@@ -61,7 +65,8 @@ export default createConfig({
                   }
                 ]
               }
-            ]
+            ],
+            validation: (Rule) => Rule.required()
           }
         ]
       },
@@ -73,7 +78,8 @@ export default createConfig({
           {
             name: 'title',
             title: 'Title',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'slug',
@@ -81,7 +87,8 @@ export default createConfig({
             type: 'slug',
             options: {
               source: 'title'
-            }
+            },
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'content',
@@ -91,12 +98,14 @@ export default createConfig({
           {
             name: 'description',
             title: 'Description',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'logo',
             title: 'Logo',
-            type: 'image'
+            type: 'image',
+            validation: (Rule) => Rule.required()
           }
         ]
       },
@@ -143,7 +152,8 @@ export default createConfig({
           {
             name: 'title',
             title: 'Title',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
           },
           {
             name: 'slug',
@@ -151,7 +161,8 @@ export default createConfig({
             type: 'slug',
             options: {
               source: 'title'
-            }
+            },
+            validation: (Rule) => Rule.required()
           }
         ]
       }
