@@ -1,6 +1,7 @@
 // import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { ParsedUrlQuery } from 'querystring';
+import { IconType } from 'react-icons/lib';
 
 export interface ITag {
   _id: string;
@@ -27,7 +28,7 @@ export interface ISnippet {
   content: string;
   title: string;
   description: string;
-  logo: string;
+  icon: string;
   mdxContent: MDXRemoteSerializeResult;
 }
 
@@ -69,4 +70,17 @@ export interface IWakaLangStats {
 }
 export interface IViews {
   total: number;
+}
+
+export interface ITwemoji {
+  emoji: string;
+  size?: 'base' | 'lg' | 'xl' | '2xl';
+}
+
+export interface IStack {
+  Icon: IconType;
+  url: string;
+  title: string;
+  color: string;
+  featured?: boolean;
 }

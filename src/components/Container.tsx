@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
-import { IContainerProps } from '@/typings/types';
+import { IContainerProps } from '@/typings';
 import NavItem from '@/components/NavItem';
 import { useRouter } from 'next/router';
 import ToggleMode from '@/components/ToggleMode';

@@ -1,4 +1,4 @@
-import { IWakaLangStats } from '@/typings/types';
+import { IWakaLangStats } from '@/typings';
 import styles from '@/styles/waka-stats.module.css';
 
 const WIDTH = 350;

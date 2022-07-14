@@ -1,5 +1,5 @@
 import { getNowPlaying } from '@/lib/spotify-api';
-import { ICurrentlyPlaying } from '@/typings/types';
+import { ICurrentlyPlaying } from '@/typings';
 // import { NextApiRequest, NextApiResponse } from 'next';
 
 export const config = {

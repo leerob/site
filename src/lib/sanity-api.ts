@@ -1,4 +1,4 @@
-import { IPost, ISnippet } from '@/typings/types';
+import { IPost, ISnippet } from '@/typings';
 
 import { sanityClient, getClient } from './sanity-server';
 

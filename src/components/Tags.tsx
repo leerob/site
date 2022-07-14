@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ITag } from '@/typings/types';
+import { ITag } from '@/typings';
 
 export function Tags({ tags }: { tags?: ITag[] }) {
   return (

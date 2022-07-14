@@ -1,7 +1,7 @@
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import { getTagSlugs, getPostsByTag } from '@/lib/sanity-api';
-import { IParams, IPost } from '@/typings/types';
+import { IParams, IPost } from '@/typings';
 
 export default function TagPage({
   posts,

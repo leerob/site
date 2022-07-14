@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Sitemap: https://svirins.codes/sitemap.xml
+Allow: /
+
+# Host
+Host: undefined
+
+# Sitemaps
+Sitemap: undefined/sitemap.xml

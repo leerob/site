@@ -1,7 +1,7 @@
 import Image from 'next/future/image';
 import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
-import { IWakaLangStats } from '@/typings/types';
+import { IWakaLangStats } from '@/typings';
 import WakaStats from '@/components/WakaStats';
 import Skills from '@/components/Skills';
 

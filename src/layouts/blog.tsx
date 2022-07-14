@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 import BlurredImage from '@/components/Image';
 import Container from '@/components/Container';
-import { IPost } from '@/typings/types';
+import { IPost } from '@/typings';
 import { urlForImage } from '@/lib/sanity-client';
 import { Tags } from '@/components/Tags';
 

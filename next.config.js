@@ -10,13 +10,13 @@ module.exports = {
       'cdn.sanity.io', // Sanity images
       'img.shields.io', // Unsplash (?)
       'twemoji.maxcdn.com' // Twemoji svg
-    ]
+    ],
+    formats: ['image/webp']
   },
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-    images: { allowFutureImage: true },
-    formats: ['image/webp']
+    images: { allowFutureImage: true }
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

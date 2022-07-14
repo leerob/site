@@ -50,7 +50,8 @@ export default createConfig({
           {
             name: 'date',
             title: 'Date',
-            type: 'datetime'
+            type: 'datetime',
+            initialValue: new Date().toISOString()
           },
           {
             name: 'tags',
@@ -102,9 +103,9 @@ export default createConfig({
             validation: (Rule) => Rule.required()
           },
           {
-            name: 'logo',
-            title: 'Logo',
-            type: 'image',
+            name: 'icon',
+            title: 'Simple Icon',
+            type: 'string',
             validation: (Rule) => Rule.required()
           }
         ]

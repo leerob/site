@@ -3,11 +3,11 @@ import BlogLayout from '@/layouts/blog';
 import components from '@/components/MDXComponents';
 import { getPost, getPostSlugs } from '@/lib/sanity-api';
 import { mdxToHtml } from '@/lib/mdx';
-import { IParams, IPost } from '@/typings/types';
+import { IParams, IPost } from '@/typings';
 
 // TODO: consider lazy hydration for MDXRemote
 export default function PostPage({ post }: { post: IPost }) {
-  return ( 
+  return (
     <BlogLayout post={post}>
       <MDXRemote
         {...post.mdxContent!}

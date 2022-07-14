@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Tags } from '@/components/Tags';
-import { ITag } from '@/typings/types';
+import { ITag } from '@/typings';
 
 export default function BlogPost({
   slug,

@@ -2,8 +2,7 @@
   "private": true,
   "license": "custom",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "next build",
+    "build": "next build && pnpm next-sitemap",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
@@ -60,7 +59,7 @@
     "groq": "^2.29.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "next-sitemap": "^3.1.10",
+    "next-sitemap": "^3.1.11",
     "postcss": "^8.4.14",
     "prettier": "2.7.1",
     "reading-time": "^1.5.0",
