@@ -30,7 +30,7 @@ export const getPost = async (
   preview: boolean
 ): Promise<IPost> => {
   const { post } = await getClient(preview).fetch(postQuery, { slug: slug });
-  return post;
+  return post ?? null;
 };
 
 export const getPostBySlug = async (
@@ -38,21 +38,21 @@ export const getPostBySlug = async (
   preview: boolean
 ): Promise<IPost> => {
   const { post } = await getClient(preview).fetch(postBySlugQuery, { slug });
-  return post;
+  return post ?? null;
 };
 export const getUpdatedPostSlug = async (id: string): Promise<string> => {
   const slug = sanityClient.fetch(postUpdatedQuery, { id });
-  return slug;
+  return slug ?? null;
 };
 
 export const getSnippets = async (preview: boolean): Promise<ISnippet[]> => {
   const snippets = await getClient(preview).fetch(allSnippetsQuery);
-  return snippets;
+  return snippets ?? null;
 };
 
 export const getSnippetSlugs = async (): Promise<string[]> => {
   const slugs = await sanityClient.fetch(snippetSlugsQuery);
-  return slugs;
+  return slugs ?? null;
 };
 
 export const getSnippet = async (
@@ -60,20 +60,21 @@ export const getSnippet = async (
   preview: boolean
 ): Promise<ISnippet> => {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, { slug });
-  return snippet;
+  return snippet ?? null;
 };
 
 export const getTagSlugs = async (): Promise<string[]> => {
   const slugs = await sanityClient.fetch(tagSlugsQuery);
-  return slugs;
+  return slugs ?? null;
 };
 
 export const getPostsByTag = async (
-  slug: string
+  slug: string,
+  preview: boolean
 ): Promise<{
   title: string;
   posts: IPost[];
 }> => {
-  const posts = await sanityClient.fetch(tagRelatedPosts, { slug });
-  return posts ?? [];
+  const posts = await getClient(preview).fetch(tagRelatedPosts, { slug });
+  return posts ?? null;
 };

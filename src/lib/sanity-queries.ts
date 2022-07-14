@@ -79,6 +79,6 @@ export const snippetSlugsQuery = groq`
 
 // tag-related queries
 
-export const tagSlugsQuery = groq`*[_type == 'tag'] {
-  "slug": slug.current,
-}`;
+export const tagSlugsQuery = groq`
+*[_type == "tag" && defined(slug.current)][].slug.current
+`;

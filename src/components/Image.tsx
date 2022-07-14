@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { ImageProps } from 'next/future/image';
 
 import { IMAGES } from '@/config';
-
+// FIXME: images not showing up
 export default function BlurredImage(props: ImageProps) {
   const [isLoading, setLoading] = useState(true);
   return (

@@ -20,15 +20,16 @@ export default function Snippets({
           shell scripts, functions, dirty hacks 🤓 ... whatever.
         </p>
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
-          {snippets.map((snippet) => (
-            <FunctionCard
-              key={snippet.slug}
-              title={snippet.title}
-              slug={snippet.slug}
-              logo={snippet.logo}
-              description={snippet.description}
-            />
-          ))}
+          {snippets?.length &&
+            snippets?.map((snippet) => (
+              <FunctionCard
+                key={snippet.slug}
+                title={snippet.title}
+                slug={snippet.slug}
+                logo={snippet.logo}
+                description={snippet.description}
+              />
+            ))}
         </div>
       </div>
     </Container>

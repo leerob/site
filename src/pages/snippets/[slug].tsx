@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
-  preview
+  preview = false
 }: {
   params: IParams;
   preview: boolean;

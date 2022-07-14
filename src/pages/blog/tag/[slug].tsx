@@ -10,8 +10,6 @@ export default function TagPage({
   posts: IPost[];
   title: string;
 }) {
-  console.log('tag is:', title);
-  console.log('posts are', posts);
   return (
     <Container
       title={`Posts for tag ${title}`}
@@ -26,9 +24,8 @@ export default function TagPage({
             In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
             Use the search below to filter by title.`}
         </p>
-        {posts &&
-          posts.length > 0 &&
-          posts.map((post) => (
+        {posts?.length > 0 &&
+          posts?.map((post) => (
             <BlogPost
               key={post.title}
               slug={post.slug}
@@ -45,12 +42,18 @@ export default function TagPage({
 export async function getStaticPaths() {
   const paths = await getTagSlugs();
   return {
-    paths: paths.map((slug) => ({ params: { slug: `/tag/${slug}` } })),
+    paths: paths.map((slug) => ({ params: { slug: slug } })),
     fallback: 'blocking'
   };
 }
 
-export async function getStaticProps({ params }: { params: IParams }) {
-  const { posts, title } = await getPostsByTag(params.slug);
+export async function getStaticProps({
+  params,
+  preview = false
+}: {
+  params: IParams;
+  preview: boolean;
+}) {
+  const { posts, title } = await getPostsByTag(params.slug, preview);
   return { props: { posts, title } };
 }
