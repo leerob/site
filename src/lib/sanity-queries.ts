@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { POSTS_LIMIT } from '@/config';
+import { POSTS_LIMIT } from '@/layouts/config';
 const postFields = `
   _id,
   title,
@@ -46,7 +46,6 @@ export const postBySlugQuery = groq`
   ${postFields}
 }
 `;
-// FIXME
 export const tagRelatedPosts = groq`
 *[_type == "tag" && slug.current == $slug] {
   title,

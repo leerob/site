@@ -70,9 +70,3 @@ export interface IWakaLangStats {
 export interface IViews {
   total: number;
 }
-
-export interface ITwemoji {
-  emoji: string;
-  size?: 'twa-lg' | 'twa-2x' | 'twa-3x' | 'twa-4x' | 'twa-5x';
-  className?: string;
-}

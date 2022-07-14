@@ -6,7 +6,7 @@ import NavItem from '@/components/NavItem';
 import { useRouter } from 'next/router';
 import ToggleMode from '@/components/ToggleMode';
 
-import { NAV_LINKS } from '@/config';
+import { NAV_LINKS } from '@/layouts/config';
 
 export default function Container(props: IContainerProps) {
   // Preparing metadata passing into NextSeo

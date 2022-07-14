@@ -5,7 +5,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
-// TODO: consider adding extra plugins
+
 export async function mdxToHtml(source: string) {
   const mdxSource = await serialize(source, {
     mdxOptions: {

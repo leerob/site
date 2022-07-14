@@ -1,20 +1,18 @@
-import cn from 'classnames';
+import React, { memo } from 'react';
+import Image from 'next/future/image';
 
-import { toKebabCase } from '@/lib/content-utils';
-import { ITwemoji } from '@/typings/types';
+const Twemoji = ({ emoji, size = 72 }: { emoji: string; size?: number }) => {
+  const img = emoji.codePointAt(0)!.toString(16);
 
-const Twemoji = ({ emoji, size = 'twa-lg', className }: ITwemoji) => {
+  console.log(img);
   return (
-    <i
-      className={cn(
-        className,
-        'inline-block',
-        'twa',
-        `twa-${toKebabCase(emoji)}`,
-        size
-      )}
+    <Image
+      src={`https://twemoji.maxcdn.com/v/latest/svg/${img}.svg`}
+      height={size}
+      width={size}
+      alt={emoji}
     />
   );
 };
 
-export default Twemoji;
+export default memo(Twemoji);

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import useDelayedRender from 'use-delayed-render';
 import { useState, useEffect } from 'react';
 import styles from '@/styles/mobile-menu.module.css';
-import { NAV_LINKS } from '@/config';
+import { NAV_LINKS } from '@/layouts/config';
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

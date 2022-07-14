@@ -1,4 +1,4 @@
-import { SANITY_CONFIG } from '@/config';
+import { SANITY_CONFIG } from '@/layouts/config';
 import createImageUrlBuilder from '@sanity/image-url';
 export const imageBuilder = createImageUrlBuilder(SANITY_CONFIG);
 
