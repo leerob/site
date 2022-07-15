@@ -28,7 +28,7 @@ export interface ISnippet {
   content: string;
   title: string;
   description: string;
-  icon: string;
+  iconTitle: string;
   mdxContent: MDXRemoteSerializeResult;
 }
 
@@ -78,9 +78,9 @@ export interface ITwemoji {
 }
 
 export interface IStack {
-  Icon: IconType;
+  icon: string;
   url: string;
-  title: string;
+  iconTitle: string;
   color: string;
   featured?: boolean;
 }

@@ -18,7 +18,7 @@ const snippetFields = groq`
   _id,
   title,
   description,
-  icon,
+  iconTitle,
   "slug": slug.current,
 `;
 

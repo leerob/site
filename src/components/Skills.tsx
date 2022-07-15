@@ -11,9 +11,7 @@ export default function Skills() {
     <div className="grid overflow-hidden grid-cols-10 grid-rows-2 gap-2 justify-center">
       {memoizedStacks.map(({ Icon, url }) => (
         <div key={url}>
-          <ExternalLink href={url}>
-            <Icon className="w-8 h-8" />
-          </ExternalLink>
+          <ExternalLink href={url}>{Icon}</ExternalLink>
         </div>
       ))}
     </div>

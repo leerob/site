@@ -25,6 +25,7 @@ const Twemoji = ({ emoji, size = 'base' }: ITwemoji) => {
       height={getSize(size)}
       width={getSize(size)}
       alt={emoji}
+      className="inline-block"
     />
   );
 };

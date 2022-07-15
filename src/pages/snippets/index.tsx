@@ -26,7 +26,7 @@ export default function Snippets({
                 key={snippet.slug}
                 title={snippet.title}
                 slug={snippet.slug}
-                icon={snippet.icon}
+                iconTitle={snippet.iconTitle}
                 description={snippet.description}
               />
             ))}

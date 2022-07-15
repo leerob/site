@@ -103,8 +103,8 @@ export default createConfig({
             validation: (Rule) => Rule.required()
           },
           {
-            name: 'icon',
-            title: 'Simple Icon',
+            name: 'iconTitle',
+            title: 'Icon Title',
             type: 'string',
             validation: (Rule) => Rule.required()
           }
