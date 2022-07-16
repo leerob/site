@@ -2,14 +2,13 @@ import NowPlaying from '@/components/NowPlaying';
 import { SiTwitter, SiGithub, SiGmail } from 'react-icons/si';
 import ExternalLink from '@/components/ExternalLink';
 import Link from 'next/link';
-import Logo from '@/components/Logo';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
-      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+    <footer className="flex flex-col items-start  md:items-center  max-w-2xl w-full mx-auto mb-4">
+      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-4" />
       <NowPlaying />
-      <div className="w-full max-w-2xl items-center flex ">
+      <div className="flex mb-4 space-x-4">
         <ExternalLink href="https://twitter.com/svirins">
           <SiTwitter />
         </ExternalLink>
@@ -20,31 +19,26 @@ export default function Footer() {
           <SiGmail />
         </ExternalLink>
       </div>
-      <Logo />
-      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-        <div>{`Copyright © ${new Date().getFullYear()}`}</div>
+
+      <p className=" text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Copyright ©{' '}
+        <span className="font-medium">{new Date().getFullYear()}</span>
         <span>{` • `}</span>
-        <Link href="/">Dzmitry Svirin</Link>
-      </div>
-      <div className="text-sm text-gray-500 dark:text-gray-400">
-        <span className="font-bold">Credit: </span>
-        <span>The code of this site was originally a fork of</span>
+        Dzmitry Svirin
+      </p>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        <span>The code of this site was originally a fork of </span>
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-500"
+          className="text-gray-700 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400 font-medium"
           href="https://leerob.io"
         >
           Lee Robinson
         </a>
         <span> personal site </span>
         <span>though massivle refactored</span>
-      </div>
-      <div className="text-gray-700 dark:text-gray-200">
-        The codebase of this site codebase was originally created from a forl a
-        fork of leerob.io , however deeply refacored. my deepest thanks to Lee
-        Robinson
-      </div>
+      </p>
     </footer>
   );
 }

@@ -33,7 +33,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
               src="/svirins.webp"
               sizes="30vw"
               priority
-              className="rounded-full filter grayscale"
+              className="rounded-full"
             />
           </div>
         </div>
