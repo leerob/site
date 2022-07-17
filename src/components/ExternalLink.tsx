@@ -10,7 +10,7 @@ export default function ExternalLink({
   return (
     <a
       className={cn(
-        'fill-current text-gray-700 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400'
+        'fill-current delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-100 dark:hover:text-emerald-400 transition-all '
       )}
       href={href}
     >

@@ -13,10 +13,12 @@ export default function FunctionCard({
     <>
       <Link href={`/snippets/${slug}`}>
         <a
-          className="border border-grey-200 dark:border-gray-800 rounded p-4 w-full bg-white dark:bg-gray-900"
+          className="border border-grey-200 hover:border-pink-400 dark:border-gray-800  hover:dark:border-emerald-400 rounded p-4 w-full bg-white dark:bg-gray-900 delay-200 transition-all"
           {...rest}
         >
-          <StackIcon iconTitle={iconTitle!} size="lg" className="py-4" />
+          <div className="pb-4">
+            <StackIcon iconTitle={iconTitle!} />
+          </div>
           <h3 className="text-lg font-bold text-left mt-2 text-gray-900 dark:text-gray-100">
             {title}
           </h3>
