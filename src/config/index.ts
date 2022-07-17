@@ -53,3 +53,11 @@ export const IMAGES = {
 };
 
 export const POSTS_LIMIT = 200;
+
+export const TYPED_STRINGS = [
+  `Hey! Check out the nice libraryTyped.js!</a>`,
+  `It's animating <b>any text</b> you pass to it. <b>Just one line</b> of code!`,
+  `In this example I've used React.js wrapper for Typed.js: <b>react-typed</b>`,
+  `Such a cool effect, isn't it?`,
+  `Follow <b>@room_js</b> to get more web development tricks!`
+];

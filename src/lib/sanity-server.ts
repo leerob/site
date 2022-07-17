@@ -4,7 +4,7 @@
  * code that is not used on the client side.
  */
 import { createClient } from 'next-sanity';
-import { SANITY_CONFIG } from '@/layouts/config';
+import { SANITY_CONFIG } from '@/config';
 
 export const sanityClient = createClient(SANITY_CONFIG);
 

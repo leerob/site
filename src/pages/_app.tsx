@@ -6,7 +6,7 @@ import { usePanelbear } from '@panelbear/panelbear-nextjs';
 import { Analytics } from '@/components/Analytics';
 import { DefaultSeo } from 'next-seo';
 
-import { DEFAULT_SEO } from '@/layouts/config';
+import { DEFAULT_SEO } from '@/config';
 
 export default function App({ Component, pageProps }: AppProps) {
   usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_SITE_ID, {

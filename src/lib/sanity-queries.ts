@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { POSTS_LIMIT } from '@/layouts/config';
+import { POSTS_LIMIT } from '@/config';
 const postFields = `
   _id,
   title,

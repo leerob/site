@@ -4,7 +4,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { ImageProps } from 'next/future/image';
 
-import { IMAGES } from '@/layouts/config';
+import { IMAGES } from '@/config';
 export default function BlurredImage(props: ImageProps) {
   const [isLoading, setLoading] = useState(true);
   return (

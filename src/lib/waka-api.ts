@@ -1,4 +1,4 @@
-import { WAKATIME_API_ENDPOINT } from '@/layouts/config';
+import { WAKATIME_API_ENDPOINT } from '@/config';
 
 export const getWakaStats = async () => {
   const response = await fetch(WAKATIME_API_ENDPOINT);

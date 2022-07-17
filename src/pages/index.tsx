@@ -3,7 +3,7 @@ import Image from 'next/future/image';
 import Link from 'next/link';
 import Container from '@/components/Container';
 import Twemoji from '@/components/Twemoji';
-
+import TypewriterEffect from '@/components/TypewriterEffect';
 export default function Home() {
   return (
     <Suspense fallback={null}>
@@ -12,10 +12,9 @@ export default function Home() {
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
               <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-                Hi, <Twemoji emoji="😀" size="lg" />
+                Hi, <Twemoji emoji="😀" />
                 my name is
               </h1>
-
               <Twemoji emoji="👋" size="lg" />
               <h1 className="text-gray-700 dark:text-gray-200 mb-4 text-xl md:text-3xl">
                 Dzmitry Svirin
@@ -23,6 +22,9 @@ export default function Home() {
               <h1 className="text-gray-700 dark:text-gray-200 mb-4">
                 I <em>build</em> things for the web.
               </h1>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                <TypewriterEffect />
+              </p>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
                 I&apos;m a full-stack developer passionate about TypeScript,
                 React ecosystem and databases.
