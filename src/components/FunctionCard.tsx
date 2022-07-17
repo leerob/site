@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getStackIcon } from '@/lib/simple-icons';
+import StackIcon from '@/components/StackIcon';
 import { ISnippet } from '@/typings';
 
 export default function FunctionCard({
@@ -16,7 +16,7 @@ export default function FunctionCard({
           className="border border-grey-200 dark:border-gray-800 rounded p-4 w-full bg-white dark:bg-gray-900"
           {...rest}
         >
-          {getStackIcon(iconTitle!)}
+          <StackIcon iconTitle={iconTitle!} size="lg" className="py-4" />
           <h3 className="text-lg font-bold text-left mt-2 text-gray-900 dark:text-gray-100">
             {title}
           </h3>

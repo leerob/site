@@ -84,3 +84,10 @@ export interface IStack {
   color: string;
   featured?: boolean;
 }
+
+export interface IStackIcon {
+  iconTitle: string;
+  isLink?: boolean;
+  size?: 'base' | 'lg' | 'xl';
+  className?: string;
+}

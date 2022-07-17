@@ -1,3 +1,5 @@
+import { IStackIcon } from '@/typings';
+
 import {
   SiAlgolia,
   SiAmazonaws,
@@ -27,6 +29,7 @@ import {
   SiTypescript,
   SiVercel
 } from 'react-icons/si';
+import ExternalLink from '@/components/ExternalLink';
 
 export const STACKS = [
   {
@@ -251,8 +254,15 @@ export const STACKS = [
   }
 ];
 
-export function getStackIcon(iconTitle: string) {
-  return (
-    STACKS.find((stack) => stack.iconTitle === iconTitle)?.Icon ?? 'SiLinux'
-  );
+export default function StackIcon({
+  iconTitle,
+  isLink = false,
+  size = 'base',
+  className = ''
+}: IStackIcon) {
+  const { Icon, url, featured, color } =
+    STACKS.find((stack) => stack.iconTitle === iconTitle) ?? STACKS[0];
+  return Icon;
 }
+
+// className = 'w-8 h-8 fill-current text-gray-700 dark:text-gray-200';

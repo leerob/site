@@ -3,9 +3,11 @@ import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings';
 import WakaStats from '@/components/WakaStats';
-import Skills from '@/components/Skills';
+import { useMemo } from 'react';
+import StackIcon, { STACKS } from '@/components/StackIcon';
 
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
+  const memoizedStacks = useMemo(() => STACKS, []);
   return (
     <Container title="About page | Dzmitry Svirin">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
@@ -42,7 +44,9 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2>
             Technologies I use every day, frequently and from time to time:
           </h2>
-          <Skills />
+          {memoizedStacks.map((el, index) => (
+            <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
+          ))}
           <p>and mention Sanity</p>
         </div>
         <div className="mb-8 prose dark:prose-dark leading-6">
