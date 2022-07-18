@@ -4,10 +4,10 @@ import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings';
 import Twemoji from '@/components/Twemoji';
 
-import WakaStats from '@/components/WakaStats';
+import WakaStats from '@/components/Stats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
-
+// TODO: mention Sanity is stacks
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS, []);
   return (
@@ -58,34 +58,37 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h1 className="text-gray-700 dark:text-gray-200 mb-4">
             Technologies I use every day, frequently and from time to time:
           </h1>
-          <div className="grid overflow-hidden grid-cols-10 grid-rows-2 gap-2 justify-center">
+          <div className="grid overflow-hidden grid-cols-10 grid-rows-2 gap-4 justify-center">
             {memoizedStacks.map((el, index) => (
               <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
             ))}
-            <p>and mention Sanity</p>
           </div>
           <h1 className="text-gray-700 dark:text-gray-200 mb-4">
             Weekly coding stats:
           </h1>
-          <WakaStats stats={stats} />
-          <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-            Get in touch:
-          </h2>
-          <p>Feel free to ask me anything!</p>
-          <ul>
-            <li>
-              Twitter: <a href="https://twitter.com/svirins">@svirins</a>
-            </li>
-            <li>
-              GitHub: <a href="https://github.com/svirins">@zvirinz</a>
-            </li>
-            <li>
-              Mail:
-              <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
-            </li>
-          </ul>
-          <h2>Bio</h2>
-          <h3>Job Title</h3>
+          <div className="w-32 h-32 md:w-48 md:h-48">
+            <WakaStats stats={stats} />
+          </div>
+          <div className="prose dark:prose-dark">
+            <h2 className="text-gray-700 dark:text-gray-200 mb-4">
+              Get in touch:
+            </h2>
+            <p>Feel free to ask me anything!</p>
+            <ul>
+              <li>
+                Twitter: <a href="https://twitter.com/svirins">@svirins</a>
+              </li>
+              <li>
+                GitHub: <a href="https://github.com/svirins">@zvirinz</a>
+              </li>
+              <li>
+                Mail:
+                <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
+              </li>
+            </ul>
+            <h2>Bio</h2>
+            <h3>Job Title</h3>
+          </div>
         </div>
       </div>
       <span className="h-16" />
