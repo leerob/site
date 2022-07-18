@@ -1,10 +1,10 @@
 import { TYPED_STRINGS } from '@/config';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import Typed from 'typed.js';
 
 const TypewriterEffect = () => {
   const el = useRef<HTMLSpanElement>(null!);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const typed = new Typed(el.current, {
       strings: TYPED_STRINGS,
       startDelay: 300,
