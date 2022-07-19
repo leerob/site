@@ -7,7 +7,6 @@ import Twemoji from '@/components/Twemoji';
 import WakaStats from '@/components/Stats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
-import DownloadResumeButton from '@/components/DownloadResumeButton';
 // TODO: mention Sanity is stacks
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -37,17 +36,16 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
               In my free time I enjoy, cycling, swimming and good books.
             </p>
           </div>
-          <div className="w-[176px] sm:w-[256px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Dzmitry Svirin"
               height={176}
               width={176}
               src="/svirins.webp"
+              className="rounded-full grayscale"
               sizes="30vw"
               priority
-              className="rounded-full"
             />
-            <DownloadResumeButton />
           </div>
         </div>
       </div>
@@ -77,9 +75,10 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             ))}
           </div>
           <h2 className="text-xl md:text-2xl mb-6 mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
-            Last week&apos;s coding <em>stats</em>:
+            I spent last week <em>coding</em> in:
           </h2>
           <WakaStats stats={stats} />
+          <p>showing top 3 </p>
           <h2 className="text-xl md:text-2xl mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me anything:
           </h2>
@@ -92,8 +91,11 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
                 GitHub: <a href="https://github.com/svirins">@zvirinz</a>
               </li>
               <li>
-                Mail:
-                <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
+                Mail: <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
+              </li>
+              <li>
+                Download resume{' '}
+                <a href="/static/resume_dzmitry_sviryn.pdf">here</a>
               </li>
             </ul>
           </div>
