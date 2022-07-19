@@ -36,7 +36,7 @@ export const STACKS = [
     Icon: (
       <SiAlgolia className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://algolia.com/',
+    url: 'https://www.algolia.com/',
     iconTitle: 'Algolia',
     color: '#00BFB3'
   },
@@ -44,17 +44,19 @@ export const STACKS = [
     Icon: (
       <SiAmazonaws className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://golang.org/',
+    url: 'https://aws.amazon.com/',
     iconTitle: 'Amazon AWS',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiChakraui className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://golang.org/',
+    url: 'https://chakra-ui.com/',
     iconTitle: 'Chakra UI',
-    color: '#00BFB3'
+    color: '#00BFB3',
+    featured: true
   },
   {
     Icon: (
@@ -101,9 +103,10 @@ export const STACKS = [
     Icon: (
       <SiFirebase className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://aws.amazon.com/',
+    url: 'https://firebase.google.com/',
     iconTitle: 'Firebase',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -117,9 +120,10 @@ export const STACKS = [
     Icon: (
       <SiGraphql className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://nextjs.org/',
+    url: 'https://graphql.org/',
     iconTitle: 'GraphQL',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -133,18 +137,19 @@ export const STACKS = [
     Icon: (
       <SiJest className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://cloud.google.com/',
+    url: 'https://jestjs.io/',
     iconTitle: 'Jest',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiLinux className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    featured: true,
-    url: 'https://www.terraform.io/',
+    url: 'https://www.linux.org/',
     iconTitle: 'Linux',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -158,9 +163,10 @@ export const STACKS = [
     Icon: (
       <SiMysql className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.postgresql.org/',
+    url: 'https://www.mysql.com/',
     iconTitle: 'MySQL',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -174,10 +180,10 @@ export const STACKS = [
     Icon: (
       <SiNextdotjs className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    featured: true,
-    url: 'https://www.postgresql.org/',
+    url: 'https://www.nextjs.org/',
     iconTitle: 'Next.js',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -185,15 +191,17 @@ export const STACKS = [
     ),
     url: 'https://www.python.org/',
     iconTitle: 'PostgreSQL',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiPrisma className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://www.prisma.io/',
     iconTitle: 'Prisma',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
@@ -207,40 +215,44 @@ export const STACKS = [
     Icon: (
       <SiReact className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://www.reactjs.org/',
     iconTitle: 'React',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiStripe className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://www.stripe.com/',
     iconTitle: 'Stripe',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiSupabase className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://www.supabase.com/',
     iconTitle: 'Supabase',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiTailwindcss className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://www.tailwindscss.com/',
     iconTitle: 'Tailwind CSS',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   },
   {
     Icon: (
       <SiTypescript className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
     featured: true,
-    url: 'https://www.python.org/',
+    url: 'https://www.typescriptlang.org/',
     iconTitle: 'Typescript',
     color: '#FFC107'
   },
@@ -248,19 +260,21 @@ export const STACKS = [
     Icon: (
       <SiVercel className="w-10 h-10 fill-current text-gray-700 dark:text-gray-200" />
     ),
-    url: 'https://www.python.org/',
+    url: 'https://vercel.com/',
     iconTitle: 'Vercel',
-    color: '#FFC107'
+    color: '#FFC107',
+    featured: true
   }
 ];
 
-export default function StackIcon({
-  iconTitle,
-  isLink = false,
-  size = 'base',
-  className = ''
-}: IStackIcon) {
-  const { Icon, url } =
+export default function StackIcon({ iconTitle, isLink = false }: IStackIcon) {
+  const { Icon, url, color } =
     STACKS.find((stack) => stack.iconTitle === iconTitle) ?? STACKS[0];
-  return isLink ? <ExternalLink href={url}>{Icon}</ExternalLink> : Icon;
+  return isLink ? (
+    <ExternalLink color={color} href={url}>
+      {Icon}
+    </ExternalLink>
+  ) : (
+    Icon
+  );
 }

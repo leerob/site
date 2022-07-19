@@ -78,9 +78,11 @@ html {
 }
 
 .prose a {
-  @apply transition-all;
+  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-100 dark:hover:text-emerald-400 duration-300;
 }
-
+a {
+  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-100 dark:hover:text-emerald-400 duration-300;
+}
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;
   content: '#';

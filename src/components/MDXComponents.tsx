@@ -3,7 +3,7 @@ import ProsCard from '@/components/ProsCard';
 import ConsCard from '@/components/ConsCard';
 import BlurredImage from '@/components/Image';
 import Twemoji from '@/components/Twemoji';
-
+// TODO: refactor with Twemoji
 const Callout = ({
   emoji,
   children
