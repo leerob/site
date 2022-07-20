@@ -35,7 +35,6 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: ^4.4.0
-  react-minimal-pie-chart: ^8.3.0
   reading-time: ^1.5.0
   rehype: 12.0.1
   rehype-autolink-headings: 6.1.1
@@ -72,7 +71,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
-  react-minimal-pie-chart: 8.3.0_biqbaboplfbrettd7655fr4n2y
   sanity: 3.0.0-dev-preview.11_mvovwglhsxmxvbl5ajj3h6kklm
   sanity-plugin-markdown: 3.0.0-studio-v3.1_kmyibovjcpszogcngt57nwxjgu
   sharp: 0.30.7
@@ -8424,16 +8422,6 @@ packages:
     peerDependencies:
       react: ^17.0.0
       react-dom: ^17.0.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-minimal-pie-chart/8.3.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-ICot74PGPrmGkaie8O+5tRZ5ivukYQ3fRN5ppvw1J01sIa5tHO9cekakyv9nXUkxKifiKn/FQu5uWHfSD39mRQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18
-      react-dom: ^16.8.0 || ^17.0.0 || ^18
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0

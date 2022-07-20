@@ -21,15 +21,15 @@ export default function Home() {
               <TypewriterEffect />
             </p>
           </div>
-          <div className="w-[176px] sm:w-[256px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Dzmitry Svirin"
               height={176}
               width={176}
               src="/svirins.webp"
+              className="rounded-full grayscale"
               sizes="30vw"
               priority
-              className="rounded-full"
             />
           </div>
         </div>

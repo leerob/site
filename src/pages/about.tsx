@@ -4,7 +4,7 @@ import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings';
 import Twemoji from '@/components/Twemoji';
 
-import WakaStats from '@/components/Stats';
+import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 // TODO: mention Sanity is stacks
@@ -69,7 +69,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Technologies I use <em>frequently</em>:
           </h2>
-          <div className="grid overflow-hidden grid-cols-8 grid-rows-2 gap-8 items-center w-full">
+          <div className="grid grid-cols-6 md:grid-cols-8 grid-rows-3 items-center place-content-between min-w-2xl gap-12 mx-auto w-full">
             {memoizedStacks.map((el, index) => (
               <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
             ))}
