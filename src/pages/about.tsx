@@ -6,7 +6,7 @@ import Twemoji from '@/components/Twemoji';
 
 import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
-import StackIcon, { STACKS } from '@/components/StackIcon';
+import StackIcon, { STACKS, SanityIcon } from '@/components/StackIcon';
 // TODO: mention Sanity is stacks
 
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
@@ -16,24 +16,24 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="text-3xl md:text-5xl tracking-tight  text-black dark:text-white mb-4 font-bold">
+            <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-semibold">
               Hi, I am Dzmitry&nbsp;
               <Twemoji emoji="👋" />
             </h1>
-            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
               I <em>build</em> things for the web.
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">
+            <p className="text-gray-700 dark:text-gray-300 mb-2">
               I&apos;m a full-stack developer passionate about{' '}
               <span className="font-medium">TypeScript</span>,{' '}
               <span className="font-medium">React</span> ecosystem and&nbsp;
               <span className="font-medium">serverless</span> backends .
             </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">
+            <p className="text-gray-700 dark:text-gray-300 mb-2">
               Currently, self-employed person, based in{' '}
               <span className="font-medium">Tbilisi</span>, 🇬🇪
             </p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-700 dark:text-gray-300">
               In my free time I enjoy, cycling, swimming and good books.
             </p>
           </div>
@@ -61,26 +61,30 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
                 deliver logical, efficient, well-documented code, following best
                 practices
               </li>
-              <li>create value gor business</li>
+              <li>create value for business</li>
               <li>honesty, reliability, responsibility</li>
               <li>be a good person to myself and others</li>
               <li>learn iteratively</li>
             </ul>
           </div>
-          <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+          <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Technologies I use <em>frequently</em>:
           </h2>
           <div className="grid grid-cols-6 md:grid-cols-8 grid-rows-3 items-center place-content-between min-w-2xl gap-12 mx-auto w-full">
             {memoizedStacks.map((el, index) => (
               <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
             ))}
-          </div>
-          <h2 className="text-xl md:text-2xl mb-6 mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
-            I spent last week <em>coding</em> in:
+          </div>{' '}
+          <p className="text-gray-700 dark:text-gray-300 mt-6">
+            Plus, it&apos;s <em>impossible</em> not to mention
+            <SanityIcon />
+          </p>
+          <h2 className="text-xl md:text-2xl mb-6 mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Last week I was <em>coding</em> in:
           </h2>
           <WakaStats stats={stats} />
-          <h2 className="text-xl md:text-2xl mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
-            Feel free to ask me anything:
+          <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Feel free to ask me <em>anything</em>:
           </h2>
           <div className="prose dark:prose-dark">
             <ul>

@@ -18,12 +18,13 @@ export default function BlogPost({
       <a className="w-full">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">
-            <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
+            <h4 className="w-full text-lg font-semibold text-gray-900 md:text-xl dcapsize hover:text-pink-400  dark:text-gray-200 dark:hover:text-emerald-400 transition-all delay-200">
               {title}
             </h4>
           </div>
-          <p className="text-gray-600 dark:text-gray-400">{excerpt}</p>
           <Tags tags={tags} />
+
+          <p className="text-gray-700 dark:text-gray-300">{excerpt}</p>
         </div>
       </a>
     </Link>

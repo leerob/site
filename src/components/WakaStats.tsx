@@ -1,7 +1,7 @@
 import { IWakaLangStats } from '@/typings';
 import cn from 'classnames';
 
-const HEIGHT = 50;
+const HEIGHT = 25;
 const WIDTH = 800;
 
 const WAKA_STATS_COLORS = [
@@ -40,15 +40,15 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <span className={cn(WAKA_STATS_COLORS[index].textColor, 'text-sm')}>
         {lang}
       </span>
-      <span className=" text-gray-600 dark:text-gray-400 text-sm">
+      <span className=" text-gray-700 dark:text-gray-300 text-sm">
         {` • ${text}`}
       </span>
     </div>
   ));
   return (
-    <div className="flex-col w-full">
+    <div className="flex-col w-full min-w-2xl">
       <div className="flex">
-        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="50" width={'100%'}>
+        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="25" width={'100%'}>
           <title id="title">A bar chart showing information</title>
           <desc id="desc">Dzmitry Svirin top 3 programming languages/</desc>
           <Bar
@@ -72,9 +72,12 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
         </svg>
       </div>
       <div className="inline-flex space-x-4  mt-2">{stackedBarComments}</div>
-      <p className=" text-gray-600 dark:text-gray-400 text-sm italic mt-1">
+      <p className=" text-gray-700 dark:text-gray-300 text-sm italic mt-1">
         Stats (top 3) taken from a{' '}
-        <a className="not-italic" href="https://wakatime.com/@svirins">
+        <a
+          className="not-italic  font-semibold"
+          href="https://wakatime.com/@svirins"
+        >
           WakaTime
         </a>
       </p>

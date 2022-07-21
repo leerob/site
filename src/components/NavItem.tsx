@@ -18,7 +18,7 @@ export default function NavItem({
         className={cn(
           isActive
             ? 'font-semibold text-gray-800 dark:text-gray-200'
-            : 'font-normal text-gray-600 dark:text-gray-400',
+            : 'font-normal text-gray-700 dark:text-gray-300',
           'hidden md:inline-block hover:underline transition-all pr-4'
         )}
       >

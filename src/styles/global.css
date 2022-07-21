@@ -186,7 +186,7 @@ pre {
 }
 
 .rehype-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
+  @apply px-5 py-3 font-mono text-sm font-semibold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
 }
 
 .rehype-code-title + pre {
@@ -226,4 +226,16 @@ table {
 
 .prose .callout > p {
   margin: 0 !important;
+}
+
+.prose li {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose li {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose ul {
+  @apply marker:text-gray-700 marker:dark:text-gray-300;
 }

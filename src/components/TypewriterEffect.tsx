@@ -22,7 +22,7 @@ const TypewriterEffect = () => {
     };
   }, []);
 
-  return <span ref={el} className="text-gray-600 dark:text-gray-400 mb-4" />;
+  return <span ref={el} className="text-gray-700 dark:text-gray-300 mb-4" />;
 };
 
 export default TypewriterEffect;

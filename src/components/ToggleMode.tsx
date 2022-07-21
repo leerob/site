@@ -10,7 +10,7 @@ export default function ToggleMode() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-9 h-9 flex items-center justify-center transition-all"
+      className="w-5 h-9 flex items-center justify-center transition-all"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {mounted && (

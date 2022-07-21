@@ -20,7 +20,7 @@ export default function FunctionCard({
           <div className="pb-4">
             <StackIcon iconTitle={iconTitle!} />
           </div>
-          <h3 className="text-lg font-bold text-left mt-2 text-gray-900 dark:text-gray-100">
+          <h3 className="text-lg font-semibold text-left mt-2 text-gray-900 dark:text-gray-100">
             {title}
           </h3>
           <p className="mt-1 text-gray-700 dark:text-gray-400">{description}</p>
