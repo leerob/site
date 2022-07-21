@@ -1,7 +1,6 @@
 import NowPlaying from '@/components/NowPlaying';
 import { SiTwitter, SiGithub, SiGmail } from 'react-icons/si';
-import ExternalLink from '@/components/ExternalLink';
-import Link from 'next/link';
+import cn from 'classnames';
 
 export default function Footer() {
   return (
@@ -9,15 +8,30 @@ export default function Footer() {
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-4" />
       <NowPlaying />
       <div className="flex mb-4 space-x-4">
-        <ExternalLink href="https://twitter.com/svirins">
+        <a
+          className={cn(
+            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150'
+          )}
+          href="https://twitter.com/svirins"
+        >
           <SiTwitter />
-        </ExternalLink>
-        <ExternalLink href="https://github.com/zvirinz">
+        </a>
+        <a
+          className={cn(
+            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150 '
+          )}
+          href="https://github.com/zvirinz"
+        >
           <SiGithub />
-        </ExternalLink>
-        <ExternalLink href="mailto:svirins@gmail.com">
+        </a>
+        <a
+          className={cn(
+            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150 '
+          )}
+          href="mailto:svirins@gmail.com"
+        >
           <SiGmail />
-        </ExternalLink>
+        </a>
       </div>
 
       <p className=" text-sm text-gray-500 dark:text-gray-400 mb-4">

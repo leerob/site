@@ -26,9 +26,9 @@ specifiers:
   lint-staged: ^13.0.3
   motion: ^10.13.1
   next: 12.2.2
-  next-mdx-remote: ^4.0.3
+  next-mdx-remote: ^4.1.0
   next-sanity: ^0.6.0
-  next-seo: ^5.4.0
+  next-seo: ^5.5.0
   next-themes: ^0.2.0
   postcss: ^8.4.14
   prettier: 2.7.1
@@ -44,7 +44,7 @@ specifiers:
   remark-gfm: ^3.0.1
   rss: 1.2.2
   sanity: 3.0.0-dev-preview.11
-  sanity-plugin-markdown: 3.0.0-studio-v3.1
+  sanity-plugin-markdown: 3.0.0-v3-studio.0
   sharp: ^0.30.7
   styled-components: ^5.2.0
   swr: 1.3.0
@@ -64,15 +64,15 @@ dependencies:
   date-fns: 2.28.0
   motion: 10.13.1
   next: 12.2.2_beenoklgwfttvph5dgxj7na7aq
-  next-mdx-remote: 4.0.3_biqbaboplfbrettd7655fr4n2y
+  next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
   next-sanity: 0.6.0_react@18.2.0
-  next-seo: 5.4.0_7gpduzaz4csxytrukenoyuq3te
+  next-seo: 5.5.0_7gpduzaz4csxytrukenoyuq3te
   next-themes: 0.2.0_7gpduzaz4csxytrukenoyuq3te
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
   sanity: 3.0.0-dev-preview.11_mvovwglhsxmxvbl5ajj3h6kklm
-  sanity-plugin-markdown: 3.0.0-studio-v3.1_kmyibovjcpszogcngt57nwxjgu
+  sanity-plugin-markdown: 3.0.0-v3-studio.0_kmyibovjcpszogcngt57nwxjgu
   sharp: 0.30.7
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
   swr: 1.3.0_react@18.2.0
@@ -7245,8 +7245,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-mdx-remote/4.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-jKpZyBN0cOUmfBRId5iGpplWOO79hV2A5qfo17VG4Avn0G5PEs6vR9vf9IngKEw1G4aVqzhCs3j9CEbMFzZoAg==}
+  /next-mdx-remote/4.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-ZdL5AFJcEqvInGkYYRKda930D6AJt1GOLX/OXFE/vTwaqV/Mw+l3/njZ4kWqvYSAkl89Z6W7WZrTtN0fd0XwPg==}
     engines: {node: '>=14', npm: '>=7'}
     peerDependencies:
       react: '>=16.x <=18.x'
@@ -7276,8 +7276,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-seo/5.4.0_7gpduzaz4csxytrukenoyuq3te:
-    resolution: {integrity: sha512-R9DhajPwJnR/lsF2hZ8cN8uqr5CVITsRrCG1AF5+ufcaybKYOvnH8sH9MaH4/hpkps3PQ9H71S7J7SPYixAYzQ==}
+  /next-seo/5.5.0_7gpduzaz4csxytrukenoyuq3te:
+    resolution: {integrity: sha512-5ouBHFtx8YrSDW44lj0qIEQ+oMcz6stgoITB+SqHUZbhgizoJsyLmq73gJ0lxtEKpcN8vG2QgRIJfdb8OAPChw==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
@@ -8978,12 +8978,12 @@ packages:
       diff-match-patch: 1.0.5
     dev: false
 
-  /sanity-plugin-markdown/3.0.0-studio-v3.1_kmyibovjcpszogcngt57nwxjgu:
-    resolution: {integrity: sha512-CQcs9/FnLLhNeioxe1vLPOUZB2Ib9WqYCAxKbwL169vreNL12aAWxjv155Y2VGzB3Xfil8/b7NaoHiODeb4Nhg==}
+  /sanity-plugin-markdown/3.0.0-v3-studio.0_kmyibovjcpszogcngt57nwxjgu:
+    resolution: {integrity: sha512-g/Fl31KxUHHXz2kVTTFsyss2U0DSmdRqFcecdcNSzh4WZVFrxPYUevnrEA/FvooMJfuhBLlDZVu1UirY+1Wnmg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
-      sanity: purple-unicorn
+      sanity: dev-preview
       styled-components: ^5.2.0
     dependencies:
       '@reach/auto-id': 0.17.0_biqbaboplfbrettd7655fr4n2y

@@ -2,11 +2,9 @@ import cn from 'classnames';
 
 export default function ExternalLink({
   href,
-  color,
   children
 }: {
   href: string;
-  color?: string;
   children: React.ReactNode;
 }) {
   return (

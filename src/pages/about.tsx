@@ -8,6 +8,7 @@ import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 // TODO: mention Sanity is stacks
+
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
@@ -77,7 +78,9 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             I spent last week <em>coding</em> in:
           </h2>
-          <WakaStats stats={stats} />
+          <div className="flex-col w-full">
+            <WakaStats stats={stats} />
+          </div>
           <p>showing top 3 </p>
           <h2 className="text-xl md:text-2xl mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me anything:
