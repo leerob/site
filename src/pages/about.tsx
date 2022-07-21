@@ -78,10 +78,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             I spent last week <em>coding</em> in:
           </h2>
-          <div className="flex-col w-full">
-            <WakaStats stats={stats} />
-          </div>
-          <p>showing top 3 </p>
+          <WakaStats stats={stats} />
           <h2 className="text-xl md:text-2xl mt-12 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me anything:
           </h2>
