@@ -22,7 +22,6 @@ export default function BlogPost({
               {title}
             </h4>
           </div>
-          <Tags tags={tags} />
 
           <p className="text-gray-700 dark:text-gray-300">{excerpt}</p>
         </div>

@@ -23,6 +23,7 @@ import {
   SiPrisma,
   SiPnpm,
   SiReact,
+  SiSahibinden,
   SiStripe,
   SiSupabase,
   SiTailwindcss,
@@ -187,6 +188,16 @@ export const STACKS = [
     color: '#FFC107',
     featured: true
   },
+  {
+    Icon: (
+      <SiSahibinden className="w-10 h-10 fill-gray-700  dark:fill-gray-200" />
+    ),
+    url: 'https://www.sanity.io/',
+    iconTitle: 'Sanity',
+    color: '#FFC107',
+    featured: true
+  },
+
   {
     Icon: <SiStripe className="w-10 h-10 fill-gray-700  dark:fill-gray-200" />,
     url: 'https://www.stripe.com/',

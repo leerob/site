@@ -1,3 +1,10 @@
+:root {
+  color-lime-green: 50 205 50;
+  color-vivid-malachite: 0 204 51;
+  color-ufo-green: 60 208 112;
+  color-signal: var(--color-ufo-green);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,10 +85,10 @@ html {
 }
 
 .prose a {
-  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-100 dark:hover:text-emerald-400 duration-300;
+  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-200 font-semibold  dark:hover:text-emerald-400 duration-200;
 }
 a {
-  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-100 dark:hover:text-emerald-400 duration-300;
+  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-200 dark:hover:text-emerald-400 ont-semibold duration-200;
 }
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;

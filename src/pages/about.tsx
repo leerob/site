@@ -6,8 +6,7 @@ import Twemoji from '@/components/Twemoji';
 
 import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
-import StackIcon, { STACKS, SanityIcon } from '@/components/StackIcon';
-// TODO: mention Sanity is stacks
+import StackIcon, { STACKS } from '@/components/StackIcon';
 
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -70,15 +69,11 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Technologies I use <em>frequently</em>:
           </h2>
-          <div className="grid grid-cols-6 md:grid-cols-8 grid-rows-3 items-center place-content-between min-w-2xl gap-12 mx-auto w-full">
+          <div className="grid grid-cols-6 md:grid-cols-8  items-center place-content-between min-w-2xl gap-12 mx-auto w-full">
             {memoizedStacks.map((el, index) => (
               <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
             ))}
-          </div>{' '}
-          <p className="text-gray-700 dark:text-gray-300 mt-6">
-            Plus, it&apos;s <em>impossible</em> not to mention
-            <SanityIcon />
-          </p>
+          </div>
           <h2 className="text-xl md:text-2xl mb-6 mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Last week I was <em>coding</em> in:
           </h2>

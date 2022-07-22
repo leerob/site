@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -6,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-opaque': 'rgb(13 42 148 / 18%)',
+        signal: "rgb(var(--color-signal) / <alpha-value')",
         gray: {
           0: '#fff',
           100: '#fafafa',
