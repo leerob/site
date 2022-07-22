@@ -7,7 +7,7 @@ specifiers:
   '@prisma/client': ^4.1.0
   '@sanity/image-url': ^1.0.1
   '@sanity/webhook': ^2.0.0
-  '@svgr/webpack': ^6.3.0
+  '@svgr/webpack': ^6.3.1
   '@tailwindcss/typography': 0.5.4
   '@types/react': ^18.0.15
   '@types/rss': ^0.0.29
@@ -15,7 +15,7 @@ specifiers:
   autoprefixer: 10.4.7
   classnames: ^2.3.1
   cssnano: ^5.1.12
-  date-fns: 2.29.0
+  date-fns: 2.29.1
   eslint: 8.20.0
   eslint-config-next: 12.2.3
   eslint-config-prettier: ^8.5.0
@@ -61,7 +61,7 @@ dependencies:
   '@sanity/webhook': 2.0.0
   '@tailwindcss/typography': 0.5.4_tailwindcss@3.1.6
   classnames: 2.3.1
-  date-fns: 2.29.0
+  date-fns: 2.29.1
   motion: 10.13.1
   next: 12.2.3_beenoklgwfttvph5dgxj7na7aq
   next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
@@ -83,7 +83,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
-  '@svgr/webpack': 6.3.0
+  '@svgr/webpack': 6.3.1
   '@types/react': 18.0.15
   '@types/rss': 0.0.29
   '@typescript-eslint/parser': 5.30.7_he2ccbldppg44uulnyq4rwocfa
@@ -2416,7 +2416,7 @@ packages:
     dependencies:
       '@sanity/client': 3.3.2
       '@sanity/types': 3.0.0-dev-preview.11
-      date-fns: 2.29.0
+      date-fns: 2.29.1
       lodash: 4.17.21
     transitivePeerDependencies:
       - supports-color
@@ -2430,8 +2430,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@svgr/babel-plugin-add-jsx-attribute/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-3XzJy0dCVEOE2o2Wn8tF9SdQ2na1Q7jJNzIs3+27RHPpEiuqlClBNhIOhPFKr95+bUGtL6nZIgqY8xBhMw0p6g==}
+  /@svgr/babel-plugin-add-jsx-attribute/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-jDBKArXYO1u0B1dmd2Nf8Oy6aTF5vLDfLoO9Oon/GLkqZ/NiggYWZA+a2HpUMH4ITwNqS3z43k8LWApB8S583w==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2439,8 +2439,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-remove-jsx-attribute/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-zD0sTwXpL78pWaxWxCyqimfukPcJfToKuwW1Po00pUeOYT6KuMQrPnG6XIZpLadydOo+fght8SoxwRb5O9TtWA==}
+  /@svgr/babel-plugin-remove-jsx-attribute/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-dQzyJ4prwjcFd929T43Z8vSYiTlTu8eafV40Z2gO7zy/SV5GT+ogxRJRBIKWomPBOiaVXFg3jY4S5hyEN3IBjQ==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2448,8 +2448,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-remove-jsx-empty-expression/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-COsMIL1BRU/ZxFTvd59NFzJPIdvBkV19Jrn7w1NwFmglOUrpchPRSzfW6FzWUh2C8nzJrnjDn6V7i7klVhHZEA==}
+  /@svgr/babel-plugin-remove-jsx-empty-expression/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-HBOUc1XwSU67fU26V5Sfb8MQsT0HvUyxru7d0oBJ4rA2s4HW3PhyAPC7fV/mdsSGpAvOdd8Wpvkjsr0fWPUO7A==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2457,8 +2457,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-replace-jsx-attribute-value/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-mKk2uqn1/7dk2I82fYaiLTw12eqmZZ2ZzH3WVhzzLvMXrLIxc9xYFJBNRMrV+77ZDHd791933HWSNChtGeJLQg==}
+  /@svgr/babel-plugin-replace-jsx-attribute-value/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-C12e6aN4BXAolRrI601gPn5MDFCRHO7C4TM8Kks+rDtl8eEq+NN1sak0eAzJu363x3TmHXdZn7+Efd2nr9I5dA==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2466,8 +2466,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-svg-dynamic-title/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-jdQJa8DZHfo2POTmgl8ZmDEcpTEz4n6RsANle1DbbC8CGq+1k/RV4MkRL1ceqIJCSOW3ypk23gpG5Q4xlSiY7Q==}
+  /@svgr/babel-plugin-svg-dynamic-title/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-6NU55Mmh3M5u2CfCCt6TX29/pPneutrkJnnDCHbKZnjukZmmgUAZLtZ2g6ZoSPdarowaQmAiBRgAHqHmG0vuqA==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2475,8 +2475,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-svg-em-dimensions/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-yPogu5hLcF5FXCU3a3sCtsP+lloLBkIxM+xplumKwIdQNN28qb+HmFxVLUkT0+MD3y+77DjTtukJzkEBqL/BsA==}
+  /@svgr/babel-plugin-svg-em-dimensions/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-HV1NGHYTTe1vCNKlBgq/gKuCSfaRlKcHIADn7P8w8U3Zvujdw1rmusutghJ1pZJV7pDt3Gt8ws+SVrqHnBO/Qw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2484,8 +2484,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-transform-react-native-svg/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-Eso0uWFLN8kpR/MB+mD6j0WOTSUPWpyXpEkYt6sg4GItEMvScWgZV8H986CU09oXceaG8AovgPvYdygiJuRsRA==}
+  /@svgr/babel-plugin-transform-react-native-svg/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-2wZhSHvTolFNeKDAN/ZmIeSz2O9JSw72XD+o2bNp2QAaWqa8KGpn5Yk5WHso6xqfSAiRzAE+GXlsrBO4UP9LLw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2493,8 +2493,8 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-plugin-transform-svg-component/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-e9tSsPAHibGyZDPqQ8a5OIDuuON2YY6+XeCr6WqxVLwj+nIqbUOmNNZpekNsUv/gZ6UbtzEpGfZMiZavpavqDg==}
+  /@svgr/babel-plugin-transform-svg-component/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-cZ8Tr6ZAWNUFfDeCKn/pGi976iWSkS8ijmEYKosP+6ktdZ7lW9HVLHojyusPw3w0j8PI4VBeWAXAmi/2G7owxw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -2502,71 +2502,71 @@ packages:
       '@babel/core': 7.18.6
     dev: true
 
-  /@svgr/babel-preset/6.3.0_@babel+core@7.18.6:
-    resolution: {integrity: sha512-N1UWDZy/kxGW9G4q4jRD+Jyn0N+LmKw0yb9HwAWBZdFBu4ckKtc7lJLHvIFou51r11r/BsZWiJPje3fDLnTMtA==}
+  /@svgr/babel-preset/6.3.1_@babel+core@7.18.6:
+    resolution: {integrity: sha512-tQtWtzuMMQ3opH7je+MpwfuRA1Hf3cKdSgTtAYwOBDfmhabP7rcTfBi3E7V3MuwJNy/Y02/7/RutvwS1W4Qv9g==}
     engines: {node: '>=10'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.6
-      '@svgr/babel-plugin-add-jsx-attribute': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-remove-jsx-attribute': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-remove-jsx-empty-expression': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-replace-jsx-attribute-value': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-svg-dynamic-title': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-svg-em-dimensions': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-transform-react-native-svg': 6.3.0_@babel+core@7.18.6
-      '@svgr/babel-plugin-transform-svg-component': 6.3.0_@babel+core@7.18.6
+      '@svgr/babel-plugin-add-jsx-attribute': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-remove-jsx-attribute': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-remove-jsx-empty-expression': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-replace-jsx-attribute-value': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-svg-dynamic-title': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-svg-em-dimensions': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-transform-react-native-svg': 6.3.1_@babel+core@7.18.6
+      '@svgr/babel-plugin-transform-svg-component': 6.3.1_@babel+core@7.18.6
     dev: true
 
-  /@svgr/core/6.3.0:
-    resolution: {integrity: sha512-olON7KzAQR4oBbnRmSgJkQrpqPbHd6wURAfTR+HN+6GpcJxknEEDC+l+bpEE/jz2K4lcHex91A2cRUlsGMCazg==}
+  /@svgr/core/6.3.1:
+    resolution: {integrity: sha512-Sm3/7OdXbQreemf9aO25keerZSbnKMpGEfmH90EyYpj1e8wMD4TuwJIb3THDSgRMWk1kYJfSRulELBy4gVgZUA==}
     engines: {node: '>=10'}
     dependencies:
-      '@svgr/plugin-jsx': 6.3.0_@svgr+core@6.3.0
+      '@svgr/plugin-jsx': 6.3.1_@svgr+core@6.3.1
       camelcase: 6.3.0
       cosmiconfig: 7.0.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@svgr/hast-util-to-babel-ast/6.3.0:
-    resolution: {integrity: sha512-dlIzHVpWhjMlcTrYUSovfr4MOzm+1I8e9yIAF5eiZU5XNHs8hYDS5xL2QDakt5wd1/2MEtJie97GsCOotlstpA==}
+  /@svgr/hast-util-to-babel-ast/6.3.1:
+    resolution: {integrity: sha512-NgyCbiTQIwe3wHe/VWOUjyxmpUmsrBjdoIxKpXt3Nqc3TN30BpJG22OxBvVzsAh9jqep0w0/h8Ywvdk3D9niNQ==}
     engines: {node: '>=10'}
     dependencies:
       '@babel/types': 7.18.8
       entities: 4.3.1
     dev: true
 
-  /@svgr/plugin-jsx/6.3.0_@svgr+core@6.3.0:
-    resolution: {integrity: sha512-1yr719Dx7c43rgqUaWaYF195bCZ/kZyPk5nWjdRwNaKqfARCfH0tTquD0a9nWkOTFnLSTGytjGdBqLNRw4X0Yw==}
+  /@svgr/plugin-jsx/6.3.1_@svgr+core@6.3.1:
+    resolution: {integrity: sha512-r9+0mYG3hD4nNtUgsTXWGYJomv/bNd7kC16zvsM70I/bGeoCi/3lhTmYqeN6ChWX317OtQCSZZbH4wq9WwoXbw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@svgr/core': ^6.0.0
     dependencies:
       '@babel/core': 7.18.6
-      '@svgr/babel-preset': 6.3.0_@babel+core@7.18.6
-      '@svgr/core': 6.3.0
-      '@svgr/hast-util-to-babel-ast': 6.3.0
+      '@svgr/babel-preset': 6.3.1_@babel+core@7.18.6
+      '@svgr/core': 6.3.1
+      '@svgr/hast-util-to-babel-ast': 6.3.1
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@svgr/plugin-svgo/6.3.0_@svgr+core@6.3.0:
-    resolution: {integrity: sha512-HFbuewy6Gm8jZu1xqbdOB7zKipgf5DgcRG421uVfqgGredBIl1eLt2B0Qr3pFXQE8OTmRqJsZbjKpfrOu1BwkA==}
+  /@svgr/plugin-svgo/6.3.1_@svgr+core@6.3.1:
+    resolution: {integrity: sha512-yJIjTDKPYqzFVjmsbH5EdIwEsmKxjxdXSGJVLeUgwZOZPAkNQmD1v7LDbOdOKbR44FG8465Du+zWPdbYGnbMbw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@svgr/core': ^6.0.0
     dependencies:
-      '@svgr/core': 6.3.0
+      '@svgr/core': 6.3.1
       cosmiconfig: 7.0.1
       deepmerge: 4.2.2
       svgo: 2.8.0
     dev: true
 
-  /@svgr/webpack/6.3.0:
-    resolution: {integrity: sha512-mtIQaV492zUu2Fq1BZRlrFf3PO1ONzfHZCki7h7ZDHWPuPi6hx32X4lNhN+tT4phPw/Sb8xPj7JNHn5Eobm/WQ==}
+  /@svgr/webpack/6.3.1:
+    resolution: {integrity: sha512-eODxwIUShLxSMaRjzJtrj9wg89D75JLczvWg9SaB5W+OtVTkiC1vdGd8+t+pf5fTlBOy4RRXAq7x1E3DUl3D0A==}
     engines: {node: '>=10'}
     dependencies:
       '@babel/core': 7.18.6
@@ -2574,9 +2574,9 @@ packages:
       '@babel/preset-env': 7.18.6_@babel+core@7.18.6
       '@babel/preset-react': 7.18.6_@babel+core@7.18.6
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.6
-      '@svgr/core': 6.3.0
-      '@svgr/plugin-jsx': 6.3.0_@svgr+core@6.3.0
-      '@svgr/plugin-svgo': 6.3.0_@svgr+core@6.3.0
+      '@svgr/core': 6.3.1
+      '@svgr/plugin-jsx': 6.3.1_@svgr+core@6.3.1
+      '@svgr/plugin-svgo': 6.3.1_@svgr+core@6.3.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3890,8 +3890,8 @@ packages:
     resolution: {integrity: sha512-qTcEYLen3r7ojZNgVUaRggOI+KM7jrKxXeSHhogh/TWxYMeONEMqY+hmkobiYQozsGIyg9OYVzO4ZIfoB4I0pQ==}
     dev: false
 
-  /date-fns/2.29.0:
-    resolution: {integrity: sha512-itxguwZHwBR0ats0VpYAVyY65dq1DEsDsfsGxFG11Rrho+zQJTCcjKbxQ7LiU5M2omLJ272bnn63yYFk/YGuVw==}
+  /date-fns/2.29.1:
+    resolution: {integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==}
     engines: {node: '>=0.11'}
     dev: false
 
@@ -9042,7 +9042,7 @@ packages:
       color2k: 2.0.0
       configstore: 5.0.1
       dataloader: 2.1.0
-      date-fns: 2.29.0
+      date-fns: 2.29.1
       debug: 3.2.7
       diff-match-patch: 1.0.5
       esbuild-register: 3.3.3_esbuild@0.14.49

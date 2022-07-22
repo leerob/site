@@ -50,7 +50,7 @@ export default function Footer() {
         >
           Lee Robinson
         </a>
-        <span> personal site </span>
+         personal site, <br/>
         <span>although rewritten virtually the entire.</span>
       </p>
     </footer>

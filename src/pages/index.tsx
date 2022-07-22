@@ -60,7 +60,7 @@ export default function Home() {
               whatever tote bag veniam.{' '}
             </p>
             <Link href="/blog">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-emerald-400 delay-150 transition-all h-6">
                 My thoughts
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/snippets">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-emerald-400 delay-150 transition-all h-6">
                 Collected sinppets
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/about">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all hover:text-emerald-400 delay-150  h-6">
                 Skills & experience
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/static/resune_dzmitry_sviryn.pdf">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all hover:text-emerald-400 delay-150 h-6">
                 My resume
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
