@@ -26,7 +26,9 @@ export default function SnippetLayout({
             <StackIcon iconTitle={snippet.iconTitle!} />
           </div>
         </div>
-        <div className="prose dark:prose-dark w-full">{children}</div>
+        <div className="prose dark:prose-invert prose-slate  w-full">
+          {children}
+        </div>
       </article>
     </Container>
   );

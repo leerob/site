@@ -53,7 +53,7 @@ export default function BlogLayout({
           </p>
         </div>
         <Suspense fallback={null}>
-          <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+          <div className="w-full mt-4 prose prose-slate dark:prose-invert">
             {children}
           </div>
         </Suspense>

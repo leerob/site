@@ -18,6 +18,22 @@
   src: url(/fonts/ibm-plex-sans-var-italic.woff2) format('woff2');
 }
 
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url(/fonts/ibm-plex-mono-var.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: optional;
+  src: url(/fonts/ibm-plex-mono-var-italic.woff2) format('woff2');
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
@@ -76,12 +92,6 @@ html {
   @apply visible;
 }
 
-.prose a {
-  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-200   dark:hover:text-emerald-400 duration-200;
-}
-a {
-  @apply transition-all delay-100 text-gray-800 hover:text-pink-400  dark:text-gray-200 dark:hover:text-emerald-400  duration-200;
-}
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;
   content: '#';
@@ -115,6 +125,10 @@ a {
   margin-bottom: 1.25em !important;
 }
 
+.token {
+  @apply font-mono;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -133,7 +147,7 @@ a {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  @apply text-green-500;
+  @apply text-code-emerald;
 }
 
 .token.selector,
@@ -142,7 +156,7 @@ a {
 .token.char,
 .token.builtin,
 .token.inserted {
-  @apply text-purple-500;
+  @apply text-code-purple;
 }
 
 .token.operator,
@@ -150,24 +164,24 @@ a {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  @apply text-yellow-500;
+  @apply text-code-yellow;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  @apply text-blue-500;
+  @apply text-code-blue;
 }
 
 .token.function,
 .token.class-name {
-  @apply text-pink-500;
+  @apply text-code-pink;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  @apply text-yellow-500;
+  @apply text-code-yellow;
 }
 
 code[class*='language-'],
@@ -193,7 +207,7 @@ pre {
 }
 
 .highlight-line {
-  @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
+  @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-signal dark:bg-gray-800;
 }
 
 /* Remove Safari input shadow on mobile */
@@ -225,16 +239,4 @@ table {
 
 .prose .callout > p {
   margin: 0 !important;
-}
-
-.prose li {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-.prose li {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-.prose ul {
-  @apply marker:text-gray-700 marker:dark:text-gray-300;
 }

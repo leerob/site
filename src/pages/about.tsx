@@ -7,7 +7,7 @@ import Twemoji from '@/components/Twemoji';
 import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
-
+// replace prose
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
@@ -54,18 +54,26 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             My <em>values</em>:
           </h2>
-          <div className="prose dark:prose-dark">
-            <ul>
-              <li>
+          <p className="">
+            <ul className=" marker:text-gray-700 marker:dark:text-gray-300">
+              <li className="text-gray-700 dark:text-gray-300">
                 deliver logical, efficient, well-documented code, following best
                 practices
               </li>
-              <li>create value for business</li>
-              <li>honesty, reliability, responsibility</li>
-              <li>be a good person to myself and others</li>
-              <li>learn iteratively</li>
+              <li className="text-gray-700 dark:text-gray-300">
+                create value for business
+              </li>
+              <li className="text-gray-700 dark:text-gray-300">
+                honesty, reliability, responsibility
+              </li>
+              <li className="text-gray-700 dark:text-gray-300">
+                be a good person to myself and others
+              </li>
+              <li className="text-gray-700 dark:text-gray-300">
+                learn iteratively
+              </li>
             </ul>
-          </div>
+          </p>
           <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Technologies I use <em>frequently</em>:
           </h2>

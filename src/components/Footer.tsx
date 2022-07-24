@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="flex mb-4 space-x-4">
         <a
           className={cn(
-            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150'
+            'delay-100 fill-gray-800 hover:fill-signal  dark:fill-gray-100 dark:hover:fill-signal  transform  duration-150'
           )}
           href="https://twitter.com/svirins"
         >
@@ -18,7 +18,7 @@ export default function Footer() {
         </a>
         <a
           className={cn(
-            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150 '
+            'delay-100 fill-gray-800 hover:fill-signal  dark:fill-gray-100 dark:hover:fill-signal  transform  duration-150 '
           )}
           href="https://github.com/zvirinz"
         >
@@ -26,7 +26,7 @@ export default function Footer() {
         </a>
         <a
           className={cn(
-            'delay-100 fill-gray-800 hover:fill-pink-400  dark:fill-gray-100 dark:hover:fill-emerald-400  transform  duration-150 '
+            'delay-100 fill-gray-800 hover:fill-signal  dark:fill-gray-100 dark:hover:fill-signal  transform  duration-150 '
           )}
           href="mailto:svirins@gmail.com"
         >
@@ -45,12 +45,12 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-200 hover:text-emerald-500 dark:hover:text-emerald-400 font-medium"
+          className="text-gray-700 dark:text-gray-200 hover:text-signal  font-medium"
           href="https://leerob.io"
         >
           Lee Robinson
         </a>
-         personal site, <br/>
+        personal site, <br />
         <span>although rewritten virtually the entire.</span>
       </p>
     </footer>
