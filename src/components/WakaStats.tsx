@@ -6,16 +6,16 @@ const WIDTH = 800;
 
 const WAKA_STATS_COLORS = [
   {
-    barColor: '#2563EB',
-    textColor: 'text-blue-600'
+    barColor: '#3B82F6',
+    textColor: 'text-code-blue'
   },
   {
-    barColor: '#FBBF24',
-    textColor: 'text-amber-400'
+    barColor: '#EAB308',
+    textColor: 'text-code-yellow'
   },
   {
-    barColor: '#F87171',
-    textColor: 'text-red-400'
+    barColor: '#22C55E',
+    textColor: 'text-code-green'
   }
 ];
 
@@ -75,7 +75,7 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <p className=" text-gray-700 dark:text-gray-300 text-sm italic mt-1">
         Stats (top 3) taken from a{' '}
         <a
-          className="not-italic  font-semibold"
+          className="transition-all dark:hover:text-signal  not-italic  font-semibold hover:text-signal delay-150"
           href="https://wakatime.com/@svirins"
         >
           WakaTime

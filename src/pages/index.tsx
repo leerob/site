@@ -10,15 +10,21 @@ export default function Home() {
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="font-semibold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+            <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-semibold">
               Hi, I am Dzmitry&nbsp;
               <Twemoji emoji="👋" />
             </h1>
-            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
               I <em>build</em> things for the web.
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-2">
-              <TypewriterEffect />
+              I&apos;m a full-stack developer passionate about TypeScript, React
+              ecosystem and databases.
+            </p>
+
+            <p className="text-gray-700 dark:text-gray-300 mb-2">
+              I&apos;m a full-stack developer passionate about TypeScript, React
+              ecosystem and databases.
             </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
@@ -36,15 +42,6 @@ export default function Home() {
         <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-16 w-full">
           <div className="flex flex-col items-start">
             <p className="text-gray-700 dark:text-gray-300 mb-2">
-              I&apos;m a full-stack developer passionate about TypeScript, React
-              ecosystem and databases.
-            </p>
-
-            <p className="text-gray-700 dark:text-gray-300 mb-2">
-              I&apos;m a full-stack developer passionate about TypeScript, React
-              ecosystem and databases.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 mb-2">
               La croix 8-bit skateboard ea before they sold out aliqua hot
               chicken in hella gochujang meggings truffaut four dollar toast
               labore. Plaid small batch VHS vaporware shoreditch esse.
@@ -60,7 +57,7 @@ export default function Home() {
               whatever tote bag veniam.{' '}
             </p>
             <Link href="/blog">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-signal delay-150 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-signal dark:hover:text-signal  delay-150 transition-all h-6">
                 My thoughts
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +76,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/snippets">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-signal delay-150 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg  hover:text-signal delay-150 dark:hover:text-signal  transition-all h-6">
                 Collected sinppets
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +95,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/about">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all hover:text-signal delay-150  h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all dark:hover:text-signal   hover:text-signal delay-150  h-6">
                 Skills & experience
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +114,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/static/resune_dzmitry_sviryn.pdf">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all hover:text-signal delay-150 h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-300 leading-7 rounded-lg transition-all dark:hover:text-signal  hover:text-signal delay-150 h-6">
                 My resume
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,8 +132,8 @@ export default function Home() {
                 </svg>
               </a>
             </Link>
-            <p className=" mt-12 text-gray-700 dark:text-gray-300 italic">
-              Thanks for reading!
+            <p className="text-gray-700 dark:text-gray-300 mt-12 italic">
+              <TypewriterEffect />
             </p>
           </div>
         </div>

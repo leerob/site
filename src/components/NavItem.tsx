@@ -17,9 +17,9 @@ export default function NavItem({
       <a
         className={cn(
           isActive
-            ? 'font-bold text-gray-900 dark:text-gray-100'
+            ? 'font-semibold text-gray-900 dark:text-gray-100'
             : 'font-normal text-gray-700 dark:text-gray-300',
-          'hidden md:inline-block  transition-all pr-4'
+          'hidden md:inline-block  transition-all pr-4 delay-150 hover:text-signal dark:hover:text-signal'
         )}
       >
         <span className="capsize">{text}</span>

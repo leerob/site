@@ -6,13 +6,13 @@ export default function ProsCard({
   pros: string[];
 }) {
   return (
-    <div className="border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-900 rounded-xl p-6 my-4 w-full">
+    <div className="border border-[#A7F3D0] dark:border-[#064E3B] bg-[#ECFDF5] dark:bg-[#064E3B] rounded-xl p-6 my-4 w-full">
       <span>{`You might use ${title} if...`}</span>
       <div className="mt-4">
         {pros.map((pro) => (
           <div key={pro} className="flex font-medium items-baseline mb-2">
             <div className="h-4 w-4 mr-2">
-              <svg className="h-4 w-4 text-green-500" viewBox="0 0 24 24">
+              <svg className="h-4 w-4 text-[#10B981]" viewBox="0 0 24 24">
                 <g
                   fill="none"
                   stroke="currentColor"

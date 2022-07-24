@@ -19,7 +19,7 @@ export default function ToggleMode() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          className="w-5 h-5 text-gray-800 dark:text-gray-200 transition-all hover:text-signal delay-150"
+          className="w-5 h-5 text-gray-800 dark:text-gray-200 transition-all hover:text-signal dark:hover:text-signal delay-150"
         >
           {theme === 'dark' || resolvedTheme === 'dark' ? (
             <path

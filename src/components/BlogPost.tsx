@@ -18,7 +18,7 @@ export default function BlogPost({
       <a className="w-full">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">
-            <h4 className="w-full text-lg font-semibold text-gray-900 md:text-xl dcapsize hover:text-signal  dark:text-gray-200 transition-all delay-200">
+            <h4 className="w-full text-lg font-semibold text-gray-900 md:text-xl dcapsize hover:text-signal dark:hover:text-signal   dark:text-gray-200 transition-all delay-200">
               {title}
             </h4>
           </div>

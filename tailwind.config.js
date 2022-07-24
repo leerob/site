@@ -8,10 +8,11 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      'signal-light': 'rgb(0 204 51 / 75%)',
-      signal: 'rgb(0 204 51 / 85%)',
-      'signal-dark': 'rgb(0 204 51 / 95%)',
+      signal: 'rgb(255 0 94 / 95%)',
+      'signal-opaque': 'rgb(255 0 94 / 65%)',
       gray: colors.slate,
+      black: 'rgb(0 0 0 / 99%)',
+      white: 'rgb(255 255 255 / 99%)',
       code: {
         emerald: '#10b981',
         yellow: '#eab308',

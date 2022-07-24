@@ -33,6 +33,13 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-mono-var.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <meta
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
             name="robots"

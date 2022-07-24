@@ -15,7 +15,7 @@ export default function SnippetLayout({
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
         <div className="flex justify-between w-full mb-8">
           <div>
-            <h1 className="font-semibold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+            <h1 className="font-semibold text-3xl capsize md:text-5xl tracking-tight mb-4 text-black dark:text-white">
               {snippet.title}
             </h1>
             <p className="text-gray-700 dark:text-gray-300">
@@ -26,7 +26,7 @@ export default function SnippetLayout({
             <StackIcon iconTitle={snippet.iconTitle!} />
           </div>
         </div>
-        <div className="prose dark:prose-invert prose-slate  w-full">
+        <div className="prose dark:prose-invert prose-slate  max-w-2xl  w-full">
           {children}
         </div>
       </article>

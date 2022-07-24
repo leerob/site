@@ -34,21 +34,21 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className=" text-sm text-gray-500 dark:text-gray-400 mb-4">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 text-center">
         Copyright ©{' '}
         <span className="font-medium">{new Date().getFullYear()}</span>
         <span>{` • `}</span>
         Dzmitry Svirin
       </p>
-      <p className="text-sm text-gray-500 dark:text-gray-400">
+      <p className="w-full text-sm text-gray-500 dark:text-gray-400 text-center">
         <span>The code of this site was originally a fork of </span>
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-200 hover:text-signal  font-medium"
+          className="text-gray-700 dark:text-gray-200 hover:text-signal dark:hover:text-signal font-medium"
           href="https://leerob.io"
         >
-          Lee Robinson
+          Lee Robinson{` `}
         </a>
         personal site, <br />
         <span>although rewritten virtually the entire.</span>

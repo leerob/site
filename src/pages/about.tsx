@@ -54,26 +54,24 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             My <em>values</em>:
           </h2>
-          <p className="">
-            <ul className=" marker:text-gray-700 marker:dark:text-gray-300">
-              <li className="text-gray-700 dark:text-gray-300">
-                deliver logical, efficient, well-documented code, following best
-                practices
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                create value for business
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                honesty, reliability, responsibility
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                be a good person to myself and others
-              </li>
-              <li className="text-gray-700 dark:text-gray-300">
-                learn iteratively
-              </li>
-            </ul>
-          </p>
+          <ul className=" marker:text-gray-700 marker:dark:text-gray-300">
+            <li className="text-gray-700 dark:text-gray-300">
+              deliver logical, efficient, well-documented code, following best
+              practices
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              create value for business
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              honesty, reliability, responsibility
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              be a good person to myself and others
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              learn iteratively
+            </li>
+          </ul>
           <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Technologies I use <em>frequently</em>:
           </h2>
@@ -89,23 +87,44 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me <em>anything</em>:
           </h2>
-          <div className="prose dark:prose-dark">
-            <ul>
-              <li>
-                Twitter: <a href="https://twitter.com/svirins">@svirins</a>
-              </li>
-              <li>
-                GitHub: <a href="https://github.com/svirins">@zvirinz</a>
-              </li>
-              <li>
-                Mail: <a href="mailto:svirins@gmail.com">svirins@gmail.com</a>
-              </li>
-              <li>
-                Download resume{' '}
-                <a href="/static/resume_dzmitry_sviryn.pdf">here</a>
-              </li>
-            </ul>
-          </div>
+          <ul className=" marker:text-gray-700 marker:dark:text-gray-300">
+            <li className="text-gray-700 dark:text-gray-300">
+              Twitter:{' '}
+              <a
+                className="transition-all dark:hover:text-signal   hover:text-signal delay-150"
+                href="https://twitter.com/svirins"
+              >
+                @svirins
+              </a>
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              GitHub:{' '}
+              <a
+                className="transition-all dark:hover:text-signal   hover:text-signal delay-150"
+                href="https://github.com/svirins"
+              >
+                @zvirinz
+              </a>
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              Mail:{' '}
+              <a
+                className="transition-all dark:hover:text-signal   hover:text-signal delay-150"
+                href="mailto:svirins@gmail.com"
+              >
+                svirins@gmail.com
+              </a>
+            </li>
+            <li className="text-gray-700 dark:text-gray-300">
+              Resume:{' '}
+              <a
+                className="transition-all dark:hover:text-signal   hover:text-signal delay-150"
+                href="/static/resume_dzmitry_sviryn.pdf"
+              >
+                click to download
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <span className="h-16" />

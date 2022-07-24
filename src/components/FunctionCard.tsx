@@ -13,7 +13,7 @@ export default function FunctionCard({
     <>
       <Link href={`/snippets/${slug}`}>
         <a
-          className="shadow-lg ring-pink-500/50  dark:ring-pink-800/80 p-4 w-full"
+          className="p-4 w-full border border-gray-200 dark:border-gray-800 rounded"
           {...rest}
         >
           <div className="pb-4">
