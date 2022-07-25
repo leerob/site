@@ -8,18 +8,18 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      signal: 'rgb(255 0 94 / 95%)',
-      'signal-opaque': 'rgb(255 0 94 / 65%)',
+      signal: 'rgb(101 163 13 / 95%)',
+      'signal-opaque': 'rgb(101 163 13 / 65%)',
       gray: colors.slate,
       black: 'rgb(0 0 0 / 99%)',
       white: 'rgb(255 255 255 / 99%)',
       code: {
         emerald: '#10b981',
         yellow: '#eab308',
-        pink: '#ec4899',
+        pink: '#EC4899',
         blue: '#3b82f6',
-        purple: '#a855f7',
-        green: '#a855f7'
+        purple: '#A855F7',
+        green: '#22c55e'
       }
     },
     fontFamily: {

@@ -61,5 +61,6 @@ export const TYPED_STRINGS = [
   `¡Gracias por leer!`,
   `Dzięki za przeczytanie!`,
   `Дзякуй за чытанне!`,
+  `Дякую за читання!`,
   `Grazie per aver letto!`
 ];

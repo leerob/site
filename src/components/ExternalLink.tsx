@@ -10,7 +10,7 @@ export default function ExternalLink({
   return (
     <a
       className={cn(
-        'fill-current delay-100 text-gray-800 hover:text-signal  dark:text-gray-100 dark:hover:text-signal transition-all '
+        'fill-current duration-150 text-gray-800 hover:text-signal  dark:text-gray-100 dark:hover:text-signal ease-in-out  transition-all'
       )}
       href={href}
     >

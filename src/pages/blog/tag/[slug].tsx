@@ -16,10 +16,10 @@ export default function TagPage({
       description="Posts about code, dev life and various other things."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-semibold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
           {`Posts for tag ${title}`}
         </h1>
-        <p className="mb-2 text-gray-700 dark:text-gray-300">
+        <p className="mb-2 text-gray-700 dark:text-gray-400">
           {`I've been writing online since 2022, mostly about web development and Linux thingss.
             In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
             Use the search below to filter by title.`}

@@ -12,10 +12,10 @@ export default function Snippets({
       description="A mix of snippets I've found usefull and want to share"
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-semibold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
           Code Snippets
         </h1>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
+        <p className="mb-4 text-gray-700 dark:text-gray-400">
           Shell scripts, functions and some 🎲 stuff I&apos;ve found useful and
           want to share.
         </p>

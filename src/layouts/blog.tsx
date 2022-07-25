@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import { IPost } from '@/typings';
 import { urlForImage } from '@/lib/sanity-client';
 import { Tags } from '@/components/Tags';
+import ViewCounter from '@/components/ViewsCounter';
 
 export default function BlogLayout({
   children,
@@ -22,7 +23,7 @@ export default function BlogLayout({
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
         <Tags tags={post.tags} />
-        <h1 className="mb-4 text-3xl font-semibold capsize tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold capsize tracking-tight text-black md:text-5xl dark:text-white">
           {post.title}
         </h1>
         {post.coverImage && (
@@ -43,13 +44,14 @@ export default function BlogLayout({
               src="/svirins.webp"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <p className="ml-2 text-sm text-gray-700 dark:text-gray-400">
               {`Dzmitry Svirin  • `}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {post.readingTime}
+            {post.readingTime} {` • `}
+            <ViewCounter slug={post.slug} />
           </p>
         </div>
         <Suspense fallback={null}>

@@ -18,8 +18,8 @@ export default function NavItem({
         className={cn(
           isActive
             ? 'font-semibold text-gray-900 dark:text-gray-100'
-            : 'font-normal text-gray-700 dark:text-gray-300',
-          'hidden md:inline-block  transition-all pr-4 delay-150 hover:text-signal dark:hover:text-signal'
+            : 'font-normal text-gray-700 dark:text-gray-400',
+          'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-signal dark:hover:text-signal ease-in-out'
         )}
       >
         <span className="capsize">{text}</span>

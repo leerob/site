@@ -14,8 +14,8 @@ const WAKA_STATS_COLORS = [
     textColor: 'text-code-yellow'
   },
   {
-    barColor: '#22C55E',
-    textColor: 'text-code-green'
+    barColor: '#A855F7',
+    textColor: 'text-code-purple'
   }
 ];
 
@@ -40,7 +40,7 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <span className={cn(WAKA_STATS_COLORS[index].textColor, 'text-sm')}>
         {lang}
       </span>
-      <span className=" text-gray-700 dark:text-gray-300 text-sm">
+      <span className=" text-gray-800 dark:text-gray-200 text-sm">
         {` • ${text}`}
       </span>
     </div>
@@ -72,10 +72,10 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
         </svg>
       </div>
       <div className="inline-flex space-x-4  mt-2">{stackedBarComments}</div>
-      <p className=" text-gray-700 dark:text-gray-300 text-sm italic mt-1">
+      <p className=" text-gray-700 dark:text-gray-400 text-sm italic mt-1">
         Stats (top 3) taken from a{' '}
         <a
-          className="transition-all dark:hover:text-signal  not-italic  font-semibold hover:text-signal delay-150"
+          className="transition-all dark:hover:text-signal  not-italic  font-semibold hover:text-signal duration-150 ease-in-out"
           href="https://wakatime.com/@svirins"
         >
           WakaTime
