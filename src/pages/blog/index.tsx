@@ -29,13 +29,13 @@ export default function Blog({
           Reasons to start blogging were: overcome shyness 😥, get better
           understanding 👨‍💻 by explaining and be helpful 🦸as possible to others.
         </p>
-        <div className="relative w-full mb-4">
+        <div className="relative w-full my-4">
           <input
             aria-label="Search articles"
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search articles by title"
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus-visible:ring-signal-opaque focus:border-signa-opaquel dark:bg-gray-800 dark:text-gray-100 dark:focus-visible:ring-signal-opaque dark:focus:border-signal-opaque"
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-700  dark:bg-gray-800 dark:text-gray-100 focus:border-signal-opaque dark:focus:border-signal-opaque focus-visible:ring-1 focus:ring-signal focus:outline-none"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-400"
