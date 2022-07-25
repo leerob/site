@@ -48,7 +48,7 @@
     "@svgr/webpack": "^6.3.1",
     "@types/react": "^18.0.15",
     "@types/rss": "^0.0.29",
-    "@typescript-eslint/parser": "^5.30.7",
+    "@typescript-eslint/parser": "^5.31.0",
     "autoprefixer": "10.4.7",
     "cssnano": "^5.1.12",
     "eslint": "8.20.0",

@@ -19,26 +19,22 @@ export default function Blog({
       description="Posts about code, dev life and various other things."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 capsize text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-6 capsize text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Blog
         </h1>
-        <p className="mb-4 text-gray-700 dark:text-gray-400">
+        <p className="mb-4 text-gray-700 dark:text-gray-400 ">
           I&apos;ve been writing online since 2022, mostly about web development
           and Linux things.
           <br />
           Reasons to start blogging were: overcome shyness 😥, get better
-          understanding 👨‍💻 by explaining to others and be helpful 🦸as possible
-          to others.
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-400">
-          Use the search below to filter by title.
+          understanding 👨‍💻 by explaining and be helpful 🦸as possible to others.
         </p>
         <div className="relative w-full mb-4">
           <input
             aria-label="Search articles"
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search articles"
+            placeholder="Search articles by title"
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus-visible:ring-signal-opaque focus:border-signa-opaquel dark:bg-gray-800 dark:text-gray-100 dark:focus-visible:ring-signal-opaque dark:focus:border-signal-opaque"
           />
           <svg
@@ -56,17 +52,23 @@ export default function Blog({
             />
           </svg>
         </div>
-        <Suspense fallback={null}>
-          {filteredBlogPosts.map((post) => (
-            <BlogPost
-              key={post.title}
-              slug={post.slug}
-              title={post.title}
-              excerpt={post.excerpt}
-              tags={post.tags}
-            />
-          ))}
-        </Suspense>
+        <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
+          {filteredBlogPosts.length ? (
+            filteredBlogPosts.map((post) => (
+              <BlogPost
+                key={post.title}
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                tags={post.tags}
+              />
+            ))
+          ) : (
+            <p className=" text-gray-700 dark:text-gray-400 italic">
+              No results found
+            </p>
+          )}
+        </div>
       </div>
     </Container>
   );

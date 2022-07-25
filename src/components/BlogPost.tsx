@@ -15,14 +15,12 @@ export default function BlogPost({
 }) {
   return (
     <Link href={`/blog/${slug}`}>
-      <a className="w-full">
-        <div className="w-full mb-8">
-          <div className="flex flex-col justify-between md:flex-row">
-            <h4 className="w-full text-lg font-semibold text-gray-900 md:text-xl capsize hover:text-signal dark:hover:text-signal ease-in-out   dark:text-gray-200 transition-all duration-150">
-              {title}
-            </h4>
-          </div>
+      <a className=" w-full  duration-150 ease-in-out py-4">
+        <div className="w-full">
           <Tags tags={tags} />
+          <h3 className="text-lg font-semibold text-left text-gray-900 dark:hover:text-signal hover:text-signal dark:text-gray-100">
+            {title}
+          </h3>
           <p className="text-gray-700 dark:text-gray-400">{excerpt}</p>
         </div>
       </a>

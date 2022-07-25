@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     colors: {
       signal: 'rgb(101 163 13 / 95%)',
-      'signal-opaque': 'rgb(101 163 13 / 65%)',
+      'signal-opaque': 'rgb(101 163 13 / 85%)',
       gray: colors.slate,
       black: 'rgb(0 0 0 / 99%)',
       white: 'rgb(255 255 255 / 99%)',

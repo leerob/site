@@ -13,9 +13,9 @@ export default function SnippetLayout({
       description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
     >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
-        <div className="flex justify-between w-full mb-8">
+        <div className="flex justify-between w-full mb-6">
           <div>
-            <h1 className="font-bold text-3xl capsize md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+            <h1 className="font-bold text-3xl  md:text-5xl tracking-tight mb-8 text-black dark:text-white">
               {snippet.title}
             </h1>
             <p className="text-gray-700 dark:text-gray-400">

@@ -19,21 +19,23 @@ export default function TagPage({
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
           {`Posts for tag ${title}`}
         </h1>
-        <p className="mb-2 text-gray-700 dark:text-gray-400">
-          {`I've been writing online since 2022, mostly about web development and Linux thingss.
-            In total, I've written ${posts.length} articles on my blog. Reasons to start blogging were: overcome shyness, get better understanding of some concepts by explaining to others and be helpful as possible to others.
-            Use the search below to filter by title.`}
-        </p>
-        {posts?.length > 0 &&
-          posts?.map((post) => (
-            <BlogPost
-              key={post.title}
-              slug={post.slug}
-              title={post.title}
-              excerpt={post.excerpt}
-              tags={post.tags}
-            />
-          ))}
+        <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
+          {posts.length ? (
+            posts.map((post) => (
+              <BlogPost
+                key={post.title}
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                tags={post.tags}
+              />
+            ))
+          ) : (
+            <p className=" text-gray-700 dark:text-gray-400 italic">
+              No results found
+            </p>
+          )}
+        </div>
       </div>
     </Container>
   );
