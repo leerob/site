@@ -12,7 +12,6 @@ export default function Home() {
           <div className="flex flex-col pr-8">
             <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-bold">
               Hi, I am Dzmitry&nbsp;
-              <Twemoji emoji="👋" />
             </h1>
             <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
               I <em>build</em> things for the web.
@@ -58,7 +57,7 @@ export default function Home() {
             </p>
             <Link href="/blog">
               <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal dark:hover:text-signal-dark ease-in-out  duration-150 transition-all h-6">
-                My thoughts
+                My thoughts🪁
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -77,7 +76,7 @@ export default function Home() {
             </Link>
             <Link href="/snippets">
               <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal duration-150 dark:hover:text-signal-dark  transition-all h-6 ease-in-out">
-                Collected sinppets
+                Collected sinppets🖍️
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -96,7 +95,7 @@ export default function Home() {
             </Link>
             <Link href="/about">
               <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark   hover:text-signal duration-150  h-6 ease-in-out">
-                Skills & experience
+                Skills & experience🔥
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -115,7 +114,7 @@ export default function Home() {
             </Link>
             <Link href="/static/resune_dzmitry_sviryn.pdf">
               <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark  hover:text-signal duration-150 h-6 ease-in-out">
-                My resume
+                My resume🧔
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -134,6 +133,7 @@ export default function Home() {
             </Link>
             <p className="text-gray-700 dark:text-gray-400 mt-12 italic">
               <TypewriterEffect />
+              <Twemoji emoji="🌠" />
             </p>
           </div>
         </div>

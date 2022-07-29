@@ -35,6 +35,13 @@ class MyDocument extends Document {
           />
           <link
             rel="preload"
+            href="/fonts/ibm-plex-sans-var-italic.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
             href="/fonts/ibm-plex-mono-var.woff2"
             as="font"
             type="font/woff2"

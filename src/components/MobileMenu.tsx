@@ -49,18 +49,27 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
+            'flex flex-col absolute bg-bg-gray-50 dark:bg-gray-900',
             isMenuRendered && styles.menuRendered
           )}
         >
           {NAV_LINKS.map((item, index) => (
             <li
               key={index}
-              className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+              className="border-b border-gray-300 dark:border-gray-700"
               style={{ transitionDelay: '150ms' }}
             >
               <Link href={item.href}>
-                <a className="flex w-auto pb-4">{item.text}</a>
+                <a
+                  className={cn(
+                    getActiveStatus(item.href, router.asPath)
+                      ? 'font-semibold text-signal dark:text-signal-dark'
+                      : 'font-normal text-gray-700 dark:text-gray-400',
+                    'transition-all  duration-150 hover:text-signal dark:hover:text-signal-dark ease-in-out flex w-auto pb-4  text-sm'
+                  )}
+                >
+                  {item.text}
+                </a>
               </Link>
             </li>
           ))}
@@ -81,14 +90,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
       {...props}
     >
       <path
-        d="M2.5 7.5H17.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2.5 12.5H17.5"
+        d="M2.5 4.5h15m-15 6h15m-15 6h15"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"

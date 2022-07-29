@@ -17,7 +17,7 @@ export default function TagPage({
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
-          {`Posts with tag '${title}'`}
+          {`Posts with tag ${title}`}
         </h1>
         <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
           {posts.length ? (
