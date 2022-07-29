@@ -25,7 +25,7 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-200 hover:text-signal dark:hover:text-signal font-medium"
+          className="text-gray-700 dark:text-gray-200 hover:text-signal dark:hover:text-signal-dark font-medium"
           href="https://leerob.io"
         >
           Lee Robinson{` `}

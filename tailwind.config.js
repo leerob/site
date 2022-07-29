@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     colors: {
       signal: 'rgb(101 163 13 / 95%)',
+      'signal-dark': 'rgb(101 163 13 / 95%)',
       'signal-opaque': 'rgb(101 163 13 / 85%)',
       gray: colors.slate,
       black: 'rgb(0 0 0 / 99%)',
@@ -35,9 +36,14 @@ module.exports = {
             }
           }
         }
-      })
+      }),
+      scale: {
+        175: '1.75',
+        200: '2.00'
+      }
     }
   },
+
   variants: {
     typography: ['dark']
   },

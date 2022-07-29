@@ -57,7 +57,7 @@ export default function Home() {
               whatever tote bag veniam.{' '}
             </p>
             <Link href="/blog">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal dark:hover:text-signal ease-in-out  duration-150 transition-all h-6">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal dark:hover:text-signal-dark ease-in-out  duration-150 transition-all h-6">
                 My thoughts
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/snippets">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal duration-150 dark:hover:text-signal  transition-all h-6 ease-in-out">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal duration-150 dark:hover:text-signal-dark  transition-all h-6 ease-in-out">
                 Collected sinppets
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/about">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal   hover:text-signal duration-150  h-6 ease-in-out">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark   hover:text-signal duration-150  h-6 ease-in-out">
                 Skills & experience
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ export default function Home() {
               </a>
             </Link>
             <Link href="/static/resune_dzmitry_sviryn.pdf">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal  hover:text-signal duration-150 h-6 ease-in-out">
+              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark  hover:text-signal duration-150 h-6 ease-in-out">
                 My resume
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

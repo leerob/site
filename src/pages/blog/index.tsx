@@ -12,7 +12,6 @@ export default function Blog({
   const filteredBlogPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
-  // TODO: consider using gradient post cards
   return (
     <Container
       title="Blog – Dzmitry Svirynn"

@@ -19,9 +19,6 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
               Hi, I am Dzmitry&nbsp;
               <Twemoji emoji="👋" />
             </h1>
-            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
-              I <em>build</em> things for the web.
-            </h2>
             <p className="text-gray-700 dark:text-gray-400 mb-2">
               I&apos;m a full-stack developer passionate about{' '}
               <span className="font-medium">TypeScript</span>,{' '}
@@ -91,7 +88,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400">
               Twitter:{' '}
               <a
-                className="transition-all dark:hover:text-signal   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
+                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
                 href="https://twitter.com/svirins"
               >
                 @svirins
@@ -100,7 +97,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400">
               GitHub:{' '}
               <a
-                className="transition-all dark:hover:text-signal   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
+                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
                 href="https://github.com/svirins"
               >
                 @zvirinz
@@ -109,7 +106,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400">
               Mail:{' '}
               <a
-                className="transition-all dark:hover:text-signal   hover:text-signal duration-150 font-medium ease-in-out  text-gray-800 dark:text-gray-200"
+                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out  text-gray-800 dark:text-gray-200"
                 href="mailto:svirins@gmail.com"
               >
                 svirins@gmail.com
@@ -118,7 +115,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400">
               Resume:{' '}
               <a
-                className="transition-all dark:hover:text-signal   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
+                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
                 href="/static/resume_dzmitry_sviryn.pdf"
               >
                 click to download

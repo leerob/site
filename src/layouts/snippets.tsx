@@ -22,7 +22,7 @@ export default function SnippetLayout({
               {snippet.description}
             </p>
           </div>
-          <div className="mt-2 md:mt-6 scale-125 md:scale-150 ml-4">
+          <div className="mt-2 md:mt-6 scale-125 md:scale-150 ml-4 origin-center">
             <StackIcon iconTitle={snippet.iconTitle!} />
           </div>
         </div>

@@ -75,7 +75,7 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <p className=" text-gray-700 dark:text-gray-400 text-sm italic mt-1">
         Stats (top 3) taken from a{' '}
         <a
-          className="transition-all dark:hover:text-signal  not-italic  font-semibold hover:text-signal duration-150 ease-in-out"
+          className="transition-all dark:hover:text-signal-dark  not-italic  font-semibold hover:text-signal duration-150 ease-in-out"
           href="https://wakatime.com/@svirins"
         >
           WakaTime
