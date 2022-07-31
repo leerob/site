@@ -46,7 +46,7 @@ export const SOCIALS = [
     Icon: (
       <SiGithub className="w-5 h-5 fill-gray-800  dark:fill-gray-200 hover:fill-signal  dark:hover:fill-signal-dark  transform  duration-150 ease-in-out  transition-all" />
     ),
-    url: 'https://github.com/zvirinz',
+    url: 'https://github.com/svirins',
     iconTitle: 'My GitHub'
   },
   {

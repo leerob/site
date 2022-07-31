@@ -12,7 +12,6 @@ module.exports = {
       'signal-dark': 'rgb(0 206 209 / 95%)',
       'signal-opaque': 'rgb(255 49 46 / 85%)',
       'signal-opaque-dark': 'rgb(0 206 209 / 85%)',
-
       gray: colors.slate,
       black: 'rgb(0 0 0 / 99%)',
       white: 'rgb(255 255 255 / 99%)',

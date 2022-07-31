@@ -113,7 +113,7 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
                 className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
                 href="https://github.com/svirins"
               >
-                @zvirinz
+                @svirins
               </a>
             </li>
             <li className="text-gray-700 dark:text-gray-400">
