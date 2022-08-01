@@ -49,23 +49,23 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col absolute bg-bg-gray-50 dark:bg-gray-900',
+            'flex flex-col absolute bg-gray-50 dark:bg-gray-900',
             isMenuRendered && styles.menuRendered
           )}
         >
           {NAV_LINKS.map((item, index) => (
             <li
               key={index}
-              className="border-b border-gray-300 dark:border-gray-700"
+              className="border-b border-gray-500/50 text-gray-600 dark:text-gray-400"
               style={{ transitionDelay: '150ms' }}
             >
               <Link href={item.href}>
                 <a
                   className={cn(
                     getActiveStatus(item.href, router.asPath)
-                      ? 'font-semibold text-signal dark:text-signal-dark'
-                      : 'font-normal text-gray-700 dark:text-gray-400',
-                    'transition-all  duration-150 hover:text-signal dark:hover:text-signal-dark ease-in-out flex w-auto pb-4  text-sm'
+                      ? 'font-medium text-gray-800 dark:text-gray-200'
+                      : '',
+                    'transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
                   )}
                 >
                   {item.text}

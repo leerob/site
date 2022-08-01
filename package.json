@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@panelbear/panelbear-nextjs": "^1.0.3",
-    "@prisma/client": "^4.1.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^2.0.0",
     "@tailwindcss/typography": "0.5.4",
@@ -38,7 +37,7 @@
     "sharp": "^0.30.7",
     "styled-components": "^5.2.0",
     "swr": "1.3.0",
-    "tailwindcss": "3.1.6",
+    "tailwindcss": "3.1.7",
     "typed.js": "^2.0.12",
     "use-delayed-render": "^0.0.7"
   },

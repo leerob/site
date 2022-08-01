@@ -31,8 +31,8 @@ export default function Home() {
               alt="Dzmitry Svirin"
               height={176}
               width={176}
-              src="/svirins.webp"
-              className="rounded-full grayscale"
+              src="/svirins-42.jpg"
+              className="rounded-full "
               sizes="30vw"
               priority
             />
@@ -55,90 +55,87 @@ export default function Home() {
               shorts praxis ut trust fund pop-up knausgaard. Magnas aliqua
               whatever tote bag veniam.{' '}
             </p>
-            <Link href="/blog">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal dark:hover:text-signal-dark ease-in-out  duration-150 transition-all h-6">
-                My thoughts🪁
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 ml-1"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                  />
-                </svg>
-              </a>
-            </Link>
-            <Link href="/snippets">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg  hover:text-signal duration-150 dark:hover:text-signal-dark  transition-all h-6 ease-in-out">
-                Collected sinppets🖍️
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 ml-1"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                  />
-                </svg>
-              </a>
-            </Link>
-            <Link href="/about">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark   hover:text-signal duration-150  h-6 ease-in-out">
-                Skills & experience🔥
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 ml-1"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                  />
-                </svg>
-              </a>
-            </Link>
-            <Link href="/static/resune_dzmitry_sviryn.pdf">
-              <a className="flex mt-4 text-gray-700 dark:text-gray-400 leading-7 rounded-lg transition-all dark:hover:text-signal-dark  hover:text-signal duration-150 h-6 ease-in-out">
-                My resume🧔
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 ml-1"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                  />
-                </svg>
-              </a>
-            </Link>
-            <p className="text-gray-700 dark:text-gray-400 mt-12 italic">
+
+            <ul className="list-inside list-disc py-4 [&>*]:py-1">
+              <li className="text-gray-600 dark:text-gray-400">
+                <Link href="/about">
+                  <a
+                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                    href="https://twitter.com/svirins"
+                  >
+                    Skills & experience
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 ml-1 inline-flex"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+                      />
+                    </svg>
+                  </a>
+                </Link>
+              </li>
+              <li className="text-gray-600 dark:text-gray-400">
+                <Link href="/blog">
+                  <a
+                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                    href="https://twitter.com/svirins"
+                  >
+                    My thoughts
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 ml-1 inline-flex"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+                      />
+                    </svg>
+                  </a>
+                </Link>
+              </li>
+              <li className="text-gray-600 dark:text-gray-400">
+                <Link href="/snippets">
+                  <a
+                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                    href="https://twitter.com/svirins"
+                  >
+                    Collected snippets
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 ml-1 inline-flex"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+                      />
+                    </svg>
+                  </a>
+                </Link>
+              </li>
+            </ul>
+
+            <p className=" mt-2">
               <TypewriterEffect />
-              <Twemoji emoji="🌠" />
             </p>
           </div>
         </div>
-
-        <span className="h-16" />
       </div>
     </Container>
   );

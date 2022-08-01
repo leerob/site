@@ -6,7 +6,6 @@ import Container from '@/components/Container';
 import { IPost } from '@/typings';
 import { urlForImage } from '@/lib/sanity-client';
 import { Tags } from '@/components/Tags';
-import ViewCounter from '@/components/ViewsCounter';
 
 export default function BlogLayout({
   children,
@@ -21,13 +20,13 @@ export default function BlogLayout({
       type="article"
       tags={post.tags?.map((tag) => tag.title)}
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
+      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">
         <Tags tags={post.tags} />
-        <h1 className="mb-4 mt-2 text-3xl font-bold  tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="my-2 text-3xl font-bold  tracking-tight text-black md:text-5xl dark:text-white">
           {post.title}
         </h1>
         {post.coverImage && (
-          <div className="flex flex-col w-full mb-2">
+          <div className="flex flex-col w-full my-4">
             <BlurredImage
               src={urlForImage(post.coverImage!).url()}
               alt={`Image for ${post.title}`}
@@ -38,10 +37,10 @@ export default function BlogLayout({
           <div className="flex items-center">
             <Image
               alt="Dzmitry Svirin"
-              height={24}
-              width={24}
+              height={36}
+              width={36}
               sizes="20vw"
-              src="/svirins.webp"
+              src="/svirins-42.jpg"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-400">
@@ -50,12 +49,11 @@ export default function BlogLayout({
             </p>
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-            {post.readingTime} {` • `}
-            <ViewCounter slug={post.slug} />
+            {post.readingTime}
           </p>
         </div>
         <Suspense fallback={null}>
-          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert">
+          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert prose-lg md:prose-xl">
             {children}
           </div>
         </Suspense>

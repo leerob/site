@@ -17,9 +17,9 @@ export default function NavItem({
       <a
         className={cn(
           getActiveStatus(href, router.asPath)
-            ? 'font-semibold text-signal dark:text-signal-dark'
-            : 'font-normal text-gray-700 dark:text-gray-400',
-          'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-signal dark:hover:text-signal-dark ease-in-out'
+            ? 'font-medium text-gray-800 dark:text-gray-200 '
+            : 'font-normal text-gray-600 dark:text-gray-400',
+          'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
         )}
       >
         <span className="capsize">{text}</span>

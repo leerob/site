@@ -47,20 +47,19 @@ export const GRADIENTS = [
   'from-[#D8B4FE] to-[#818CF8]'
 ];
 
-export const IMAGES = {
-  coverImageWidth: 672,
-  coverImageHeight: 320
-};
+export const IMAGE_MAX_WIDTH = 672;
+coverImageWidth: 672;
 
 export const POSTS_LIMIT = 200;
 
 export const TYPED_STRINGS = [
-  `Thanks for reading!</a>`,
+  `Thanks for reading!`,
+  'Მადლობა წაკითხვისთვის!',
   `Danke fürs Lesen!`,
+  `Дзякуй за чытанне!`,
   `Merci de nous lire !`,
   `¡Gracias por leer!`,
   `Dzięki za przeczytanie!`,
-  `Дзякуй за чытанне!`,
   `Дякую за читання!`,
   `Grazie per aver letto!`
 ];

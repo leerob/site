@@ -4,13 +4,12 @@ import { useTheme } from 'next-themes';
 export default function ToggleMode() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
-  // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
   return (
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-5 h-9 flex items-center justify-center"
+      className="w-6 h-9 flex items-center justify-center"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {mounted && (
@@ -19,7 +18,7 @@ export default function ToggleMode() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          className="w-5 h-5 text-gray-800 dark:text-gray-200 transition-all hover:text-signal dark:hover:text-signal-dark duration-150 ease-in-out"
+          className="w-6 h-6 text-gray-800 dark:text-gray-200 transition-all hover:scale-110 duration-150 ease-in-out"
         >
           {theme === 'dark' || resolvedTheme === 'dark' ? (
             <path

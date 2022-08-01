@@ -68,9 +68,6 @@ export interface IWakaLangStats {
   text: string;
   total_seconds: bigint;
 }
-export interface IViews {
-  total: number;
-}
 
 export interface ITwemoji {
   emoji: string;

@@ -2,8 +2,7 @@ import Image from 'next/future/image';
 import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
 import { IWakaLangStats } from '@/typings';
-import Twemoji from '@/components/Twemoji';
-
+import BlurredImage from '@/components/Image';
 import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
@@ -31,28 +30,14 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
                 In my free time I enjoy, cycling, swimming and good books.
               </li>
             </ul>
-
-            {/* <p className="text-gray-700 dark:text-gray-400 mb-2">
-              I&apos;m a full-stack developer passionate about{' '}
-              <span className="font-medium">TypeScript</span>,{' '}
-              <span className="font-medium">React</span> ecosystem and&nbsp;
-              <span className="font-medium">serverless</span> backends .
-            </p> */}
-            {/* <p className="text-gray-700 dark:text-gray-400 mb-2">
-              Currently, self-employed person, based in{' '}
-              <span className="font-medium">Tbilisi</span>, 🇬🇪
-            </p>
-            <p className="text-gray-700 dark:text-gray-400">
-              In my free time I enjoy, cycling, swimming and good books.
-            </p> */}
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Dzmitry Svirin"
               height={176}
               width={176}
-              src="/svirins.webp"
-              className="rounded-full grayscale"
+              src="/svirins-42.jpg"
+              className="rounded-full"
               sizes="30vw"
               priority
             />
@@ -94,50 +79,49 @@ export default function About({ stats }: { stats: IWakaLangStats[] }) {
             Last week I was <em>coding</em> in:
           </h2>
           <WakaStats stats={stats} />
+          <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Uses:
+          </h2>
+          <BlurredImage
+            src="/uses.jpeg"
+            alt="My coding place"
+            className="grayscale hover:grayscale-0"
+          />
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me <em>anything</em>:
           </h2>
           <ul className="list-inside list-disc py-4 [&>*]:py-1">
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-600 dark:text-gray-400">
               Twitter:{' '}
               <a
-                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
                 href="https://twitter.com/svirins"
               >
                 @svirins
               </a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-600 dark:text-gray-400">
               GitHub:{' '}
               <a
-                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
                 href="https://github.com/svirins"
               >
                 @svirins
               </a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-600 dark:text-gray-400">
               Mail:{' '}
               <a
-                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out  text-gray-800 dark:text-gray-200"
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
                 href="mailto:svirins@gmail.com"
               >
                 svirins@gmail.com
               </a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400">
-              Resume:{' '}
-              <a
-                className="transition-all dark:hover:text-signal-dark   hover:text-signal duration-150 font-medium ease-in-out text-gray-800 dark:text-gray-200"
-                href="/static/resume_dzmitry_sviryn.pdf"
-              >
-                click to download
-              </a>
-            </li>
           </ul>
         </div>
       </div>
-      <span className="h-16" />
+      <span className="h-12" />
     </Container>
   );
 }
