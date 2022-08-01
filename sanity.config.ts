@@ -44,14 +44,7 @@ export default createConfig({
           {
             name: 'coverImage',
             title: 'Cover Image',
-            type: 'image',
-            validation: (Rule) => Rule.required()
-          },
-          {
-            name: 'date',
-            title: 'Date',
-            type: 'datetime',
-            initialValue: new Date().toISOString()
+            type: 'image'
           },
           {
             name: 'tags',

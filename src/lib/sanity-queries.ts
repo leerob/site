@@ -4,7 +4,7 @@ const postFields = `
   _id,
   title,
   "slug": slug.current,
-  date,
+  "date": _updatedAt,
   excerpt,
   coverImage,
   "tags": tags[] -> {
@@ -51,7 +51,7 @@ export const tagRelatedPosts = groq`
   title,
   "posts":  *[_type == 'post' && references(^._id)] {
     ${postFields}
-  } [0...${POSTS_LIMIT}]  | order(_createdAt desc)
+  } [0...${POSTS_LIMIT}]  | order(_updatedAt desc)
 }[0]
 `;
 
