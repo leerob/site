@@ -104,9 +104,9 @@ export default createConfig({
         ]
       },
       {
-        name: 'project',
+        name: 'book',
         type: 'document',
-        title: 'Project',
+        title: 'Book',
         fields: [
           {
             name: 'title',
@@ -114,17 +114,9 @@ export default createConfig({
             type: 'string'
           },
           {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-              source: 'title'
-            }
-          },
-          {
-            name: 'content',
-            title: 'Content',
-            type: 'markdown'
+            name: 'author',
+            title: 'Author',
+            type: 'string'
           },
           {
             name: 'description',
@@ -135,6 +127,11 @@ export default createConfig({
             name: 'image',
             title: 'Cover Image',
             type: 'image'
+          },
+          {
+            name: 'link',
+            title: 'Link to Amazon',
+            type: 'string'
           }
         ]
       },

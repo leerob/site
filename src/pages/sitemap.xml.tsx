@@ -1,6 +1,6 @@
 import { getPostSlugs } from '@/lib/sanity-api';
 import { type ServerResponse } from 'http';
-
+// TODO: add dedicated tag pages for each tag
 const createSitemap = (
   slugs: string[]
 ) => `<?xml version="1.0" encoding="UTF-8"?>
@@ -20,7 +20,7 @@ export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const allPosts = await getPostSlugs();
   const allPages = [
     ...allPosts.map((slug) => `blog/${slug}`),
-    ...['', 'about', 'blog', 'snippets']
+    ...['', 'blog', 'snippets']
   ];
 
   res.setHeader('Content-Type', 'text/xml');

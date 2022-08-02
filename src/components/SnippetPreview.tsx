@@ -22,7 +22,7 @@ export default function SnippetPreview({
           <h3 className="text-lg font-semibold text-left  text-gray-900 dark:text-gray-100">
             {title}
           </h3>
-          <p className="mt-1 text-gray-700 dark:text-gray-400">{description}</p>
+          <p className="mt-2 text-gray-700 dark:text-gray-400">{description}</p>
         </a>
       </Link>
     </>

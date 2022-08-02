@@ -1,29 +1,37 @@
 import Image from 'next/future/image';
-import Link from 'next/link';
+import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
+import { IWakaLangStats } from '@/typings';
+import BlurredImage from '@/components/Image';
+import WakaStats from '@/components/WakaStats';
+import { useMemo } from 'react';
+import StackIcon, { STACKS } from '@/components/StackIcon';
 import TypewriterEffect from '@/components/TypewriterEffect';
 
-export default function Home() {
+export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
+  const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
-    <Container title="Index page | Dzmitry Svirin - svirins.codes">
+    <Container title="About page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-bold">
-              Hi, I am Dzmitry&nbsp;
+              Hi, I&apos;am Dzmitry
             </h1>
-            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
-              I <em>build</em> things for the web.
-            </h2>
-            <p className="text-gray-700 dark:text-gray-400 mb-2">
-              I&apos;m a full-stack developer passionate about TypeScript, React
-              ecosystem and databases.
-            </p>
 
-            <p className="text-gray-700 dark:text-gray-400 mb-2">
-              I&apos;m a full-stack developer passionate about TypeScript, React
-              ecosystem and databases.
-            </p>
+            <ul className="list-inside  list-disc py-4 [&>*]:py-1">
+              <li className="text-gray-700 dark:text-gray-400">
+                A full-stack developer passionate about React ecosystem,
+                TypeScript and serverless backends.
+              </li>
+              <li className="text-gray-700 dark:text-gray-400">
+                Currently, self-employed person, based in{' '}
+                <span className="font-medium">Tbilisi</span>, 🇬🇪
+              </li>
+              <li className="text-gray-700 dark:text-gray-400">
+                In my free time I enjoy, cycling, swimming and good books.
+              </li>
+            </ul>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
@@ -31,111 +39,98 @@ export default function Home() {
               height={176}
               width={176}
               src="/svirins-42.jpg"
-              className="rounded-full "
+              className="rounded-full"
               sizes="30vw"
               priority
             />
           </div>
         </div>
-        <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-16 w-full">
-          <div className="flex flex-col items-start">
-            <p className="text-gray-700 dark:text-gray-400 mb-2">
-              La croix 8-bit skateboard ea before they sold out aliqua hot
-              chicken in hella gochujang meggings truffaut four dollar toast
-              labore. Plaid small batch VHS vaporware shoreditch esse.
-              Succulents enamel pin la croix four dollar toast affogato
-              cold-pressed. Distillery literally sint locavore pork belly
-              activated charcoal. Tonx vice crucifix cliche.
-            </p>
-            <p className="text-gray-700 dark:text-gray-400 mb-2">
-              Fugiat neutra +1 disrupt listicle cold-pressed freegan yes plz
-              twee enamel pin chia excepteur vape. Fashion axe polaroid
-              shoreditch est. Tilde in woke anim subway tile helvetica jean
-              shorts praxis ut trust fund pop-up knausgaard. Magnas aliqua
-              whatever tote bag veniam.{' '}
-            </p>
-
-            <ul className="list-inside list-disc py-4 [&>*]:py-1">
-              <li className="text-gray-600 dark:text-gray-400">
-                <Link href="/about">
-                  <a
-                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
-                    href="https://twitter.com/svirins"
-                  >
-                    Skills & experience
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="h-6 w-6 ml-1 inline-flex"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                      />
-                    </svg>
-                  </a>
-                </Link>
-              </li>
-              <li className="text-gray-600 dark:text-gray-400">
-                <Link href="/blog">
-                  <a
-                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
-                    href="https://twitter.com/svirins"
-                  >
-                    My thoughts
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="h-6 w-6 ml-1 inline-flex"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                      />
-                    </svg>
-                  </a>
-                </Link>
-              </li>
-              <li className="text-gray-600 dark:text-gray-400">
-                <Link href="/snippets">
-                  <a
-                    className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
-                    href="https://twitter.com/svirins"
-                  >
-                    Collected snippets
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="h-6 w-6 ml-1 inline-flex"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                      />
-                    </svg>
-                  </a>
-                </Link>
-              </li>
-            </ul>
-
-            <p className=" mt-2">
-              <TypewriterEffect />
-            </p>
+      </div>
+      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-16 w-full">
+        <div className="flex flex-col items-start">
+          <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            My <em>values</em>:
+          </h2>
+          <ul className="list-inside  list-disc py-4 [&>*]:py-1">
+            <li className="text-gray-700 dark:text-gray-400">
+              deliver logical, efficient, well-documented code, following best
+              practices
+            </li>
+            <li className="text-gray-700 dark:text-gray-400">
+              create value for business
+            </li>
+            <li className="text-gray-700 dark:text-gray-400">
+              honesty, reliability, responsibility
+            </li>
+            <li className="text-gray-700 dark:text-gray-400">
+              be a good person to myself and others
+            </li>
+            <li className="text-gray-700 dark:text-gray-400">
+              learn iteratively
+            </li>
+          </ul>
+          <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium ">
+            Technologies I use <em>frequently</em>:
+          </h2>
+          <div className="grid grid-cols-6 md:grid-cols-8 items-center place-content-between max-w-2xl gap-x-12 gap-y-6 mx-auto w-full">
+            {memoizedStacks.map((el, index) => (
+              <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
+            ))}
           </div>
+          <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Last week I was <em>coding</em> in:
+          </h2>
+          <WakaStats stats={stats} />
+          <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Uses:
+          </h2>
+          <BlurredImage
+            src="/uses.jpeg"
+            alt="My coding place"
+            className="grayscale hover:grayscale-0"
+          />
+          <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+            Feel free to ask me <em>anything</em>:
+          </h2>
+          <ul className="list-inside list-disc py-4 [&>*]:py-1">
+            <li className="text-gray-600 dark:text-gray-400">
+              Twitter:{' '}
+              <a
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                href="https://twitter.com/svirins"
+              >
+                @svirins
+              </a>
+            </li>
+            <li className="text-gray-600 dark:text-gray-400">
+              GitHub:{' '}
+              <a
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                href="https://github.com/svirins"
+              >
+                @svirins
+              </a>
+            </li>
+            <li className="text-gray-600 dark:text-gray-400">
+              Mail:{' '}
+              <a
+                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                href="mailto:svirins@gmail.com"
+              >
+                svirins@gmail.com
+              </a>
+            </li>
+          </ul>
         </div>
+        <p className="mt-2">
+          <TypewriterEffect />
+        </p>
       </div>
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const { languages } = await getWakaStats();
+  return { props: { stats: languages }, revalidate: 86400 };
 }

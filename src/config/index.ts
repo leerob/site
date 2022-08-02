@@ -1,6 +1,5 @@
 export const NAV_LINKS = [
-  { href: '/', text: 'Home' },
-  { href: '/about', text: 'About' },
+  { href: '/', text: 'About me' },
   { href: '/blog', text: 'Blog' },
   { href: '/snippets', text: 'Snippets' }
 ];
@@ -41,14 +40,7 @@ export const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 export const WAKATIME_API_ENDPOINT = `https://wakatime.com/api/v1/users/svirins/stats/last_7_days`;
 
-export const GRADIENTS = [
-  'from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
-  'from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]',
-  'from-[#D8B4FE] to-[#818CF8]'
-];
-
 export const IMAGE_MAX_WIDTH = 672;
-coverImageWidth: 672;
 
 export const POSTS_LIMIT = 200;
 
