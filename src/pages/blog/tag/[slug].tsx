@@ -1,5 +1,5 @@
 import Container from '@/components/Container';
-import BlogPost from '@/components/BlogPost';
+import PostPreview from '@/components/PostPreview';
 import { getTagSlugs, getPostsByTag } from '@/lib/sanity-api';
 import { IParams, IPost } from '@/typings';
 
@@ -22,7 +22,7 @@ export default function TagPage({
         <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
           {posts.length ? (
             posts.map((post) => (
-              <BlogPost
+              <PostPreview
                 key={post.title}
                 slug={post.slug}
                 title={post.title}
