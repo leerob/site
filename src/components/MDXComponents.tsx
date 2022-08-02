@@ -1,9 +1,4 @@
-import Step from '@/components/Step';
-import ProsCard from '@/components/ProsCard';
-import ConsCard from '@/components/ConsCard';
-import BlurredImage from '@/components/Image';
-import Twemoji from '@/components/Twemoji';
-// TODO: refactor with Twemoji
+import Image from '@/components/Image';
 const Callout = ({
   emoji,
   children
@@ -20,12 +15,8 @@ const Callout = ({
 };
 
 const MDXComponents = {
-  img: BlurredImage,
-  Callout,
-  ProsCard,
-  ConsCard,
-  Step,
-  Twemoji
+  img: Image,
+  Callout
 };
 
 export default MDXComponents;

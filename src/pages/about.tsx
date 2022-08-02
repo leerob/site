@@ -6,22 +6,29 @@ import BlurredImage from '@/components/Image';
 import WakaStats from '@/components/WakaStats';
 import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
-// replace prose
+
 export default function About({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
-    <Container title="About page | Dzmitry Svirin">
+    <Container title="About page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-bold">
-              Hi, I am Dzmitry
+              Hi, I&apos;am Dzmitry
             </h1>
+            <h2 className="text-xl md:text-2xl mb-6 tracking-tight text-gray-800 dark:text-gray-200 font-medium">
+              I&apos;m a full-stack developer passionate about <em>React</em>
+              ecosystem and <em>serverless</em> backends.
+            </h2>
+
             <ul className="list-inside  list-disc py-4 [&>*]:py-1">
               <li className="text-gray-700 dark:text-gray-400">
                 I&apos;m a full-stack developer passionate about TypeScript,
                 React ecosystem and serverless backends
               </li>
+              I&apos;m a full-stack developer passionate about TypeScript, React
+              ecosystem and serverless backends
               <li className="text-gray-700 dark:text-gray-400">
                 Currently, self-employed person, based in{' '}
                 <span className="font-medium">Tbilisi</span>, 🇬🇪

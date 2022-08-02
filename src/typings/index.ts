@@ -22,6 +22,13 @@ export interface IPost {
   mdxContent?: MDXRemoteSerializeResult;
 }
 
+export interface IPostShort {
+  slug: string;
+  title: string;
+  excerpt: string;
+  tags?: ITag[];
+}
+
 export interface ISnippet {
   _id: string;
   slug: string;
@@ -67,11 +74,6 @@ export interface IWakaLangStats {
   percent: number;
   text: string;
   total_seconds: bigint;
-}
-
-export interface ITwemoji {
-  emoji: string;
-  size?: 'base' | 'lg' | 'xl' | '2xl';
 }
 
 export interface IStack {

@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 
 import Container from '@/components/Container';
-import BlogPost from '@/components/BlogPost';
+import PostPreview from '@/components/PostPreview';
 import { InferGetStaticPropsType } from 'next';
 import { getPosts } from '@/lib/sanity-api';
 
@@ -54,7 +54,7 @@ export default function Blog({
         <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
           {filteredBlogPosts.length ? (
             filteredBlogPosts.map((post) => (
-              <BlogPost
+              <PostPreview
                 key={post.title}
                 slug={post.slug}
                 title={post.title}

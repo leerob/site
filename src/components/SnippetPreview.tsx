@@ -2,7 +2,7 @@ import Link from 'next/link';
 import StackIcon from '@/components/StackIcon';
 import { ISnippet } from '@/typings';
 
-export default function FunctionCard({
+export default function SnippetPreview({
   title,
   description,
   slug,

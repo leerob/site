@@ -1,12 +1,11 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 import Container from '@/components/Container';
-import Twemoji from '@/components/Twemoji';
 import TypewriterEffect from '@/components/TypewriterEffect';
 
 export default function Home() {
   return (
-    <Container title="Index page | Dzmitry Svirin">
+    <Container title="Index page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">

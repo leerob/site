@@ -1,5 +1,5 @@
 import Container from '@/components/Container';
-import FunctionCard from '@/components/FunctionCard';
+import SnippetPreview from '@/components/SnippetPreview';
 import { InferGetStaticPropsType } from 'next';
 import { getSnippets } from '@/lib/sanity-api';
 
@@ -22,7 +22,7 @@ export default function Snippets({
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-2 sm:grid-cols-2">
           {snippets?.length &&
             snippets?.map((snippet) => (
-              <FunctionCard
+              <SnippetPreview
                 key={snippet.slug}
                 title={snippet.title}
                 slug={snippet.slug}

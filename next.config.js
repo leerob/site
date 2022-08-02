@@ -7,9 +7,7 @@ module.exports = {
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'cdn.sanity.io', // Sanity images
-      'img.shields.io', // Unsplash (?)
-      'twemoji.maxcdn.com' // Twemoji svg
+      'cdn.sanity.io' // Sanity images
     ],
     formats: ['image/webp']
   },
