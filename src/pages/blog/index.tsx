@@ -25,8 +25,8 @@ export default function Blog({
           I&apos;ve been writing online since 2022, mostly about web development
           and Linux things.
           <br />
-          Reasons to start blogging were: overcome shyness 😥, get better
-          understanding 👨‍💻 by explaining and be helpful 🦸as possible to others.
+          Reasons to start blogging were: express myself, get better
+          understanding by explaining and be helpful as possible to others.
         </p>
         <div className="relative w-full my-4">
           <input

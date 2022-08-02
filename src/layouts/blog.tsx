@@ -40,7 +40,7 @@ export default function BlogLayout({
               height={36}
               width={36}
               sizes="20vw"
-              src="/svirins-42.jpg"
+              src="/svirins.png"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-400">

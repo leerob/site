@@ -11,24 +11,32 @@ import TypewriterEffect from '@/components/TypewriterEffect';
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
-    <Container title="About page | Dzmitry Svirin - svirins.codes">
+    <Container title="About me page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-bold">
               Hi, I&apos;am Dzmitry
             </h1>
-
             <ul className="list-inside  list-disc py-4 [&>*]:py-1">
-              <li className="text-gray-700 dark:text-gray-400">
+              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
                 A full-stack developer passionate about React ecosystem,
                 TypeScript and serverless backends.
+                <br />I specialise in turning ideas into real life products.
               </li>
-              <li className="text-gray-700 dark:text-gray-400">
-                Currently, self-employed person, based in{' '}
+              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+                Over a decade of experience building products for clients across
+                several countries.
+              </li>
+              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+                I currently work remotely with a selected freelance client base
+                being open for new opportunities.
+              </li>
+              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+                I&apos;m currently based in{' '}
                 <span className="font-medium">Tbilisi</span>, 🇬🇪
               </li>
-              <li className="text-gray-700 dark:text-gray-400">
+              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
                 In my free time I enjoy, cycling, swimming and good books.
               </li>
             </ul>
@@ -38,7 +46,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
               alt="Dzmitry Svirin"
               height={176}
               width={176}
-              src="/svirins-42.jpg"
+              src="/svirins.png"
               className="rounded-full"
               sizes="30vw"
               priority
@@ -52,21 +60,17 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             My <em>values</em>:
           </h2>
           <ul className="list-inside  list-disc py-4 [&>*]:py-1">
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
               deliver logical, efficient, well-documented code, following best
               practices
             </li>
-            <li className="text-gray-700 dark:text-gray-400">
-              create value for business
-            </li>
+            <li>Push boundaries and perform experiments.</li>
+            <li> Choose consistency over speed</li>
             <li className="text-gray-700 dark:text-gray-400">
               honesty, reliability, responsibility
             </li>
             <li className="text-gray-700 dark:text-gray-400">
-              be a good person to myself and others
-            </li>
-            <li className="text-gray-700 dark:text-gray-400">
-              learn iteratively
+              stay curious and have fun
             </li>
           </ul>
           <h2 className="text-xl md:text-2xl mb-6 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-medium ">
@@ -84,11 +88,18 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Uses:
           </h2>
-          <BlurredImage
-            src="/uses.jpeg"
-            alt="My coding place"
-            className="grayscale hover:grayscale-0"
-          />
+          <div className="flex flex-col md:flex-row">
+            <BlurredImage
+              src="/uses-1.jpeg"
+              alt="My coding place"
+              className="grayscale hover:grayscale-0"
+            />
+            <BlurredImage
+              src="/uses-2.jpg"
+              alt="My coding place"
+              className="grayscale hover:grayscale-0"
+            />
+          </div>
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me <em>anything</em>:
           </h2>
