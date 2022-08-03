@@ -6,16 +6,16 @@ const WIDTH = 800;
 
 const WAKA_STATS_COLORS = [
   {
-    barColor: '#64748B',
-    textColor: 'text-slate-500'
+    barColor: '#1D4ED8',
+    textColor: 'text-blue-700'
   },
   {
-    barColor: '#71717A',
-    textColor: 'text-zinc-500'
+    barColor: '#3B82F6',
+    textColor: 'text-blue-500'
   },
   {
-    barColor: '#78716C',
-    textColor: 'text-stone-500-'
+    barColor: '#93C5FD',
+    textColor: 'text-blue-300-'
   }
 ];
 

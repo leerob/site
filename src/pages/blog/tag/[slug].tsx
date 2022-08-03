@@ -1,6 +1,6 @@
 import Container from '@/components/Container';
 import PostPreview from '@/components/PostPreview';
-import { getTagSlugs, getPostsByTag } from '@/lib/sanity-api';
+import { getPostsByTag, getTagSlugs } from '@/lib/sanity-api';
 import { IParams, IPost } from '@/typings';
 
 export default function TagPage({
@@ -16,7 +16,7 @@ export default function TagPage({
       description="Posts about code, dev life and various other things."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100 capsize">
           {`Posts with tag ${title}`}
         </h1>
         <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
@@ -31,7 +31,7 @@ export default function TagPage({
               />
             ))
           ) : (
-            <p className=" text-gray-700 dark:text-gray-400 italic">
+            <p className=" text-gray-700 dark:text-gray-400 italic text-lg">
               No results found
             </p>
           )}

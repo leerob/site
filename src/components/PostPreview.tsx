@@ -1,8 +1,13 @@
-import Link from 'next/link';
 import { Tags } from '@/components/Tags';
 import { IPostShort } from '@/typings';
+import Link from 'next/link';
 
-export default function PostPreview({ slug, title, excerpt, tags }: IPostShort) {
+export default function PostPreview({
+  slug,
+  title,
+  excerpt,
+  tags
+}: IPostShort) {
   return (
     <Link href={`/blog/${slug}`}>
       <a className=" w-full  duration-150 ease-in-out py-4">

@@ -1,11 +1,11 @@
-import Image from 'next/future/image';
-import { parseISO, format } from 'date-fns';
-import { PropsWithChildren, Suspense } from 'react';
-import BlurredImage from '@/components/Image';
 import Container from '@/components/Container';
-import { IPost } from '@/typings';
-import { urlForImage } from '@/lib/sanity-client';
+import BlurredImage from '@/components/Image';
 import { Tags } from '@/components/Tags';
+import { urlForImage } from '@/lib/sanity-client';
+import { IPost } from '@/typings';
+import { format, parseISO } from 'date-fns';
+import Image from 'next/future/image';
+import { PropsWithChildren, Suspense } from 'react';
 
 export default function BlogLayout({
   children,
@@ -22,7 +22,7 @@ export default function BlogLayout({
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">
         <Tags tags={post.tags} />
-        <h1 className="my-2 text-3xl font-bold  tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="my-2 text-3xl font-bold  tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
           {post.title}
         </h1>
         {post.coverImage && (
@@ -53,7 +53,7 @@ export default function BlogLayout({
           </p>
         </div>
         <Suspense fallback={null}>
-          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert prose-lg md:prose-xl">
+          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert prose-lg">
             {children}
           </div>
         </Suspense>

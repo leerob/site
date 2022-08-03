@@ -1,7 +1,7 @@
 import Container from '@/components/Container';
 import SnippetPreview from '@/components/SnippetPreview';
-import { InferGetStaticPropsType } from 'next';
 import { getSnippets } from '@/lib/sanity-api';
+import { InferGetStaticPropsType } from 'next';
 
 export default function Snippets({
   snippets
@@ -12,7 +12,7 @@ export default function Snippets({
       description="A mix of snippets I've found usefull and want to share"
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-6 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capsize">
+        <h1 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100 capsize">
           Code Snippets
         </h1>
         <p className="mb-4 text-gray-700 dark:text-gray-400">

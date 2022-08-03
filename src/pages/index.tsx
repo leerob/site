@@ -1,12 +1,11 @@
-import Image from 'next/future/image';
-import { getWakaStats } from '@/lib/waka-api';
 import Container from '@/components/Container';
-import { IWakaLangStats } from '@/typings';
-import BlurredImage from '@/components/Image';
-import WakaStats from '@/components/WakaStats';
-import { useMemo } from 'react';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 import TypewriterEffect from '@/components/TypewriterEffect';
+import WakaStats from '@/components/WakaStats';
+import { getWakaStats } from '@/lib/waka-api';
+import { IWakaLangStats } from '@/typings';
+import Image from 'next/future/image';
+import { useMemo } from 'react';
 
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -15,28 +14,30 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="text-3xl md:text-5xl tracking-tight capsize text-black dark:text-white mb-6 font-bold">
+            <h1 className="text-3xl md:text-5xl tracking-tight capsize text-gray-900 dark:text-gray-100 mb-6 font-bold">
               Hi, I&apos;am Dzmitry
             </h1>
+            <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
+              I specialise in turning ideas into real life products.
+            </h2>
+            <p className="text-gray-700 dark:text-gray-400 text-lg">
+              A full-stack developer passionate about React ecosystem,
+              TypeScript and serverless backends.
+            </p>
             <ul className="list-inside  list-disc py-4 [&>*]:py-1">
-              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
-                A full-stack developer passionate about React ecosystem,
-                TypeScript and serverless backends.
-                <br />I specialise in turning ideas into real life products.
-              </li>
-              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+              <li className="text-gray-700 dark:text-gray-400 text-lg">
                 Over a decade of experience building products for clients across
                 several countries.
               </li>
-              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+              <li className="text-gray-700 dark:text-gray-400 text-lg">
                 I currently work remotely with a selected freelance client base
                 being open for new opportunities.
               </li>
-              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+              <li className="text-gray-700 dark:text-gray-400 text-lg">
                 I&apos;m currently based in{' '}
                 <span className="font-medium">Tbilisi</span>, 🇬🇪
               </li>
-              <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+              <li className="text-gray-700 dark:text-gray-400 text-lg">
                 In my free time I enjoy, cycling, swimming and good books.
               </li>
             </ul>
@@ -60,16 +61,20 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             My <em>values</em>:
           </h2>
           <ul className="list-inside  list-disc py-4 [&>*]:py-1">
-            <li className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               deliver logical, efficient, well-documented code, following best
               practices
             </li>
-            <li>Push boundaries and perform experiments.</li>
-            <li> Choose consistency over speed</li>
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
+              Push boundaries and perform experiments.
+            </li>
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
+              Choose consistency over speed
+            </li>
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               honesty, reliability, responsibility
             </li>
-            <li className="text-gray-700 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               stay curious and have fun
             </li>
           </ul>
@@ -88,23 +93,17 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-6 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Uses:
           </h2>
-          <div className="flex flex-col md:flex-row">
-            <BlurredImage
-              src="/uses-1.jpeg"
-              alt="My coding place"
-              className="grayscale hover:grayscale-0"
-            />
-            <BlurredImage
-              src="/uses-2.jpg"
-              alt="My coding place"
-              className="grayscale hover:grayscale-0"
-            />
-          </div>
+          <Image
+            width={800}
+            alt={`Cover Image}`}
+            src="/uses-1.jpeg"
+            className="grayscale hover:grayscale-0 rounded-lg transition-all duration-300 ease-out shadow-md"
+          />
           <h2 className="text-xl md:text-2xl mt-6 tracking-tight text-gray-700 dark:text-gray-200 font-medium">
             Feel free to ask me <em>anything</em>:
           </h2>
           <ul className="list-inside list-disc py-4 [&>*]:py-1">
-            <li className="text-gray-600 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               Twitter:{' '}
               <a
                 className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
@@ -113,7 +112,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
                 @svirins
               </a>
             </li>
-            <li className="text-gray-600 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               GitHub:{' '}
               <a
                 className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
@@ -122,7 +121,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
                 @svirins
               </a>
             </li>
-            <li className="text-gray-600 dark:text-gray-400">
+            <li className="text-gray-700 dark:text-gray-400 text-lg">
               Mail:{' '}
               <a
                 className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "

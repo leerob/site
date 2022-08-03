@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import StackIcon from '@/components/StackIcon';
 import { ISnippet } from '@/typings';
+import Link from 'next/link';
 
 export default function SnippetPreview({
   title,

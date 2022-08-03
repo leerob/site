@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   render() {
@@ -52,7 +52,7 @@ class MyDocument extends Document {
             name="robots"
           />
         </Head>
-        <body className="bg-white dark:bg-black text-white dark:text-black">
+        <body className="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
           <Main />
           <NextScript />
         </body>

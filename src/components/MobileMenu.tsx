@@ -1,11 +1,11 @@
+import { NAV_LINKS } from '@/config';
+import { getActiveStatus } from '@/lib/utils';
+import styles from '@/styles/mobile-menu.module.css';
 import cn from 'classnames';
 import Link from 'next/link';
-import useDelayedRender from 'use-delayed-render';
-import { useState, useEffect } from 'react';
-import styles from '@/styles/mobile-menu.module.css';
-import { NAV_LINKS } from '@/config';
 import { useRouter } from 'next/router';
-import { getActiveStatus } from '@/lib/utils';
+import { useEffect, useState } from 'react';
+import useDelayedRender from 'use-delayed-render';
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
