@@ -72,8 +72,8 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
         </svg>
       </div>
       <div className="inline-flex space-x-4  mt-2">{stackedBarComments}</div>
-      <p className=" text-gray-700 dark:text-gray-400 text-sm italic mt-1">
-        Stats (top 3) taken from a{' '}
+      <p className=" text-gray-700 dark:text-gray-400 text-xs mt-1">
+        My last week coding stats taken from a{' '}
         <a
           className="transition-all dark:hover:text-signal-dark  not-italic  font-semibold hover:text-signal duration-150 ease-in-out"
           href="https://wakatime.com/@svirins"
