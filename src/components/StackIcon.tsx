@@ -60,9 +60,7 @@ export const SOCIALS = [
 
 export const STACKS = [
   {
-    Icon: (
-      <SiAlgolia className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiAlgolia className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.algolia.com/',
     iconTitle: 'Algolia',
     color: '#00BFB3',
@@ -70,7 +68,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiAmazonaws className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiAmazonaws className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://aws.amazon.com/',
     iconTitle: 'Amazon AWS',
@@ -78,126 +76,98 @@ export const STACKS = [
     featured: true
   },
   {
-    Icon: (
-      <SiChakraui className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiChakraui className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://chakra-ui.com/',
     iconTitle: 'Chakra UI',
     color: '#00BFB3',
     featured: true
   },
   {
-    Icon: (
-      <SiCss3 className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiCss3 className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://golang.org/',
     iconTitle: 'CSS3',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiDebian className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiDebian className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://kubernetes.io/',
     iconTitle: 'Debian',
     color: '#FFC107'
   },
 
   {
-    Icon: (
-      <SiDocker className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiDocker className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://kubernetes.io/',
     iconTitle: 'Docker',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiExpress className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiExpress className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.typescriptlang.org/',
     iconTitle: 'Express',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiFigma className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiFigma className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://graphql.org/',
     iconTitle: 'Figma',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiFirebase className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiFirebase className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://firebase.google.com/',
     iconTitle: 'Firebase',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiFramer className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiFramer className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://aws.amazon.com/',
     iconTitle: 'Framer',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiGraphql className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiGraphql className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://graphql.org/',
     iconTitle: 'GraphQL',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiHeroku className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiHeroku className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://elixir-lang.org/',
     iconTitle: 'Heroku',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiJest className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiJest className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://jestjs.io/',
     iconTitle: 'Jest',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiLinux className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiLinux className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.linux.org/',
     iconTitle: 'Linux',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiMapbox className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiMapbox className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.postgresql.org/',
     iconTitle: 'Mapbox',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiMysql className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiMysql className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.mysql.com/',
     iconTitle: 'MySQL',
     color: '#FFC107'
   },
   {
     Icon: (
-      <SiNodedotjs className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiNodedotjs className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://www.postgresql.org/',
     iconTitle: 'Node.js',
@@ -205,7 +175,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiNextdotjs className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiNextdotjs className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://www.nextjs.org/',
     iconTitle: 'Nextjs',
@@ -214,7 +184,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiPostgresql className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiPostgresql className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://www.python.org/',
     iconTitle: 'PostgreSQL',
@@ -222,26 +192,20 @@ export const STACKS = [
     featured: true
   },
   {
-    Icon: (
-      <SiPrisma className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiPrisma className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.prisma.io/',
     iconTitle: 'Prisma',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiPnpm className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiPnpm className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.python.org/',
     iconTitle: 'PnPM',
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiReact className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiReact className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.reactjs.org/',
     iconTitle: 'React',
     color: '#FFC107',
@@ -249,7 +213,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiSahibinden className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiSahibinden className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://www.sanity.io/',
     iconTitle: 'Sanity',
@@ -258,18 +222,14 @@ export const STACKS = [
   },
 
   {
-    Icon: (
-      <SiStripe className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiStripe className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.stripe.com/',
     iconTitle: 'Stripe',
     color: '#FFC107',
     featured: true
   },
   {
-    Icon: (
-      <SiSupabase className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiSupabase className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://www.supabase.com/',
     iconTitle: 'Supabase',
     color: '#FFC107',
@@ -277,7 +237,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiTailwindcss className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiTailwindcss className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     url: 'https://www.tailwindscss.com/',
     iconTitle: 'Tailwind CSS',
@@ -286,7 +246,7 @@ export const STACKS = [
   },
   {
     Icon: (
-      <SiTypescript className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
+      <SiTypescript className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />
     ),
     featured: true,
     url: 'https://www.typescriptlang.org/',
@@ -294,9 +254,7 @@ export const STACKS = [
     color: '#FFC107'
   },
   {
-    Icon: (
-      <SiVercel className="w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
-    ),
+    Icon: <SiVercel className="w-9 h-9 fill-gray-700  dark:fill-gray-400 " />,
     url: 'https://vercel.com/',
     iconTitle: 'Vercel',
     color: '#FFC107',
@@ -309,7 +267,7 @@ export default function StackIcon({ iconTitle, isLink = false }: IStackIcon) {
     STACKS.find((stack) => stack.iconTitle === iconTitle) ?? STACKS[0];
   return isLink ? (
     <a
-      className="duration-150 fill-gray-700  dark:fill-gray-400  transform  ease-in-out hover:scale-110"
+      className="duration-150 transform  ease-in-out hover:scale-110"
       href={url}
     >
       {Icon}

@@ -18,7 +18,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <p className=" text-gray-500 dark:text-gray-400 mb-1  text-left md:text-center text-xs">
+      <p className=" text-gray-500 dark:text-gray-400 mb-1 pt-2  text-left md:text-center text-xs">
         © <span className="font-medium">{new Date().getFullYear()}</span>
         <span>{` • `}</span>
         Dzmitry Svirin
@@ -31,9 +31,9 @@ export default function Footer() {
           className="text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
           href="https://leerob.io"
         >
-          Lee Robinson{` `}
+          Lee Robinson
         </a>
-        personal site, <br />
+        {` `}personal site, <br />
         <span>almnost completely rewritten consequently.</span>
       </p>
     </footer>
