@@ -17,13 +17,13 @@
     }
   },
   "dependencies": {
-    "@panelbear/panelbear-nextjs": "^1.0.3",
+    "@panelbear/panelbear-nextjs": "^1.0.4",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^2.0.0",
     "@tailwindcss/typography": "0.5.4",
     "classnames": "^2.3.1",
     "date-fns": "2.29.1",
-    "motion": "^10.13.1",
+    "motion": "^10.13.2",
     "next": "12.2.4",
     "next-mdx-remote": "^4.1.0",
     "next-sanity": "^0.6.0",

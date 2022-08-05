@@ -43,17 +43,17 @@ export default function BlogLayout({
               src="/svirins.png"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-400">
+            <p className="ml-2 text-sm md:text-base text-gray-700 dark:text-gray-400">
               {`Dzmitry Svirin  • `}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+          <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime}
           </p>
         </div>
         <Suspense fallback={null}>
-          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert prose-lg">
+          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert  md:prose-lg">
             {children}
           </div>
         </Suspense>

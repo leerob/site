@@ -18,7 +18,7 @@ export default function SnippetLayout({
             <h1 className="font-bold text-3xl  md:text-5xl tracking-tight mb-4 text-gray-900 dark:text-gray-100">
               {snippet.title}
             </h1>
-            <p className="text-gray-800 dark:text-gray-200 py-2">
+            <p className="text-gray-800 dark:text-gray-200 py-2 md:text-lg">
               {snippet.description}
             </p>
           </div>
@@ -26,7 +26,7 @@ export default function SnippetLayout({
             <StackIcon iconTitle={snippet.iconTitle!} />
           </div>
         </div>
-        <div className="prose dark:prose-invert prose-slate  max-w-2xl  w-full prose-lg">
+        <div className="prose dark:prose-invert prose-slate  max-w-2xl  w-full md:prose-lg">
           {children}
         </div>
       </article>

@@ -22,7 +22,7 @@ export default function Blog({
           <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
             Blog
           </h1>
-          <p className="text-gray-900 dark:text-gray-100 text-lg mt-4 md:mt-6">
+          <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg">
             I write mostly about web development and Linux things
           </p>
         </div>
