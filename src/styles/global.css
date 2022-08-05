@@ -78,6 +78,26 @@ html {
   }
 }
 
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+}
+
+.link-underline-gradient {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(rgba(0, 206, 209, 45), rgba(0, 206, 209, 45));
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+  background-position: 0 100%;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 

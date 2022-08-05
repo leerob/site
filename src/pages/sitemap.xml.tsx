@@ -1,6 +1,10 @@
 import { getPostSlugs } from '@/lib/sanity-api';
 import { type ServerResponse } from 'http';
-// TODO: add dedicated tag pages for each tag
+
+/**
+ * todo: add dedicated tag pages for each tag
+ **/
+
 const createSitemap = (
   slugs: string[]
 ) => `<?xml version="1.0" encoding="UTF-8"?>

@@ -17,18 +17,18 @@ export default function Blog({
       title="Blog – Dzmitry Svirin"
       description="Posts about code, dev life and various other things."
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-6 capsize text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
-          Blog
-        </h1>
-        <p className="mb-4 text-gray-700 dark:text-gray-400 text-lg">
-          I&apos;ve been writing online since 2022, mostly about web development
-          and Linux things.
-          <br />
-          Reasons to start blogging were: express myself, get better
-          understanding by explaining and be helpful as possible to others.
-        </p>
-        <div className="relative w-full my-4">
+      <div className="flex flex-col  max-w-2xl mx-auto w-full">
+        <div className="flex flex-col">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
+            Blog
+          </h1>
+          <p className="text-gray-900 dark:text-gray-100 text-lg mt-4 md:mt-6">
+            I write mostly about web development and Linux things
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col  max-w-2xl mx-auto pb-16 w-full">
+        <div className="relative w-full mt-4 mb-2">
           <input
             aria-label="Search articles"
             type="text"
@@ -51,7 +51,7 @@ export default function Blog({
             />
           </svg>
         </div>
-        <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
+        <div className="grid grid-cols-1 divide-y divide-gray-700/25 dark:divide-gray-300/25">
           {filteredBlogPosts.length ? (
             filteredBlogPosts.map((post) => (
               <PostPreview

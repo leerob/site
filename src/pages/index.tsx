@@ -6,18 +6,17 @@ import { getWakaStats } from '@/lib/waka-api';
 import { IWakaLangStats } from '@/typings';
 import Image from 'next/future/image';
 import { useMemo } from 'react';
-import PageHeading from '@/components/PageHeading';
 
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   return (
     <Container title="About me page | Dzmitry Svirin - svirins.codes">
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
+      <div className="flex flex-col  max-w-2xl mx-auto w-full">
         <div className="md:grid md:grid-cols-5">
           <div className="md:col-span-4 ">
-            <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
+            <div className="flex flex-col  max-w-2xl mx-auto w-full">
               <div className="flex flex-col items-start">
-                <h1 className="text-3xl md:text-5xl tracking-tight mb-4 font-bold">
+                <h1 className="text-3xl md:text-5xl tracking-tight mb-4 font-bold  text-gray-900 dark:text-gray-100">
                   Hi, I&apos;am{' '}
                   <span className="text-signal dark:text-signal-dark">
                     Dzmitry
@@ -50,30 +49,29 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
       </div>
       <hr className="w-full  max-w-2xl mx-auto  border-1 border-gray-200 dark:border-gray-800 mt-4" />
 
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-16 w-full">
-        <div className="flex flex-col items-start">
+      <div className="flex flex-col max-w-2xl mx-auto pb-16 w-full">
+        <div className="flex flex-col">
           <h2 className="text-xl md:text-2xl mt-4 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Quick summary:
           </h2>
-          <ul className="list-inside list-[square] pt-2 pb-6 [&>*]:py-[0.2rem]">
+          <ul className="list-inside list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 text-lg">
-              over a decade of experience building products for clients across
+              10+ years of experience building products for clients across
               several countries;
             </li>
             <li className="text-gray-700 dark:text-gray-400 text-lg">
-              I am currently working remotely with my existing clients being
-              open for new opportunities;
+              currently working remotely for existing clients being open for new
+              opportunities;
             </li>
             <li className="text-gray-700 dark:text-gray-400 text-lg">
-              located in <span className="font-medium">Tbilisi</span>, 🇬🇪. I
-              enjoy cycling, swimming and good books;
+              located in Tbilisi, 🇬🇪. I enjoy cycling, swimming and good books;
             </li>
           </ul>
 
           <h2 className="text-xl md:text-2xl mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             My values:
           </h2>
-          <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.2rem]">
+          <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               deliver logical, efficientd code, following best practices;
             </li>
@@ -99,7 +97,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             Some stats:
           </h2>
           <WakaStats stats={stats} />
-          <h2 className="text-xl md:text-2xl mb-4 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-nornal">
+          {/* <h2 className="text-xl md:text-2xl mb-4 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-nornal">
             Uses:
           </h2>
           <Image
@@ -108,15 +106,15 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             alt={`Cover Image}`}
             src="/uses-1.jpeg"
             className="grayscale hover:grayscale-0 rounded-lg transition-all duration-300 ease-out shadow-md"
-          />
+          /> */}
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Feel free to ask me <em>anything</em>:
           </h2>
-          <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.2rem]">
+          <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               Twitter:{' '}
               <a
-                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
                 href="https://twitter.com/svirins"
               >
                 @svirins
@@ -125,7 +123,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               GitHub:{' '}
               <a
-                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
                 href="https://github.com/svirins"
               >
                 @svirins
@@ -134,7 +132,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               Mail:{' '}
               <a
-                className="transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out "
+                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
                 href="mailto:svirins@gmail.com"
               >
                 svirins@gmail.com

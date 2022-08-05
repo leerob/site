@@ -12,13 +12,12 @@ export default function Snippets({
       description="A mix of snippets I've found usefull and want to share"
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100 capsize">
+        <h1 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
           Code Snippets
         </h1>
-        <p className="mb-4 text-gray-700 dark:text-gray-400">
-          Shell scripts, functions and some 🎲 stuff I&apos;ve found useful and
-          want to share.
-        </p>
+        <h2 className="text-[22px] md:text-2xl tracking-tight text-gray-900 dark:text-gray-100 font-normal">
+          Some 🎲 stuff I&apos;ve found useful and want to share.
+        </h2>
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-2 sm:grid-cols-2">
           {snippets?.length &&
             snippets?.map((snippet) => (

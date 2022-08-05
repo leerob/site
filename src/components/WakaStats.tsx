@@ -6,16 +6,16 @@ const WIDTH = 800;
 
 const WAKA_STATS_COLORS = [
   {
-    barColor: '#1D4ED8',
-    textColor: 'text-blue-700'
+    barColor: '#2563EB',
+    textColor: 'text-wakatime-blue'
   },
   {
-    barColor: '#3B82F6',
-    textColor: 'text-blue-500'
+    barColor: '#D97706',
+    textColor: 'text-wakatime-yellow'
   },
   {
-    barColor: '#93C5FD',
-    textColor: 'text-blue-300-'
+    barColor: '#DC2626',
+    textColor: 'text-wakatime-red'
   }
 ];
 
@@ -75,7 +75,7 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <p className=" text-gray-700 dark:text-gray-400 text-xs mt-1">
         My last week coding stats taken from a{' '}
         <a
-          className="transition-all dark:hover:text-signal-dark  not-italic  font-semibold hover:text-signal duration-150 ease-in-out"
+          className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
           href="https://wakatime.com/@svirins"
         >
           WakaTime

@@ -37,21 +37,21 @@ import {
 export const SOCIALS = [
   {
     Icon: (
-      <SiTwitter className="w-4 h-4 fill-gray-800  dark:fill-gray-200 hover:fill-signal  dark:hover:fill-signal-dark  transform  duration-150 ease-in-out  transition-all" />
+      <SiTwitter className="w-4 h-4 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
     ),
     url: 'https://twitter.com/svirins',
     iconTitle: 'My Twitter'
   },
   {
     Icon: (
-      <SiGithub className="w-4 h-4 fill-gray-800  dark:fill-gray-200 hover:fill-signal  dark:hover:fill-signal-dark  transform  duration-150 ease-in-out  transition-all" />
+      <SiGithub className="w-4 h-4 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
     ),
     url: 'https://github.com/svirins',
     iconTitle: 'My GitHub'
   },
   {
     Icon: (
-      <SiGmail className="w-4 h-4 fill-gray-800  dark:fill-gray-200 hover:fill-signal  dark:hover:fill-signal-dark  transform  duration-150 ease-in-out  transition-all" />
+      <SiGmail className="w-4 h-4 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200" />
     ),
     url: 'mailto:svirins@gmail.com',
     iconTitle: 'My Gmail'

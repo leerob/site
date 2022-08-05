@@ -17,8 +17,8 @@ export default function NavItem({
       <a
         className={cn(
           getActiveStatus(href, router.asPath)
-            ? 'font-medium text-gray-800 dark:text-gray-200 '
-            : 'font-normal text-gray-600 dark:text-gray-400',
+            ? 'font-semibold text-gray-800 dark:text-gray-200 '
+            : 'font-medium text-gray-600 dark:text-gray-400',
           'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
         )}
       >

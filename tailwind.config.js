@@ -15,6 +15,12 @@ module.exports = {
       gray: colors.slate,
       black: 'rgb(0 0 0 / 99%)',
       white: 'rgb(255 255 255 / 99%)',
+      transparent: 'rgb(255 255 255 / 0%)',
+      wakatime: {
+        blue: '#2563EB',
+        yellow: '#D97706',
+        red: '#DC2626'
+      },
       code: {
         emerald: '#10b981',
         yellow: '#eab308',

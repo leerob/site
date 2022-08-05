@@ -8,7 +8,11 @@ export default function Footer() {
       <NowPlaying />
       <div className="flex my-2 space-x-4">
         {SOCIALS.map((social, index) => (
-          <a key={index} href={social.url}>
+          <a
+            key={index}
+            href={social.url}
+            className="duration-150 fill-gray-700  dark:fill-gray-400  transform  ease-in-out hover:scale-110"
+          >
             {social.Icon}
           </a>
         ))}
@@ -24,7 +28,7 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-200 hover:text-signal dark:hover:text-signal-dark font-medium"
+          className="text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
           href="https://leerob.io"
         >
           Lee Robinson{` `}
