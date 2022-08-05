@@ -16,7 +16,7 @@ export default function NotFound() {
           you double check that URL?
         </p>
         <Link href="/">
-          <a className="p-1 transition-all dark:hover:text-signal-dark ease-in-out text-lg  hover:text-signal duration-150  sm:p-4 w-64 font-semibold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-gray-900 dark:text-gray-100">
+          <a className="p-1 transition-all  ease-in-out text-lg  hover:text-active duration-150  sm:p-4 w-64 font-semibold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-gray-900 dark:text-gray-100">
             Return Home
           </a>
         </Link>

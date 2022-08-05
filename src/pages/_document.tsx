@@ -52,7 +52,7 @@ class MyDocument extends Document {
             name="robots"
           />
         </Head>
-        <body className="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+        <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
           <Main />
           <NextScript />
         </body>

@@ -8,13 +8,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      signal: 'rgb(255 49 46 / 95%)',
-      'signal-dark': 'rgb(0 206 209 / 95%)',
-      'signal-opaque': 'rgb(255 49 46 / 85%)',
-      'signal-opaque-dark': 'rgb(0 206 209 / 85%)',
+      active: 'rgb(255 49 46 / 95%)',
       gray: colors.slate,
-      black: 'rgb(0 0 0 / 99%)',
-      white: 'rgb(255 255 255 / 99%)',
       transparent: 'rgb(255 255 255 / 0%)',
       wakatime: {
         blue: '#2563EB',
@@ -43,14 +38,9 @@ module.exports = {
             }
           }
         }
-      }),
-      scale: {
-        175: '1.75',
-        200: '2.00'
-      }
+      })
     }
   },
-
   variants: {
     typography: ['dark']
   },

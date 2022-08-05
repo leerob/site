@@ -17,10 +17,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <div className="flex flex-col  max-w-2xl mx-auto w-full">
               <div className="flex flex-col items-start">
                 <h1 className="text-3xl md:text-5xl tracking-tight mb-4 font-bold  text-gray-900 dark:text-gray-100">
-                  Hi, I&apos;am{' '}
-                  <span className="text-signal dark:text-signal-dark">
-                    Dzmitry
-                  </span>
+                  Hi, I&apos;am <span className="text-active">Dzmitry</span>
                 </h1>
                 <h2 className="text-[22px] md:text-2xl tracking-tight text-gray-900 dark:text-gray-100 font-normal">
                   I specialise in turning ideas into{' '}
@@ -97,16 +94,6 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             Some stats:
           </h2>
           <WakaStats stats={stats} />
-          {/* <h2 className="text-xl md:text-2xl mb-4 mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-nornal">
-            Uses:
-          </h2>
-          <Image
-            width={800}
-            height={600}
-            alt={`Cover Image}`}
-            src="/uses-1.jpeg"
-            className="grayscale hover:grayscale-0 rounded-lg transition-all duration-300 ease-out shadow-md"
-          /> */}
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Feel free to ask me <em>anything</em>:
           </h2>
