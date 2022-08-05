@@ -52,7 +52,7 @@ const HIVE_REWRITE = {
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.panelbear.com *.splitbee.io;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';

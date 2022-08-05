@@ -19,7 +19,7 @@ export default function Blog({
     >
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
         <div className="flex flex-col">
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight capsize text-gray-900 md:text-5xl dark:text-gray-100">
             Blog
           </h1>
           <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg">

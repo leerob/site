@@ -22,7 +22,7 @@ export default function BlogLayout({
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">
         <Tags tags={post.tags} />
-        <h1 className="my-2 text-3xl font-bold  tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
+        <h1 className="my-2 text-3xl font-bold  tracking-tight capsize  text-gray-900 md:text-5xl dark:text-gray-100">
           {post.title}
         </h1>
         {post.coverImage && (

@@ -16,7 +16,7 @@ export default function TagPage({
       description="Posts about code, dev life and various other things."
     >
       <div className="flex flex-col max-w-2xl mx-auto pb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
+        <h1 className="mb-4 text-3xl font-bold capsize tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
           {`Posts with tag '${title}'`}
         </h1>
         <div className="grid grid-cols-1 divide-y  divide-gray-700/25 dark:divide-gray-300/25">
