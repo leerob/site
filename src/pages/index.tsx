@@ -49,7 +49,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
       <div className="flex flex-col max-w-2xl mx-auto pb-16 w-full">
         <div className="flex flex-col">
           <h2 className="text-xl md:text-2xl mt-4 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
-            Quick summary:
+            In short:
           </h2>
           <ul className="list-inside list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 text-lg">
@@ -70,7 +70,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           </h2>
           <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 text-lg">
-              deliver logical, efficientd code, following best practices;
+              deliver logical, efficient code, following best practices;
             </li>
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               consistency over speed;
@@ -101,7 +101,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               Twitter:{' '}
               <a
-                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
+                className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
                 href="https://twitter.com/svirins"
               >
                 @svirins
@@ -110,7 +110,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               GitHub:{' '}
               <a
-                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
+                className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
                 href="https://github.com/svirins"
               >
                 @svirins
@@ -119,7 +119,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <li className="text-gray-700 dark:text-gray-400 text-lg">
               Mail:{' '}
               <a
-                className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
+                className=" text-gray-800 dark:text-gray-300  font-medium  link-underline link-underline-gradient"
                 href="mailto:svirins@gmail.com"
               >
                 svirins@gmail.com

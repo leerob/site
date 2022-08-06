@@ -34,26 +34,14 @@ module.exports = {
         headers: securityHeaders
       }
     ];
-  },
-  async rewrites() {
-    return [BEE_REWRITE, HIVE_REWRITE];
   }
-};
-// Setting Splitbee analytics
-const BEE_REWRITE = {
-  source: '/bee.js',
-  destination: 'https://cdn.splitbee.io/sb.js'
-};
-
-const HIVE_REWRITE = {
-  source: '/_hive/:slug',
-  destination: 'https://hive.splitbee.io/:slug'
 };
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.panelbear.com *.splitbee.io;
-    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
+    child-src *.youtube.com *.google.com *.twitter.com;
+    style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;
     media-src 'none';
     connect-src *;

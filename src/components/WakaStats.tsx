@@ -75,7 +75,7 @@ export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
       <p className=" text-gray-700 dark:text-gray-400 text-xs mt-1">
         My last week coding stats taken from a{' '}
         <a
-          className=" text-gray-800 dark:text-gray-300  font-medium link link-underline link-underline-gradient"
+          className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
           href="https://wakatime.com/@svirins"
         >
           WakaTime

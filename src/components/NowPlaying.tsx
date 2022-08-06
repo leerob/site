@@ -60,15 +60,15 @@ function AnimatedBars() {
     <div className="w-auto flex items-end overflow-hidden">
       <span
         id="bar1"
-        className="w-1 mr-[3px] h-2 bg-code-pink/25 dark:bg-gray-500 opacity-75"
+        className="w-1 mr-[3px] h-2 bg-gray-300 dark:bg-gray-500 opacity-75"
       />
       <span
         id="bar2"
-        className="w-1 mr-[3px] h-1 bg-code-pink/50 dark:bg-gray-500"
+        className="w-1 mr-[3px] h-1 bg-gray-300 dark:bg-gray-500"
       />
       <span
         id="bar3"
-        className="w-1 h-3 bg-code-pink/80 dark:bg-gray-500 opacity-80"
+        className="w-1 h-3 bg-gray-300 dark:bg-gray-500 opacity-80"
       />
     </div>
   );
