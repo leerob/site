@@ -23,7 +23,7 @@ export default function Footer() {
         <span>{` • `}</span>
         Dzmitry Svirin
       </p>
-      <p className="w-full text-xs text-gray-500 dark:text-gray-400 text-left md:text-center font-thin">
+      <p className="w-full  text-xs text-gray-500 dark:text-gray-400 text-left md:text-center">
         <span>The code of this site was originally a fork of </span>
         <a
           target="_blank"

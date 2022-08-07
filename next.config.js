@@ -39,7 +39,7 @@ module.exports = {
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com *.panelbear.com;
     child-src *.youtube.com *.google.com *.twitter.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;
@@ -75,6 +75,6 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+    value: 'camera=(), microphone=(), geolocation=()'
   }
 ];

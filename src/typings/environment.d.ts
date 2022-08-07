@@ -1,4 +1,7 @@
 declare global {
+  interface Window {
+    goatcounter: any;
+  }
   namespace NodeJS {
     interface ProcessEnv {
       NEXT_PUBLIC_SANITY_DATASET: 'development';

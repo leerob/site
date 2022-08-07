@@ -5,6 +5,12 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <script
+            data-goatcounter="https://svirins.goatcounter.com/count"
+            data-goatcounter-settings='{"no_onload": true, "allow_local": true}'
+            async
+            src="/scripts/goatcounter.js"
+          ></script>
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -34,7 +40,6 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
-            rel="preload"
             href="/fonts/ibm-plex-sans-var-italic.woff2"
             as="font"
             type="font/woff2"

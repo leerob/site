@@ -4,7 +4,6 @@ const getAccessToken = async () => {
   const basic = btoa(
     `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
   );
-
   const response = await fetch(SPOTIFY_TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -21,7 +20,9 @@ const getAccessToken = async () => {
 };
 
 export const getNowPlaying = async () => {
-  const { access_token } = await getAccessToken();
+  const data = await getAccessToken();
+  console.log(data);
+  const { access_token } = data;
   return fetch(SPOTIFY_NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`
