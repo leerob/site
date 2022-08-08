@@ -21,7 +21,6 @@ const getAccessToken = async () => {
 
 export const getNowPlaying = async () => {
   const data = await getAccessToken();
-  console.log(data);
   const { access_token } = data;
   return fetch(SPOTIFY_NOW_PLAYING_ENDPOINT, {
     headers: {

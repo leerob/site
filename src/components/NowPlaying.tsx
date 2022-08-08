@@ -54,22 +54,30 @@ function AnimatedBars() {
         easing: ['ease-in-out']
       }
     );
+    animate(
+      '#bar4',
+      {
+        transform: [
+          'scaleY(1.0)  translateY(0rem)',
+          'scaleY(0.5) translateY(0.67rem)',
+          'scaleY(1.0)  translateY(0rem)'
+        ]
+      },
+      {
+        delay: 0.5,
+        duration: 1.5,
+        repeat: Infinity,
+        easing: ['ease-in-out']
+      }
+    );
   }, []);
 
   return (
-    <div className="w-auto flex items-end overflow-hidden">
-      <span
-        id="bar1"
-        className="w-1 mr-[3px] h-2 bg-gray-300 dark:bg-gray-500 opacity-75"
-      />
-      <span
-        id="bar2"
-        className="w-1 mr-[3px] h-1 bg-gray-300 dark:bg-gray-500"
-      />
-      <span
-        id="bar3"
-        className="w-1 h-3 bg-gray-300 dark:bg-gray-500 opacity-80"
-      />
+    <div className="w-auto flex items-end overflow-hidden md:mb-1">
+      <span id="bar1" className="w-[3px] mr-[1px] h-2 bg-spotify/60" />
+      <span id="bar2" className="w-[3px] mr-[1px] h-1 bg-spotify/80" />
+      <span id="bar3" className="w-[3px] mr-[1px] h-3 bg-spotify/50" />
+      <span id="bar4" className="w-[3px] h-1 bg-spotify/70" />
     </div>
   );
 }
@@ -88,10 +96,10 @@ export default function NowPlaying() {
           />
         </svg>
       )}
-      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate self-baseline">
         {data?.songUrl ? (
           <a
-            className="capsize text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
+            className="capsize text-gray-700 dark:text-gray-300 font-medium   text-sm max-w-max truncate"
             href={data.songUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -99,14 +107,14 @@ export default function NowPlaying() {
             {data.title}
           </a>
         ) : (
-          <p className="capsize text-gray-800 dark:text-gray-200 font-medium">
+          <p className="capsize text-gray-800 dark:text-gray-200  text-sm">
             Not Playing
           </p>
         )}
         <span className="capsize mx-2 text-gray-500 dark:text-gray-400 hidden sm:block">
           {' – '}
         </span>
-        <p className="capsize text-gray-500 dark:text-gray-400 max-w-max truncate">
+        <p className="capsize text-gray-500 dark:text-gray-400 max-w-max truncate text-sm">
           {data?.artist ?? 'Spotify'}
         </p>
       </div>

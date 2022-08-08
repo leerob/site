@@ -37,7 +37,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <Image
               alt="Dzmitry Svirin"
               src="/me.webp"
-              width={300}
+              width={600}
               height={200}
               className="rounded-md"
               priority

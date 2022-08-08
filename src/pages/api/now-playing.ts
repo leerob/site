@@ -1,6 +1,5 @@
 import { getNowPlaying } from '@/lib/spotify-api';
 import { ICurrentlyPlaying } from '@/typings';
-// import { NextApiRequest, NextApiResponse } from 'next';
 
 export const config = {
   runtime: 'experimental-edge'

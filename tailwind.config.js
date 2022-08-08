@@ -10,6 +10,7 @@ module.exports = {
     colors: {
       active: 'rgb(255 49 46 / 95%)',
       gray: colors.slate,
+      spotify: '#4ade80',
       transparent: 'rgb(255 255 255 / 0%)',
       wakatime: {
         blue: '#2563EB',
