@@ -90,7 +90,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <IconContext.Provider
               value={{
                 className:
-                  'w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200'
+                  'w-7 h-7 md:w-8 md:h-8  fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200'
               }}
             >
               {memoizedStacks.map((el, index) => (

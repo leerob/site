@@ -10,7 +10,7 @@ export default function SnippetsPage({ snippet }: { snippet: ISnippet }) {
   return (
     <IconContext.Provider
       value={{
-        className: 'w-9 h-9 fill-gray-900  dark:fill-gray-100'
+        className: 'w-7 h-7 md:w-8 md:h-8 fill-gray-900  dark:fill-gray-100'
       }}
     >
       <SnippetLayout snippet={snippet}>

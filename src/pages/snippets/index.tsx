@@ -16,14 +16,15 @@ export default function Snippets({
         <h1 className="mb-4 text-3xl font-bold capsize tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
           Code Snippets
         </h1>
-        <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg mb-4">
+        <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg mb-4 mt-2">
           Some 🎲 stuff I&apos;ve found useful and want to share.
         </p>
 
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-2">
           <IconContext.Provider
             value={{
-              className: 'w-9 h-9 fill-gray-900  dark:fill-gray-100'
+              className:
+                'w-7 h-7 md:w-8 md:h-8 fill-gray-900  dark:fill-gray-100'
             }}
           >
             {snippets?.length &&
