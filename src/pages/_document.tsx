@@ -1,16 +1,11 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-          <script
-            data-goatcounter="https://svirins.goatcounter.com/count"
-            data-goatcounter-settings='{"no_onload": true, "allow_local": true}'
-            async
-            src="/scripts/goatcounter.js"
-          ></script>
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -59,6 +54,12 @@ class MyDocument extends Document {
         <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
           <Main />
           <NextScript />
+          <Script
+            src="/scripts/goatcounter.js"
+            data-goatcounter="https://svirins.goatcounter.com/count"
+            data-goatcounter-settings='{"no_onload": true, "allow_local": false}'
+            strategy="beforeInteractive"
+          />
         </body>
       </Html>
     );

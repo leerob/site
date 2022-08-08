@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import SnippetPreview from '@/components/SnippetPreview';
 import { getSnippets } from '@/lib/sanity-api';
 import { InferGetStaticPropsType } from 'next';
+import { IconContext } from 'react-icons';
 
 export default function Snippets({
   snippets
@@ -18,17 +19,24 @@ export default function Snippets({
         <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg mb-4">
           Some 🎲 stuff I&apos;ve found useful and want to share.
         </p>
+
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-2">
-          {snippets?.length &&
-            snippets?.map((snippet) => (
-              <SnippetPreview
-                key={snippet.slug}
-                title={snippet.title}
-                slug={snippet.slug}
-                iconTitle={snippet.iconTitle}
-                description={snippet.description}
-              />
-            ))}
+          <IconContext.Provider
+            value={{
+              className: 'w-9 h-9 fill-gray-900  dark:fill-gray-100'
+            }}
+          >
+            {snippets?.length &&
+              snippets?.map((snippet) => (
+                <SnippetPreview
+                  key={snippet.slug}
+                  title={snippet.title}
+                  slug={snippet.slug}
+                  iconTitle={snippet.iconTitle}
+                  description={snippet.description}
+                />
+              ))}
+          </IconContext.Provider>
         </div>
       </div>
     </Container>

@@ -4,19 +4,26 @@ import components from '@/components/MDXComponents';
 import { mdxToHtml } from '@/lib/mdx';
 import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
 import { IParams, ISnippet } from '@/typings';
+import { IconContext } from 'react-icons';
 
 export default function SnippetsPage({ snippet }: { snippet: ISnippet }) {
   return (
-    <SnippetLayout snippet={snippet}>
-      <MDXRemote
-        {...snippet.mdxContent!}
-        components={
-          {
-            ...components
-          } as any
-        }
-      />
-    </SnippetLayout>
+    <IconContext.Provider
+      value={{
+        className: 'w-9 h-9 fill-gray-900  dark:fill-gray-100'
+      }}
+    >
+      <SnippetLayout snippet={snippet}>
+        <MDXRemote
+          {...snippet.mdxContent!}
+          components={
+            {
+              ...components
+            } as any
+          }
+        />
+      </SnippetLayout>
+    </IconContext.Provider>
   );
 }
 

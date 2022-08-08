@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import StackIcon from '@/components/StackIcon';
 import { ISnippet } from '@/typings';
 import type { PropsWithChildren } from 'react';
+import { IconContext } from 'react-icons';
 
 export default function SnippetLayout({
   children,
@@ -23,7 +24,13 @@ export default function SnippetLayout({
             </p>
           </div>
           <div className="mt-2 md:mt-6 scale-125 md:scale-150 ml-4 origin-center">
-            <StackIcon iconTitle={snippet.iconTitle!} />
+            <IconContext.Provider
+              value={{
+                className: 'w-9 h-9 fill-gray-100  dark:fill-gray-900'
+              }}
+            >
+              <StackIcon iconTitle={snippet.iconTitle!} />
+            </IconContext.Provider>
           </div>
         </div>
         <hr className="w-full border-1 max-w-2xl border-gray-200 dark:border-gray-800" />

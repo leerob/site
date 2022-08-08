@@ -6,6 +6,7 @@ import { getWakaStats } from '@/lib/waka-api';
 import { IWakaLangStats } from '@/typings';
 import Image from 'next/future/image';
 import { useMemo } from 'react';
+import { IconContext } from 'react-icons';
 
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -86,9 +87,16 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             Technologies I use frequently:
           </h2>
           <div className="grid grid-cols-6 md:grid-cols-8 items-center place-content-between max-w-2xl gap-x-12 gap-y-6 mx-auto w-full">
-            {memoizedStacks.map((el, index) => (
-              <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
-            ))}
+            <IconContext.Provider
+              value={{
+                className:
+                  'w-9 h-9 fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200'
+              }}
+            >
+              {memoizedStacks.map((el, index) => (
+                <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
+              ))}
+            </IconContext.Provider>
           </div>
           <h2 className="text-xl md:text-2xl mb-3 mt-10 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Some stats:

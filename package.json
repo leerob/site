@@ -45,7 +45,7 @@
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@svgr/webpack": "^6.3.1",
-    "@types/react": "^18.0.16",
+    "@types/react": "^18.0.17",
     "@types/rss": "^0.0.29",
     "@typescript-eslint/parser": "^5.32.0",
     "autoprefixer": "10.4.8",
