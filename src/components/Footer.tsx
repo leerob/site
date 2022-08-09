@@ -18,6 +18,7 @@ export default function Footer() {
             <a
               key={index}
               href={social.url}
+              title={social.iconTitle}
               className="duration-150 transform  ease-in-out hover:scale-110"
             >
               {social.Icon}
