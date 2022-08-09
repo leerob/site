@@ -14,7 +14,7 @@ module.exports = {
       transparent: 'rgb(255 255 255 / 0%)',
       wakatime: {
         blue: '#2563EB',
-        yellow: '#D97706',
+        violet: '#7C3AED',
         red: '#DC2626'
       },
       code: {

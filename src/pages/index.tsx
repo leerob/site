@@ -38,15 +38,14 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             <Image
               alt="Dzmitry Svirin"
               src="/me.webp"
-              width={600}
-              height={200}
+              width={262}
+              height={363}
               className="rounded-md"
               quality={80}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(600, 200)
+                shimmer(263, 363)
               )}`}
-              priority
             />
           </div>
         </div>

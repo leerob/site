@@ -10,8 +10,8 @@ const WAKA_STATS_COLORS = [
     textColor: 'text-wakatime-blue'
   },
   {
-    barColor: '#D97706',
-    textColor: 'text-wakatime-yellow'
+    barColor: '#7C3AED',
+    textColor: 'text-wakatime-violet'
   },
   {
     barColor: '#DC2626',
