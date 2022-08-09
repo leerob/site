@@ -7,6 +7,7 @@ import { IWakaLangStats } from '@/typings';
 import Image from 'next/future/image';
 import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
+import { shimmer, toBase64 } from '@/lib/image-utils';
 
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -28,7 +29,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
               </div>
             </div>
 
-            <p className="text-gray-900 dark:text-gray-100 text-lg mt-4 md:mt-10">
+            <p className="text-gray-900 dark:text-gray-100 md:text-lg mt-4 md:mt-10">
               A full-stack developer passionate about React ecosystem,
               TypeScript and serverless backends.
             </p>
@@ -40,6 +41,11 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
               width={600}
               height={200}
               className="rounded-md"
+              quality={80}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(600, 200)
+              )}`}
               priority
             />
           </div>
@@ -53,15 +59,15 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             In short:
           </h2>
           <ul className="list-inside list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               10+ years of experience building products for clients across
               several countries;
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               currently working remotely for existing clients being open for new
               opportunities;
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               located in Tbilisi, 🇬🇪. I enjoy cycling, swimming and good books;
             </li>
           </ul>
@@ -70,16 +76,16 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
             My values:
           </h2>
           <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               deliver logical, efficient code, following best practices;
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               consistency over speed;
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               honesty, reliability, responsibility;
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               stay curious;
             </li>
           </ul>
@@ -103,10 +109,10 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           </h2>
           <WakaStats stats={stats} />
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
-            Feel free to ask me <em>anything</em>:
+            Get in touch:
           </h2>
           <ul className="list-inside  list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               Twitter:{' '}
               <a
                 className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
@@ -115,7 +121,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
                 @svirins
               </a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               GitHub:{' '}
               <a
                 className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
@@ -124,7 +130,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
                 @svirins
               </a>
             </li>
-            <li className="text-gray-700 dark:text-gray-400 text-lg">
+            <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               Mail:{' '}
               <a
                 className=" text-gray-800 dark:text-gray-300  font-medium  link-underline link-underline-gradient"
@@ -145,5 +151,6 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
 
 export async function getStaticProps() {
   const { languages } = await getWakaStats();
+
   return { props: { stats: languages }, revalidate: 86400 };
 }

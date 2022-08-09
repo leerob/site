@@ -39,7 +39,6 @@ export default function BlogLayout({
               alt="Dzmitry Svirin"
               height={36}
               width={36}
-              sizes="20vw"
               src="/svirins.png"
               className="rounded-full"
             />

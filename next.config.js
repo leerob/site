@@ -6,7 +6,6 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: [
-      'i.scdn.co', // Spotify Album Art
       'cdn.sanity.io' // Sanity images
     ],
     formats: ['image/webp']
@@ -26,15 +25,15 @@ module.exports = {
       loader: require.resolve('@svgr/webpack')
     });
     return config;
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ];
   }
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: securityHeaders
-  //     }
-  //   ];
-  // }
 };
 
 const ContentSecurityPolicy = `

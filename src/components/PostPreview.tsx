@@ -16,7 +16,7 @@ export default function PostPreview({
           <h3 className="text-xl md:text-2xl font-medium text-left text-gray-900  hover:text-active dark:hover:text-active dark:text-gray-100">
             {title}
           </h3>
-          <p className="text-gray-700 dark:text-gray-400 text-base md:text-lg">
+          <p className="text-gray-700 dark:text-gray-400 md:text-lg">
             {excerpt}
           </p>
         </div>

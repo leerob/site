@@ -15,7 +15,7 @@ export default function Blog({
   return (
     <Container
       title="Blog – Dzmitry Svirin"
-      description="Posts about code, dev life and various other things."
+      description="Posts about code, dev life and 🎇 other things."
     >
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
         <div className="flex flex-col">
@@ -23,7 +23,7 @@ export default function Blog({
             Blog
           </h1>
           <p className="text-gray-900 dark:text-gray-100 text-base mt-2 md:text-lg">
-            My thoughts. Mostly related to my profession interests.
+            Posts about code, dev life and various ⚗️ things.
           </p>
         </div>
       </div>
