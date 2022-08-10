@@ -10,13 +10,12 @@ export default function NotFound() {
           451 – Unavailable For Extraterrestrial Reasons
         </h1>
         <p className="text-gray-700 dark:text-gray-400 mb-8 md:text-lg">
-          Why show a generic 404 when I can make it sound mysterious? It seems
-          you&apos;ve found something that used to exist, or you spelled
-          something wrong. I&apos;m guessing you spelled something wrong. Can
-          you check that URL?
+          It seems you&apos;ve found something that used to exist, or you
+          spelled something wrong. I&apos;m guessing you spelled something
+          wrong. Can you check that URL?
         </p>
         <Link href="/">
-          <a className="p-1 transition-all  ease-in-out md:text-lg  hover:text-active duration-150  sm:p-4 w-64 font-semibold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-gray-900 dark:text-gray-100">
+          <a className=" text-gray-800 dark:text-gray-300  font-medium  link-underline link-underline-gradient">
             Return Home
           </a>
         </Link>

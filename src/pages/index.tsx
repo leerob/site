@@ -45,7 +45,7 @@ export default function IndexPage({ stats }: IWakaStats) {
               height={363}
               className="rounded-md"
               placeholder="blur"
-              blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+K9bDwAD4AGtgV1izQAAAABJRU5ErkJggg=="
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
               priority
             />
           </div>

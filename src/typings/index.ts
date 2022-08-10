@@ -38,14 +38,16 @@ export interface ICurrentlyPlaying {
   isPlaying: boolean;
 }
 
-export interface IContainerProps {
+interface ISeoProps {
   title: string;
   description?: string;
   image?: string;
   type?: string;
   date?: string;
   tags?: string[];
-  author?: string;
+}
+
+export interface IContainerPropsWithChildren extends ISeoProps {
   children: React.ReactNode;
 }
 

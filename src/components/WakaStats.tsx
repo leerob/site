@@ -10,11 +10,15 @@ const WAKA_STATS_COLORS = [
     textColor: 'text-wakatime-blue'
   },
   {
-    barColor: '#7C3AED',
+    barColor: '#D97706',
     textColor: 'text-wakatime-violet'
   },
   {
     barColor: '#DC2626',
+    textColor: 'text-wakatime-red'
+  },
+  {
+    barColor: '#84CC16',
     textColor: 'text-wakatime-red'
   }
 ];
@@ -50,7 +54,7 @@ export default function WakaStats({ stats }: IWakaStats) {
       <div className="flex">
         <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="25" width={'100%'}>
           <title id="title">A bar chart showing information</title>
-          <desc id="desc">Dzmitry Svirin top 3 programming languages/</desc>
+          <desc id="desc">Dzmitry Svirin top 4 programming languages/</desc>
           <Bar
             color={WAKA_STATS_COLORS[0].barColor}
             width={(datum[0].percent / 100) * WIDTH}

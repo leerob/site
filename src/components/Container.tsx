@@ -1,17 +1,17 @@
 import { NextSeo } from 'next-seo';
-import { IContainerProps } from '@/typings';
+import { IContainerPropsWithChildren } from '@/typings';
 import { useRouter } from 'next/router';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
-export default function Container(props: IContainerProps) {
+export default function Container(props: IContainerPropsWithChildren) {
   const router = useRouter();
   const articleMeta =
     props.type === 'article'
       ? {
           publishedTime: props.date,
           tags: props.tags ? props.tags : ['dev-portfolio', 'personal-website'],
-          authors: ['https://svirins.codes/about'],
+          authors: ['https://twitter.com/svirins'],
           description: props.description
         }
       : {};
@@ -26,10 +26,10 @@ export default function Container(props: IContainerProps) {
         `https://www.svirins.codes${router.asPath}` ??
         'https://www.svirins.codes',
       type: props.type ?? 'page',
-      image: props.image ?? 'https://svirins.codes/static/images/banner.png',
+      image: props.image ?? 'https://svirins.codes/static/images/banner.jpeg',
       images: [
         {
-          url: props.image ?? "https://svirins.codes/static/images/banner.png'",
+          url: props.image ?? 'https://svirins.codes/static/images/banner.jpeg',
           alt: props.title
         }
       ]
