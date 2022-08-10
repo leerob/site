@@ -69,7 +69,7 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'same-origin'
   },
   {
     key: 'X-Frame-Options',
@@ -89,6 +89,10 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()'
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block'
   }
 ];
