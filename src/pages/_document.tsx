@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
             src="/scripts/goatcounter.js"
             data-goatcounter="https://svirins.goatcounter.com/count"
             data-goatcounter-settings='{"no_onload": true, "allow_local": false}'
-            strategy="afterInteractive"
+            strategy="beforeInteractive"
           />
         </body>
       </Html>
