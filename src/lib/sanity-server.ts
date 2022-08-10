@@ -3,16 +3,16 @@
  * utilities we use on the client side, we are able to tree-shake (remove)
  * code that is not used on the client side.
  */
-import { createClient } from 'next-sanity';
+import PicoSanity from 'picosanity';
 import { SANITY_CONFIG } from '@/config';
 
-export const sanityClient = createClient(SANITY_CONFIG);
+export const sanityClient = PicoSanity(SANITY_CONFIG);
 
-export const previewClient = createClient({
-  ...SANITY_CONFIG,
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN
-});
+// export const previewClient = createClient({
+//   ...SANITY_CONFIG,
+//   useCdn: false,
+//   token: process.env.SANITY_API_TOKEN
+// });
 
-export const getClient = (preview: boolean) =>
-  preview ? previewClient : sanityClient;
+// export const getClient = (preview: boolean) =>
+//   preview ? previewClient : sanityClient;

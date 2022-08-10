@@ -1,6 +1,6 @@
 import { IPost, ISnippet } from '@/typings';
 
-import { sanityClient, getClient } from './sanity-server';
+import { sanityClient } from './sanity-server';
 
 import {
   indexQuery,
@@ -16,7 +16,7 @@ import {
 } from './sanity-queries';
 
 export const getPosts = async (preview: boolean): Promise<IPost[]> => {
-  const posts = await getClient(preview).fetch(indexQuery);
+  const posts = await sanityClient.fetch(indexQuery);
   return posts;
 };
 
@@ -29,7 +29,7 @@ export const getPost = async (
   slug: string,
   preview: boolean
 ): Promise<IPost> => {
-  const { post } = await getClient(preview).fetch(postQuery, { slug: slug });
+  const { post } = await sanityClient.fetch(postQuery, { slug: slug });
   return post ?? null;
 };
 
@@ -37,7 +37,7 @@ export const getPostBySlug = async (
   slug: string,
   preview: boolean
 ): Promise<IPost> => {
-  const { post } = await getClient(preview).fetch(postBySlugQuery, { slug });
+  const { post } = await sanityClient.fetch(postBySlugQuery, { slug });
   return post ?? null;
 };
 export const getUpdatedPostSlug = async (id: string): Promise<string> => {
@@ -46,7 +46,7 @@ export const getUpdatedPostSlug = async (id: string): Promise<string> => {
 };
 
 export const getSnippets = async (preview: boolean): Promise<ISnippet[]> => {
-  const snippets = await getClient(preview).fetch(allSnippetsQuery);
+  const snippets = await sanityClient.fetch(allSnippetsQuery);
   return snippets ?? null;
 };
 
@@ -59,7 +59,7 @@ export const getSnippet = async (
   slug: string,
   preview: boolean
 ): Promise<ISnippet> => {
-  const { snippet } = await getClient(preview).fetch(snippetsQuery, { slug });
+  const { snippet } = await sanityClient.fetch(snippetsQuery, { slug });
   return snippet ?? null;
 };
 
@@ -75,6 +75,6 @@ export const getPostsByTag = async (
   title: string;
   posts: IPost[];
 }> => {
-  const posts = await getClient(preview).fetch(tagRelatedPosts, { slug });
+  const posts = await sanityClient.fetch(tagRelatedPosts, { slug });
   return posts ?? null;
 };
