@@ -40,8 +40,6 @@ export const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 export const WAKATIME_API_ENDPOINT = `https://wakatime.com/api/v1/users/svirins/stats/last_7_days`;
 
-export const IMAGE_MAX_WIDTH = 672;
-
 export const POSTS_LIMIT = 200;
 
 export const TYPED_STRINGS = [

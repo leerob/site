@@ -7,7 +7,6 @@ import { IWakaLangStats } from '@/typings';
 import Image from 'next/future/image';
 import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
-import { shimmer, toBase64 } from '@/lib/image-utils';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -46,11 +45,8 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
               width={262}
               height={363}
               className="rounded-md"
-              quality={80}
               placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(263, 363)
-              )}`}
+              blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+K9bDwAD4AGtgV1izQAAAABJRU5ErkJggg=="
             />
           </div>
         </div>
@@ -111,7 +107,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-3 mt-10 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Some stats:
           </h2>
-          <Suspense fallback={`Loading...`}>
+          <Suspense fallback={<LoadingSpinner />}>
             <DynamicWakaStats stats={stats} />
           </Suspense>
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
