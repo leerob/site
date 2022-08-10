@@ -43,14 +43,24 @@ module.exports = {
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com *.panelbear.com;
-    child-src *.youtube.com;
-    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com;
+    style-src 'self';
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
     font-src 'self';
 `;
+
+// const ContentSecurityPolicy = `
+//     default-src 'self';
+//     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com;
+//     child-src *.youtube.com;
+//     style-src 'self' 'unsafe-inline';
+//     img-src * blob: data:;
+//     media-src 'none';
+//     connect-src *;
+//     font-src 'self';
+// `;
 
 const securityHeaders = [
   {
@@ -59,7 +69,7 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'strict-origin'
   },
   {
     key: 'X-Frame-Options',
