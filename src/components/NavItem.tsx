@@ -3,13 +3,12 @@ import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { getActiveStatus } from '@/lib/utils';
 
-export default function NavItem({
-  href,
-  text
-}: {
+interface INavItem {
   href: string;
   text: string;
-}) {
+}
+
+export default function NavItem({ href, text }: INavItem) {
   const router = useRouter();
 
   return (

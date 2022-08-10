@@ -1,9 +1,9 @@
-interface IHeading {
+interface IPageHeading {
   title: string;
   subtitle?: string;
 }
 
-export default function PageHeading({ title, subtitle }: IHeading) {
+export default function PageHeading({ title, subtitle }: IPageHeading) {
   return (
     <div className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full">
       <div className="flex flex-col items-start">

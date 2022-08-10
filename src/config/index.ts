@@ -11,7 +11,7 @@ export const AUTHOR = {
 };
 
 export const DEFAULT_SEO = {
-  title: 'Default description',
+  title: 'Developer portfolio site',
   description: 'Default description',
   openGraph: {
     titleTemplate: 'Default description',

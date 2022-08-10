@@ -1,7 +1,6 @@
 // import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { ParsedUrlQuery } from 'querystring';
-import { IconType } from 'react-icons/lib';
 
 export interface ITag {
   _id: string;
@@ -20,13 +19,6 @@ export interface IPost {
   coverImage?: string;
   readingTime?: string;
   mdxContent?: MDXRemoteSerializeResult;
-}
-
-export interface IPostShort {
-  slug: string;
-  title: string;
-  excerpt: string;
-  tags?: ITag[];
 }
 
 export interface ISnippet {
@@ -61,12 +53,8 @@ export interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export interface ISvg {
-  [key: string]: React.ReactNode;
-}
-
-export interface IWakaLangStats {
-  decimal: string;
+interface IWakaApiResponse {
+  dexportecimal: string;
   digital: string;
   hours: number;
   minutes: number;
@@ -76,17 +64,6 @@ export interface IWakaLangStats {
   total_seconds: bigint;
 }
 
-export interface IStack {
-  icon: string;
-  url: string;
-  iconTitle: string;
-  color: string;
-  featured?: boolean;
-}
-
-export interface IStackIcon {
-  iconTitle: string;
-  isLink?: boolean;
-  size?: 'base' | 'lg' | 'xl';
-  className?: string;
+export interface IWakaStats {
+  stats: IWakaApiResponse[];
 }

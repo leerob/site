@@ -1,4 +1,4 @@
-import { IWakaLangStats } from '@/typings';
+import { IWakaStats } from '@/typings';
 import cn from 'classnames';
 
 const HEIGHT = 25;
@@ -33,7 +33,7 @@ const Bar = ({
   </g>
 );
 
-export default function WakaStats({ stats }: { stats: IWakaLangStats[] }) {
+export default function WakaStats({ stats }: IWakaStats) {
   const datum = stats.sort((a, b) => b.percent - a.percent).slice(0, 3);
   const stackedBarComments = datum.map(({ name: lang, text }, index) => (
     <div key={index}>

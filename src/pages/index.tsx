@@ -1,9 +1,8 @@
 import Container from '@/components/Container';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 import TypewriterEffect from '@/components/TypewriterEffect';
-import WakaStats from '@/components/WakaStats';
 import { getWakaStats } from '@/lib/waka-api';
-import { IWakaLangStats } from '@/typings';
+import { IWakaStats } from '@/typings';
 import Image from 'next/future/image';
 import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
@@ -11,7 +10,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
-export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
+export default function IndexPage({ stats }: IWakaStats) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   const DynamicWakaStats = dynamic(() => import('@/components/WakaStats'));
 
@@ -47,6 +46,7 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
               className="rounded-md"
               placeholder="blur"
               blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+K9bDwAD4AGtgV1izQAAAABJRU5ErkJggg=="
+              priority
             />
           </div>
         </div>

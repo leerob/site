@@ -1,5 +1,3 @@
-import { IStackIcon } from '@/typings';
-import cn from 'classnames';
 import {
   SiAlgolia,
   SiAmazonaws,
@@ -34,6 +32,10 @@ import {
   SiGithub
 } from 'react-icons/si';
 
+interface IStackIcon {
+  iconTitle: string;
+  isLink?: boolean;
+}
 export const SOCIALS = [
   {
     Icon: <SiGithub />,
