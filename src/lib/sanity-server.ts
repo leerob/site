@@ -7,12 +7,3 @@ import PicoSanity from 'picosanity';
 import { SANITY_CONFIG } from '@/config';
 
 export const sanityClient = PicoSanity(SANITY_CONFIG);
-
-// export const previewClient = createClient({
-//   ...SANITY_CONFIG,
-//   useCdn: false,
-//   token: process.env.SANITY_API_TOKEN
-// });
-
-// export const getClient = (preview: boolean) =>
-//   preview ? previewClient : sanityClient;

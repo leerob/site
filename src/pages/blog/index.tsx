@@ -73,8 +73,8 @@ export default function Blog({
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const posts = await getPosts(preview);
+export async function getStaticProps() {
+  const posts = await getPosts();
 
   return { props: { posts } };
 }

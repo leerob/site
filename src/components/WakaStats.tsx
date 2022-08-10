@@ -11,15 +11,11 @@ const WAKA_STATS_COLORS = [
   },
   {
     barColor: '#D97706',
-    textColor: 'text-wakatime-violet'
-  },
-  {
-    barColor: '#DC2626',
-    textColor: 'text-wakatime-red'
+    textColor: 'text-wakatime-amber'
   },
   {
     barColor: '#84CC16',
-    textColor: 'text-wakatime-red'
+    textColor: 'text-wakatime-green'
   }
 ];
 
@@ -41,10 +37,12 @@ export default function WakaStats({ stats }: IWakaStats) {
   const datum = stats.sort((a, b) => b.percent - a.percent).slice(0, 3);
   const stackedBarComments = datum.map(({ name: lang, text }, index) => (
     <div key={index}>
-      <span className={cn(WAKA_STATS_COLORS[index].textColor, 'text-sm')}>
+      <span
+        className={cn(WAKA_STATS_COLORS[index].textColor, 'text-xs md:text-sm')}
+      >
         {lang}
       </span>
-      <span className=" text-gray-800 dark:text-gray-200 text-sm">
+      <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
         {` • ${text}`}
       </span>
     </div>

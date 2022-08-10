@@ -49,13 +49,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({
-  params,
-  preview = false
-}: {
-  params: IParams;
-  preview: boolean;
-}) {
-  const { posts, title } = await getPostsByTag(params.slug, preview);
+export async function getStaticProps({ params }: { params: IParams }) {
+  const { posts, title } = await getPostsByTag(params.slug);
   return { props: { posts, title } };
 }

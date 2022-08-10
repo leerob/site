@@ -28,14 +28,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({
-  params,
-  preview = false
-}: {
-  params: IParams;
-  preview: boolean;
-}) {
-  const post = await getPost(params.slug, preview);
+export async function getStaticProps({ params }: { params: IParams }) {
+  const post = await getPost(params.slug);
 
   if (!post) {
     return { notFound: true };

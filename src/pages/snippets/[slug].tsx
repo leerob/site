@@ -35,14 +35,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({
-  params,
-  preview = false
-}: {
-  params: IParams;
-  preview: boolean;
-}) {
-  const snippet = await getSnippet(params.slug, preview);
+export async function getStaticProps({ params }: { params: IParams }) {
+  const snippet = await getSnippet(params.slug);
 
   if (!snippet) {
     return { notFound: true };
