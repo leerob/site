@@ -5,7 +5,7 @@ import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import useDelayedRender from 'use-delayed-render';
+import useDelayedRender from '@/lib/use-delayed-render';
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,7 +82,7 @@ export default function MobileMenu() {
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
-      className="h-5 w-5 absolute text-gray-900 dark:text-gray-100 hover:scale-110"
+      className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
       width="20"
       height="20"
       viewBox="0 0 20 20"

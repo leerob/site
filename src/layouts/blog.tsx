@@ -3,7 +3,6 @@ import BlurredImage from '@/components/Image';
 import { Tags } from '@/components/Tags';
 import { urlForImage } from '@/lib/sanity-client';
 import { IPost } from '@/typings';
-import { format, parseISO } from 'date-fns';
 import Image from 'next/future/image';
 import { PropsWithChildren, Suspense } from 'react';
 
@@ -44,7 +43,11 @@ export default function BlogLayout({
             />
             <p className="ml-2 text-sm md:text-base text-gray-700 dark:text-gray-400">
               {`Dzmitry Svirin  • `}
-              {format(parseISO(post.date), 'MMMM dd, yyyy')}
+              {new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              }).format(new Date(post.date))}
             </p>
           </div>
           <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
