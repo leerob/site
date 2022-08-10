@@ -28,7 +28,6 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <link
-            rel="preload"
             href="/fonts/ibm-plex-sans-var.woff2"
             as="font"
             type="font/woff2"
@@ -58,7 +57,7 @@ export default class MyDocument extends Document {
             src="/scripts/goatcounter.js"
             data-goatcounter="https://svirins.goatcounter.com/count"
             data-goatcounter-settings='{"no_onload": true, "allow_local": false}'
-            strategy="beforeInteractive"
+            strategy="afterInteractive"
           />
         </body>
       </Html>

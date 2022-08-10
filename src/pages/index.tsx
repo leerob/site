@@ -8,9 +8,14 @@ import Image from 'next/future/image';
 import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import { shimmer, toBase64 } from '@/lib/image-utils';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
+  const DynamicWakaStats = dynamic(() => import('@/components/WakaStats'));
+
   return (
     <Container title="About me page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
@@ -106,7 +111,9 @@ export default function IndexPage({ stats }: { stats: IWakaLangStats[] }) {
           <h2 className="text-xl md:text-2xl mb-3 mt-10 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Some stats:
           </h2>
-          <WakaStats stats={stats} />
+          <Suspense fallback={`Loading...`}>
+            <DynamicWakaStats stats={stats} />
+          </Suspense>
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Get in touch:
           </h2>
