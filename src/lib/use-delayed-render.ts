@@ -6,7 +6,7 @@ interface Options {
   onUnmount?: () => void;
 }
 
-const useDelayedRender = (active: boolean = false, options: Options = {}) => {
+const useDelayedRender = (active = false, options: Options = {}) => {
   const [, force] = useState<any>();
   const mounted = useRef(active);
   const rendered = useRef(false);

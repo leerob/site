@@ -10,7 +10,8 @@ import {
   snippetSlugsQuery,
   snippetsQuery,
   tagRelatedPosts,
-  tagSlugsQuery} from './sanity-queries';
+  tagSlugsQuery
+} from './sanity-queries';
 import { sanityClient } from './sanity-server';
 
 export const getPosts = async (): Promise<IPost[]> => {

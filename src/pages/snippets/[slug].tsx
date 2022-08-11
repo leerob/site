@@ -1,10 +1,11 @@
 import { MDXRemote } from 'next-mdx-remote';
+import { IconContext } from 'react-icons';
 import SnippetLayout from 'src/layouts/snippets';
+
 import components from '@/components/MDXComponents';
 import { mdxToHtml } from '@/lib/mdx';
-import { getSnippetSlugs, getSnippet } from '@/lib/sanity-api';
+import { getSnippet, getSnippetSlugs } from '@/lib/sanity-api';
 import { IParams, ISnippet } from '@/typings';
-import { IconContext } from 'react-icons';
 
 export default function SnippetsPage({ snippet }: { snippet: ISnippet }) {
   return (

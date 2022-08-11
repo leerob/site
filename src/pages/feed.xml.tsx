@@ -1,5 +1,5 @@
-import RSS from 'rss';
 import { type ServerResponse } from 'http';
+import RSS from 'rss';
 
 import { getPosts } from '@/lib/sanity-api';
 export async function getServerSideProps({ res }: { res: ServerResponse }) {

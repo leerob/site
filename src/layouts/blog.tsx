@@ -15,7 +15,7 @@ export default function BlogLayout({
     <Container
       title={`${post.title} Dzmitry Svirin`}
       description={post.excerpt}
-      image={urlForImage(post.coverImage!).url()}
+      image={urlForImage(post.coverImage).url()}
       date={new Date(post.date).toISOString()}
       type="article"
       tags={post.tags?.map((tag) => tag.title)}
@@ -28,12 +28,12 @@ export default function BlogLayout({
         {post.coverImage && (
           <div className="flex flex-col w-full my-4">
             <BlurredImage
-              src={urlForImage(post.coverImage!).url()}
+              src={urlForImage(post.coverImage).url()}
               alt={`Image for ${post.title}`}
             />
           </div>
         )}
-        <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
+        <div className="flex flex-row items-start justify-between w-full mt-2 tems-center">
           <div className="flex items-center">
             <Image
               alt="Dzmitry Svirin"

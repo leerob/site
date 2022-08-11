@@ -1,8 +1,9 @@
+import { InferGetStaticPropsType } from 'next';
+import { IconContext } from 'react-icons';
+
 import Container from '@/components/Container';
 import SnippetPreview from '@/components/SnippetPreview';
 import { getSnippets } from '@/lib/sanity-api';
-import { InferGetStaticPropsType } from 'next';
-import { IconContext } from 'react-icons';
 
 export default function Snippets({
   snippets

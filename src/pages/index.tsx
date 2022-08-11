@@ -1,14 +1,15 @@
+import dynamic from 'next/dynamic';
+import Image from 'next/future/image';
+import { useMemo } from 'react';
+import { Suspense } from 'react';
+import { IconContext } from 'react-icons';
+
 import Container from '@/components/Container';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 import TypewriterEffect from '@/components/TypewriterEffect';
 import { getWakaStats } from '@/lib/waka-api';
 import { IWakaStats } from '@/typings';
-import Image from 'next/future/image';
-import { useMemo } from 'react';
-import { IconContext } from 'react-icons';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function IndexPage({ stats }: IWakaStats) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
@@ -96,7 +97,7 @@ export default function IndexPage({ stats }: IWakaStats) {
             <IconContext.Provider
               value={{
                 className:
-                  'w-7 h-7 md:w-8 md:h-8  fill-gray-700  dark:fill-gray-400  hover:fill-gray-800 dark:hover:fill-gray-200'
+                  'w-7 h-7 md:w-8 md:h-8  fill-gray-700  dark:fill-gray-300  hover:fill-gray-800 dark:hover:fill-gray-200'
               }}
             >
               {memoizedStacks.map((el, index) => (

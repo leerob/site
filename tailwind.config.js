@@ -15,8 +15,7 @@ module.exports = {
       wakatime: {
         blue: '#2563EB',
         amber: '#D97706',
-        red: '#DC2626',
-        green: '#84CC16'
+        fuchsia: '#A21CAF'
       },
       code: {
         emerald: '#10b981',
