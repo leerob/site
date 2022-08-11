@@ -104,38 +104,6 @@ export default createConfig({
         ]
       },
       {
-        name: 'book',
-        type: 'document',
-        title: 'Book',
-        fields: [
-          {
-            name: 'title',
-            title: 'Title',
-            type: 'string'
-          },
-          {
-            name: 'author',
-            title: 'Author',
-            type: 'string'
-          },
-          {
-            name: 'description',
-            title: 'Description',
-            type: 'string'
-          },
-          {
-            name: 'image',
-            title: 'Cover Image',
-            type: 'image'
-          },
-          {
-            name: 'link',
-            title: 'Link to Amazon',
-            type: 'string'
-          }
-        ]
-      },
-      {
         name: 'tag',
         type: 'document',
         title: 'Tag',

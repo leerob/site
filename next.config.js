@@ -1,7 +1,12 @@
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false
+});
+
+module.exports = withBundleAnalyzer({
   compiler: {
     removeConsole: {
       exclude: ['error']
@@ -20,17 +25,6 @@ module.exports = {
     browsersListForSwc: true,
     images: { allowFutureImage: true }
   },
-  webpack(config) {
-    const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test('.svg')
-    );
-    fileLoaderRule.exclude = /\.svg$/;
-    config.module.rules.push({
-      test: /\.svg$/,
-      loader: require.resolve('@svgr/webpack')
-    });
-    return config;
-  },
   async headers() {
     return [
       {
@@ -39,17 +33,7 @@ module.exports = {
       }
     ];
   }
-};
-
-// const ContentSecurityPolicy = `
-//     default-src 'self';
-//     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com;
-//     style-src 'self';
-//     img-src * blob: data:;
-//     media-src 'none';
-//     connect-src *;
-//     font-src 'self';
-// `;
+});
 
 const ContentSecurityPolicy = `
     default-src 'self';

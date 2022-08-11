@@ -25,7 +25,7 @@ export default function IndexPage({ stats }: IWakaStats) {
                   Hi, I&apos;am <span className="text-active">Dzmitry</span>
                 </h1>
                 <h2 className="text-[22px] md:text-2xl tracking-tight text-gray-900 dark:text-gray-100 font-normal">
-                  I specialise in turning ideas into{' '}
+                  I specialize in turning ideas into{' '}
                   <span className="font-semibold italic">real life </span>
                   products.
                 </h2>

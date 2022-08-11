@@ -6,7 +6,6 @@ My personal site.
 - **Content**: [Sanity](https://sanity.io)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Analytics**: [SplitBee](https://splitbee.io/)
 
 ## Features
 
