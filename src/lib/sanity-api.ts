@@ -1,19 +1,17 @@
 import { IPost, ISnippet } from '@/typings';
 
-import { sanityClient } from './sanity-server';
-
 import {
+  allSnippetsQuery,
   indexQuery,
-  postQuery,
   postBySlugQuery,
+  postQuery,
   postSlugsQuery,
   postUpdatedQuery,
-  allSnippetsQuery,
-  snippetsQuery,
   snippetSlugsQuery,
-  tagSlugsQuery,
-  tagRelatedPosts
-} from './sanity-queries';
+  snippetsQuery,
+  tagRelatedPosts,
+  tagSlugsQuery} from './sanity-queries';
+import { sanityClient } from './sanity-server';
 
 export const getPosts = async (): Promise<IPost[]> => {
   const posts = await sanityClient.fetch(indexQuery);

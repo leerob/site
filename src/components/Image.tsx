@@ -1,5 +1,4 @@
-import Image from 'next/future/image';
-import { ImageProps } from 'next/future/image';
+import Image, { ImageProps } from 'next/future/image';
 
 export default function BlurredImage(props: ImageProps) {
   return (

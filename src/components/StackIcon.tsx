@@ -9,27 +9,27 @@ import {
   SiFigma,
   SiFirebase,
   SiFramer,
+  SiGithub,
+  SiGmail,
   SiGraphql,
   SiHeroku,
   SiJest,
   SiLinux,
   SiMapbox,
   SiMysql,
-  SiNodedotjs,
   SiNextdotjs,
+  SiNodedotjs,
+  SiPnpm,
   SiPostgresql,
   SiPrisma,
-  SiPnpm,
   SiReact,
   SiSahibinden,
   SiStripe,
   SiSupabase,
   SiTailwindcss,
-  SiTypescript,
-  SiVercel,
   SiTwitter,
-  SiGmail,
-  SiGithub
+  SiTypescript,
+  SiVercel
 } from 'react-icons/si';
 
 interface IStackIcon {

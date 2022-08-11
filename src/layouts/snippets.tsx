@@ -1,8 +1,9 @@
+import type { PropsWithChildren } from 'react';
+import { IconContext } from 'react-icons';
+
 import Container from '@/components/Container';
 import StackIcon from '@/components/StackIcon';
 import { ISnippet } from '@/typings';
-import type { PropsWithChildren } from 'react';
-import { IconContext } from 'react-icons';
 
 export default function SnippetLayout({
   children,

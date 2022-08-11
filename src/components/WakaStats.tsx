@@ -1,5 +1,6 @@
-import { IWakaStats } from '@/typings';
 import cn from 'classnames';
+
+import { IWakaStats } from '@/typings';
 
 const HEIGHT = 25;
 const WIDTH = 800;

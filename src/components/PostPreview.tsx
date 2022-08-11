@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import { Tags } from '@/components/Tags';
 import { IPost } from '@/typings';
-import Link from 'next/link';
 
 export default function PostPreview({
   slug,

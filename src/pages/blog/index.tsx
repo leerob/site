@@ -1,9 +1,9 @@
+import { InferGetStaticPropsType } from 'next';
 import { useState } from 'react';
 
 import Container from '@/components/Container';
 import PostPreview from '@/components/PostPreview';
 import { getPosts } from '@/lib/sanity-api';
-import { InferGetStaticPropsType } from 'next';
 
 export default function Blog({
   posts

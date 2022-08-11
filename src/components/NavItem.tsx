@@ -1,6 +1,7 @@
+import cn from 'classnames';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import cn from 'classnames';
+
 import { getActiveStatus } from '@/lib/utils';
 
 interface INavItem {

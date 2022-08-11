@@ -1,6 +1,7 @@
+import { IconContext } from 'react-icons';
+
 import NowPlaying from '@/components/NowPlaying';
 import { SOCIALS } from '@/components/StackIcon';
-import { IconContext } from 'react-icons';
 
 export default function Footer() {
   return (

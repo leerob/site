@@ -1,10 +1,11 @@
+import Image from 'next/future/image';
+import { PropsWithChildren, Suspense } from 'react';
+
 import Container from '@/components/Container';
 import BlurredImage from '@/components/Image';
 import { Tags } from '@/components/Tags';
 import { urlForImage } from '@/lib/sanity-client';
 import { IPost } from '@/typings';
-import Image from 'next/future/image';
-import { PropsWithChildren, Suspense } from 'react';
 
 export default function BlogLayout({
   children,

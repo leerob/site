@@ -1,8 +1,8 @@
-import useSWR from 'swr';
-import { useEffect } from 'react';
 import { animate } from 'motion';
-
+import { useEffect } from 'react';
 import fetcher from 'src/lib/fetcher';
+import useSWR from 'swr';
+
 import { ICurrentlyPlaying } from '@/typings';
 
 function AnimatedBars() {

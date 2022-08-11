@@ -1,8 +1,9 @@
-import { NextSeo } from 'next-seo';
-import { IContainerPropsWithChildren } from '@/typings';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { IContainerPropsWithChildren } from '@/typings';
 
 export default function Container(props: IContainerPropsWithChildren) {
   const router = useRouter();
