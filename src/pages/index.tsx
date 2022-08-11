@@ -14,7 +14,6 @@ import { IWakaStats } from '@/typings';
 export default function IndexPage({ stats }: IWakaStats) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   const DynamicWakaStats = dynamic(() => import('@/components/WakaStats'));
-
   return (
     <Container title="About me page | Dzmitry Svirin - svirins.codes">
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
@@ -69,7 +68,7 @@ export default function IndexPage({ stats }: IWakaStats) {
               opportunities;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              located in Tbilisi, 🇬🇪. I enjoy cycling, swimming and good books;
+              located in Tbilisi, 🇬🇪 I enjoy cycling, swimming and good books;
             </li>
           </ul>
 
