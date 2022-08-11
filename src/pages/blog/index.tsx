@@ -23,7 +23,8 @@ export default function Blog({
             Blog
           </h1>
           <p className="text-gray-900 dark:text-gray-100 text-base mt-2 md:text-lg">
-            Posts about code, dev life and various ⚗️ things.
+            Posts about code, dev life and various ⚗️ things. New posts are
+            coming soon!
           </p>
         </div>
       </div>

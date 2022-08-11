@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { IWakaStats } from '@/typings';
 
-const HEIGHT = 25;
+const HEIGHT = 20;
 const WIDTH = 800;
 
 const WAKA_STATS_COLORS = [
@@ -17,6 +17,10 @@ const WAKA_STATS_COLORS = [
   {
     barColor: '#A21CAF',
     textColor: 'text-wakatime-fuchsia'
+  },
+  {
+    barColor: '#4338CA',
+    textColor: 'text-wakatime-indigo'
   }
 ];
 
@@ -35,15 +39,13 @@ const Bar = ({
 );
 
 export default function WakaStats({ stats }: IWakaStats) {
-  const datum = stats.sort((a, b) => b.percent - a.percent).slice(0, 3);
+  const datum = stats.sort((a, b) => b.percent - a.percent).slice(0, 4);
   const stackedBarComments = datum.map(({ name: lang, text }, index) => (
     <div key={index}>
-      <span
-        className={cn(WAKA_STATS_COLORS[index].textColor, 'text-xs md:text-sm')}
-      >
+      <span className={cn(WAKA_STATS_COLORS[index].textColor, 'text-xs ')}>
         {lang}
       </span>
-      <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
+      <span className=" text-gray-800 dark:text-gray-200 text-xs">
         {` • ${text}`}
       </span>
     </div>
@@ -51,7 +53,7 @@ export default function WakaStats({ stats }: IWakaStats) {
   return (
     <div className="flex-col w-full min-w-2xl">
       <div className="flex">
-        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="25" width={'100%'}>
+        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="20" width={'100%'}>
           <title id="title">A bar chart showing information</title>
           <desc id="desc">Dzmitry Svirin top 4 programming languages/</desc>
           <Bar
@@ -72,9 +74,20 @@ export default function WakaStats({ stats }: IWakaStats) {
               (datum[1].percent / 100) * WIDTH
             }
           />
+          <Bar
+            color={WAKA_STATS_COLORS[3].barColor}
+            width={(datum[3].percent / 100) * WIDTH}
+            x={
+              (datum[0].percent / 100) * WIDTH +
+              (datum[1].percent / 100) * WIDTH +
+              (datum[2].percent / 100) * WIDTH
+            }
+          />
         </svg>
       </div>
-      <div className="inline-flex space-x-4  mt-2">{stackedBarComments}</div>
+      <div className="flex flex-wrap  space-x-2  mt-2">
+        {stackedBarComments}
+      </div>
       <p className=" text-gray-700 dark:text-gray-400 text-xs mt-1">
         My last week coding stats taken from a{' '}
         <a
