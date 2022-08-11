@@ -8,7 +8,7 @@ interface ITags {
 
 export function Tags({ tags }: ITags) {
   return (
-    <div className="flex flex-wrap w-full">
+    <div className="flex flex-wrap w-full pb-2">
       {tags &&
         tags.map((tag) => (
           <Link href={`/blog/tag/${tag.slug}`} key={tag.slug}>

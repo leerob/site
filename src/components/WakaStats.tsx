@@ -14,8 +14,8 @@ const WAKA_STATS_COLORS = [
     textColor: 'text-wakatime-amber'
   },
   {
-    barColor: '#84CC16',
-    textColor: 'text-wakatime-green'
+    barColor: '#DC2626',
+    textColor: 'text-wakatime-red'
   }
 ];
 

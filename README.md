@@ -10,17 +10,17 @@ My personal site.
 ## Features
 
 - Strict Typescript
-- Performant by default
-- SEO
-- Responsive
-- Dark Mode Support
+- 99 to 100 in Lighthouse scores
+- Secure
 - Edge functions
+- Most lean Sanity client
 
 ## 🙏
 
-A huge thanks for inspiration, code snippets and ideas to:
+A huge thanks for inspiration to:
 
 - Lee Robinson [@leeerob](https://twitter.com/leeerob)
+- Henrique Doro [@hdoro](https://twitter.com/hdorodev)
 
 ## Images
 
