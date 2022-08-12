@@ -13,7 +13,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.33.0
   autoprefixer: 10.4.8
   classnames: ^2.3.1
-  cssnano: ^5.1.12
+  cssnano: ^5.1.13
   eslint: 8.21.0
   eslint-config-next: 12.2.5
   eslint-config-prettier: ^8.5.0
@@ -21,7 +21,6 @@ specifiers:
   groq: ^2.29.3
   husky: ^8.0.1
   lint-staged: ^13.0.3
-  motion: ^10.13.3
   next: 12.2.5
   next-mdx-remote: ^4.1.0
   next-seo: ^5.5.0
@@ -34,6 +33,7 @@ specifiers:
   react-icons: ^4.4.0
   reading-time: ^1.5.0
   rehype: 12.0.1
+  rehype-accessible-emojis: ^0.3.2
   rehype-autolink-headings: 6.1.1
   rehype-code-titles: 1.1.0
   rehype-prism-plus: ^1.4.2
@@ -54,7 +54,6 @@ dependencies:
   '@sanity/webhook': 2.0.0
   '@tailwindcss/typography': 0.5.4_tailwindcss@3.1.8
   classnames: 2.3.1
-  motion: 10.13.3
   next: 12.2.5_twoewwu6sg7cdf3ao6njtbftne
   next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.5.0_3xcjr4wz26biff45sz3jtokgje
@@ -80,7 +79,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.33.0_njno5y7ry2l2lcmiu4tywxkwnq
   '@typescript-eslint/parser': 5.33.0_qugx7qdu5zevzvxaiqyxfiwquq
   autoprefixer: 10.4.8_postcss@8.4.16
-  cssnano: 5.1.12_postcss@8.4.16
+  cssnano: 5.1.13_postcss@8.4.16
   eslint: 8.21.0
   eslint-config-next: 12.2.5_qugx7qdu5zevzvxaiqyxfiwquq
   eslint-config-prettier: 8.5.0_eslint@8.21.0
@@ -92,6 +91,7 @@ devDependencies:
   prettier: 2.7.1
   reading-time: 1.5.0
   rehype: 12.0.1
+  rehype-accessible-emojis: 0.3.2
   rehype-autolink-headings: 6.1.1
   rehype-code-titles: 1.1.0
   rehype-prism-plus: 1.4.2
@@ -751,17 +751,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@motionone/dom/10.13.2:
-    resolution: {integrity: sha512-THCRW+M7JUTbHRiWFJU13pju7bZlnPjZz9VDXA/h/Qj/Or7LvzKY/XfEy45rUlO0wXSa4lQ+1DGlrZNewamdDA==}
-    dependencies:
-      '@motionone/animation': 10.13.2
-      '@motionone/generators': 10.13.2
-      '@motionone/types': 10.13.2
-      '@motionone/utils': 10.13.2
-      hey-listen: 1.0.8
-      tslib: 2.4.0
-    dev: false
-
   /@motionone/easing/10.13.2:
     resolution: {integrity: sha512-3HqctS5NyDfDQ+8+cZqc3Pu7I6amFCt9zDUjcozHyFXHh4PKYHK4+GJDFjJIS8bCAF2BrJmpmduDQ2V7lFEYeQ==}
     dependencies:
@@ -777,13 +766,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@motionone/svelte/10.13.2:
-    resolution: {integrity: sha512-p6gH7oGhbonHzrPeUPzZiU3dx2yjDYQ7K00w9GaTbXBfmH/+rjUQ6vvG5SPvjY6BLtMK3/FMK512WvOMtvDQPQ==}
-    dependencies:
-      '@motionone/dom': 10.13.2
-      tslib: 2.4.0
-    dev: false
-
   /@motionone/types/10.13.2:
     resolution: {integrity: sha512-yYV4q5v5F0iADhab4wHfqaRJnM/eVtQLjUPhyEcS72aUz/xyOzi09GzD/Gu+K506BDfqn5eULIilUI77QNaqhw==}
     dev: false
@@ -793,13 +775,6 @@ packages:
     dependencies:
       '@motionone/types': 10.13.2
       hey-listen: 1.0.8
-      tslib: 2.4.0
-    dev: false
-
-  /@motionone/vue/10.13.2:
-    resolution: {integrity: sha512-DfMzOUwKlzyjpwxF+RP1Q74ClmeoanPAeSGfD/JTvAyR1W6ARCOBMFpdgDvile1o7FNgHGx2RHt8210MsOE59g==}
-    dependencies:
-      '@motionone/dom': 10.13.2
       tslib: 2.4.0
     dev: false
 
@@ -2666,8 +2641,8 @@ packages:
       postcss: 8.4.16
     dev: true
 
-  /cssnano/5.1.12_postcss@8.4.16:
-    resolution: {integrity: sha512-TgvArbEZu0lk/dvg2ja+B7kYoD7BBCmn3+k58xD0qjrGHsFzXY/wKTo9M5egcUCabPol05e/PVoIu79s2JN4WQ==}
+  /cssnano/5.1.13_postcss@8.4.16:
+    resolution: {integrity: sha512-S2SL2ekdEz6w6a2epXn4CmMKU4K3KpcyXLKfAYc9UQQqJRkD/2eLUG0vJ3Db/9OvO5GuAdgXw3pFbR6abqghDQ==}
     engines: {node: ^10 || ^12 || >=14.0}
     peerDependencies:
       postcss: ^8.2.15
@@ -4216,6 +4191,10 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
+  /gemoji/4.2.1:
+    resolution: {integrity: sha512-V9lUpRSn+KQGavZx8Pk+6mxG3kaz21ae2kTCXuT36KaRPNgYU8eHtj/RcUCNFVvmwppsYYz3nnNS9lmcP5kTsg==}
+    dev: true
+
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
@@ -4557,6 +4536,10 @@ packages:
     resolution: {integrity: sha512-w+Rw20Q/iWp2Bcnr6uTrYU6/ftZLbHKhvc8nM26VIWpDqDMlku2iXUVTeOlsdoih/UKQhY7PHQ+vZ0Aqq8bxtQ==}
     dependencies:
       '@types/hast': 2.3.4
+    dev: true
+
+  /hast-util-is-element/1.1.0:
+    resolution: {integrity: sha512-oUmNua0bFbdrD/ELDSSEadRVtWZOf3iF6Lbv81naqsIV99RnSCieTbWuWCY8BAeEfKJTKl0gRdokv+dELutHGQ==}
     dev: true
 
   /hast-util-is-element/2.1.2:
@@ -6221,17 +6204,6 @@ packages:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     dev: false
 
-  /motion/10.13.3:
-    resolution: {integrity: sha512-lfBuoZL8xo0djAD3zGrMuSuc4J9MquE6hzRCsO9cVp+DgIUvNmvbM7+7SrZtpjLKxPWbppm+P56FRtVvMcGj1A==}
-    dependencies:
-      '@motionone/animation': 10.13.2
-      '@motionone/dom': 10.13.2
-      '@motionone/svelte': 10.13.2
-      '@motionone/types': 10.13.2
-      '@motionone/utils': 10.13.2
-      '@motionone/vue': 10.13.2
-    dev: false
-
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -7648,6 +7620,15 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /rehype-accessible-emojis/0.3.2:
+    resolution: {integrity: sha512-kChZo+EZsuFQYHUPu6kOZFjDrG7UtQdGxkrCvHBVo9ariKPL6S68QdPVxLxwcAtZSRZIXZhDuTJHgIM8KW24Qw==}
+    dependencies:
+      emoji-regex: 8.0.0
+      gemoji: 4.2.1
+      hast-util-is-element: 1.1.0
+      unist-util-flatmap: 1.0.0
+    dev: true
+
   /rehype-autolink-headings/6.1.1:
     resolution: {integrity: sha512-NMYzZIsHM3sA14nC5rAFuUPIOfg+DFmf9EY1YMhaNlB7+3kK/ZlE6kqPfuxr1tsJ1XWkTrMtMoyHosU70d35mA==}
     dependencies:
@@ -8892,6 +8873,10 @@ packages:
       '@types/unist': 2.0.6
       unist-util-is: 5.1.1
       unist-util-visit-parents: 5.1.0
+    dev: true
+
+  /unist-util-flatmap/1.0.0:
+    resolution: {integrity: sha512-IG32jcKJlhARCYT2LsYPJWdoXYkzz3ESAdl1aa2hn9Auh+cgUmU6wgkII4yCc/1GgeWibRdELdCZh/p3QKQ1dQ==}
     dev: true
 
   /unist-util-generated/2.0.0:

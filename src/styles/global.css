@@ -233,3 +233,35 @@ table {
   overflow-x: auto;
   white-space: nowrap;
 }
+
+#loading-bar-1 {
+  animation: loading-bar-morph 2s linear 0.3s infinite;
+  transform-origin: bottom;
+}
+#loading-bar-2 {
+  animation: loading-bar-morph 2s linear 0.5s infinite;
+  transform-origin: bottom;
+}
+#loading-bar-3 {
+  animation: loading-bar-morph 2s linear 0.9s infinite;
+  transform-origin: bottom;
+}
+#loading-bar-4 {
+  animation: loading-bar-morph 3s linear 0.9s infinite;
+  transform-origin: bottom;
+}
+
+@keyframes loading-bar-morph {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+  75% {
+    transform: scaleY(0.15);
+  }
+}

@@ -1,6 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
@@ -13,6 +14,7 @@ export async function mdxToHtml(source: string) {
       rehypePlugins: [
         rehypeSlug,
         rehypeCodeTitles,
+        rehypeAccessibleEmojis,
         rehypePrism,
         [
           rehypeAutolinkHeadings,

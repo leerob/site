@@ -18,7 +18,11 @@ export default function Snippets({
           Code Snippets
         </h1>
         <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg mb-4 mt-2">
-          Some 🎲 stuff I&apos;ve found useful and want to share.
+          Some{' '}
+          <span role="image" aria-label="random">
+            🎲
+          </span>{' '}
+          stuff I&apos;ve found useful and want to share.
         </p>
 
         <div className="grid w-full grid-cols-1 gap-4 my-2 mt-2">
