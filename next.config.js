@@ -6,34 +6,35 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   openAnalyzer: false
 });
 
-module.exports = withBundleAnalyzer({
-  compiler: {
-    removeConsole: {
-      exclude: ['error']
-    }
-  },
-  swcMinify: true,
-  reactStrictMode: true,
-  images: {
-    domains: [
-      'cdn.sanity.io' // Sanity images
-    ],
-    formats: ['image/webp']
-  },
-  experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true }
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
+module.exports = withBundleAnalyzer(
+  {
+    compiler: {
+      removeConsole: {
+        exclude: ['error']
       }
-    ];
-  }
-});
+    },
+    swcMinify: true,
+    reactStrictMode: true,
+    images: {
+      domains: [
+        'cdn.sanity.io' // Sanity images
+      ],
+      formats: ['image/webp']
+    },
+    experimental: {
+      legacyBrowsers: false,
+      browsersListForSwc: true,
+      images: { allowFutureImage: true }
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders
+        }
+      ];
+    }
+  });
 
 const ContentSecurityPolicy = `
     default-src 'self';

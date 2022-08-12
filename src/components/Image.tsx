@@ -1,14 +1,21 @@
 import Image, { ImageProps } from 'next/future/image';
+import styles from '@/styles/image.module.css';
+import { useState } from 'react';
+import cn from 'classnames';
 
 export default function BlurredImage(props: ImageProps) {
+  const [isLoading, setLoading] = useState(true);
   return (
     <Image
       {...props}
       alt={props.alt}
-      placeholder="blur"
       width={672}
-      blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-      className="rounded-lg h-auto"
+      className={cn(
+        styles['image-transition'],
+        isLoading ? styles['image-loading'] : styles['image-loaded'],
+        'rounded-lg  h-auto'
+      )}
+      onLoadingComplete={() => setLoading(false)}
     />
   );
 }

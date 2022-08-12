@@ -235,19 +235,19 @@ table {
 }
 
 #loading-bar-1 {
-  animation: loading-bar-morph 2s linear 0.3s infinite;
+  animation: loading-bar-morph 2s linear 0.6s infinite;
   transform-origin: bottom;
 }
 #loading-bar-2 {
-  animation: loading-bar-morph 2s linear 0.5s infinite;
+  animation: loading-bar-morph 2s linear 0.8s infinite;
   transform-origin: bottom;
 }
 #loading-bar-3 {
-  animation: loading-bar-morph 2s linear 0.9s infinite;
+  animation: loading-bar-morph 2s linear 1.2s infinite;
   transform-origin: bottom;
 }
 #loading-bar-4 {
-  animation: loading-bar-morph 3s linear 0.9s infinite;
+  animation: loading-bar-morph 3s linear 1.7s infinite;
   transform-origin: bottom;
 }
 

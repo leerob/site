@@ -10,36 +10,19 @@ function AnimatedBars() {
         id="loading-bar"
         xmlns="http://www.w3.org/2000/svg"
         width="16"
-        height="16"
-        viewBox="0 0 16 16"
+        height="14"
+        viewBox="0 0 16 14"
       >
         <g>
-          <rect
-            id="loading-bar-1"
-            width="3"
-            height="16"
-            className="bg-spotify/60"
-          />
-          <rect
-            id="loading-bar-2"
-            width="3"
-            height="16"
-            x="4"
-            className="bg-spotify/30"
-          />
-          <rect
-            id="loading-bar-3"
-            width="3"
-            height="16"
-            x="8"
-            className="bg-spotify/50"
-          />
+          <rect id="loading-bar-1" width="3" height="14" fill="#4ade80" />
+          <rect id="loading-bar-2" width="3" height="14" x="4" fill="#4ade80" />
+          <rect id="loading-bar-3" width="3" height="14" x="8" fill="#4ade80" />
           <rect
             id="loading-bar-4"
             width="3"
-            height="26"
+            height="14"
             x="12"
-            className="bg-spotify/20"
+            fill="#4ade80"
           />
         </g>
       </svg>
