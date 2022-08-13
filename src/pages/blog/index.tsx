@@ -27,7 +27,7 @@ export default function Blog({
             <span role="image" aria-label="technomagical">
               ⚗️
             </span>{' '}
-            things. New posts are coming soon!
+            things.
           </p>
         </div>
       </div>
