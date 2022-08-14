@@ -3,7 +3,7 @@
 }
 
 .image-loading {
-  filter: blur(48px);
+  filter: blur(12px);
 }
 
 .image-loaded {
