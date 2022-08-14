@@ -252,6 +252,8 @@ export default function StackIcon({ iconTitle, isLink = false }: IStackIcon) {
       className="duration-150 transform  ease-in-out hover:scale-110"
       href={url}
       title={iconTitle}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {Icon}
     </a>

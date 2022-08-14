@@ -24,24 +24,24 @@ module.exports = withBundleAnalyzer({
     legacyBrowsers: false,
     browsersListForSwc: true,
     images: { allowFutureImage: true }
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ];
   }
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: securityHeaders
-  //     }
-  //   ];
-  // }
 });
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com  *.open.spotify.com;
-    child-src *.youtube.com  *.open.spotify.com;
-    style-src 'self' 'unsafe-inline'  *.open.spotify.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com  *.spotify.com *.youtube.com;
+    child-src *.youtube.com  *.spotify.com;
+    style-src 'self' 'unsafe-inline'  *.spotify.com;
     img-src * blob: data:;
-    media-src 'none';
+    media-src  *.spotify.com;
     connect-src *;
     font-src 'self';
 `;

@@ -21,6 +21,8 @@ export default function Footer() {
               href={social.url}
               title={social.iconTitle}
               className="duration-150 transform  ease-in-out hover:scale-110"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {social.Icon}
             </a>
