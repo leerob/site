@@ -21,7 +21,7 @@ export const DEFAULT_SEO = {
       'A full-stack developer passionate about React ecosystem, TypeScript and serverless backends.',
     type: 'website',
     url: 'https://www.svirins.codes/',
-    site_name: 'Svirins Codes',
+    site_name: 'svirins.codes',
     images: [
       {
         url: 'https://www.svirins.codes/social-banner.webp',

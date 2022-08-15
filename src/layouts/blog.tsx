@@ -42,14 +42,16 @@ export default function BlogLayout({
               src="/svirins.png"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm md:text-base text-gray-700 dark:text-gray-400">
-              {`Dzmitry Svirin  • `}
-              {new Intl.DateTimeFormat('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              }).format(new Date(post.date))}
-            </p>
+            <div className="ml-2 flex-col md:flex-row text-sm md:text-base text-gray-700 dark:text-gray-400">
+              <span>{`Dzmitry Svirin  • `}</span>
+              <span>
+                {new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                }).format(new Date(post.date))}
+              </span>
+            </div>
           </div>
           <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime}

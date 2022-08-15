@@ -34,9 +34,6 @@ export default function Container(props: IContainerPropsWithChildren) {
           alt: props.title
         }
       ]
-    },
-    twitter: {
-      cardType: props.image
     }
   };
 

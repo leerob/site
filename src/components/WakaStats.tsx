@@ -83,10 +83,10 @@ export default function WakaStats({ stats }: IWakaStats) {
           />
         </svg>
       </div>{' '}
-      <div className="flex flex-row mt-2 space-x-2 md:space-x-4">
+      <div className="flex flex-col md:flex-row mt-2 md:space-x-4">
         {stackedBarComments}
       </div>
-      <p className=" text-gray-700 dark:text-gray-400 text-xs">
+      <p className=" text-gray-700 dark:text-gray-400 text-xs mt-2">
         My last week coding stats taken from a{' '}
         <a
           className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
