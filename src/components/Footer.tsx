@@ -33,7 +33,15 @@ export default function Footer() {
       <p className=" text-gray-500 dark:text-gray-400 mb-1 pt-2  text-left md:text-center text-xs">
         © <span className="font-medium">{new Date().getFullYear()}</span>
         <span>{` • `}</span>
-        Dzmitry Svirin
+        Dzmitry Svirin{` • `}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
+          href="https://svirins.codes/feed.xml"
+        >
+          RSS
+        </a>
       </p>
       <p className="w-full  text-xs text-gray-500 dark:text-gray-400 text-left md:text-center">
         <span>The code of this site was originally a fork of </span>

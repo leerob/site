@@ -60,8 +60,8 @@ export default function IndexPage({ stats }: IWakaStats) {
           </h2>
           <ul className="list-inside list-[square] pt-2 pb-6 [&>*]:py-[0.1rem]">
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              10+ years of experience building products for clients across
-              several countries;
+              10+ years of building products for clients across several
+              countries;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               currently working remotely for existing clients being open for new
@@ -87,7 +87,7 @@ export default function IndexPage({ stats }: IWakaStats) {
               honesty, reliability, responsibility;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              follow coding standards and best practices;
+              keep coding standards and best practices;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               stay curious;
