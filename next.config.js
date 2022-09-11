@@ -2,7 +2,6 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
-  swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: [
@@ -13,8 +12,7 @@ module.exports = {
   },
   experimental: {
     legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true }
+    browsersListForSwc: true
   },
   async headers() {
     return [
