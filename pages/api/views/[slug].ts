@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from 'lib/prisma';
-import { previewClient } from 'lib/sanity-server';
+import { getClient } from 'lib/sanity-server';
 import { postBySlugQuery } from 'lib/queries';
 
 export default async function handler(
@@ -11,7 +11,7 @@ export default async function handler(
     const slug = req.query.slug.toString();
 
     if (req.method === 'POST') {
-      const post = await previewClient.fetch(postBySlugQuery, {
+      const post = await getClient(req.preview ?? false).fetch(postBySlugQuery, {
         slug,
       });
 
