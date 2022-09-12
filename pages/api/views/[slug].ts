@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from 'lib/prisma';
+import { previewClient } from 'lib/sanity-server';
+import { postBySlugQuery } from 'lib/queries';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,6 +11,14 @@ export default async function handler(
     const slug = req.query.slug.toString();
 
     if (req.method === 'POST') {
+      const post = await previewClient.fetch(postBySlugQuery, {
+        slug,
+      });
+
+      if (!post) {
+        return res.status(401).json({ message: 'Invalid slug' });
+      }
+
       const newOrUpdatedViews = await prisma.views.upsert({
         where: { slug },
         create: {
