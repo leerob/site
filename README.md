@@ -1,4 +1,4 @@
-My personal site.
+My personal site. 'Another personal developer's website'.
 
 ## Uses
 
@@ -11,9 +11,10 @@ My personal site.
 
 - Strict Typescript
 - 99 to 100 in Lighthouse scores
-- Secure
-- Edge functions
-- Most lean Sanity client
+- Secured CSP
+- Spotify streaming via Edge function
+- Lean Sanity client
+- oEmbed + MDX
 
 ## 🙏
 

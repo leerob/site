@@ -7,11 +7,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  compiler: {
-    removeConsole: {
-      exclude: ['error']
-    }
-  },
+  // compiler: {
+  //   removeConsole: {
+  //     exclude: ['error']
+  //   }
+  // },
   swcMinify: true,
   reactStrictMode: true,
   images: {

@@ -68,11 +68,11 @@ export default function IndexPage({ stats }: IWakaStats) {
               opportunities;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              located in Tbilisi,{' '}
+              located in Batumi, Georgia,{' '}
               <span role="image" aria-label="georgia flag">
-                🇬🇪
+                🌊🔆🇬🇪
               </span>{' '}
-              I enjoy cycling, swimming and good books;
+              I enjoy swimming, cycling and good books;
             </li>
           </ul>
 

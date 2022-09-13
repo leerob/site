@@ -51,7 +51,7 @@ export default function BlogLayout({
               }).format(new Date(post.date))}
             </p>
           </div>
-          <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+          <p className="mt-2 text-xs md:text-sm lg:text-base text-gray-600 dark:text-gray-400 min-w-32">
             {post.readingTime}
           </p>
         </div>

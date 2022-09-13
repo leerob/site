@@ -174,7 +174,7 @@ export const STACKS = [
   },
   {
     Icon: <SiPostgresql />,
-    url: 'https://www.python.org/',
+    url: 'https://www.postgresql.org/',
     iconTitle: 'PostgreSQL',
     color: '#FFC107',
     featured: true

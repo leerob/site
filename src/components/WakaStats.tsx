@@ -40,24 +40,30 @@ const Bar = ({
 
 export default function WakaStats({ stats }: IWakaStats) {
   const datum = stats.sort((a, b) => b.percent - a.percent).slice(0, 3);
-  const stackedBarComments = datum.map(
-    ({ name: lang, text, hours, minutes }, index) => (
-      <div key={index}>
-        <span
-          className={cn(
-            WAKA_STATS_COLORS[index].textColor,
-            'text-xs md:text-sm'
-          )}
-        >
-          {lang}
-        </span>
-        <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
-          {` • ${hours}h ${minutes}m`}
-        </span>
-      </div>
-    )
-  );
-  return (
+  let totalHours = 0;
+  for (const element of stats) {
+    totalHours += element.hours;
+  }
+  const stackedBarComments =
+    datum.length > 0 && totalHours > 10
+      ? datum.map(({ name: lang, text, hours, minutes }, index) => (
+          <div key={index}>
+            <span
+              className={cn(
+                WAKA_STATS_COLORS[index].textColor,
+                'text-xs md:text-sm'
+              )}
+            >
+              {lang}
+            </span>
+            <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
+              {` • ${hours}h ${minutes}m`}
+            </span>
+          </div>
+        ))
+      : undefined;
+
+  return stackedBarComments ? (
     <div className="flex-col w-full min-w-2xl">
       <div className="flex flex-row space-x-1">
         <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} height="20" width={'100%'}>
@@ -83,7 +89,7 @@ export default function WakaStats({ stats }: IWakaStats) {
           />
         </svg>
       </div>{' '}
-      <div className="flex flex-col md:flex-row mt-2 md:space-x-4">
+      <div className="flex flex-col md:flex-row mt-2 md:space-x-2">
         {stackedBarComments}
       </div>
       <p className=" text-gray-700 dark:text-gray-400 text-xs mt-2">
@@ -96,5 +102,7 @@ export default function WakaStats({ stats }: IWakaStats) {
         </a>
       </p>
     </div>
+  ) : (
+    <p>no coding past week (:</p>
   );
 }
