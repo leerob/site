@@ -22,7 +22,7 @@ export default function Blog({
           <h1 className="mb-4 text-3xl font-bold tracking-tight capsize text-gray-900 md:text-5xl dark:text-gray-100">
             Blog
           </h1>
-          <p className="text-gray-900 dark:text-gray-100 text-base mt-2 md:text-lg">
+          <p className="text-gray-900 font-semibold  dark:text-gray-100 text-base mt-2 md:text-lg">
             Posts about code, dev life and various{' '}
             <span role="image" aria-label="technomagical">
               ⚗️

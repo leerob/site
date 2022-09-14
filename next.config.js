@@ -22,8 +22,7 @@ module.exports = withBundleAnalyzer({
   },
   experimental: {
     legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true }
+    browsersListForSwc: true
   },
   async headers() {
     return [

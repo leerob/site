@@ -38,7 +38,7 @@ export default function IndexPage({
               </div>
             </div>
 
-            <p className="text-gray-900 dark:text-gray-100 md:text-lg mt-4 md:mt-10">
+            <p className="text-gray-900 dark:text-gray-100 font-semibold md:text-lg mt-4 md:mt-10">
               A full-stack developer passionate about React ecosystem,
               TypeScript and serverless backends.
             </p>
@@ -96,7 +96,7 @@ export default function IndexPage({
               keep coding standards and best practices;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              stay curious;
+              be curious, learn iteratively;
             </li>
           </ul>
           <h2 className="text-xl md:text-2xl mb-4 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-normal ">
@@ -162,8 +162,6 @@ export default function IndexPage({
 }
 
 export async function getStaticProps() {
-  // const { languages, totalHours } = await getWakaStats();
   const data = await getWakaStats();
-
   return { props: { data: data }, revalidate: 86400 };
 }

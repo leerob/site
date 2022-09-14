@@ -17,7 +17,7 @@ export default function Snippets({
         <h1 className="mb-4 text-3xl font-bold capsize tracking-tight text-gray-900 md:text-5xl dark:text-gray-100">
           Code Snippets
         </h1>
-        <p className="text-gray-900 dark:text-gray-100 text-base md:text-lg mb-4 mt-2">
+        <p className="text-gray-900 font-semibold dark:text-gray-100 text-base md:text-lg mb-4 mt-2">
           Some{' '}
           <span role="image" aria-label="random">
             🎲
