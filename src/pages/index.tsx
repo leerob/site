@@ -9,9 +9,15 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import StackIcon, { STACKS } from '@/components/StackIcon';
 import TypewriterEffect from '@/components/TypewriterEffect';
 import { getWakaStats } from '@/lib/waka-api';
-import { IWakaStats } from '@/typings';
+import { IWakaApiResponse } from '@/typings';
 
-export default function IndexPage({ stats }: IWakaStats) {
+export default function IndexPage({
+  languages,
+  totalHours
+}: {
+  languages: IWakaApiResponse[];
+  totalHours: number;
+}) {
   const memoizedStacks = useMemo(() => STACKS.filter((el) => el.featured), []);
   const DynamicWakaStats = dynamic(() => import('@/components/WakaStats'));
   return (
@@ -64,15 +70,15 @@ export default function IndexPage({ stats }: IWakaStats) {
               countries;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              currently working remotely for existing clients being open for new
+              currently working with regular clients, but open to new
               opportunities;
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              located in Batumi, Georgia,{' '}
+              I live in Batumi{' '}
               <span role="image" aria-label="georgia flag">
                 🌊🔆🇬🇪
               </span>{' '}
-              I enjoy swimming, cycling and good books;
+              and enjoy swimming, mountains and good movies;
             </li>
           </ul>
 
@@ -108,12 +114,12 @@ export default function IndexPage({ stats }: IWakaStats) {
               ))}
             </IconContext.Provider>
           </div>
-          <h2 className="text-xl md:text-2xl mb-3 mt-10 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
-            Some stats:
-          </h2>
-          <Suspense fallback={<LoadingSpinner />}>
-            <DynamicWakaStats stats={stats} />
-          </Suspense>
+          {totalHours > 8 && (
+            <Suspense fallback={<LoadingSpinner />}>
+              <DynamicWakaStats languages={languages} totalHours={totalHours} />
+            </Suspense>
+          )}
+
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Get in touch:
           </h2>
@@ -156,7 +162,8 @@ export default function IndexPage({ stats }: IWakaStats) {
 }
 
 export async function getStaticProps() {
-  const { languages } = await getWakaStats();
+  // const { languages, totalHours } = await getWakaStats();
+  const data = await getWakaStats();
 
-  return { props: { stats: languages }, revalidate: 86400 };
+  return { props: { data: data }, revalidate: 86400 };
 }

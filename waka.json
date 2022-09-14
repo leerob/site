@@ -1,0 +1,107 @@
+{
+  "categories": [
+    {
+      "decimal": "0.77",
+      "digital": "0:46",
+      "hours": 0,
+      "minutes": 46,
+      "name": "Coding",
+      "percent": 100,
+      "text": "46 mins",
+      "total_seconds": 2774.111824
+    }
+  ],
+  "daily_average": 2774,
+  "daily_average_including_other_language": 2774,
+  "days_including_holidays": 7,
+  "days_minus_holidays": 1,
+  "editors": [
+    {
+      "decimal": "0.77",
+      "digital": "0:46",
+      "hours": 0,
+      "minutes": 46,
+      "name": "VS Code",
+      "percent": 100,
+      "text": "46 mins",
+      "total_seconds": 2774.111824
+    }
+  ],
+  "holidays": 6,
+  "human_readable_daily_average": "46 mins",
+  "human_readable_daily_average_including_other_language": "46 mins",
+  "human_readable_range": "last week",
+  "human_readable_total": "46 mins",
+  "human_readable_total_including_other_language": "46 mins",
+  "id": "66985775-170e-4c8f-8ea7-a1aec39fdb72",
+  "is_already_updating": false,
+  "is_coding_activity_visible": true,
+  "is_including_today": false,
+  "is_other_usage_visible": true,
+  "is_stuck": false,
+  "is_up_to_date": true,
+  "is_up_to_date_pending_future": false,
+  "languages": [
+    {
+      "decimal": "0.62",
+      "digital": "0:37",
+      "hours": 0,
+      "minutes": 37,
+      "name": "TypeScript",
+      "percent": 80.49,
+      "text": "37 mins",
+      "total_seconds": 2232.80114
+    },
+    {
+      "decimal": "0.12",
+      "digital": "0:07",
+      "hours": 0,
+      "minutes": 7,
+      "name": "JSON",
+      "percent": 16.84,
+      "text": "7 mins",
+      "total_seconds": 467.117107
+    },
+    {
+      "decimal": "0.02",
+      "digital": "0:01",
+      "hours": 0,
+      "minutes": 1,
+      "name": "JavaScript",
+      "percent": 2.65,
+      "text": "1 min",
+      "total_seconds": 73.633446
+    },
+    {
+      "decimal": "0.00",
+      "digital": "0:00",
+      "hours": 0,
+      "minutes": 0,
+      "name": "Markdown",
+      "percent": 0.02,
+      "text": "0 secs",
+      "total_seconds": 0.560131
+    }
+  ],
+  "operating_systems": [
+    {
+      "decimal": "0.77",
+      "digital": "0:46",
+      "hours": 0,
+      "minutes": 46,
+      "name": "Linux",
+      "percent": 100,
+      "text": "46 mins",
+      "total_seconds": 2774.111824
+    }
+  ],
+  "percent_calculated": 100,
+  "range": "last_7_days",
+  "status": "ok",
+  "timeout": 15,
+  "total_seconds": 2774.111824,
+  "total_seconds_including_other_language": 2774.111824,
+  "user_id": "11bb0680-c904-4abe-8e7a-d842d80a7373",
+  "username": "svirins",
+  "writes_only": false
+}

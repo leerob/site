@@ -55,7 +55,7 @@ export interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-interface IWakaApiResponse {
+export interface IWakaApiResponse {
   dexportecimal: string;
   digital: string;
   hours: number;
@@ -64,8 +64,4 @@ interface IWakaApiResponse {
   percent: number;
   text: string;
   total_seconds: bigint;
-}
-
-export interface IWakaStats {
-  stats: IWakaApiResponse[];
 }
