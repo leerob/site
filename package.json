@@ -55,6 +55,7 @@
     "groq": "^2.33.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "mdx-embed": "^1.0.0",
     "postcss": "^8.4.16",
     "prettier": "2.7.1",
     "reading-time": "^1.5.0",

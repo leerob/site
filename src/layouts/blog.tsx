@@ -43,7 +43,13 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-xs md:text-sm lg:text-base text-gray-700 dark:text-gray-400">
-              {`Dzmitry Svirin  • `}
+              <a
+                className=" text-gray-800 dark:text-gray-300  font-medium link-underline link-underline-gradient"
+                href="https://twitter.com/svirins"
+              >
+                Dzmitry Svirin
+              </a>
+              {` • `}
               {new Intl.DateTimeFormat('en-US', {
                 year: 'numeric',
                 month: 'long',
