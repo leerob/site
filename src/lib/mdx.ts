@@ -7,15 +7,15 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import remarkEmbedder from '@remark-embedder/core';
-import oembedTransformer from '@remark-embedder/transformer-oembed';
+// import remarkEmbedder from '@remark-embedder/core';
+// import oembedTransformer from '@remark-embedder/transformer-oembed';
 
 export async function mdxToHtml(source: string) {
   const mdxSource = await serialize(source, {
     mdxOptions: {
       remarkPlugins: [
         remarkGfm,
-        [remarkEmbedder, { transformers: [oembedTransformer] }]
+        // [remarkEmbedder, { transformers: [oembedTransformer] }]
       ],
       rehypePlugins: [
         rehypeSlug,
