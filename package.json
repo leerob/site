@@ -9,8 +9,7 @@
     "lint": "next lint --dir layouts",
     "check-types": "tsc --noEmit --pretty",
     "prepare": "husky install",
-    "format": "prettier --write .",
-    "sanity-start": "sanity start"
+    "format": "prettier --write ."
   },
   "husky": {
     "hooks": {
@@ -30,7 +29,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "sanity": "2.33.2",
     "sanity-plugin-markdown": "2.1.1",
     "sharp": "^0.31.0",
     "styled-components": "^5.3.5",

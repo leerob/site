@@ -43,7 +43,6 @@ specifiers:
   rehype-slug: 5.0.1
   remark-gfm: ^3.0.1
   rss: 1.2.2
-  sanity: 2.33.2
   sanity-plugin-markdown: 2.1.1
   sharp: ^0.31.0
   styled-components: ^5.3.5
@@ -65,7 +64,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
-  sanity: 2.33.2
   sanity-plugin-markdown: 2.1.1_zn23sh7bnkiwgpfgavxehoj2s4
   sharp: 0.31.0
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
@@ -6651,12 +6649,6 @@ packages:
       - '@types/react'
       - react-dom
       - supports-color
-    dev: false
-
-  /sanity/2.33.2:
-    resolution: {integrity: sha512-Bt4XzRbd/vxAAglEui4hYHcRXL9T+/yBWTK2EF6qLdGIV+lSd5i403I5M91C7H9o/k6EhaIDRSyNghwf/gh0/Q==}
-    engines: {node: '>=12.0.0'}
-    requiresBuild: true
     dev: false
 
   /scheduler/0.23.0:
