@@ -13,14 +13,14 @@ specifiers:
   '@types/rss': ^0.0.29
   '@typescript-eslint/eslint-plugin': ^5.37.0
   '@typescript-eslint/parser': ^5.37.0
-  autoprefixer: 10.4.10
+  autoprefixer: 10.4.11
   classnames: ^2.3.2
   cssnano: ^5.1.13
   eslint: 8.23.1
   eslint-config-next: 12.3.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
-  groq: ^2.29.3
+  groq: ^2.33.2
   husky: ^8.0.1
   lint-staged: ^13.0.3
   next: 12.3.0
@@ -43,7 +43,7 @@ specifiers:
   rehype-slug: 5.0.1
   remark-gfm: ^3.0.1
   rss: 1.2.2
-  sanity: 2.29.3
+  sanity: 2.33.2
   sanity-plugin-markdown: 2.1.1
   sharp: ^0.31.0
   styled-components: ^5.3.5
@@ -65,7 +65,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
-  sanity: 2.29.3
+  sanity: 2.33.2
   sanity-plugin-markdown: 2.1.1_zn23sh7bnkiwgpfgavxehoj2s4
   sharp: 0.31.0
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
@@ -83,13 +83,13 @@ devDependencies:
   '@types/rss': 0.0.29
   '@typescript-eslint/eslint-plugin': 5.37.0_22c5fnooleyfkzrkkgdmel5kmi
   '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
-  autoprefixer: 10.4.10_postcss@8.4.16
+  autoprefixer: 10.4.11_postcss@8.4.16
   cssnano: 5.1.13_postcss@8.4.16
   eslint: 8.23.1
   eslint-config-next: 12.3.0_irgkl5vooow2ydyo6aokmferha
   eslint-config-prettier: 8.5.0_eslint@8.23.1
   eslint-plugin-prettier: 4.2.1_cabrci5exjdaojcvd6xoxgeowu
-  groq: 2.29.3
+  groq: 2.33.2
   husky: 8.0.1
   lint-staged: 13.0.3
   postcss: 8.4.16
@@ -1614,8 +1614,8 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: true
 
-  /autoprefixer/10.4.10_postcss@8.4.16:
-    resolution: {integrity: sha512-nMaiDARyp1e74c8IeAXkr+BmFKa8By4Zak7tyaNPF09Iu39WFpNXOWrVirmXjKr+5cOyERwvtbMOLYz6iBJYgQ==}
+  /autoprefixer/10.4.11_postcss@8.4.16:
+    resolution: {integrity: sha512-5lHp6DgRodxlBLSkzHOTcufWFflH1ewfy2hvFQyjrblBFlP/0Yh4O/Wrg4ow8WRlN3AAUFFLAQwX8hTptzqVHg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -3366,8 +3366,8 @@ packages:
     resolution: {integrity: sha512-qJeuEgziddryH1ClsJvMoZM9aXNQbBViNZZrJwhHKr2wU8HGGM7uNWNVFglWXMX60MMaa2SClX3UohP76Ut68g==}
     dev: false
 
-  /groq/2.29.3:
-    resolution: {integrity: sha512-j3HFq8Qwg36rREp2Xl2vecUz47LX6cedD8cqq+JKX0iNj9yiwelOSKpRS5jxhkDZQv5xBAiqtpU2Ylv5DQ5g2A==}
+  /groq/2.33.2:
+    resolution: {integrity: sha512-5pf4c91JESCS28IJCgolJq/WBw4Xvf2m8FgZVUlrCig17I+qERosALAHLyyutXu403EYnyCD3DdCLaPb3aGneA==}
     engines: {node: '>=6'}
     dev: true
 
@@ -6653,8 +6653,8 @@ packages:
       - supports-color
     dev: false
 
-  /sanity/2.29.3:
-    resolution: {integrity: sha512-k4A4MzAcCp7VzdvnbQQRkmmuQuXL2jsxwmH0fzCU0uyPWi+DZDQFsZKuoxhDscTOHOhRcZh0+z1EIFs4wRbSzg==}
+  /sanity/2.33.2:
+    resolution: {integrity: sha512-Bt4XzRbd/vxAAglEui4hYHcRXL9T+/yBWTK2EF6qLdGIV+lSd5i403I5M91C7H9o/k6EhaIDRSyNghwf/gh0/Q==}
     engines: {node: '>=12.0.0'}
     requiresBuild: true
     dev: false
