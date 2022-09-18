@@ -51,7 +51,7 @@ export default function About() {
             Hey, I'm Lee. I'm the VP of Developer Experience at{' '}
             <a href="https://vercel.com/">Vercel</a>, where my team helps
             developers build a faster web. I'm a Next.js contributor and help
-            lead our open-source communities. I've passionate about frontend
+            lead our open-source communities. I'm passionate about frontend
             development and have created courses on React, Next.js, and web
             development. I'm an advisor and investor in early stage startups.
           </p>
