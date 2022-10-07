@@ -1,4 +1,4 @@
-import prisma from 'lib/prisma';
+import { grafbase, gql } from 'lib/grafbase';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 
@@ -23,17 +23,29 @@ export default function GuestbookPage({ fallbackData }) {
 }
 
 export async function getStaticProps() {
-  const entries = await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: 'desc'
+  const query = gql`
+    {
+      guestbookCollection(last: 100) {
+        edges {
+          node {
+            id
+            body
+            createdBy
+          }
+        }
+      }
     }
-  });
+  `
 
-  const fallbackData = entries.map((entry) => ({
-    id: entry.id.toString(),
-    body: entry.body,
-    created_by: entry.created_by.toString(),
-    updated_at: entry.updated_at.toString()
+  const { guestbookCollection } = await grafbase.request(query);
+
+  console.log("entries: ", guestbookCollection.edges);
+
+  const fallbackData = guestbookCollection.edges.map((node) => ({
+    id: node.id,
+    body: node.body,
+    createdBy: node.createdBy,
+    updatedAt: "2022-10-07 10:00:00"
   }));
 
   return {

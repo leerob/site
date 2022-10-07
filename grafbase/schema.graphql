@@ -1,0 +1,12 @@
+type Guestbook @model {
+  id: ID!
+  email: Email!
+  body: String!
+  createdBy: String!
+}
+
+type View @model {
+  id: ID!
+  slug: String! @unique
+  count: Int # @default(value: 1)
+}
