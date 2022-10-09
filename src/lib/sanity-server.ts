@@ -4,9 +4,11 @@
  * code that is not used on the client side.
  */
 
-import { SANITY_CONFIG } from '@/config';
-
-// export const sC = sanityClient(SANITY_CONFIG);
 import sanityClient from '@sanity/client';
 
-export default sanityClient(SANITY_CONFIG);
+export default sanityClient({
+  dataset: 'production',
+  projectId: 'c8glljln',
+  useCdn: true,
+  apiVersion: '2021-03-25'
+});
