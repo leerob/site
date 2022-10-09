@@ -61,11 +61,9 @@ export default function BlogLayout({
             {post.readingTime}
           </p>
         </div>
-        <Suspense fallback={null}>
-          <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert  md:prose-lg">
-            {children}
-          </div>
-        </Suspense>
+        <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert  md:prose-lg">
+          {children}
+        </div>
       </article>
     </Container>
   );

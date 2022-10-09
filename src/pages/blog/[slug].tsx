@@ -17,16 +17,17 @@ export default function PostPage({ post }: { post: IPost }) {
           } as any
         }
       />
-      <p>w</p>
     </BlogLayout>
   );
 }
 
 export async function getStaticPaths() {
   const paths = await getPostSlugs();
+
+  console.log('slugs array', paths);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: true
+    fallback: false
   };
 }
 
@@ -38,7 +39,7 @@ export async function getStaticProps({ params }: { params: IParams }) {
   }
 
   const { html, readingTime } = await mdxToHtml(post.content);
-
+  console.log('post data', html, readingTime, post);
   return {
     props: {
       post: {

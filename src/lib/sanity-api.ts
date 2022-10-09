@@ -21,7 +21,7 @@ export const getPosts = async (): Promise<IPost[]> => {
 
 export const getPostSlugs = async (): Promise<string[]> => {
   const slugs = await sC.fetch(postSlugsQuery);
-  return slugs.filter((i: string) => i);
+  return slugs;
 };
 
 export const getPost = async (slug: string): Promise<IPost> => {
