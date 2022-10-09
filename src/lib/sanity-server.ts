@@ -3,8 +3,10 @@
  * utilities we use on the client side, we are able to tree-shake (remove)
  * code that is not used on the client side.
  */
-import sanityClient from '@sanity/client';
 
 import { SANITY_CONFIG } from '@/config';
 
-export const sC = sanityClient(SANITY_CONFIG);
+// export const sC = sanityClient(SANITY_CONFIG);
+import sanityClient from '@sanity/client';
+
+export default sanityClient(SANITY_CONFIG);
