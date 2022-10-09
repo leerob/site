@@ -6,6 +6,8 @@ import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import { useEffect } from 'react';
 
+import ErrorBoundary from '@/components/ErrorBoundary';
+
 import { DEFAULT_SEO } from '@/config';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -20,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <DefaultSeo {...DEFAULT_SEO} />
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

@@ -1,0 +1,3 @@
+setup:
+  project: svirins
+  config: dev

@@ -1,6 +1,9 @@
 {
   "private": true,
   "license": "custom",
+  "name": "svirins",
+  "version": "0.7.0",
+  "author": "Dzmitry Sviryn <svirins@gmail.com>",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -47,7 +50,7 @@
     "@typescript-eslint/parser": "^5.38.0",
     "autoprefixer": "10.4.12",
     "cssnano": "^5.1.13",
-    "eslint": "8.23.1",
+    "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
