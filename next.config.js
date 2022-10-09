@@ -14,6 +14,7 @@ module.exports = withBundleAnalyzer({
   // },
   swcMinify: true,
   reactStrictMode: true,
+
   images: {
     domains: [
       'cdn.sanity.io' // Sanity images

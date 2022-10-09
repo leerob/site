@@ -10,6 +10,7 @@ export default function BlurredImage(props: ImageProps) {
       {...props}
       alt={props.alt}
       width={672}
+      height={350}
       className={cn(
         styles['image-transition'],
         isLoading ? styles['image-loading'] : styles['image-loaded'],

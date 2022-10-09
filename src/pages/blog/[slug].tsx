@@ -17,6 +17,7 @@ export default function PostPage({ post }: { post: IPost }) {
           } as any
         }
       />
+      <p>w</p>
     </BlogLayout>
   );
 }
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
   const paths = await getPostSlugs();
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: 'blocking'
+    fallback: true
   };
 }
 
