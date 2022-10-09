@@ -41,7 +41,7 @@ export async function getStaticProps() {
 
   console.log("entries: ", guestbookCollection.edges);
 
-  const fallbackData = guestbookCollection.edges.map((node) => ({
+  const fallbackData = guestbookCollection.edges.map(({ node }) => ({
     id: node.id,
     body: node.body,
     createdBy: node.createdBy,
