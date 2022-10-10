@@ -1,49 +1,66 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
-import prisma from 'lib/prisma';
+import { grafbase, gql } from 'lib/grafbase';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
-    const entries = await prisma.guestbook.findMany({
-      orderBy: {
-        updated_at: 'desc'
+    const query = gql`
+      {
+        guestbookCollection(last: 100) {
+          edges {
+            node {
+              id
+              body
+              createdBy
+            }
+          }
+        }
       }
-    });
+    `
+
+    const { guestbookCollection } = await grafbase.request(query);
 
     return res.json(
-      entries.map((entry) => ({
-        id: entry.id.toString(),
-        body: entry.body,
-        created_by: entry.created_by,
-        updated_at: entry.updated_at
+      guestbookCollection.edges.map(({ node }) => ({
+        id: node.id,
+        body: node.body,
+        createdBy: node.createdBy,
+        updatedAt: node.updatedAt
       }))
     );
   }
 
   const session = await getSession({ req });
   const { email, name } = session.user;
+  const body = (req.body.body || '').slice(0, 500);
 
   if (!session) {
     return res.status(403).send('Unauthorized');
   }
 
   if (req.method === 'POST') {
-    const newEntry = await prisma.guestbook.create({
-      data: {
-        email,
-        body: (req.body.body || '').slice(0, 500),
-        created_by: name
+    const mutation = gql`
+      mutation {
+        guestbookCreate(input: {email: "${email}", body: "${body}", createdBy: "${name}"}) {
+          guestbook {
+            id
+            body
+            createdBy
+            updatedAt
+          }
+        }
       }
-    });
+    `
+    const { guestbook } = await grafbase.request(mutation)
 
     return res.status(200).json({
-      id: newEntry.id.toString(),
-      body: newEntry.body,
-      created_by: newEntry.created_by,
-      updated_at: newEntry.updated_at
+      id: guestbook.id,
+      body: guestbook.body,
+      createdBy: guestbook.createdBy,
+      updatedAt: guestbook.updatedAt
     });
   }
 

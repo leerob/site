@@ -39,8 +39,6 @@ export async function getStaticProps() {
 
   const { guestbookCollection } = await grafbase.request(query);
 
-  console.log("entries: ", guestbookCollection.edges);
-
   const fallbackData = guestbookCollection.edges.map(({ node }) => ({
     id: node.id,
     body: node.body,
