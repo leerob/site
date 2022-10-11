@@ -2,6 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
 import { grafbase, gql } from 'lib/grafbase';
 
+export const config = {
+  runtime: 'experimental-edge'
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

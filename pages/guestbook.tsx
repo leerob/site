@@ -43,7 +43,7 @@ export async function getStaticProps() {
     id: node.id,
     body: node.body,
     createdBy: node.createdBy,
-    updatedAt: "2022-10-07 10:00:00"
+    updatedAt: node.updatedAt
   }));
 
   return {

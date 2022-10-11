@@ -8,5 +8,5 @@ type Guestbook @model {
 type View @model {
   id: ID!
   slug: String! @unique
-  count: Int # @default(value: 1)
+  count: Int @default(value: 1)
 }
