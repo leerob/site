@@ -31,6 +31,7 @@ export async function getStaticProps() {
             id
             body
             createdBy
+            updatedAt
           }
         }
       }

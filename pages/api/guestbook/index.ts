@@ -19,6 +19,7 @@ export default async function handler(
               id
               body
               createdBy
+              updatedAt
             }
           }
         }
