@@ -22,10 +22,7 @@ export default function About() {
               GitHub: <a href="https://github.com/leerob">@leerob</a>
             </li>
             <li>
-              Website:{' '}
-              <Link href="https://leerob.io">
-                <a>https://leerob.io</a>
-              </Link>
+              Website: <Link href="https://leerob.io">https://leerob.io</Link>
             </li>
             <li>
               LinkedIn:{' '}

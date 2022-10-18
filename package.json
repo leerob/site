@@ -17,7 +17,7 @@
     "date-fns": "2.29.2",
     "googleapis": "48.0.0",
     "motion": "^10.14.2",
-    "next": "12.3.0",
+    "next": "12.3.2-canary.29",
     "next-auth": "4.10.3",
     "next-mdx-remote": "^4.1.0",
     "next-sanity": "^0.8.4",

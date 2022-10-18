@@ -20,18 +20,23 @@ export default function Footer() {
       <NowPlaying />
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
-          <Link href="/">
-            <a className="text-gray-500 hover:text-gray-600 transition">Home</a>
+          <Link
+            href="/"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Home
           </Link>
-          <Link href="/about">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              About
-            </a>
+          <Link
+            href="/about"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            About
           </Link>
-          <Link href="/newsletter">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Newsletter
-            </a>
+          <Link
+            href="/newsletter"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Newsletter
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
@@ -44,23 +49,29 @@ export default function Footer() {
           </ExternalLink>
         </div>
         <div className="flex flex-col space-y-4">
-          <Link href="/uses">
-            <a className="text-gray-500 hover:text-gray-600 transition">Uses</a>
+          <Link
+            href="/uses"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Uses
           </Link>
-          <Link href="/guestbook">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Guestbook
-            </a>
+          <Link
+            href="/guestbook"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Guestbook
           </Link>
-          <Link href="/snippets">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Snippets
-            </a>
+          <Link
+            href="/snippets"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Snippets
           </Link>
-          <Link href="/tweets">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Tweets
-            </a>
+          <Link
+            href="/tweets"
+            className="text-gray-500 hover:text-gray-600 transition"
+          >
+            Tweets
           </Link>
         </div>
       </div>
