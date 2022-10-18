@@ -12,7 +12,8 @@ module.exports = {
   },
   experimental: {
     legacyBrowsers: false,
-    browsersListForSwc: true
+    browsersListForSwc: true,
+    fontLoaders: [{ loader: '@next/font/local' }]
   },
   async headers() {
     return [
