@@ -6,7 +6,8 @@ import localFont from '@next/font/local';
 import cn from 'classnames';
 
 const normal = localFont({
-  src: '../public/fonts/ibm-plex-sans-var.woff2'
+  src: '../public/fonts/ibm-plex-sans-var.woff2',
+  style: 'normal'
 });
 const italic = localFont({
   src: '../public/fonts/ibm-plex-sans-var-italic.woff2',
@@ -20,10 +21,9 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <Component
-          className={cn(normal.className, italic.className)}
-          {...pageProps}
-        />
+        <main className={cn(normal.className, italic.className)}>
+          <Component {...pageProps} />
+        </main>
       </ThemeProvider>
     </SessionProvider>
   );
