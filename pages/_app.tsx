@@ -2,17 +2,20 @@ import 'styles/global.css';
 
 import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
-import localFont from '@next/font/local';
+import { IBM_Plex_Sans } from '@next/font/google';
 import cn from 'classnames';
 
-const normal = localFont({
-  src: '../public/fonts/ibm-plex-sans-var.woff2',
-  style: 'normal'
+const normal = IBM_Plex_Sans({
+  variant: '400'
 });
-const italic = localFont({
-  src: '../public/fonts/ibm-plex-sans-var-italic.woff2',
-  style: 'italic'
-});
+
+// const bold = IBM_Plex_Sans({
+//   variant: '700'
+// });
+
+// const italic = IBM_Plex_Sans({
+//   variant: '400-italic'
+// });
 
 export default function App({
   Component,
@@ -21,7 +24,7 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <main className={cn(normal.className, italic.className)}>
+        <main className={cn(normal.className)}>
           <Component {...pageProps} />
         </main>
       </ThemeProvider>

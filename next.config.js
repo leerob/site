@@ -13,7 +13,9 @@ module.exports = {
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-    fontLoaders: [{ loader: '@next/font/local' }]
+    fontLoaders: [
+      { loader: '@next/font/google', options: { subsets: ['latin'] } }
+    ]
   },
   async headers() {
     return [
