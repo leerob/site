@@ -32,15 +32,15 @@ export default function IndexPage({
                 </h1>
                 <h2 className="text-[22px] md:text-2xl tracking-tight text-gray-900 dark:text-gray-100 font-normal">
                   I specialize in turning ideas into{' '}
-                  <span className="font-semibold italic">real life </span>
+                  <span className="font-semibold italic">real-life </span>
                   products.v
                 </h2>
               </div>
             </div>
 
             <p className="text-gray-900 dark:text-gray-100 font-semibold md:text-lg mt-4 md:mt-10">
-              A full-stack developer passionate about React ecosystem,
-              TypeScript and serverless backends.
+              Full-stack developer with a passion for the React ecosystem,
+              TypeScript, and serverless backends.
             </p>
           </div>
           <div className="hidden md:block">
