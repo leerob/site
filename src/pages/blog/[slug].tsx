@@ -24,7 +24,6 @@ export default function PostPage({ post }: { post: IPost }) {
 export async function getStaticPaths() {
   const paths = await getPostSlugs();
 
-  console.log('slugs array', paths);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: false
@@ -39,7 +38,6 @@ export async function getStaticProps({ params }: { params: IParams }) {
   }
 
   const { html, readingTime } = await mdxToHtml(post.content);
-  console.log('post data', html, readingTime, post);
   return {
     props: {
       post: {
