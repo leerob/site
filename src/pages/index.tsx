@@ -33,7 +33,7 @@ export default function IndexPage({
                 <h2 className="text-[22px] md:text-2xl tracking-tight text-gray-900 dark:text-gray-100 font-normal">
                   I specialize in turning ideas into{' '}
                   <span className="font-semibold italic">real-life </span>
-                  products.v
+                  products.
                 </h2>
               </div>
             </div>
