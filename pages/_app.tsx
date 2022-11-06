@@ -14,10 +14,10 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <main className={interVariable.className}>
+        <div className={interVariable.className}>
           <Component {...pageProps} />
           <Analytics />
-        </main>
+        </div>
       </ThemeProvider>
     </SessionProvider>
   );
