@@ -57,6 +57,7 @@ export async function getStaticProps({ params, preview = false }) {
         tweets,
         readingTime
       }
-    }
+    },
+    revalidate: 60, // Revalidate all blogs after every 60 secounds
   };
 }

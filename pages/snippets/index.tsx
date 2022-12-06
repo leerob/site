@@ -42,5 +42,8 @@ export default function Snippets({
 export async function getStaticProps({ preview = false }) {
   const snippets: Snippet[] = await getClient(preview).fetch(allSnippetsQuery);
 
-  return { props: { snippets } };
+  return { 
+    props: { snippets },
+    revalidate: 60, // Revalidate all Snippets after every 60 secounds 
+  };
 }

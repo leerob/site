@@ -39,6 +39,7 @@ export async function getStaticProps({ params, preview = false }) {
         ...snippet,
         content: html
       }
-    }
+    },
+    revalidate: 60, // Revalidate all Snippets after every 60 secounds
   };
 }
