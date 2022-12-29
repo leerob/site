@@ -35,6 +35,7 @@ const ContentSecurityPolicy = `
     media-src 'none';
     connect-src *;
     font-src 'self';
+    frame-ancestors 'self' *.sanity.studio;
 `;
 
 const securityHeaders = [
