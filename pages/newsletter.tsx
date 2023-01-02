@@ -1,10 +1,11 @@
 import Container from 'components/Container';
 import Subscribe from 'components/Subscribe';
+import { author } from '../config';
 
 export default function Newsletter() {
   return (
     <Container
-      title="Newsletter – Lee Robinson"
+      title={`Newsletter – ${author.name}`}
       description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
@@ -18,6 +19,6 @@ export default function Newsletter() {
         </p>
         <Subscribe />
       </div>
-    </Container>
+    </Container >
   );
 }

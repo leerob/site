@@ -6,11 +6,12 @@ import GitHub from 'components/metrics/Github';
 import Unsplash from 'components/metrics/Unsplash';
 import YouTube from 'components/metrics/Youtube';
 import TopTracks from 'components/TopTracks';
+import { author } from '../config';
 
 export default function Dashboard() {
   return (
     <Container
-      title="Dashboard – Lee Robinson"
+      title={`Dashboard – ${author.name}`}
       description="My personal dashboard, built with Next.js API routes deployed as serverless functions."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
@@ -48,6 +49,6 @@ export default function Dashboard() {
         </p>
         <TopTracks />
       </div>
-    </Container>
+    </Container >
   );
 }

@@ -1,11 +1,12 @@
 import Container from 'components/Container';
 import Tweet from 'components/Tweet';
 import { getTweets } from 'lib/twitter';
+import { author } from '../config';
 
 export default function Tweets({ tweets }) {
   return (
     <Container
-      title="Tweets – Lee Robinson"
+      title={`Tweets – ${author.name}`}
       description="A collection of tweets that inspire me, make me laugh, and make me think."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
@@ -21,7 +22,7 @@ export default function Tweets({ tweets }) {
           <Tweet key={tweet.id} {...tweet} />
         ))}
       </div>
-    </Container>
+    </Container >
   );
 }
 

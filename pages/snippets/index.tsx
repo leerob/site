@@ -4,13 +4,14 @@ import { InferGetStaticPropsType } from 'next';
 import { allSnippetsQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Snippet } from 'lib/types';
+import { author } from '../config';
 
 export default function Snippets({
   snippets
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container
-      title="Code Snippets – Lee Robinson"
+      title={`Code Snippets – ${author.name}`}
       description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
@@ -35,7 +36,7 @@ export default function Snippets({
           ))}
         </div>
       </div>
-    </Container>
+    </Container >
   );
 }
 
