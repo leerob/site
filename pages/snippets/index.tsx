@@ -4,7 +4,7 @@ import { InferGetStaticPropsType } from 'next';
 import { allSnippetsQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Snippet } from 'lib/types';
-import { author } from '../config';
+import { author } from '../../config';
 
 export default function Snippets({
   snippets
