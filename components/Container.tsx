@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
+import { author } from '../config'
 
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
