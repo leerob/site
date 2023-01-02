@@ -4,14 +4,15 @@ import Image from 'next/image';
 import Container from 'components/Container';
 import avatar from 'public/avatar.jpg';
 import avatarBW from 'public/avatar-bw.jpg';
+import { author } from '../config';
 
 export default function About() {
   return (
-    <Container title="About – Lee Robinson">
+    <Container title={`About – ${author.name}`}>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+        < h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white" >
           About Me
-        </h1>
+        </h1 >
         <div className="mb-8 prose dark:prose-dark leading-6">
           <h2>Links</h2>
           <ul>
@@ -33,10 +34,10 @@ export default function About() {
           </ul>
           <h2>Bio</h2>
           <h3>Job Title</h3>
-          <p>Lee Robinson, VP of Developer Experience at Vercel</p>
+          <p>{author.name}, VP of Developer Experience at Vercel</p>
           <h3>Long, 3rd Person</h3>
           <p>
-            Lee Robinson is the VP of Developer Experience at{' '}
+            {author.name} is the VP of Developer Experience at{' '}
             <a href="http://vercel.com/">Vercel</a>, where he helps developers
             build a faster web and leads the Next.js community. He leads the
             community for the React framework Next.js and is an open-source
@@ -54,7 +55,7 @@ export default function About() {
           </p>
           <h3>Short, 3rd Person</h3>
           <p>
-            Lee Robinson is the VP of Developer Experience at{' '}
+            {author.name} is the VP of Developer Experience at{' '}
             <a href="http://vercel.com/">Vercel</a>, where he helps developers
             build a faster web.
           </p>
@@ -66,14 +67,14 @@ export default function About() {
           </p>
           <h3>Education</h3>
           <p>
-            Lee Robinson graduated from Iowa State University with a B.S. in
+            {author.name} graduated from Iowa State University with a B.S. in
             Computer Engineering.
           </p>
           <h2>Headshots</h2>
           <div className="flex space-x-8">
             <a href="/avatar.jpg">
               <Image
-                alt="Lee Robinson headshot"
+                alt={`${author.name} headshot`}
                 width={400}
                 quality={100}
                 src={avatar}
@@ -82,7 +83,7 @@ export default function About() {
             </a>
             <a href="/avatar-bw.jpg">
               <Image
-                alt="Lee Robinson headshot"
+                alt={`${author.name} headshot`}
                 width={400}
                 quality={100}
                 src={avatarBW}
@@ -91,7 +92,7 @@ export default function About() {
             </a>
           </div>
         </div>
-      </div>
-    </Container>
+      </div >
+    </Container >
   );
 }

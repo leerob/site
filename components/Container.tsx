@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
 import cn from 'classnames';
-import { author } from '../config'
 
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
+import { author } from '../config';
 
 function NavItem({ href, text }) {
   const router = useRouter();
@@ -54,7 +54,7 @@ export default function Container(props) {
         <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
         <link rel="canonical" href={`https://leerob.io${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Lee Robinson" />
+        <meta property="og:site_name" content={author.name} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />

@@ -1,10 +1,11 @@
 import RSS from 'rss';
 import { sanityClient } from 'lib/sanity-server';
 import { indexQuery } from 'lib/queries';
+import { author } from '../config';
 
 export async function getServerSideProps({ res }) {
   const feed = new RSS({
-    title: 'Lee Robinson',
+    title: author.name,
     site_url: 'https://leerob.io',
     feed_url: 'https://leerob.io/feed.xml'
   });
