@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
-import { author } from '../config';
+import { author,menu } from '../config';
 
 function NavItem({ href, text }) {
   const router = useRouter();
@@ -74,11 +74,11 @@ export default function Container(props) {
           </a>
           <div className="ml-[-0.60rem]">
             <MobileMenu />
-            <NavItem href="/" text="Home" />
-            <NavItem href="/guestbook" text="Guestbook" />
-            <NavItem href="/dashboard" text="Dashboard" />
-            <NavItem href="/blog" text="Blog" />
-            <NavItem href="/snippets" text="Snippets" />
+            <NavItem href="/" text={menu.home} />
+            <NavItem href="/guestbook" text={menu.guestbook} />
+            <NavItem href="/dashboard" text={menu.dashboard} />
+            <NavItem href="/blog" text={menu.blog} />
+            <NavItem href="/snippets" text={menu.snippets} />
           </div>
           <button
             aria-label="Toggle Dark Mode"
