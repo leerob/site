@@ -21,7 +21,7 @@ export default function Home() {
                 Artist
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Dental Jewelry. Permanent Makeup. Vintage Goods.
+                Natalie Williams is a licensed dental assistant and permanent makeup specialist based in northwest Indiana. 
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
@@ -38,26 +38,26 @@ export default function Home() {
           </div>
 
           <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
-            Featured Posts
+            Services
           </h3>
           <div className="flex gap-6 flex-col md:flex-row">
             <BlogPostCard
-              title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
-              slug="style-guides-component-libraries-design-systems"
+              title="Cosmetic Dental"
+              slug="cosmetic-dental"
               gradient="from-[#D8B4FE] to-[#818CF8]"
             />
             <BlogPostCard
-              title="Rust Is The Future of JavaScript Infrastructure"
-              slug="rust"
+              title="Permanent Makeup"
+              slug="permanet-makeup"
               gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
             />
             <BlogPostCard
-              title="Past, Present, and Future of React State Management"
-              slug="react-state-management"
+              title="Vintage Collectibles"
+              slug="vintage-collectibles"
               gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
             />
           </div>
-          <Link
+          {/* <Link
             href="/blog"
             className="flex items-center mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
           >
@@ -78,9 +78,9 @@ export default function Home() {
                 />
               </svg>
             </>
-          </Link>
+          </Link> */}
 
-          <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-16 text-black dark:text-white">
+          {/* <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-16 text-black dark:text-white">
             Learn React & Next.js
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
@@ -133,7 +133,7 @@ export default function Home() {
                 d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
               />
             </svg>
-          </a>
+          </a> */}
           <span className="h-16" />
           <Subscribe />
         </div>
