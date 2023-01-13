@@ -3,7 +3,6 @@ import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
 import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
 import { urlForImage } from 'lib/sanity';
@@ -49,10 +48,15 @@ export default function BlogLayout({
           <div className="w-full mt-4 prose dark:prose-dark max-w-none">
             {children}
           </div>
-          <div className="mt-8">
-            <Subscribe />
-          </div>
-          <div className="text-sm text-gray-700 dark:text-gray-300">
+          <div className="mt-8 text-sm text-gray-700 dark:text-gray-300">
+            <a
+              href="https://leerob.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {'Subscribe for updates'}
+            </a>
+            {` • `}
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `https://leerob.io/blog/${post.slug}`

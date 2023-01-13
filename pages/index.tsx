@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
-import Subscribe from '../components/Subscribe';
 import VideoCard from '../components/VideoCard';
 
 export default function Home() {
@@ -136,8 +135,6 @@ export default function Home() {
               />
             </svg>
           </a>
-          <span className="h-16" />
-          <Subscribe />
         </div>
       </Container>
     </Suspense>
