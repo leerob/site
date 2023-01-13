@@ -54,6 +54,14 @@ export default function BlogLayout({
           </div>
           <div className="text-sm text-gray-700 dark:text-gray-300">
             <a
+              href="https://leerob.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {'Subscribe for updates'}
+            </a>
+            {` • `}
+            <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `https://leerob.io/blog/${post.slug}`
               )}`}

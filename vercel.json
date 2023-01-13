@@ -44,15 +44,19 @@
     },
     {
       "source": "/youtube",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw"
+      "destination": "https://www.youtube.com/@leerob"
     },
     {
       "source": "/live",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw/live"
+      "destination": "https://twitch.tv/leeerob"
     },
     {
       "source": "/newsletter/(.*)",
-      "destination": "/newsletter"
+      "destination": "https://leerob.substack.com"
+    },
+    {
+      "source": "/newsletter",
+      "destination": "https://leerob.substack.com"
     },
     {
       "source": "/blog/monorepo-lerna-yarn-workspaces",
