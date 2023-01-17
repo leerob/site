@@ -8,7 +8,7 @@ import { appWithTranslation } from 'next-i18next';
 
 const interVariable = Inter();
 
-export default function App({
+export function App({
   Component,
   pageProps: { session, ...pageProps }
 }) {
