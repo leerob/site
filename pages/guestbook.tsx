@@ -2,6 +2,7 @@ import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 import { author } from '../config';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function GuestbookPage({ fallbackData }) {
   return (
@@ -39,7 +40,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      fallbackData
+      fallbackData, ...(await serverSideTranslations(locale, ['common']))
     },
     revalidate: 60
   };

@@ -5,6 +5,7 @@ import { snippetsQuery, snippetSlugsQuery } from 'lib/queries';
 import { sanityClient, getClient } from 'lib/sanity-server';
 import { mdxToHtml } from 'lib/mdx';
 import { Snippet } from 'lib/types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
   return (
@@ -37,7 +38,8 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       snippet: {
         ...snippet,
-        content: html
+        content: html,
+        ...(await serverSideTranslations(locale, ['common']))
       }
     }
   };

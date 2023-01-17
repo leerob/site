@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
 import { Inter } from '@next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { appWithTranslation } from 'next-i18next';
 
 const interVariable = Inter();
 
@@ -22,3 +23,5 @@ export default function App({
     </SessionProvider>
   );
 }
+
+export default appWithTranslation(App)

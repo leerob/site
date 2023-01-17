@@ -2,6 +2,7 @@ import Container from 'components/Container';
 import Tweet from 'components/Tweet';
 import { getTweets } from 'lib/twitter';
 import { author } from '../config';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Tweets({ tweets }) {
   return (
@@ -30,5 +31,5 @@ export async function getStaticProps() {
   const tweets = await getTweets([
   ]);
 
-  return { props: { tweets } };
+  return { props: { tweets, ...(await serverSideTranslations(locale, ['common'])) } };
 }

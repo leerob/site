@@ -7,6 +7,7 @@ import { getTweets } from 'lib/twitter';
 import { sanityClient, getClient } from 'lib/sanity-server';
 import { mdxToHtml } from 'lib/mdx';
 import { Post } from 'lib/types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function PostPage({ post }: { post: Post }) {
   const StaticTweet = ({ id }) => {
@@ -55,7 +56,8 @@ export async function getStaticProps({ params, preview = false }) {
         ...post,
         content: html,
         tweets,
-        readingTime
+        readingTime,
+        ...(await serverSideTranslations(locale, ['common']))
       }
     }
   };
