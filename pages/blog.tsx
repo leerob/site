@@ -7,6 +7,7 @@ import { indexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Post } from 'lib/types';
 import { author } from '../config';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Blog({
   posts
@@ -101,5 +102,5 @@ export default function Blog({
 export async function getStaticProps({ preview = false }) {
   const posts: Post[] = await getClient(preview).fetch(indexQuery);
 
-  return { props: { posts } };
+  return { props: { posts, ...(await serverSideTranslations(locale, ['common'])) } };
 }

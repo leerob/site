@@ -5,6 +5,7 @@ import { allSnippetsQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Snippet } from 'lib/types';
 import { author } from '../../config';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Snippets({
   snippets
@@ -43,5 +44,5 @@ export default function Snippets({
 export async function getStaticProps({ preview = false }) {
   const snippets: Snippet[] = await getClient(preview).fetch(allSnippetsQuery);
 
-  return { props: { snippets } };
+  return { props: { snippets,...(await serverSideTranslations(locale, ['common'])) } };
 }
