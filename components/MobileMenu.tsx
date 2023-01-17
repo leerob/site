@@ -93,9 +93,14 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
             style={{ transitionDelay: '300ms' }}
           >
-            <Link href="/newsletter" className="flex w-auto pb-4">
+            <a
+              href="https://leerob.substack.com"
+              className="flex w-auto pb-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Newsletter
-            </Link>
+            </a>
           </li>
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"

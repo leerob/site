@@ -32,19 +32,16 @@ export default function Footer() {
           >
             About
           </Link>
-          <Link
-            href="/newsletter"
-            className="text-gray-500 hover:text-gray-600 transition"
-          >
+          <ExternalLink href="https://leerob.substack.com">
             Newsletter
-          </Link>
+          </ExternalLink>
         </div>
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://twitter.com/leeerob">
             Twitter
           </ExternalLink>
           <ExternalLink href="https://github.com/leerob">GitHub</ExternalLink>
-          <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
+          <ExternalLink href="https://www.youtube.com/@leerob">
             YouTube
           </ExternalLink>
         </div>

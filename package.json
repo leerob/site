@@ -6,7 +6,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "sanity-start": "sanity start"
+    "sanity": "sanity dev"
   },
   "dependencies": {
     "@next/font": "13.0.2",
