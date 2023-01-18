@@ -6,8 +6,10 @@ import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
 import VideoCard from '../components/VideoCard';
 import { author } from '../config';
+import { useTranslation } from 'next-i18next';
 
 export default function Home() {
+  const { t } = useTranslation('common')
   return (
     <Suspense fallback={null}>
       <Container>
@@ -15,7 +17,7 @@ export default function Home() {
           <div className="flex flex-col-reverse sm:flex-row items-start">
             <div className="flex flex-col pr-8">
               <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-                {author.name}
+                {t('author.name')}
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
                 VP of Developer Experience at{' '}
