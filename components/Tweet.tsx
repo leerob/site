@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { useTranslation } from 'next-i18next';
 
 /**
  * Supports plain text, images, quote tweets.
@@ -28,7 +29,7 @@ export default function Tweet({
     .replace('&amp;', '&');
   const quoteTweet =
     referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
-
+    const { t } = useTranslation('common');
   return (
     <div className="tweet rounded-lg border border-gray-200 dark:border-gray-800 px-6 py-4 my-4 w-full bg-white dark:bg-gray-900">
       <div className="flex items-center">
@@ -54,9 +55,9 @@ export default function Tweet({
         >
           <span
             className="flex items-center font-bold !text-gray-900 dark:!text-gray-100 leading-5"
-            title={author.name}
+            title={t('author.name')}
           >
-            {author.name}
+            {t('author.name')}
             {author.verified ? (
               <svg
                 aria-label="Verified Account"

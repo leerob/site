@@ -1,13 +1,14 @@
 import Container from 'components/Container';
 import Tweet from 'components/Tweet';
 import { getTweets } from 'lib/twitter';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Tweets({ tweets }) {
+  const { t } = useTranslation('common');
   return (
     <Container
-      title={`Tweets – ${author.name}`}
+      title={`Tweets – ${t('author.name')}`}
       description="A collection of tweets that inspire me, make me laugh, and make me think."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

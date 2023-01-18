@@ -1,11 +1,17 @@
 import Link from 'next/link';
 
 import Container from 'components/Container';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export async function getStaticProps({  locale = 'zh' }) {
+  return { props: { ...(await serverSideTranslations(locale, ['common'])) } };
+}
 
 export default function NotFound() {
+  const { t } = useTranslation('common');
   return (
-    <Container title={`404 – ${author.name}`} >
+    <Container title={`404 – ${t('author.name')}`} >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         < h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white" >
           451 – Unavailable For Legal Reasons

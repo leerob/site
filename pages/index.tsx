@@ -5,11 +5,16 @@ import Link from 'next/link';
 import Container from '../components/Container';
 import BlogPostCard from '../components/BlogPostCard';
 import VideoCard from '../components/VideoCard';
-import { author } from '../config';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export async function getStaticProps({  locale = 'zh' }) {
+  return { props: { ...(await serverSideTranslations(locale, ['common'])) } };
+}
+
 
 export default function Home() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
   return (
     <Suspense fallback={null}>
       <Container>
@@ -30,7 +35,7 @@ export default function Home() {
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
               <Image
-                alt={author.name}
+                alt={t('author.name')}
                 height={176}
                 width={176}
                 src="/avatar.jpg"
