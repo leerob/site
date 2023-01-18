@@ -27,7 +27,7 @@ export default function Tweets({ tweets }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale = 'zh'}) {
   const tweets = await getTweets([
   ]);
 

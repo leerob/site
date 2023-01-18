@@ -24,7 +24,7 @@ export default function GuestbookPage({ fallbackData }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale = 'zh'}) {
   const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: 'desc'

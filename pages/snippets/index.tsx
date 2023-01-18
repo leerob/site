@@ -41,7 +41,7 @@ export default function Snippets({
   );
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps({ preview = false, locale = 'zh' }) {
   const snippets: Snippet[] = await getClient(preview).fetch(allSnippetsQuery);
 
   return { props: { snippets,...(await serverSideTranslations(locale, ['common'])) } };

@@ -23,7 +23,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, preview = false, locale = 'zh' }) {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, {
     slug: params.slug
   });
