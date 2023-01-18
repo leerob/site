@@ -1,7 +1,6 @@
 import RSS from 'rss';
 import { sanityClient } from 'lib/sanity-server';
 import { indexQuery } from 'lib/queries';
-import { author } from '../config';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
