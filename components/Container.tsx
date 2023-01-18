@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
-import { author,menu } from '../config';
+import { useTranslation } from 'next-i18next';
 
 function NavItem({ href, text }) {
   const router = useRouter();
@@ -34,17 +34,17 @@ export default function Container(props) {
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
+  const { t } = useTranslation('common');
 
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: `${author.name} – Developer, writer, creator.`,
+    title: `${t('author.name')} – Developer, writer, creator.`,
     description: `Front-end developer, JavaScript enthusiast, and course creator.`,
     image: 'https://leerob.io/static/images/lee-banner.png',
     type: 'website',
     ...customMeta
   };
-
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
       <Head>
@@ -54,7 +54,7 @@ export default function Container(props) {
         <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
         <link rel="canonical" href={`https://leerob.io${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content={author.name} />
+        <meta property="og:site_name" content={t('author.name')} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
@@ -74,11 +74,11 @@ export default function Container(props) {
           </a>
           <div className="ml-[-0.60rem]">
             <MobileMenu />
-            <NavItem href="/" text={menu.home} />
-            <NavItem href="/guestbook" text={menu.guestbook} />
-            <NavItem href="/dashboard" text={menu.dashboard} />
-            <NavItem href="/blog" text={menu.blog} />
-            <NavItem href="/snippets" text={menu.snippets} />
+            <NavItem href="/" text={t('menu.home')} />
+            <NavItem href="/guestbook" text={t('menu.guestbook')} />
+            <NavItem href="/dashboard" text={t('menu.dashboard')} />
+            <NavItem href="/blog" text={t('menu.blog')} />
+            <NavItem href="/snippets" text={t('menu.snippets')} />
           </div>
           <button
             aria-label="Toggle Dark Mode"

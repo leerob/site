@@ -6,7 +6,7 @@ import { InferGetStaticPropsType } from 'next';
 import { indexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Post } from 'lib/types';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Blog({
@@ -16,10 +16,11 @@ export default function Blog({
   const filteredBlogPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
+  const { t } = useTranslation('common');
 
   return (
     <Container
-      title={`Blog – ${author.name}`}
+      title={`Blog – ${t('author.name')}`}
       description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">

@@ -6,15 +6,18 @@ import GitHub from 'components/metrics/Github';
 import Unsplash from 'components/metrics/Unsplash';
 import YouTube from 'components/metrics/Youtube';
 import TopTracks from 'components/TopTracks';
-import { author } from '../config';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+export async function getStaticProps({  locale = 'zh' }) {
+  return { props: { ...(await serverSideTranslations(locale, ['common'])) } };
+}
 
 export default function Dashboard() {
   const { t } = useTranslation('common')
   return (
     <Container
-      title={`Dashboard – ${t<string>('author.name')}`}
+      title={`Dashboard – ${t('author.name')}`}
       description="My personal dashboard, built with Next.js API routes deployed as serverless functions."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

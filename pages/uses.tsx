@@ -1,11 +1,17 @@
 import Container from 'components/Container';
 import Image from 'next/image';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export async function getStaticProps({  locale = 'zh' }) {
+  return { props: { ...(await serverSideTranslations(locale, ['common'])) } };
+}
 
 export default function Uses() {
+  const { t } = useTranslation('common');
   return (
     <Container
-      title={`Uses – ${author.name}`}
+      title={`Uses – ${t('author.name')}`}
       description="Here's what tech I'm currently using for coding, videos, and music."
     >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">

@@ -1,13 +1,14 @@
 import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function GuestbookPage({ fallbackData }) {
+  const { t } = useTranslation('common');
   return (
     <Container
-      title={`Guestbook – ${author.name}`}
+      title={`Guestbook – ${t('author.name')}`}
       description="Sign my digital guestbook and share some wisdom."
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">

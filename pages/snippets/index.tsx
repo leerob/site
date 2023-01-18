@@ -4,15 +4,16 @@ import { InferGetStaticPropsType } from 'next';
 import { allSnippetsQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity-server';
 import { Snippet } from 'lib/types';
-import { author } from '../../config';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Snippets({
   snippets
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t } = useTranslation('common');
   return (
     <Container
-      title={`Code Snippets – ${author.name}`}
+      title={`Code Snippets – ${t('author.name')}`}
       description="A collection of code snippets – including serverless functions, Node.js scripts, and CSS tricks."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">

@@ -6,15 +6,16 @@ import Container from 'components/Container';
 import ViewCounter from 'components/ViewCounter';
 import { Post } from 'lib/types';
 import { urlForImage } from 'lib/sanity';
-import { author } from '../config';
+import { useTranslation } from 'next-i18next';
 
 export default function BlogLayout({
   children,
   post
 }: PropsWithChildren<{ post: Post }>) {
+  const { t } = useTranslation('common');
   return (
     <Container
-      title={`${post.title} – ${author.name}`}
+      title={`${post.title} – ${t('author.name')}`}
       description={post.excerpt}
       image={urlForImage(post.coverImage).url()}
       date={new Date(post.date).toISOString()}
@@ -27,7 +28,7 @@ export default function BlogLayout({
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
           <div className="flex items-center">
             <Image
-              alt={author.name}
+              alt={t('author.name')}
               height={24}
               width={24}
               sizes="20vw"
@@ -35,7 +36,7 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {`${author.name} / `}
+              {`${t('author.name')} / `}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
