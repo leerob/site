@@ -3,12 +3,12 @@ import { sanityClient } from 'lib/sanity-server';
 import { indexQuery } from 'lib/queries';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import ServerSideTranslation from '@/translations/ServerSideTranslation';
+import getServerSideTranslation from '../translation';
 
 export async function getServerSideProps({ res, locale = 'zh' }) {
   const i18nSSRConfig = await serverSideTranslations(locale ,['common']);
   // @ts-ignore
-  const t = await getServerSideT(i18nSSRConfig);
+  const t = await getServerSideTranslation(i18nSSRConfig);
   const feed = new RSS({
     title: t('author.name'),
     site_url: 'https://leerob.io',
@@ -34,7 +34,7 @@ export async function getServerSideProps({ res, locale = 'zh' }) {
   res.end();
 
   return {
-    props: { ...(await serverSideTranslations(locale, ['common'])) }
+    props: {  }
   };
 }
 
