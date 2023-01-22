@@ -26,6 +26,7 @@
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^2.0.0",
     "@tailwindcss/typography": "0.5.7",
+    "@vercel/analytics": "^0.1.8",
     "classnames": "^2.3.2",
     "next": "12.3.1",
     "next-mdx-remote": "^4.1.0",
