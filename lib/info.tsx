@@ -13,7 +13,7 @@ export const about = () => {
 export const bio = () => {
   return (
     <>
-      I'm a Next.js contributor and help lead our open-source communities. I've
+      I'm a Next.js contributor and help lead our open-source communities. I'm
       passionate about frontend development and have created courses on React,
       Next.js, and web development. I'm an advisor and investor in early stage
       startups.
