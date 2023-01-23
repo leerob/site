@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from "next/legacy/image";
 import { PropsWithChildren, Suspense } from 'react';
 
 import Container from '@/components/Container';

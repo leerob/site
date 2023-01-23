@@ -21,10 +21,6 @@ module.exports = withBundleAnalyzer({
     ],
     formats: ['image/webp']
   },
-  experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true
-  },
   async headers() {
     return [
       {

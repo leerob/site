@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/future/image';
+import Image, { ImageProps } from "next/legacy/image";
 import styles from '@/styles/image.module.css';
 import { useState } from 'react';
 import cn from 'classnames';

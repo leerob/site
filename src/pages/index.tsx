@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import Image from 'next/future/image';
+import Image from "next/legacy/image";
 import { useMemo } from 'react';
 import { Suspense } from 'react';
 import { IconContext } from 'react-icons';
