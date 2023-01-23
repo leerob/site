@@ -92,8 +92,10 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 - **MySQL**
   - **[PlanetScale](https://planetscale.com/):** MySQL through [Vitess](https://planetscale.com/blog/all-the-tech-planetscale-replaces). Can easily handle quite a [large](https://planetscale.com/blog/one-million-queries-per-second-with-mysql) [scale](https://planetscale.com/blog/one-million-connections) and also includes some nice features to [speed up](https://planetscale.com/blog/introducing-planetscale-boost) and [monitor](https://planetscale.com/blog/introducing-planetscale-insights-advanced-query-monitoring) queries. Their [serverless driver](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript) (`@planetscale/database`) has been easy to use, but I prefer [Kysely](https://github.com/depot/kysely-planetscale).
 - **PostgreSQL**
+  - **[AlloyDB](https://cloud.google.com/alloydb):** Very exciting innovation coming from Google. AlloyDB is unique because it can handle both transactional¹ and analytical² workloads.
+  - **[AWS Aurora](https://aws.amazon.com/rds/aurora/serverless/):** One of the first serverless Postgres offerings.
+  - **[CockroachDB](https://www.cockroachlabs.com/blog/announcing-cockroachdb-serverless/):** Autoscales and distributes data across multiple nodes. Focused on high data consistency and integrity.
   - **[Neon:](https://neon.tech/)** Postgres with separation of storage and compute. Uniquely designed for serverless and works with the native Postgres driver + supports database branching workflows.
-  - **[CockroachDB](https://www.cockroachlabs.com/blog/announcing-cockroachdb-serverless/): TODO**
 
 ### Rising serverless database solutions
 
@@ -124,7 +126,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
   - **[WunderGraph:](https://wundergraph.com/)** Trying to lead with an excellent ORM / client library (end-to-end type safety, GraphQL support) and wedge into a cloud product (still waitlist access, haven't used it).
 - **Other Solutions**
   - **Caching Engines:** [Stellate](https://stellate.co/), [Prisma Accelerate](https://www.prisma.io/data-platform/accelerate), [ReadySet](https://readyset.io/).
-  - **Cloud Provider Offerings:** AWS RDS, AWS Dynamo, Azure SQL, Azure CosmosDB, Google Cloud SQL, Google BigTable, and more. [AlloyDB](https://cloud.google.com/alloydb) from Google is particularly interesting.
+  - **Cloud Provider Offerings:** AWS Dynamo, Azure SQL, Azure CosmosDB, Google Cloud SQL, Google BigTable, and more.
   - **Content Management (Headless CMS):** These can still act as a database, just a different domain-specific solution. [Sanity](https://www.sanity.io/), [Contentful](https://www.contentful.com/), [Sitecore](https://www.sitecore.com/) and more.
 
 ---
