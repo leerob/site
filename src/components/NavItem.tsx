@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { getActiveStatus } from '@/lib/utils';
@@ -13,7 +13,7 @@ export default function NavItem({ href, text }: INavItem) {
   const router = useRouter();
 
   return (
-    <NextLink
+    <Link
       href={href}
       className={clsx(
         getActiveStatus(href, router.asPath)
@@ -24,6 +24,6 @@ export default function NavItem({ href, text }: INavItem) {
       legacyBehavior
     >
       <span className="capsize">{text}</span>
-    </NextLink>
+    </Link>
   );
 }

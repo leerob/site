@@ -7,7 +7,6 @@ export const config = {
 
 export default async function handler(): Promise<ICurrentlyPlaying | Response> {
   const response = await getNowPlaying();
-
   if (response.status === 204 || response.status > 400) {
     return new Response(JSON.stringify({ isPlaying: false }), {
       status: 200,

@@ -33,8 +33,8 @@ module.exports = withBundleAnalyzer({
 
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.goatcounter.com  *.spotify.com *.youtube.com;
-    child-src *.youtube.com  *.spotify.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.spotify.com *.youtube.com https://cdn.vercel-insights.com/v1/script.debug.js;
+    child-src *.youtube.com  *.spotify.com ;
     style-src 'self' 'unsafe-inline'  *.spotify.com;
     img-src * blob: data:;
     media-src  *.spotify.com;
