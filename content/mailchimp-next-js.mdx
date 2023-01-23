@@ -1,0 +1,152 @@
+---
+title: 'Create A Newsletter with Next.js API Routes and Mailchimp'
+publishedAt: '2019-11-10'
+summary: 'Learn how to integrate Next.js and React with Mailchimp to build a newsletter subscription form.'
+---
+
+You've probably noticed the rise of newsletters (especially in the developer community). They're an excellent way to promote content to those who really want to read it. If you've ever thought about starting a newsletter, then you've found the right article.
+
+## Mailchimp vs. The World
+
+If you're just starting a newsletter, you probably want something with a free tier.
+That was my rationale for adopting [TinyLetter](https://tinyletter.com/). It was simple, easy to set up, and didn't require an API route. Perfect!
+
+However, it wasn't exactly a frictionless sign-up process. When a user clicked "subscribe", it launched a pop-up window where they had to confirm their email address again.
+Again, _it works_, but we can do better.
+
+I started to explore using [Mailchimp](https://mailchimp.com/) as an alternative. It also has a [free tier](https://mailchimp.com/pricing/) if you have less than 2,000 subscribers. Perfect.
+
+## Why Next.js?
+
+[Next.js](https://nextjs.org/) is the easiest way to build applications in React. One of my favorite features is API routes.
+
+API routes provide a solution for building a complete API inside Next.js.
+All you need to get started is an `api/` folder inside your main `pages/` folder where your routes live.
+
+Every file inside `pages/api/` is mapped to `/api/*`. This is where we'll communicate with Mailchimp.
+First, we need to set up an account.
+
+## Setting up Mailchimp
+
+After [creating an account](https://mailchimp.com/help/create-an-account/), you'll need to fetch your [API key](https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key).
+
+When a user clicks "subscribe", we'll want to add their email address to our [audience](https://mailchimp.com/developer/marketing/guides/create-your-first-audience/#add-a-contact-to-an-audience).
+We'll need to grab a few values:
+
+- The [API server region](https://mailchimp.com/developer/marketing/guides/quick-start/#make-your-first-api-call) (e.g. `us1`).
+- The [Audience ID](https://mailchimp.com/help/find-audience-id/) for the mailing list.
+
+## Environment Variables
+
+Let's make our secrets we've retrieved available without hardcoding them into our request. Since I'm deploying with [Vercel](https://vercel.com), I'll need to set up some [environment variables](https://nextjs.org/docs/basic-features/environment-variables).
+First, let's create `.env.local` for testing locally.
+
+```bash title=".env.local"
+MAILCHIMP_API_KEY=
+MAILCHIMP_API_SERVER=
+MAILCHIMP_AUDIENCE_ID=
+```
+
+Finally, [add these environment variables in Vercel](https://vercel.com/docs/environment-variables) so they're available on pull requests (Preview) and in Production.
+
+**Note:** Don't forget to add `.env.local` to your `.gitignore`. We don't want to commit our secrets.
+
+## Creating The Request
+
+Now that we have our values available as environment variables, we can create an API route at `pages/api/subscribe.js` to add a member to our list.
+Make sure you install the `@mailchimp/mailchimp_marketing` library.
+
+```js title="pages/api/subscribe.js"
+import mailchimp from '@mailchimp/mailchimp_marketing';
+
+mailchimp.setConfig({
+  apiKey: process.env.MAILCHIMP_API_KEY,
+  server: process.env.MAILCHIMP_API_SERVER, // e.g. us1
+});
+
+export default async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+
+  try {
+    await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
+      email_address: email,
+      status: 'subscribed',
+    });
+
+    return res.status(201).json({ error: '' });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || error.toString() });
+  }
+};
+```
+
+## Creating A Form Input
+
+Now that our API is created, we need a way to gather user input. Let's create a component to send a request to our API.
+
+```js title="components/Subscribe.js"
+import React, { useRef, useState } from 'react';
+
+function Subscribe() {
+  // 1. Create a reference to the input so we can fetch/clear it's value.
+  const inputEl = useRef(null);
+  // 2. Hold a message in state to handle the response from our API.
+  const [message, setMessage] = useState('');
+
+  const subscribe = async (e) => {
+    e.preventDefault();
+
+    // 3. Send a request to our API with the user's email address.
+    const res = await fetch('/api/subscribe', {
+      body: JSON.stringify({
+        email: inputEl.current.value,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+
+    const { error } = await res.json();
+
+    if (error) {
+      // 4. If there was an error, update the message in state.
+      setMessage(error);
+
+      return;
+    }
+
+    // 5. Clear the input value and show a success message.
+    inputEl.current.value = '';
+    setMessage('Success! 🎉 You are now subscribed to the newsletter.');
+  };
+
+  return (
+    <form onSubmit={subscribe}>
+      <label htmlFor="email-input">{'Email Address'}</label>
+      <input
+        id="email-input"
+        name="email"
+        placeholder="you@awesome.com"
+        ref={inputEl}
+        required
+        type="email"
+      />
+      <div>
+        {message
+          ? message
+          : `I'll only send emails when new content is posted. No spam.`}
+      </div>
+      <button type="submit">{'✨ Subscribe 💌'}</button>
+    </form>
+  );
+}
+```
+
+## Conclusion
+
+If you'd like to see a completed example, the entire source code for my blog is [open source](https://github.com/leerob/leerob.io/blob/bfbd33a822fbcbbafd4027aa45884446f6f8ff3c/pages/api/subscribe.js).

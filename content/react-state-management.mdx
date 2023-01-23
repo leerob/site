@@ -1,0 +1,224 @@
+---
+title: 'Past, Present, and Future of React State Management'
+publishedAt: '2021-02-02'
+summary: 'Learn about the history of state management in React and what the preferred solutions are today.'
+---
+
+React was introduced in May 2013. Its paradigm shift was that **your UI was a function of your state**. Given some component state, React can determine what your component will look like. React is _built_ upon the idea of state. However, state has long been one of the most difficult parts of building a React application.
+
+Let's imagine state management in React as a rugged tool belt. You've used this tool belt for years, slowly adding new tools as needed. Each tool serves a very specific purpose. You don't use your hammer to screw in bolts. As a craftsman, you've learned the right time and place to use each tool.
+
+**State management with React is a rugged tool belt, but not everyone has the prior experience to know which tool to reach for.** This post will explain the past, present, and future of state management to help you make the correct decision for your team, project, or organization.
+
+## Glossary
+
+Before we begin, it's critical you understand some of the terms commonly used. These aren't the canonical names. A few different variations of each float around, but the underlying ideas are the same:
+
+- UI State – State used for controlling interactive parts of our application (e.g. dark mode toggle, modals).
+- Server Cache State – State from the server, which we cache on the client-side for quick access (e.g. call an API, store the result, use it in multiple places).
+- Form State – The many different states of a form (e.g. loading, submitting, disabled, validation, retrying). There's also [controlled & uncontrolled form state](https://reactjs.org/docs/forms.html).
+- URL State – State managed by the browser (e.g. filter products, saving to query parameters, and refreshing the page to see the same products filtered)
+- State Machine – An explicit model of your state over time (e.g. a stoplight goes from green → yellow → red, but never green → red).
+
+## Past
+
+React's component model helped create reusable, composable applications. Each component had its own local state. As web apps became more complex, new solutions emerged to more easily share logic between components.
+
+### Timeline
+
+To help you understand how state management has evolved over time, here's a rough timeline of popular state management solutions in React. This list is heavily focused on UI State. This list is not comprehensive, but is enough to give context.
+
+- 2013 – Introduction
+- 2014 – Flux (many libraries)
+- 2015 – Redux
+- 2016 – MobX
+- 2018 – Context
+- 2019 – Hooks Introduced (+ React Query, SWR)
+- 2019 – Zustand
+- 2019 – xState
+- 2020 – Jotai, Recoil, Valtio
+- 2021 – useSelectedContext
+
+Just because an item is listed on this timeline does not mean you need to learn it. More on this later. Let's dive into the history of state management in React.
+
+### Redux
+
+[Redux](https://redux-toolkit.js.org/) was originally created as an implementation of the "[Flux Architecture](https://blog.isquaredsoftware.com/2017/05/idiomatic-redux-tao-of-redux-part-1/#redux-was-built-as-a-flux-architecture-implementation)", which was a pattern first suggested by Facebook in 2014. Redux came out in 2015 and quickly became the most popular of many Flux-inspired libraries. It's ecosystem of tools and libraries encapsulated both UI state and server caching state. **Redux is still extremely popular and widely used.**
+
+<Image
+  alt={`Redux Growth`}
+  src={`/images/react-state-management/redux.png`}
+  width={1000}
+  height={586}
+/>
+
+### Server Caching State
+
+In the early days of React, lots of state management boiled down to fetching data from APIs and caching it for use across the application. The community leaned heavily on libraries like Redux because there wasn't an easy, widely used way to manage _just_ the server cache state.
+
+With the release of [React Hooks](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html), encapsulating logic into shared hooks became much easier and accessible. Libraries like [SWR](https://swr.vercel.app/) and [React Query](https://react-query.tanstack.com/) emerged to solve this problem specifically.
+
+You might think "Why have a separate library just for server caching state?". Well, **caching is hard**. Server caching state solves different problems than UI state. Here's a shortlist of some of the things these libraries handle for you:
+
+- Polling on interval
+- Revalidation on focus
+- Revalidation on network recovery
+- Local mutation (Optimistic UI)
+- Smart error retrying
+- Pagination and scroll position recovery
+
+Do you want to implement those yourself? _Probably not._
+
+### React Context
+
+With [v16.3](https://reactjs.org/blog/2018/03/29/react-v-16-3.html), React Context gave us a first-party solution to share logic between components. This also prevented passing values down as props through multiple levels of nested components (i.e. "[prop-drilling](https://kentcdodds.com/blog/prop-drilling)").
+
+React Context itself is [not state management](https://blog.isquaredsoftware.com/2021/01/context-redux-differences/). It can, however, [be paired with hooks](https://kentcdodds.com/blog/application-state-management-with-react) like `useReducer` to become a state management solution. This combination solved UI state for many common use cases.
+
+<Image
+  alt={`React Context`}
+  src={`/images/react-state-management/context.png`}
+  width={1000}
+  height={572}
+/>
+
+## Present
+
+In 2021, there are various ways to handle state management in React. As the community has grown to understand the different types of state, more granular libraries have been created solving very specific use cases.
+
+### State Machines
+
+Let's consider a switch statement. If the value of `state` matches any `case`, the corresponding code runs. There's a finite set of cases. This is the most simple state machine – an explicit model of your state.
+
+```jsx
+switch (state) {
+  case state === 'loading':
+    // show loading spinner
+    break;
+  case state === 'success':
+    // show success message
+    break;
+  default:
+  // show error message
+}
+```
+
+[Finite State Machines](https://xstate.js.org/docs/about/concepts.html#finite-state-machines) and [Statecharts](https://xstate.js.org/docs/about/concepts.html#statecharts) are fundamental Computer Science concepts, so this isn't anything React specific. You can turn [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer) into a state machine without any third-party libraries.
+
+State Machines are well-adopted everywhere, including databases, electronics, cars, and more. As state management evolved in the React ecosystem, we realized these old ideas could solve modern state management issues. State Machines are most prevalent for solving form state.
+
+With a Finite State Machine, you have a finite number of states your application or component could be in. In practice, State Machines help you uncover bugs as you're required to think through and define edge cases. For much more information on this, I'd recommend checking out the [xState](https://xstate.js.org/docs/) docs or watching [this course](https://egghead.io/courses/introduction-to-state-machines-using-xstate). You can also [visualize entire state machines online](https://xstate.js.org/viz/).
+
+<Image
+  alt={`State Machines`}
+  src={`/images/react-state-management/state-machines.gif`}
+  width={800}
+  height={277}
+/>
+
+### Zustand, Recoil, Jotai, Valtio, Oh My!
+
+Why do so many different libraries for React state management even exist?
+
+Let's consider Figma (or any other design tool). You have a toolbar of controls that affect other elements outside of its "local" state, or where the component is rendered.
+
+<Image
+  alt={`Figma`}
+  src={`/images/react-state-management/figma.png`}
+  width={1000}
+  height={663}
+/>
+
+As you can imagine, an application of this scale would require a complex state management solution. Performance and frame rate are critical for a good user experience here, so you want control over when & how to re-render. Unique use cases like this have led to lots of exploration in the state management space.
+
+To summarize the differences between these libraries, let's hear from [Daishi Kato](https://twitter.com/dai_shi/status/1348257768130560008):
+
+- **Valtio** uses proxies to provide a mutation-style API
+- **Jotai** is optimized for "computed values" and async actions
+- **Zustand** is a very thin library specifically focused on module state
+- **Recoil** is an experimental library using a data-flow graph
+
+Having complex state doesn't necessarily mean you _have_ to pull for a third-party library. You can start with React and JavaScript and see how far it takes you. If optimizing requires a state management library, you can track that metric (e.g. frame rate), measure it, and verify it solves a real problem.
+
+**Don't choose one of these libraries unless there's an obvious need.**
+
+### Immutable State
+
+Another debate is mutable vs. immutable state. There's no right answers, just opinions. If you were doing state management with vanilla JavaScript, you'll likely have mutable state. You initialize a variable, and then later set it equal to some new value. There are [entire debates](https://overreacted.io/on-let-vs-const/) on `let` vs. `const`.
+
+Immutable state gained a lot of popularity with React. The immutable crowd argues that allowing your state management solution of choice to mutate state directly results in more bugs. The mutable crowd argues it's not worth the complexity trade-off. Direct manipulation will always be less safe than indirect manipulation. It's a tradeoff between convenience and risk, which is up to you and your team.
+
+Solutions like [Immer](https://immerjs.github.io/immer/) allow you to write mutable code but _execute_ it immutably. Fancy. The basic idea is you apply your changes to a _draft state_, which is a proxy of the _current state_. Once the mutations have completed Immer will produce the _next state_ based on the changes to the draft state.
+
+<Image
+  alt={`Immer Immutable State`}
+  src={`/images/react-state-management/immer.png`}
+  width={1000}
+  height={389}
+/>
+
+### URL State
+
+Let's say you're building an e-commerce website like Amazon. You search for React books and filter by 4+ stars. This state is persisted as query parameters and managed by the browser. When you refresh the page, you see the same list of products. You can share this URL with others and they also see the same results.
+
+<Image
+  alt={`Amazon URL State`}
+  src={`/images/react-state-management/amazon.png`}
+  width={1000}
+  height={732}
+/>
+
+Another interesting example of this is Nomad List. We can transform the browser URL state into a function of our data. Plus, we can make human-readable URLs (which Google prefers).
+
+<Image
+  alt={`Nomad List URL State`}
+  src={`/images/react-state-management/nomad.png`}
+  width={1000}
+  height={676}
+/>
+
+### Future
+
+For large applications, it's possible a naive Context-based state management solutions (e.g. with `useReducer`) could have issues with excessive re-rendering. When a context value changes, all components that `useContext` will re-render. This makes UI interactions feel slow and janky. If you can't visually notice it, you can [use React Dev Tools](https://brycedooley.com/debug-react-rerenders/) to investigate re-rendering.
+
+The React team has proposed a `useSelectedContext` hook to prevent performance issues with Context at scale. This [RFC was introduced](https://github.com/reactjs/rfcs/pull/119) in July 2019 and [progress has started](https://github.com/facebook/react/pull/20646) as of January 2021 behind a feature flag. This hook allows you to select a "slice" of Context and only re-render when that piece changes.
+
+There are ways to work around re-rendering performance already (e.g. `useMemo`) but a first-party solution for Context is preferred. There's also a community library [useContextSelector](https://github.com/dai-shi/use-context-selector), which takes a similar approach ([demo](https://codesandbox.io/s/usecontextselector-demo-sixdr?file=/src/App.js)). [Jotai](https://github.com/pmndrs/jotai) and [Formik 3](https://formik.org/blog/formik-3-alpha) use this under the hood. Having `useSelectedContext` as part of the React standard library will eliminate complexity and code size in external libraries, as well as provide more performant options by default.
+
+In the longer-term future, React will automatically figure out which components to re-render ("[auto-memoization](https://github.com/reactjs/rfcs/pull/119#issuecomment-586390430)").
+
+## State Management Options
+
+This is not a comprehensive list. It's also open-source, so please open a PR if you disagree or if something is wrong. In general, lean on whatever empowers your developers and team. **Happy with Redux? Stay there!**
+
+### Form State
+
+| Experience   | Learning Appetite | Project/Team Size | Solution                          |
+| ------------ | ----------------- | ----------------- | --------------------------------- |
+| Beginner     | Low               | Small             | useState                          |
+| Beginner     | Medium            | Medium, Small     | Form Library (Formik, Final Form) |
+| Beginner     | High, Medium      | Large             | Ask your tech lead                |
+| Intermediate | Low               | Medium, Small     | Form Library (Formik, Final Form) |
+| Advanced     | Medium            | Medium            | State Machines                    |
+| Advanced     | High              | Medium            | State Machines                    |
+| Advanced     | High              | Large             | State Machines                    |
+
+### UI State
+
+| Experience   | Learning Appetite | Project/Team Size | Solution                             |
+| ------------ | ----------------- | ----------------- | ------------------------------------ |
+| Beginner     | Low               | Small             | useState                             |
+| Beginner     | Medium            | Medium, Small     | useContext + useReducer              |
+| Beginner     | High, Medium      | Large             | Ask your tech lead                   |
+| Intermediate | Low               | Medium, Small     | Redux Toolkit                        |
+| Advanced     | Medium            | Medium            | useContext + useReducer              |
+| Advanced     | High              | Medium            | Jotai, Valtio                        |
+| Advanced     | High              | Large             | Recoil (or Relay if you use GraphQL) |
+
+### Server Cache State
+
+Regardless of experience or team size, both [SWR](https://swr.vercel.app/) and [React Query](https://react-query.tanstack.com/) are excellent solutions. You'll be happy with either. If you're using GraphQL, you probably already know about [Apollo](https://www.apollographql.com/).
+
+### That's all, folks!
+
+State management in React has evolved massively over the past eight years. It's one of the most difficult, nuanced parts of building large web applications. Understanding the different types of state and their trade-offs is crucial for making an informed decision. I hope this post has helped – thanks for reading.
