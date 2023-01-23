@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -35,48 +35,49 @@ export default function MobileMenu() {
     };
   }, []);
 
-  return <>
-    <button
-      className={cn(styles.burger, 'visible md:hidden')}
-      aria-label="Toggle menu"
-      type="button"
-      onClick={toggleMenu}
-    >
-      <MenuIcon data-hide={isMenuOpen} />
-      <CrossIcon data-hide={!isMenuOpen} />
-    </button>
-    {isMenuMounted && (
-      <ul
-        className={cn(
-          styles.menu,
-          'flex flex-col absolute bg-gray-50 dark:bg-gray-900',
-          isMenuRendered && styles.menuRendered
-        )}
+  return (
+    <>
+      <button
+        className={clsx(styles.burger, 'visible md:hidden')}
+        aria-label="Toggle menu"
+        type="button"
+        onClick={toggleMenu}
       >
-        {NAV_LINKS.map((item, index) => (
-          <li
-            key={index}
-            className="border-b border-gray-500/50 text-gray-600 dark:text-gray-400 dark:border-gray-500/50"
-            style={{ transitionDelay: '150ms' }}
-          >
-            <Link
-              href={item.href}
-              className={cn(
-                getActiveStatus(item.href, router.asPath)
-                  ? 'font-medium text-gray-800 dark:text-gray-200'
-                  : '',
-                'transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
-              )}
-              legacyBehavior>
-
-              {item.text}
-
-            </Link>
-          </li>
-        ))}
-      </ul>
-    )}
-  </>;
+        <MenuIcon data-hide={isMenuOpen} />
+        <CrossIcon data-hide={!isMenuOpen} />
+      </button>
+      {isMenuMounted && (
+        <ul
+          className={clsx(
+            styles.menu,
+            'flex flex-col absolute bg-gray-50 dark:bg-gray-900',
+            isMenuRendered && styles.menuRendered
+          )}
+        >
+          {NAV_LINKS.map((item, index) => (
+            <li
+              key={index}
+              className="border-b border-gray-500/50 text-gray-600 dark:text-gray-400 dark:border-gray-500/50"
+              style={{ transitionDelay: '150ms' }}
+            >
+              <Link
+                href={item.href}
+                className={clsx(
+                  getActiveStatus(item.href, router.asPath)
+                    ? 'font-medium text-gray-800 dark:text-gray-200'
+                    : '',
+                  'transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
+                )}
+                legacyBehavior
+              >
+                {item.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
 }
 
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {

@@ -1,7 +1,7 @@
-import Image, { ImageProps } from "next/legacy/image";
+import Image, { ImageProps } from 'next/legacy/image';
 import styles from '@/styles/image.module.css';
 import { useState } from 'react';
-import cn from 'classnames';
+import clsx from 'clsx';
 
 export default function BlurredImage(props: ImageProps) {
   const [isLoading, setLoading] = useState(true);
@@ -12,7 +12,7 @@ export default function BlurredImage(props: ImageProps) {
       alt={props.alt}
       width={672}
       height={350}
-      className={cn(
+      className={clsx(
         styles['image-transition'],
         isLoading ? styles['image-loading'] : styles['image-loaded'],
         'rounded-lg  h-auto'

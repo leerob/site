@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import clsx from 'clsx';
 
 import { IWakaApiResponse } from '@/typings';
 
@@ -52,7 +52,7 @@ export default function WakaStats({
       datum.map(({ name: lang, text, hours, minutes }, index) => (
         <div key={index}>
           <span
-            className={cn(
+            className={clsx(
               WAKA_STATS_COLORS[index].textColor,
               'text-xs md:text-sm'
             )}
