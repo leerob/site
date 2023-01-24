@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 
 import ErrorBoundary from '@/components/ErrorBoundary';
 
@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <DefaultSeo {...DEFAULT_SEO} />
       <ErrorBoundary>
         <Component {...pageProps} />
-        <Analytics />
       </ErrorBoundary>
     </ThemeProvider>
   );

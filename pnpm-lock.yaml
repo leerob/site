@@ -13,7 +13,6 @@ specifiers:
   '@types/rss': ^0.0.30
   '@typescript-eslint/eslint-plugin': ^5.49.0
   '@typescript-eslint/parser': ^5.49.0
-  '@vercel/analytics': ^0.1.8
   autoprefixer: 10.4.13
   clsx: ^1.2.1
   cssnano: ^5.1.14
@@ -57,7 +56,6 @@ dependencies:
   '@sanity/image-url': 1.0.2
   '@sanity/webhook': 2.0.0
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.4
-  '@vercel/analytics': 0.1.8_react@18.2.0
   clsx: 1.2.1
   next: 13.1.5_pjwopsidmaokadturxaafygjp4
   next-mdx-remote: 4.3.0_biqbaboplfbrettd7655fr4n2y
@@ -1906,14 +1904,6 @@ packages:
       '@typescript-eslint/types': 5.49.0
       eslint-visitor-keys: 3.3.0
     dev: true
-
-  /@vercel/analytics/0.1.8_react@18.2.0:
-    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
-    peerDependencies:
-      react: ^16.8||^17||^18
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /@vitejs/plugin-react/3.0.1_vite@4.0.4:
     resolution: {integrity: sha512-mx+QvYwIbbpOIJw+hypjnW1lAbKDHtWK5ibkF/V1/oMBu8HU/chb+SnqJDAsLq1+7rGqjktCEomMTM5KShzUKQ==}
