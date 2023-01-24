@@ -68,7 +68,6 @@ export default function MobileMenu() {
                     : '',
                   'transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'
                 )}
-                legacyBehavior
               >
                 {item.text}
               </Link>
