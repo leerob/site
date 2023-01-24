@@ -54,7 +54,7 @@
     "eslint-config-next": "13.1.5",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "groq": "^3.2.4",
+    "groq": "^3.2.5",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.21",

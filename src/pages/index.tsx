@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { useMemo } from 'react';
 import { Suspense } from 'react';
 import { IconContext } from 'react-icons';
@@ -75,8 +75,14 @@ export default function IndexPage({
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
               I live in Batumi{' '}
-              <span role="image" aria-label="georgia flag">
-                🌊🔆🇬🇪
+              <span role="img" aria-label="wave">
+                🌊
+              </span>
+              <span role="img" aria-label="sun">
+                🔆
+              </span>
+              <span role="img" aria-label="georgia flag">
+                🇬🇪
               </span>{' '}
               and enjoy swimming, mountains and good movies;
             </li>
