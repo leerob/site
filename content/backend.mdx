@@ -16,7 +16,7 @@ I'll focus on **transactional¹** workloads instead of analytical² workloads.
 The “backend” space is vast: search, analytics, data science, and more – so I'll niche down here. The primary criteria of this overview is:
 
 1. Services that work exceptionally well when paired with serverless and edge compute
-2. I'm focusing on JavaScript and TypeScript codebases
+2. Services that work with JavaScript and TypeScript codebases
 
 > **Disclaimer:** I work at Vercel, which partners with companies in this post. I also have personally used many of these tools for my own personal projects. My site currently uses PlanetScale and I'm also an angel investor in Supabase (mentioned below).
 
@@ -28,12 +28,12 @@ While there are new companies creating _serverless-first_ storage solutions, a n
 
 These solutions must be:
 
-- **Connectionless:** When compute scales to zero, you can't open a direct connection to the database on every new connection. This isn't a new problem, formerly seen when reaching scale and having thousands of concurrent connections to your database, but has reemerged with the popularity of serverless compute. Connectionless solutions provide an **abstraction** for the developer to avoid manually managing database connections. This is often exposed through an SDK or HTTP API.
+- **Connectionless:** Developers don't want to think about manual database connection management. Connectionless solutions provide an **abstraction** over pooling connections, enabling usage with scale to zero compute, where a naive solution would open hundreds or thousands of new connections. This abstraction is often exposed through an SDK or HTTP API.
 - **Web native:** Browser data-fetching APIs (e.g. Web `fetch`) and protocols are eating the world. New databases use HTTP APIs or WebSockets, rather than opening direct connections to the database. This makes them compatible with all forms of compute (including the lighter runtime used in edge compute).
 - **Lightweight:** Client libraries (and drivers) are becoming thin. Complexity is shifting to the database vendor, taking on the burden as part of their global infrastructure. For example, their gateway might handle connection pooling or provide caching infrastructure. This has led to a new wave of ORMs (i.e. abstractions to query data) both as standalone libraries and as integrated database SDKs.
 - **(Bonus) Type-safe:** TypeScript developers are favoring databases or libraries which provide tooling to enable type-safe access to your data. For example: [Prisma](https://www.prisma.io/), [Kysely](https://github.com/koskimas/kysely), [Drizzle](https://github.com/drizzle-team/drizzle-orm), [Contentlayer](https://www.contentlayer.dev/), and [Zapatos](https://jawj.github.io/zapatos/).
 
-For example, consider databases like Postgres. New solutions like Neon and Supabase abstract connection management, providing you with a simple way to query and mutate data. In the case of Supabase, there's a client library that uses an HTTP API [built on PostgREST](https://supabase.com/docs/guides/api):
+Consider databases like Postgres. New solutions like Neon and Supabase abstract connection management, providing you with a simple way to query and mutate data. In the case of Supabase, there's a client library that uses an HTTP API [built on PostgREST](https://supabase.com/docs/guides/api):
 
 ```jsx
 import { createClient } from '@supabase/supabase-js';
@@ -66,7 +66,7 @@ This makes Neon easy to use on the server, with the tradeoff of "raw query" conn
 
 The connection management isn't going away – it's just being handled by the vendor now.
 
-There's even solutions like PlanetScale which can handle up to [a million connections](https://planetscale.com/blog/one-million-connections), which effectively also allows you to never think about managing connections.
+There's even solutions like PlanetScale which can handle up to [a million connections](https://planetscale.com/blog/one-million-connections), which also allows you to effectively never think about managing connections.
 
 ## Trends
 
@@ -81,14 +81,14 @@ This new programming model has created emerging trends for database companies:
 
 I'll bucket these into “established” and “rising” categories, serverless/serverful, as well as generally available (GA) and pre-GA. I'll also mostly talk about managed vendors.
 
-For example, you can of course run MySQL or Postgres on the major cloud providers like AWS. There's a long tail of niche data storage solutions, so some will definitely be missing I haven't heard of or used.
+For example, you can of course run MySQL or Postgres on the major cloud providers like AWS. There's a long tail of niche data storage solutions, so some will definitely be missing that I haven't heard of or used.
 
 ### Established serverless solutions
 
 - **Firebase**
-  - **[Firestore:](https://firebase.google.com/docs/firestore)** Over 10 years old now, Firebase is a well-adopted document database. One unique advantage Firebase has it built-in support for authentication, real time workloads, and cross-platform support for mobile.
+  - **[Firestore:](https://firebase.google.com/docs/firestore)** Over 10 years old now, Firestore is a well-adopted document database. One unique advantage Firebase is its built-in support for authentication, real time workloads, and cross-platform support for mobile.
 - **MongoDB**
-  - [**Atlas Serverless:**](https://www.mongodb.com/use-cases/serverless) MongoDB has an entire data platform, including search / analytics / etc. Their recent investment into serverless is very exciting, with Atlas Serverless now [generally available](https://www.mongodb.com/blog/post/embrace-benefits-serverless-development-atlas). With their [Data API](https://www.mongodb.com/docs/atlas/api/data-api/), they're now a fantastic pair for serverless / edge.
+  - [**Atlas Serverless:**](https://www.mongodb.com/use-cases/serverless) MongoDB has an entire data platform, including search / analytics / etc. Their recent investment into serverless is very exciting, with Atlas Serverless now [generally available](https://www.mongodb.com/blog/post/embrace-benefits-serverless-development-atlas). Their [Data API](https://www.mongodb.com/docs/atlas/api/data-api/) makes them a fantastic pair for serverless / edge.
 - **MySQL**
   - **[PlanetScale](https://planetscale.com/):** MySQL through [Vitess](https://planetscale.com/blog/all-the-tech-planetscale-replaces). Can easily handle quite a [large](https://planetscale.com/blog/one-million-queries-per-second-with-mysql) [scale](https://planetscale.com/blog/one-million-connections) and also includes some nice features to [speed up](https://planetscale.com/blog/introducing-planetscale-boost) and [monitor](https://planetscale.com/blog/introducing-planetscale-insights-advanced-query-monitoring) queries. Their [serverless driver](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript) (`@planetscale/database`) has been easy to use, but I prefer [Kysely](https://github.com/depot/kysely-planetscale).
 - **PostgreSQL**
@@ -102,7 +102,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 - **Generally Available (GA)**
   - **[Fauna](https://fauna.com/):** They were an early mover in the serverless data space. I've had success with their GraphQL APIs before, but feel mostly indifferent on [FQL](https://docs.fauna.com/fauna/current/api/fql/).
 - **Pre-GA**
-  - **[Convex](https://www.convex.dev/)**: Fantastic for real time workloads, but also a very simple, type-safe interface for querying/mutations data. You write (and think) in functions. Pairs well with React's mental model.
+  - **[Convex](https://www.convex.dev/)**: Fantastic for real time workloads, but also a very simple, type-safe interface for querying/mutating data. You write (and think) in functions. Pairs well with React's mental model.
   - **[EdgeDB](https://www.edgedb.com/):** EdgeDB is challenging the status quo, and I think some folks will love it. Particularly the “merger” between ORM / database, more than just a query builder, but a way to _optimize_ queries.
   - **[Supabase](https://supabase.com/):** Open-source, built-on pure Postgres. [Database](https://supabase.com/database) + [Auth](https://supabase.com/auth) + [Storage](https://supabase.com/storage) and more. Scales up on pay-as-you-go, and [working on scale to zero](https://supabase.com/blog/supabase-series-b#where-were-going).
   - **[Grafbase](https://grafbase.com/)**: If you love GraphQL, Grafbase is worth exploring. Designed to integrate into branch-based workflows + fast reads globally. Realtime and full-text search are in the works.
@@ -113,6 +113,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 - **Generally Available (GA)**
   - **[Ably](https://ably.com/):** Realtime infrastructure with [queues support](https://ably.com/docs/general/queues) and other message durability options.
+  - **[Crunchy Postgres](https://www.crunchydata.com/):** Crunchy Postgres is ["just Postgres"](https://changelog.com/news/just-postgres-LWm4). Focused on performance and availabilty, targeted at enterprises.
   - **[Hasura:](https://hasura.io/)** Makes it easy to connect data from many different sources and expose it as a GraphQL API. Can use Neon under-the-hood as the database provider.
   - **[Liveblocks](https://liveblocks.io/):** Realtime building blocks, they have a “storageblock” in Beta, and offer persistence for presence. Beautiful design and documentation.
   - **[Replicache](https://replicache.dev/)**: More of a database *synchronization* *engine*, can be coupled with other solutions with no realtime story. We use this for [comments on Vercel previews](https://vercel.com/blog/making-live-reviews-a-reality-enhanced-preview-experience).
@@ -135,4 +136,4 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 ² Commonly referred to as OLAP (Online _Analytical_ Processing). These are for your real-time data workloads, like Clickhouse ([Tinybird](https://www.tinybird.co/)), [SingleStore](https://www.singlestore.com/), [TimeScale](https://www.timescale.com/), and [ElasticSearch](https://www.elastic.co/).
 
-_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), etc, for reviewing this post._
+_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), [Anthony Shew](https://twitter.com/anthonysheww), etc, for reviewing this post._
