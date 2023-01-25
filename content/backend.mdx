@@ -73,7 +73,7 @@ There's even solutions like PlanetScale which can handle up to [a million connec
 This new programming model has created emerging trends for database companies:
 
 - Databases are increasingly becoming **data platforms**, including other adjacent solutions like full-text search and analytics.
-- The **decoupling of storage and compute**, popularized by Snowflake (and more), is enabling new players to massively reduce the cost of a “database at rest”. This pairs well with frontend git branch-based workflows.
+- The **decoupling of storage and compute**, popularized by Snowflake (and more), is enabling new players (e.g. Neon, etc.) to massively reduce the cost of a “database at rest”. This pairs well with frontend git branch-based workflows.
 - Increasingly developers **don't want to “dial the knobs”**. Solutions like Dynamo (and in some ways S3) provided infinite scale without needing to tweak memory, storage, CPU, clusters, and instances.
 - The dream of **global data** is here, but it's not how it was predicted. Trying to replicate _all_ data to _every_ network edge is probably not the correct solution most times. Instead, we're seeing specialized data APIs and the emergence of user-specific data stores (e.g. for shopping cart data).
 
@@ -92,9 +92,8 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 - **MySQL**
   - **[PlanetScale](https://planetscale.com/):** MySQL through [Vitess](https://planetscale.com/blog/all-the-tech-planetscale-replaces). Can easily handle quite a [large](https://planetscale.com/blog/one-million-queries-per-second-with-mysql) [scale](https://planetscale.com/blog/one-million-connections) and also includes some nice features to [speed up](https://planetscale.com/blog/introducing-planetscale-boost) and [monitor](https://planetscale.com/blog/introducing-planetscale-insights-advanced-query-monitoring) queries. Their [serverless driver](https://planetscale.com/blog/introducing-the-planetscale-serverless-driver-for-javascript) (`@planetscale/database`) has been easy to use, but I prefer [Kysely](https://github.com/depot/kysely-planetscale).
 - **PostgreSQL**
-  - **[AlloyDB](https://cloud.google.com/alloydb):** Very exciting innovation coming from Google. AlloyDB is unique because it can handle both transactional¹ and analytical² workloads.
   - **[AWS Aurora](https://aws.amazon.com/rds/aurora/serverless/):** One of the first serverless Postgres offerings.
-  - **[CockroachDB](https://www.cockroachlabs.com/blog/announcing-cockroachdb-serverless/):** Autoscales and distributes data across multiple nodes. Focused on high data consistency and integrity.
+  - **[CockroachDB](https://www.cockroachlabs.com/blog/announcing-cockroachdb-serverless/):** Autoscales and distributes data across multiple nodes. Focused on high data consistency and integrity. Supports most of Postgres but not stored procedures and extensions.
 
 ### Rising serverless database solutions
 
@@ -102,7 +101,6 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
   - **[Fauna](https://fauna.com/):** They were an early mover in the serverless data space. I've had success with their GraphQL APIs before, but feel mostly indifferent on [FQL](https://docs.fauna.com/fauna/current/api/fql/).
 - **Pre-GA**
   - **[Convex](https://www.convex.dev/)**: Fantastic for real time workloads, but also a very simple, type-safe interface for querying/mutating data. You write (and think) in functions. Pairs well with React's mental model.
-  - **[EdgeDB](https://www.edgedb.com/):** EdgeDB is challenging the status quo, and I think some folks will love it. Particularly the “merger” between ORM / database, more than just a query builder, but a way to _optimize_ queries.
   - **[Grafbase](https://grafbase.com/)**: If you love GraphQL, Grafbase is worth exploring. Designed to integrate into branch-based workflows + fast reads globally. Realtime and full-text search are in the works.
   - **[Neon:](https://neon.tech/)** Postgres with separation of storage and compute. Uniquely designed for serverless and works with the native Postgres driver + supports database branching workflows.
   - **[Supabase](https://supabase.com/):** Open-source, built-on pure Postgres. [Database](https://supabase.com/database) + [Auth](https://supabase.com/auth) + [Storage](https://supabase.com/storage) and more. Scales up on pay-as-you-go, and [working on scale to zero](https://supabase.com/blog/supabase-series-b#where-were-going).
@@ -112,6 +110,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 ### Stateful backends and other solutions
 
 - **Generally Available (GA)**
+  - **[AlloyDB](https://cloud.google.com/alloydb):** Very exciting innovation coming from Google. AlloyDB is unique because it can handle both transactional¹ and analytical² workloads.
   - **[Ably](https://ably.com/):** Realtime infrastructure with [queues support](https://ably.com/docs/general/queues) and other message durability options.
   - **[Crunchy Postgres](https://www.crunchydata.com/):** Crunchy Postgres is ["just Postgres"](https://changelog.com/news/just-postgres-LWm4). Focused on performance and availabilty, cost effectiveness, and supporting all native Postgres features.
   - **[Hasura:](https://hasura.io/)** Makes it easy to connect data from many different sources and expose it as a GraphQL API. Can use Neon under-the-hood as the database provider.
@@ -120,6 +119,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
   - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
 - **Pre-GA**
   - **[ChiselStrike](https://www.chiselstrike.com/):** Write your TypeScript class, generate an API. Really leaning into the “infrastructure from code” approach, you write and think in functions, somewhat similar to Convex.
+  - **[EdgeDB](https://www.edgedb.com/):** EdgeDB is challenging the status quo, and I think some folks will love it. Particularly the “merger” between ORM / database, more than just a query builder, but a way to _optimize_ queries.
   - **[Nhost:](https://nhost.io/)** Firebase, but with GraphQL. Built on Hasura, Postgres, and S3.
   - [Rowy:](https://www.rowy.io) Low-code, speadsheet like backend (almost like an open-source Airtable) but they also have the ability to write functions to mutate data.
   - [SurrealDB:](https://surrealdb.com/) Has it's own SQL-flavored syntax, also trying to provide the spreadsheet-like UI for viewing data (still waitlist access, haven't used it).
