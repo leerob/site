@@ -14,29 +14,29 @@ export default function AboutPage() {
       </p>
       <div className="prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200">
         <p>
-          I'm currently the VP of Developer Experience at Vercel, where I lead
-          our Developer Relations and Documentation teams. I focus on educating
-          and growing the Vercel and Next.js communities. I joined Vercel back
-          in 2020 as employee #30.
+          I'm currently the <b>VP of Developer Experience at Vercel</b>, where I
+          lead our Developer Relations and Documentation teams. I focus on{' '}
+          <b>educating and growing</b> the Vercel and Next.js communities.
         </p>
         <p>
           I'm passionate about many creative pursuits, including music,
           photography, videography, and of course, coding. This combination of
-          interests is what ultimately led me to a career in Developer
-          Relations.
+          interests is what ultimately led me to my current role in building
+          developer communities.
         </p>
         <p>
-          I love building for the web. From something as simple as a single HTML
-          file – all the way to large, Next.js applications. The web is
-          incredible. Anyone can become a developer, writer, or creator – and no
-          one has to ask for permission. You can just... build.
+          I <b>love</b> building for the web. From something as simple as a
+          single HTML file – all the way to large Next.js applications. The web
+          is incredible. Anyone can become a developer, writer, or creator – and
+          no one has to ask for permission. You can just build.
         </p>
         <p className="mb-8">
-          Outside of Vercel, I angel invest in developer tools companies and
-          advise early-stage startups. I also do Developer Relations consulting
-          work, helping companies take their DevRel function from 0 to 1, or
-          provide guidance on growing communities, content creation, and
-          developer marketing.
+          Outside of Vercel, I <b>angel invest</b> in developer tools companies
+          and
+          <b>advise early-stage startups</b>. I also do Developer Relations
+          consulting work, helping companies take their DevRel function from 0
+          to 1, or provide guidance on growing communities, content creation,
+          and developer marketing.
         </p>
         <a
           rel="noopener noreferrer"
