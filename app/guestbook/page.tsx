@@ -15,7 +15,7 @@ async function getGuestbook() {
 }
 
 export default async function GuestbookPage() {
-  const [entries, _] = await Promise.all([
+  const [entries] = await Promise.all([
     getGuestbook(),
     // unstable_getServerSession(),
   ]);
