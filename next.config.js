@@ -1,20 +1,12 @@
 /**
  * @type {import('next').NextConfig}
  */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-  openAnalyzer: false
-});
 
-module.exports = withBundleAnalyzer({
-  // compiler: {
-  //   removeConsole: {
-  //     exclude: ['error']
-  //   }
-  // },
-  swcMinify: true,
-  reactStrictMode: true,
-
+module.exports = {
+  experimental: {
+    appDir: true,
+    swcMinify: true
+  },
   images: {
     domains: [
       'cdn.sanity.io' // Sanity images
@@ -29,7 +21,7 @@ module.exports = withBundleAnalyzer({
       }
     ];
   }
-});
+};
 
 const ContentSecurityPolicy = `
     default-src 'self';

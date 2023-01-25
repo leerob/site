@@ -1,0 +1,50 @@
+import { MDXRemote } from 'next-mdx-remote';
+
+import components from 'old-src/components/MDXComponents';
+import BlogLayout from 'old-src/layouts/blog';
+import { mdxToHtml } from 'old-src/lib/mdx';
+import { getPost, getPostSlugs } from 'old-src/lib/sanity-api';
+import { IParams, IPost } from 'src/typings';
+
+export default function PostPage({ post }: { post: IPost }) {
+  return (
+    <BlogLayout post={post}>
+      <MDXRemote
+        {...post.mdxContent!}
+        components={
+          {
+            ...components
+          } as any
+        }
+      />
+    </BlogLayout>
+  );
+}
+
+export async function getStaticPaths() {
+  const paths = await getPostSlugs();
+
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: false
+  };
+}
+
+export async function getStaticProps({ params }: { params: IParams }) {
+  const post = await getPost(params.slug);
+
+  if (!post) {
+    return { notFound: true };
+  }
+
+  const { html, readingTime } = await mdxToHtml(post.content);
+  return {
+    props: {
+      post: {
+        ...post,
+        mdxContent: html,
+        readingTime
+      }
+    }
+  };
+}
