@@ -99,12 +99,12 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 - **Generally Available (GA)**
   - **[Fauna](https://fauna.com/):** They were an early mover in the serverless data space. I've had success with their GraphQL APIs before, but feel mostly indifferent on [FQL](https://docs.fauna.com/fauna/current/api/fql/).
+  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
 - **Pre-GA**
   - **[Convex](https://www.convex.dev/)**: Fantastic for real time workloads, but also a very simple, type-safe interface for querying/mutating data. You write (and think) in functions. Pairs well with React's mental model.
   - **[Grafbase](https://grafbase.com/)**: If you love GraphQL, Grafbase is worth exploring. Designed to integrate into branch-based workflows + fast reads globally. Realtime and full-text search are in the works.
   - **[Neon:](https://neon.tech/)** Postgres with separation of storage and compute. Uniquely designed for serverless and works with the native Postgres driver + supports database branching workflows.
   - **[Supabase](https://supabase.com/):** Open-source, built-on pure Postgres. [Database](https://supabase.com/database) + [Auth](https://supabase.com/auth) + [Storage](https://supabase.com/storage) and more. Scales up on pay-as-you-go, and [working on scale to zero](https://supabase.com/blog/supabase-series-b#where-were-going).
-  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
   - **[Xata](https://xata.io/)**: Not only a database, but search / analytics as well. I'm a big fan of their spreadsheet-like UI, which is approachable for a wider audience.
 - _+ Long tail of new providers that can do DB hosting (Railway, Render, Fly, etc)._
 
