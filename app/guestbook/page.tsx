@@ -15,10 +15,12 @@ async function getGuestbook() {
 }
 
 export default async function GuestbookPage() {
-  const [entries, session] = await Promise.all([
+  const [entries, _] = await Promise.all([
     getGuestbook(),
-    unstable_getServerSession(),
+    // unstable_getServerSession(),
   ]);
+
+  let session = null;
 
   return (
     <section>
