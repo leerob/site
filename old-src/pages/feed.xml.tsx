@@ -1,7 +1,7 @@
 import { type ServerResponse } from 'http';
 import RSS from 'rss';
 
-import { getPosts } from 'old-src/lib/sanity-api';
+import { getPosts } from 'lib/sanity-api';
 export async function getServerSideProps({ res }: { res: ServerResponse }) {
   const feed = new RSS({
     title: 'Dzmitry Svirin',

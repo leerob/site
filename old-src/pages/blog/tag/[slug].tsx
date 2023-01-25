@@ -1,6 +1,6 @@
 import Container from 'old-src/components/Container';
 import PostPreview from 'old-src/components/PostPreview';
-import { getPostsByTag, getTagSlugs } from 'old-src/lib/sanity-api';
+import { getPostsByTag, getTagSlugs } from 'lib/sanity-api';
 import { IParams, IPost } from 'src/typings';
 
 export default function TagPage({

@@ -1,7 +1,4 @@
-import {
-  SPOTIFY_NOW_PLAYING_ENDPOINT,
-  SPOTIFY_TOKEN_ENDPOINT
-} from 'old-src/config';
+import { SPOTIFY_NOW_PLAYING_ENDPOINT, SPOTIFY_TOKEN_ENDPOINT } from 'config';
 
 const getAccessToken = async () => {
   const basic = btoa(

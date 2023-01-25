@@ -1,4 +1,4 @@
-import fetcher from 'old-src/lib/fetcher';
+import fetcher from 'lib/fetcher';
 import useSWR from 'swr';
 
 import { ICurrentlyPlaying } from 'src/typings';

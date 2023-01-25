@@ -7,7 +7,7 @@ import { ThemeProvider } from 'next-themes';
 
 import ErrorBoundary from 'old-src/components/ErrorBoundary';
 
-import { DEFAULT_SEO } from 'old-src/config';
+import { DEFAULT_SEO } from 'config';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

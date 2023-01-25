@@ -1,6 +1,6 @@
 import { type ServerResponse } from 'http';
 
-import { getPostSlugs } from 'old-src/lib/sanity-api';
+import { getPostSlugs } from 'lib/sanity-api';
 
 /**
  * todo: add dedicated tag pages for each tag

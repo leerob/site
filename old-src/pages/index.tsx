@@ -8,7 +8,7 @@ import Container from 'old-src/components/Container';
 import LoadingSpinner from 'old-src/components/LoadingSpinner';
 import StackIcon, { STACKS } from 'old-src/components/StackIcon';
 import TypewriterEffect from 'old-src/components/TypewriterEffect';
-import { getWakaStats } from 'old-src/lib/waka-api';
+import { getWakaStats } from 'lib/waka-api';
 import { IWakaApiResponse } from 'src/typings';
 
 export default function IndexPage({

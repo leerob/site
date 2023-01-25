@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
-import { TYPED_STRINGS } from 'old-src/config';
+import { TYPED_STRINGS } from 'config';
 
 const TypewriterEffect = () => {
   const el = useRef<HTMLSpanElement>(null!);

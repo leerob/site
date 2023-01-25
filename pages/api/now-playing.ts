@@ -1,4 +1,4 @@
-import { getNowPlaying } from 'old-src/lib/spotify-api';
+import { getNowPlaying } from 'lib/spotify-api';
 import { ICurrentlyPlaying } from 'src/typings';
 
 export const config = {

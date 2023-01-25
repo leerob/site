@@ -3,8 +3,8 @@ import { IconContext } from 'react-icons';
 import SnippetLayout from 'old-src/layouts/snippets';
 
 import components from 'old-src/components/MDXComponents';
-import { mdxToHtml } from 'old-src/lib/mdx';
-import { getSnippet, getSnippetSlugs } from 'old-src/lib/sanity-api';
+import { mdxToHtml } from 'lib/mdx';
+import { getSnippet, getSnippetSlugs } from 'lib/sanity-api';
 import { IParams, ISnippet } from 'src/typings';
 
 export default function SnippetsPage({ snippet }: { snippet: ISnippet }) {

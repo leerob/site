@@ -2,8 +2,8 @@ import { MDXRemote } from 'next-mdx-remote';
 
 import components from 'old-src/components/MDXComponents';
 import BlogLayout from 'old-src/layouts/blog';
-import { mdxToHtml } from 'old-src/lib/mdx';
-import { getPost, getPostSlugs } from 'old-src/lib/sanity-api';
+import { mdxToHtml } from 'lib/mdx';
+import { getPost, getPostSlugs } from 'lib/sanity-api';
 import { IParams, IPost } from 'src/typings';
 
 export default function PostPage({ post }: { post: IPost }) {

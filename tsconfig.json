@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
@@ -22,12 +18,10 @@
     "baseUrl": ".",
     "outDir": "out",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/public/*": [
-        "./public/*"
-      ]
+      "@/config/*": ["config/*"],
+      "@/lib/*": ["lib/*"],
+      "@/styles/*": ["styles/*"],
+      "@/typings/*": ["typings/*"]
     },
     "plugins": [
       {
@@ -40,15 +34,6 @@
       "module": "CommonJS"
     }
   },
-  "exclude": [
-    "./out/**/*",
-    "./node_modules/**/*",
-    "**/*.test.ts"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+  "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.test.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

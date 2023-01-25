@@ -1,7 +1,7 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { getUpdatedPostSlug } from 'old-src/lib/sanity-api';
+import { getUpdatedPostSlug } from 'lib/sanity-api';
 const secret = process.env.SANITY_STUDIO_REVALIDATE_SECRET;
 
 export default async function handler(

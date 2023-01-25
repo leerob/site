@@ -4,7 +4,7 @@ import { PropsWithChildren, Suspense } from 'react';
 import Container from 'old-src/components/Container';
 import BlurredImage from 'old-src/components/Image';
 import { Tags } from 'old-src/components/Tags';
-import { urlForImage } from 'old-src/lib/sanity-client';
+import { urlForImage } from 'lib/sanity-client';
 import { IPost } from 'src/typings';
 
 export default function BlogLayout({

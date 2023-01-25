@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import Container from 'old-src/components/Container';
 import PostPreview from 'old-src/components/PostPreview';
-import { getPosts } from 'old-src/lib/sanity-api';
+import { getPosts } from 'lib/sanity-api';
 
 export default function Blog({
   posts

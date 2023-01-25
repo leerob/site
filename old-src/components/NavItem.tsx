@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { getActiveStatus } from 'old-src/lib/utils';
+import { getActiveStatus } from 'lib/utils';
 
 interface INavItem {
   href: string;

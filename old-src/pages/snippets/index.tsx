@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons';
 
 import Container from 'old-src/components/Container';
 import SnippetPreview from 'old-src/components/SnippetPreview';
-import { getSnippets } from 'old-src/lib/sanity-api';
+import { getSnippets } from 'lib/sanity-api';
 
 export default function Snippets({
   snippets
