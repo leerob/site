@@ -28,7 +28,7 @@ While there are new companies creating _serverless-first_ storage solutions, a n
 
 These solutions must be:
 
-- **Connectionless:** Developers don't want to think about manual database connection management. Exposed through an SDK or HTTP API, connectionless solutions provide an **abstraction over pooling connections**, enabling easier usage with scale to zero compute.
+- **Connectionless:** Developers don't want to think about manual connection management. Traditional database protocols are stateful, where HTTP is mostly stateless, making it easier to use with scale to zero compute. Exposed through an SDK or HTTP API, “connectionless” solutions provide an **abstraction over connection pooling**.
 - **Web native:** Browser data-fetching APIs (e.g. Web `fetch`) and protocols are eating the world. New databases use HTTP APIs or WebSockets, rather than opening direct connections to the database. This makes them compatible with all forms of compute (including the lighter runtime used in edge compute).
 - **Lightweight:** Client libraries (and drivers) are becoming thin. Complexity is shifting to the database vendor, taking on the burden as part of their global infrastructure. For example, their gateway might handle connection pooling or provide caching infrastructure. This has led to a new wave of ORMs (i.e. abstractions to query data) both as standalone libraries and as integrated database SDKs.
 - **(Bonus) Type-safe:** TypeScript developers are favoring databases or libraries which provide tooling to enable type-safe access to your data. For example: [Prisma](https://www.prisma.io/), [Kysely](https://github.com/koskimas/kysely), [Drizzle](https://github.com/drizzle-team/drizzle-orm), [Contentlayer](https://www.contentlayer.dev/), and [Zapatos](https://jawj.github.io/zapatos/).
@@ -104,6 +104,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
   - **[Grafbase](https://grafbase.com/)**: If you love GraphQL, Grafbase is worth exploring. Designed to integrate into branch-based workflows + fast reads globally. Realtime and full-text search are in the works.
   - **[Neon:](https://neon.tech/)** Postgres with separation of storage and compute. Uniquely designed for serverless and works with the native Postgres driver + supports database branching workflows.
   - **[Supabase](https://supabase.com/):** Open-source, built-on pure Postgres. [Database](https://supabase.com/database) + [Auth](https://supabase.com/auth) + [Storage](https://supabase.com/storage) and more. Scales up on pay-as-you-go, and [working on scale to zero](https://supabase.com/blog/supabase-series-b#where-were-going).
+  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
   - **[Xata](https://xata.io/)**: Not only a database, but search / analytics as well. I'm a big fan of their spreadsheet-like UI, which is approachable for a wider audience.
 - _+ Long tail of new providers that can do DB hosting (Railway, Render, Fly, etc)._
 
@@ -111,12 +112,11 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 - **Generally Available (GA)**
   - **[AlloyDB](https://cloud.google.com/alloydb):** Very exciting innovation coming from Google. AlloyDB is unique because it can handle both transactional¹ and analytical² workloads.
-  - **[Ably](https://ably.com/):** Realtime infrastructure with [queues support](https://ably.com/docs/general/queues) and other message durability options.
+  - **[Ably](https://ably.com/):** Realtime infrastructure with [queues support](https://ably.com/docs/general/queues) and other message durability options.
   - **[Crunchy Postgres](https://www.crunchydata.com/):** Crunchy Postgres is ["just Postgres"](https://changelog.com/news/just-postgres-LWm4). Focused on performance and availabilty, cost effectiveness, and supporting all native Postgres features.
   - **[Hasura:](https://hasura.io/)** Makes it easy to connect data from many different sources and expose it as a GraphQL API. Can use Neon under-the-hood as the database provider.
   - **[Liveblocks](https://liveblocks.io/):** Realtime building blocks, they have a “storageblock” in Beta, and offer persistence for presence. Beautiful design and documentation.
-  - **[Replicache](https://replicache.dev/)**: More of a database *synchronization* *engine*, can be coupled with other solutions with no realtime story. We use this for [comments on Vercel previews](https://vercel.com/blog/making-live-reviews-a-reality-enhanced-preview-experience).
-  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
+  - **[Replicache](https://replicache.dev/)**: More of a database _synchronization_ _engine_, can be coupled with other solutions with no realtime story. We use this for [comments on Vercel previews](https://vercel.com/blog/making-live-reviews-a-reality-enhanced-preview-experience).
 - **Pre-GA**
   - **[ChiselStrike](https://www.chiselstrike.com/):** Write your TypeScript class, generate an API. Really leaning into the “infrastructure from code” approach, you write and think in functions, somewhat similar to Convex.
   - **[EdgeDB](https://www.edgedb.com/):** EdgeDB is challenging the status quo, and I think some folks will love it. Particularly the “merger” between ORM / database, more than just a query builder, but a way to _optimize_ queries.
@@ -136,4 +136,4 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 ² Commonly referred to as OLAP (Online _Analytical_ Processing). These are for your real-time data workloads, like Clickhouse ([Tinybird](https://www.tinybird.co/)), [SingleStore](https://www.singlestore.com/), [TimeScale](https://www.timescale.com/), and [ElasticSearch](https://www.elastic.co/).
 
-_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), [Anthony Shew](https://twitter.com/anthonysheww), [Craig Kerstiens](https://twitter.com/craigkerstiens), [Nikita Shamgunov](https://twitter.com/nikitabase), [Yoko Li](https://twitter.com/stuffyokodraws), and [Steven Tey](https://twitter.com/steventey) for reviewing this post._
+_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), [Anthony Shew](https://twitter.com/anthonysheww), [Craig Kerstiens](https://twitter.com/craigkerstiens), [Nikita Shamgunov](https://twitter.com/nikitabase), [Yoko Li](https://twitter.com/stuffyokodraws), [Stas Kelvich](https://twitter.com/kelvich), and [Steven Tey](https://twitter.com/steventey) for reviewing this post._
