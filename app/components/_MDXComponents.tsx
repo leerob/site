@@ -1,4 +1,4 @@
-import Image from 'old-src/components/Image';
+import Image from './Image';
 
 const Underlined = ({ title, href }: { title: string; href: string }) => {
   return (

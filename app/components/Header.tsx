@@ -1,6 +1,8 @@
-import MobileMenu from 'old-src/components/MobileMenu';
-import NavItem from 'old-src/components/NavItem';
-import ToggleMode from 'old-src/components/ToggleMode';
+'use client';
+import MobileMenu from './MobileMenu';
+import NavItem from './NavItem';
+import ToggleMode from './ToggleMode';
+
 import { NAV_LINKS } from 'config';
 
 export default function Header() {

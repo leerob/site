@@ -1,7 +1,8 @@
+'use client';
 import { IconContext } from 'react-icons';
 
-import NowPlaying from 'old-src/components/NowPlaying';
-import { SOCIALS } from 'old-src/components/StackIcon';
+import NowPlaying from './NowPlaying';
+import { SOCIALS } from './_StackIcon';
 
 export default function Footer() {
   return (

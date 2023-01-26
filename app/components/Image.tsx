@@ -1,8 +1,9 @@
-import Image, { ImageProps } from 'next/legacy/image';
+'use client';
+import Image, { ImageProps } from 'next/image';
 import styles from 'styles/image.module.css';
 import { useState } from 'react';
 import clsx from 'clsx';
-
+// TODO: Refactor blur and loading
 export default function BlurredImage(props: ImageProps) {
   const [isLoading, setLoading] = useState(true);
   return (

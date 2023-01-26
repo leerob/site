@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Tags } from 'old-src/components/Tags';
-import { IPost } from 'src/typings';
+import { Tags } from './_Tags';
+import { IPost } from 'typings';
 
 export default function PostPreview({
   slug,

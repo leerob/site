@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ITag } from 'src/typings';
+import { ITag } from 'typings';
 
 interface ITags {
   tags?: ITag[];

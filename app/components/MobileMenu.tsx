@@ -1,3 +1,4 @@
+'use client';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -6,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { NAV_LINKS } from 'config';
 import useDelayedRender from 'lib/use-delayed-render';
 import { getActiveStatus } from 'lib/utils';
-import styles from '@/styles/mobile-menu.module.css';
+import styles from 'styles/mobile-menu.module.css';
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -2,7 +2,7 @@
 
 const { spacing, defaultTheme } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
-
+// TODO: add fallback fonts
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}', // Note the addition of the `app` directory.

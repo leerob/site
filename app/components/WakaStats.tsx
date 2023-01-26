@@ -1,6 +1,7 @@
+'use client';
 import clsx from 'clsx';
 
-import { IWakaApiResponse } from 'src/typings';
+import { IWakaApiResponse } from 'typings';
 
 const HEIGHT = 20;
 const WIDTH = 800;

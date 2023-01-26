@@ -1,5 +1,7 @@
 import 'styles/globals.css';
-import { font_sans, font_mono } from './fonts';
+import { font_sans } from 'fonts';
+
+// TODO: Move mono font to snippets layout
 
 export default function RootLayout({
   children
@@ -7,11 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${font_sans.variable} ${font_mono.variable}`}>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" className={font_sans.variable}>
       <head />
       <body>{children}</body>
     </html>
