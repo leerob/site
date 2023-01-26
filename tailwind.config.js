@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ['var(--font-kaisei)'],
-        sans: ['var(--font-vercel)'],
       },
       typography: {
         quoteless: {

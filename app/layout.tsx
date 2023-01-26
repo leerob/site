@@ -11,13 +11,6 @@ const kaisei = localFont({
   display: 'swap',
 });
 
-const vercelSans = localFont({
-  src: '../public/fonts/VercelSans.ttf',
-  weight: '400',
-  variable: '--font-vercel',
-  display: 'swap',
-});
-
 export default function RootLayout({
   children,
 }: {
@@ -28,8 +21,7 @@ export default function RootLayout({
       lang="en"
       className={clsx(
         'text-black bg-white dark:text-white dark:bg-[#111010]',
-        kaisei.variable,
-        vercelSans.variable
+        kaisei.variable
       )}
     >
       <body className="antialiased max-w-4xl mb-40 flex flex-col md:flex-row mx-4 mt-8 md:mt-20 lg:mt-32 lg:mx-auto">

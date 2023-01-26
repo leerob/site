@@ -57,7 +57,7 @@ export default async function HomePage() {
             href="https://twitter.com/leeerob"
           >
             <ArrowIcon />
-            follow me on twitter
+            <p className="h-7">follow me on twitter</p>
           </a>
         </li>
         <li>
@@ -68,7 +68,7 @@ export default async function HomePage() {
             href="https://leerob.substack.com"
           >
             <ArrowIcon />
-            get email updates
+            <p className="h-7">get email updates</p>
           </a>
         </li>
       </ul>

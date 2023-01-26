@@ -3,8 +3,6 @@ import BlogViews from './views';
 import { allBlogs } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
-export const dynamic = 'force-static';
-
 export default async function BlogPage() {
   return (
     <section>
@@ -24,10 +22,12 @@ export default async function BlogPage() {
           >
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
-              <Suspense fallback="–">
-                {/* @ts-expect-error Server Component */}
-                <BlogViews slug={post.slug} />
-              </Suspense>
+              <p className="font-mono text-neutral-500 text-sm">
+                <Suspense fallback="–">
+                  {/* @ts-expect-error Server Component */}
+                  <BlogViews slug={post.slug} />
+                </Suspense>
+              </p>
             </div>
           </Link>
         ))}
