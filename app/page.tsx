@@ -3,9 +3,9 @@ import Image from 'next/image';
 import TypewriterEffect from 'ui/TypewriterEffect';
 import MyStack from 'ui/MyStack';
 
-import { getWakaStats } from 'lib/waka-api';
+import getWakaStats from 'lib/waka-api';
 import WakaStats from 'ui/WakaStats';
-
+// TODO: Consider move WakaStats fetch into it's own component
 export default async function IndexPage() {
   const { languages, totalHours } = await getWakaStats();
   return (
@@ -36,12 +36,12 @@ export default async function IndexPage() {
             <Image
               alt="Dzmitry Svirin"
               src="/me.webp"
-              width={262}
-              height={363}
+              // width={262}
+              // height={363}
               className="rounded-md"
-              placeholder="blur"
-              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-              priority
+              // placeholder="blur"
+              // blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              // priority
             />
           </div>
         </div>

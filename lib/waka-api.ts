@@ -1,5 +1,5 @@
 import { WAKATIME_API_ENDPOINT } from 'config';
-interface IWakaApiResponse {
+interface IWakaLanguageStats {
   dexportecimal: string;
   digital: string;
   hours: number;
@@ -9,7 +9,13 @@ interface IWakaApiResponse {
   text: string;
   total_seconds: bigint;
 }
-export const getWakaStats = async () => {
+
+interface IWakaAPIResponse {
+  languages: IWakaLanguageStats[];
+  totalHours: number;
+}
+
+export default async function getWakaStats(): Promise<IWakaAPIResponse> {
   const response = await fetch(WAKATIME_API_ENDPOINT, {
     next: { revalidate: 86400 }
   });
@@ -19,4 +25,4 @@ export const getWakaStats = async () => {
     totalHours += element.minutes;
   }
   return { languages: data.languages, totalHours: totalHours };
-};
+}

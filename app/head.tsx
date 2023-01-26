@@ -1,5 +1,7 @@
+import { NextSeo } from 'next-seo';
+import { DEFAULT_SEO } from 'config';
+
 export default function Head() {
-  //TODO: Implement default SEO
   return (
     <>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -28,6 +30,7 @@ export default function Head() {
         content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
         name="robots"
       />
+      <NextSeo {...DEFAULT_SEO} useAppDir={true} />
     </>
   );
 }

@@ -1,11 +1,8 @@
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 
-import Footer from 'ui/Footer';
-import Header from 'ui/Header';
-import { IContainerPropsWithChildren } from 'src/typings';
 // TODO: Refactor next-seo
-export default function Container(props: IContainerPropsWithChildren) {
+export default function Container(props) {
   const router = useRouter();
   const articleMeta =
     props.type === 'article'
@@ -38,16 +35,6 @@ export default function Container(props: IContainerPropsWithChildren) {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
       <NextSeo {...pageMeta} />
-      <Header />
-      <main
-        id="skip"
-        className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
-      >
-        {props.children}
-        <Footer />
-      </main>
-    </div>
   );
 }
