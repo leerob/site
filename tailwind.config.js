@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
+const { spacing, defaultTheme } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -31,8 +31,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      sans: ['IBM Plex Sans', ...fontFamily.sans],
-      mono: ['IBM Plex Mono', ...fontFamily.mono]
+      sans: ['var(--font-sans)', 'sans-serif'],
+      mono: ['var(--font-mono)', 'sans-serif']
     },
     extend: {
       typography: (theme) => ({

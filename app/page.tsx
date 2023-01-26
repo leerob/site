@@ -1,13 +1,10 @@
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
     <main>
       <div>
-        <p>
+        <p className="w-full">
           Get started by editing&nbsp;
           <code>app/page.tsx</code>
         </p>

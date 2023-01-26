@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/legacy/image';
-import styles from '@/styles/image.module.css';
+import styles from 'styles/image.module.css';
 import { useState } from 'react';
 import clsx from 'clsx';
 

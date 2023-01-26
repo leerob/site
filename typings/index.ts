@@ -31,13 +31,6 @@ export interface ISnippet {
   mdxContent: MDXRemoteSerializeResult;
 }
 
-export interface ICurrentlyPlaying {
-  songUrl?: string;
-  artist?: string;
-  title?: string;
-  isPlaying: boolean;
-}
-
 interface ISeoProps {
   title: string;
   description?: string;
