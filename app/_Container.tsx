@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 
-import Footer from 'old-src/components/Footer';
-import Header from 'old-src/components/Header';
+import Footer from 'ui/Footer';
+import Header from 'ui/Header';
 import { IContainerPropsWithChildren } from 'src/typings';
-
+// TODO: Refactor next-seo
 export default function Container(props: IContainerPropsWithChildren) {
   const router = useRouter();
   const articleMeta =

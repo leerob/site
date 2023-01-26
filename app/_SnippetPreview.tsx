@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import StackIcon from './_StackIcon';
+import StackIcon from './stateless/StackIcon';
 import { ISnippet } from 'typings';
 
 export default function SnippetPreview({

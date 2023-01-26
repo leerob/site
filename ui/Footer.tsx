@@ -2,7 +2,7 @@
 import { IconContext } from 'react-icons';
 
 import NowPlaying from './NowPlaying';
-import { SOCIALS } from './_StackIcon';
+import { SOCIALS } from '../app/components/stateless/StackIcon';
 
 export default function Footer() {
   return (

@@ -1,5 +1,7 @@
 import 'styles/globals.css';
 import { font_sans } from 'fonts';
+import Footer from 'ui/Footer';
+import Header from 'ui/Header';
 
 // TODO: Move mono font to snippets layout
 
@@ -11,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={font_sans.variable}>
       <head />
-      <body>{children}</body>
+      <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        {children}
+      </body>
     </html>
   );
 }

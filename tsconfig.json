@@ -18,7 +18,7 @@
     "baseUrl": ".",
     "outDir": "out",
     "paths": {
-      "@/app/components/*": ["components/*"],
+      "@/ui/*": ["ui/*"],
       "@/config/*": ["config/*"],
       "@/fonts/*": ["fonts/*"],
       "@/lib/*": ["lib/*"],
@@ -42,5 +42,11 @@
     "**/*.test.ts",
     "./old-src/**/*"
   ],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/error.tsx"
+  ]
 }
