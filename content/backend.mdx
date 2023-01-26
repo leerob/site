@@ -55,14 +55,18 @@ Neon's solution is [particularly interesting](https://neon.tech/blog/serverless-
 
 > The basic premise is simple: our driver redirects the PostgreSQL wire protocol via a special proxy. Our driver connects from the edge function to the proxy over a WebSocket, telling the proxy which database host and port it wants to reach. The proxy opens a TCP connection to that host and port and relays traffic in both directions.
 
-This makes Neon easy to use on the server, with the tradeoff of "raw query" connections not being able to be used in untrusted environments (the browser).
-
 <Image
   alt={`Neon architecture diagram for connection pooling`}
   src={`/images/backend/neon.png`}
   width={1600}
   height={840}
 />
+
+<Callout emoji="💡">
+
+Using WebSockets, instead of HTTP, does have tradeoffs. There might be additional latency on the first request setup, but subsequent requests are faster. There's an [RFC](https://www.rfc-editor.org/rfc/rfc9220.pdf) for WebSockets with `HTTP/3` which would remove that extra network roundtrip.
+
+</Callout>
 
 The connection management isn't going away – it's just being handled by the vendor now.
 
@@ -73,9 +77,10 @@ There's even solutions like PlanetScale which can handle up to [a million connec
 This new programming model has created emerging trends for database companies:
 
 - Databases are increasingly becoming **data platforms**, including other adjacent solutions like full-text search and analytics.
-- The **decoupling of storage and compute**, popularized by Snowflake (and more), is enabling new players (e.g. Neon, etc.) to massively reduce the cost of a “database at rest”. This pairs well with frontend git branch-based workflows.
-- Increasingly developers **don't want to “dial the knobs”**. Solutions like Dynamo (and in some ways S3) provided infinite scale without needing to tweak memory, storage, CPU, clusters, and instances.
+- The **decoupling of storage and compute**, popularized by Snowflake (and more), is enabling new players (e.g. Neon, etc.) to massively reduce the cost of a “database at rest”. This pairs well with frontend git branch-based workflows, where you want to scale to zero when not being used.
+- Increasingly developers **don't want to “dial the knobs”**. Solutions like DynamoDB (and in some ways S3) provided infinite scale without needing to tweak memory, storage, CPU, clusters, and instances.
 - The dream of **global data** is here, but it's not how it was predicted. Trying to replicate _all_ data to _every_ network edge is probably not the correct solution most times. Instead, we're seeing specialized data APIs and the emergence of user-specific data stores (e.g. for shopping cart data).
+- More databases are **embracing serverless**, but what “serverless” means to them varies. There are different vectors of autoscaling: connections, storage, compute, and more.
 
 ## Databases
 
@@ -94,12 +99,13 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 - **PostgreSQL**
   - **[AWS Aurora](https://aws.amazon.com/rds/aurora/serverless/):** One of the first serverless Postgres offerings.
   - **[CockroachDB](https://www.cockroachlabs.com/blog/announcing-cockroachdb-serverless/):** Autoscales and distributes data across multiple nodes. Focused on high data consistency and integrity. Supports most of Postgres but not stored procedures and extensions.
+- **Redis**
+  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
 
 ### Rising serverless database solutions
 
 - **Generally Available (GA)**
   - **[Fauna](https://fauna.com/):** They were an early mover in the serverless data space. I've had success with their GraphQL APIs before, but feel mostly indifferent on [FQL](https://docs.fauna.com/fauna/current/api/fql/).
-  - **[Upstash](https://upstash.com/):** Offers durable/consistent Redis, global replication options, and Kafka. Fantastic `@upstash/redis` HTTP/REST client library.
 - **Pre-GA**
   - **[Convex](https://www.convex.dev/)**: Fantastic for real time workloads, but also a very simple, type-safe interface for querying/mutating data. You write (and think) in functions. Pairs well with React's mental model.
   - **[Grafbase](https://grafbase.com/)**: If you love GraphQL, Grafbase is worth exploring. Designed to integrate into branch-based workflows + fast reads globally. Realtime and full-text search are in the works.

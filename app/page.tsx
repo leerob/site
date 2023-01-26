@@ -37,7 +37,7 @@ export default async function HomePage() {
           </p>
           <p className="flex items-center gap-2">
             <GitHubIcon />
-            {`${commitCount} commits to this repo in the last year`}
+            {`${commitCount.toLocaleString()} stars on this repo`}
           </p>
           <p className="flex items-center">
             <ViewsIcon />

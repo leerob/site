@@ -13,7 +13,7 @@ export const getBlogViews = cache(async () => {
 });
 
 export async function getTweetCount() {
-  return 5342;
+  // return 5342;
   const response = await fetch(
     `https://api.twitter.com/2/users/by/username/leeerob?user.fields=public_metrics`,
     {
@@ -28,20 +28,14 @@ export async function getTweetCount() {
 }
 
 export const getCommitCount = cache(async () => {
-  // trash, need to move to something else
-  return '?';
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
 
-  const req = await octokit.request(
-    'GET /repos/{owner}/{repo}/stats/commit_activity',
-    {
-      owner: 'leerob',
-      repo: 'leerob.io',
-    }
-  );
+  const req = await octokit.request('GET /repos/{owner}/{repo}', {
+    owner: 'leerob',
+    repo: 'leerob.io',
+  });
 
-  // @ts-ignore req.data is an array, types are wrong?
-  return req.data.reduce((acc, curr) => acc + curr.total, 0) || 0;
+  return req.data.stargazers_count;
 });
