@@ -117,6 +117,7 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
   - **[Hasura:](https://hasura.io/)** Makes it easy to connect data from many different sources and expose it as a GraphQL API. Can use Neon under-the-hood as the database provider.
   - **[Liveblocks](https://liveblocks.io/):** Realtime building blocks, they have a “storageblock” in Beta, and offer persistence for presence. Beautiful design and documentation.
   - **[Replicache](https://replicache.dev/)**: More of a database _synchronization_ _engine_, can be coupled with other solutions with no realtime story. We use this for [comments on Vercel previews](https://vercel.com/blog/making-live-reviews-a-reality-enhanced-preview-experience).
+  - **[TimeScale](https://www.timescale.com/):** For both transactional and analytical workloads. Adds many features found in NoSQL databases to Postgres, and also integrates with S3 for storage.
 - **Pre-GA**
   - **[ChiselStrike](https://www.chiselstrike.com/):** Write your TypeScript class, generate an API. Really leaning into the “infrastructure from code” approach, you write and think in functions, somewhat similar to Convex.
   - **[EdgeDB](https://www.edgedb.com/):** EdgeDB is challenging the status quo, and I think some folks will love it. Particularly the “merger” between ORM / database, more than just a query builder, but a way to _optimize_ queries.
@@ -136,5 +137,5 @@ For example, you can of course run MySQL or Postgres on the major cloud provider
 
 ² Commonly referred to as OLAP (Online _Analytical_ Processing). These are for your real-time data workloads, like Clickhouse ([Tinybird](https://www.tinybird.co/)), [SingleStore](https://www.singlestore.com/), [TimeScale](https://www.timescale.com/), and [ElasticSearch](https://www.elastic.co/).
 
-_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), [Anthony Shew](https://twitter.com/anthonysheww), [Craig Kerstiens](https://twitter.com/craigkerstiens), [Jamie Turner](https://twitter.com/jamwt), [Nikita Shamgunov](https://twitter.com/nikitabase), [Yoko Li](https://twitter.com/stuffyokodraws), [Stas Kelvich](https://twitter.com/kelvich), [Enes Akar](https://twitter.com/enesakar)
+_Thanks to [Guillermo Rauch](https://twitter.com/rauchg), [Paul Copplestone](https://twitter.com/kiwicopple), [Fredrik Björk](https://twitter.com/fbjork), [Anthony Shew](https://twitter.com/anthonysheww), [Craig Kerstiens](https://twitter.com/craigkerstiens), [Jamie Turner](https://twitter.com/jamwt), [Nikita Shamgunov](https://twitter.com/nikitabase), [Yoko Li](https://twitter.com/stuffyokodraws), [Pratyush Choudhury](https://twitter.com/177pc), [Stas Kelvich](https://twitter.com/kelvich), [Enes Akar](https://twitter.com/enesakar)
 , and [Steven Tey](https://twitter.com/steventey) for reviewing this post._
