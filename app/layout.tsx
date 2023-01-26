@@ -14,7 +14,14 @@ export default function RootLayout({
     <html lang="en" className={font_sans.variable}>
       <head />
       <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        {children}
+        <Header />
+        <main
+          id="skip"
+          className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
+        >
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );

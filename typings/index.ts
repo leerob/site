@@ -40,21 +40,6 @@ interface ISeoProps {
   tags?: string[];
 }
 
-export interface IContainerPropsWithChildren extends ISeoProps {
-  children: React.ReactNode;
-}
-
 export interface IParams extends ParsedUrlQuery {
   slug: string;
-}
-
-export interface IWakaApiResponse {
-  dexportecimal: string;
-  digital: string;
-  hours: number;
-  minutes: number;
-  name: string;
-  percent: number;
-  text: string;
-  total_seconds: bigint;
 }

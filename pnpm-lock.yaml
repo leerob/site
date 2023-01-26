@@ -43,7 +43,7 @@ specifiers:
   sanity-plugin-markdown: 4.0.0
   sharp: ^0.31.3
   styled-components: ^5.3.6
-  swr: 2.0.1
+  swr: 2.0.2
   tailwindcss: 3.2.4
   typed.js: ^2.0.12
   typescript: 4.9.4
@@ -66,7 +66,7 @@ dependencies:
   sanity-plugin-markdown: 4.0.0_qf53hvdt3atutj3ubsbkctkn64
   sharp: 0.31.3
   styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
-  swr: 2.0.1_react@18.2.0
+  swr: 2.0.2_react@18.2.0
   tailwindcss: 3.2.4_aesdjsunmf4wiehhujt67my7tu
   typed.js: 2.0.12
 
@@ -7313,8 +7313,8 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup/3.10.1:
-    resolution: {integrity: sha512-3Er+yel3bZbZX1g2kjVM+FW+RUWDxbG87fcqFM5/9HbPCTpbVp6JOLn7jlxnNlbu7s/N/uDA4EV/91E2gWnxzw==}
+  /rollup/3.11.0:
+    resolution: {integrity: sha512-+uWPPkpWQ2H3Qi7sNBcRfhhHJyUNgBYhG4wKe5wuGRj2m55kpo+0p5jubKNBjQODyPe6tSBE3tNpdDwEisQvAQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -7977,8 +7977,8 @@ packages:
       stable: 0.1.8
     dev: true
 
-  /swr/2.0.1_react@18.2.0:
-    resolution: {integrity: sha512-6z4FpS9dKAay7axedlStsPahEw25nuMlVh4GHkuPpGptbmEEP8v/+kr0GkAE/7ErUs25U2VFOnZQz3AWfkmXdw==}
+  /swr/2.0.2_react@18.2.0:
+    resolution: {integrity: sha512-iHbQW17hsduonMEliZnr6/yaxb+yvLe2r0+AH+ZfeqKzwc2bb+QRYpZm5/b/H0Lxgy7VWow4o71JeSazSun+9A==}
     engines: {pnpm: '7'}
     peerDependencies:
       react: ^16.11.0 || ^17.0.0 || ^18.0.0
@@ -8570,7 +8570,7 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.10.1
+      rollup: 3.11.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
