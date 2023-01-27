@@ -1,4 +1,4 @@
-import { IPost, ISnippet } from 'src/typings';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import {
   allSnippetsQuery,
@@ -12,7 +12,37 @@ import {
   tagRelatedPosts,
   tagSlugsQuery
 } from './sanity-queries';
+
 import sanityClient from './sanity-server';
+
+export interface ITag {
+  _id: string;
+  title: string;
+  slug: string;
+}
+
+export interface IPost {
+  _id: string;
+  slug: string;
+  content: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: ITag[];
+  coverImage: string;
+  readingTime?: string;
+  mdxContent?: MDXRemoteSerializeResult;
+}
+
+export interface ISnippet {
+  _id: string;
+  slug: string;
+  content: string;
+  title: string;
+  description: string;
+  iconTitle: string;
+  mdxContent: MDXRemoteSerializeResult;
+}
 
 export const getPosts = async (): Promise<IPost[]> => {
   const posts = await sanityClient.fetch(indexQuery);

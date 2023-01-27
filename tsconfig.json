@@ -22,8 +22,7 @@
       "@/config/*": ["config/*"],
       "@/fonts/*": ["fonts/*"],
       "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"],
-      "@/typings/*": ["typings/*"]
+      "@/styles/*": ["styles/*"]
     },
     "plugins": [
       {
@@ -36,15 +35,6 @@
       "module": "CommonJS"
     }
   },
-  "exclude": [
-    "./out/**/*",
-    "./node_modules/**/*",
-    "**/*.test.ts",
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-  ]
+  "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.test.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }
