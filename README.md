@@ -8,7 +8,7 @@ My personal site. 'Another personal developer's website'.
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 
 ## Features
-
+- Next.js 13 (app dir)
 - Strict Typescript
 - 99 to 100 in Lighthouse scores
 - Secured CSP
