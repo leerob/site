@@ -24,7 +24,6 @@ specifiers:
   next: 13.1.5
   next-mdx-remote: ^4.3.0
   next-seo: ^5.15.0
-  next-themes: ^0.2.1
   postcss: ^8.4.21
   prettier: 2.8.3
   react: 18.2.0
@@ -59,7 +58,6 @@ dependencies:
   next: 13.1.5_pjwopsidmaokadturxaafygjp4
   next-mdx-remote: 4.3.0_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.15.0_s6zlkfvllybxhmcq5pkr2zsuza
-  next-themes: 0.2.1_s6zlkfvllybxhmcq5pkr2zsuza
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
@@ -5881,18 +5879,6 @@ packages:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
-    dependencies:
-      next: 13.1.5_pjwopsidmaokadturxaafygjp4
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /next-themes/0.2.1_s6zlkfvllybxhmcq5pkr2zsuza:
-    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
-    peerDependencies:
-      next: '*'
-      react: '*'
-      react-dom: '*'
     dependencies:
       next: 13.1.5_pjwopsidmaokadturxaafygjp4
       react: 18.2.0

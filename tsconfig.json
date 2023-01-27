@@ -40,13 +40,11 @@
     "./out/**/*",
     "./node_modules/**/*",
     "**/*.test.ts",
-    "./old-src/**/*"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/error.tsx"
   ]
 }

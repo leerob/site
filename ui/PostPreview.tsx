@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Tags } from './_Tags';
+import { Tags } from 'ui/Tags';
 import { IPost } from 'typings';
 
 export default function PostPreview({
