@@ -1,14 +1,8 @@
 import Link from 'next/link';
 
 import { Tags } from 'ui/Tags';
-import { IPost } from 'typings';
 
-export default function PostPreview({
-  slug,
-  title,
-  excerpt,
-  tags
-}: Partial<IPost>) {
+export default function PostPreview({ slug, title, excerpt, tags }) {
   return (
     <Link
       href={`/blog/${slug}`}

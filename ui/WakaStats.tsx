@@ -1,8 +1,6 @@
 'use client';
 import clsx from 'clsx';
 
-import { IWakaApiResponse } from 'typings';
-
 const HEIGHT = 20;
 const WIDTH = 800;
 
@@ -114,7 +112,7 @@ export default function WakaStats({
           </p>
         </div>
       ) : (
-        <p>Not eno</p>
+        <p>Not enougph stats</p>
       )}
     </>
   );

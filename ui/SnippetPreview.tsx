@@ -2,7 +2,6 @@ import Link from 'next/link';
 ('use client');
 import { IconContext } from 'react-icons';
 import StackIcon from 'ui/StackIcon';
-import { ISnippet } from 'typings';
 
 export default function SnippetPreview({
   title,
@@ -10,7 +9,7 @@ export default function SnippetPreview({
   slug,
   iconTitle,
   ...rest
-}: Partial<ISnippet>) {
+}) {
   return (
     <Link
       href={`/snippets/${slug}`}

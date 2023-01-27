@@ -1,12 +1,6 @@
 import Link from 'next/link';
 
-import { ITag } from 'typings';
-
-interface ITags {
-  tags?: ITag[];
-}
-
-export function Tags({ tags }: ITags) {
+export function Tags({ tags }) {
   return (
     <div className="flex flex-wrap w-full md:pb-2">
       {tags &&

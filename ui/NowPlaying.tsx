@@ -2,8 +2,6 @@
 import fetcher from 'lib/fetcher';
 import useSWR from 'swr';
 
-// import { ICurrentlyPlaying } from 'src/typings';
-
 function AnimatedBars() {
   return (
     <div className="w-auto flex items-end overflow-hidden md:mb-4">
