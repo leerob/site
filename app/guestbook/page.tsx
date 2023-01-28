@@ -1,6 +1,7 @@
 import { queryBuilder } from 'lib/planetscale';
 import { SignIn, SignOut } from './actions';
 import { unstable_getServerSession } from 'next-auth/next';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import Form from './form';
 
 async function getGuestbook() {
@@ -15,12 +16,10 @@ async function getGuestbook() {
 }
 
 export default async function GuestbookPage() {
-  const [entries] = await Promise.all([
+  const [entries, session] = await Promise.all([
     getGuestbook(),
-    // unstable_getServerSession(),
+    unstable_getServerSession(authOptions),
   ]);
-
-  let session = null;
 
   return (
     <section>
