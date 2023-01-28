@@ -16,13 +16,26 @@ async function getGuestbook() {
 }
 
 export default async function GuestbookPage() {
-  let entries = [],
-    session;
+  let entries = [];
+  let session;
+
   try {
-    [entries, session] = await Promise.all([
+    const [guestbookRes, sessionRes] = await Promise.allSettled([
       getGuestbook(),
       unstable_getServerSession(authOptions),
     ]);
+
+    if (guestbookRes.status === 'fulfilled' && guestbookRes.value[0]) {
+      entries = guestbookRes.value;
+    } else {
+      console.error(guestbookRes);
+    }
+
+    if (sessionRes.status === 'fulfilled') {
+      session = sessionRes.value;
+    } else {
+      console.error(sessionRes);
+    }
   } catch (error) {
     console.error(error);
   }
