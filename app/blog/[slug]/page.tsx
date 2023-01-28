@@ -1,7 +1,7 @@
 import 'components/tweet.css';
 
 import { notFound } from 'next/navigation';
-import { getViews } from 'lib/planetscale';
+import { getViews, incrementViews } from 'lib/planetscale';
 import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { fetchTweetAst } from 'static-tweets';
@@ -59,6 +59,7 @@ export default async function Blog({ params }) {
 
   // TODO: Need to also update the views when the page loads
   const views = await getViews(post.slug);
+  // incrementViews(post.slug, views);
   const tweets = new Map();
 
   // if (post.tweetIds) {
