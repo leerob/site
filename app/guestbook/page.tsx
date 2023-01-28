@@ -16,7 +16,8 @@ async function getGuestbook() {
 }
 
 export default async function GuestbookPage() {
-  let entries, session;
+  let entries = [],
+    session;
   try {
     [entries, session] = await Promise.all([
       getGuestbook(),
