@@ -1,4 +1,5 @@
 import 'server-only';
+
 import { Octokit } from '@octokit/rest';
 import { queryBuilder } from 'lib/planetscale';
 import { cache } from 'react';
@@ -13,7 +14,6 @@ export const getBlogViews = cache(async () => {
 });
 
 export async function getTweetCount() {
-  // return 5342;
   const response = await fetch(
     `https://api.twitter.com/2/users/by/username/leeerob?user.fields=public_metrics`,
     {

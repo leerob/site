@@ -5,6 +5,11 @@ import {
   TwitterIcon,
 } from 'components/icons';
 
+export const metadata = {
+  title: 'About',
+  description: 'VP of Developer Experience at Vercel.',
+};
+
 export default function AboutPage() {
   return (
     <section>

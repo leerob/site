@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import localFont from '@next/font/local';
 import Sidebar from '../components/sidebar';
 import AnalyticsWrapper from '../components/analytics';
+import globalMetadata from './metadata';
 
 const kaisei = localFont({
   src: '../public/fonts/kaisei-tokumin-latin-700-normal.woff2',
@@ -10,6 +11,8 @@ const kaisei = localFont({
   variable: '--font-kaisei',
   display: 'swap',
 });
+
+export const metadata = globalMetadata;
 
 export default function RootLayout({
   children,

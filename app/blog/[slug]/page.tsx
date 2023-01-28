@@ -13,6 +13,43 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  // This isn't working yet, params isn't valid
+  return {};
+
+  const post = allBlogs.find((post) => post.slug === params.slug);
+
+  const {
+    title: postTitle,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+    slug,
+  } = post;
+  const title = `${postTitle} - Lee Robinson`;
+  const ogImage = image ? image : `https://leerob.io/api/og?title=${title}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime,
+      url: `https://leerob.io/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      title,
+    },
+  };
+}
+
 export default async function Blog({ params }) {
   const post = allBlogs.find((post) => post.slug === params.slug);
 

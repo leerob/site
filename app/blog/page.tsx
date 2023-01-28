@@ -3,6 +3,11 @@ import BlogViews from './views';
 import { allBlogs } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
+export const metadata = {
+  title: 'Blog',
+  description: 'Read my thoughts on software development, design, and more.',
+};
+
 export default async function BlogPage() {
   return (
     <section>

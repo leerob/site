@@ -15,6 +15,11 @@ async function getGuestbook() {
   return data;
 }
 
+export const metadata = {
+  title: 'Guestbook',
+  description: 'Sign my guestbook and leave your mark.',
+};
+
 export default async function GuestbookPage() {
   let entries = [];
   let session;
