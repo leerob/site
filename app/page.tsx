@@ -8,6 +8,8 @@ import {
 } from 'components/icons';
 import { name, about, bio, avatar } from 'lib/info';
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const [commitCount, views, tweetCount] = await Promise.all([
     getCommitCount(),
