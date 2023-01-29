@@ -6,14 +6,17 @@ import Tweet from './tweet';
 
 const CustomLink = (props) => {
   const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
-  if (isInternalLink) {
+  if (href.startsWith('/')) {
     return (
       <Link href={href} {...props}>
         {props.children}
       </Link>
     );
+  }
+
+  if (href.startsWith('#')) {
+    return <a {...props} />;
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
