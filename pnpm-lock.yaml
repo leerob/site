@@ -19,7 +19,6 @@ specifiers:
   framer-motion: ^8.5.4
   kysely: ^0.23.4
   kysely-planetscale: ^1.2.1
-  motion: ^10.15.5
   next: 13.1.6
   next-auth: ^4.19.0
   next-contentlayer: ^0.3.0
@@ -31,7 +30,6 @@ specifiers:
   rehype-pretty-code: ^0.9.2
   rehype-slug: ^5.1.0
   remark-gfm: ^3.0.1
-  server-only: ^0.0.1
   shiki: ^0.13.0
   tailwindcss: ^3.2.4
   typescript: 4.9.4
@@ -50,7 +48,6 @@ dependencies:
   framer-motion: 8.5.4_biqbaboplfbrettd7655fr4n2y
   kysely: 0.23.4
   kysely-planetscale: 1.2.1_3b4ga6arylazwmj6lzyyulo5vq
-  motion: 10.15.5
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.19.0_3vryta7zmbcsw4rrqf4axjqggm
   next-contentlayer: 0.3.0_3vryta7zmbcsw4rrqf4axjqggm
@@ -61,7 +58,6 @@ dependencies:
   rehype-pretty-code: 0.9.2_shiki@0.13.0
   rehype-slug: 5.1.0
   remark-gfm: 3.0.1
-  server-only: 0.0.1
   shiki: 0.13.0
 
 devDependencies:
@@ -597,13 +593,6 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@motionone/svelte/10.15.5:
-    resolution: {integrity: sha512-Xyxtgp7BlVnSBwcoFmXGHUVnpNktzeXsEifu2NJJWc7VGuxutDsBZxNdz80qvpLIC5MeBa1wh7GGegZzTm1msg==}
-    dependencies:
-      '@motionone/dom': 10.15.5
-      tslib: 2.5.0
-    dev: false
-
   /@motionone/types/10.15.1:
     resolution: {integrity: sha512-iIUd/EgUsRZGrvW0jqdst8st7zKTzS9EsKkP+6c6n4MPZoQHwiHuVtTQLD6Kp0bsBLhNzKIBlHXponn/SDT4hA==}
     dev: false
@@ -613,13 +602,6 @@ packages:
     dependencies:
       '@motionone/types': 10.15.1
       hey-listen: 1.0.8
-      tslib: 2.5.0
-    dev: false
-
-  /@motionone/vue/10.15.5:
-    resolution: {integrity: sha512-cUENrLYAolUacHvCgU+8wF9OgSlVutfWbHMLERI/bElCJ+e2YVQvG/CpGhIM5fYOOJzuvg2T2wHmLLmvJoavEw==}
-    dependencies:
-      '@motionone/dom': 10.15.5
       tslib: 2.5.0
     dev: false
 
@@ -2753,17 +2735,6 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
-  /motion/10.15.5:
-    resolution: {integrity: sha512-ejP6KioN4pigTGxL93APzOnvtLklParL59UQB2T3HWXQBxFcIp5/7YXFmkgiA6pNKKzjvnLhnonRBN5iSFMnNw==}
-    dependencies:
-      '@motionone/animation': 10.15.1
-      '@motionone/dom': 10.15.5
-      '@motionone/svelte': 10.15.5
-      '@motionone/types': 10.15.1
-      '@motionone/utils': 10.15.1
-      '@motionone/vue': 10.15.5
-    dev: false
-
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -3371,10 +3342,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: false
-
-  /server-only/0.0.1:
-    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: false
 
   /shiki/0.13.0:
