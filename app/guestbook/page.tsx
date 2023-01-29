@@ -20,6 +20,8 @@ export const metadata = {
   description: 'Sign my guestbook and leave your mark.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function GuestbookPage() {
   let entries = [];
   let session;
