@@ -17,7 +17,6 @@ In early 2023, I refactored my site to use the new `app/` directory in Next.js 1
 - [ ] Refactor to improved SEO support (waiting on `generateMetadata`)
 - [ ] Move redirects to end of routing stack (not in `next.config.js`)
 - [ ] Use new support for API routes in `app` (not ready yet)
-- [ ] Update the view count when blog page loads
 
 ## Running Locally
 
