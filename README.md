@@ -13,15 +13,13 @@
 
 In early 2023, I refactored my site to use the new `app/` directory in Next.js 13. I went ahead and shipped it, but there are still a few things I want to do:
 
-Fix static tweets
-Remove analytics wrapper
-Scrolling issue
-
 - [ ] Improved sitemap and `robots.txt` support coming soon
 - [ ] Global `404` page coming soon
 - [ ] Refactor to improved SEO support (waiting on `generateMetadata`)
 - [ ] Move redirects to end of routing stack (not in `next.config.js`)
 - [ ] Use new support for API routes in `app` (not ready yet)
+- [ ] Improved scroll position support in `app/` (not implemented yet)
+- [ ] Remove `@vercel/analytics` wrapping component (waiting on new version)
 
 ## Running Locally
 
