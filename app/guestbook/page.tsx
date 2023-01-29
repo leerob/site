@@ -1,6 +1,6 @@
 import { queryBuilder } from 'lib/planetscale';
 import { SignIn, SignOut } from './actions';
-import getServerSession from 'next-auth/next';
+import { getServerSession } from 'next-auth/next';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
 import Form from './form';
 
