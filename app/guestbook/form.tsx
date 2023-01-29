@@ -26,6 +26,7 @@ export default function Form() {
       method: 'POST',
     });
 
+    input.value = '';
     const { error } = await res.json();
 
     setIsFetching(false);
