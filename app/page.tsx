@@ -19,7 +19,7 @@ export const metadata = {
     siteName: 'Lee Robinson',
     images: [
       {
-        url: 'https://leerob.io/og.png',
+        url: 'https://leerob.io/og.jpg',
         width: 1920,
         height: 1080,
       },

@@ -24,8 +24,7 @@ export default async function handler(req: NextRequest) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          backgroundImage:
-            'url(https://user-images.githubusercontent.com/9113740/198968237-f816c17f-8eeb-4c61-ab2a-66603919a6e9.png)',
+          backgroundImage: 'url(https://leerob.io/og-bg.png)',
         }}
       >
         <div
