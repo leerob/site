@@ -32,10 +32,6 @@ export async function getTweetCount() {
 }
 
 export const getCommitCount = cache(async () => {
-  if (!process.env.GITHUB_TOKEN) {
-    return 0;
-  }
-
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
