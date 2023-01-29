@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run start && next build",
     "start": "next start",
     "setup": "node ./lib/setup.mjs"
   },
