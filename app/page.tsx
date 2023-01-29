@@ -10,6 +10,25 @@ import { name, about, bio, avatar } from 'lib/info';
 
 export const revalidate = 60;
 
+export const metadata = {
+  description: 'Developer, writer, and creator.',
+  openGraph: {
+    title: 'Lee Robinson',
+    description: 'Developer, writer, and creator.',
+    url: 'https://leerob.io',
+    siteName: 'Lee Robinson',
+    images: [
+      {
+        url: 'https://leerob.io/og.png',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: 'en-US',
+    type: 'website',
+  },
+};
+
 export default async function HomePage() {
   const [commitCount, views, tweetCount] = await Promise.all([
     getCommitCount(),
