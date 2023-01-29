@@ -1,7 +1,6 @@
 // import 'server-only' not working with API routes yet
 import { Generated, Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
-import { cache } from 'react';
 
 interface GuestbookTable {
   id: Generated<number>;
@@ -26,18 +25,4 @@ export const queryBuilder = new Kysely<Database>({
   dialect: new PlanetScaleDialect({
     url: process.env.DATABASE_URL,
   }),
-});
-
-export const getViews = cache(async (slug) => {
-  const data = await queryBuilder
-    .selectFrom('views')
-    .where('slug', '=', slug)
-    .select(['count'])
-    .execute();
-
-  if (!data.length) {
-    return 0;
-  }
-
-  return Number(data[0].count);
 });

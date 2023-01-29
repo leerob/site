@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import BlogViews from './views';
 import { allBlogs } from 'contentlayer/generated';
-import { Suspense } from 'react';
+import ViewCounter from './view-counter';
 
 export const metadata = {
   title: 'Blog',
@@ -27,12 +26,7 @@ export default async function BlogPage() {
           >
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
-              <p className="font-mono text-neutral-500 text-sm">
-                <Suspense fallback="–">
-                  {/* @ts-expect-error Server Component */}
-                  <BlogViews slug={post.slug} />
-                </Suspense>
-              </p>
+              <ViewCounter slug={post.slug} trackView={false} />
             </div>
           </Link>
         ))}

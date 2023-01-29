@@ -7,7 +7,17 @@ export default async function handler(
 ) {
   try {
     const slug = req.query.slug.toString();
-    const views = Number(JSON.parse(req.body).views);
+    const data = await queryBuilder
+      .selectFrom('views')
+      .where('slug', '=', slug)
+      .select(['count'])
+      .execute();
+
+    if (!data.length) {
+      return 0;
+    }
+
+    const views = Number(data[0].count);
 
     if (req.method === 'POST') {
       await queryBuilder
@@ -19,6 +29,10 @@ export default async function handler(
       return res.status(200).json({
         total: views + 1,
       });
+    }
+
+    if (req.method === 'GET') {
+      return res.status(200).json({ total: views });
     }
   } catch (e) {
     console.log(e);
