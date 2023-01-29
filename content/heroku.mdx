@@ -1,0 +1,192 @@
+---
+title: 'The Story of Heroku'
+publishedAt: '2022-05-30'
+summary: 'How Heroku changed how we build and deploy software.'
+---
+
+Heroku made it easy for any developer to build and run applications in the cloud without managing their own infrastructure. Now 15 years later, it continues to inspire the next generation of developers. Why did Heroku become so popular? What can we learn from their incredible developer experience? How is Heroku shaping the next generation of serverless?
+
+## Early Days of Heroku
+
+In 2006, Amazon Web Services (AWS) [launched EC2](https://aws.amazon.com/about-aws/whats-new/2006/08/24/announcing-amazon-elastic-compute-cloud-amazon-ec2---beta/), making it easy to run compute on-demand. Developers didn't need to purchase, set up, and manage their own infrastructure anymore – they could pay for cloud compute as needed.
+
+At the same time, many developers were building monolithic [Ruby on Rails](https://rubyonrails.org/) applications. Rails made developers incredibly productive at building applications, but it was still painful and time-consuming to get them deployed. Developers might spend weeks (or months) just on deployment.
+
+In 2007, three Ruby developers – James Lindenbaum, Adam Wiggins, and Orion Henry – founded Heroku. Their mission was to make computing more accessible. The [first version of Heroku](https://techcrunch.com/2008/02/07/heroku-lifts-ruby-on-rails-development-to-the-cloud/) was an in-browser code editor that made it easy to build and deploy Ruby applications.
+
+<Image
+  alt="Heroku's original product, an in-browser IDE allowing you to instantly create and publish Rails apps."
+  src={`/images/heroku/ide.png`}
+  width={833}
+  height={623}
+/>
+
+While their original goal was to help educate developers and make computing more accessible, they noticed that many developers weren't using the platform for _learning_ – they were using it as an easy way to get their Ruby applications deployed. Heroku joined Y Combinator to become the easiest place to build and deploy any Rails application.
+
+<Image
+  alt="Early version of Heroku from 2008, soon after joining Y Combinator."
+  src={`/images/heroku/2008.png`}
+  width={3014 / 2}
+  height={1586 / 2}
+/>
+
+Shortly after Heroku launched, Google App Engine (2008) and Microsoft Azure (2010) entered the market. A trend started to appear. Developers wanted to spend less time configuring infrastructure, and more time building their application.
+
+In 2010, Heroku was bought by Salesforce for [$212 million](https://techcrunch.com/2010/12/08/breaking-salesforce-buys-heroku-for-212-million-in-cash/). At the time of acquisition, Heroku had ~30 employees and only supported Ruby. Y Combinator was still relatively unproven and Heroku was their [largest exit yet](https://www.ycdb.co/top-companies/exit-value).
+
+What did Salesforce see in Heroku that led to acquisition?
+
+## Early Bets
+
+Heroku made some early tech choices that proved to be very productive for developers building monolithic applications: **Ruby on Rails, Git, and Postgres.**
+
+Git was created in 2005 by Linus Torvalds to help develop Linux. Even though there were many version control systems at the time, git begun to slowly grow in popularity. However, everything changed when GitHub was founded in 2007.
+
+Like the Heroku founders, the GitHub founders were Ruby developers. In 2008, the Ruby on Rails project switched to using GitHub, and the entire Ruby community followed shortly after (thus adopting git as well). **Heroku became synonymous with Rails.** Later, the creator of Ruby [joined Heroku](https://blog.heroku.com/matz_joins_heroku) to continue working on the language.
+
+To run your Rails application, you needed a database. Heroku allowed you to add a Postgres database with **one click** through [add-ons](https://elements.heroku.com/addons). Today, Postgres has grown to be one of the most popular databases, which wasn't as obvious in 2008. It became the default choice for folks building monolithic Rails applications.
+
+<Callout emoji="💡">
+
+Adam, the Co-Founder and CTO of Heroku, coined the term [12 factor app](https://12factor.net/). This was the blueprint for building for the web (at the time) and is still relevant many years later.
+
+</Callout>
+
+## Developer Productivity
+
+Heroku set a new standard for developer experience. To deploy your application, you pushed code to git and received a URL. `git push heroku main`. **That's it.**
+
+Heroku would build your application remotely (in the cloud) and deploy it to their infrastructure. Developers weren't used to deployment being this easy or fast. Heroku was ahead of its time and “serverless” in the sense you didn't have to manage servers yourself.
+
+<Image
+  alt="Heroku's landing page in 2011 after expanding past Ruby to become a cloud application platform"
+  src={`/images/heroku/2011.png`}
+  width={3010 / 2}
+  height={1582 / 2}
+/>
+
+Developers were able to delegate hosting to the Heroku platform without feeling like they were giving up too much control. They didn't _want_ to manage server maintenance or perform upgrades – but they did want to understand what was happening if things went wrong.
+
+<Callout emoji="💡">
+
+Heroku's [Buildpacks](https://elements.heroku.com/buildpacks) have shaped how software is built today. They automated the build process for any language or framework and transformed the code you write into a deployable image on Heroku. You might hear similar terminology today as “builders” or “adapters”.
+
+</Callout>
+
+As their Co-Founder James said, you “[dialed up the knob when you wanted to scale up](https://www.youtube.com/watch?v=3FhcROr0XdM)”. Heroku nailed the CLI experience with commands like:
+
+- `heroku logs` - View realtime logs from your application
+- `heroku run` - Execute any shell command on the remote machine
+- `heroku ps` - View the status of remote processes running
+- `heroku config:add key=value` - Add environment variables to configure your app
+- `heroku rollback` - Single command rollback to an existing working version
+
+<Image
+  alt="Heroku's landing page in 2011 after expanding past Ruby to become a cloud application platform"
+  src={`/images/heroku/platform.png`}
+  width={1141}
+  height={602}
+/>
+
+## Heroku's Platform Dominance
+
+Heroku became one of the largest platforms for building and deploying code by providing:
+
+- Hosting for your app
+- One-click button to add a database (including backups)
+- One-click resizing/scaling of services
+- Support for background jobs
+- Add-ons for monitoring, logging, and more
+
+Developers didn't need to manually configure services to get started. They just pushed code through git. And while Heroku was opinionated about it's preferred stack (Rails + Postgres), it had a wide ecosystems of add-ons if you had different preferences.
+
+The seamless integration between the framework of choice (Ruby on Rails) and the infrastructure made developers incredibly productive. Developers could deploy a monolithic Rails app to Heroku in a weekend and dial up the knobs as their traffic increased.
+
+Heroku became a focal point of education for anyone working with Rails and Node.js due to its free tier. Hobby developers and students could turn their ideas into production code extremely fast, without needing access to a credit card.
+
+## From Monolith to Microservices
+
+During Heroku's rise to dominance, some developers began to scale out of monolithic workloads. This was expedited by two trends: **serverless** and **Kubernetes**.
+
+- **2013:** Docker is released
+- **2014:** Kubernetes is released
+- **2014:** AWS Lambda is released
+- **2017:** GitHub moves to Kubernetes
+
+<Image
+  alt="Serverless and Kurbernetes trends on Google"
+  src={`/images/heroku/trends.png`}
+  width={2360 / 2}
+  height={1254 / 2}
+/>
+
+During this same time period, the types of web experiences developers were trying to build demanded more specialized tools. There was an unbundling of the monolithic into dedicated, specialized services:
+
+| Monolith (on a single server) | Microservices (APIs & libraries)                                 |
+| ----------------------------- | ---------------------------------------------------------------- |
+| Authentication                | Auth0, AWS Cognito                                               |
+| Database Queries              | Prisma, Mongoose                                                 |
+| Compute                       | AWS Lambda, Cloud Functions, Azure Functions, Cloudflare Workers |
+| HTML Rendering & Templates    | Frontend Frameworks                                              |
+| JavaScript and CSS Bundling   | Frontend Frameworks                                              |
+| Realtime                      | Firebase, Ably, Pusher, AWS SQS, etc.                            |
+| Storage                       | AWS S3, Google Cloud Storage                                     |
+| Image Optimization            | Imgix, Cloudinary, AWS CloudFront                                |
+
+At the time, monolithic apps were still the fastest way for developers to put an idea into production. This new wave of serverless and Kubernetes was often difficult to use and required specialized talent. Some teams jumped on the new trend too quickly, where it was often cheaper to scale up and pay for a managed platform like Heroku than to hire a team of DevOps engineers.
+
+However, some developers were still ejecting from monolithic platforms due to cost, flexibility, or availability. And the state of tooling for serverless and Kubernetes left a lot to be desired. This lead to a _new wave of innovation_.
+
+## Serverless 1.0
+
+Why did some developers start to explore moving from their monolith to serverless?
+
+- **Container size:** As the size of your application grew, so did your container – often requiring a more expensive Dyno (container) to run on Heroku. Developers wanted to break their monolith into smaller, lightweight, stateless functions. This made even more sense as code-splitting became automatic in frontend tooling like webpack (and Next.js) where you would only invoke the compute necessary for the requested route, as well as only loading the minimum required JavaScript.
+- **Difficulty scaling:** While turning up the knobs works for some applications, it's difficult to apply that approach to all apps. For example, what happens when your container has background tasks? How do you dial up the knob? Certain types of application architecture did not evolve well with monoliths. Built-in autoscaling is also [not available on all plans on Heroku](https://devcenter.heroku.com/articles/scaling#autoscaling).
+- **Issues with state:** Containers required complex health checks to understand when they were entering a bad state, often requiring restarts. This could get messy if there was initialization logic to connect to external services.
+- **Distributed visitors:** Heroku is _not_ an Edge Network and instead required you to bring your own CDN. This led some teams back to DevOps, often building their own internal version of Heroku (but with a container orchestration system like Kubernetes). Further, Heroku's limited region options meant it was a non-starter for teams with specific regulatory requirements around data storage.
+
+For example, let's say you need to build a backend for a mobile app. Should you use a monolith or serverless? You want it to be scalable, stateless, and available around the world, all without spending too much money or time managing infrastructure.
+
+[Bret Taylor](https://en.wikipedia.org/wiki/Bret_Taylor), the Co-CEO of Salesforce, co-creator of Google Maps, and former CTO of Facebook, was in this same position in 2019. He built an [iOS app](https://twitter.com/btaylor/status/1315312482894835712) to check the air quality and display a widget on his home screen.
+
+He choose AWS Lambda for [on-demand compute](https://github.com/finiteloop/air-quality/blob/master/server/update_data/app.py#L53-L59), AWS S3 for [durable storage](https://github.com/finiteloop/air-quality/blob/master/server/update_data/app.py#L44-L50), and AWS CloudFront to push it to every region.
+
+<StaticTweet id="1097592089502613504" />
+
+But to "beat" Heroku, you needed to be 10x better. And Serverless 1.0 was not 10x better.
+
+## Heroku in 2022
+
+Heroku has had a tough 2022 with multiple [security incidents](https://status.heroku.com/incidents/2413) and ongoing [outages](https://status.heroku.com/incidents/2402). This has led some teams who might have skipped the Serverless 1.0 era step back and reevaluate the current state. How are teams building today?
+
+Heroku's favorite framework – Ruby on Rails – is now hosted on GitHub Pages. None of the 15 Rails companies featured on the home page are using Heroku for their .com (as far as I can tell). Even the biggest Rails shop, GitHub, has started [building with React](https://primer.style/react/) on the frontend and moving the [backend to Kubernetes](https://www.theregister.com/2018/08/16/github_rails_microsoft/#:~:text=The%20company%20is%20moving%20away,Haskell%20being%20deployed%20for%20services).
+
+What developers loved about Heroku was that they **didn't have to manage infrastructure**. Somewhere along the way from monolith to microservices, application developers ended up doing DevOps again. Infrastructure as Code (IaC) tools like [Terraform](https://www.terraform.io/), [AWS CDK](https://aws.amazon.com/cdk/), and [Pulumi](https://www.pulumi.com/) enabled a more lean DevOps experience, but still required managing, scaling, and debugging that infrastructure.
+
+Expectations for both frontend and backend experience have risen, making some developers abandon PaaS for a decoupled architecture allowing them to pick the best tools possible.
+
+## What can we learn from Heroku?
+
+I'm personally inspired by Heroku and have used the platform since 2012 for some side projects. We can learn a lot from their story and how it's shaped the software industry.
+
+- **Git push to URL is incredibly powerful:** When folks talk about Heroku 15 years later, they still mention `git push heroku main`. Heroku inspired platforms like Vercel with one command (`vercel`) to deploy your frontend globally, while having a singular remote (origin) and creating deeper integrations into first-party git providers (e.g. GitHub).
+- **Editing code in browser lowers the barrier to entry:** While Heroku pivoted away from an in-browser IDE, their ideas have led (either directly or indirectly) to the creation of Codepen, CodeSandbox, GitHub CodeSpaces, Replit, StackBlitz, and more.
+- **Don't forget about solo developer productivity:** Some developers still deploy monolithic applications to Heroku or other services like Fly.io, Railway, and Render to colocate their backend and frontend. They don't need (or want) to have microservices.
+- **Platforms need to evolve over time:** You could make the argument Heroku would be even more popular today if it evolved to add support for scaling to zero, global deployments by default, and focused on the rapidly evolving JavaScript/TypeScript/React ecosystem.
+
+<StaticTweet id="1334595810240106497" />
+
+I'm also biased, as I work at Vercel, in believing serverless and Edge platforms are the future. Here's my thoughts on where we're headed:
+
+- On the **frontend**, you want to `git push` and have your code close to your visitors globally. Platforms like Vercel help you go from idea to global app in seconds.
+- On the **backend**, you (probably) don't want to scale Kubernetes yourself. There's now fully-managed Kubernetes ([AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine)), as well as [Google Cloud Run](https://cloud.google.com/run), which allows you to run and automatically scale stateless serverless containers.
+- **Serverless functions** don't need [health checks](https://devcenter.heroku.com/articles/production-check#dyno-redundancy) and are [highly available (multi-az)](https://docs.aws.amazon.com/lambda/latest/dg/security-resilience.html) without having to think about "[number of dynos](https://devcenter.heroku.com/articles/production-check#dyno-redundancy)". For each concurrent request, you get a function instance. Scaling is not something you spend time tuning or thinking much about. Entire categories of commands like `ps:stop`, `ps:restart`, and `ps:scale` disapper and become unnecessary.
+
+And that's all for now. Hopefully you now have a better appreciation how Heroku changed the software industry. If you see anything missing here about the story of Heroku, [let me know](https://twitter.com/leeerob).
+
+## Related Reading
+
+- [JavaScript Containers](https://tinyclouds.org/javascript_containers)
+- [Cloud Distros](https://www.swyx.io/cloud-distros)
+- [Static Hoisting](https://rauchg.com/2020/static-hoisting)
