@@ -15,9 +15,9 @@ export default {
     siteName: 'Lee Robinson',
     images: [
       {
-        url: 'https://leerob.io/static/images/lee-banner.png',
-        width: 1820,
-        height: 804,
+        url: 'https://leerob.io/og.png',
+        width: 1920,
+        height: 1080,
       },
     ],
     locale: 'en-US',
@@ -30,24 +30,9 @@ export default {
   icons: {
     shortcut: '/favicon.ico',
   },
-  // colorScheme: {
-  //   light: '#ffffff',
-  //   dark: '#111010',
-  // },
   other: {
     'yandex-verification': '14d2e73487fa6c71',
     'google-site-verification': 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
     robots: 'max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   },
-  // verification: {
-  //   google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
-  //   other: { 'yandex-verification': '14d2e73487fa6c71' },
-  // },
-  // robots: {
-  //   index: true,
-  //   follow: true,
-  //   'max-snippet': -1,
-  //   'max-image-preview': 'large',
-  //   'max-video-preview': -1,
-  // },
 };

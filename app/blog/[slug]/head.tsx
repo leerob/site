@@ -24,6 +24,7 @@ export default async function Head({ params }) {
       <meta property="og:description" content={post.summary} />
       <meta property="og:title" content={post.title} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:url" content={ogImage}></meta>
       <meta name="twitter:title" content={post.title} />
       <meta name="twitter:description" content={post.summary} />
       <meta name="twitter:image" content={ogImage} />
