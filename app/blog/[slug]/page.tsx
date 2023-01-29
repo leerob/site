@@ -1,11 +1,12 @@
 import 'components/tweet.css';
 
 import { notFound } from 'next/navigation';
-import { getViews, incrementViews } from 'lib/planetscale';
+import { getViews } from 'lib/planetscale';
 import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { fetchTweetAst } from 'static-tweets';
 import Balancer from 'react-wrap-balancer';
+import ViewCounter from './view-counter';
 
 export async function generateStaticParams() {
   return allBlogs.map((post) => ({
@@ -20,9 +21,7 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  // TODO: Need to also update the views when the page loads
   const views = await getViews(post.slug);
-  // incrementViews(post.slug, views);
   const tweets = new Map();
 
   // if (post.tweetIds) {
@@ -43,7 +42,7 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        <div className="text-neutral-700 dark:text-neutral-300">{`${views.toLocaleString()} views`}</div>
+        <ViewCounter slug={post.slug} views={views} />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />
     </section>

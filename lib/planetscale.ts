@@ -41,11 +41,3 @@ export const getViews = cache(async (slug) => {
 
   return Number(data[0].count);
 });
-
-export const incrementViews = async (slug, views) => {
-  await queryBuilder
-    .insertInto('views')
-    .values({ slug, count: 1 })
-    .onDuplicateKeyUpdate({ count: views + 1 })
-    .execute();
-};
