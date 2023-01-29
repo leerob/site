@@ -2,7 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { Tweet } from 'react-static-tweets';
+import Tweet from './tweet';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -102,9 +102,8 @@ interface MdxProps {
 export function Mdx({ code, tweets }: MdxProps) {
   const Component = useMDXComponent(code);
   const StaticTweet = ({ id }) => {
-    return (
-      <div className="not-prose">{/* <Tweet ast={tweets.get(id)} /> */}</div>
-    );
+    const tweet = tweets.find((tweet) => tweet.id === id);
+    return <Tweet {...tweet} />;
   };
 
   return (

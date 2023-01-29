@@ -1,10 +1,8 @@
-import 'components/tweet.css';
-
 import { notFound } from 'next/navigation';
 import { getViews } from 'lib/planetscale';
 import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
-import { fetchTweetAst } from 'static-tweets';
+import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from './view-counter';
 
@@ -22,15 +20,7 @@ export default async function Blog({ params }) {
   }
 
   const views = await getViews(post.slug);
-  const tweets = new Map();
-
-  // if (post.tweetIds) {
-  //   const tweetAsts = await Promise.all(post.tweetIds.map(fetchTweetAst));
-
-  //   tweetAsts.forEach((tweetAst, index) => {
-  //     tweets.set(post.tweetIds[index], tweetAst);
-  //   });
-  // }
+  const tweets = await getTweets(post.tweetIds);
 
   return (
     <section>
