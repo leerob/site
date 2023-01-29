@@ -21,6 +21,8 @@ In early 2023, I refactored my site to use the new `app/` directory in Next.js 1
 - [ ] Improved scroll position support in `app/` (not implemented yet)
 - [ ] Remove `@vercel/analytics` wrapping component (waiting on new version)
 
+You can learn more about the `app/` directory [here](https://beta.nextjs.org/docs).
+
 ## Running Locally
 
 This application requires Node.js v16.13+.
