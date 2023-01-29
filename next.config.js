@@ -4,8 +4,14 @@ const { withContentlayer } = require('next-contentlayer');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'pbs.twimg.com', // Twitter Profile Picture
+    formats: ['image/avif', 'image/webp'],
+    // Twitter Profile Picture
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pbs.twimg.com',
+        pathname: '/profile_images/**',
+      },
     ],
   },
   experimental: {
