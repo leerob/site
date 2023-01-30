@@ -3,8 +3,9 @@
 import { useEffect } from 'react';
 import useSWR from 'swr';
 
-type Views = {
-  total: number;
+type PostView = {
+  slug: string;
+  count: string;
 };
 
 async function fetcher<JSON = any>(
@@ -22,8 +23,9 @@ export default function ViewCounter({
   slug: string;
   trackView: boolean;
 }) {
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = new Number(data?.total || 0);
+  const { data } = useSWR<PostView[]>('/api/views', fetcher);
+  const viewsForSlug = data && data.find((view) => view.slug === slug);
+  const views = new Number(viewsForSlug?.count || 0);
 
   useEffect(() => {
     const registerView = () =>
@@ -38,7 +40,7 @@ export default function ViewCounter({
 
   return (
     <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-      {data ? `${views.toLocaleString()} views` : '–'}
+      {data ? `${views.toLocaleString()} views` : '​'}
     </p>
   );
 }
