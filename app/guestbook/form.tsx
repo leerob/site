@@ -54,7 +54,7 @@ export default function Form() {
       />
       <button
         className="flex items-center justify-center absolute right-1 top-1 px-2 py-1 font-medium h-7 bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 rounded w-16"
-        disabled={isPending}
+        disabled={isMutating}
         type="submit"
       >
         Sign

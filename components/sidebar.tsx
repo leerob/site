@@ -109,7 +109,7 @@ export default function Navbar() {
                     }}
                     transition={{
                       type: 'spring',
-                      stiffness: 200,
+                      stiffness: 350,
                       damping: 30,
                     }}
                   />
@@ -127,7 +127,7 @@ export default function Navbar() {
                     }}
                     transition={{
                       type: 'spring',
-                      stiffness: 200,
+                      stiffness: 350,
                       damping: 30,
                     }}
                   />

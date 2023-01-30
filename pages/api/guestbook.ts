@@ -30,6 +30,7 @@ export default async function handler(
     await queryBuilder
       .deleteFrom('guestbook')
       .where('id', '=', req.body.id)
+      .where('email', '=', email)
       .execute();
 
     return res.status(204).json({});
