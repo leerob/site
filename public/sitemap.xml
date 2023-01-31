@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://leerob.io/</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://leerob.io/about</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://leerob.io/guestbook</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/funding-open-source</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/backend</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/react-frameworks</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/javascript</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/nextjs-conf-2022-recap</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/dx</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/developer-experience-examples</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/heroku</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/devrel-at-vercel</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/image-gallery-supabase-tailwind-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/fundamentals-of-video</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/hypergrowth</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/rust</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/mysql-planetscale</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/career</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/head-of-devrel</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/serverless-redis-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/react-state-management</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/fonts</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/tailwind</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/css-with-react</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/spotify-api-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/teach-online</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/mdx</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/nextjs-sitemap-robots</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/mailchimp-next-js</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/real-time-post-views</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/style-guides-component-libraries-design-systems</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/nextjs-firebase-serverless</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/how-to-print-in-react-using-iframes</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/turborepo-design-system-monorepo</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/technical-recruiting-is-broken</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/things-ive-learned-building-nextjs-apps</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/why-i-create-open-source-software</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/content-marketing-personal-brand</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/how-stripe-designs-beautiful-websites</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/loading-placeholder-with-sass</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/beginners-guide-to-the-programming-portfolio</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/blog/space-invaders-with-python</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://leerob.io/uses</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+</urlset>
