@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getBlogViews, getTweetCount, getCommitCount } from 'lib/metrics';
+import { getBlogViews, getTweetCount, getStarCount } from 'lib/metrics';
 import {
   ArrowIcon,
   GitHubIcon,
@@ -31,7 +31,7 @@ export const metadata = {
 
 export default async function HomePage() {
   const [commitCount, views, tweetCount] = await Promise.all([
-    getCommitCount(),
+    getStarCount(),
     getBlogViews(),
     getTweetCount(),
   ]);
