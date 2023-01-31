@@ -30,7 +30,7 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [commitCount, views, tweetCount] = await Promise.all([
+  const [starCount, views, tweetCount] = await Promise.all([
     getStarCount(),
     getBlogViews(),
     getTweetCount(),
@@ -58,7 +58,7 @@ export default async function HomePage() {
           </p>
           <p className="flex items-center gap-2">
             <GitHubIcon />
-            {`${commitCount.toLocaleString()} stars on this repo`}
+            {`${starCount.toLocaleString()} stars on this repo`}
           </p>
           <p className="flex items-center">
             <ViewsIcon />
