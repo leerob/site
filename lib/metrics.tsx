@@ -35,7 +35,7 @@ export async function getTweetCount() {
   return Number(data.public_metrics.tweet_count);
 }
 
-export const getCommitCount = cache(async () => {
+export const getStarCount = cache(async () => {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
