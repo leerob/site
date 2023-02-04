@@ -19,6 +19,13 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   twitter: {
     title: 'Lee Robinson',
@@ -27,10 +34,9 @@ export const metadata = {
   icons: {
     shortcut: '/favicon.ico',
   },
-  other: {
-    'yandex-verification': '14d2e73487fa6c71',
-    'google-site-verification': 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
-    robots: 'max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+  verification: {
+    google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
+    yandex: '14d2e73487fa6c71',
   },
 };
 
