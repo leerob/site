@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import localFont from '@next/font/local';
 import Sidebar from '../components/sidebar';
 import AnalyticsWrapper from '../components/analytics';
-import globalMetadata from './metadata';
 
 const kaisei = localFont({
   src: '../public/fonts/kaisei-tokumin-latin-700-normal.woff2',
@@ -12,7 +11,28 @@ const kaisei = localFont({
   display: 'swap',
 });
 
-export const metadata = globalMetadata;
+export const metadata = {
+  title: {
+    default: 'Lee Robinson',
+    template: '%s | Lee Robinson',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  twitter: {
+    title: 'Lee Robinson',
+    card: 'summary_large_image',
+  },
+  icons: {
+    shortcut: '/favicon.ico',
+  },
+  other: {
+    'yandex-verification': '14d2e73487fa6c71',
+    'google-site-verification': 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
+    robots: 'max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+  },
+};
 
 export default function RootLayout({
   children,

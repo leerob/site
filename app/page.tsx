@@ -9,7 +9,6 @@ import {
 import { name, about, bio, avatar } from 'lib/info';
 
 export const revalidate = 60;
-
 export const metadata = {
   description: 'Developer, writer, and creator.',
   openGraph: {
@@ -30,11 +29,17 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [starCount, views, tweetCount] = await Promise.all([
-    getStarCount(),
-    getBlogViews(),
-    getTweetCount(),
-  ]);
+  let starCount, views, tweetCount;
+
+  try {
+    [starCount, views, tweetCount] = await Promise.all([
+      getStarCount(),
+      getBlogViews(),
+      getTweetCount(),
+    ]);
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <section className="">

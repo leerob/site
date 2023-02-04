@@ -11,6 +11,40 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const post = allBlogs.find((post) => post.slug === params.slug);
+  const {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+    slug,
+  } = post;
+  const ogImage = image ? image : `https://leerob.io/api/og?title=${title}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime,
+      url: `https://leerob.io/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      title,
+      description,
+      images: ogImage,
+    },
+  };
+}
+
 export default async function Blog({ params }) {
   const post = allBlogs.find((post) => post.slug === params.slug);
 

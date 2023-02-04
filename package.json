@@ -7,7 +7,7 @@
     "setup": "node ./lib/setup.mjs"
   },
   "dependencies": {
-    "@next/font": "13.1.6",
+    "@next/font": "13.1.7-canary.5",
     "@octokit/rest": "^19.0.7",
     "@planetscale/database": "^1.5.0",
     "@vercel/analytics": "^0.1.8",
@@ -20,7 +20,7 @@
     "framer-motion": "^8.5.4",
     "kysely": "^0.23.4",
     "kysely-planetscale": "^1.2.1",
-    "next": "13.1.6",
+    "next": "13.1.7-canary.5",
     "next-auth": "^4.19.0",
     "next-contentlayer": "^0.3.0",
     "react": "18.2.0",
