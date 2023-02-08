@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogViews, getTweetCount, getStarCount } from 'lib/metrics';
 import {
@@ -57,18 +58,28 @@ export default async function HomePage() {
           priority
         />
         <div className="mt-8 md:mt-0 ml-0 md:ml-6 space-y-2 text-neutral-500 dark:text-neutral-400">
-          <p className="flex items-center gap-2">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://twitter.com/leeerob"
+            className="flex items-center gap-2"
+          >
             <TwitterIcon />
             {`${tweetCount.toLocaleString()} tweets all time`}
-          </p>
-          <p className="flex items-center gap-2">
+          </a>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/leerob"
+            className="flex items-center gap-2"
+          >
             <GitHubIcon />
             {`${starCount.toLocaleString()} stars on this repo`}
-          </p>
-          <p className="flex items-center">
+          </a>
+          <Link href="/blog" className="flex items-center">
             <ViewsIcon />
             {`${views.toLocaleString()} blog views all time`}
-          </p>
+          </Link>
         </div>
       </div>
       <p className="my-5 max-w-[600px] text-neutral-800 dark:text-neutral-200">
