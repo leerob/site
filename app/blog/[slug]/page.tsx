@@ -13,6 +13,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const post = allBlogs.find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
+
   const {
     title,
     publishedAt: publishedTime,
