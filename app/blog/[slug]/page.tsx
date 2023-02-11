@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
   const post = allBlogs.find((post) => post.slug === params.slug);
   if (!post) {
     return;

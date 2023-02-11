@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogViews, getTweetCount, getStarCount } from 'lib/metrics';
@@ -10,7 +11,7 @@ import {
 import { name, about, bio, avatar } from 'lib/info';
 
 export const revalidate = 60;
-export const metadata = {
+export const metadata: Metadata = {
   description: 'Developer, writer, and creator.',
   openGraph: {
     title: 'Lee Robinson',

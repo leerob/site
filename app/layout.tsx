@@ -1,5 +1,6 @@
 import './global.css';
 import clsx from 'clsx';
+import type { Metadata } from 'next';
 import localFont from '@next/font/local';
 import Sidebar from '../components/sidebar';
 import AnalyticsWrapper from '../components/analytics';
@@ -11,7 +12,7 @@ const kaisei = localFont({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: 'Lee Robinson',
     template: '%s | Lee Robinson',

@@ -1,8 +1,9 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import ViewCounter from './view-counter';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Blog',
   description: 'Read my thoughts on software development, design, and more.',
 };

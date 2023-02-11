@@ -15,11 +15,11 @@ In early 2023, I refactored my site to use the new `app/` directory in Next.js 1
 
 - [ ] Improved sitemap and `robots.txt` support coming soon
 - [ ] Global `404` page coming soon
-- [ ] Refactor to improved SEO support (waiting on `generateMetadata`)
 - [ ] Move redirects to end of routing stack (not in `next.config.js`)
 - [ ] Use new support for API routes in `app` (not ready yet)
 - [ ] Improved scroll position support in `app/` (not implemented yet)
 - [ ] Remove `@vercel/analytics` wrapping component (waiting on new version)
+- [x] Refactor to improved SEO support
 
 You can learn more about the `app/` directory [here](https://beta.nextjs.org/docs).
 
