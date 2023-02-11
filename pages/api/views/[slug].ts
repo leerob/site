@@ -13,11 +13,7 @@ export default async function handler(
       .select(['count'])
       .execute();
 
-    if (!data.length) {
-      return 0;
-    }
-
-    const views = Number(data[0].count);
+    const views = !data.length ? 0 : Number(data[0].count);
 
     if (req.method === 'POST') {
       await queryBuilder
