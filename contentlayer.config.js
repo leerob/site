@@ -19,6 +19,25 @@ const computedFields = {
       return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]) || [];
     },
   },
+  structuredData: {
+    type: 'object',
+    resolve: (doc) => ({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: doc.title,
+      datePublished: doc.publishedAt,
+      dateModified: doc.publishedAt,
+      description: doc.summary,
+      image: doc.image
+        ? `https://leerob.io${doc.image}`
+        : `https://leerob.io/api/og?title=${doc.title}`,
+      url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
+      author: {
+        '@type': 'Person',
+        name: 'Lee Robinson',
+      },
+    }),
+  },
 };
 
 export const Blog = defineDocumentType(() => ({

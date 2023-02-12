@@ -17,6 +17,22 @@ export const metadata: Metadata = {
     default: 'Lee Robinson',
     template: '%s | Lee Robinson',
   },
+  description: 'Developer, writer, and creator.',
+  openGraph: {
+    title: 'Lee Robinson',
+    description: 'Developer, writer, and creator.',
+    url: 'https://leerob.io',
+    siteName: 'Lee Robinson',
+    images: [
+      {
+        url: 'https://leerob.io/og.jpg',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: 'en-US',
+    type: 'website',
+  },
   robots: {
     index: true,
     follow: true,
