@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { queryBuilder } from 'lib/planetscale';
 import { SignIn, SignOut } from './actions';
 import { getServerSession } from 'next-auth/next';
@@ -15,7 +16,7 @@ async function getGuestbook() {
   return data;
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Guestbook',
   description: 'Sign my guestbook and leave your mark.',
 };
@@ -23,7 +24,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function GuestbookPage() {
-  let entries = [];
+  let entries;
   let session;
 
   try {

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import {
   GitHubIcon,
   YoutubeIcon,
@@ -5,7 +6,7 @@ import {
   TwitterIcon,
 } from 'components/icons';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'About',
   description: 'VP of Developer Experience at Vercel.',
 };
