@@ -6,7 +6,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const slug = req.query.slug.toString();
+    const slug = req.query?.slug as string;
+    if (!slug) {
+      return res.status(400).json({ message: 'Slug is required.' });
+    }
+
     const data = await queryBuilder
       .selectFrom('views')
       .where('slug', '=', slug)
