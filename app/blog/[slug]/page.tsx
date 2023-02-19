@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Script from "next/script";
 import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
@@ -66,9 +67,7 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <script type="application/ld+json">
-        {JSON.stringify(post.structuredData)}
-      </script>
+      <Script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData)}} />
       <h1 className="font-bold text-3xl font-serif max-w-[650px]">
         <Balancer>{post.title}</Balancer>
       </h1>
