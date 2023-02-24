@@ -2,7 +2,6 @@ import Link from 'next/link';
 import useSWR from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { Views } from 'lib/types';
 
 export default function BlogPost({
   slug,

@@ -9,6 +9,7 @@ import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
 
 function NavItem({ href, text }) {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const isActive = router.asPath === href;
 
@@ -29,6 +30,7 @@ function NavItem({ href, text }) {
 }
 
 export default function Container(props) {
+  const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 

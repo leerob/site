@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { TopTracks } from 'lib/types';
 import Track from 'components/Track';
 
 export default function Tracks() {

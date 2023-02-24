@@ -46,7 +46,8 @@ export const getTweets = async (ids) => {
   };
 
   return (
-    tweets.data.reduce((allTweets, tweet) => {
+    // If the Twitter API key isn't set, don't break the build
+    (tweets.data.reduce((allTweets, tweet) => {
       const tweetWithAuthor = {
         ...tweet,
         media:
@@ -58,6 +59,6 @@ export const getTweets = async (ids) => {
       };
 
       return [tweetWithAuthor, ...allTweets];
-    }, []) || [] // If the Twitter API key isn't set, don't break the build
+    }, []) || [])
   );
 };

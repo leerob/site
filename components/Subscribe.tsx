@@ -3,7 +3,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 
 import fetcher from 'lib/fetcher';
-import { Form, FormState, Subscribers } from 'lib/types';
+import { Form } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
