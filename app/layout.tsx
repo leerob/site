@@ -1,7 +1,7 @@
 import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 import Sidebar from '../components/sidebar';
 import AnalyticsWrapper from '../components/analytics';
 

@@ -18,7 +18,7 @@ export default function Form() {
 
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({
-        body: input.value,
+        value: input.value,
       }),
       headers: {
         'Content-Type': 'application/json',
