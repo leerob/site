@@ -19,7 +19,7 @@ specifiers:
   kysely: ^0.23.4
   kysely-planetscale: ^1.2.1
   next: 13.2.0
-  next-auth: 0.0.0-pr.6777.faa4ea2a
+  next-auth: 0.0.0-pr.6777.c5550344
   next-contentlayer: ^0.3.0
   postcss: ^8.4.21
   react: 18.2.0
@@ -50,7 +50,7 @@ dependencies:
   kysely: 0.23.4
   kysely-planetscale: 1.2.1_3b4ga6arylazwmj6lzyyulo5vq
   next: 13.2.0_biqbaboplfbrettd7655fr4n2y
-  next-auth: 0.0.0-pr.6777.faa4ea2a_f4d7icgk4i3oippbo5yzyh5rhq
+  next-auth: 0.0.0-pr.6777.c5550344_f4d7icgk4i3oippbo5yzyh5rhq
   next-contentlayer: 0.3.0_f4d7icgk4i3oippbo5yzyh5rhq
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2767,8 +2767,8 @@ packages:
     hasBin: true
     dev: false
 
-  /next-auth/0.0.0-pr.6777.faa4ea2a_f4d7icgk4i3oippbo5yzyh5rhq:
-    resolution: {integrity: sha512-m35SOXeZdRs1yaJTzG6hgXvhksXPj2QWP7JyLseHnnHz2RaHz+fSroHpx1Ho2zhw/AHiEcsoHnsD1iCl27/p0w==}
+  /next-auth/0.0.0-pr.6777.c5550344_f4d7icgk4i3oippbo5yzyh5rhq:
+    resolution: {integrity: sha512-HpAlneVJ4SzSgE7Rku0scwWQN+0N2UGKdpeH9gPTRzC8QTYUnEJUqbL7HMXMUyZBC52Pk/ovsvEgO+ozxp50XQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
