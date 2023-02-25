@@ -1,0 +1,165 @@
+---
+title: 'How Stripe Designs Beautiful Websites'
+publishedAt: '2017-12-02'
+summary: "Examining the tips and tricks used to make Stripe's website design a notch above the rest."
+---
+
+Have you ever visited a website and been completely in awe of the elegance and simplicity of its design? For me, that website is [Stripe](https://stripe.com/). Stripe is a company that allows people and businesses to accept payments online and in mobile apps. That doesn't sound like a company that would have an exquisite website design, but look at how Stripe describes themselves on their about page.
+
+> "We think that building an internet business is a problem rooted in code and design, not finance."
+
+Rather than making design an afterthought, it's treated as a first-class citizen at Stripe. You can almost feel the hours of work spent iterating over designs and making minor tweaks when viewing the website's pages. In this article, I'm going to break down how Stripe creates these beautiful designs and give some tips and tricks to web designers and developers alike.
+
+### The Design
+
+<Image
+  alt={`Stripe Website`}
+  src={`/images/how-stripe-designs-beautiful-websites/website.png`}
+  width={2248}
+  height={1590}
+/>
+
+Pictured above is the design for Stripe's main landing page. At first glance, here's what really sticks out to me:
+
+1.  Crisp typography
+2.  Stunning color palette
+3.  High-quality images
+4.  Bold call-to-action buttons
+
+Let's start with the first observation: the font.
+
+### Typography
+
+Stripe uses a font called [Camphor](https://www.fontshop.com/families/camphor). It's a modern, uncluttered, sans serif font designed by Nick Job in 2010. It _really_ shines here and looks great in a variety of weights.
+
+<Image
+  alt={`Camphor Font`}
+  src={`/images/how-stripe-designs-beautiful-websites/camphor.png`}
+  width={1000}
+  height={1114}
+/>
+
+Typography is arguably the most important part of your design since it's the medium for your content. Stripe does an excellent job of using different weights and colors to provide adequate contrast. This draws your attention to the things that matter most.
+
+<Image
+  alt={`Typography Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/typography.png`}
+  width={1162}
+  height={944}
+/>
+
+Let's see how we can make our font as crisp and clear as possible. First, we'll define our font family to be Camphor along with some fallback fonts. **Note:** Camphor is not free and should be purchased if you're planning to use it in production. However, I did find a [gist containing the font](https://gist.github.com/bdno86/d1f49b6f533df3f832b39d6cc3194303) which you can mess around with.
+
+We can utilize the `text-rendering` CSS property to allow us to choose quality over speed, as well as some vendor specific properties to make our font sharper. **Note:** These should work for Chrome, Safari, and Firefox on Mac.
+
+```css
+body {
+  font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
+
+### Example
+
+In this example, I apply `-webkit-font-smoothing` followed by `text-rendering`.
+
+<Image
+  alt={`CSS Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/css-example.gif`}
+  width={1136}
+  height={898}
+/>
+
+Okay, so we have a solid font. Let's use it on some buttons!
+
+### User Experience (UX)
+
+Indicating a visual response when hovering over items like buttons and links provides a great user experience. In the example below, you'll notice the buttons shift _slightly_ up when hovered and change colors to a lighter shade of purple. The box-shadow also becomes a bit more intense.
+
+<Image
+  alt={`Buttons Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/buttons.gif`}
+  width={980}
+  height={288}
+/>
+
+```css
+button:hover {
+  color: #7795f8;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+```
+
+This really makes it feel like the button is meant to be clicked. It's a wonderful experience. You can view code to recreate the buttons [here](https://codepen.io/leerob/pen/bYQRpB) on CodePen.
+
+### Color Palette
+
+I personally love the color palette of Stripe's website. It's bright and grabs your attention with some nice accent colors.
+
+<Image
+  alt={`Color Palette`}
+  src={`/images/how-stripe-designs-beautiful-websites/color-palette.png`}
+  width={1110}
+  height={275}
+/>
+
+### Utilizing SVGs
+
+Something else that really stuck out to me was how high quality their images looked. This is because they use SVG ([Scalable Vector Graphic](https://svgontheweb.com/)) images instead of normal `.png` or `.jpg` files whenever possible. This has a multitude of benefits.
+
+- Smaller file sizes
+- Allows the ability to animate the image using CSS
+- Looks crisp on any size display from mobile to desktop
+
+That tablet displayed on the home screen? Yeah, that's a `.svg` that's been scaled and rotated. Here's the `.svg` file from Stripe's website. Notice how when you zoom in the quality remains clear.
+
+<Image
+  alt={`SVG Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/salesforce.svg`}
+  width={420 * 2}
+  height={338 * 2}
+/>
+
+### Animations
+
+Animations are the extra polish on top of an already beautiful design. Throughout all of Stripe's pages, you'll find a variety of animations like the ones shown below. Some are more subtle than others, but each serves a purpose.
+
+<Image
+  alt={`Animation Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/spinning-animation.gif`}
+  width={1170}
+  height={418}
+/>
+
+Here's another example that I really like.
+
+<Image
+  alt={`Another Animation Example`}
+  src={`/images/how-stripe-designs-beautiful-websites/animation-example.gif`}
+  width={2198}
+  height={358}
+/>
+
+If you've never worked with CSS animations, I wrote a quick article showing how to [learn them by example](/blog/learning-css-animations-by-example).
+
+For a more detailed look into creating animations, I **highly recommend** [this blog post](https://stripe.com/blog/connect-front-end-experience) by Stripe's own Benjamin De Cock breaking down the front-end experience of their product [Connect](https://stripe.com/connect).
+
+### Summary
+
+Hopefully this article gave you some insight into how Stripe designs their websites and inspired you to create something of your own! Here's three main points to leave you with.
+
+- Typography choices are critical
+- Don't underestimate the value of good UX
+- Use SVG images whenever possible
+
+Cheers! 🍻
+
+### Additional Resources
+
+- [Stripe Elements Examples](https://stripe.github.io/elements-examples/)
+- [React Stripe Elements](https://github.com/stripe/react-stripe-elements)
+- [Ember Stripe Elements](https://github.com/code-corps/ember-stripe-elements)
+- [Animate+ JavaScript Library](https://github.com/bendc/AnimatePlus)
