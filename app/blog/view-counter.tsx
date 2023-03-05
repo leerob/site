@@ -1,46 +1,38 @@
 'use client';
 
-import { useEffect } from 'react';
-import useSWR from 'swr';
+import { Suspense, useEffect } from 'react';
+import { registerView } from './actions';
+import { use } from 'react';
 
-type PostView = {
+type View = {
   slug: string;
   count: string;
 };
 
-async function fetcher<JSON = any>(
-  input: RequestInfo,
-  init?: RequestInit
-): Promise<JSON> {
-  const res = await fetch(input, init);
-  return res.json();
-}
-
 export default function ViewCounter({
   slug,
   trackView,
+  views,
 }: {
   slug: string;
   trackView: boolean;
+  views: Promise<View[]>;
 }) {
-  const { data } = useSWR<PostView[]>('/blog/views', fetcher);
-  const viewsForSlug = data && data.find((view) => view.slug === slug);
-  const views = new Number(viewsForSlug?.count || 0);
-
   useEffect(() => {
-    const registerView = () =>
-      fetch(`/blog/views/${slug}`, {
-        method: 'POST',
-      });
-
     if (trackView) {
-      registerView();
+      registerView(slug);
     }
   }, [slug]);
 
+  const data = use(views);
+  const viewsForSlug = data && data.find((view) => view.slug === slug);
+  const number = new Number(viewsForSlug?.count || 0);
+
   return (
-    <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-      {data ? `${views.toLocaleString()} views` : '​'}
-    </p>
+    <Suspense fallback=" ">
+      <p className="font-mono text-sm text-neutral-500 tracking-tighter">
+        {`${number.toLocaleString()} views`}
+      </p>
+    </Suspense>
   );
 }

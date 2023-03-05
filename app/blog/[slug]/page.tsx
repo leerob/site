@@ -5,6 +5,7 @@ import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
+import { getViews } from '../actions';
 
 export async function generateStaticParams() {
   return allBlogs.map((post) => ({
@@ -63,6 +64,7 @@ export default async function Blog({ params }) {
   }
 
   const tweets = await getTweets(post.tweetIds);
+  const views = getViews();
 
   return (
     <section>
@@ -77,7 +79,7 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        <ViewCounter slug={post.slug} trackView />
+        <ViewCounter slug={post.slug} views={views} trackView />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />
     </section>
