@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import ViewCounter from './view-counter';
-import { getViews } from './actions';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const views = getViews();
-
   return (
     <section>
       <h1 className="font-bold text-3xl font-serif mb-5">Blog</h1>
@@ -30,7 +27,8 @@ export default async function BlogPage() {
           >
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
-              <ViewCounter slug={post.slug} views={views} trackView={false} />
+              {/* @ts-expect-error Server Component */}
+              <ViewCounter slug={post.slug} trackView={false} />
             </div>
           </Link>
         ))}

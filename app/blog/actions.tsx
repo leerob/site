@@ -17,7 +17,3 @@ export async function registerView(slug: string) {
     .onDuplicateKeyUpdate({ count: views + 1 })
     .execute();
 }
-
-export async function getViews() {
-  return db.selectFrom('views').select(['slug', 'count']).execute();
-}
