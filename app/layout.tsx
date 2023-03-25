@@ -1,9 +1,9 @@
 import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import localFont from '@next/font/local';
 import Sidebar from '../components/sidebar';
-import { Analytics } from '@vercel/analytics/react';
+import AnalyticsWrapper from '../components/analytics';
 
 const kaisei = localFont({
   src: '../public/fonts/kaisei-tokumin-latin-700-normal.woff2',
@@ -74,7 +74,7 @@ export default function RootLayout({
         <Sidebar />
         <main className="flex-auto min-w-0 mt-6 md:mt-0 flex flex-col px-2 md:px-0">
           {children}
-          <Analytics />
+          <AnalyticsWrapper />
         </main>
       </body>
     </html>

@@ -77,7 +77,6 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        {/* @ts-expect-error Server Component */}
         <ViewCounter slug={post.slug} trackView />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />

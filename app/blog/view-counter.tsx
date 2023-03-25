@@ -1,31 +1,46 @@
-import 'server-only';
-import { Suspense, cache } from 'react';
-import { db } from 'lib/planetscale';
-import TrackView from './track-view';
+'use client';
 
-export const getViews = cache(async () => {
-  return db.selectFrom('views').select(['slug', 'count']).execute();
-});
+import { useEffect } from 'react';
+import useSWR from 'swr';
 
-export default async function ViewCounter({
+type PostView = {
+  slug: string;
+  count: string;
+};
+
+async function fetcher<JSON = any>(
+  input: RequestInfo,
+  init?: RequestInit
+): Promise<JSON> {
+  const res = await fetch(input, init);
+  return res.json();
+}
+
+export default function ViewCounter({
   slug,
   trackView,
 }: {
   slug: string;
-  trackView?: boolean;
+  trackView: boolean;
 }) {
-  const data = await getViews();
+  const { data } = useSWR<PostView[]>('/api/views', fetcher);
   const viewsForSlug = data && data.find((view) => view.slug === slug);
-  const number = new Number(viewsForSlug?.count || 0);
+  const views = new Number(viewsForSlug?.count || 0);
+
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`/api/views/${slug}`, {
+        method: 'POST',
+      });
+
+    if (trackView) {
+      registerView();
+    }
+  }, [slug]);
 
   return (
-    <>
-      {trackView ? <TrackView slug={slug} /> : null}
-      <Suspense fallback=" ">
-        <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-          {`${number.toLocaleString()} views`}
-        </p>
-      </Suspense>
-    </>
+    <p className="font-mono text-sm text-neutral-500 tracking-tighter">
+      {data ? `${views.toLocaleString()} views` : '​'}
+    </p>
   );
 }

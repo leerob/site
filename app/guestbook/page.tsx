@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
-import { db } from 'lib/planetscale';
+import { queryBuilder } from 'lib/planetscale';
 import { SignIn, SignOut } from './actions';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'app/api/auth/[...nextauth]/route';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import Form from './form';
 
 async function getGuestbook() {
-  return db
+  const data = await queryBuilder
     .selectFrom('guestbook')
     .select(['id', 'body', 'created_by', 'updated_at'])
     .orderBy('updated_at', 'desc')
     .limit(100)
     .execute();
+
+  return data;
 }
 
 export const metadata: Metadata = {
