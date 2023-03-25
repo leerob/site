@@ -7,6 +7,7 @@ specifiers:
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
+  '@vercel/analytics': ^0.1.11
   '@vercel/edge-config': ^0.1.1
   '@vercel/og': ^0.0.27
   autoprefixer: ^10.4.13
@@ -37,6 +38,7 @@ specifiers:
 dependencies:
   '@octokit/rest': 19.0.7
   '@planetscale/database': 1.5.0
+  '@vercel/analytics': 0.1.11_react@18.2.0
   '@vercel/edge-config': 0.1.1
   '@vercel/og': 0.0.27
   clsx: 1.2.1
@@ -1151,6 +1153,14 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
+    dev: false
+
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@vercel/edge-config/0.1.1:
