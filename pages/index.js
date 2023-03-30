@@ -69,6 +69,16 @@ export default function Home({ videos }) {
           Latest projects
         </h3>
         <ProjectCard
+          title="AI Font finder"
+          description="A web application using the GPT AI tool to recommend fonts for projects using the power of AI."
+          href="https://aifontfinder.vercel.app/"
+        />
+        <ProjectCard
+          title="Bruni Visual"
+          description="Sass application for helping designers and developers collaborate on design implementations & theming"
+          href="https://www.brunivisual.com/"
+        />
+        <ProjectCard
           title="Haynet"
           description="Sass application for ambulatory vets, based on Nextjs, GraphQL and Drupal. Launched in late 2020, currently not completely self service."
           href="https://www.haynet.vet/"

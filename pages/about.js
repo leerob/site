@@ -51,6 +51,22 @@ export default function About() {
             >
               Haynet
             </a>
+            , &nbsp;
+            <a
+              href="https://www.brunivisual.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Brunivisual
+            </a>
+            , &nbsp;
+            <a
+              href="https://aifontfinder.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AI Font finder
+            </a>
             &nbsp;and&nbsp;
             <a
               href="https://react2025.com"
