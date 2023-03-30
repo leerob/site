@@ -45,7 +45,7 @@ export default function About() {
           <p>
             Hey, I’m Joao. I'm a frontend developer, part time creator of&nbsp;
             <a
-              href="https://www.haynet.vet/"
+              href="https://www.haynetvet.com/"
               target="_blank"
               rel="noopener noreferrer"
             >

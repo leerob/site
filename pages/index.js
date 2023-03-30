@@ -81,7 +81,7 @@ export default function Home({ videos }) {
         <ProjectCard
           title="Haynet"
           description="Sass application for ambulatory vets, based on Nextjs, GraphQL and Drupal. Launched in late 2020, currently not completely self service."
-          href="https://www.haynet.vet/"
+          href="https://www.haynetvet.com/"
         />
         <ProjectCard
           title="Themeforest"
