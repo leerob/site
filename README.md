@@ -34,6 +34,20 @@ pnpm dev
 
 Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
 
+## DB Table
+- Create a Database at [PlanetScale](https://planetscale.com) 
+- Add the connection string TODO where exactly an example would help. Also i think it should be added via a secret.
+- Create a table 
+Code
+```bash
+create table views (
+  id int not null auto_increment,
+  slug varchar(255) not null,
+  count int not null,
+  primary key (id)
+)
+```
+
 ## Cloning / Forking
 
 Please review the [license](https://github.com/leerob/leerob.io/blob/main/LICENSE.txt) and remove all of my personal information (resume, blog posts, images, etc.) by running `pnpm run setup`.
