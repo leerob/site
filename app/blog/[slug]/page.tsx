@@ -6,11 +6,13 @@ import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
 
-export async function generateStaticParams() {
-  return allBlogs.map((post) => ({
-    slug: post.slug,
-  }));
-}
+export const dynamic = 'force-dynamic';
+
+// export async function generateStaticParams() {
+//   return allBlogs.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
 
 export async function generateMetadata({
   params,
@@ -66,7 +68,7 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <script type="application/ld+json">
+      <script type="application/ld+json" suppressHydrationWarning>
         {JSON.stringify(post.structuredData)}
       </script>
       <h1 className="font-bold text-3xl font-serif max-w-[650px]">

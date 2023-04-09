@@ -1,6 +1,6 @@
 import { Session } from 'next-auth';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'app/api/auth/[...nextauth]/route';
+import { authOptions } from 'app/api/auth/options';
 import { db } from 'lib/planetscale';
 import { NextResponse } from 'next/server';
 

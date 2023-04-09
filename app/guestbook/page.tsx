@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { db } from 'lib/planetscale';
 import { SignIn, SignOut } from './actions';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'app/api/auth/[...nextauth]/route';
+import { authOptions } from 'app/api/auth/options';
 import Form from './form';
 
 async function getGuestbook() {
