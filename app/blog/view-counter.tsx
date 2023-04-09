@@ -2,6 +2,7 @@ import 'server-only';
 import { Suspense, cache } from 'react';
 import { db } from 'lib/planetscale';
 import TrackView from './track-view';
+import { registerView } from './actions';
 
 export const getViews = cache(async () => {
   return db.selectFrom('views').select(['slug', 'count']).execute();
@@ -20,7 +21,7 @@ export default async function ViewCounter({
 
   return (
     <>
-      {trackView ? <TrackView slug={slug} /> : null}
+      {trackView ? <TrackView slug={slug} registerView={registerView} /> : null}
       <Suspense fallback=" ">
         <p className="font-mono text-sm text-neutral-500 tracking-tighter">
           {`${number.toLocaleString()} views`}

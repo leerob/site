@@ -1,9 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { registerView } from './actions';
 
-export default function TrackView({ slug }: { slug: string }) {
+export default function TrackView({
+  slug,
+  registerView,
+}: {
+  slug: string;
+  registerView: any;
+}) {
   useEffect(() => {
     registerView(slug);
   }, []);
