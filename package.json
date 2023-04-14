@@ -23,6 +23,7 @@
     "next": "13.2.5-canary.16",
     "next-auth": "^4.19.0",
     "next-contentlayer": "^0.3.0",
+    "oauth-1.0a": "^2.2.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-wrap-balancer": "^0.4.0",

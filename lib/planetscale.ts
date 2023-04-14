@@ -15,9 +15,15 @@ interface ViewsTable {
   count: number;
 }
 
+interface TweetCountTable {
+  count: number;
+  updated_at?: string;
+}
+
 interface Database {
   guestbook: GuestbookTable;
   views: ViewsTable;
+  tweetCount: TweetCountTable;
 }
 
 export const queryBuilder = new Kysely<Database>({
