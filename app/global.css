@@ -11,6 +11,20 @@ html {
   min-width: 360px;
 }
 
+::-webkit-scrollbar {
+  width: 0.375em;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400 dark:bg-neutral-700;
+  border-radius: 0.25em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
