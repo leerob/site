@@ -1,0 +1,63 @@
+---
+title: 'Community-Messaging Fit'
+publishedAt: '2023-03-07'
+summary: "Community-messaging fit is when you've found the right description of the product that connects with the majority of your community."
+---
+
+For startups, having product-market fit means you're building the right product for the right people. For DevRel, having community-messaging fit means you're using the right words to describe the product for that community.
+
+This post will outline a few examples of how I've found community-messaging fit and some tips to help you iterate with your messaging.
+
+## What is Community-Messaging Fit?
+
+Marketing to developers should be **clear** and **relatable**.
+
+- **Clear**—_not_ simple. The product often isn't simple, but the impact can be clear. If your explanation isn't clear yet, iterate and try again.
+- **Relatable**—_not_ obscure. Use language or analogies the community is familiar with. Connect new concepts with existing technologies or mental models.
+
+Your community members have unique backgrounds. They've learned to code from university, bootcamps, or are self-taught. They started with C, or PHP, or Python, or JavaScript. Different descriptions of your product will connect with groups of the community.
+
+**Community-messaging fit is when you've found the right description of the product that connects with the majority of your community.**
+
+Finding your fit isn't a one-time process. Your product will evolve and your community will grow. You have to be constantly iterating on the right messaging.
+
+## Finding Community-Messaging Fit
+
+Two good indicators for community-messaging fit are **virality** and **sharability**.
+
+Developers _want_ to share good content. When they've learned something new, or found a new way to explain a topic they're interested in, they will voluntarily amplify to their audience. When they have a “lightbulb moment”, they want to share this excitement.
+
+When the topic is explained clearly, and it relates back to things the developer understands, it makes it easily sharable. This is how virality happens.
+
+<Image
+  alt={`How virality happens from sharing a clear, relatable message`}
+  src={`/images/cmf/virality.png`}
+  width={2084 / 2}
+  height={802 / 2}
+/>
+
+## Examples
+
+### Next.js Middleware
+
+Since many Next.js developers have prior experience with Node.js and Express, I found that relating [Next.js Middleware](https://nextjs.org/docs/advanced-features/middleware) to Express Middleware helped it connect better with the community.
+
+Similar to how you can “stack” Express Middleware to augment parts of the routing stack, the Next.js Middleware function can be composed from a `Request` and eventually produce a `Response`.
+
+I've now landed on: Middleware gives you complete control over routing in Next.js. This description can be dialed up or down depending on the audience.
+
+### Edge Runtime
+
+The first iteration of describing the [Edge Runtime](https://vercel.com/docs/concepts/functions/edge-functions/edge-runtime) was a set of APIs that works in the browser, server, and on edge computing platforms like Vercel. Unfortunately, the name “edge” is also commonly used to refer to compute or data being globally distributed at _every_ network edge.
+
+The benefits of edge _compute_ were clear: they have no cold boots, are cost effective, and are extremely scalable. But that “edge” word still implied globally replicated. The best performance comes from co-locating your compute with your data. Feedback from the community showed that data was not usually globally replicated. So where should your “edge” compute run? Likely [regionally](https://vercel.com/blog/regional-execution-for-ultra-low-latency-rendering-at-the-edge).
+
+Edge was being used for both the _runtime_ as well as the _location_. This understanding led to an evolution of how I talked about the product. For the fastest performance, you want compute that runs close to your data, using a _light_ runtime. This light runtime is a _subset_ of Node.js APIs.
+
+## Keep on iterating
+
+Community-messaging fit is never finished because your community is ever-evolving.
+
+You take the input (questions, objections) and iterate towards the new output (analogies, clarifications). If you're not seeing virality, keep tweaking the message until it's clear and relatable. Build an inventory of analogies and examples to help connect the dots with the community.
+
+Let me know if you have good examples of clear, relatable descriptions of developer products, and _why_ they're impactful for their community.

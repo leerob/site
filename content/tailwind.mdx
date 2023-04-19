@@ -1,0 +1,138 @@
+---
+title: 'Switching to Tailwind CSS'
+publishedAt: '2020-12-14'
+summary: 'Learn why I switched my Next.js blog to use Tailwind CSS and how it impacted performance.'
+---
+
+My site is an opportunity to try new tech and form opinions on what I enjoy using. I learn best by building real things. After some evaluation, I've landed on the following tech stack:
+
+- Next.js (Upgraded to `v10`)
+- Tailwind CSS (Switched from Chakra UI)
+- `next-mdx-remote` (Switched from `next-mdx-enhanced`)
+- Deployed with Vercel
+
+I've improved performance, added new features, and cleaned up some code. Let's dive into why I chose this tech stack.
+
+### Next.js 10
+
+Next.js 10 introduced the [Image Component and Automatic Image Optimization](https://nextjs.org/docs/basic-features/image-optimization). I've optimized images manually before (using ImageAlpha / ImageOptim) as well as with automated tools (like ImgBot). With Next.js 10, I no longer need to worry about that.
+
+The `Image` component helps prevent [Cumulative Layout Shift](https://web.dev/cls/) (CLS) by defining the `width` and `height` ahead of time. No more jumping layouts. It only loads images as they're scrolled into the viewport, keeping page loads fast. Plus, images are served in modern formats like [WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types) when the browser supports it.
+
+Preventing CLS required a mental model shift. Previously, my images used normal Markdown image syntax and expanded to fill the width of their container (`700px`). For example:
+
+```jsx
+![Siamese Cat](/cat.png)
+```
+
+I wanted to avoid using the `height` and `width` props of `next/image`, if possible. The `Image` component exposes different [layout props](https://nextjs.org/docs/api-reference/next/image#layout) like `layout=fill`, which led to me believe I could [escape defining sizes](https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/layout-fill.js). In reality, there's no way to avoid layout shift unless you explicitly tell the layout how much space to allocate. Once that clicked in my head, the `Image` component made sense.
+
+This meant switching from Markdown image syntax (shown above) to using `next/image` via MDX. Since I had hundreds of Markdown files, I wanted to automate this. I created a [Node script using remark](https://github.com/leerob/leerob.io/blob/fb9c02b76128d91717a226e5c118b5c56e11696e/scripts/markdown-to-next-image.js) that transformed every image and read the dimensions from the file system. For example, the above Markdown image was transformed to:
+
+```jsx
+<Image alt="Siamese Cat" src="/cat.png" height={50} width={50} />
+```
+
+### Tailwind CSS
+
+At first glance, Tailwind seems horrible. I've heard this sentiment many times and read [Adam's rebuttals](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/). Earlier this year, I had the opportunity to try Tailwind on a project. I didn't hate it. Still, I needed a larger project to form an opinion on the framework.
+
+Well, the verdict is out. **I really enjoy Tailwind.** There was a learning curve as I tried to translate my existing CSS knowledge to Tailwind specific naming. For example, this vanilla CSS:
+
+```css
+display: flex;
+flex-direction: row;
+align-items: center;
+```
+
+translates to these utility classes with Tailwind:
+
+```jsx
+<div className="flex flex-row items-center" />
+```
+
+The Tailwind classes feel intuitive and their documentation makes it easy. The underlying idea of being bound to a design system made plenty of sense coming from Chakra UI. For example:
+
+```jsx
+import { Flex } from '@chakra-ui/react';
+
+<Flex px={4} py={2} />;
+```
+
+Chakra's [spacing system](https://chakra-ui.com/docs/theming/theme#spacing) is inspired by Tailwind. 1 spacing unit is equal to `0.25rem`, which translates to `4px` by default in most browsers. In the example below, we're adding `16px` of horizontal padding and `8px` of vertical padding.
+
+```jsx
+<div className="px-4 py-2" />
+```
+
+I still enjoy Chakra for larger applications. Having pre-built UI components saves a lot of time. Their documentation has some good notes on the [differences between Tailwind](https://chakra-ui.com/docs/comparison#how-is-chakra-different-from-tailwind-css). For further reading, check out [How Should I Style My React Application?](/blog/css-with-react).
+
+### Dark Mode
+
+Tailwind 2.0 makes using dark mode painless. Enable the `dark` [variant](https://tailwindcss.com/docs/dark-mode) and prefix your classes with `dark:`. That's pretty much it.
+
+```jsx
+<div class="bg-white dark:bg-gray-800" />
+```
+
+I was able to keep a [dark mode toggle](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/components/Container.tsx) in the navigation thanks to [next-themes](https://github.com/pacocoursey/next-themes). Tailwind and `next-themes` [pair well](https://github.com/pacocoursey/next-themes#with-tailwind) together.
+
+```jsx
+import { useTheme } from 'next-themes';
+
+const ThemeChanger = () => {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <div>
+      The current theme is: {theme}
+      <button onClick={() => setTheme('light')}>Light Mode</button>
+      <button onClick={() => setTheme('dark')}>Dark Mode</button>
+    </div>
+  );
+};
+```
+
+I hit a few issues along the way adding dark mode to Tailwind Typography. The documentation felt a bit disjointed from the rest of Tailwind. I would have expected more guidance on pairing the two together.
+
+After digging through GitHub Issues, I was able to [get things working](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/tailwind.config.js). It wasn't obvious I needed `dark:prose-dark`. I also managed to get [syntax highlighting](https://github.com/leerob/leerob.io/blob/91233631f0e1a193295ffc54d2291f3109060007/styles/global.css) working through some custom styles.
+
+## Performance
+
+Libraries like `emotion` and `styled-system` require runtime JavaScript to compute styles and generate class names. That doesn't mean you can't use [CSS-in-JS](https://github.com/callstack/linaria) [correctly](https://github.com/ben-rogerson/twin.macro). But I'd argue using "plain" CSS helps you fall into the [pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/) ([CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support), Tailwind, etc) more easily.
+
+There is no correct answer. Each has their own tradeoffs. For my simple site, I choose the performance tradeoff. I was able to reduce the [number of assets downloaded](https://nextjs.org/docs/api-reference/cli#build) **by 43%**.
+
+- 📦 Before → `~150kb` First Load JS
+- 📈 After → `~85kb` First Load JS
+
+This change, paired with `next/image`, has my [Vercel Analytics](https://vercel.com/docs/analytics) looking incredible. Zero CLS.
+
+<Image
+  alt={`Vercel Analytics`}
+  src={`/images/tailwind/analytics.jpg`}
+  width={1000}
+  height={782}
+/>
+
+### MDX
+
+[Last year](/blog/mdx), I switched from using `@next/mdx` to `next-mdx-enhanced` mostly for front matter and layout support. These are now both [solved problems](https://nextjs.org/blog/markdown). Given that [next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) will likely be deprecated soon (see below) I wanted to explore [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote).
+
+> You probably should be using `next-mdx-remote` instead of this library. It is ~50% faster, more flexible with content storage, does not induce memory issues at scale, and fits much better with the way that data is intended to flow through Next.js.
+
+With the addition of `getStaticPaths` / `getServerSideProps`, you can treat your MDX data like any other data source in Next.js. It also removes the limitation of being bound to [file-system based routing](https://nextjs.org/docs/basic-features/pages) for your `.mdx` files. Since my site has hundreds of MDX files, moving these to a top-level `data/` folder made more sense to me.
+
+Still, the MDX experience feels _fragmented_. I'd like to merge `next-mdx-remote` with `@next/mdx` so there are fewer options. [nextra](https://github.com/shuding/nextra) (another related project) allows you to use methods like `getStaticProps` directly inside your MDX files. Maybe there's a path to convergence for all three.
+
+### Other
+
+I added [absolute Imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) to improve the readability of nested imports inside files. Here's a before and after example:
+
+```jsx
+// Before
+import db from '../../lib/db-admin';
+
+// After
+import db from 'lib/db-admin';
+```

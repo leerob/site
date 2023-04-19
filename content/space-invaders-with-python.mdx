@@ -1,0 +1,38 @@
+---
+title: 'Creating a Space Invaders Clone with Python'
+publishedAt: '2014-10-31'
+summary: 'Utilizing Python and PyGame to revive a classic.'
+---
+
+To challenge my knowledge of [Python](https://www.python.org/) programming, I created a clone of the classic arcade game [Space Invaders](https://en.wikipedia.org/wiki/Space_Invaders) and added a modern twist. My goal for this project was to replicate the core gameplay of the original while enhancing the graphics and gameplay ever so slightly. I used a set of Python modules designed for writing games called [Pygame](https://www.pygame.org/news.html) to assist in the development. Prior to this project I had no experience using Pygame, so it was an exciting learning experience. You can view the full source code on my GitHub profile [here](https://github.com/leerob/Space_Invaders).
+
+---
+
+### Design
+
+<Image
+  alt={`Space Invaders`}
+  src={`/images/space-invaders-with-python/space-invaders.png`}
+  width={795}
+  height={620}
+/>
+
+If you've ever played Space Invaders, you'll notice all the familiar elements - the ship, invaders, blockers, score, and lives. The classic game features five rows of eleven enemies. For my clone, I decided to only use ten per row so the screen didn't feel too congested. To spice up the visuals from the original arcade game, I gave the enemies different colors to signify their point values. Also, rather than using a static black background, I chose to use an image of space for some extra flair. The final change from the original is the ship. Paying homage to the design from [Galaga](https://en.wikipedia.org/wiki/Galaga), I transformed the ship into a stylish cruiser.
+
+### Gameplay
+
+Space Invaders is a two-dimensional fixed shooter game in which the player controls a ship with lasers by moving it horizontally across the bottom of the screen and firing at descending aliens. The aim is to defeat five rows of ten aliens that move horizontally back and forth across the screen as they advance towards the bottom of the screen. The player defeats an alien, and earns points, by shooting it with the laser cannon. As more aliens are defeated, the aliens' movement and the game's music both speed up.
+
+The aliens attempt to destroy the ship by firing at it while they approach the bottom of the screen. If they reach the bottom, the alien invasion is successful and the game ends. A special "mystery ship" will occasionally move across the top of the screen and award bonus points if destroyed. The ship is partially protected by several stationary defense bunkers that are gradually destroyed by projectiles from the aliens and player.
+
+I tried to keep the gameplay as similar to the original as I could. The enemies descend in the same fashion and animate between their two states to show movement. Instead of having the ship explode like in the original, I used a flickering death similar to other arcade games. I retained all the sounds from the original arcade version.
+
+You can see an example of the gameplay [here.](https://www.youtube.com/watch?v=_2yUP3WMDRc) Enjoy 🎉
+
+### Resources
+
+- [Python](https://www.python.org/)
+- [Pygame](https://www.pygame.org/news.html)
+- [Original Arcade Sounds](https://www.classicgaming.cc/classics/space-invaders//sounds)
+- [Sprite Sheet](https://orig02.deviantart.net/3ed1/f/2009/242/f/4/space_invaders_sprite_sheet_by_gooperblooper22.png)
+- [Space Invaders Wiki](https://en.wikipedia.org/wiki/Space_Invaders)

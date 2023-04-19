@@ -1,0 +1,70 @@
+---
+title: 'Using Firebase with Next.js'
+publishedAt: '2019-07-19'
+summary: 'Learn how to use Firebase with Next.js and deploy it to Vercel.'
+---
+
+<Callout emoji="💡">
+
+This post has been updated for the Next.js 13 `app` directory.
+
+</Callout>
+
+This guide will show you how to use Firebase 9+ with Next.js and deploy it to Vercel.
+
+### Connecting to Firebase
+
+1. Create a project in [Firebase](https://firebase.google.com/docs/firestore/quickstart).
+1. In the Firebase console, open Settings > Service Accounts.
+1. Click Generate New Private Key, then confirm by clicking Generate Key.
+1. Download and open the JSON file containing your service account.
+1. Create a new file `.env.local` and add environment variables with those values.
+
+```bash: title=".env.local"
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=replace-me
+FIREBASE_CLIENT_EMAIL=replace-me
+FIREBASE_PRIVATE_KEY=replace-me
+```
+
+You can now fetch data from Firebase directly inside a Server Component in the `app` directory:
+
+```js title="app/page.tsx"
+import 'server-only';
+import { notFound } from 'next/navigation';
+import * as admin from 'firebase-admin';
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert({
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    }),
+  });
+}
+
+const db = admin.firestore();
+
+export default async function Page() {
+  const user = await db.collection('users').doc('leerob').get();
+
+  if (!user.exists) {
+    notFound();
+  }
+
+  return <div>Hello, {user.data().name}!</div>;
+}
+```
+
+Since all components used inside the `app` directory are Server Components by default, they are only executed on the server. This means you can safely use environment variables without exposing them to the client.
+
+For added security and peace of mind, the `page` is marked as `server-only`.
+
+## Conclusion
+
+- [View the code](https://github.com/leerob/nextjs-vercel-firebase)
+- [View the demo](https://nextjs-vercel-firebase.vercel.app/)
+- [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleerob%2Fnextjs-vercel-firebase&env=NEXT_PUBLIC_FIREBASE_PROJECT_ID,FIREBASE_CLIENT_EMAIL,FIREBASE_PRIVATE_KEY&project-name=nextjs-firebase&repo-name=nextjs-firebase)
+- [Read: Data Fetching Fundamentals](https://beta.nextjs.org/docs/data-fetching/fundamentals)
+- [Read: Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components)
+- [Read: Mutating Data](https://beta.nextjs.org/docs/data-fetching/mutating)

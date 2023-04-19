@@ -1,0 +1,141 @@
+---
+title: "Things I've Learned Building Next.js Apps"
+publishedAt: '2019-02-15'
+summary: 'CSS Modules, Font Loading, Polyfills, Dynamic Imports, MDX, and more!'
+---
+
+I've spent a lot of time in the past 4 months creating [Next.js](https://nextjs.org/) apps for both work and personal use.
+
+- I ported over my personal site from [Hugo](/blog/migrating-to-hugo) to [Next.js + MDX](https://github.com/leerob/leerob.io).
+- I created [dsmtech.io](https://dsmtech.io/) (and explored using [Mapbox](/blog/using-mapbox-with-next-js)).
+- A handful of projects at [Hy-Vee](https://innovate.hy-vee.com/) are being [rebuilt with Next.js](https://stackshare.io/hy-vee/hy-vee-aisles-online).
+
+Along that journey, I've grown to really ❤ Next.js and it's ecosystem. Here are some of the things I've learned along the way.
+
+## CSS Modules
+
+I've worked with CSS, Sass, CSS-in-JS, and now CSS Modules. For most applications, I'd recommend CSS Modules.
+
+CSS Modules prevent naming collisions and keep you from loading excess styling.
+They're built [directly into Next.js](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css), making it easy to get started.
+
+For more information, check out [How Should I Style My React Application?](/blog/css-with-react)
+
+## Font Loading
+
+By using `@font-face` in combination with the `font-display` [attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display), I can prevent FOUT (Flash of Unstyled Text) and FOIT (Flash of Invisible Text).
+
+```css
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/inter-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+```
+
+Further, I can [preload](https://web.dev/preload-critical-assets/) my optimized font file in the `Head` of my document.
+
+**Update:** For more information, check out [Web Fonts in 2021](/blog/fonts).
+
+## Dynamic Imports and Testing
+
+It's likely that at some point in scaling your Next.js app, you'll want to use an external package
+that doesn't work well server-side rendered. For me, this package was [react-select](https://react-select.com).
+
+When SSR this component, it simply did not work in Safari. Until that bug is fixed, I needed a workaround. Thanks
+to Next's [Dynamic Imports](https://nextjs.org/docs/#dynamic-import), it's easy to import a component and disable SSR.
+
+```jsx
+import dynamic from 'next/dynamic';
+
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+  ssr: false,
+});
+
+export default () => (
+  <>
+    <Header />
+    <ReactSelectNoSSR />
+    <Footer />
+  </>
+);
+```
+
+While this works, we can go a step further and provide a [loading placeholder](/blog/loading-placeholder-with-sass) to make the user experience better.
+
+```jsx
+const ReactSelectNoSSR = dynamic(() => import('../components/select'), {
+  loading: () => <Input />,
+  ssr: false,
+});
+```
+
+## MDX
+
+My [portfolio](https://github.com/leerob/leerob.io) has transformed quite a bit since I started it in 2014. Originally, it was
+just static HTML & CSS. Then, I [switched over to Hugo](/blog/migrating-to-hugo) so I could write my posts in Markdown.
+This worked well for a while, but I wanted full control over my layouts and felt much more comfortable with JavaScript.
+That's what led me to Next.js and MDX.
+
+With [MDX](https://github.com/mdx-js/mdx), I can use JSX components inside my Markdown documents with ease. This way, if I want to do
+something custom, it's as simple as importing a React component.
+
+## Link Prefetching
+
+For maximum performance, you can use the `prefetch` [attribute](https://nextjs.org/docs#prefetching-pages) on Next's `<Link>` component. This will give the perception
+the page loads instantly.
+
+- As of [Next.js 8](https://nextjs.org/blog/next-8/), `prefetch` uses `<link rel="preload">` instead of a `<script>` tag. It also only starts prefetching after `onload` to allow the browser to manage resources.
+- As of [Next.js 9](https://nextjs.org/blog/next-9/), `<Link>` components will be [automatically prefetched](https://nextjs.org/blog/next-9#prefetching-in-viewport-links) as they appear in-viewport. You no longer need to explicitly say `prefetch`.
+- As of [Next.js 13](https://nextjs.org/blog/next-13/), you no longer need to manually add `a` tags as a child of `<Link>` components.
+
+```jsx
+<Link href="/">Home</Link>
+```
+
+## Polyfills
+
+Next.js supports all modern browsers (Edge, Firefox, Chrome, Safari, Opera) out of the box.
+However, it's possible that your own code or external NPM dependencies might use features not supported in your target browsers. In this case,
+you will need to [add polyfills](https://nextjs.org/docs/basic-features/supported-browsers-features#custom-polyfills).
+
+You'll need to add a top-level import for the specific polyfill you need in your Custom `<App>` or the individual component.
+
+```js title="pages/_app.js"
+// Add your polyfills here or at the component level.
+// For example...
+// import 'resize-observer-polyfill'
+
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+```
+
+## Vercel
+
+[Vercel](https://vercel.com) is hands down the **easiest way to deploy applications** I've ever used.
+It's incredibly easy to get started and their GitHub integration will automatically deploy your app on pull requests and leave a link
+for you to review the changes. If everything looks good, it will deploy to prod when the PR is merged. Simple as that.
+
+The icing on the cake is how well the Vercel ecosystem works together. Their [domain service](https://vercel.com/domains) allows you
+to buy domains _from the command line_. I've never been able to go from an idea to a live, deployed application
+hosted on a domain so fast. I was even able to setup email forwarding for my domain and create `me@leerob.io` using [improvmx](https://improvmx.com/) 🎉
+
+**Update:** I work at Vercel now. This was written before, but still holds true 😁
+
+## Where To Get Help
+
+The Next.js and Vercel community support is _fantastic_. They're very responsive to emails, issues, or any other form
+of contact. My preferred method would be [GitHub Discussions](https://github.com/vercel/next.js/discussions). Thanks to Discussions, all
+questions and answers are indexed, searchable, and easy to find. Their [tutorials](https://nextjs.org/learn/) and [docs](https://nextjs.org/docs) are also fantastic and well-written.
+
+## Additional Resources
+
+- [Mastering Next.js](https://masteringnextjs.com/)
+- [React 2025](https://react2025.com/)
+- [Official Learn Tutorial](http://nextjs.org/learn)

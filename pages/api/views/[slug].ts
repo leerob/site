@@ -1,41 +1,41 @@
+import { queryBuilder } from 'lib/planetscale';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from 'lib/prisma';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    const slug = req.query.slug.toString();
+    const slug = req.query?.slug as string;
+    if (!slug) {
+      return res.status(400).json({ message: 'Slug is required.' });
+    }
+
+    const data = await queryBuilder
+      .selectFrom('views')
+      .where('slug', '=', slug)
+      .select(['count'])
+      .execute();
+
+    const views = !data.length ? 0 : Number(data[0].count);
 
     if (req.method === 'POST') {
-      const newOrUpdatedViews = await prisma.views.upsert({
-        where: { slug },
-        create: {
-          slug
-        },
-        update: {
-          count: {
-            increment: 1
-          }
-        }
-      });
+      await queryBuilder
+        .insertInto('views')
+        .values({ slug, count: 1 })
+        .onDuplicateKeyUpdate({ count: views + 1 })
+        .execute();
 
       return res.status(200).json({
-        total: newOrUpdatedViews.count.toString()
+        total: views + 1,
       });
     }
 
     if (req.method === 'GET') {
-      const views = await prisma.views.findUnique({
-        where: {
-          slug
-        }
-      });
-
-      return res.status(200).json({ total: views.count.toString() });
+      return res.status(200).json({ total: views });
     }
   } catch (e) {
+    console.log(e);
     return res.status(500).json({ message: e.message });
   }
 }

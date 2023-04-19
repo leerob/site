@@ -1,0 +1,133 @@
+---
+title: 'Creating a Loading Placeholder with Sass'
+publishedAt: '2017-11-12'
+summary: 'Using animation to simulate loading text content.'
+---
+
+<Image
+  alt={`Loading Placeholder`}
+  src={`/images/loading-placeholder-with-sass/example.gif`}
+  width={695}
+  height={419}
+  priority
+/>
+
+As you walk through the office at work reading the news on your phone, you enter an elevator. You had just attempted to load a new page only to be greeted with a painful loading spinner. No one likes this experience.
+
+It's inevitable that some users of your application will have slow connections. A well thought out design accounts for varying internet speeds and displays a loading state to the user. However, making the user stare at a spinning wheel for an extended period of time can drastically increase bounce rates. What if there was a better way?
+
+### Skeleton Screens
+
+Skeleton screens build anticipation for the content that is going to appear whereas loading spinners (and progress bars) put the focus on the wait time that the user has to endure. Apple has agreed with this idea enough to incorporate skeleton screens into their [iOS Human Interface Guidelines](https://developer.apple.com/ios/human-interface-guidelines/icons-and-images/launch-screen/). They recommend displaying an outline of the initial application without text or any elements that will change. This can improve the feel of any action taking longer than a few hundred milliseconds.
+
+### Examples
+
+By now, you've probably seen some examples of skeleton screens in your daily browsing without even noticing. For example - Facebook shows users gray circles and lines to represent the contents of a post in their timeline.
+
+<Image
+  alt={`Facebook Placeholder`}
+  src={`/images/loading-placeholder-with-sass/facebook.png`}
+  width={1045}
+  height={680}
+/>
+
+It's not just Facebook either. [LinkedIn](https://www.linkedin.com) has also re-designed their layout to use placeholders.
+
+<Image
+  alt={`LinkedIn Placeholder`}
+  src={`/images/loading-placeholder-with-sass/linkedin.png`}
+  width={1618}
+  height={1126}
+/>
+
+You can trick your users into thinking your website loads faster using skeleton screens. Let's look at how you can actually create this effect using some simple HTML and Scss.
+
+### Building a Placeholder
+
+First, let's create the base structure. In this example, the placeholder is supposed to represent a text area. We'll use [BEM](http://getbem.com/naming/) (Base - Element - Modifier) naming for our classes.
+
+```html
+<div class="text-input__loading">
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+  <div class="text-input__loading--line"></div>
+</div>
+```
+
+Each line should be about the same height as our text. We can use CSS animation to create a pulsating effect.
+
+```css
+&--line {
+  height: 10px;
+  margin: 10px;
+  animation: pulse 1s infinite ease-in-out;
+}
+```
+
+Next, let's define how our pulse animation should work. We can modify the opacity of the background color using `rgba` to provide an opacity between 0.0 and 1.0.
+
+```css
+@keyframes pulse {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+}
+```
+
+We also want to vary the width of each loading line. Let's create a Sass mixin to apply the given content to each nth-child in a list.
+
+```css
+@mixin nth-children($points...) {
+  @each $point in $points {
+    &:nth-child(#{$point}) {
+      @content;
+    }
+  }
+}
+```
+
+We can use the newly created mixin to change the width of all 10 children `div` elements.
+
+```css
+@include nth-children(1, 5, 9) {
+  width: 150px;
+}
+@include nth-children(2, 6, 10) {
+  width: 250px;
+}
+@include nth-children(3, 7) {
+  width: 50px;
+}
+@include nth-children(4, 8) {
+  width: 100px;
+}
+```
+
+### Final Result 🎉
+
+<Image
+  alt={`Loading Placeholder Final Result`}
+  src={`/images/loading-placeholder-with-sass/final-result.gif`}
+  width={650}
+  height={223}
+/>
+
+You can view the code and a live example on [CodePen](https://codepen.io/leerob/pen/XzRzpb?editors=1100). There's also a React library called [react-placeholder](https://github.com/buildo/react-placeholder) that achieves the same effect.
+
+Further Reading:
+
+- [The Nine States of Design](https://medium.com/swlh/the-nine-states-of-design-5bfe9b3d6d85)
+- [How the Facebook content placeholder works](https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html)

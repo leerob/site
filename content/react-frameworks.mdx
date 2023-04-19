@@ -1,0 +1,152 @@
+---
+title: 'Why You Should Use a React Framework'
+publishedAt: '2023-01-05'
+summary: 'And spend more time writing React code.'
+---
+
+Analyzing the [top 10,000 publicly accessible](https://majestic.com/reports/majestic-million) websites on the internet, we see an interesting trend: **~6%** are now built with React frameworks¹.
+
+<StaticTweet id="1604880119666905088" />
+
+You should consider using a framework (instead of building your own) because:
+
+1.  Less time connecting tools, more time building products
+2.  Easier onboarding and training of new developers
+3.  Flexibility for different rendering strategies (server, client, or static)
+4.  Opinionated choices prevent bikeshedding
+5.  Deploy anywhere and incrementally adopt
+6.  It's still just React
+
+But before we explore why you should use a framework, it's helpful to step back and look at the evolution of React.
+
+## React is evolving
+
+React changed how developers build for the web, popularizing breaking down UI into reusable components and emphasizing incremental adoption.
+
+While it's certainly still a library that can be [sprinkled into any webpage](https://beta.reactjs.org/learn/add-react-to-a-website), the **React architecture** is a blueprint for frameworks to follow to create interactive, resilient, and performant [frontend patterns](https://github.com/reactwg/react-18/discussions/37).
+
+<Image
+  alt={`React has evolved from a library to also provide an architecture for frameworks.`}
+  src={`/images/react-frameworks/evolving.jpg`}
+  width={1456 / 2}
+  height={819 / 2}
+/>
+
+Consider [React Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components). This architecture is designed for frameworks to implement. Some aspects have been standardized between React frameworks (e.g. ["use client"](https://github.com/reactjs/rfcs/pull/227)) and others are being incubated (e.g. [async/await in Server Components](https://github.com/reactjs/rfcs/pull/229)) during [beta periods](https://nextjs.org/blog/next-13#new-app-directory-beta). Frameworks can still choose their own conventions (e.g. [special filenames](https://beta.nextjs.org/docs/routing/fundamentals#special-files)).
+
+Implementing the React architecture, and ultimately great UI patterns, requires deep integration between all parts of your frontend: data fetching and loading states, code splitting and bundling, routing and rendering, and more.
+
+This is where frameworks come in.
+
+<StaticTweet id="1585076899126345728" />
+_P.S. I talked about this evolution during the [Reactathon keynote](https://www.youtube.com/watch?v=XruemT74Nok&list=PLRvKvw42Rc7O0eWo2m_guXdZsGTEQM_jj)._
+
+## Less time connecting tools, more time building products
+
+React has been around for almost [10 years](<https://en.wikipedia.org/wiki/React_(JavaScript_library)>) – and the web has grown with it.
+
+Every aspect of frontend development has seen innovation: linting, formatting, compiling, bundling, minifying, deploying, and more. Developers want to spend less time configuring their tooling and more time writing React code, while still taking advantage of these latest advancements.
+
+Teams who build with React frameworks can focus on components and business logic, and lean on battle-tested open-source solutions for routing, rendering, data fetching, styling, authentication, testing, and more.
+
+<Image
+  alt={`An iceberg of react frameworks, showing that while most of the time it seems it's just components and business logic, the reality is that under water there are many other things frameworks are handling for you, like authentication, rendering, routing, state management, i18n, styling, and more.`}
+  src={`/images/react-frameworks/iceberg.png`}
+  width={2478 / 3}
+  height={2784 / 3}
+/>
+
+Further, teams can [update to the latest versions](https://vercel.com/blog/upgrading-nextjs-for-instant-performance-improvements) of these frameworks and instantly receive both performance benefits and new tools to help them improve the end-user experience. In some cases, you [add a command line flag](https://twitter.com/leeerob/status/1607461222584291328) and take advantage of multi-year and multi-million dollar investments into [Rust-based JavaScript tooling](https://leerob.io/blog/rust). It's harder to justify investments into developer experience and tooling when building an internal framework (for most teams).
+
+## Easier onboarding and training of new developers
+
+Frameworks help you [spend more time writing React code](https://twitter.com/getDanArias/status/1607727505217294341).
+
+Compiling, bundling, minifying, code splitting, server-rendering, routing – by using a framework, your team spends less time building and maintaining solutions that are solved problems.
+
+For example, [moving from React + Express + Webpack to a framework](https://vercel.com/blog/migrating-a-large-open-source-react-application-to-next-js-and-vercel) resulted in removing **20,000+ lines of code** and **30+ dependencies** – while improving HMR (Hot Module Reloading) from **1.3s to 131ms**.
+
+Companies who choose to build with open-source React frameworks benefit from:
+
+- **Immediate knowledge ramp-up:** New engineers can ship code on day one, bringing existing knowledge of popular frameworks from their last role or hobby projects.
+- **Up-to-date documentation:** When developers are stuck, they're able to reference documentation that's updated daily or [easily search Stack Overflow for their stack trace](https://twitter.com/rauchg/status/1605997497976885248)².
+- **Best-in-class security:** Bugs and security vulnerabilities are reported and patched by communities of [thousands of developers](https://twitter.com/rauchg/status/1604880119666905088) instead of overworked platform teams.
+
+Meta (the creators of React) have their own closed-source web framework. Many innovations in React have come from years of dogfooding new features (like [Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components)) on [Facebook.com](http://facebook.com/) through this framework.
+
+Using an open-source React framework, built on top of the latest React UI primitives, is the closest way to emulate the tools developers at Facebook use to build one of the largest web applications in the world.
+
+## Flexibility for different rendering strategies
+
+React, by itself, is primarily used on the client (in the browser).
+
+In a standard React application, the browser receives an empty HTML shell from the server along with JavaScript instructions to construct the UI. This is called [client-side rendering](https://nextjs.org/learn/foundations/how-nextjs-works/client-and-server) because the initial rendering work happens on the user's device.
+
+While this is a valid pattern for certain types of applications (especially those behind a login), React's widespread usage for any type of web page made developers also want to [prerender](https://nextjs.org/learn/foundations/how-nextjs-works/rendering) content from the server. The HTML is generated in advance rather than computed on the user's device.
+
+Sending HTML from the server (or how most sites work) can provide some benefits:
+
+1.  It's typically faster to do expensive work on a powerful server than on a user's device.
+2.  It's a better user experience to see more content on the initial paint versus a loading spinner.
+3.  It's a better user experience when running A/B tests or experiments, preventing layout shifts.
+
+React does give you [APIs to render content to HTML](https://beta.reactjs.org/reference/react-dom/server/renderToPipeableStream), which might work for your use case. However, the developer is still left with connecting many pieces together for the rest of the application experience. This is where frameworks provide a cohesive experience on top of React when you need to prerender content.
+
+It might sound like all React apps should be server-rendered. The reality is, of course, more nuanced. For certain routes, it's likely better to generate a static asset and distribute it around the world using an [Edge Network](https://vercel.com/docs/concepts/edge-network/overview) (placing the assets closer to your users).
+
+For other pages, the client-only model might be better. You can download the JavaScript for the page _once_, cache the assets on the device (which have a unique hash in the file name for the given version), and then quickly navigate between pages (giving you the single-page application feel). This might be a better solution for applications that require offline support.
+
+There's no silver bullet or single rendering strategy that works. Static, server, or client rendered – all are valid options depending on the requirements. Frameworks can empower you to make this decision on a per-route basis, rather than needing to make the _entire_ application a static site or server-rendered.
+
+## Opinionated choices prevent bikeshedding
+
+Picking React is **one decision** of _many_ frontend architecture choices.
+
+You will likely also need to consider:
+
+- How should we handle routing? (i.e. using the file system or through some configuration)
+- How should we only load the JavaScript needed for the current page? (i.e. code splitting)
+- How should we prevent regressions in our codebase? (e.g. using conformance and linting)
+- How should we load data for a given page? (i.e. server or client)
+- How should we deploy our React application? (e.g. using Docker, Node.js, or static files)
+- How should we style our code? (e.g. CSS modules, Tailwind CSS, etc.)
+- How should we handle authentication?
+
+Frameworks make many of these decisions for you, as well as provide you with tools and components to solve common problems on the web. For example, you will probably need to use [images](https://nextjs.org/docs/basic-features/image-optimization), [fonts](https://nextjs.org/docs/basic-features/font-optimization), or [third-party scripts](https://nextjs.org/docs/basic-features/script) when building a website. Frameworks can give you tools to help optimize your usage of these primitives, building on top of [React, JavaScript, and the web platform](https://leerob.substack.com/p/why-im-optimistic-about-javascripts).
+
+Building with an open-source framework that's well adopted gives you access to many contributors creating, maintaining, and documenting common issues – codifying them into conformance rules and [ESLint configurations](https://nextjs.org/docs/basic-features/eslint#eslint-config). There are sometimes even suggestions built into common web performance measurement tools like [Lighthouse](https://twitter.com/leeerob/status/1506332606371086338).
+
+It's important for frameworks to be opinionated, but still have ways to eject or give access to the underlying primitives to allow developers to not feel a loss of control. For example, maybe this is a [robust plugin system](https://github.com/vitejs/awesome-vite#plugins), or maybe this is running [arbitrary routing logic before each request](https://nextjs.org/docs/advanced-features/middleware).
+
+## Deploy anywhere and incrementally adopt
+
+It's not uncommon to have internal platform teams supporting the delivery of bespoke React applications at larger companies. Since their tooling is not built on established, open platforms, developers often end up wasting time working on solved infrastructure problems.
+
+One of the benefits of using a framework is that they all have support for either self-hosting on your own infrastructure (either through Docker, Node.js, or other means like uploading static assets) or by using [managed platforms](https://twitter.com/leeerob/status/1583529921153900545), which automate every process of the [iteration](https://techcrunch.com/2022/12/20/vercel-makes-it-easier-to-collaborate-on-preview-deployments) and delivery of the software.
+
+Additionally, many React frameworks have extensive documentation on how to incrementally adopt their tool, including providing low-level features like [URL proxies](https://nextjs.org/docs/advanced-features/middleware), allowing you to rewrite some incoming requests to your new framework to your existing application.
+
+## It's still just React
+
+While frameworks provide abstractions and opinionated choices, at the end of the day, you spend the majority of your time writing React code. And that React code is portable between other React-based frameworks. This optionality is great for developers.
+
+Further, React frameworks are increasingly aligned with the [web platform](https://leerob.substack.com/p/why-im-optimistic-about-javascripts). As patterns for building React applications have emerged and solidified, we're now seeing stronger recommendations from both the [official React documentation](https://beta.reactjs.org/), as well as frameworks and libraries in the community.
+
+While the innovation in the React and single-page application space has been abundant, we're now seeing frameworks use the best of the client, and the best of the server, all while taking full advantage of the web platform.
+
+## Conclusion
+
+React has evolved. It's now a:
+
+- **Library:** Sprinkle interactivity into any webpage
+- **Architecture:** UI patterns and primitives for frameworks to build with
+- **Community:** Well used and documented, incrementally adoptable
+- **Ecosystem:** Learn once, write everywhere (web, [native](https://reactnative.dev/), [3D](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction), and more)
+
+If you're building with React, **you should probably use a framework** to spend more time writing product code, and less time connecting toolchains. The specific framework you use doesn't matter as much as the benefits from not reinventing the wheel building your own.
+
+---
+
+¹: The two React frameworks in the 6% were Next.js and Gatsby. There are other React frameworks, but these were the only detected (looking at `__next` element for Next.js and `___gatsby` for Gatsby) in the top 10,000. Also, side note, Next.js [has passed CRA](https://twitter.com/github_tracker/status/1610165503468658689) now.
+
+²: Or you can use ChatGPT (ironically [built with Next.js](https://twitter.com/rauchg/status/1598440645680828416)) to [generate a React site](https://twitter.com/leeerob/status/1598738172879437824) entirely with AI.
