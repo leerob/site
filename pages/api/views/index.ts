@@ -1,19 +1,19 @@
 import { queryBuilder } from 'lib/planetscale';
-import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler() {
   try {
     const data = await queryBuilder
       .selectFrom('views')
       .select(['slug', 'count'])
       .execute();
 
-    return res.status(200).json(data);
+    return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
   } catch (e) {
     console.log(e);
-    return res.status(500).json({ message: e.message });
+    return new Response(JSON.stringify({ message: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 }

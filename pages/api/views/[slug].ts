@@ -1,14 +1,16 @@
 import { queryBuilder } from 'lib/planetscale';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextRequest } from 'next/server'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req: NextRequest) {
   try {
-    const slug = req.query?.slug as string;
+    const { searchParams } = new URL(req.url);
+    const slug = searchParams.get('slug');
     if (!slug) {
-      return res.status(400).json({ message: 'Slug is required.' });
+      return new Response(JSON.stringify({ message: 'Slug is required.' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const data = await queryBuilder
@@ -26,16 +28,14 @@ export default async function handler(
         .onDuplicateKeyUpdate({ count: views + 1 })
         .execute();
 
-      return res.status(200).json({
-        total: views + 1,
-      });
+      return new Response(JSON.stringify({ total: views + 1 }), { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
 
     if (req.method === 'GET') {
-      return res.status(200).json({ total: views });
+      return new Response(JSON.stringify({ total: views }), { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
   } catch (e) {
     console.log(e);
-    return res.status(500).json({ message: e.message });
+    return new Response(JSON.stringify({ message: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 }
