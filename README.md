@@ -25,8 +25,8 @@ You can learn more about the `app/` directory [here](https://beta.nextjs.org/doc
 This application requires Node.js v16.13+.
 
 ```bash
-git clone https://github.com/leerob/leerob.io.git
-cd leerob.io
+git clone https://github.com/Btheignite/portfolio.git
+cd portfolio
 pnpm install
 pnpm run setup # Remove all of my personal information
 pnpm dev
