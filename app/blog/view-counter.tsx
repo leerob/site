@@ -1,46 +1,46 @@
-'use client';
+import { Suspense, cache } from 'react';
+import { queryBuilder } from 'lib/planetscale';
 
-import { useEffect } from 'react';
-import useSWR from 'swr';
+export const getViews = cache(async () => {
+  return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
+});
 
-type PostView = {
-  slug: string;
-  count: string;
-};
+export const increment = cache(async (slug: string) => {
+  const data = await queryBuilder
+    .selectFrom('views')
+    .where('slug', '=', slug)
+    .select(['count'])
+    .execute();
 
-async function fetcher<JSON = any>(
-  input: RequestInfo,
-  init?: RequestInit
-): Promise<JSON> {
-  const res = await fetch(input, init);
-  return res.json();
-}
+  const views = !data.length ? 0 : Number(data[0].count);
 
-export default function ViewCounter({
+  return queryBuilder
+    .insertInto('views')
+    .values({ slug, count: 1 })
+    .onDuplicateKeyUpdate({ count: views + 1 })
+    .execute();
+});
+
+export default async function ViewCounter({
   slug,
   trackView,
 }: {
   slug: string;
-  trackView: boolean;
+  trackView?: boolean;
 }) {
-  const { data } = useSWR<PostView[]>('/api/views', fetcher);
+  const data = await getViews();
   const viewsForSlug = data && data.find((view) => view.slug === slug);
-  const views = new Number(viewsForSlug?.count || 0);
+  const number = new Number(viewsForSlug?.count || 0);
 
-  useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/views/${slug}`, {
-        method: 'POST',
-      });
-
-    if (trackView) {
-      registerView();
-    }
-  }, [slug]);
+  if (trackView) {
+    await increment(slug);
+  }
 
   return (
-    <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-      {data ? `${views.toLocaleString()} views` : '​'}
-    </p>
+    <Suspense fallback=" ">
+      <p className="font-mono text-sm text-neutral-500 tracking-tighter">
+        {`${number.toLocaleString()} views`}
+      </p>
+    </Suspense>
   );
 }

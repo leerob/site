@@ -23,13 +23,6 @@ export const metadata: Metadata = {
     description: 'Developer, writer, and creator.',
     url: 'https://leerob.io',
     siteName: 'Lee Robinson',
-    images: [
-      {
-        url: 'https://leerob.io/og.jpg',
-        width: 1920,
-        height: 1080,
-      },
-    ],
     locale: 'en-US',
     type: 'website',
   },
@@ -47,9 +40,6 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Lee Robinson',
     card: 'summary_large_image',
-  },
-  icons: {
-    shortcut: '/favicon.ico',
   },
   verification: {
     google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',

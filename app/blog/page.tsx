@@ -27,6 +27,7 @@ export default async function BlogPage() {
           >
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
+              {/* @ts-expect-error Server Component */}
               <ViewCounter slug={post.slug} trackView={false} />
             </div>
           </Link>

@@ -8,6 +8,8 @@
     "setup": "node ./lib/setup.mjs"
   },
   "dependencies": {
+    "@auth/core": "0.0.0-31d7651f",
+    "@auth/nextjs": "0.0.0-manual.53005b90",
     "@octokit/rest": "^19.0.7",
     "@planetscale/database": "^1.7.0",
     "@vercel/analytics": "^1.0.1",
@@ -21,7 +23,7 @@
     "kysely": "^0.24.2",
     "kysely-planetscale": "^1.3.0",
     "next": "13.4.2",
-    "next-auth": "^4.22.1",
+    "next-auth": "0.0.0-pr.7214.4142955d",
     "next-contentlayer": "^0.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@auth/core': 0.0.0-31d7651f
+  '@auth/nextjs': 0.0.0-manual.53005b90
   '@octokit/rest': ^19.0.7
   '@planetscale/database': ^1.7.0
   '@tailwindcss/typography': ^0.5.9
@@ -19,7 +21,7 @@ specifiers:
   kysely: ^0.24.2
   kysely-planetscale: ^1.3.0
   next: 13.4.2
-  next-auth: ^4.22.1
+  next-auth: 0.0.0-pr.7214.4142955d
   next-contentlayer: ^0.3.2
   postcss: ^8.4.23
   react: 18.2.0
@@ -36,6 +38,8 @@ specifiers:
   typescript: 5.0.4
 
 dependencies:
+  '@auth/core': 0.0.0-31d7651f
+  '@auth/nextjs': 0.0.0-manual.53005b90_next@13.4.2+react@18.2.0
   '@octokit/rest': 19.0.7
   '@planetscale/database': 1.7.0
   '@vercel/analytics': 1.0.1
@@ -49,7 +53,7 @@ dependencies:
   kysely: 0.24.2
   kysely-planetscale: 1.3.0_7o66utai2e7mpppwlqqdxpauu4
   next: 13.4.2_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.22.1_cmp7sjki5xcmfyvhcokzzink7a
+  next-auth: 0.0.0-pr.7214.4142955d_cmp7sjki5xcmfyvhcokzzink7a
   next-contentlayer: 0.3.2_ss3q63nsk2sa2psvoscozfmuou
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -78,6 +82,51 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
     dev: true
+
+  /@auth/core/0.0.0-31d7651f:
+    resolution: {integrity: sha512-maiIRXhvd+XNuCVplQ6twNX1FzfPKdu5hkXvYvdBC2IWENNUS3tvB7o5UKdksHPdapxtFpFZA/8EVcn+8Wjqqw==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.14.4
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3_preact@10.11.3
+    dev: false
+
+  /@auth/core/0.7.1:
+    resolution: {integrity: sha512-aAgzC/VlfnvxsFYp5Wau1pfIltRUBvfVxECR0imDPUznwXIkD9alvrai60tfImtPfXp1fnJpcKfiONpF5Rg8VQ==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.14.4
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3_preact@10.11.3
+    dev: false
+
+  /@auth/nextjs/0.0.0-manual.53005b90_next@13.4.2+react@18.2.0:
+    resolution: {integrity: sha512-08M9JgzjMO+CKVIMHU4+A3E+AdR6LcNGA49hf3VVODf1Exh/2+LPBVlA1UYr+iIwKnJe9QAFhLBtk9e8nSm2JQ==}
+    peerDependencies:
+      next: ^13.4.0
+      react: ^18.2.0
+    dependencies:
+      '@auth/core': 0.7.1
+      next: 13.4.2_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+    transitivePeerDependencies:
+      - nodemailer
+    dev: false
 
   /@babel/runtime/7.21.5:
     resolution: {integrity: sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==}
@@ -2837,8 +2886,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /next-auth/4.22.1_cmp7sjki5xcmfyvhcokzzink7a:
-    resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
+  /next-auth/0.0.0-pr.7214.4142955d_cmp7sjki5xcmfyvhcokzzink7a:
+    resolution: {integrity: sha512-I0BkAsGmrappsx508NxukgDRAGtChIp+PGvAKW6tnlAcbxBa7jLDZ4Nu3vsAIvVH2tjpE+y/4Lf1f04a4PbeDQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
@@ -2974,6 +3023,10 @@ packages:
 
   /oauth/0.9.15:
     resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
+    dev: false
+
+  /oauth4webapi/2.3.0:
+    resolution: {integrity: sha512-JGkb5doGrwzVDuHwgrR4nHJayzN4h59VCed6EW8Tql6iHDfZIabCJvg6wtbn5q6pyB2hZruI3b77Nudvq7NmvA==}
     dev: false
 
   /object-assign/4.1.1:
@@ -3173,6 +3226,15 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /preact-render-to-string/5.2.3_preact@10.11.3:
+    resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==}
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: 10.11.3
+      pretty-format: 3.8.0
+    dev: false
+
   /preact-render-to-string/5.2.6_preact@10.13.2:
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
@@ -3180,6 +3242,10 @@ packages:
     dependencies:
       preact: 10.13.2
       pretty-format: 3.8.0
+    dev: false
+
+  /preact/10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
     dev: false
 
   /preact/10.13.2:
