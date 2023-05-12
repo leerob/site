@@ -10,6 +10,7 @@ import {
 import { name, about, bio, avatar } from 'lib/info';
 
 export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   let starCount, views, tweetCount;
