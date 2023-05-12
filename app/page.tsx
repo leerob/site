@@ -6,7 +6,7 @@ import {
   GitHubIcon,
   TwitterIcon,
   ViewsIcon,
-} from 'components/icons';
+} from 'app/components/icons';
 import { name, about, bio, avatar } from 'lib/info';
 
 export const revalidate = 60;

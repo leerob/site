@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Mdx } from 'components/mdx';
+import { Mdx } from 'app/components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
@@ -24,7 +24,7 @@ export async function generateMetadata({
   } = post;
   const ogImage = image
     ? `https://leerob.io${image}`
-    : `https://leerob.io/api/og?title=${title}`;
+    : `https://leerob.io/og?title=${title}`;
 
   return {
     title,

@@ -1,17 +1,14 @@
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
-const font = fetch(
-  new URL('../../public/fonts/kaisei-tokumin-bold.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get('title');
+  const font = fetch(
+    new URL('../../public/fonts/kaisei-tokumin-bold.ttf', import.meta.url)
+  ).then((res) => res.arrayBuffer());
   const fontData = await font;
 
   return new ImageResponse(

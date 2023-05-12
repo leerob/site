@@ -2,7 +2,7 @@ import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Sidebar from '../components/sidebar';
+import Sidebar from './components/sidebar';
 import { Analytics } from '@vercel/analytics/react';
 
 const kaisei = localFont({
