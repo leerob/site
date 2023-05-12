@@ -17,6 +17,10 @@ export const getBlogViews = cache(async () => {
   return data.reduce((acc, curr) => acc + Number(curr.count), 0);
 });
 
+export const getViewsCount = cache(async () => {
+  return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
+});
+
 export async function getTweetCount() {
   if (!process.env.TWITTER_API_TOKEN) {
     return 0;

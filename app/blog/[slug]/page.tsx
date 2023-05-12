@@ -5,12 +5,7 @@ import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
-
-// export async function generateStaticParams() {
-//   return allBlogs.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+import { getViewsCount } from 'lib/metrics';
 
 export async function generateMetadata({
   params,
@@ -62,7 +57,10 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const tweets = await getTweets(post.tweetIds);
+  const [allViews, tweets] = await Promise.all([
+    getViewsCount(),
+    getTweets(post.tweetIds),
+  ]);
 
   return (
     <section>
@@ -77,8 +75,7 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        {/* @ts-expect-error Server Component */}
-        <ViewCounter slug={post.slug} trackView />
+        <ViewCounter allViews={allViews} slug={post.slug} trackView />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />
     </section>

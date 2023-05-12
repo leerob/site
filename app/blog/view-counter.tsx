@@ -1,46 +1,32 @@
-import { Suspense, cache } from 'react';
-import { queryBuilder } from 'lib/planetscale';
+'use client';
 
-export const getViews = cache(async () => {
-  return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
-});
+import { useEffect } from 'react';
+import { increment } from 'app/actions';
 
-export const increment = cache(async (slug: string) => {
-  const data = await queryBuilder
-    .selectFrom('views')
-    .where('slug', '=', slug)
-    .select(['count'])
-    .execute();
-
-  const views = !data.length ? 0 : Number(data[0].count);
-
-  return queryBuilder
-    .insertInto('views')
-    .values({ slug, count: 1 })
-    .onDuplicateKeyUpdate({ count: views + 1 })
-    .execute();
-});
-
-export default async function ViewCounter({
+export default function ViewCounter({
   slug,
+  allViews,
   trackView,
 }: {
   slug: string;
+  allViews: {
+    slug: string;
+    count: number;
+  }[];
   trackView?: boolean;
 }) {
-  const data = await getViews();
-  const viewsForSlug = data && data.find((view) => view.slug === slug);
+  const viewsForSlug = allViews && allViews.find((view) => view.slug === slug);
   const number = new Number(viewsForSlug?.count || 0);
 
-  if (trackView) {
-    await increment(slug);
-  }
+  useEffect(() => {
+    if (trackView) {
+      increment(slug);
+    }
+  }, []);
 
   return (
-    <Suspense fallback=" ">
-      <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-        {`${number.toLocaleString()} views`}
-      </p>
-    </Suspense>
+    <p className="font-mono text-sm text-neutral-500 tracking-tighter">
+      {`${number.toLocaleString()} views`}
+    </p>
   );
 }
