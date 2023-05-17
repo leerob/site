@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { queryBuilder } from 'lib/planetscale';
-import { SignIn, SignOut } from './actions';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { SignIn, SignOut } from './buttons';
 import Form from './form';
+import { auth } from 'app/auth';
 
 async function getGuestbook() {
   const data = await queryBuilder
@@ -30,7 +29,7 @@ export default async function GuestbookPage() {
   try {
     const [guestbookRes, sessionRes] = await Promise.allSettled([
       getGuestbook(),
-      getServerSession(authOptions),
+      auth(),
     ]);
 
     if (guestbookRes.status === 'fulfilled' && guestbookRes.value[0]) {
