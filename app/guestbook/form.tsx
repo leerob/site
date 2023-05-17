@@ -1,52 +1,27 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useRef } from 'react';
+import { saveGuestbookEntry } from '../actions';
+import { experimental_useFormStatus as useFormStatus } from 'react-dom';
 
 export default function Form() {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const [isFetching, setIsFetching] = useState(false);
-  const isMutating = isFetching || isPending;
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setIsFetching(true);
-
-    const form = e.currentTarget;
-    const input = form.elements.namedItem('entry') as HTMLInputElement;
-
-    const res = await fetch('/api/guestbook', {
-      body: JSON.stringify({
-        body: input.value,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    });
-
-    input.value = '';
-    const { error } = await res.json();
-
-    setIsFetching(false);
-    startTransition(() => {
-      // Refresh the current route and fetch new data from the server without
-      // losing client-side browser or React state.
-      router.refresh();
-    });
-  }
+  const formRef = useRef<HTMLFormElement>(null);
+  const { pending } = useFormStatus();
 
   return (
     <form
-      style={{ opacity: !isMutating ? 1 : 0.7 }}
+      style={{ opacity: !pending ? 1 : 0.7 }}
       className="relative max-w-[500px] text-sm"
-      onSubmit={onSubmit}
+      ref={formRef}
+      action={async (formData) => {
+        await saveGuestbookEntry(formData);
+        formRef.current?.reset();
+      }}
     >
       <input
         aria-label="Your message"
         placeholder="Your message..."
-        disabled={isPending}
+        disabled={pending}
         name="entry"
         type="text"
         required
@@ -54,7 +29,7 @@ export default function Form() {
       />
       <button
         className="flex items-center justify-center absolute right-1 top-1 px-2 py-1 font-medium h-7 bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 rounded w-16"
-        disabled={isMutating}
+        disabled={pending}
         type="submit"
       >
         Sign

@@ -30,7 +30,7 @@ const computedFields = {
       description: doc.summary,
       image: doc.image
         ? `https://leerob.io${doc.image}`
-        : `https://leerob.io/api/og?title=${doc.title}`,
+        : `https://leerob.io/og?title=${doc.title}`,
       url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
       author: {
         '@type': 'Person',
