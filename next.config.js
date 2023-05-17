@@ -14,6 +14,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    appDir: true,
+  },
   redirects() {
     try {
       return get('redirects');
