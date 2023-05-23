@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import ViewCounter from './view-counter';
-import { getViewsCount } from 'lib/metrics';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const allViews = await getViewsCount();
-
   return (
     <section>
       <h1 className="font-bold text-3xl font-serif mb-5">Blog</h1>
@@ -30,11 +27,7 @@ export default async function BlogPage() {
           >
             <div className="w-full flex flex-col">
               <p>{post.title}</p>
-              <ViewCounter
-                allViews={allViews}
-                slug={post.slug}
-                trackView={false}
-              />
+              <ViewCounter slug={post.slug} trackView={false} />
             </div>
           </Link>
         ))}

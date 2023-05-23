@@ -4,7 +4,7 @@ import {
   YoutubeIcon,
   ArrowIcon,
   TwitterIcon,
-} from 'app/components/icons';
+} from 'components/icons';
 
 export const metadata: Metadata = {
   title: 'About',

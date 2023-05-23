@@ -2,7 +2,7 @@ import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Sidebar from './components/sidebar';
+import Sidebar from '../components/sidebar';
 import { Analytics } from '@vercel/analytics/react';
 
 const kaisei = localFont({
@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     description: 'Developer, writer, and creator.',
     url: 'https://leerob.io',
     siteName: 'Lee Robinson',
+    images: [
+      {
+        url: 'https://leerob.io/og.jpg',
+        width: 1920,
+        height: 1080,
+      },
+    ],
     locale: 'en-US',
     type: 'website',
   },
@@ -40,6 +47,9 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Lee Robinson',
     card: 'summary_large_image',
+  },
+  icons: {
+    shortcut: '/favicon.ico',
   },
   verification: {
     google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
