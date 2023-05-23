@@ -42,10 +42,13 @@
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "typescript": "5.0.4"
+<<<<<<< HEAD
   },
   "pnpm": {
     "overrides": {
       "@auth/core": "0.0.0-manual.527fff6c"
     }
+=======
+>>>>>>> b94c5779d0dbf1df70e1685c217f576774f7a550
   }
 }

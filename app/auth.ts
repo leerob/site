@@ -1,6 +1,5 @@
 import NextAuth from '@auth/nextjs';
 import GitHub from '@auth/nextjs/providers/github';
-import { NextResponse } from 'next/server';
 
 export const {
   handlers: { GET, POST },
