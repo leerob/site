@@ -1,11 +1,16 @@
 import NextAuth from '@auth/nextjs';
-import GitHubProvider from '@auth/core/providers/github';
+import GitHub from '@auth/nextjs/providers/github';
+import { NextResponse } from 'next/server';
 
-export const { handlers, auth } = NextAuth({
+export const {
+  handlers: { GET, POST },
+  auth,
+} = NextAuth({
   providers: [
-    GitHubProvider({
+    GitHub({
       clientId: process.env.OAUTH_CLIENT_KEY as string,
       clientSecret: process.env.OAUTH_CLIENT_SECRET as string,
     }),
   ],
+  session: { strategy: 'jwt' },
 });

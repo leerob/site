@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from 'app/auth';
-import { Session } from 'next-auth';
+import { type Session } from '@auth/nextjs/types';
 import { queryBuilder } from 'lib/planetscale';
 import { revalidatePath } from 'next/cache';
 
