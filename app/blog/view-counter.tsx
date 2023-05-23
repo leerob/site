@@ -1,46 +1,32 @@
 'use client';
 
 import { useEffect } from 'react';
-import useSWR from 'swr';
-
-type PostView = {
-  slug: string;
-  count: string;
-};
-
-async function fetcher<JSON = any>(
-  input: RequestInfo,
-  init?: RequestInit
-): Promise<JSON> {
-  const res = await fetch(input, init);
-  return res.json();
-}
+import { increment } from 'app/actions';
 
 export default function ViewCounter({
   slug,
+  allViews,
   trackView,
 }: {
   slug: string;
-  trackView: boolean;
+  allViews: {
+    slug: string;
+    count: number;
+  }[];
+  trackView?: boolean;
 }) {
-  const { data } = useSWR<PostView[]>('/api/views', fetcher);
-  const viewsForSlug = data && data.find((view) => view.slug === slug);
-  const views = new Number(viewsForSlug?.count || 0);
+  const viewsForSlug = allViews && allViews.find((view) => view.slug === slug);
+  const number = new Number(viewsForSlug?.count || 0);
 
   useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/views/${slug}`, {
-        method: 'POST',
-      });
-
     if (trackView) {
-      registerView();
+      increment(slug);
     }
-  }, [slug]);
+  }, []);
 
   return (
     <p className="font-mono text-sm text-neutral-500 tracking-tighter">
-      {data ? `${views.toLocaleString()} views` : '​'}
+      {`${number.toLocaleString()} views`}
     </p>
   );
 }
