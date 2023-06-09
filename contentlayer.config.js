@@ -34,7 +34,7 @@ const computedFields = {
       url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
       author: {
         '@type': 'Person',
-        name: 'Lee Robinson',
+        name: 'Nishant Iyer',
       },
     }),
   },

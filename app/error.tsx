@@ -16,7 +16,7 @@ export default function Error({
 
   return (
     <div>
-      <p>Oh no, something went wrong... maybe refresh?</p>
+      <p>This page is currently quite on demand..hold tight for a min till Nishant's extremely smart army bots scale up the servers!</p>
     </div>
   );
 }
