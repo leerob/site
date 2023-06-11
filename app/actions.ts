@@ -1,7 +1,8 @@
 'use server';
 
-import { auth } from 'app/auth';
-import { type Session } from '@auth/nextjs/types';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { type Session } from 'next-auth';
 import { queryBuilder } from 'lib/planetscale';
 import { revalidatePath } from 'next/cache';
 
@@ -22,7 +23,7 @@ export async function increment(slug: string) {
 }
 
 async function getSession(): Promise<Session> {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
   if (!session || !session.user) {
     throw new Error('Unauthorized');
   }
