@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Mdx } from 'app/components/mdx';
+import { Mdx } from 'components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
-import { getViewsCount } from 'lib/metrics';
+
+export async function generateStaticParams() {
+  return allBlogs.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -24,7 +29,7 @@ export async function generateMetadata({
   } = post;
   const ogImage = image
     ? `https://leerob.io${image}`
-    : `https://leerob.io/og?title=${title}`;
+    : `https://leerob.io/api/og?title=${title}`;
 
   return {
     title,
@@ -57,14 +62,11 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const [allViews, tweets] = await Promise.all([
-    getViewsCount(),
-    getTweets(post.tweetIds),
-  ]);
+  const tweets = await getTweets(post.tweetIds);
 
   return (
     <section>
-      <script type="application/ld+json" suppressHydrationWarning>
+      <script type="application/ld+json">
         {JSON.stringify(post.structuredData)}
       </script>
       <h1 className="font-bold text-3xl font-serif max-w-[650px]">
@@ -75,7 +77,7 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        <ViewCounter allViews={allViews} slug={post.slug} trackView />
+        <ViewCounter slug={post.slug} trackView />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />
     </section>
