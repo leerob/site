@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
+import { auth } from 'lib/auth';
 import { queryBuilder } from 'lib/planetscale';
-import { SignIn, SignOut } from './actions';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { SignIn, SignOut } from './buttons';
 import Form from './form';
 
 async function getGuestbook() {
@@ -22,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function GuestbookPage() {
   let entries;
@@ -30,7 +30,7 @@ export default async function GuestbookPage() {
   try {
     const [guestbookRes, sessionRes] = await Promise.allSettled([
       getGuestbook(),
-      getServerSession(authOptions),
+      auth(),
     ]);
 
     if (guestbookRes.status === 'fulfilled' && guestbookRes.value[0]) {
@@ -50,7 +50,9 @@ export default async function GuestbookPage() {
 
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>
+      <h1 className="font-bold text-2xl mb-8 tracking-tighter">
+        sign my guestbook
+      </h1>
       {session?.user ? (
         <>
           <Form />

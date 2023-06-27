@@ -9,10 +9,9 @@ export const metadata: Metadata = {
 export default function UsesPage() {
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif mb-8">Uses</h1>
-      <p className="text-neutral-700 dark:text-neutral-300 mt-2 mb-8">
-        Here's what tech I'm currently using for coding, videos, and music.
-      </p>
+      <h1 className="font-bold text-2xl mb-8 tracking-tighter">
+        here's my setup
+      </h1>
       <div className="prose prose-neutral dark:prose-invert">
         <h3 id="computer-office">Computer / Office</h3>
         <ul>
