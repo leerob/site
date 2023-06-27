@@ -304,7 +304,7 @@ export default async function Page() {
           for developers.
         </p>
       </div>
-      <div className="my-8 flex flex-row space-x-2 w-full h-14 overflow-scroll">
+      <div className="my-8 flex flex-row space-x-2 w-full h-14 overflow-x-auto">
         <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
           <svg
             width="78"
