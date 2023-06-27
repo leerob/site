@@ -30,7 +30,7 @@ export default function Tweet({
     referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
 
   return (
-    <div className="tweet rounded-lg border border-neutral-200 dark:border-neutral-800 px-6 py-4 my-4 bg-white dark:bg-neutral-900 max-w-xl mx-auto">
+    <div className="tweet rounded-lg border border-neutral-200 dark:border-neutral-800 px-6 py-4 my-8 bg-white dark:bg-neutral-900 max-w-xl mx-auto">
       <div className="flex items-center">
         <a
           className="flex h-9 w-9"
@@ -42,6 +42,7 @@ export default function Tweet({
             alt={author.username}
             height={36}
             width={36}
+            sizes="33vw"
             src={author.profile_image_url}
             className="rounded-full"
             quality={100}
