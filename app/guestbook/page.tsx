@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { queryBuilder } from 'lib/planetscale';
-import { SignIn, SignOut } from './actions';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from 'pages/api/auth/[...nextauth]';
+import { queryBuilder } from 'lib/planetscale';
+import { SignIn, SignOut } from './buttons';
 import Form from './form';
 
 async function getGuestbook() {
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function GuestbookPage() {
   let entries;

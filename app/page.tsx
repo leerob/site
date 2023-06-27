@@ -110,6 +110,7 @@ function BlogLink({ slug, name }) {
 }
 
 export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function UsesPage() {
   const [leerobSubscribers, vercelSubscribers] = await Promise.all([

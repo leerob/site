@@ -18,7 +18,7 @@ const youtube = google.youtube({
 });
 
 export const getBlogViews = cache(async () => {
-  if (!process.env.TWITTER_API_TOKEN) {
+  if (!process.env.DATABASE_URL) {
     return 0;
   }
 
@@ -28,6 +28,10 @@ export const getBlogViews = cache(async () => {
     .execute();
 
   return data.reduce((acc, curr) => acc + Number(curr.count), 0);
+});
+
+export const getViewsCount = cache(async () => {
+  return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
 });
 
 export const getLeeYouTubeSubs = cache(async () => {

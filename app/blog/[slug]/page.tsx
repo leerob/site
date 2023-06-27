@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Mdx } from 'components/mdx';
+import { Mdx } from 'app/components/mdx';
 import { allBlogs } from 'contentlayer/generated';
 import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
-
-export async function generateStaticParams() {
-  return allBlogs.map((post) => ({
-    slug: post.slug,
-  }));
-}
+import { getViewsCount } from 'lib/metrics';
 
 export async function generateMetadata({
   params,
@@ -29,7 +24,7 @@ export async function generateMetadata({
   } = post;
   const ogImage = image
     ? `https://leerob.io${image}`
-    : `https://leerob.io/api/og?title=${title}`;
+    : `https://leerob.io/og?title=${title}`;
 
   return {
     title,
@@ -91,7 +86,10 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const tweets = await getTweets(post.tweetIds);
+  const [allViews, tweets] = await Promise.all([
+    getViewsCount(),
+    getTweets(post.tweetIds),
+  ]);
 
   return (
     <section>
@@ -105,7 +103,7 @@ export default async function Blog({ params }) {
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.publishedAt)}
         </p>
-        <ViewCounter slug={post.slug} trackView />
+        <ViewCounter allViews={allViews} slug={post.slug} trackView />
       </div>
       <Mdx code={post.body.code} tweets={tweets} />
     </section>
