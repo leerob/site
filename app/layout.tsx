@@ -23,6 +23,7 @@ const graphik = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://leerob.io'),
   title: {
     default: 'Lee Robinson',
     template: '%s | Lee Robinson',

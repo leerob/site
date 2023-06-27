@@ -8,7 +8,12 @@ import meetups from 'public/images/home/meetups.jpg';
 import vercel from 'public/images/home/vercel.jpg';
 import avatar from 'app/avatar.jpg';
 import ViewCounter from 'app/blog/view-counter';
-import { getLeeYouTubeSubs, getVercelYouTubeSubs } from 'lib/metrics';
+import {
+  getLeeYouTubeSubs,
+  getVercelYouTubeSubs,
+  getViewsCount,
+} from 'lib/metrics';
+import { Suspense } from 'react';
 
 function Badge(props) {
   return (
@@ -90,7 +95,9 @@ function ChannelLink({ img, link, name, subscribers }) {
   );
 }
 
-function BlogLink({ slug, name }) {
+async function BlogLink({ slug, name }) {
+  const allViews = await getViewsCount();
+
   return (
     <a
       href={`/blog/${slug}`}
@@ -100,7 +107,7 @@ function BlogLink({ slug, name }) {
         <p className="font-bold text-neutral-900 dark:text-neutral-100">
           {name}
         </p>
-        <ViewCounter slug={slug} trackView={false} />
+        <ViewCounter allViews={allViews} slug={slug} trackView={false} />
       </div>
       <div className="text-neutral-700 dark:text-neutral-300">
         <ArrowIcon />
@@ -110,9 +117,8 @@ function BlogLink({ slug, name }) {
 }
 
 export const revalidate = 60;
-export const dynamic = 'force-dynamic';
 
-export default async function UsesPage() {
+export default async function Page() {
   const [leerobSubscribers, vercelSubscribers] = await Promise.all([
     getLeeYouTubeSubs(),
     getVercelYouTubeSubs(),
@@ -280,15 +286,17 @@ export default async function UsesPage() {
         </p>
       </div>
       <div className="my-8 flex flex-col space-y-4 w-full">
-        <BlogLink
-          name="What Makes A Great Developer Experience?"
-          slug="developer-experience-examples"
-        />
-        <BlogLink
-          name="2023 State of Databases for Serverless & Edge"
-          slug="backend"
-        />
-        <BlogLink name="The Story of Heroku" slug="heroku" />
+        <Suspense>
+          <BlogLink
+            name="What Makes A Great Developer Experience?"
+            slug="developer-experience-examples"
+          />
+          <BlogLink
+            name="2023 State of Databases for Serverless & Edge"
+            slug="backend"
+          />
+          <BlogLink name="The Story of Heroku" slug="heroku" />
+        </Suspense>
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
