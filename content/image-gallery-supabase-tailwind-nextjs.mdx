@@ -106,7 +106,7 @@ To help achieve good [Core Web Vitals](https://nextjs.org/learn/seo/web-performa
 
 Let's update our `Image` component to use `next/image`, and rename it to `BlurImage` to prevent a naming collison with the `Image` component we imported:
 
-```jsx {1,7-13} title="pages/index.tsx"
+```jsx title="pages/index.tsx"
 import Image from 'next/image';
 
 function BlurImage() {
@@ -146,7 +146,7 @@ module.exports = {
 
 When images are loading, we'd like to show a blurred version for a better user experience. While the Image component does include this for [local image files](https://nextjs.org/docs/basic-features/image-optimization#local-images), we're going to be retrieving images from Supabase soon. Instead, we can use `onLoadingComplete` and CSS animation + blur to achieve a similar effect.
 
-```jsx {2,4-6,9,19-25} title="pages/index.tsx"
+```jsx title="pages/index.tsx"
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -236,16 +236,7 @@ First, we will need to create a new table inside Supabase for our images.
   height={2228 / 2}
 />
 
-We can add data directly through the Supabase web editor, but for demonstration purposes, here's how we could insert data using our Supabase client:
-
-```jsx
-await supabaseAdmin.from('images').insert([{
-  name: 'Pedro Duarte',
-  href: 'https://twitter.com/peduarte/status/1463897468383412231',
-  username: '@peduarte',
-  imageSrc: 'https://pbs.twimg.com/media/FFDOtLkWYAsWjTM?format=jpg',
-});
-```
+We can add data directly through the Supabase web editor.
 
 ## Fetching Data from Supabase
 
@@ -257,7 +248,7 @@ const { data } = await supabaseAdmin.from('images').select('*');
 
 We'll fetch this data inside `getStaticProps`. [This function](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) allows you to fetch data on the server and return it as props for the default React component exported in the Page:
 
-```jsx {8-15,17-23,25} title="pages/index.tsx"
+```tsx title="pages/index.tsx"
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseAdmin = createClient(
@@ -269,18 +260,18 @@ export async function getStaticProps() {
   const { data } = await supabaseAdmin.from('images').select('*');
   return {
     props: {
-      images: data
-    }
+      images: data,
+    },
   };
 }
 
 type Image = {
-  id: number
-  href: string
-  imageSrc: string
-  name: string
-  username: string
-}
+  id: number;
+  href: string;
+  imageSrc: string;
+  name: string;
+  username: string;
+};
 
 export default function Gallery({ images }: { images: Image[] }) {
   return (
@@ -295,7 +286,7 @@ export default function Gallery({ images }: { images: Image[] }) {
 
 We'll also add a type for our `Image` data returned from Supabase. Next, we can update our placeholder for images to use the real data. We'll also use our new `BlurImage` component, which makes use of `next/image` under the hood:
 
-```jsx {5-7} title="pages/index.tsx"
+```jsx title="pages/index.tsx"
 export default function Gallery({ images }: { images: Image[] }) {
   return (
     <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -311,7 +302,7 @@ export default function Gallery({ images }: { images: Image[] }) {
 
 After mapping through the list of `images`, we forward the current `image` as a prop to our `BlurImage` component. Let's update that component to replace the placeholder data:
 
-```jsx {1,5,9,21,22} title="pages/index.tsx"
+```jsx title="pages/index.tsx"
 function BlurImage({ image }: { image: Image }) {
   const [isLoading, setLoading] = useState(true);
 
