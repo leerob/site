@@ -15,8 +15,6 @@ import {
 } from 'lib/metrics';
 import { Suspense } from 'react';
 
-export const runtime = 'edge';
-
 function Badge(props) {
   return (
     <a
