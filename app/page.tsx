@@ -15,6 +15,8 @@ import {
 } from 'lib/metrics';
 import { Suspense } from 'react';
 
+export const runtime = 'edge';
+
 function Badge(props) {
   return (
     <a
@@ -115,8 +117,6 @@ async function BlogLink({ slug, name }) {
   );
 }
 
-export const revalidate = 60;
-
 export default async function Page() {
   const [leerobSubscribers, vercelSubscribers] = await Promise.all([
     getLeeYouTubeSubs(),
@@ -198,7 +198,7 @@ export default async function Page() {
             alt="Me speaking on stage at React Summit about the future of Next.js"
             src={summit}
             fill
-            sizes="33vw"
+            sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover"
           />
@@ -208,7 +208,7 @@ export default async function Page() {
             alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
             src={filming}
             fill
-            sizes="33vw"
+            sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover object-[-16px] sm:object-center"
           />
@@ -218,7 +218,7 @@ export default async function Page() {
             alt="Me standing on stage at Reactathon delivering the keynote"
             src={reactathon}
             fill
-            sizes="33vw"
+            sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover object-top sm:object-center"
           />
@@ -228,7 +228,7 @@ export default async function Page() {
             alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
             src={smashing}
             fill
-            sizes="33vw"
+            sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover"
           />
@@ -238,7 +238,7 @@ export default async function Page() {
             alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
             src={ship}
             fill
-            sizes="33vw"
+            sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover"
           />
@@ -248,7 +248,7 @@ export default async function Page() {
             alt="My badge on top of a pile of badges from a Vercel meetup we held"
             src={meetups}
             fill
-            sizes="33vw"
+            sizes="(min-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover"
           />
