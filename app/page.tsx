@@ -257,7 +257,7 @@ export default async function Page() {
       <div className="prose prose-neutral dark:prose-invert">
         <p>
           I create educational content for developers, teaching them about web
-          developer, JavaScript and TypeScript, React and Next.js, and more.
+          development, JavaScript and TypeScript, React and Next.js, and more.
           This comes in all forms: blog posts, videos, tweets, conference talks,
           and workshops. You can watch some of my favorites below.
         </p>
@@ -278,10 +278,10 @@ export default async function Page() {
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          Over the past decade, I've been writing content on my blog and my
-          newsletter. I try to keep things simple. You'll find writing about
-          technologies I'm interested in at the time, or how I'm learning and
-          growing in my careers, sharing knowledge along the way.
+          Over the past decade, I've written content on my blog and newsletter.
+          I try to keep things simple. You'll find writing about technologies
+          I'm interested in at the time, or how I'm learning and growing in my
+          careers, sharing knowledge along the way.
         </p>
       </div>
       <div className="my-8 flex flex-col space-y-4 w-full">
