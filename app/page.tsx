@@ -57,7 +57,6 @@ function ChannelLink({ img, link, name, subscribers }) {
             height={64}
             width={64}
             sizes="33vw"
-            priority
             className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
           />
           <div className="border border-neutral-200 dark:border-neutral-700 rounded-full bg-white inline-flex p-1 relative h-6 w-6 items-center -top-6 -right-10">
