@@ -42,7 +42,7 @@ const ContentSecurityPolicy = `
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
-    font-src 'self';
+    font-src 'self' data:;
 `;
 
 const securityHeaders = [
