@@ -30,6 +30,7 @@
     "rehype-pretty-code": "^0.10.0",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "rss": "^1.2.2",
     "server-only": "^0.0.1",
     "shiki": "^0.14.3",
     "swr": "^2.2.0"
@@ -39,6 +40,7 @@
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@types/rss": "^0.0.30",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
