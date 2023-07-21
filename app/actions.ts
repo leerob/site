@@ -45,11 +45,17 @@ export async function saveGuestbookEntry(formData: FormData) {
 
   revalidatePath('/guestbook');
 
-  const resend = new Resend(process.env.RESEND_SECRET);
-  await resend.emails.send({
-    from: email,
-    to: 'me@leerob.io',
-    subject: 'New Guestbook Entry',
-    html: `<p>${body}</p>`,
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.RESEND_SECRET}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: email,
+      to: 'me@leerob.io',
+      subject: 'New Guestbook Entry',
+      html: `<p>${body}</p>`,
+    }),
   });
 }
