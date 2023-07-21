@@ -4,6 +4,7 @@ import { auth } from 'lib/auth';
 import { type Session } from 'next-auth';
 import { queryBuilder } from 'lib/planetscale';
 import { revalidatePath } from 'next/cache';
+import { Resend } from 'resend';
 
 export async function increment(slug: string) {
   const data = await queryBuilder
@@ -43,4 +44,21 @@ export async function saveGuestbookEntry(formData: FormData) {
     .execute();
 
   revalidatePath('/guestbook');
+
+  const data = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.RESEND_SECRET}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: email,
+      to: 'me@leerob.io',
+      subject: 'New Guestbook Entry',
+      html: `<p>${body}</p>`,
+    }),
+  });
+
+  const response = await data.json();
+  console.log('Email sent', response);
 }
