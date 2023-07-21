@@ -4,7 +4,6 @@ import { auth } from 'lib/auth';
 import { type Session } from 'next-auth';
 import { queryBuilder } from 'lib/planetscale';
 import { revalidatePath } from 'next/cache';
-import { Resend } from 'resend';
 
 export async function increment(slug: string) {
   const data = await queryBuilder
