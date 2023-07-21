@@ -45,7 +45,7 @@ export async function saveGuestbookEntry(formData: FormData) {
 
   revalidatePath('/guestbook');
 
-  await fetch('https://api.resend.com/emails', {
+  const data = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${process.env.RESEND_SECRET}`,
@@ -58,4 +58,7 @@ export async function saveGuestbookEntry(formData: FormData) {
       html: `<p>${body}</p>`,
     }),
   });
+
+  const response = await data.json();
+  console.log('Email sent', response);
 }
