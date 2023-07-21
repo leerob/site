@@ -4,6 +4,7 @@ import { auth } from 'lib/auth';
 import { type Session } from 'next-auth';
 import { queryBuilder } from 'lib/planetscale';
 import { revalidatePath } from 'next/cache';
+import { Resend } from 'resend';
 
 export async function increment(slug: string) {
   const data = await queryBuilder
@@ -43,4 +44,12 @@ export async function saveGuestbookEntry(formData: FormData) {
     .execute();
 
   revalidatePath('/guestbook');
+
+  const resend = new Resend(process.env.RESEND_SECRET);
+  await resend.emails.send({
+    from: email,
+    to: 'me@leerob.io',
+    subject: 'New Guestbook Entry',
+    html: `<p>${body}</p>`,
+  });
 }
