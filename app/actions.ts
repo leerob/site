@@ -14,11 +14,12 @@ export async function increment(slug: string) {
 
   const views = !data.length ? 0 : Number(data[0].count);
 
-  return queryBuilder
+  await queryBuilder
     .insertInto('views')
     .values({ slug, count: 1 })
     .onDuplicateKeyUpdate({ count: views + 1 })
     .execute();
+  return;
 }
 
 async function getSession(): Promise<Session> {
