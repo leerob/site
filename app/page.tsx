@@ -331,7 +331,7 @@ export default async function Page() {
           Over the past decade, I've written content on my blog and newsletter.
           I try to keep things simple. You'll find writing about technologies
           I'm interested in at the time, or how I'm learning and growing in my
-          careers, sharing knowledge along the way.
+          career, sharing knowledge along the way.
         </p>
       </div>
       <div className="my-8 flex flex-col space-y-4 w-full">
