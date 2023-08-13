@@ -39,6 +39,10 @@ export const getViewsCount = cache(async () => {
 });
 
 export const getLeeYouTubeSubs = cache(async () => {
+  if (!(process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY)) {
+    return 0;
+  }
+  
   const response = await youtube.channels.list({
     id: ['UCZMli3czZnd1uoc1ShTouQw'],
     part: ['statistics'],
@@ -49,6 +53,10 @@ export const getLeeYouTubeSubs = cache(async () => {
 });
 
 export const getVercelYouTubeSubs = cache(async () => {
+  if (!(process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY)) {
+    return 0;
+  }
+  
   const response = await youtube.channels.list({
     id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
     part: ['statistics'],
