@@ -38,3 +38,6 @@ next-env.d.ts
 
 # contentlayer
 .contentlayer
+
+# jetbrains IDE files
+.idea

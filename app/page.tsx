@@ -14,6 +14,7 @@ import {
   getViewsCount,
 } from 'lib/metrics';
 import { Suspense } from 'react';
+import { ZoomedImage } from "app/components/zoomed-image";
 
 function Badge(props) {
   return (
@@ -42,7 +43,7 @@ function ArrowIcon() {
   );
 }
 
-function ChannelLink({ img, link, name, subscribers }) {
+function ChannelLink({img, link, name, subscribers}) {
   return (
     <a
       href={link}
@@ -88,15 +89,15 @@ function ChannelLink({ img, link, name, subscribers }) {
         </div>
       </div>
       <div className="text-neutral-700 dark:text-neutral-300">
-        <ArrowIcon />
+        <ArrowIcon/>
       </div>
     </a>
   );
 }
 
-async function BlogLink({ slug, name }) {
+async function BlogLink({slug, name}) {
   const allViews = await getViewsCount();
-
+  
   return (
     <a
       href={`/blog/${slug}`}
@@ -106,10 +107,10 @@ async function BlogLink({ slug, name }) {
         <p className="font-bold text-neutral-900 dark:text-neutral-100">
           {name}
         </p>
-        <ViewCounter allViews={allViews} slug={slug} trackView={false} />
+        <ViewCounter allViews={allViews} slug={slug} trackView={false}/>
       </div>
       <div className="text-neutral-700 dark:text-neutral-300">
-        <ArrowIcon />
+        <ArrowIcon/>
       </div>
     </a>
   );
@@ -120,7 +121,7 @@ export default async function Page() {
     getLeeYouTubeSubs(),
     getVercelYouTubeSubs(),
   ]);
-
+  
   return (
     <section>
       <h1 className="font-bold text-2xl mb-8 tracking-tighter">
@@ -172,7 +173,7 @@ export default async function Page() {
               width={180}
               height={180}
             >
-              <circle cx={90} cy={90} r={90} fill="#000" />
+              <circle cx={90} cy={90} r={90} fill="#000"/>
             </mask>
             <g mask="url(#a)">
               <circle
@@ -201,8 +202,8 @@ export default async function Page() {
                 y2={160.5}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#fff" />
-                <stop offset={1} stopColor="#fff" stopOpacity={0} />
+                <stop stopColor="#fff"/>
+                <stop offset={1} stopColor="#fff" stopOpacity={0}/>
               </linearGradient>
               <linearGradient
                 id="paint1_linear_408_139"
@@ -212,8 +213,8 @@ export default async function Page() {
                 y2={106.875}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#fff" />
-                <stop offset={1} stopColor="#fff" stopOpacity={0} />
+                <stop stopColor="#fff"/>
+                <stop offset={1} stopColor="#fff" stopOpacity={0}/>
               </linearGradient>
             </defs>
           </svg>
@@ -243,66 +244,78 @@ export default async function Page() {
         .
       </p>
       <div className="columns-2 sm:columns-3 gap-4 my-8">
-        <div className="relative h-40 mb-4">
-          <Image
-            alt="Me speaking on stage at React Summit about the future of Next.js"
-            src={summit}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <div className="relative h-80 mb-4 sm:mb-0">
-          <Image
-            alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
-            src={filming}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover object-[-16px] sm:object-center"
-          />
-        </div>
-        <div className="relative h-40 sm:h-80 sm:mb-4">
-          <Image
-            alt="Me standing on stage at Reactathon delivering the keynote"
-            src={reactathon}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover object-top sm:object-center"
-          />
-        </div>
-        <div className="relative h-40 mb-4 sm:mb-0">
-          <Image
-            alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
-            src={smashing}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <div className="relative h-40 mb-4">
-          <Image
-            alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
-            src={ship}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <div className="relative h-80">
-          <Image
-            alt="My badge on top of a pile of badges from a Vercel meetup we held"
-            src={meetups}
-            fill
-            sizes="(min-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover"
-          />
-        </div>
+        <ZoomedImage asChild>
+          <div className="relative h-40 mb-4">
+            <Image
+              alt="Me speaking on stage at React Summit about the future of Next.js"
+              src={summit}
+              fill
+              sizes="(max-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover"
+            />
+          </div>
+        </ZoomedImage>
+        <ZoomedImage asChild>
+          <div className="relative h-80 mb-4 sm:mb-0">
+            <Image
+              alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
+              src={filming}
+              fill
+              sizes="(max-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover object-[-16px] sm:object-center"
+            />
+          </div>
+        </ZoomedImage>
+        <ZoomedImage asChild>
+          <div className="relative h-40 sm:h-80 sm:mb-4">
+            <Image
+              alt="Me standing on stage at Reactathon delivering the keynote"
+              src={reactathon}
+              fill
+              sizes="(max-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover object-top sm:object-center"
+            />
+          </div>
+        </ZoomedImage>
+        <ZoomedImage asChild>
+          <div className="relative h-40 mb-4 sm:mb-0">
+            <Image
+              alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
+              src={smashing}
+              fill
+              sizes="(max-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover"
+            />
+          </div>
+        </ZoomedImage>
+        <ZoomedImage asChild>
+          <div className="relative h-40 mb-4">
+            <Image
+              alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
+              src={ship}
+              fill
+              sizes="(max-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover"
+            />
+          </div>
+        </ZoomedImage>
+        <ZoomedImage asChild>
+          <div className="relative h-80">
+            <Image
+              alt="My badge on top of a pile of badges from a Vercel meetup we held"
+              src={meetups}
+              fill
+              sizes="(min-width: 768px) 213px, 33vw"
+              priority
+              className="rounded-lg object-cover"
+            />
+          </div>
+        </ZoomedImage>
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
@@ -344,7 +357,7 @@ export default async function Page() {
             name="2023 State of Databases for Serverless & Edge"
             slug="backend"
           />
-          <BlogLink name="The Story of Heroku" slug="heroku" />
+          <BlogLink name="The Story of Heroku" slug="heroku"/>
         </Suspense>
       </div>
       <div className="prose prose-neutral dark:prose-invert">
@@ -373,7 +386,7 @@ export default async function Page() {
             </g>
             <defs>
               <clipPath id="clip0_52_620">
-                <rect width="78" height="20" fill="white" />
+                <rect width="78" height="20" fill="white"/>
               </clipPath>
             </defs>
           </svg>
@@ -427,7 +440,7 @@ export default async function Page() {
               <path
                 d="M10.9654 18.5433C10.4732 19.1488 9.47531 18.8171 9.46345 18.0439L9.29004 6.73621H17.0731C18.4828 6.73621 19.2691 8.32684 18.3925 9.4054L10.9654 18.5433Z"
                 fill="url(#paint1_linear_52_607)"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <path
                 d="M7.79949 0.34824C8.29166 -0.257305 9.28959 0.0744903 9.30145 0.847616L9.37744 12.1553H1.69177C0.281999 12.1553 -0.504254 10.5647 0.372382 9.48614L7.79949 0.34824Z"
@@ -443,8 +456,8 @@ export default async function Page() {
                 y2="12.192"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#249361" />
-                <stop offset="1" stopColor="#3ECF8E" />
+                <stop stopColor="#249361"/>
+                <stop offset="1" stopColor="#3ECF8E"/>
               </linearGradient>
               <linearGradient
                 id="paint1_linear_52_607"
@@ -454,11 +467,11 @@ export default async function Page() {
                 y2="11.0016"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop />
-                <stop offset="1" stopOpacity="0" />
+                <stop/>
+                <stop offset="1" stopOpacity="0"/>
               </linearGradient>
               <clipPath id="clip0_52_607">
-                <rect width="100" height="19" fill="white" />
+                <rect width="100" height="19" fill="white"/>
               </clipPath>
             </defs>
           </svg>
@@ -516,7 +529,7 @@ export default async function Page() {
             </g>
             <defs>
               <clipPath id="clip0_52_626">
-                <rect width="77" height="19" fill="white" />
+                <rect width="77" height="19" fill="white"/>
               </clipPath>
             </defs>
           </svg>
@@ -537,7 +550,7 @@ export default async function Page() {
             target="_blank"
             href="https://twitter.com/leeerob"
           >
-            <ArrowIcon />
+            <ArrowIcon/>
             <p className="h-7 ml-2">follow me</p>
           </a>
         </li>
@@ -548,7 +561,7 @@ export default async function Page() {
             target="_blank"
             href="https://leerob.substack.com"
           >
-            <ArrowIcon />
+            <ArrowIcon/>
             <p className="h-7 ml-2">get email updates</p>
           </a>
         </li>
