@@ -6,17 +6,6 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
-  images: {
-    formats: ['image/avif', 'image/webp'],
-    // Twitter Profile Picture
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'pbs.twimg.com',
-        pathname: '/**',
-      },
-    ],
-  },
   redirects() {
     try {
       return get('redirects');

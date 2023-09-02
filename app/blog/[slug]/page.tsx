@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from 'app/components/mdx';
 import { allBlogs } from 'contentlayer/generated';
-import { getTweets } from 'lib/twitter';
 import Balancer from 'react-wrap-balancer';
 import ViewCounter from '../view-counter';
 import { getViewsCount } from 'lib/metrics';
+import { Suspense } from 'react';
 
 export async function generateMetadata({
   params,
@@ -86,17 +86,14 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const [allViews, tweets] = await Promise.all([
-    getViewsCount(),
-    getTweets(post.tweetIds),
-  ]);
-
   return (
     <section>
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(post.structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(post.structuredData),
+        }}
       ></script>
       <h1 className="font-bold text-2xl tracking-tighter max-w-[650px]">
         <Balancer>{post.title}</Balancer>
@@ -105,9 +102,22 @@ export default async function Blog({ params }) {
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.publishedAt)}
         </p>
-        <ViewCounter allViews={allViews} slug={post.slug} trackView />
+        {/* I also want an error boundary here */}
+        <Suspense>
+          <Views slug={post.slug} />
+        </Suspense>
       </div>
-      <Mdx code={post.body.code} tweets={tweets} />
+      <Mdx code={post.body.code} />
     </section>
   );
+}
+
+async function Views({ slug }: { slug: string }) {
+  let views;
+  try {
+    views = await getViewsCount();
+  } catch (error) {
+    console.error(error);
+  }
+  return <ViewCounter allViews={views} slug={slug} trackView />;
 }
