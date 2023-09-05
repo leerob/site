@@ -33,15 +33,11 @@ export default function Home({ videos }) {
               <div className="prose text-gray-600 dark:text-gray-400">
                 Hi there, I am Joao. A Frontend developer, builder and
                 javascript enthusiast. I work as a senior Frontend Developer at{' '}
-                <Link href="https://www.jobiqo.com/">
-                  <a>jobiqo</a>
-                </Link>
+                <Link href="https://www.jobiqo.com/">jobiqo</Link>
                 . Congratulations, you found my digital garden, here have a 🍺
                 it's on me.
                 <br />
-                <Link href="/about">
-                  <a>Learn more about me.</a>
-                </Link>
+                <Link href="/about">Learn more about me.</Link>
               </div>
             </div>
           </div>

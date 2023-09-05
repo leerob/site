@@ -13,33 +13,5 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/LeeRobinson.pdf",
-      "destination": "/robinson-resume-2019.pdf"
-    },
-    {
-      "source": "/projects",
-      "destination": "/about"
-    },
-    {
-      "source": "/blog/now-env-variables-size-limit",
-      "destination": "/blog/vercel-env-variables-size-limit"
-    },
-    {
-      "source": "/blog/going-serverless-next-firebase-now",
-      "destination": "/blog/nextjs-firebase-serverless"
-    },
-    {
-      "source": "/30min",
-      "destination": "https://calendly.com/lee-vercel/30min"
-    },
-    {
-      "source": "/youtube",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw"
-    },
-    {
-      "source": "/live",
-      "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw/live"
-    }
   ]
 }

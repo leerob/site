@@ -85,19 +85,28 @@ export default function Container(props) {
           )}
         </button>
         <div>
-          <NextLink href="/">
-            <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">Home</a>
+          <NextLink
+            className="p-1 text-gray-900 sm:p-4 dark:text-gray-100"
+            href="/"
+          >
+            Home
           </NextLink>
           {/* <NextLink href="/dashboard">
             <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">
               Dashboard
             </a>
           </NextLink> */}
-          <NextLink href="/blog">
-            <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">Blog</a>
+          <NextLink
+            className="p-1 text-gray-900 sm:p-4 dark:text-gray-100"
+            href="/blog"
+          >
+            Blog
           </NextLink>
-          <NextLink href="/about">
-            <a className="p-1 text-gray-900 sm:p-4 dark:text-gray-100">About</a>
+          <NextLink
+            className="p-1 text-gray-900 sm:p-4 dark:text-gray-100"
+            href="/about"
+          >
+            About
           </NextLink>
         </div>
       </nav>

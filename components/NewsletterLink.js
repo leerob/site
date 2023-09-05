@@ -5,7 +5,7 @@ export default function NewsletterLink({ slug, publishedAt }) {
   return (
     <li>
       <Link href={`/newsletter/${slug}`}>
-        <a>{format(parseISO(publishedAt), 'MMMM dd, yyyy')}</a>
+        <span>{format(parseISO(publishedAt), 'MMMM dd, yyyy')}</span>
       </Link>
     </li>
   );
