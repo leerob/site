@@ -1,11 +1,8 @@
 import { useState, useRef } from 'react';
-import Link from 'next/link';
 import useSWR from 'swr';
 import { trackGoal } from 'fathom-client';
 
 import fetcher from '@/lib/fetcher';
-import SuccessMessage from '@/components/SuccessMessage';
-import ErrorMessage from '@/components/ErrorMessage';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function Subscribe() {
@@ -71,18 +68,6 @@ export default function Subscribe() {
           {form.state === 'loading' ? <LoadingSpinner /> : 'Subscribe'}
         </button>
       </form>
-      {form.state === 'error' ? (
-        <ErrorMessage>{form.message}</ErrorMessage>
-      ) : form.state === 'success' ? (
-        <SuccessMessage>{form.message}</SuccessMessage>
-      ) : (
-        <p className="text-sm text-gray-800 dark:text-gray-200">
-          {`${
-            subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
-          } subscribers – `}
-          <Link href="/newsletter">30 issues</Link>
-        </p>
-      )}
     </div>
   );
 }
