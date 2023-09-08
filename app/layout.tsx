@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: 'Developer, writer, and creator.',
     url: 'https://leerob.io',
     siteName: 'Lee Robinson',
-    locale: 'en-US',
+    locale: 'en_US',
     type: 'website',
   },
   robots: {
