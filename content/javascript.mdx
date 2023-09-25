@@ -1,0 +1,128 @@
+---
+title: "Why I'm Optimistic About JavaScript's Future"
+publishedAt: '2022-12-18'
+summary: "Learn once, write everywhere – that's the JavaScript way."
+---
+
+Developers want to write JavaScript -- and they want it to run everywhere -- in the browser, on the server, or at the edge.
+
+With all its quirks and imperfections, JavaScript continues to rise in adoption due to its built-in growth hack (it's in the browser), its massive ecosystem of tools and libraries, and the continued growth and adoption of TypeScript. And increasingly, developers are able to learn an API (like `Request` or `Response`) and reuse that same knowledge _everywhere_.
+
+Having an agreed-up common set of APIs (i.e. standards) and platforms that all support that same interface (e.g. cross-browser support) means web developers can now **learn once, write everywhere**.
+
+This post will outline recent improvements to the web platform across the browser, server, and edge.
+
+## JavaScript: In the Browser
+
+Web developers today spend less time writing vendor-specific JavaScript or vendor-specific CSS selectors than ever before.
+
+```jsx
+function isIE11() {
+  return !!window.MSInputMethodContext && !!document.documentMode;
+}
+```
+
+We've escaped the world of padding hacks for maintaining an element's [aspect ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio):
+
+```css
+@supports not (aspect-ratio: 16/9) {
+  .aspectRatio {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+}
+```
+
+Two converging trends are making this possible:
+
+- **The death of Internet Explorer:** Now that IE 11 is [officially retired](https://www.bleepingcomputer.com/news/microsoft/microsoft-edge-update-will-disable-internet-explorer-in-february/), web developers can write less vendor-specific CSS, leading to smaller stylesheets and fewer hacks.
+
+- **Browser engine alignment:** The three major browser engines (Chromium/Chrome, Gecko/Firefox, and Webkit/Safari) now have the best cross-browser support for JavaScript, CSS, and Web APIs we've ever seen. Kudos to the [Interop project](https://web.dev/interop-2022/).
+
+Now, of course, it's not perfect across browser engines, nor will it likely ever be. But it's the best it's been and I'm optimistic. Thousands (or millions) of developer hours will be saved cumulatively by not spending a week digging into esoteric IE bugs.
+
+Here's an example of how this alignment can benefit all web developers. Imagine you are a framework author trying to write a reusable image component to help thousands of developers achieve great performance when using images. In 2020, just a few years ago, you need to work _around_ the web platform.
+
+Loading an image without causing a [layout shift](https://web.dev/cls/), correctly maintaining the aspect ratio, and not degrading initial page load performance due to image size/weight was difficult to implement with support across all major browsers. This led to developers either ignoring the issues, or the frameworks writing component abstractions that produced code like:
+
+```jsx
+<span> <-- needed to maintain aspect ratio
+  <span> <-- needed to maintain aspect ratio, CSS padding hacks
+    <img src="" style="" /> <-- inline styles to prevent layout shift
+    <noscript>...</noscript> <-- JS needed for IntersectionObserver
+  </span>
+</span>
+```
+
+It's a different story in 2022. There's cross-browser support for: `aspect-ratio`, [width/height attributes](https://web.dev/optimize-cls/) to prevent layout shift, native [image lazy-loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading), and pure CSS/SVG-based blur-up image placeholders. The above code can drop the wrapping elements and work without runtime JavaScript needed.
+
+```jsx
+<img
+  alt="A kitten"
+  decoding="async"
+  height="200"
+  loading="lazy"
+  src="https://placekitten.com/200/200"
+  style="aspect-ratio: auto 1 / 1"
+  width="200"
+/>
+```
+
+## JavaScript: On the Server
+
+Isomorphic JavaScript, or code that could run on both the client and the server, has been the ideal state for many web developers. Learn once, write everywhere, right? Until recently, Node.js and the web platform were out of alignment.
+
+Consider fetching data over HTTP. In the browser, we had the [Web Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). Prior to Node.js 18, there was no built-in solution for fetching data. Making a `fetch` required using packages like `node-fetch` or `undici`, which had a similar but slightly different API, often in non-obvious ways.
+
+This lack of alignment between platforms meant that tools for writing isomorphic JavaScript, like Next.js, needed to add polyfills so developers could use `fetch` on both the client and the server. With Node.js 18, these tools can now remove additional JavaScript needed to polyfill platform differences, ultimately resulting in less JavaScript needed.
+
+I'm optimistic about JavaScript (and TypeScript) on the server. It's not just `fetch`, either. It's `Request`, `Response`, and **100+ other APIs** that are now available in both the browser and in Node.js. Browser vendors and companies building server infrastructure are now [working closer than ever](https://wintercg.org/) to provide a standard set of APIs that can run everywhere, including edge computing platforms.
+
+## JavaScript: At the Edge
+
+Edge computing, the often misunderstood and newest target for running JavaScript, has had the least standardization of the three (browser, server, edge).
+
+It's helpful to think about edge as the highest level of abstraction, where you're spending all of your time on business logic.
+
+<Image
+  alt={`Diagram of the edge runtime`}
+  src={`/images/javascript/edge-runtime.png`}
+  width={3840 / 3}
+  height={2160 / 3}
+/>
+
+Moving towards edge computing platforms means a tradeoff for more abstraction, but focusing exclusively on business logic.
+
+Edge isn't something completely new, but rather a deliberate and intentional tradeoff from the existing Node.js world.
+
+You _want_ to write JavaScript, but edge compute infrastructure requires a lighter subset of the (quite large) Node.js API surface area. By making this tradeoff for a subset of Node.js APIs that also run in the browser, you can have consistently fast cold boots and more cost-effective compute workloads. That sounds _pretty nice_.
+
+Let's look at an example. In this case, I'll use a [Vercel Edge Function](https://vercel.com/blog/edge-functions-generally-available). But it could also be other edge computing platforms like Cloudflare or Deno. For me, the best part of this code is actually that it's fairly boring. It looks like Node.js.
+
+```jsx
+export const config = {
+  runtime: 'edge'
+}
+
+// Web standard Request API
+export default function handler(req: Request) {
+  // Web standard URL API
+  const { searchParams } = new URL(req.url)
+  const name = searchParams.get('name')
+
+  // Web standard Fetch API
+  const req = await fetch('https://...', { body: { name } })
+  const data = await req.json()
+
+  // Web standard Response (.json is new)
+  // https://github.com/whatwg/fetch/issues/1389
+  return Response.json(data);
+}
+```
+
+Here's the kicker: it's not just about the infrastructure. It's about the frameworks that are embracing these same Web APIs and helping thousands of new developers learn once and write everywhere.
+
+This code could work with Next.js. Or SvelteKit. Remix. Fresh. Or the next, new web framework that builds upon the same set of standard APIs.
+
+**What an incredible time to be a web developer.**
