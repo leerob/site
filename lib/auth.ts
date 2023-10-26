@@ -4,7 +4,6 @@ import GitHub from 'next-auth/providers/github';
 export const {
   handlers: { GET, POST },
   auth,
-  CSRF_experimental,
 } = NextAuth({
   providers: [
     GitHub({
