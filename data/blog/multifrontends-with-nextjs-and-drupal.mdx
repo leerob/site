@@ -16,7 +16,7 @@ tags: [business, thoughts]
 
 At [jobiqo](https://www.jobiqo.com/) we use [Next.js](https://nextjs.org/) together with a [Drupal](https://www.drupal.org/) backend. We make job boards and one of the common requests that we have is to have one backend managing multiple frontends, we call this feature **Multifrontend**.
 
-The image below illustrates how this works, we have a single Drupal instance with a GraphQL API and we then have multiple frontends that can request data from the backend.
+The image below illustrates how this works: we have a single Drupal instance with a GraphQL API and we then have multiple frontends that can request data from the backend.
 
 <Image
   alt={`Multifrontend architecture`}
@@ -25,7 +25,7 @@ The image below illustrates how this works, we have a single Drupal instance wit
   height={916}
 />
 
-They can have frontend specific landing pages, jobs, users and taxonomy. That allows each frontend to be very independent but still allow a small team of administrators to manage all those frontends by logging in to only one backend.
+They can have frontend specific landing pages, jobs, users and taxonomy. That allows each frontend to be very independent but still only require a small team of administrators to manage all those frontends by logging in to only one backend.
 
 So let's look at how we are doing this with Next.js.
 
@@ -58,11 +58,11 @@ It's essential to note that we also have default configurations in place, and we
 
 One of the challenges of this type of architecture is that each site needs to be able to request from the backend its own specific data. This can be any type of content or page, such as landing pages, SEO content, taxonomy, jobs etc..
 
-We use GraphQL and the way you would usually do this would be to introduce in each query or mutation a property with the name of the frontend that is requesting that data (or wanting to change it). This however would mean we have to always remember to add that property and it just seemed to us very verbose, we wanted something that would be a bit more plug and play (yes, global), and ideally wouldn’t affect our queries and mutations too much (or nothing at all).
+We use GraphQL and the way you would usually do this would be to introduce in each query or mutation an argument with the name of the frontend that is requesting that data (or wanting to change it). This however would mean we have to always remember to add that argument and it just seemed to us very verbose, we wanted something that would be a bit more plug and play (yes, global), and ideally wouldn’t affect our queries and mutations too much (or nothing at all).
 
 ### Frontend http header
 
-We introduced a header that is sent with every query or mutation which includes the frontend that is requesting the data, in Drupal we can read this header in the request and know which data to resolve.
+We introduced an HTTP header that is sent with every query or mutation which includes the frontend that is requesting the data, in Drupal we can read this header in the request and know which data to resolve.
 
 <Image
   alt={`HTTP header`}
@@ -75,11 +75,11 @@ This means we don’t have to change any query, we don’t have to remember to d
 
 ## Every project as a multifrontend project
 
-Not all of our projects follow this idea of a single Drupal instance supporting multiple frontends. In fact, most of them don’t. So we had to ask ourselves how do we make sure we still make the multifrontend architecture a first class citizen in our product? We didn’t want this to be an edge case, or a thing we support but accidentally break all the time because it's not our “most common scenario”.
+Not all of our projects follow this idea of a single Drupal instance supporting multiple frontends. In fact, most of them don’t. So we had to ask ourselves: how do we make sure we still make the multifrontend architecture a first class citizen in our product? We didn’t want this to be an edge case, or a thing we "support" but accidentally break all the time because it's not our “most common scenario”.
 
 How do we make sure that going forward any change we do works with this architecture and we don’t have to support two very different types of projects on our codebase and product?
 
-The answer was to make every project a multifrontend project. So even our projects which have one Drupal and on Next.js frontend use all the features of a multifrontend project, they send the frontend header, they are built, deployed and started the same way. This also has the added benefit of being able to spin up new frontends for a project, if a client so decides in the future. It's future-proof.
+The answer was to make every project a multifrontend project. So even our projects which have one Drupal and only one Next.js frontend use all the features of a multifrontend project, they send the frontend header, they are built, deployed and started the same way. This also has the added benefit of being able to spin up new frontends for a project, if a client so decides in the future. It's future-proof.
 
 The inspiration for this came from Drupal in fact. Drupal has a famous decision (or at least for me very interesting when I found out about it) of making every field data type an array, Because you never know when you want to make turn a single value field into an multi value field, you might as well just make it an array from the beginning (even if its a single field) and then if you want to turn it into a multiple field, you don’t have to think about changing the data structure (It's future-proof)
 
