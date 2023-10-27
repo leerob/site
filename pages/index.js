@@ -47,6 +47,11 @@ export default function Home({ videos }) {
           Latest articles
         </h3>
         <BlogPost
+          title="Decoupled multifrontends with Next.js and Drupal"
+          summary="How we leverage Next.js in combination with a Drupal backend to create multifrontend projects, allowing independent frontends managed by a single backend."
+          slug="multifrontends-with-nextjs-and-drupal"
+        />
+        <BlogPost
           title="Finding the perfect side project stack"
           summary="In this blog post I will document a recent research for a tech stack for my side projects, or really just how I would start a real project in July 2021."
           slug="finding-the-perfetc-sidestack"
@@ -55,11 +60,6 @@ export default function Home({ videos }) {
           title="Ships"
           summary="Big ships are cool, they have pools and bar and tenis courts. But small ships, they are fast, exciting and easy to move around."
           slug="ships"
-        />
-        <BlogPost
-          title="2020 in Review"
-          summary="2020 was a strange year, no doubt about it. But all in all I have to say I am pretty happy looking back here at the end and seeing that despite all the challenging situations the year turned out to be not bad at all from a personal and professional point of view."
-          slug="year-in-review"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Latest projects
