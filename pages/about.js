@@ -43,7 +43,15 @@ export default function About() {
         </h1>
         <div className="mb-8 prose leading-6 text-gray-600 dark:text-gray-400">
           <p>
-            Hey, I’m Joao. I'm a frontend developer, part time creator of&nbsp;
+            Hey, I’m Joao. I'm a technical team lead at{' '}
+            <a
+              href="https://www.jobqio.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              jobiqo
+            </a>{' '}
+            , part time creator of&nbsp;
             <a
               href="https://www.haynetvet.com/"
               target="_blank"
@@ -75,10 +83,9 @@ export default function About() {
             >
               many themeforest themes.
             </a>
-            &nbsp;I work at jobiqo as a senior frontend developer.
           </p>
           <p>
-            I’ve spoken in some local meetups and some onlin conferences like
+            I’ve spoken in some local meetups and some online conferences like
             DrupalCon Europe from topics like visual regression testing,
             components architectures and javascript (React and Angular).
           </p>
@@ -93,6 +100,17 @@ export default function About() {
           Conference Talks
         </h2>
 
+        <Talk
+          title="Decoupled Drupal in Jobiqo: a retrospective"
+          link="https://www.youtube.com/watch?v=Wwa3STW1tBU"
+        >
+          In this session I presented learnings from the last 5 years building
+          our product at jobiqo using decoupled Drupal. I highlight the
+          learnings of transitioning from a monolith to a decoupled
+          architecture, the challenges we faced and how we overcame them. I also
+          talk about the benefits of decoupling and how it allowed us to scale
+          our product and our team.
+        </Talk>
         <Talk
           title="Visual regression testing"
           link="https://events.drupal.org/europe2020/sessions/visual-regression-testing"

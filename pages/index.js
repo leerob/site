@@ -32,7 +32,7 @@ export default function Home({ videos }) {
               </h1>
               <div className="prose text-gray-600 dark:text-gray-400">
                 Hi there, I am Joao. A Frontend developer, builder and
-                javascript enthusiast. I work as a senior Frontend Developer at{' '}
+                javascript enthusiast. I work as a Technical team lead at{' '}
                 <Link href="https://www.jobiqo.com/">jobiqo</Link>
                 . Congratulations, you found my digital garden, here have a 🍺
                 it's on me.
