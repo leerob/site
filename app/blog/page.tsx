@@ -3,18 +3,19 @@ import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import ViewCounter from './view-counter';
 import { getViewsCount } from 'lib/metrics';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Read my thoughts on software development, design, and more.',
 };
 
-export default async function BlogPage() {
-  const allViews = await getViewsCount();
-
+export default function BlogPage() {
   return (
     <section>
-      <h1 className="font-bold text-2xl mb-8 tracking-tighter">read my blog</h1>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
+        read my blog
+      </h1>
       {allBlogs
         .sort((a, b) => {
           if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
@@ -32,14 +33,23 @@ export default async function BlogPage() {
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
                 {post.title}
               </p>
-              <ViewCounter
-                allViews={allViews}
-                slug={post.slug}
-                trackView={false}
-              />
+              <Suspense fallback={<p className="h-6" />}>
+                <Views slug={post.slug} />
+              </Suspense>
             </div>
           </Link>
         ))}
     </section>
   );
+}
+
+async function Views({ slug }: { slug: string }) {
+  let views;
+  try {
+    views = await getViewsCount();
+  } catch (error) {
+    console.error(error);
+  }
+
+  return <ViewCounter allViews={views} slug={slug} trackView={false} />;
 }

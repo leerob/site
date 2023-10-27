@@ -1,26 +1,9 @@
 import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { GeistSans, GeistMono } from 'geist/font';
 import Sidebar from './components/sidebar';
 import { Analytics } from '@vercel/analytics/react';
-
-const graphik = localFont({
-  src: [
-    {
-      path: '../public/fonts/Graphik-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/Graphik-Medium.ttf',
-      weight: '600',
-      style: 'bold',
-    },
-  ],
-  variable: '--font-graphik',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://leerob.io'),
@@ -68,7 +51,8 @@ export default function RootLayout({
       lang="en"
       className={clsx(
         'text-black bg-white dark:text-white dark:bg-[#111010]',
-        graphik.variable
+        GeistSans.variable,
+        GeistMono.variable
       )}
     >
       <body className="antialiased max-w-2xl mb-40 flex flex-col md:flex-row mx-4 mt-8 lg:mx-auto">
