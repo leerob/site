@@ -14,7 +14,7 @@ tags: [business, thoughts]
   priority
 />
 
-At [jobiqo](https://www.jobiqo.com/) we use [Next.js](https://nextjs.org/) together with a [Drupal](https://www.drupal.org/) backend. We make job boards and one of the common requests that we have is to have one backend managing multiple frontends, we call these types of projects Multifrontend projects.
+At [jobiqo](https://www.jobiqo.com/) we use [Next.js](https://nextjs.org/) together with a [Drupal](https://www.drupal.org/) backend. We make job boards and one of the common requests that we have is to have one backend managing multiple frontends, we call this feature **Multifrontend**.
 
 The image below illustrates how this works, we have a single Drupal instance with a GraphQL API and we then have multiple frontends that can request data from the backend.
 
@@ -27,11 +27,11 @@ The image below illustrates how this works, we have a single Drupal instance wit
 
 They can have frontend specific landing pages, jobs, users and taxonomy. That allows each frontend to be very independent but still allow a small team of administrators to manage all those frontends by logging in to only one backend.
 
-So let's dive into how we are doing this with Next.js.
+So let's look at how we are doing this with Next.js.
 
 ## Frontend specific configuration
 
-One of the pillars of this architecture is a feature in Next.js that I don't see many people talking about but can be a very powerful feature. It's a somewhat old feature, released in [Next.js 5.1](https://nextjs.org/blog/next-5-1) back in 2018.
+One of the pillars of this architecture is a feature in Next.js that I don't see many people talking about but can be a very powerful feature, its the [Runtime Config](https://nextjs.org/docs/pages/api-reference/next-config-js/runtime-configuration). It's a somewhat old feature, released in [Next.js 5.1](https://nextjs.org/blog/next-5-1) back in 2018.
 
 We use this config to provide things for the frontend such as feature flags, language configuration and all kinds of settings that are specific to each of the frontends of the project.
 
@@ -50,14 +50,15 @@ In order to achieve a good DX for people setting up these frontends (our team) w
   height={158}
 />
 
-For each frontend we have a folder with that site’s specific config and at runtime because we start the site with a specific environment variable we know to pick up the right config, this is how we can e.g. show the right site name, or the pick up the right logo etc. Worth noticing that we have default configs and we do a deep
-merge of the default config with the frontend specific config. So that we don't necessarily have to override everything but only the important parts for each frontend.
+For each frontend, we maintain a dedicated folder containing site-specific configurations. During runtime, we leverage a specific environment variable to identify and retrieve the appropriate configuration for that site. This dynamic approach enables us to display the correct site name, logo, and other site-specific elements.
+
+It's essential to note that we also have default configurations in place, and we perform a deep merge of the default configuration with the frontend-specific settings. This merging process allows us to selectively override only the essential components for each frontend, without the need to redefine every configuration parameter.
 
 ## Getting the right data
 
-One of the challenges of this is that each site needs to be able to request from the backend its own specific data. This can be any type of content or page, such as landing pages, SEO content, taxonomy, jobs etc..
+One of the challenges of this type of architecture is that each site needs to be able to request from the backend its own specific data. This can be any type of content or page, such as landing pages, SEO content, taxonomy, jobs etc..
 
-We use GraphQL and the way you would usually do this would be to introduce in each query or mutation a property with the name of the frontend that is requesting that data (or wanting to change it). This however would mean we have to always remember to add that property and it just seemed to us very verbose, we wanted something that would be a bit more plug and play, and ideally wouldn’t affect our queries and mutations too much.
+We use GraphQL and the way you would usually do this would be to introduce in each query or mutation a property with the name of the frontend that is requesting that data (or wanting to change it). This however would mean we have to always remember to add that property and it just seemed to us very verbose, we wanted something that would be a bit more plug and play (yes, global), and ideally wouldn’t affect our queries and mutations too much (or nothing at all).
 
 ### Frontend http header
 
@@ -74,7 +75,7 @@ This means we don’t have to change any query, we don’t have to remember to d
 
 ## Every project as a multifrontend project
 
-Not all of our projects follow this idea of a single Drupal instance supporting multiple frontends. In fact, most of them don’t. So we had to ask ourselves also how do we make sure we still make the multifrontend architecture a first class citizen in our product? We didn’t want this to be an edge case, or a thing we support but accidentally break all the time because it's not our “most common scenario”.
+Not all of our projects follow this idea of a single Drupal instance supporting multiple frontends. In fact, most of them don’t. So we had to ask ourselves how do we make sure we still make the multifrontend architecture a first class citizen in our product? We didn’t want this to be an edge case, or a thing we support but accidentally break all the time because it's not our “most common scenario”.
 
 How do we make sure that going forward any change we do works with this architecture and we don’t have to support two very different types of projects on our codebase and product?
 
