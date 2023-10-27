@@ -65,13 +65,18 @@ export default function Home({ videos }) {
           Latest projects
         </h3>
         <ProjectCard
+          title="retravel.ai"
+          description="Retravel is a tool for travellers to help better plan, research and explore places all around the world leveraging the power of AI and ChatGPT. Currently in progress / under development."
+          href="https://retravel.ai/"
+        />
+        <ProjectCard
           title="AI Font finder"
-          description="A web application using the GPT AI tool to recommend fonts for projects using the power of AI."
+          description="A web application using the GPT AI tool to recommend fonts for projects using the power of AI. Built in 2022."
           href="https://aifontfinder.vercel.app/"
         />
         <ProjectCard
           title="Bruni Visual"
-          description="Sass application for helping designers and developers collaborate on design implementations & theming"
+          description="Sass application for helping designers and developers collaborate on design implementations & theming. Built in 2022."
           href="https://www.brunivisual.com/"
         />
         <ProjectCard
