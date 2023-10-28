@@ -37,6 +37,7 @@ export const getViewsCount = cache(async () => {
 
 export const getLeeYouTubeSubs = unstable_cache(
   async () => {
+    return 41600;
     const response = await youtube.channels.list({
       id: ['UCZMli3czZnd1uoc1ShTouQw'],
       part: ['statistics'],
@@ -53,6 +54,7 @@ export const getLeeYouTubeSubs = unstable_cache(
 
 export const getVercelYouTubeSubs = unstable_cache(
   async () => {
+    return 62900;
     const response = await youtube.channels.list({
       id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
       part: ['statistics'],
