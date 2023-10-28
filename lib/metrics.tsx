@@ -38,10 +38,6 @@ export const getBlogViews = unstable_cache(
 
 export const getViewsCount = unstable_cache(
   async () => {
-    if (!process.env.DATABASE_URL) {
-      return 0;
-    }
-
     return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
   },
   ['all-views'],
