@@ -1,4 +1,4 @@
-// import 'server-only' not working with API routes yet
+import 'server-only';
 import { Generated, Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 
