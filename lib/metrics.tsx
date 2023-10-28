@@ -48,7 +48,6 @@ export const getViewsCount = unstable_cache(
 
 export const getLeeYouTubeSubs = unstable_cache(
   async () => {
-    return 41600;
     const response = await youtube.channels.list({
       id: ['UCZMli3czZnd1uoc1ShTouQw'],
       part: ['statistics'],
@@ -57,7 +56,7 @@ export const getLeeYouTubeSubs = unstable_cache(
     let channel = response.data.items![0];
     return Number(channel?.statistics?.subscriberCount);
   },
-  ['leerob-youtube'],
+  ['leerob-youtube-subs'],
   {
     revalidate: 3600,
   }
@@ -65,7 +64,6 @@ export const getLeeYouTubeSubs = unstable_cache(
 
 export const getVercelYouTubeSubs = unstable_cache(
   async () => {
-    return 62900;
     const response = await youtube.channels.list({
       id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
       part: ['statistics'],
@@ -74,7 +72,7 @@ export const getVercelYouTubeSubs = unstable_cache(
     let channel = response.data.items![0];
     return Number(channel?.statistics?.subscriberCount);
   },
-  ['vercel-youtube'],
+  ['vercel-youtube-subs'],
   {
     revalidate: 3600,
   }
