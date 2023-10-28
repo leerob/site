@@ -7,6 +7,8 @@ import ViewCounter from '../view-counter';
 import { getViewsCount } from 'lib/metrics';
 import { Suspense } from 'react';
 
+export const dynamic = 'force-static';
+
 export async function generateMetadata({
   params,
 }): Promise<Metadata | undefined> {
