@@ -3,6 +3,7 @@ import 'server-only';
 import { google } from 'googleapis';
 import { queryBuilder } from 'lib/planetscale';
 import { cache } from 'react';
+import { unstable_cache } from 'next/cache';
 
 const googleAuth = new google.auth.GoogleAuth({
   credentials: {
@@ -34,22 +35,34 @@ export const getViewsCount = cache(async () => {
   return queryBuilder.selectFrom('views').select(['slug', 'count']).execute();
 });
 
-export const getLeeYouTubeSubs = cache(async () => {
-  const response = await youtube.channels.list({
-    id: ['UCZMli3czZnd1uoc1ShTouQw'],
-    part: ['statistics'],
-  });
+export const getLeeYouTubeSubs = unstable_cache(
+  async () => {
+    const response = await youtube.channels.list({
+      id: ['UCZMli3czZnd1uoc1ShTouQw'],
+      part: ['statistics'],
+    });
 
-  let channel = response.data.items![0];
-  return Number(channel?.statistics?.subscriberCount);
-});
+    let channel = response.data.items![0];
+    return Number(channel?.statistics?.subscriberCount);
+  },
+  ['leerob-youtube'],
+  {
+    revalidate: 3600,
+  }
+);
 
-export const getVercelYouTubeSubs = cache(async () => {
-  const response = await youtube.channels.list({
-    id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
-    part: ['statistics'],
-  });
+export const getVercelYouTubeSubs = unstable_cache(
+  async () => {
+    const response = await youtube.channels.list({
+      id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
+      part: ['statistics'],
+    });
 
-  let channel = response.data.items![0];
-  return Number(channel?.statistics?.subscriberCount);
-});
+    let channel = response.data.items![0];
+    return Number(channel?.statistics?.subscriberCount);
+  },
+  ['vercel-youtube'],
+  {
+    revalidate: 3600,
+  }
+);
