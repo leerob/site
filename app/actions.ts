@@ -35,6 +35,11 @@ export async function saveGuestbookEntry(formData: FormData) {
   const session = await getSession();
   const email = session.user?.email as string;
   const created_by = session.user?.name as string;
+
+  if (!session.user) {
+    throw new Error('Unauthorized');
+  }
+
   const entry = formData.get('entry')?.toString() || '';
   const body = entry.slice(0, 500);
 
@@ -61,4 +66,23 @@ export async function saveGuestbookEntry(formData: FormData) {
 
   const response = await data.json();
   console.log('Email sent', response);
+}
+
+export async function deleteGuestbookEntries(selectedEntries: string[]) {
+  const session = await getSession();
+  const email = session.user?.email as string;
+
+  if (email !== 'me@leerob.io') {
+    throw new Error('Unauthorized');
+  }
+
+  const selectedEntriesAsNumbers = selectedEntries.map(Number);
+
+  await queryBuilder
+    .deleteFrom('guestbook')
+    .where('id', 'in', selectedEntriesAsNumbers)
+    .execute();
+
+  revalidatePath('/admin');
+  revalidatePath('/guestbook');
 }
