@@ -18,7 +18,7 @@ export default async function GuestbookPage() {
     .selectFrom('guestbook')
     .select(['id', 'body', 'created_by', 'updated_at'])
     .orderBy('updated_at', 'desc')
-    .limit(100)
+    .limit(500)
     .execute();
 
   return (
