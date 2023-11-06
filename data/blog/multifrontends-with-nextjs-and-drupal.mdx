@@ -1,0 +1,98 @@
+---
+title: 'Decoupled multifrontends with Next.js and Drupal'
+publishedAt: '2023-11-06'
+summary: 'How we leverage Next.js in combination with a Drupal backend to create multifrontend projects, allowing independent frontends managed by a single backend'
+image: '/static/images/posts/react.jpeg'
+tags: [business, thoughts]
+---
+
+<Image
+  alt={`Ships`}
+  src={`/static/images/posts/react.jpeg`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+At [jobiqo](https://www.jobiqo.com/) we use [Next.js](https://nextjs.org/) together with a [Drupal](https://www.drupal.org/) backend. We make job boards and one request we have from clients sometimes is to have one backend managing multiple frontends, we call this feature **Multifrontend**.
+
+The image below illustrates how this works: we have a single Drupal instance with a GraphQL API and we then have multiple frontends that can request data from the backend.
+
+<Image
+  alt={`Multifrontend architecture`}
+  src={`/static/images/posts/multifrontend-arch.png`}
+  width={1094}
+  height={916}
+/>
+
+They can have frontend specific landing pages, jobs, users, taxonomy and more. That allows each frontend to be very independent but still only require a small team of administrators to manage all those frontends by logging in to only one backend.
+
+So let's look at how we are doing this with Next.js.
+
+## Frontend specific configuration
+
+One of the pillars of this architecture is a feature in Next.js that I don't see many people talking about but can be a very powerful feature, which is the [Runtime Config](https://nextjs.org/docs/pages/api-reference/next-config-js/runtime-configuration). It's a somewhat old feature, released in [Next.js 5.1](https://nextjs.org/blog/next-5-1) back in 2018.
+
+We use this config to provide things for the frontend such as feature flags, language configuration and all kinds of settings that are specific to each of the frontends of the project.
+
+The fact that this config is runtime allows us to not have to build multiple applications and we can actually use one single frontend codebase to spin up multiple frontend sites (dynamically at runtime). We use a .env file for each frontend so that we start them and can tell which frontend is requesting what.
+
+With this feature we cover all kinds of site specific configuration, not only site name, feature flags and so on, but even redirects and rewrites which are crucial elements of our SEO strategy, especially when migrating sites from other platforms.
+
+### Config folders
+
+In order to achieve a good DX for people setting up these frontends (our development teams) we introduced very early on a system for managing site specific configuration (which will be used by the publicRuntimeConfig).
+
+<Image
+  alt={`Config folder`}
+  src={`/static/images/posts/config.png`}
+  width={480}
+  height={158}
+/>
+
+For each frontend, we maintain a dedicated folder containing site-specific configurations. During runtime, we leverage a specific environment variable to identify and retrieve the appropriate configuration for that site. This dynamic approach enables us to display the correct site name, logo, and other site-specific elements.
+
+It's good to note that we also have default configurations in place, and we perform a deep merge of the default configuration with the frontend-specific settings. This merging process allows us to selectively override only the essential components for each frontend, without the need to redefine every configuration parameter.
+
+## Getting the right data
+
+One of the challenges of this type of architecture is that each site needs to be able to request from the backend its own specific data. This can be any type of content or page, such as landing pages, SEO content, taxonomy, jobs etc..
+
+We use GraphQL and the way you would usually do this would be to introduce in each query or mutation an argument with the name of the frontend that is requesting that data (or wanting to change it). This however would mean we have to always remember to add that argument and it just seemed to us very verbose, we wanted something that would be a bit more plug and play (yes, global), and ideally wouldn’t affect our queries and mutations too much (or nothing at all).
+
+### Frontend http header
+
+We introduced an HTTP header that is sent with every query and mutation which includes the frontend that is requesting the data. In Drupal we can read this header in the request and know which data to resolve.
+
+<Image
+  alt={`HTTP header`}
+  src={`/static/images/posts/header.png`}
+  width={487}
+  height={71}
+/>
+
+This means we don’t have to change any query, we don’t have to remember to do this when we introduce new queries or mutations, it's always there and will always be sent with any request going out from Apollo (the GraphQL client we use, but this approach would work with any graphql client or with just plain fetch calls as well)
+
+## Every project as a multifrontend project
+
+Not all of our projects follow this idea of a single Drupal instance supporting multiple frontends. In fact, most of them don’t. So we had to ask ourselves: how do we make sure we still make the multifrontend architecture a first class citizen in our product? We didn’t want this to be an edge case, or a thing we "support" but accidentally break all the time because it's not our “most common scenario”.
+
+How do we make sure that going forward any change we do works with this architecture and we don’t have to support two very different types of projects on our codebase and product?
+
+The answer was to make every project a multifrontend project. So even our projects which have one Drupal and only one Next.js frontend use all the features of a multifrontend project: They send the frontend header, they are built deployed and started the same way as any other project. This also has the added benefit of being able to spin up new frontends for a project, if a client so decides in the future. It's future-proof.
+
+The inspiration for this came from Drupal in fact. Drupal has a famous decision (or at least for me very interesting when I found out about it) of making every field data type an array, Because you never know when you want to make turn a single value field into an multi value field, you might as well just make it an array from the beginning (even if its a single field) and then if you want to turn it into a multiple field, you don’t have to think about changing the data structure (It's future-proof)
+
+## distDir and time to deploy
+
+The initial implementation of the multifrontend used the [distDir](https://nextjs.org/docs/pages/api-reference/next-config-js/distDir) feature of Next.js and it would spin up a single frontend in different folders. So if we had 10 frontends it would build 10 different folders inside the dist folder.
+
+While this worked well for a time, as we started having more projects that had more frontends (some as much as over 20 frontends) the deployment time started very quickly to become a huge bottleneck. We had to wait for sometimes 1 hour to deploy a change to production. We also tried parallelizing this but the memory consumption on the server also skyrocketed.
+
+Right now we build only one frontend and use the runtimeConfig for making each frontend different.
+
+If you are doing something similar and using the distDir as a way to build multiple frontends I would caution you to think about this, because even if you have a built time of 1min (which is very good) if you have 30 frontends that will already mean 30min (just on the yarn build, there are a lot more steps than that to deploy a site)
+
+## Wrapping up
+
+We just finished launching a refactoring on this architecture and I am looking forward to hearing from you if you are doing something similar to this, reach out to me via [linkedIn](https://www.linkedin.com/in/joao-garin/) or [twitter](https://twitter.com/joaogarin) I am always happy to talk about Next.js, Drupal and headless.
