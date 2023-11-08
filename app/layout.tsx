@@ -1,7 +1,8 @@
 import './global.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import { GeistSans, GeistMono } from 'geist/font';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import Sidebar from './components/sidebar';
 import { Analytics } from '@vercel/analytics/react';
 

@@ -30,8 +30,8 @@ dependencies:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
   geist:
-    specifier: ^1.0.1
-    version: 1.0.1(next@14.0.1)
+    specifier: 1.1.0-beta.11
+    version: 1.1.0-beta.11(next@14.0.1)
   googleapis:
     specifier: ^126.0.1
     version: 126.0.1
@@ -1747,8 +1747,8 @@ packages:
       - supports-color
     dev: false
 
-  /geist@1.0.1(next@14.0.1):
-    resolution: {integrity: sha512-OrEqHRZKXCzB5ezrlOayJvZhDnwyQUXHo+3diSQ1pqroQqfdHlRYSjeHbQDtg2BvuTmCsdku3L0zFOkspXUrcw==}
+  /geist@1.1.0-beta.11(next@14.0.1):
+    resolution: {integrity: sha512-ndOIVCfOeWaRUxl47VN11gra0gNhJYjH8YboTQTAkojDAmIOt+KSnPiuYDznBCW4TPaDUoCCBElTe9YJzzaH/Q==}
     peerDependencies:
       next: ^13.2 || ^14
     dependencies:
