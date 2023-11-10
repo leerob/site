@@ -114,12 +114,7 @@ export default function Blog({ params }) {
 }
 
 async function Views({ slug }: { slug: string }) {
-  let views;
-  try {
-    views = await getViewsCount();
-  } catch (error) {
-    console.error(error);
-  }
+  let views = await getViewsCount();
 
   return <ViewCounter allViews={views} slug={slug} trackView />;
 }
