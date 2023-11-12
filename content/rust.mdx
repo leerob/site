@@ -143,15 +143,22 @@ It's early days for Rust – a few important pieces are still being figured out:
 - **Bundling:** One interesting area of development is `swcpack`, which is SWC's replacement for Webpack. It's still under development but could be very promising.
 - **WebAssembly:** As mentioned above, the prospect of writing Rust and compiling to WASM is enticing, but there's still work to be done.
 
-<Callout emoji="💡">
-
-**Update 2023:** [Turbopack](https://turbo.build/pack) has been released, the Rust-powered successor to Webpack.
-
-</Callout>
-
 Regardless, I'm confident Rust will continue to have a major impact on the JavaScript ecosystem for the next 1-2 years and into the future. Imagine a world where all of the build tools used in Next.js are written in Rust, giving you optimal performance. Then, Next.js could be distributed as a [static binary](https://en.wikipedia.org/wiki/Static_build) you'd download from NPM.
 
 That's the world I want to live (and develop) in.
+
+## Update: 2023
+
+Since this post was written in 2021, there's been even more investment into new Rust tooling in the JavaScript ecosystem. A few notable Rust projects include:
+
+- **[Biome](https://biomejs.dev/)**: Rome, previously mentioned in this post, has became Biome
+- **[Rspack](https://www.rspack.dev/)**: New bundler with webpack compat
+- **[Pacquet (pnpm)](https://github.com/pnpm/pacquet)**: \*\*\*\*Experimental package manager for Node.js
+- **[Rolldown](https://twitter.com/youyuxi/status/1709943106215530867)**: New bundler for Vite (replacing esbuild and rollup)
+- **[Oxc](https://github.com/oxc-project/oxc)**: Similar to Biome: parser, linter, formatter, transpiler, minifier, etc
+- **[Turbopack](https://turbo.build/pack)**: New bundler powering the Next.js Compiler ([status](https://areweturboyet.com/))
+
+Further, [Bun 1.0](https://bun.sh/) was released, putting Zig on the map and working to speed up the entire JavaScript ecosystem.
 
 ---
 
