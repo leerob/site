@@ -11,7 +11,7 @@
 
 ## Running Locally
 
-This application requires Node.js v16.13+.
+This application requires Node.js v18.17+.
 
 ```bash
 git clone https://github.com/leerob/leerob.io.git
