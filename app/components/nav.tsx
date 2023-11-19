@@ -8,6 +8,9 @@ const navItems = {
   '/': {
     name: 'home',
   },
+  '/work': {
+    name: 'work',
+  },
   '/blog': {
     name: 'blog',
   },
@@ -16,7 +19,7 @@ const navItems = {
   },
 };
 
-export default function Navbar() {
+export function Navbar() {
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
       <div className="lg:sticky lg:top-20">

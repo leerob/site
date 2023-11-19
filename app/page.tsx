@@ -14,6 +14,7 @@ import {
   getViewsCount,
 } from 'lib/metrics';
 import { Suspense } from 'react';
+import Link from 'next/link';
 
 function Badge(props) {
   return (
@@ -128,10 +129,11 @@ export default function Page() {
         hey, I'm leerob 👋
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a frontend developer, optimist, and community builder. I currently
-        work as the VP of Developer Experience at `}
+        {`I'm a frontend developer, optimist, and community builder. I currently `}
+        <Link href="/work">work</Link>
+        {` as the VP of Product at `}
         <span className="not-prose">
-          <Badge href="https://vercel.com">
+          <Badge href="https://vercel.com/home">
             <svg
               width="13"
               height="11"
@@ -150,8 +152,7 @@ export default function Page() {
             Vercel
           </Badge>
         </span>
-        {`, where I lead the
-        community for `}
+        {`, where I help teach the `}
         <Badge href="https://nextjs.org">
           <img
             alt="Next.js logomark"
@@ -162,7 +163,7 @@ export default function Page() {
           />
           Next.js
         </Badge>
-        {`, an open-source web framework built with `}
+        {` community, an open-source web framework built with `}
         <Badge href="https://react.dev">
           <img
             alt="React logomark"
@@ -274,8 +275,8 @@ export default function Page() {
             slug="developer-experience-examples"
           />
           <BlogLink
-            name="2023 State of Databases for Serverless & Edge"
-            slug="backend"
+            name="What is Developer Relations?"
+            slug="devrel-at-vercel"
           />
           <BlogLink name="The Story of Heroku" slug="heroku" />
         </Suspense>
@@ -457,9 +458,9 @@ export default function Page() {
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I've also worked with or advised companies like Convex, Fauna,
-          Plasmic, and more about developer marketing, DevRel, and building
-          open-source communities.
+          I've worked with and advised companies on developer marketing,{' '}
+          <Link href="/blog/devrel-at-vercel">developer relations</Link>,
+          building open-source communities, product-led growth, and more.
         </p>
       </div>
       <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">

@@ -54,7 +54,7 @@ export const getLeeYouTubeSubs = unstable_cache(
     });
 
     let channel = response.data.items![0];
-    return Number(channel?.statistics?.subscriberCount);
+    return Number(channel?.statistics?.subscriberCount).toLocaleString();
   },
   ['leerob-youtube-subs'],
   {
@@ -70,7 +70,7 @@ export const getVercelYouTubeSubs = unstable_cache(
     });
 
     let channel = response.data.items![0];
-    return Number(channel?.statistics?.subscriberCount);
+    return Number(channel?.statistics?.subscriberCount).toLocaleString();
   },
   ['vercel-youtube-subs'],
   {
