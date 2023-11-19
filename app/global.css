@@ -60,7 +60,7 @@ html {
 .prose h2,
 h3,
 h4 {
-  @apply font-medium;
+  @apply font-medium tracking-tight !important;
 }
 
 .prose > :first-child {
@@ -93,7 +93,7 @@ input[type='email'] {
 
 .prose .tweet a {
   text-decoration: inherit;
-  font-weight: inherit;
+  font-weight: 500;
 }
 
 table {
