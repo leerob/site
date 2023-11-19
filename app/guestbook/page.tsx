@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
-import { auth } from 'lib/auth';
-import { queryBuilder } from 'lib/planetscale';
+import { auth } from 'app/auth';
+import { getGuestbookEntries } from 'app/db/queries';
 import { SignIn, SignOut } from './buttons';
 import { Suspense } from 'react';
 import Form from './form';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Guestbook',
   description: 'Sign my guestbook and leave your mark.',
 };
@@ -25,7 +24,7 @@ export default function GuestbookPage() {
 }
 
 async function GuestbookForm() {
-  const session = await auth();
+  let session = await auth();
 
   return session?.user ? (
     <>
@@ -38,12 +37,11 @@ async function GuestbookForm() {
 }
 
 async function GuestbookEntries() {
-  const entries = await queryBuilder
-    .selectFrom('guestbook')
-    .select(['id', 'body', 'created_by', 'updated_at'])
-    .orderBy('updated_at', 'desc')
-    .limit(100)
-    .execute();
+  let entries = await getGuestbookEntries();
+
+  if (entries.length === 0) {
+    return null;
+  }
 
   return entries.map((entry) => (
     <div key={entry.id} className="flex flex-col space-y-1 mb-4">

@@ -1,10 +1,13 @@
-import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { TweetComponent } from './tweet';
+import { highlight } from 'sugar-high';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-const CustomLink = (props) => {
+function CustomLink(props) {
   const href = props.href;
 
   if (href.startsWith('/')) {
@@ -20,7 +23,7 @@ const CustomLink = (props) => {
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
-};
+}
 
 function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -89,6 +92,11 @@ function ConsCard({ title, cons }) {
   );
 }
 
+function Code({ children, ...props }) {
+  const codeHTML = highlight(children);
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+}
+
 const components = {
   Image: RoundedImage,
   a: CustomLink,
@@ -96,14 +104,30 @@ const components = {
   ProsCard,
   ConsCard,
   StaticTweet: TweetComponent,
+  code: Code,
 };
 
-export function Mdx({ code }: { code: string }) {
-  const Component = useMDXComponent(code);
-
+export function CustomMDX(props) {
   return (
-    <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-      <Component components={components} />
-    </article>
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [
+            rehypeSlug,
+            [
+              rehypeAutolinkHeadings,
+              {
+                properties: {
+                  className: ['anchor'],
+                },
+              },
+            ],
+          ],
+        },
+      }}
+    />
   );
 }

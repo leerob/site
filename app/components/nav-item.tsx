@@ -1,9 +1,10 @@
 'use client';
 
-import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
+
+let cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function NavItem({
   path,
@@ -16,13 +17,13 @@ export default function NavItem({
   if (pathname.includes('/blog/')) {
     pathname = '/blog';
   }
-  const isActive = path === pathname;
+  let isActive = path === pathname;
 
   return (
     <Link
       key={path}
       href={path}
-      className={clsx(
+      className={cx(
         'transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle',
         {
           'text-neutral-500': !isActive,

@@ -1,25 +1,19 @@
-import type { Metadata } from 'next';
-import { auth } from 'lib/auth';
-import { queryBuilder } from 'lib/planetscale';
+import { auth } from 'app/auth';
+import { getGuestbookEntries } from 'app/db/queries';
 import { redirect } from 'next/navigation';
 import Form from './form';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Admin',
 };
 
 export default async function GuestbookPage() {
-  const session = await auth();
+  let session = await auth();
   if (session?.user?.email !== 'me@leerob.io') {
     redirect('/');
   }
 
-  const entries = await queryBuilder
-    .selectFrom('guestbook')
-    .select(['id', 'body', 'created_by', 'updated_at'])
-    .orderBy('updated_at', 'desc')
-    .limit(500)
-    .execute();
+  let entries = await getGuestbookEntries();
 
   return (
     <section>
