@@ -29,6 +29,9 @@
   --tweet-twitter-icon-color: var(--tweet-font-color);
   --tweet-verified-old-color: rgb(130, 154, 171);
   --tweet-verified-blue-color: var(--tweet-color-blue-primary);
+
+  --tweet-actions-font-weight: 500;
+  --tweet-replies-font-weight: 500;
 }
 
 /* Dark theme */
@@ -65,4 +68,8 @@
 /* Remove link underline on hover for both themes */
 .tweet .react-tweet-theme p a:hover {
   text-decoration: none;
+}
+
+.tweet a div {
+  @apply font-semibold tracking-tight;
 }
