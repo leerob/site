@@ -36,8 +36,8 @@ export async function saveGuestbookEntry(formData: FormData) {
   const body = entry.slice(0, 500);
 
   await sql`
-    INSERT INTO guestbook (email, body, created_by)
-    VALUES (${email}, ${body}, ${created_by})
+    INSERT INTO guestbook (email, body, created_by, created_at)
+    VALUES (${email}, ${body}, ${created_by}, NOW())
   `;
 
   revalidatePath('/guestbook');
