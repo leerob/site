@@ -2,7 +2,10 @@
 
 import { google } from 'googleapis';
 import { sql } from '@vercel/postgres';
-import { unstable_cache } from 'next/cache';
+import {
+  unstable_cache as cache,
+  unstable_noStore as noStore,
+} from 'next/cache';
 
 let googleAuth = new google.auth.GoogleAuth({
   credentials: {
@@ -17,41 +20,27 @@ let youtube = google.youtube({
   auth: googleAuth,
 });
 
-export const getBlogViews = unstable_cache(
-  async () => {
-    if (!process.env.DATABASE_URL) {
-      return 0;
-    }
+export async function getBlogViews() {
+  noStore();
+  let data = await sql`
+    SELECT count
+    FROM views
+  `;
 
-    let data = await sql`
-      SELECT count
-      FROM views
-    `;
+  return data.rows.reduce((acc, curr) => acc + Number(curr.count), 0);
+}
 
-    return data.rows.reduce((acc, curr) => acc + Number(curr.count), 0);
-  },
-  ['blog-views-sum'],
-  {
-    revalidate: 1,
-  }
-);
+export async function getViewsCount() {
+  noStore();
+  let data = await sql`
+    SELECT slug, count
+    FROM views
+  `;
 
-export const getViewsCount = unstable_cache(
-  async () => {
-    let data = await sql`
-      SELECT slug, count
-      FROM views
-    `;
+  return data.rows as { slug: string; count: number }[];
+}
 
-    return data.rows as { slug: string; count: number }[];
-  },
-  ['all-views'],
-  {
-    revalidate: 1,
-  }
-);
-
-export const getLeeYouTubeSubs = unstable_cache(
+export const getLeeYouTubeSubs = cache(
   async () => {
     let response = await youtube.channels.list({
       id: ['UCZMli3czZnd1uoc1ShTouQw'],
@@ -67,7 +56,7 @@ export const getLeeYouTubeSubs = unstable_cache(
   }
 );
 
-export const getVercelYouTubeSubs = unstable_cache(
+export const getVercelYouTubeSubs = cache(
   async () => {
     let response = await youtube.channels.list({
       id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
@@ -84,6 +73,7 @@ export const getVercelYouTubeSubs = unstable_cache(
 );
 
 export async function getGuestbookEntries() {
+  noStore();
   let entries = await sql`
     SELECT id, body, created_by, updated_at
     FROM guestbook

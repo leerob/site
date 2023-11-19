@@ -7,8 +7,6 @@ import { getViewsCount } from 'app/db/queries';
 import { getBlogPosts } from 'app/db/blog';
 import ViewCounter from '../view-counter';
 
-export const dynamic = 'force-static';
-
 export async function generateMetadata({
   params,
 }): Promise<Metadata | undefined> {
