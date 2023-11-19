@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@googleapis/youtube':
+    specifier: ^13.0.0
+    version: 13.0.0
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
@@ -38,9 +41,6 @@ dependencies:
   geist:
     specifier: 1.1.0
     version: 1.1.0(next@14.0.4-canary.4)
-  googleapis:
-    specifier: ^128.0.0
-    version: 128.0.0
   next:
     specifier: 14.0.4-canary.4
     version: 14.0.4-canary.4(react-dom@18.2.0)(react@18.2.0)
@@ -118,6 +118,16 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@googleapis/youtube@13.0.0:
+    resolution: {integrity: sha512-txgO03TGMXLEcNEt7wE/kMzskoTbGp8P1wAR70B0VPTs0aTKh1povl2o8Ut4p2fCx14ITC6MWIgl05J4+btAJg==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      googleapis-common: 7.0.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -920,17 +930,6 @@ packages:
       qs: 6.11.2
       url-template: 2.0.8
       uuid: 9.0.1
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-
-  /googleapis@128.0.0:
-    resolution: {integrity: sha512-+sLtVYNazcxaSD84N6rihVX4QiGoqRdnlz2SwmQQkadF31XonDfy4ufk3maMg27+FiySrH0rd7V8p+YJG6cknA==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      google-auth-library: 9.2.0
-      googleapis-common: 7.0.1
     transitivePeerDependencies:
       - encoding
       - supports-color

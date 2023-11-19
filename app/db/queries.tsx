@@ -1,13 +1,13 @@
 'use server';
 
-import { google } from 'googleapis';
+import { auth, youtube } from '@googleapis/youtube';
 import { sql } from '@vercel/postgres';
 import {
   unstable_cache as cache,
   unstable_noStore as noStore,
 } from 'next/cache';
 
-let googleAuth = new google.auth.GoogleAuth({
+let googleAuth = new auth.GoogleAuth({
   credentials: {
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
     private_key: process.env.GOOGLE_PRIVATE_KEY,
@@ -15,7 +15,7 @@ let googleAuth = new google.auth.GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/youtube.readonly'],
 });
 
-let youtube = google.youtube({
+let yt = youtube({
   version: 'v3',
   auth: googleAuth,
 });
@@ -42,7 +42,7 @@ export async function getViewsCount() {
 
 export const getLeeYouTubeSubs = cache(
   async () => {
-    let response = await youtube.channels.list({
+    let response = await yt.channels.list({
       id: ['UCZMli3czZnd1uoc1ShTouQw'],
       part: ['statistics'],
     });
@@ -58,7 +58,7 @@ export const getLeeYouTubeSubs = cache(
 
 export const getVercelYouTubeSubs = cache(
   async () => {
-    let response = await youtube.channels.list({
+    let response = await yt.channels.list({
       id: ['UCLq8gNoee7oXM7MvTdjyQvA'],
       part: ['statistics'],
     });
