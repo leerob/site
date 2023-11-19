@@ -1,12 +1,6 @@
 import { sql } from '@vercel/postgres';
 
 const nextConfig = {
-  experimental: {
-    outputFileTracingIncludes: {
-      '/': ['node_modules/shiki/**/*'],
-      '/blog/[slug]': ['node_modules/shiki/**/*'],
-    },
-  },
   async redirects() {
     const { rows: redirects } = await sql`
       SELECT source, destination, permanent

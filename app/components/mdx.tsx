@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { TweetComponent } from './tweet';
+import { highlight } from 'sugar-high';
 import remarkGfm from 'remark-gfm';
-import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
@@ -92,6 +92,11 @@ function ConsCard({ title, cons }) {
   );
 }
 
+function Code({ children, ...props }) {
+  const codeHTML = highlight(children);
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+}
+
 const components = {
   Image: RoundedImage,
   a: CustomLink,
@@ -99,6 +104,7 @@ const components = {
   ProsCard,
   ConsCard,
   StaticTweet: TweetComponent,
+  code: Code,
 };
 
 export function CustomMDX(props) {
@@ -111,12 +117,6 @@ export function CustomMDX(props) {
           remarkPlugins: [remarkGfm],
           rehypePlugins: [
             rehypeSlug,
-            [
-              rehypePrettyCode,
-              {
-                theme: 'one-dark-pro',
-              },
-            ],
             [
               rehypeAutolinkHeadings,
               {
