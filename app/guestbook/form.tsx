@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { saveGuestbookEntry } from '../actions';
+import { saveGuestbookEntry } from '../db/actions';
 import { useFormStatus } from 'react-dom';
 
 export default function Form() {

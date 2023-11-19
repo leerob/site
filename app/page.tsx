@@ -12,7 +12,7 @@ import {
   getLeeYouTubeSubs,
   getVercelYouTubeSubs,
   getViewsCount,
-} from 'lib/metrics';
+} from 'app/db/queries';
 import { Suspense } from 'react';
 import Link from 'next/link';
 

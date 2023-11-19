@@ -1,9 +1,8 @@
 'use client';
 
-import clsx from 'clsx';
 import { useFormStatus } from 'react-dom';
 import { useState, useEffect } from 'react';
-import { deleteGuestbookEntries } from 'app/actions';
+import { deleteGuestbookEntries } from 'app/db/actions';
 
 export default function Form({ entries }) {
   const [selectedInputs, setSelectedInputs] = useState<string[]>([]);
@@ -137,12 +136,14 @@ function GuestbookEntry({ entry, children }) {
   );
 }
 
+const cx = (...classes) => classes.filter(Boolean).join(' ');
+
 function DeleteButton({ isActive }) {
   const { pending } = useFormStatus();
 
   return (
     <button
-      className={clsx(
+      className={cx(
         'px-3 py-2 border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm inline-flex items-center leading-4 text-neutral-900 dark:text-neutral-100 mb-8 transition-all',
         {
           'bg-red-300/50 dark:bg-red-700/50': isActive,
