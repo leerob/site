@@ -23,7 +23,7 @@ export default async function GuestbookPage() {
 
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">admin</h1>
+      <h1 className="font-medium text-2xl mb-8 tracking-tighter">admin</h1>
       <Form entries={entries} />
     </section>
   );

@@ -16,7 +16,7 @@ async function Stars() {
 export default function WorkPage() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">my work</h1>
+      <h1 className="font-medium text-2xl mb-8 tracking-tighter">my work</h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
           On a mission to build products developers{' '}
@@ -25,7 +25,7 @@ export default function WorkPage() {
           summary of my work so far.
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-semibold text-xl mb-1 tracking-tighter">Vercel</h2>
+        <h2 className="font-medium text-xl mb-1 tracking-tighter">Vercel</h2>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
           VP of Product
         </p>
@@ -74,7 +74,7 @@ export default function WorkPage() {
           Datastax, Notion, and <a href="https://nextjs.org/showcase">more</a>.
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-semibold text-xl mb-1 tracking-tighter">Hy-Vee</h2>
+        <h2 className="font-medium text-xl mb-1 tracking-tighter">Hy-Vee</h2>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
           Senior Software Engineer, 2018 — 2020
         </p>
@@ -100,7 +100,7 @@ export default function WorkPage() {
           infrastructure, and more.
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-semibold text-xl mb-1 tracking-tighter">Workiva</h2>
+        <h2 className="font-medium text-xl mb-1 tracking-tighter">Workiva</h2>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
           Software Engineer, 2015 — 2018
         </p>

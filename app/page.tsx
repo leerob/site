@@ -86,7 +86,7 @@ async function ChannelLink({ img, link, name }) {
           </div>
         </div>
         <div className="flex flex-col">
-          <p className="font-semibold text-neutral-900 dark:text-neutral-100">
+          <p className="font-medium text-neutral-900 dark:text-neutral-100">
             {name}
           </p>
           <p className="text-neutral-600 dark:text-neutral-400">
@@ -110,7 +110,7 @@ async function BlogLink({ slug, name }) {
       className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50  dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4 w-full"
     >
       <div className="flex flex-col">
-        <p className="font-semibold text-neutral-900 dark:text-neutral-100">
+        <p className="font-medium text-neutral-900 dark:text-neutral-100">
           {name}
         </p>
         <ViewCounter allViews={allViews} slug={slug} trackView={false} />
@@ -125,7 +125,7 @@ async function BlogLink({ slug, name }) {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
+      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
         hey, I'm leerob 👋
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
