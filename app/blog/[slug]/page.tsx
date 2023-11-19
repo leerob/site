@@ -128,10 +128,10 @@ export default function Blog({ params }) {
   );
 }
 
+let incrementViews = cache(increment);
+
 async function Views({ slug }: { slug: string }) {
   let views = await getViewsCount();
-  let incrementViews = cache(increment);
   incrementViews(slug);
-
   return <ViewCounter allViews={views} slug={slug} />;
 }
