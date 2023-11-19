@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
 import Balancer from 'react-wrap-balancer';
 import { getViewsCount } from 'app/db/queries';
 import { getBlogPosts } from 'app/db/blog';
 import ViewCounter from '../view-counter';
+import { increment } from 'app/db/actions';
 
 export async function generateMetadata({
   params,
@@ -127,8 +128,10 @@ export default function Blog({ params }) {
   );
 }
 
+let incrementViews = cache(increment);
+
 async function Views({ slug }: { slug: string }) {
   let views = await getViewsCount();
-
-  return <ViewCounter allViews={views} slug={slug} trackView />;
+  incrementViews(slug);
+  return <ViewCounter allViews={views} slug={slug} />;
 }

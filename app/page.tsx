@@ -116,7 +116,7 @@ async function BlogLink({ slug, name }) {
           <p className="font-medium text-neutral-900 dark:text-neutral-100">
             {name}
           </p>
-          <ViewCounter allViews={allViews} slug={slug} trackView={false} />
+          <ViewCounter allViews={allViews} slug={slug} />
         </div>
         <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12">
           <ArrowIcon />
