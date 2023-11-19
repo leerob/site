@@ -21,7 +21,7 @@
     "geist": "1.1.0",
     "googleapis": "^128.0.0",
     "gray-matter": "^4.0.3",
-    "next": "^14.0.3",
+    "next": "14.0.4-canary.4",
     "next-auth": "5.0.0-beta.3",
     "next-mdx-remote": "^4.4.1",
     "postcss": "^8.4.31",
