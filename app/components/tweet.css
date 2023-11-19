@@ -71,5 +71,5 @@
 }
 
 .tweet a div {
-  @apply font-semibold tracking-tight;
+  @apply font-medium tracking-tight;
 }

@@ -71,8 +71,9 @@ html {
 }
 
 .prose code span {
-  @apply text-white;
+  @apply font-medium;
 }
+
 .prose img {
   /* Don't apply styles to next/image */
   @apply m-0;
@@ -125,4 +126,8 @@ table {
 
 .prose .callout > p {
   margin: 0 !important;
+}
+
+.title {
+  text-wrap: balance;
 }

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Suspense, cache } from 'react';
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
-import Balancer from 'react-wrap-balancer';
 import { getViewsCount } from 'app/db/queries';
 import { getBlogPosts } from 'app/db/blog';
 import ViewCounter from '../view-counter';
@@ -110,8 +109,8 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="font-medium text-2xl tracking-tighter max-w-[650px]">
-        <Balancer>{post.metadata.title}</Balancer>
+      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">

@@ -122,16 +122,27 @@ During Heroku's rise to dominance, some developers began to scale out of monolit
 
 During this same time period, the types of web experiences developers were trying to build demanded more specialized tools. There was an unbundling of the monolithic into dedicated, specialized services:
 
-| Monolith (on a single server) | Microservices (APIs & libraries)                                 |
-| ----------------------------- | ---------------------------------------------------------------- |
-| Authentication                | Auth0, AWS Cognito                                               |
-| Database Queries              | Prisma, Mongoose                                                 |
-| Compute                       | AWS Lambda, Cloud Functions, Azure Functions, Cloudflare Workers |
-| HTML Rendering & Templates    | Frontend Frameworks                                              |
-| JavaScript and CSS Bundling   | Frontend Frameworks                                              |
-| Realtime                      | Firebase, Ably, Pusher, AWS SQS, etc.                            |
-| Storage                       | AWS S3, Google Cloud Storage                                     |
-| Image Optimization            | Imgix, Cloudinary, AWS CloudFront                                |
+<Table
+  data={{
+    headers: [
+      'Monolith (on a single server)',
+      'Microservices (APIs & libraries)',
+    ],
+    rows: [
+      ['Authentication', 'Auth0, AWS Cognito'],
+      ['Database Queries', 'Prisma, Mongoose'],
+      [
+        'Compute',
+        'AWS Lambda, Cloud Functions, Azure Functions, Cloudflare Workers',
+      ],
+      ['HTML Rendering & Templates', 'Frontend Frameworks'],
+      ['JavaScript and CSS Bundling', 'Frontend Frameworks'],
+      ['Realtime', 'Firebase, Ably, Pusher, AWS SQS, etc.'],
+      ['Storage', 'AWS S3, Google Cloud Storage'],
+      ['Image Optimization', 'Imgix, Cloudinary, AWS CloudFront'],
+    ],
+  }}
+/>
 
 At the time, monolithic apps were still the fastest way for developers to put an idea into production. This new wave of serverless and Kubernetes was often difficult to use and required specialized talent. Some teams jumped on the new trend too quickly, where it was often cheaper to scale up and pay for a managed platform like Heroku than to hire a team of DevOps engineers.
 
