@@ -8,7 +8,7 @@ I updated my blog this weekend and wanted to share some thoughts along the way:
 
 - [Content Management](#content-management)
 - [Performance](#performance)
-- [Opinions](#ppinions)
+- [Opinions](#opinions)
 
 <Callout emoji="⚠️">
 
@@ -166,8 +166,6 @@ Server Components are fun. For example, I can embed tweets inside blog posts:
 ```jsx
 <Tweet id="1457032789883187201" />
 ```
-
-<StaticTweet id="1457032789883187201" />
 
 The `Tweet` component handles both data fetching _and_ creating UI, all bundled up in a handy npm package (worth an exception here). Notably, additional Server Components added to my pages aren't increasing the client-side JavaScript bundle. This “templating” remains server-only.
 
