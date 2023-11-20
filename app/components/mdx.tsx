@@ -6,10 +6,10 @@ import { highlight } from 'sugar-high';
 import React from 'react';
 
 function Table({ data }) {
-  const headers = data.headers.map((header, index) => (
+  let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ));
-  const rows = data.rows.map((row, index) => (
+  let rows = data.rows.map((row, index) => (
     <tr key={index}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex}>{cell}</td>
@@ -28,7 +28,7 @@ function Table({ data }) {
 }
 
 function CustomLink(props) {
-  const href = props.href;
+  let href = props.href;
 
   if (href.startsWith('/')) {
     return (
@@ -113,7 +113,7 @@ function ConsCard({ title, cons }) {
 }
 
 function Code({ children, ...props }) {
-  const codeHTML = highlight(children);
+  let codeHTML = highlight(children);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
@@ -130,7 +130,7 @@ function slugify(str) {
 
 function createHeading(level) {
   return ({ children }) => {
-    const slug = slugify(children);
+    let slug = slugify(children);
     return React.createElement(
       `h${level}`,
       { id: slug },
@@ -146,7 +146,7 @@ function createHeading(level) {
   };
 }
 
-const components = {
+let components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
