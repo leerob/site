@@ -251,7 +251,7 @@ There's an assortment of other opinions I've included here now:
 
 - **Prefer `let` over `const`:** It's fewer characters to write. I'm lazy. Also, this isn't a production codebase here or anything. [Nice post here](https://overreacted.io/on-let-vs-const/) on this topic.
 - **Prefer copy/paste over the wrong abstraction:** I removed `date-fns`, `clsx` / `classnames`, and `gray-matter` for simple copy-pastable alternatives. Sure, they don't support every single feature. But, I don't need it. And if I do later, maybe I'll bring it back.
-- **Prefer loading SVGs as images:** Okay, this one has been hard for me. I've gotten so used to inlining SVGs in React. But starting to change my mind. [Related reading here](https://kurtextrem.de/posts/svg-in-js) and [here](https://benadam.me/thoughts/react-svg-sprites/).
+- **Prefer loading SVGs as images:** Okay, this one has been hard for me. I've gotten so used to inlining SVGs in React. But starting to change my mind. [Related reading here](https://kurtextrem.de/posts/svg-in-js) and [on svg sprites](https://benadam.me/thoughts/react-svg-sprites/).
 - **Prefer larger files versus many components:** Just works for my brain better. Keep code that changes often close together. Your mileage may vary.
 - **Prefer colocating most things in `app/`:** Because, _why not_? Now that it's possible with the App Router I'm probably overusing this, but it feels nice.
 - **Prefer colocating styles with components:** Okay, I've been using Tailwind now for many years, but this is still worth mentioning. Similar to my content evolution, I went from CSS → Sass → styled-components → Chakra → Tailwind. [Give it a shot](https://adamwathan.me/css-utility-classes-and-separation-of-concerns). P.S. LLMs are very good at Tailwind.
