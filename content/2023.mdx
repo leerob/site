@@ -85,7 +85,7 @@ import { highlight } from 'sugar-high'; // 1KB new dependency
 
 // This replaces rehype-pretty-code and shiki
 function Code({ children, ...props }) {
-  const codeHTML = highlight(children);
+  let codeHTML = highlight(children);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
@@ -104,7 +104,7 @@ function slugify(str) {
 // This replaces rehype-autolink-headings
 function createHeading(level) {
   return ({ children }) => {
-    const slug = slugify(children);
+    let slug = slugify(children);
     return React.createElement(
       `h${level}`,
       { id: slug },
