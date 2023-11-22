@@ -15,13 +15,13 @@ export async function generateMetadata({
     return;
   }
 
-  const {
+  let {
     title,
     publishedAt: publishedTime,
     summary: description,
     image,
   } = post.metadata;
-  const ogImage = image
+  let ogImage = image
     ? `https://leerob.io${image}`
     : `https://leerob.io/og?title=${title}`;
 
@@ -50,12 +50,12 @@ export async function generateMetadata({
 }
 
 function formatDate(date: string) {
-  const currentDate = new Date();
-  const targetDate = new Date(date);
+  let currentDate = new Date();
+  let targetDate = new Date(date);
 
-  const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  const daysAgo = currentDate.getDate() - targetDate.getDate();
+  let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
+  let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
+  let daysAgo = currentDate.getDate() - targetDate.getDate();
 
   let formattedDate = '';
 
@@ -69,7 +69,7 @@ function formatDate(date: string) {
     formattedDate = 'Today';
   }
 
-  const fullDate = targetDate.toLocaleString('en-us', {
+  let fullDate = targetDate.toLocaleString('en-us', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
