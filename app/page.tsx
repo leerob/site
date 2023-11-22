@@ -60,6 +60,7 @@ function ChannelLink({ img, link, name }) {
               width={64}
               sizes="33vw"
               className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
+              priority
             />
             <div className="border border-neutral-200 dark:border-neutral-700 rounded-full bg-white inline-flex p-1 relative h-6 w-6 items-center -top-6 -right-10">
               <img
@@ -176,9 +177,9 @@ export default function Page() {
           <img
             alt="React logomark"
             src="/react-logo.svg"
-            className="!mr-1"
+            className="!mr-1 h-[14px] w-[14px]"
             width="14"
-            height="10"
+            height="14"
           />
           React
         </Badge>
