@@ -77,7 +77,7 @@ export async function getGuestbookEntries() {
   let entries = await sql`
     SELECT id, body, created_by, updated_at
     FROM guestbook
-    ORDER BY created_by DESC
+    ORDER BY created_at DESC
     LIMIT 100
   `;
   return entries.rows;
