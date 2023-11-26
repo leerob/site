@@ -21,7 +21,7 @@ pnpm run setup # Remove all of my personal information
 pnpm dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
+Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
 
 ## Database Schema
 
