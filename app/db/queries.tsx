@@ -21,6 +21,10 @@ let yt = youtube({
 });
 
 export async function getBlogViews() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
   noStore();
   let data = await sql`
     SELECT count
@@ -31,6 +35,10 @@ export async function getBlogViews() {
 }
 
 export async function getViewsCount() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
   noStore();
   let data = await sql`
     SELECT slug, count
@@ -73,6 +81,10 @@ export const getVercelYouTubeSubs = cache(
 );
 
 export async function getGuestbookEntries() {
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
   noStore();
   let entries = await sql`
     SELECT id, body, created_by, updated_at

@@ -5,6 +5,10 @@ const nextConfig = {
     ppr: true,
   },
   async redirects() {
+    if (!process.env.DATABASE_URL) {
+      return [];
+    }
+
     const { rows: redirects } = await sql`
       SELECT source, destination, permanent
       FROM redirects;
