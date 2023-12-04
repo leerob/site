@@ -5,7 +5,7 @@ const nextConfig = {
     ppr: true,
   },
   async redirects() {
-    if (!process.env.DATABASE_URL) {
+    if (!process.env.POSTGRES_URL) {
       return [];
     }
 
