@@ -1,11 +1,15 @@
-export default function robots() {
+import dotenv from 'dotenv';
+
+export default async function robots() {
+  dotenv.config();
+  const URL = process.env.APP_URL || 'http://localhost';
   return {
     rules: [
       {
         userAgent: '*',
       },
     ],
-    sitemap: 'https://leerob.io/sitemap.xml',
-    host: 'https://leerob.io',
+    sitemap: URL + '/sitemap.xml',
+    host: URL,
   };
 }

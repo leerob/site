@@ -1,22 +1,16 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import ViewCounter from './view-counter';
-import { getViewsCount } from 'app/db/queries';
 import { getBlogPosts } from 'app/db/blog';
 
 export const metadata = {
   title: 'Blog',
-  description: 'Read my thoughts on software development, design, and more.',
 };
 
 export default function BlogPage() {
   let allBlogs = getBlogPosts();
 
   return (
-    <section>
-      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
-        read my blog
-      </h1>
+    <section className="flex flex-col">
       {allBlogs
         .sort((a, b) => {
           if (
@@ -27,27 +21,31 @@ export default function BlogPage() {
           return 1;
         })
         .map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
-            href={`/blog/${post.slug}`}
-          >
-            <div className="w-full flex flex-col">
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
-              </p>
-              <Suspense fallback={<p className="h-6" />}>
-                <Views slug={post.slug} />
-              </Suspense>
+          <div key={post.slug} className="flex items-start mb-8">
+            <time className="flex-shrink-0 w-32 text-right pr-8 font-medium text-gray-600">
+              {new Date(post.metadata.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+              })}
+            </time>
+            <div className="w-full">
+              <Link
+                key={post.slug}
+                className="flex flex-col space-y-1 mb-4 hover:underline"
+                href={`/blog/${post.slug}`}
+              >
+                <div className="flex-grow">
+                  <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                    {post.metadata.title}
+                  </p>
+                  <Suspense fallback={<p className="h-6" />}>
+                  </Suspense>
+                </div>
+              </Link>
             </div>
-          </Link>
+          </div>
         ))}
     </section>
   );
-}
-
-async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount();
-
-  return <ViewCounter allViews={views} slug={slug} />;
 }

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { TweetComponent } from './tweet';
 import { highlight } from 'sugar-high';
 import React from 'react';
 
@@ -158,7 +157,6 @@ let components = {
   Callout,
   ProsCard,
   ConsCard,
-  StaticTweet: TweetComponent,
   code: Code,
   Table,
 };
