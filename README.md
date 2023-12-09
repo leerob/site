@@ -16,9 +16,9 @@ This application requires Node.js v18.17+.
 ```bash
 git clone https://github.com/leerob/leerob.io.git
 cd leerob.io
-pnpm install
-pnpm run setup # Remove all of my personal information
-pnpm dev
+bun install
+bun run setup # Remove all of my personal information
+bun dev
 ```
 
 Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
@@ -54,4 +54,4 @@ CREATE TABLE views (
 2. Please do not copy it directly.
 3. Crediting the author is appreciated.
 
-Please remove all of my personal information (blog posts, images, etc.) by running `pnpm run setup`.
+Please remove all of my personal information (blog posts, images, etc.) by running `bun run setup`.
