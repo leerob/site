@@ -5,6 +5,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Navbar } from './components/nav';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { PreloadResources } from './preload';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://leerob.io'),
@@ -64,6 +65,7 @@ export default function RootLayout({
           {children}
           <Analytics />
           <SpeedInsights />
+          <PreloadResources />
         </main>
       </body>
     </html>
