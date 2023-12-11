@@ -51,6 +51,9 @@ export async function generateMetadata({
 
 function formatDate(date: string) {
   let currentDate = new Date();
+  if (!date.includes('T')) {
+    date = `${date}T00:00:00`;
+  }
   let targetDate = new Date(date);
 
   let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
