@@ -32,10 +32,10 @@ export default defineType({
       if (filetype !== 'jpg' && filetype !== 'png' && filetype !== 'webp') {
         return 'Image must be a JPG or PNG or WEBP';
       }
-      const { width, height } = getImageDimensions(value.asset!._ref);
-      if (width < 700 || height < 400) {
-        return 'Image must be at least 700x400 pixels';
-      }
+      // const { width, height } = getImageDimensions(value.asset!._ref);
+      // if (width < 700 || height < 400) {
+      //   return 'Image must be at least 700x400 pixels';
+      // }
       return true;
     }),
 });

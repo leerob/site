@@ -1,16 +1,15 @@
 import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
 import Footer from '@/app/ui/Footer';
 import Header from '@/app/ui/Header';
-import { ThemeProvider } from 'next-themes';
 
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Acme Dashboard',
-  description: 'The official Next.js Course Dashboard, built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh')
+  title: '',
+  description: '',
+  metadataBase: new URL('')
 };
+// TODO: Wrap with 'next-themes'
 export default function RootLayout({
   children
 }: {
