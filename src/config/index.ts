@@ -46,12 +46,6 @@ export const SANITY_CONFIG = {
   apiVersion: '2021-03-25'
 };
 
-export const SPOTIFY_NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-
-export const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-
-export const WAKATIME_API_ENDPOINT = `https://wakatime.com/api/v1/users/svirins/stats/last_7_days`;
-
 export const POSTS_LIMIT = 200;
 
 export const TYPED_STRINGS = [
