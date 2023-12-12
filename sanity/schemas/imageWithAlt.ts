@@ -33,8 +33,8 @@ export default defineType({
         return 'Image must be a JPG or PNG or WEBP';
       }
       const { width, height } = getImageDimensions(value.asset!._ref);
-      if (width < 1200 || height < 627) {
-        return 'Image must be at least 1200x627 pixels';
+      if (width < 700 || height < 400) {
+        return 'Image must be at least 700x400 pixels';
       }
       return true;
     }),

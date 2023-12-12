@@ -46,6 +46,7 @@ export default defineType({
       name: 'tags',
       title: 'Tags',
       type: 'array',
+      // @ts-ignore
       of: [
         {
           type: 'reference',
