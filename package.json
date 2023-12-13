@@ -41,6 +41,7 @@
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
+    "@sanity/types": "^3.21.3",
     "@tailwindcss/typography": "0.5.10",
     "@types/react": "^18.2.45",
     "@types/rss": "^0.0.32",

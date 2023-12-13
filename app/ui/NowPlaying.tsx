@@ -1,36 +1,14 @@
-import fetcher from 'src/lib/fetcher';
-import useSWR from 'swr';
-
-import { ICurrentlyPlaying } from '@/typings';
-
-function AnimatedBars() {
-  return (
-    <div className="w-auto flex items-end overflow-hidden md:mb-4">
-      <svg
-        id="loading-bar"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="14"
-        viewBox="0 0 16 14"
-      >
-        <g>
-          <rect id="loading-bar-1" width="3" height="14" fill="#4ade80" />
-          <rect id="loading-bar-2" width="3" height="14" x="4" fill="#4ade80" />
-          <rect id="loading-bar-3" width="3" height="14" x="8" fill="#4ade80" />
-          <rect
-            id="loading-bar-4"
-            width="3"
-            height="14"
-            x="12"
-            fill="#4ade80"
-          />
-        </g>
-      </svg>
-    </div>
-  );
+'force-dynamic';
+export interface ICurrentlyPlaying {
+  songUrl?: string;
+  artist?: string;
+  title?: string;
+  isPlaying: boolean;
 }
 
-export default function NowPlaying() {
+export async function NowPlaying() {
+  const res = await fetch(input, init);
+  return res.json();
   const { data } = useSWR<ICurrentlyPlaying>('/api/now-playing', fetcher);
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
@@ -66,6 +44,32 @@ export default function NowPlaying() {
           {data?.artist ?? 'Spotify'}
         </p>
       </div>
+    </div>
+  );
+}
+function AnimatedBars() {
+  return (
+    <div className="w-auto flex items-end overflow-hidden md:mb-4">
+      <svg
+        id="loading-bar"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="14"
+        viewBox="0 0 16 14"
+      >
+        <g>
+          <rect id="loading-bar-1" width="3" height="14" fill="#4ade80" />
+          <rect id="loading-bar-2" width="3" height="14" x="4" fill="#4ade80" />
+          <rect id="loading-bar-3" width="3" height="14" x="8" fill="#4ade80" />
+          <rect
+            id="loading-bar-4"
+            width="3"
+            height="14"
+            x="12"
+            fill="#4ade80"
+          />
+        </g>
+      </svg>
     </div>
   );
 }

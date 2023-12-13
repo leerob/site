@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { NAV_LINKS } from '@/config';
-import useDelayedRender from '@/lib/use-delayed-render';
-import { getActiveStatus } from '@/lib/utils';
+import { NAV_LINKS } from '@/app/config';
+import useDelayedRender from '@/app/lib/use-delayed-render';
+import { isActive } from '@/app/lib/isActive';
 import styles from '@/styles/mobile-menu.module.css';
 
 export default function MobileMenu() {
@@ -63,7 +63,7 @@ export default function MobileMenu() {
               <Link
                 href={item.href}
                 className={clsx(
-                  getActiveStatus(item.href, router.asPath)
+                  isActive(item.href, router.asPath)
                     ? 'font-medium text-gray-800 dark:text-gray-200'
                     : '',
                   'transition-all  duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'

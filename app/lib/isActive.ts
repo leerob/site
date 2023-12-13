@@ -1,4 +1,4 @@
-export function getActiveStatus(href: string, currentPath: string): boolean {
+export function isActive(href: string, currentPath: string): boolean {
   if (href === currentPath) {
     return true;
   }

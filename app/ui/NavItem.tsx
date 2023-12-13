@@ -1,8 +1,7 @@
+import { isActive } from '@/app/lib/isActive';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-import { getActiveStatus } from '@/lib/utils';
 
 interface INavItem {
   href: string;
@@ -16,7 +15,7 @@ export default function NavItem({ href, text }: INavItem) {
     <Link
       href={href}
       className={clsx(
-        getActiveStatus(href, router.asPath)
+        isActive(href, router.asPath)
           ? 'font-semibold text-gray-800 dark:text-gray-200 '
           : 'font-medium text-gray-600 dark:text-gray-400',
         'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'

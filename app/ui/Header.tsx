@@ -1,8 +1,11 @@
-import MobileMenu from '@/app/ui/MobileMenu';
-import NavItem from '@/app/ui/NavItem';
-import ToggleMode from '@/app/ui/ToggleMode';
-import { NAV_LINKS } from '@/app/config';
+'use client';
 
+import NavItem from '@/app/ui/NavItem';
+// import MobileMenu from '@/app/ui/MobileMenu';
+// import ToggleMode from '@/app/ui/ToggleMode';
+import { NAV_LINKS } from '@/app/config';
+// TODO: turn ToggleMode on
+// TODO: turn mobile menu on
 export default function Header() {
   return (
     <div className="flex flex-col justify-center px-8">
@@ -11,12 +14,12 @@ export default function Header() {
           Skip to content
         </a>
         <div className="ml-[-0.60rem">
-          <MobileMenu />
+          {/* <MobileMenu /> */}
           {NAV_LINKS.map((item, index) => (
             <NavItem key={index} href={item.href} text={item.text} />
           ))}
         </div>
-        <ToggleMode />
+        {/* <ToggleMode /> */}
       </nav>
     </div>
   );

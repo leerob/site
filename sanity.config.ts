@@ -14,8 +14,7 @@ export default defineConfig({
   plugins: [
     deskTool(),
     visionTool({
-      defaultApiVersion:
-        process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-12-12'
+      defaultApiVersion: process.env.SANITY_API_VERSION || '2023-12-12'
     }),
     markdownSchema(),
     vercelDeployTool()
