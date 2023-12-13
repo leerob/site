@@ -1,14 +1,23 @@
 import '@/app/ui/global.css';
+// import localFont from 'next/font/local';
 import Footer from '@/app/ui/Footer';
 import Header from '@/app/ui/Header';
 
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: '',
-  description: '',
-  metadataBase: new URL('')
-};
+// const plexSans = localFont({
+//   src: [
+//     {
+//       path: './fonts/ibm-plex-sans-var.woff2',
+//       weight: '400',
+//       style: 'normal'
+//     },
+//     {
+//       path: './fonts/ibm-plex-sans-var-italic.woff2',
+//       weight: '400',
+//       style: 'italic'
+//     }
+//   ]
+// });
+// // TODO: import plex-sans-mono at code blocks down to the components treee
 // TODO: Wrap with 'next-themes'
 export default function RootLayout({
   children
@@ -18,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}
+        className={` antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}
       >
         <div className="bg-gray-50 dark:bg-gray-900">
           <Header />

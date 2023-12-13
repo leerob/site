@@ -1,9 +1,10 @@
+'use client';
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
-import { TYPED_STRINGS } from '@/config';
+import { TYPED_STRINGS } from '@/app/config';
 
-const TypewriterEffect = () => {
+export function TypewriterEffect() {
   const el = useRef<HTMLSpanElement>(null!);
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -17,7 +18,7 @@ const TypewriterEffect = () => {
       showCursor: true,
       cursorChar: '|'
     });
-    // Destropying
+    // Destroying
     return () => {
       typed.destroy();
     };
@@ -29,6 +30,4 @@ const TypewriterEffect = () => {
       className="text-gray-800 dark:text-gray-200 md:text-lg italic font-medium"
     />
   );
-};
-
-export default TypewriterEffect;
+}

@@ -1,20 +1,15 @@
 import Image from 'next/image';
-=import { Suspense } from 'react';
-import { IconContext } from 'react-icons';
+import { TypewriterEffect } from '@/app/ui/TypewriterEffect';
+import { WakaStats } from '@/app/ui/WakaStats';
+import { Metadata } from 'next';
+import { Stacks } from '@/app/ui/Stacks';
 
-import LoadingSpinner from '@/app/ui/LoadingSpinner';
-import StackIcon, { STACKS } from '@/app/ui/StackIcon';
-import TypewriterEffect from '@/app/ui/TypewriterEffect';
-import { getWakaStats } from '@/app/lib/waka-api';
-import { IWakaApiResponse } from '@/app/lib/definitions';
-import {WakaStats} from '@/app/ui/WakaStats'
-export default function IndexPage({
-  languages,
-  totalHours
-}: {
-  languages: IWakaApiResponse[];
-  totalHours: number;
-}) {
+export const metadata: Metadata = {
+  title: '',
+  description: '',
+  metadataBase: new URL('')
+};
+export default function IndexPage() {
   return (
     <>
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
@@ -103,24 +98,8 @@ export default function IndexPage({
           <h2 className="text-xl md:text-2xl mb-4 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-normal ">
             Technologies I use frequently:
           </h2>
-          <div className="grid grid-cols-6 md:grid-cols-8 items-center place-content-between max-w-2xl gap-x-12 gap-y-6 mx-auto w-full">
-            <IconContext.Provider
-              value={{
-                className:
-                  'w-7 h-7 md:w-8 md:h-8  fill-gray-700  dark:fill-gray-300  hover:fill-gray-800 dark:hover:fill-gray-200'
-              }}
-            >
-              {STACKS.filter((el) => el.featured).map((el, index) => (
-                <StackIcon key={index} iconTitle={el.iconTitle} isLink={true} />
-              ))}
-            </IconContext.Provider>
-          </div>
-          {totalHours > 8 && (
-            <Suspense fallback={<LoadingSpinner />}>
-              <WakaStats languages={languages} totalHours={totalHours} />
-            </Suspense>
-          )}
-
+          <Stacks />
+          <WakaStats />
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Get in touch:
           </h2>
@@ -162,7 +141,3 @@ export default function IndexPage({
   );
 }
 
-export async function getStaticProps() {
-  const data = await getWakaStats();
-  return { props: { data: data }, revalidate: 86400 };
-}

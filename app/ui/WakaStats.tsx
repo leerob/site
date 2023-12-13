@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-
-import { IWakaApiResponse } from '@/typings';
+import { getWakaStats } from '@/app/lib/wakatime';
 
 const HEIGHT = 20;
 const WIDTH = 800;
@@ -38,36 +37,28 @@ const Bar = ({
   </g>
 );
 
-export function WakaStats({
-  languages,
-  totalHours
-}: {
-  languages: IWakaApiResponse[];
-  totalHours: number;
-}) {
+export async function WakaStats() {
+  const { languages, totalHours } = await getWakaStats();
   const datum = languages.sort((a, b) => b.percent - a.percent).slice(0, 3);
 
-  const stackedBarComments =
-    datum.length > 0 && totalHours > 10 ? (
-      datum.map(({ name: lang, text, hours, minutes }, index) => (
-        <div key={index}>
-          <span
-            className={clsx(
-              WAKA_STATS_COLORS[index].textColor,
-              'text-xs md:text-sm'
-            )}
-          >
-            {lang}
-          </span>
-          <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
-            {` • ${hours}h ${minutes}m`}
-          </span>
-        </div>
-      ))
-    ) : (
-      <p>df</p>
-    );
-
+  const stackedBarComments = datum.map(
+    ({ name: lang, text, hours, minutes }, index) => (
+      <div key={index}>
+        <span
+          className={clsx(
+            WAKA_STATS_COLORS[index].textColor,
+            'text-xs md:text-sm'
+          )}
+        >
+          {lang}
+        </span>
+        <span className=" text-gray-800 dark:text-gray-200 text-xs md:text-sm">
+          {` • ${hours}h ${minutes}m`}
+        </span>
+      </div>
+    )
+  );
+  if (totalHours < 10 || !languages) return null;
   return (
     <>
       <h2 className="text-xl md:text-2xl mb-3 mt-10 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
