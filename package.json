@@ -38,7 +38,8 @@
     "sanity-plugin-vercel-deploy": "^3.3.4",
     "styled-components": "^6.1.1",
     "swr": "2.2.4",
-    "typed.js": "^2.1.0"
+    "typed.js": "^2.1.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@sanity/types": "^3.21.3",

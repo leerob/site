@@ -1,18 +1,10 @@
-'force-dynamic';
-export interface ICurrentlyPlaying {
-  songUrl?: string;
-  artist?: string;
-  title?: string;
-  isPlaying: boolean;
-}
-
 export async function NowPlaying() {
-  const res = await fetch(input, init);
-  return res.json();
-  const { data } = useSWR<ICurrentlyPlaying>('/api/now-playing', fetcher);
+  // TODO: impement zod!!
+  const data = await fetch('/api/now-playing');
+  const { artist, songUrl, title, isPlaying } = await data.json();
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
-      {data?.songUrl ? (
+      {isPlaying ? (
         <AnimatedBars />
       ) : (
         <svg className="h-4 w-4 ml-auto mt-[-2px]" viewBox="0 0 168 168">
@@ -23,14 +15,14 @@ export async function NowPlaying() {
         </svg>
       )}
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate self-baseline">
-        {data?.songUrl ? (
+        {isPlaying ? (
           <a
             className="capsize text-gray-700 dark:text-gray-300 font-medium   text-sm max-w-max truncate"
-            href={data.songUrl}
+            href={songUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {data.title}
+            {title}
           </a>
         ) : (
           <p className="capsize text-gray-800 dark:text-gray-200  text-sm">
@@ -41,7 +33,7 @@ export async function NowPlaying() {
           {' – '}
         </span>
         <p className="capsize text-gray-500 dark:text-gray-400 max-w-max truncate text-sm">
-          {data?.artist ?? 'Spotify'}
+          {artist ?? 'Spotify'}
         </p>
       </div>
     </div>

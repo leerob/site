@@ -23,6 +23,8 @@ const WAKA_STATS_COLORS = [
   }
 ];
 
+
+
 const Bar = ({
   color,
   width,

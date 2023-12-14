@@ -1,4 +1,45 @@
-import { getNowPlaying } from '@/app/lib/spotify-api';
+export const config = {
+  runtime: 'edge'
+};
+export const dynamic = 'force-dynamic';
+
+export interface ICurrentlyPlaying {
+  songUrl?: string;
+  artist?: string;
+  title?: string;
+  isPlaying: boolean;
+}
+
+async function getAccessToken() {
+  const basic = btoa(
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  );
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basic}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: process.env.SPOTIFY_REFRESH_TOKEN
+      })
+    }
+  );
+  return response.json();
+}
+
+async function getNowPlaying() {
+  const data = await getAccessToken();
+  const { access_token } = data;
+  return fetch(process.env.NEXT_PUBLIC_SPOTIFY_NOW_PLAYING_ENDPOINT!, {
+    headers: {
+      Authorization: `Bearer ${access_token}`
+    }
+  });
+}
 
 export default async function GET() {
   const res = await getNowPlaying();
@@ -25,7 +66,3 @@ export default async function GET() {
     isPlaying: true
   });
 }
-
-export const config = {
-  runtime: 'edge'
-};
