@@ -1,22 +1,17 @@
-import { InferGetStaticPropsType } from 'next';
-import { useState } from 'react';
+// import { useState } from 'react';
 
-import Container from '@/components/Container';
-import PostPreview from '@/components/PostPreview';
-import { getPosts } from '@/lib/sanity-api';
+import PostPreview from '@/app/ui/PostPreview';
+import { getPosts } from '@/app/lib/sanity';
 
-export default function Blog({
-  posts
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
+export default async function Blog() {
+  const posts = await getPosts();
+
+  // const [searchValue, setSearchValue] = useState('');
+  // const filteredBlogPosts = posts.filter((post) =>
+  //   post.title.toLowerCase().includes(searchValue.toLowerCase())
+  // );
   return (
-    <Container
-      title="Blog – Dzmitry Svirin"
-      description="Posts about code, dev life and 🎇 other things."
-    >
+    <>
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
         <div className="flex flex-col">
           <h1 className="mb-4 text-3xl font-bold tracking-tight capsize text-gray-900 md:text-5xl dark:text-gray-100">
@@ -32,7 +27,7 @@ export default function Blog({
         </div>
       </div>
       <div className="flex flex-col  max-w-2xl mx-auto pb-16 w-full">
-        <div className="relative w-full mt-4 mb-2">
+        {/* <div className="relative w-full mt-4 mb-2">
           <input
             aria-label="Search articles"
             type="text"
@@ -54,10 +49,10 @@ export default function Blog({
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 divide-y divide-gray-700/25 dark:divide-gray-300/25">
-          {filteredBlogPosts.length ? (
-            filteredBlogPosts.map((post) => (
+          {posts.length ? (
+            posts.map((post) => (
               <PostPreview
                 key={post.title}
                 slug={post.slug}
@@ -73,12 +68,6 @@ export default function Blog({
           )}
         </div>
       </div>
-    </Container>
+    </>
   );
-}
-
-export async function getStaticProps() {
-  const posts = await getPosts();
-
-  return { props: { posts } };
 }

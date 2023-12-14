@@ -32,12 +32,6 @@ export default defineType({
       type: 'blockContent'
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'string',
-      validation: (Rule: { required: () => any }) => Rule.required()
-    }),
-    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       type: 'imageWithAlt'

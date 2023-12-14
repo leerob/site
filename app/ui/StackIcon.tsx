@@ -1,3 +1,5 @@
+'use client';
+import { IconContext } from 'react-icons';
 import {
   SiAlgolia,
   SiAmazonaws,
@@ -31,7 +33,6 @@ import {
   SiTypescript,
   SiVercel
 } from 'react-icons/si';
-
 
 interface IStackIcon {
   iconTitle: string;
@@ -245,20 +246,27 @@ export const STACKS = [
   }
 ];
 
-export default function StackIcon({ iconTitle, isLink = false }: IStackIcon) {
+export function StackIcon({ iconTitle, isLink = false }: IStackIcon) {
   const { Icon, url } =
     STACKS.find((stack) => stack.iconTitle === iconTitle) ?? STACKS[0];
-  return isLink ? (
-    <a
-      className="duration-150 transform  ease-in-out hover:scale-110"
-      href={url}
-      title={iconTitle}
-      target="_blank"
-      rel="noopener noreferrer"
+  return (
+    <IconContext.Provider
+      value={{
+        className:
+          'w-7 h-7 md:w-8 md:h-8  fill-gray-700  dark:fill-gray-300  hover:fill-gray-800 dark:hover:fill-gray-200'
+      }}
     >
-      {Icon}
-    </a>
-  ) : (
-    Icon
+      isLink ? (
+      <a
+        className="duration-150 transform  ease-in-out hover:scale-110"
+        href={url}
+        title={iconTitle}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {Icon}
+      </a>
+      ) : ( Icon )
+    </IconContext.Provider>
   );
 }

@@ -6,8 +6,14 @@ const postFields = `
   title,
   "slug": slug.current,
   "date": _updatedAt,
-  excerpt,
-  coverImage,
+  "excerpt": array::join(string::split((pt::text(body[_type == "block"][0...1])), "")[0..256], "") + "...",
+  coverImage {
+    asset,
+    alt,
+    caption,
+    "aspectRatio": asset->metadata.dimensions.aspectRatio,
+    "lqip": asset->metadata.lqip
+  },
   "tags": tags[] -> {
     _id,
     title,
@@ -23,8 +29,6 @@ const snippetFields = groq`
   "slug": slug.current,
 `;
 
-// post-related queries
-
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
@@ -33,6 +37,18 @@ export const indexQuery = groq`
 export const postQuery = groq`
 {
   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  body[] {
+      ...,
+      markDefs[] {
+        ...,
+        _type == "internalLink" => {
+          "slug": @.reference->slug.current,
+          "type": @.reference->_type,
+          "title": @.reference->title
+        },
+      }
+    },
+    "headings": content[length(style) == 2 && string::startsWith(style, "h")],
     content,
     ${postFields}
   }
@@ -69,6 +85,7 @@ export const snippetsQuery = groq`
 {
   "snippet": *[_type == "snippet" && slug.current == $slug] | order(_updatedAt desc) [0] {
     content,
+    body,
     ${snippetFields}
   }
 }`;
