@@ -41,8 +41,7 @@ export default defineType({
           {
             name: 'externalLink',
             type: 'object',
-            title:
-              'External/Internal link. Links, containing breakout* will be treated as Internal',
+            title: 'External/Internal link.',
             icon: RiExternalLinkLine,
             fields: [
               {
@@ -66,13 +65,13 @@ export default defineType({
             name: 'internalLink',
             type: 'object',
             icon: RiLinksLine,
-            title: 'Link to Post/Tag page)',
+            title: 'Link to Post/Snippet)',
             fields: [
               {
                 name: 'reference',
                 type: 'reference',
                 title: 'Reference',
-                to: [{ type: 'post' }, { type: 'tag' }]
+                to: [{ type: 'post' }, { type: 'snippet' }]
               }
             ]
           }

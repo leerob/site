@@ -1,7 +1,4 @@
 import Image from 'next/image';
-import { MDXRemote } from 'next-mdx-remote';
-import components from '@/app/ui/MDXComponents';
-import { mdxToHtml } from '@/app/lib/mdx';
 import { getPost, getPostSlugs } from '@/app/lib/sanity';
 import { IParams } from '@/app/lib/definitions';
 import { Tags } from '@/app/ui/Tags';
@@ -9,7 +6,6 @@ import { urlForImage } from '@/sanity/lib/image';
 
 export default async function PostPage(params: IParams) {
   const post = await getPost(params.slug);
-  const { html, readingTime } = await mdxToHtml(post.content);
 
   return (
     <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">
@@ -50,7 +46,7 @@ export default async function PostPage(params: IParams) {
           </p>
         </div>
         <p className="mt-2 text-xs md:text-sm lg:text-base text-gray-600 dark:text-gray-400 min-w-32">
-          {readingTime}
+          {post.readingTime}
         </p>
       </div>
       <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert  md:prose-lg">

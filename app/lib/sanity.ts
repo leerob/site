@@ -5,10 +5,8 @@ import { client as sanityClient } from '@/sanity/lib/client';
 import {
   allSnippetsQuery,
   indexQuery,
-  postBySlugQuery,
   postQuery,
   postSlugsQuery,
-  postUpdatedQuery,
   snippetSlugsQuery,
   snippetsQuery,
   tagRelatedPosts,
@@ -24,24 +22,22 @@ export interface ITag {
 export interface IPost {
   _id: string;
   slug: string;
-  content: string;
+  body: string;
   title: string;
   date: string;
   excerpt: string;
   tags: ITag[];
   coverImage: string;
-  readingTime?: string;
-  mdxContent?: MDXRemoteSerializeResult;
+  readingTime: string;
 }
 
 export interface ISnippet {
   _id: string;
   slug: string;
-  content: string;
   title: string;
   description: string;
+  body: string;
   iconTitle: string;
-  mdxContent: MDXRemoteSerializeResult;
 }
 
 export const getPosts = async (): Promise<IPost[]> => {
@@ -57,15 +53,6 @@ export const getPostSlugs = async (): Promise<string[]> => {
 export const getPost = async (slug: string): Promise<IPost> => {
   const { post } = await sanityClient.fetch(postQuery, { slug: slug });
   return post ?? null;
-};
-
-export const getPostBySlug = async (slug: string): Promise<IPost> => {
-  const { post } = await sanityClient.fetch(postBySlugQuery, { slug });
-  return post ?? null;
-};
-export const getUpdatedPostSlug = async (id: string): Promise<string> => {
-  const slug = sanityClient.fetch(postUpdatedQuery, { id });
-  return slug ?? null;
 };
 
 export const getSnippets = async (): Promise<ISnippet[]> => {

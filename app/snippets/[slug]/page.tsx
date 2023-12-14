@@ -1,13 +1,10 @@
-import { MDXRemote } from 'next-mdx-remote';
 import { StackIcon } from '@/app/ui/StackIcon';
 import components from '@/app/ui/MDXComponents';
-import { mdxToHtml } from '@/app/lib/mdx';
 import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
 import { IParams } from '@/app/lib/definitions';
 
 export default async function SnippetsPage(params: IParams) {
   const snippet = await getSnippet(params.slug);
-  const { html } = await mdxToHtml(snippet.content);
 
   return (
     <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
@@ -45,4 +42,3 @@ export async function generateStaticParams() {
     slug
   }));
 }
-

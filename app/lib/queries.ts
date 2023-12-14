@@ -37,7 +37,7 @@ export const indexQuery = groq`
 export const postQuery = groq`
 {
   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-  body[] {
+    body[] {
       ...,
       markDefs[] {
         ...,
@@ -49,7 +49,7 @@ export const postQuery = groq`
       }
     },
     "headings": content[length(style) == 2 && string::startsWith(style, "h")],
-    content,
+    "readingTime": round(length(pt::text(content)) / 5 / 180 ),
     ${postFields}
   }
 }`;
@@ -58,11 +58,6 @@ export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `;
 
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
-}
-`;
 export const tagRelatedPosts = groq`
 *[_type == "tag" && slug.current == $slug] {
   title,
@@ -71,10 +66,6 @@ export const tagRelatedPosts = groq`
   } [0...${POSTS_LIMIT}]  | order(_updatedAt desc)
 }[0]
 `;
-
-export const postUpdatedQuery = groq`*[_type == "post" && _id == $id].slug.current`;
-
-// snippet-related queries
 
 export const allSnippetsQuery = groq`
 *[_type == "snippet"] | order(date desc, _updatedAt desc) {
@@ -94,7 +85,6 @@ export const snippetSlugsQuery = groq`
 *[_type == "snippet" && defined(slug.current)][].slug.current
 `;
 
-// tag-related queries
 
 export const tagSlugsQuery = groq`
 *[_type == "tag" && defined(slug.current)][].slug.current

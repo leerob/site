@@ -12,8 +12,8 @@ export default defineType({
       validation: (Rule: { required: () => any }) => Rule.required()
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
+      name: 'slug',
+      title: 'Slug',
       type: 'slug',
       options: {
         source: 'title',
