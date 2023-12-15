@@ -58,6 +58,7 @@ export default async function PostPage({
         <PortableText
           value={post.body}
           onMissingComponent={false}
+          // @ts-ignore
           components={PTComponents}
         />
       </div>

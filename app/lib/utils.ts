@@ -39,3 +39,7 @@ export function isActive(href: string, currentPath: string): boolean {
 
   return false;
 }
+
+export function extractLanguage(filename: string) {
+  return 'typescript';
+}

@@ -3,7 +3,7 @@ import Refractor from 'react-refractor';
 import Link from 'next/link';
 import { SanityImage } from '@/app/ui/SanityImage';
 // import { SanityAssetExtended } from '@/app/lib/sanity';
-
+import { extractLanguage } from '@/app/lib/utils';
 import javascript from 'refractor/lang/javascript';
 import typescript from 'refractor/lang/typescript';
 import tsx from 'refractor/lang/tsx';
@@ -16,8 +16,9 @@ Refractor.registerLanguage(shell);
 
 export const PTComponents = {
   types: {
-    codeField: ({ value }) => {
-      return <Refractor language={value.language} value={value.code} />;
+    codeBox: ({ value }) => {
+      console.log('value', value);
+      return <Refractor language="tsx" value={value.code} />;
     },
     imageWithAlt: ({ value }) => SanityImage(value),
     break: ({ value }) =>

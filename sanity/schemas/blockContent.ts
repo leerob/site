@@ -82,11 +82,11 @@ export default defineType({
     defineArrayMember({
       type: 'imageWithAlt'
     }),
-    defineField({
+    defineArrayMember({
       type: 'code',
-      name: 'codeField',
+      name: 'codeBox',
+      title: 'Paste your code here',
       icon: RiCodeFill,
-      title: 'Code block',
       options: {
         language: 'typescript',
         languageAlternatives: [
