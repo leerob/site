@@ -4,7 +4,7 @@ import Typed from 'typed.js';
 
 import { TYPED_STRINGS } from '@/app/config';
 
-export function TypewriterEffect() {
+export function Typewriter() {
   const el = useRef<HTMLSpanElement>(null!);
   useEffect(() => {
     const typed = new Typed(el.current, {

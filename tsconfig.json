@@ -27,6 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "app/ui/Typewritertsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,18 +1,13 @@
-import Link from 'next/link';
-import { SanityAsset } from '@sanity/asset-utils';
-import type { PortableTextBlock } from '@sanity/types';
+// @ts-nocheck
 
-import { BlogImage } from '@/app/ui/BlogImage';
-export interface SanityAssetExtended extends SanityAsset {
-  aspectRatio: number;
-  lqip: string;
-  alt: string;
-  caption?: string;
-}
-export const PTComponents: any = {
+import Link from 'next/link';
+import { SanityImage } from '@/app/ui/SanityImage';
+import { SanityAssetExtended } from '@/app/lib/sanity';
+
+export const PTComponents = {
   types: {
     imageWithAlt: ({ value }: { value: SanityAssetExtended }) =>
-      BlogImage(value),
+      SanityImage(value),
     break: ({ value }) =>
       value ? <hr className="horizontal-divider" /> : <></>
   },
@@ -31,7 +26,7 @@ export const PTComponents: any = {
   marks: {
     internalLink: ({ children, value }) => {
       const { slug, type } = value;
-      const href = type === 'post' ? `/blog/${slug}` : `/blog/tag/${slug}`;
+      const href = type === 'post' ? `/blog/${slug}` : `/snippet/${slug}`;
       return <Link href={href}>{children}</Link>;
     },
     externalLink: ({ children, value }) => {

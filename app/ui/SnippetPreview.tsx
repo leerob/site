@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import StackIcon from '@/app/ui/StackIcon';
+import { StackIcon } from '@/app/ui/Icons';
 import { ISnippet } from '@/app/lib/sanity';
 import { IconContext } from 'react-icons';
-
+// TODO: Refactor to a server component
 export default function SnippetPreview({
   title,
   description,

@@ -8,20 +8,20 @@ export default defineType({
   type: 'image',
   icon: RiImage2Line,
   options: {
-    hotspot: true,
+    hotspot: true
   },
   fields: [
     defineField({
       title: 'Alternative Text',
       name: 'alt',
       type: 'string',
-      validation: (Rule: { required: () => any }) => Rule.required(),
+      validation: (Rule: { required: () => any }) => Rule.required()
     }),
     defineField({
       title: 'Image Caption',
       name: 'caption',
-      type: 'string',
-    }),
+      type: 'string'
+    })
   ],
   validation: (rule) =>
     rule.custom((value) => {
@@ -37,5 +37,5 @@ export default defineType({
       //   return 'Image must be at least 700x400 pixels';
       // }
       return true;
-    }),
+    })
 });

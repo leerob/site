@@ -1,7 +1,9 @@
-import { isActive } from '@/app/lib/isActive';
+'use client';
+
+import { isActive } from '@/app/lib/utils';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 interface INavItem {
   href: string;
@@ -9,13 +11,13 @@ interface INavItem {
 }
 
 export default function NavItem({ href, text }: INavItem) {
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <Link
       href={href}
       className={clsx(
-        isActive(href, router.asPath)
+        isActive(href, pathname)
           ? 'font-semibold text-gray-800 dark:text-gray-200 '
           : 'font-medium text-gray-600 dark:text-gray-400',
         'hidden md:inline-block  transition-all pr-4 duration-150 hover:text-gray-800 dark:hover:text-gray-200 ease-in-out text-lg'

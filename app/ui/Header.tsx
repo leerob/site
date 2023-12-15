@@ -2,9 +2,7 @@
 
 import NavItem from '@/app/ui/NavItem';
 // import MobileMenu from '@/app/ui/MobileMenu';
-// import ToggleMode from '@/app/ui/ToggleMode';
 import { NAV_LINKS } from '@/app/config';
-// TODO: turn ToggleMode on
 // TODO: turn mobile menu on
 export default function Header() {
   return (
@@ -19,7 +17,6 @@ export default function Header() {
             <NavItem key={index} href={item.href} text={item.text} />
           ))}
         </div>
-        {/* <ToggleMode /> */}
       </nav>
     </div>
   );

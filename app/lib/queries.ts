@@ -10,7 +10,6 @@ const postFields = `
   coverImage {
     asset,
     alt,
-    caption,
     "aspectRatio": asset->metadata.dimensions.aspectRatio,
     "lqip": asset->metadata.lqip
   },
@@ -29,7 +28,7 @@ const snippetFields = groq`
   "slug": slug.current,
 `;
 
-export const indexQuery = groq`
+export const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
@@ -48,7 +47,6 @@ export const postQuery = groq`
         },
       }
     },
-    "headings": content[length(style) == 2 && string::startsWith(style, "h")],
     "readingTime": round(length(pt::text(content)) / 5 / 180 ),
     ${postFields}
   }
@@ -72,10 +70,9 @@ export const allSnippetsQuery = groq`
   ${snippetFields}
 }`;
 
-export const snippetsQuery = groq`
+export const snippetQuery = groq`
 {
   "snippet": *[_type == "snippet" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
     body,
     ${snippetFields}
   }
@@ -85,7 +82,8 @@ export const snippetSlugsQuery = groq`
 *[_type == "snippet" && defined(slug.current)][].slug.current
 `;
 
-
 export const tagSlugsQuery = groq`
 *[_type == "tag" && defined(slug.current)][].slug.current
 `;
+
+export const postUpdatedQuery = groq`*[_type == "post" && _id == $id].slug.current`;

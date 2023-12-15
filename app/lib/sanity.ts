@@ -1,17 +1,32 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { createClient } from 'next-sanity';
+import { SanityAsset } from '@sanity/asset-utils';
+import { PortableTextBlock } from '@sanity/types';
 
-import { client as sanityClient } from '@/sanity/lib/client';
+export const sanityClient = createClient({
+  apiVersion: process.env.SANITY_API_VERSION || '2023-12-12',
+  dataset: process.env.SANITY_STUDIO_DATASET,
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  useCdn: process.env.NODE_ENV !== 'production'
+});
 
 import {
   allSnippetsQuery,
-  indexQuery,
+  allPostsQuery,
   postQuery,
   postSlugsQuery,
   snippetSlugsQuery,
-  snippetsQuery,
+  snippetQuery,
   tagRelatedPosts,
-  tagSlugsQuery
+  tagSlugsQuery,
+  postUpdatedQuery
 } from './queries';
+
+export interface SanityAssetExtended extends SanityAsset {
+  aspectRatio: number;
+  lqip: string;
+  alt: string;
+  caption?: string;
+}
 
 export interface ITag {
   _id: string;
@@ -22,13 +37,14 @@ export interface ITag {
 export interface IPost {
   _id: string;
   slug: string;
-  body: string;
+  body: PortableTextBlock[];
+  headings?: PortableTextBlock[];
   title: string;
   date: string;
   excerpt: string;
+  coverImage: SanityAssetExtended;
+  readingTime: number;
   tags: ITag[];
-  coverImage: string;
-  readingTime: string;
 }
 
 export interface ISnippet {
@@ -36,12 +52,12 @@ export interface ISnippet {
   slug: string;
   title: string;
   description: string;
-  body: string;
+  body: PortableTextBlock[];
   iconTitle: string;
 }
 
 export const getPosts = async (): Promise<IPost[]> => {
-  const posts = await sanityClient.fetch(indexQuery);
+  const posts = await sanityClient.fetch(allPostsQuery);
   return posts;
 };
 
@@ -66,7 +82,7 @@ export const getSnippetSlugs = async (): Promise<string[]> => {
 };
 
 export const getSnippet = async (slug: string): Promise<ISnippet> => {
-  const { snippet } = await sanityClient.fetch(snippetsQuery, { slug });
+  const { snippet } = await sanityClient.fetch(snippetQuery, { slug });
   return snippet ?? null;
 };
 
@@ -83,4 +99,9 @@ export const getPostsByTag = async (
 }> => {
   const posts = await sanityClient.fetch(tagRelatedPosts, { slug });
   return posts ?? null;
+};
+
+export const getUpdatedPostSlug = async (id: string): Promise<string> => {
+  const slug = sanityClient.fetch(postUpdatedQuery, { id });
+  return slug ?? null;
 };

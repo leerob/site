@@ -1,11 +1,14 @@
+// @ts-nocheck
+
 import Image from 'next/image';
 import { getPost, getPostSlugs } from '@/app/lib/sanity';
-import { IParams } from '@/app/lib/definitions';
 import { Tags } from '@/app/ui/Tags';
-import { urlForImage } from '@/sanity/lib/image';
+import { SanityImage } from '@/app/ui/SanityImage';
+import { PortableText } from '@portabletext/react';
+import { PTComponents } from '@/app/ui/PortableText';
 
-export default async function PostPage(params: IParams) {
-  const post = await getPost(params.slug);
+export default async function PostPage(props) {
+  const post = await getPost(props.slug);
 
   return (
     <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">
@@ -15,10 +18,7 @@ export default async function PostPage(params: IParams) {
       </h1>
       {post.coverImage && (
         <div className="flex flex-col w-full my-4">
-          <Image
-            src={urlForImage(post.coverImage).url()}
-            alt={`Image for ${post.title}`}
-          />
+          <SanityImage image={post.coverImage} />
         </div>
       )}
       <div className="flex flex-row items-start justify-between w-full mt-2 tems-center">
@@ -50,13 +50,10 @@ export default async function PostPage(params: IParams) {
         </p>
       </div>
       <div className="w-full max-w-2xl mt-4 prose prose-slate dark:prose-invert  md:prose-lg">
-        <MDXRemote
-          {...html!}
-          components={
-            {
-              ...components
-            } as any
-          }
+        <PortableText
+          value={post.body}
+          onMissingComponent={false}
+          components={PTComponents}
         />
       </div>
     </article>

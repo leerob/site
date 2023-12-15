@@ -4,8 +4,11 @@
 
 module.exports = {
   images: {
-    domains: [
-      'cdn.sanity.io' // Sanity images
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io' // Sanity images
+      }
     ],
     formats: ['image/webp']
   },

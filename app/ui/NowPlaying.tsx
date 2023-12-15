@@ -1,7 +1,18 @@
 export async function NowPlaying() {
   // TODO: impement zod!!
-  const data = await fetch('/api/now-playing');
-  const { artist, songUrl, title, isPlaying } = await data.json();
+  const data = await fetch(
+    `${
+      process.env.NODE_ENV === 'production'
+        ? process.env.NEXT_PUBLIC_PRODUCTION_SITE_URL
+        : 'http://localhost:3000'
+    }/api/now-playing`
+  );
+  const isPlaying = false;
+  const artist = 'false';
+  const songUrl = 'false';
+  const title = 'false';
+
+  // const { artist, songUrl, title, isPlaying } = await data.json();
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
       {isPlaying ? (

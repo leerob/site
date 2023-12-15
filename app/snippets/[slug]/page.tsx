@@ -1,10 +1,10 @@
-import { StackIcon } from '@/app/ui/StackIcon';
-import components from '@/app/ui/MDXComponents';
-import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
-import { IParams } from '@/app/lib/definitions';
+// @ts-nocheck
 
-export default async function SnippetsPage(params: IParams) {
-  const snippet = await getSnippet(params.slug);
+import { StackIcon } from '@/app/ui/Icons';
+import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
+
+export default async function SnippetsPage(props) {
+  const snippet = await getSnippet(props.slug);
 
   return (
     <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
@@ -22,16 +22,7 @@ export default async function SnippetsPage(params: IParams) {
         </div>
       </div>
 
-      <div className="prose dark:prose-invert prose-slate  max-w-2xl  w-full md:prose-lg">
-        <MDXRemote
-          {...html!}
-          components={
-            {
-              ...components
-            } as any
-          }
-        />
-      </div>
+      <div className="prose dark:prose-invert prose-slate  max-w-2xl  w-full md:prose-lg"></div>
     </article>
   );
 }

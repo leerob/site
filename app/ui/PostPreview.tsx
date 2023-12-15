@@ -1,7 +1,6 @@
 import Link from 'next/link';
-
-import { Tags } from '@/components/Tags';
-import { IPost } from '@/typings';
+import { Tags } from '@/app/ui/Tags';
+import { IPost } from '@/app/lib/sanity';
 
 export default function PostPreview({
   slug,

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ITag } from '@/typings';
+import { ITag } from '@/app/lib/sanity';
 
 interface ITags {
   tags?: ITag[];

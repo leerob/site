@@ -1,6 +1,4 @@
-export const config = {
-  runtime: 'edge'
-};
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export interface ICurrentlyPlaying {
@@ -41,7 +39,7 @@ async function getNowPlaying() {
   });
 }
 
-export default async function GET() {
+export async function POST(request: Request) {
   const res = await getNowPlaying();
   // TODO: return Error
   if (res.status === 204 || res.status > 400) {

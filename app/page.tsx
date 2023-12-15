@@ -1,14 +1,9 @@
 import Image from 'next/image';
-import { TypewriterEffect } from '@/app/ui/TypewriterEffect';
+import { Typewriter } from '@/app/ui/Typewriter';
 import { WakaStats } from '@/app/ui/WakaStats';
 import { Metadata } from 'next';
-import { Stacks } from '@/app/ui/Stacks';
+import { MyStacks } from '@/app/ui/Icons';
 
-export const metadata: Metadata = {
-  title: '',
-  description: '',
-  metadataBase: new URL('')
-};
 export default function IndexPage() {
   return (
     <>
@@ -98,7 +93,7 @@ export default function IndexPage() {
           <h2 className="text-xl md:text-2xl mb-4 mt-2 tracking-tight text-gray-700 dark:text-gray-200 font-normal ">
             Technologies I use frequently:
           </h2>
-          <Stacks />
+          <MyStacks />
           <WakaStats />
           <h2 className="text-xl md:text-2xl mt-8 tracking-tight text-gray-700 dark:text-gray-200 font-normal">
             Get in touch:
@@ -123,7 +118,7 @@ export default function IndexPage() {
               </a>
             </li>
             <li className="text-gray-700 dark:text-gray-400 md:text-lg">
-              Mail:{' '}
+              Email:{' '}
               <a
                 className=" text-gray-800 dark:text-gray-300  font-medium  link-underline link-underline-gradient"
                 href="mailto:svirins@gmail.com"
@@ -134,10 +129,9 @@ export default function IndexPage() {
           </ul>
         </div>
         <p className="mt-2">
-          <TypewriterEffect />
+          <Typewriter />
         </p>
       </div>
     </>
   );
 }
-
