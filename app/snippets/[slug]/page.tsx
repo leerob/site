@@ -1,10 +1,15 @@
-// @ts-nocheck
-
 import { StackIcon } from '@/app/ui/Icons';
 import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
 
-export default async function SnippetsPage(props) {
-  const snippet = await getSnippet(props.slug);
+export default async function SnippetsPage({
+  params
+}: {
+  params: {
+    slug: string;
+    searchParams: URLSearchParams;
+  };
+}) {
+  const snippet = await getSnippet(params.slug);
 
   return (
     <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">

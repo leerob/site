@@ -1,5 +1,6 @@
 import {
   RiBallPenFill,
+  RiCodeFill,
   RiExternalLinkLine,
   RiLinksLine,
   RiSeparator,
@@ -80,6 +81,22 @@ export default defineType({
     }),
     defineArrayMember({
       type: 'imageWithAlt'
+    }),
+    defineField({
+      type: 'code',
+      name: 'codeField',
+      icon: RiCodeFill,
+      title: 'Code block',
+      options: {
+        language: 'typescript',
+        languageAlternatives: [
+          { title: 'Javascript', value: 'javascript' },
+          { title: 'TypeScript', value: 'typescript' },
+          { title: 'tsx', value: 'tsx' },
+          { title: 'Shell', value: 'shell' }
+        ],
+        withFilename: true
+      }
     }),
     defineArrayMember({
       name: 'break',

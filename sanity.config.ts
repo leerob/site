@@ -3,6 +3,7 @@ import { deskTool } from 'sanity/desk';
 import { markdownSchema } from 'sanity-plugin-markdown';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy';
 import { visionTool } from '@sanity/vision';
+import { codeInput } from '@sanity/code-input';
 
 import { schema } from './sanity/schema';
 
@@ -17,6 +18,7 @@ export default defineConfig({
       defaultApiVersion: process.env.SANITY_API_VERSION || '2023-12-12'
     }),
     markdownSchema(),
+    codeInput(),
     vercelDeployTool()
   ]
 });

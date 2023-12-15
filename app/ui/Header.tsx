@@ -1,9 +1,5 @@
-'use client';
-
 import NavItem from '@/app/ui/NavItem';
-// import MobileMenu from '@/app/ui/MobileMenu';
-import { NAV_LINKS } from '@/app/config';
-// TODO: turn mobile menu on
+import { NAV_LINKS } from '@/app/lib/constants';
 export default function Header() {
   return (
     <div className="flex flex-col justify-center px-8">
@@ -12,7 +8,6 @@ export default function Header() {
           Skip to content
         </a>
         <div className="ml-[-0.60rem">
-          {/* <MobileMenu /> */}
           {NAV_LINKS.map((item, index) => (
             <NavItem key={index} href={item.href} text={item.text} />
           ))}

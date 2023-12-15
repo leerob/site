@@ -1,13 +1,25 @@
-// @ts-nocheck
+import Refractor from 'react-refractor';
 
 import Link from 'next/link';
 import { SanityImage } from '@/app/ui/SanityImage';
-import { SanityAssetExtended } from '@/app/lib/sanity';
+// import { SanityAssetExtended } from '@/app/lib/sanity';
+
+import javascript from 'refractor/lang/javascript';
+import typescript from 'refractor/lang/typescript';
+import tsx from 'refractor/lang/tsx';
+import shell from 'refractor/lang/shell-session';
+
+Refractor.registerLanguage(javascript);
+Refractor.registerLanguage(typescript);
+Refractor.registerLanguage(tsx);
+Refractor.registerLanguage(shell);
 
 export const PTComponents = {
   types: {
-    imageWithAlt: ({ value }: { value: SanityAssetExtended }) =>
-      SanityImage(value),
+    codeField: ({ value }) => {
+      return <Refractor language={value.language} value={value.code} />;
+    },
+    imageWithAlt: ({ value }) => SanityImage(value),
     break: ({ value }) =>
       value ? <hr className="horizontal-divider" /> : <></>
   },

@@ -1,24 +1,7 @@
-import '@/app/ui/global.css';
-// import localFont from 'next/font/local';
+import '@/app/global.css';
 import Footer from '@/app/ui/Footer';
 import Header from '@/app/ui/Header';
 
-// const plexSans = localFont({
-//   src: [
-//     {
-//       path: './fonts/ibm-plex-sans-var.woff2',
-//       weight: '400',
-//       style: 'normal'
-//     },
-//     {
-//       path: './fonts/ibm-plex-sans-var-italic.woff2',
-//       weight: '400',
-//       style: 'italic'
-//     }
-//   ]
-// });
-// // TODO: import plex-sans-mono at code blocks down to the components treee
-// TODO: Wrap with 'next-themes'
 export default function RootLayout({
   children
 }: {

@@ -4,6 +4,16 @@ import { WakaStats } from '@/app/ui/WakaStats';
 import { Metadata } from 'next';
 import { MyStacks } from '@/app/ui/Icons';
 
+export const metadata: Metadata = {
+  title: `Dzmitry Sviryn's personal website`,
+  description:
+    'A full-stack developer passionate about React ecosystem, TypeScript and serverless backends',
+  generator: 'Next.js',
+  applicationName: 'My dev site',
+  keywords: ['Next.js', 'TypeScript', 'Dev blog'],
+  authors: [{ name: 'Dzmitry Sviryn', url: 'https://github.com/svirins' }]
+};
+
 export default function IndexPage() {
   return (
     <>

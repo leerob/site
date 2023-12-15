@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import Image from 'next/image';
 import { getPost, getPostSlugs } from '@/app/lib/sanity';
 import { Tags } from '@/app/ui/Tags';
@@ -7,8 +5,15 @@ import { SanityImage } from '@/app/ui/SanityImage';
 import { PortableText } from '@portabletext/react';
 import { PTComponents } from '@/app/ui/PortableText';
 
-export default async function PostPage(props) {
-  const post = await getPost(props.slug);
+export default async function PostPage({
+  params
+}: {
+  params: {
+    slug: string;
+    searchParams: URLSearchParams;
+  };
+}) {
+  const post = await getPost(params.slug);
 
   return (
     <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-12">

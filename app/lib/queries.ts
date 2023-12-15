@@ -1,6 +1,6 @@
 import groq from 'groq';
 
-import { POSTS_LIMIT } from '@/app/config';
+import { POSTS_LIMIT } from '@/app/lib/constants';
 const postFields = `
   _id,
   title,
