@@ -1,4 +1,4 @@
-import PostPreview from '@/app/ui/PostPreview';
+import { PostPreview } from '@/app/ui/PostPreview';
 import { getPostsByTag, getTagSlugs } from '@/app/lib/sanity';
 
 export default async function TagPage({
@@ -14,11 +14,11 @@ export default async function TagPage({
     <>
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
         <div className="flex flex-col">
-          <h1 className="mb-4 text-3xl font-bold tracking-tight capsize text-gray-900 md:text-5xl text-gray-100">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight capsize md:text-5xl text-gray-100">
             {`Posts with #${title} tag`}
           </h1>
           {description && (
-            <p className="text-gray-900 font-semibold  text-gray-100 text-base mt-2 md:text-lg">
+            <p className="font-semibold  text-gray-100 text-base mt-2 md:text-lg">
               {description}
             </p>
           )}
@@ -37,9 +37,7 @@ export default async function TagPage({
               />
             ))
           ) : (
-            <p className=" text-gray-700 text-gray-400 italic text-lg">
-              No results found
-            </p>
+            <p className="  text-gray-400 italic text-lg">No results found</p>
           )}
         </div>
       </div>

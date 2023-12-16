@@ -2,12 +2,7 @@ import Link from 'next/link';
 import { Tags } from '@/app/ui/Tags';
 import { IPost } from '@/app/lib/sanity';
 
-export default function PostPreview({
-  slug,
-  title,
-  excerpt,
-  tags
-}: Partial<IPost>) {
+export function PostPreview({ slug, title, excerpt, tags }: Partial<IPost>) {
   return (
     <div className=" w-full py-4">
       <div className="w-full">

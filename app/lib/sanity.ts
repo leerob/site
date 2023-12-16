@@ -3,22 +3,22 @@ import { SanityAsset } from '@sanity/asset-utils';
 import { PortableTextBlock } from '@sanity/types';
 
 export const sanityClient = createClient({
-  apiVersion: process.env.SANITY_API_VERSION || '2023-12-12',
-  dataset: process.env.SANITY_STUDIO_DATASET,
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-12-12',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV !== 'production'
 });
 
 import {
   allSnippetsQuery,
-  allPostsQuery,
   postQuery,
   postSlugsQuery,
   snippetSlugsQuery,
   snippetQuery,
   tagRelatedPosts,
   tagSlugsQuery,
-  postUpdatedQuery
+  postUpdatedQuery,
+  searchPostsQuery
 } from './queries';
 
 export interface SanityAssetExtended extends SanityAsset {
@@ -57,8 +57,10 @@ export interface ISnippet {
   iconTitle: string;
 }
 
-export const getPosts = async (): Promise<IPost[]> => {
-  const posts = await sanityClient.fetch(allPostsQuery);
+export const searchPosts = async (queryString: string): Promise<IPost[]> => {
+  const posts = await sanityClient.fetch(searchPostsQuery, {
+    queryString: queryString
+  });
   return posts;
 };
 

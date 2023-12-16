@@ -1,15 +1,23 @@
-// import { useState } from 'react';
+import { PostPreview } from '@/app/ui/PostPreview';
+import { searchPosts } from '@/app/lib/sanity';
+import { SearchBar } from '@/app/ui/SearchBar';
 
-import PostPreview from '@/app/ui/PostPreview';
-import { getPosts } from '@/app/lib/sanity';
+type Props = {
+  params: {};
+  searchParams: { title?: string };
+};
 
-export default async function Blog() {
-  const posts = await getPosts();
+const isEmptyObject = (obj: Object) => {
+  return JSON.stringify(obj) === '{}';
+};
 
-  // const [searchValue, setSearchValue] = useState('');
-  // const filteredBlogPosts = posts.filter((post) =>
-  //   post.title.toLowerCase().includes(searchValue.toLowerCase())
-  // );
+export default async function Blog(props: Props) {
+  const searchParams = props.searchParams;
+  const queryString = isEmptyObject(searchParams)
+    ? '*'
+    : `${searchParams.title}*`;
+  const posts = await searchPosts(queryString);
+
   return (
     <>
       <div className="flex flex-col  max-w-2xl mx-auto w-full">
@@ -27,29 +35,8 @@ export default async function Blog() {
         </div>
       </div>
       <div className="flex flex-col  max-w-2xl mx-auto pb-16 w-full">
-        {/* <div className="relative w-full mt-4 mb-2">
-          <input
-            aria-label="Search articles"
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search articles by title"
-            className="block w-full px-4 py-2 text-gray-900 bg-gray-50 border border-gray-200 rounded-md border-gray-700  bg-gray-800 text-gray-100 focus:border-active/80 focus-visible:ring-1 focus:ring-active/75 focus:outline-none md:text-lg"
-          />
-          <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3 text-gray-400"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div> */}
+        <SearchBar />
+
         <div className="grid grid-cols-1 divide-y  divide-gray-300/25">
           {posts.length ? (
             posts.map((post) => (

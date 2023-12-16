@@ -28,8 +28,8 @@ const snippetFields = groq`
   "slug": slug.current,
 `;
 
-export const allPostsQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
+export const searchPostsQuery = groq`
+*[_type == "post" && title match $queryString] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
 

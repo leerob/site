@@ -2,8 +2,8 @@ import { SanityAsset, getImageDimensions } from '@sanity/asset-utils';
 import createImageUrlBuilder from '@sanity/image-url';
 
 const imageBuilder = createImageUrlBuilder({
-  dataset: process.env.SANITY_STUDIO_DATASET!,
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 });
 
 export const urlForImage = (source: any) =>
