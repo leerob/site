@@ -20,6 +20,11 @@ export default defineType({
         maxLength: 96
       },
       validation: (Rule: { required: () => any }) => Rule.required()
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string'
     })
   ]
 });

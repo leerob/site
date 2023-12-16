@@ -32,6 +32,7 @@ export interface ITag {
   _id: string;
   title: string;
   slug: string;
+  description?: string;
 }
 
 export interface IPost {
@@ -95,6 +96,7 @@ export const getPostsByTag = async (
   slug: string
 ): Promise<{
   title: string;
+  description: string;
   posts: IPost[];
 }> => {
   const posts = await sanityClient.fetch(tagRelatedPosts, { slug });

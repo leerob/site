@@ -9,14 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={` antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}
-      >
-        <div className="bg-gray-50 dark:bg-gray-900">
+      <body className={` antialiased  bg-gray-900 text-gray-100`}>
+        <div className="bg-gray-50 bg-gray-900">
           <Header />
           <main
             id="skip"
-            className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
+            className="flex flex-col justify-center px-8 bg-gray-900"
           >
             {children}
             <Footer />

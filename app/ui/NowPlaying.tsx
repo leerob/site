@@ -28,7 +28,7 @@ export async function NowPlaying() {
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate self-baseline">
         {isPlaying ? (
           <a
-            className="capsize text-gray-700 dark:text-gray-300 font-medium   text-sm max-w-max truncate"
+            className="capsize  dark:text-gray-300 font-medium   text-sm max-w-max truncate"
             href={songUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -36,14 +36,12 @@ export async function NowPlaying() {
             {title}
           </a>
         ) : (
-          <p className="capsize text-gray-800 dark:text-gray-200  text-sm">
-            Not Playing
-          </p>
+          <p className="capsize dark:text-gray-200  text-sm">Not Playing</p>
         )}
-        <span className="capsize mx-2 text-gray-500 dark:text-gray-400 hidden sm:block">
+        <span className="capsize mx-2  dark:text-gray-400 hidden sm:block">
           {' – '}
         </span>
-        <p className="capsize text-gray-500 dark:text-gray-400 max-w-max truncate text-sm">
+        <p className="capsize dark:text-gray-400 max-w-max truncate text-sm">
           {artist ?? 'Spotify'}
         </p>
       </div>

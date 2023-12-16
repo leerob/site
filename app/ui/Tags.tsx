@@ -14,7 +14,7 @@ export function Tags({ tags }: ITags) {
           <Link
             href={`/blog/tag/${tag.slug}`}
             key={tag.slug}
-            className="mr-2 text-sm md:text-base font-medium  text-gray-700 hover:text-active dark:hover:text-active dark:text-gray-400  ease-in-out transition-all duration-150 lowercase"
+            className="mr-2 text-sm md:text-base font-medium   hover:text-active text-gray-400  ease-in-out transition-all duration-150 lowercase"
           >
             {`#${tag.title}`}
           </Link>

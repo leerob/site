@@ -12,15 +12,7 @@ Refractor.registerLanguage(javascript);
 Refractor.registerLanguage(typescript);
 Refractor.registerLanguage(tsx);
 Refractor.registerLanguage(shell);
-const tmp = {
-  asset: {
-    _type: 'reference',
-    _ref: 'image-81629fa20fc3e439621b5c540c7cb4fc8afb4c1d-750x513-webp'
-  },
-  alt: 'text',
-  aspectRatio: 1.4619883040935673,
-  lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgAF/8QAIxAAAgICAQMFAQAAAAAAAAAAAQIDBAARBQYhMRITIzJBcf/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAHhEAAQMEAwAAAAAAAAAAAAAAAQACAwQREjITMUH/2gAMAwEAAhEDEQA/AMK31FNJdpSJtorA8HwP7ijhnXmpoDHXauhBU677I/cMUB7tKuyqg+Ha7H1IGa3SFq3x1KGYyq7qx328gnAdLx6eJTGH7JrF0cLCesXCv5pk75Y64CylvjY5THonLDbVSEXyUGJgPS//2Q=='
-};
+
 export const PTComponents = {
   types: {
     codeBox: ({ value }) => {

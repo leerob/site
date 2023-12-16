@@ -64,6 +64,7 @@ export const postSlugsQuery = groq`
 export const tagRelatedPosts = groq`
 *[_type == "tag" && slug.current == $slug] {
   title,
+  description,
   "posts":  *[_type == 'post' && references(^._id)] {
     ${postFields}
   } [0...${POSTS_LIMIT}]  | order(_updatedAt desc)
