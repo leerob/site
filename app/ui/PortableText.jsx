@@ -2,7 +2,6 @@ import Refractor from 'react-refractor';
 
 import Link from 'next/link';
 import { SanityImage } from '@/app/ui/SanityImage';
-// import { SanityAssetExtended } from '@/app/lib/sanity';
 import { extractLanguage } from '@/app/lib/utils';
 import javascript from 'refractor/lang/javascript';
 import typescript from 'refractor/lang/typescript';
@@ -13,14 +12,28 @@ Refractor.registerLanguage(javascript);
 Refractor.registerLanguage(typescript);
 Refractor.registerLanguage(tsx);
 Refractor.registerLanguage(shell);
-
+const tmp = {
+  asset: {
+    _type: 'reference',
+    _ref: 'image-81629fa20fc3e439621b5c540c7cb4fc8afb4c1d-750x513-webp'
+  },
+  alt: 'text',
+  aspectRatio: 1.4619883040935673,
+  lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgAF/8QAIxAAAgICAQMFAQAAAAAAAAAAAQIDBAARBQYhMRITIzJBcf/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAHhEAAQMEAwAAAAAAAAAAAAAAAQACAwQREjITMUH/2gAMAwEAAhEDEQA/AMK31FNJdpSJtorA8HwP7ijhnXmpoDHXauhBU677I/cMUB7tKuyqg+Ha7H1IGa3SFq3x1KGYyq7qx328gnAdLx6eJTGH7JrF0cLCesXCv5pk75Y64CylvjY5THonLDbVSEXyUGJgPS//2Q=='
+};
 export const PTComponents = {
   types: {
     codeBox: ({ value }) => {
-      console.log('value', value);
-      return <Refractor language="tsx" value={value.code} />;
+      return (
+        <Refractor
+          language={extractLanguage(value.filename)}
+          value={value.code}
+        />
+      );
     },
-    imageWithAlt: ({ value }) => SanityImage(value),
+    imageWithAlt: ({ value }) => {
+      return <SanityImage image={value} />;
+    },
     break: ({ value }) =>
       value ? <hr className="horizontal-divider" /> : <></>
   },

@@ -22,8 +22,6 @@ export default defineType({
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
         { title: 'Quote', value: 'blockquote' }
       ],
       lists: [
@@ -90,9 +88,7 @@ export default defineType({
       options: {
         language: 'typescript',
         languageAlternatives: [
-          { title: 'Javascript', value: 'javascript' },
-          { title: 'TypeScript', value: 'typescript' },
-          { title: 'tsx', value: 'tsx' },
+          { title: 'Typescript', value: 'typescript' },
           { title: 'Shell', value: 'shell' }
         ],
         withFilename: true

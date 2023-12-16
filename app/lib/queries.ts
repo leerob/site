@@ -40,6 +40,11 @@ export const postQuery = groq`
       ...,
       markDefs[] {
         ...,
+        // _type == "imageWithAlt" => {
+        //   "slug": @.reference->slug.current,
+        //   "type": @.reference->_type,
+        //   "title": @.reference->title
+        // },
         _type == "internalLink" => {
           "slug": @.reference->slug.current,
           "type": @.reference->_type,
