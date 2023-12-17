@@ -31,6 +31,7 @@ async function getAccessToken() {
 
 async function getNowPlaying() {
   const data = await getAccessToken();
+  console.log('Access token data is: ', data);
   const { access_token } = data;
   return fetch(process.env.NEXT_PUBLIC_SPOTIFY_NOW_PLAYING_ENDPOINT!, {
     headers: {
@@ -47,9 +48,6 @@ export async function POST(request: Request) {
   }
 
   const song = await res.json();
-  if (song.item === null) {
-    return Response.json({ isPlaying: false });
-  }
 
   const title = song.item.name;
   const artist = song.item.artists

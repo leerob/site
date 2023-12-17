@@ -1,18 +1,19 @@
+import { getNowPlaying } from '@/app/lib/spotify';
+
 export async function NowPlaying() {
   // TODO: impement zod!!
-  const data = await fetch(
-    `${
-      process.env.NODE_ENV === 'production'
-        ? process.env.NEXT_PUBLIC_PRODUCTION_SITE_URL
-        : 'http://localhost:3000'
-    }/api/now-playing`
-  );
-  const isPlaying = false;
-  const artist = 'false';
-  const songUrl = 'false';
-  const title = 'false';
 
-  // const { artist, songUrl, title, isPlaying } = await data.json();
+  const response = await getNowPlaying();
+  const song = await response.json();
+
+  const isPlaying = song.item === null ? false : true;
+
+  const title = song.item.name;
+  const artist = song.item.artists
+    .map((_artist: { name: string }) => _artist.name)
+    .join(', ');
+  const songUrl = song.item.external_urls.spotify;
+
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
       {isPlaying ? (

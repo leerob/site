@@ -36,7 +36,6 @@ export default async function Blog(props: Props) {
       </div>
       <div className="flex flex-col  max-w-2xl mx-auto pb-16 w-full">
         <SearchBar />
-
         <div className="grid grid-cols-1 divide-y  divide-gray-300/25">
           {posts.length ? (
             posts.map((post) => (

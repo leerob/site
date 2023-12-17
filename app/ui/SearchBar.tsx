@@ -7,10 +7,23 @@ export function SearchBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
 
+  // function debounce(fn, delay) {
+  //   let timeoutId: NodeJS.Timeout;
+  //   return (...args) => {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(() => fn(...args), delay);
+  //   };
+  // }
   const updateQueryString = (value: string) => {
+    // TODO: check value length
+    // TODO: search only if > 2 letters
+    // TODO: debounce
+    if (value.length === 0) {
+      router.push(pathname);
+    }
     const params = new URLSearchParams(searchParams);
     params.set('title', value);
-    router.push(`${pathname}?{params.toString()}`);
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (
