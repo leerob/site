@@ -1,6 +1,3 @@
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
-
 export interface ICurrentlyPlaying {
   songUrl?: string;
   artist?: string;
@@ -8,10 +5,18 @@ export interface ICurrentlyPlaying {
   isPlaying: boolean;
 }
 
-async function getAccessToken() {
+// export const dynamic = 'force-dynamic';
+// export const runtime = 'edge';
+// export const revalidate = 60;
+
+const getAccessToken = async () => {
   const basic = btoa(
     `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
   );
+  // const basic = Buffer.from(
+  //   `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  // ).toString('base64');
+
   const response = await fetch(
     process.env.NEXT_PUBLIC_SPOTIFY_TOKEN_ENDPOINT!,
     {
@@ -27,38 +32,33 @@ async function getAccessToken() {
     }
   );
   return response.json();
-}
+};
 
-async function getNowPlaying() {
-  const data = await getAccessToken();
-  console.log('Access token data is: ', data);
-  const { access_token } = data;
-  return fetch(process.env.NEXT_PUBLIC_SPOTIFY_NOW_PLAYING_ENDPOINT!, {
-    headers: {
-      Authorization: `Bearer ${access_token}`
+export async function GET(request: Request, response: Response) {
+  const tokenData = await getAccessToken();
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_SPOTIFY_NOW_PLAYING_ENDPOINT!,
+    {
+      headers: {
+        Authorization: `Bearer ${tokenData.access_token}`
+      }
     }
-  });
-}
-
-export async function POST(request: Request) {
-  const res = await getNowPlaying();
-  // TODO: return Error
+  );
   if (res.status === 204 || res.status > 400) {
-    return Response.json({ isPlaying: false });
+    return Response.json({ is_playing: false });
   }
+  const data = await res.json();
 
-  const song = await res.json();
-
-  const title = song.item.name;
-  const artist = song.item.artists
-    .map((_artist: { name: string }) => _artist.name)
-    .join(', ');
-  const songUrl = song.item.external_urls.spotify;
+  const resp = {
+    isPlaying: data.is_playing,
+    title: data.item.name,
+    artist: data.item.album.artists
+      .map((artist: { name: string }) => artist.name)
+      .join(', '),
+    songUrl: data.item.external_urls.spotify
+  };
 
   return Response.json({
-    artist,
-    songUrl,
-    title,
-    isPlaying: true
+    resp
   });
 }

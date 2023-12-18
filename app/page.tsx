@@ -4,6 +4,7 @@ import { WakaStats } from '@/app/ui/WakaStats';
 import { Metadata } from 'next';
 import { MyStacks } from '@/app/ui/Icons';
 
+
 export const metadata: Metadata = {
   title: `Dzmitry Sviryn's personal website`,
   description:

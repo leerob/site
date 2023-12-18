@@ -1,22 +1,32 @@
-import { getNowPlaying } from '@/app/lib/spotify';
-
+'use client';
 export async function NowPlaying() {
   // TODO: impement zod!!
+  // TODO: Make request and component dymanically updated
+  // const response = await getNowPlaying();
+  const response = await fetch(
+    `${
+      process.env.NODE_ENV === 'production'
+        ? process.env.NEXT_PUBLIC_PRODUCTION_SITE_URL
+        : 'http://localhost:3000'
+    }/api/now-playing`
+  );
+  console.log('Spotify response is: ', response);
 
-  const response = await getNowPlaying();
-  const song = await response.json();
+  const data = await response.json();
+  console.log('Spotify data is: ', data);
 
-  const isPlaying = song.item === null ? false : true;
-
-  const title = song.item.name;
-  const artist = song.item.artists
-    .map((_artist: { name: string }) => _artist.name)
-    .join(', ');
-  const songUrl = song.item.external_urls.spotify;
-
+  // if (!data.is_playing) {
+  //   return 'not playing';
+  // }
+  const { artist, songUrl, title, is_playing } = data;
+  // const title = response?.item.name;
+  // const artist = response?.item.artists
+  //   .map((_artist: { name: string }) => _artist.name)
+  //   .join(', ');
+  // const songUrl = response?.item.external_urls.spotify;
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
-      {isPlaying ? (
+      {is_playing ? (
         <AnimatedBars />
       ) : (
         <svg className="h-4 w-4 ml-auto mt-[-2px]" viewBox="0 0 168 168">
@@ -27,7 +37,7 @@ export async function NowPlaying() {
         </svg>
       )}
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate self-baseline">
-        {isPlaying ? (
+        {is_playing ? (
           <a
             className="capsize  dark:text-gray-300 font-medium   text-sm max-w-max truncate"
             href={songUrl}
