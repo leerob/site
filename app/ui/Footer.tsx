@@ -6,7 +6,13 @@ export default function Footer() {
   return (
     <footer className="flex flex-col items-start  md:items-center  max-w-2xl w-full mx-auto mb-4">
       <hr className="w-full border-1  border-gray-800 mb-4" />
-      <Suspense fallback="loading">
+      <Suspense
+        fallback={
+          <p className=" dark:text-gray-200  text-sm text-left items-start">
+            Loading player...
+          </p>
+        }
+      >
         <NowPlaying />
       </Suspense>
       <div className="flex my-2 space-x-4">
@@ -41,3 +47,4 @@ export default function Footer() {
     </footer>
   );
 }
+

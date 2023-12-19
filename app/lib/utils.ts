@@ -1,28 +1,3 @@
-import { SanityAsset, getImageDimensions } from '@sanity/asset-utils';
-import createImageUrlBuilder from '@sanity/image-url';
-
-const imageBuilder = createImageUrlBuilder({
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-});
-
-export const urlForImage = (source: any) =>
-  imageBuilder.image(source).auto('format').fit('max');
-
-export function createRemoteImageAttributes(src: SanityAsset) {
-  const basewidth = 1000;
-  const { width, height } = getImageDimensions(src);
-  const actualHeight = Math.trunc((height / width) * basewidth);
-  const sanityImageUrl = `${urlForImage(src)
-    .format('webp')
-    .url()}&w=${basewidth}&h=${actualHeight}`;
-  return {
-    width: basewidth,
-    height: actualHeight,
-    img: sanityImageUrl
-  };
-}
-
 export function isActive(href: string, currentPath: string): boolean {
   if (href === currentPath) {
     return true;

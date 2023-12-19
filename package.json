@@ -20,6 +20,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.21.3",
     "@sanity/webhook": "^4.0.0",
+    "@vercel/speed-insights": "^1.0.2",
     "clsx": "^2.0.0",
     "next": "14.0.4",
     "next-sanity": "^7.0.4",

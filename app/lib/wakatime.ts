@@ -11,7 +11,7 @@ export interface IWakaApiResponse {
 
 export const getWakaStats = async () => {
   // TODO: Check fecth return for errors and
-  const response = await fetch(process.env.NEXT_PUBLIC_WAKATIME_API_ENDPOINT!, {
+  const response = await fetch(process.env.WAKATIME_API_ENDPOINT!, {
     next: { revalidate: 86400 }
   });
   const { data } = await response.json();

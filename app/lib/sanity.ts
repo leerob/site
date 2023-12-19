@@ -1,13 +1,38 @@
 import { createClient } from 'next-sanity';
-import { SanityAsset } from '@sanity/asset-utils';
+import { SanityAsset, getImageDimensions } from '@sanity/asset-utils';
+import createImageUrlBuilder from '@sanity/image-url';
 import { PortableTextBlock } from '@sanity/types';
 
 export const sanityClient = createClient({
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-12-12',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  apiVersion: process.env.SANITY_API_VERSION || '2023-12-12',
+  dataset: process.env.SANITY_STUDIO_DATASET,
+  projectId: process.env.SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV !== 'production'
 });
+
+const imageBuilder = createImageUrlBuilder({
+  dataset: process.env.SANITY_STUDIO_DATASET!,
+  projectId: process.env.SANITY_PROJECT_ID!
+});
+
+export const urlForImage = (source: any) =>
+  imageBuilder.image(source).auto('format').fit('max');
+
+export function createRemoteImageAttributes(src: SanityAsset) {
+  const basewidth = 1000;
+  const { width, height } = getImageDimensions(src);
+  const actualHeight = Math.trunc((height / width) * basewidth);
+  const sanityImageUrl = `${urlForImage(src)
+    .format('webp')
+    .url()}&w=${basewidth}&h=${actualHeight}`;
+  return {
+    width: basewidth,
+    height: actualHeight,
+    img: sanityImageUrl
+  };
+}
+
+
 
 import {
   allSnippetsQuery,

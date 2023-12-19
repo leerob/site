@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { SanityAssetExtended } from '@/app/lib/sanity';
-import { createRemoteImageAttributes } from '@/app/lib/utils';
+import { createRemoteImageAttributes } from '@/app/lib/sanity';
 
 export function SanityImage({ image }: { image: SanityAssetExtended }) {
   const { width, height, img } = createRemoteImageAttributes(image);
