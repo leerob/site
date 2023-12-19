@@ -1,11 +1,14 @@
 import { NowPlaying } from '@/app/ui/NowPlaying';
 import { SocialIcons } from '@/app/ui/Icons';
+import { Suspense } from 'react';
 
 export default function Footer() {
   return (
     <footer className="flex flex-col items-start  md:items-center  max-w-2xl w-full mx-auto mb-4">
       <hr className="w-full border-1  border-gray-800 mb-4" />
-      <NowPlaying />
+      <Suspense fallback="loading">
+        <NowPlaying />
+      </Suspense>
       <div className="flex my-2 space-x-4">
         <SocialIcons />
       </div>
