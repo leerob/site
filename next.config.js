@@ -9,8 +9,11 @@ module.exports = {
         protocol: 'https',
         hostname: 'cdn.sanity.io' // Sanity images
       }
-    ],
-    formats: ['image/webp']
+    ]
+    // formats: ['image/webp']
+  },
+  experimental: {
+    ppr: true
   },
   async headers() {
     return [

@@ -28,8 +28,8 @@ export const getNowPlaying = async (token: string) => {
     headers: {
       Authorization: `Bearer ${token}`
     },
-    next: { revalidate: 1 }
-    // cache: 'no-cache'
+    // next: { revalidate: 1 }
+    cache: 'no-cache'
   });
   return data;
 };

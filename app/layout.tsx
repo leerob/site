@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` antialiased  bg-gray-900 text-gray-100`}>
-        <div className="bg-gray-50 bg-gray-900">
+        <div className="bg-gray-900">
           <Header />
           <main
             id="skip"

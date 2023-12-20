@@ -7,11 +7,7 @@ export async function POST(req: Request, res: Response) {
   const body = await req.json();
   console.log('Parsed body is:', body);
   if (
-    !isValidSignature(
-      body,
-      signature,
-      process.env.SANITY_STUDIO_REVALIDATE_SECRET
-    )
+    !isValidSignature(body, signature, process.env.SANITY_REVALIDATE_SECRET!)
   ) {
     return new Response('Invalid signature', {
       status: 401

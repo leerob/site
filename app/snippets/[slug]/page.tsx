@@ -1,5 +1,6 @@
 import { StackIcon } from '@/app/ui/Icons';
 import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
+import { PortableText } from '@portabletext/react';
 
 export default async function SnippetsPage({
   params
@@ -26,8 +27,14 @@ export default async function SnippetsPage({
           <StackIcon iconTitle={snippet.iconTitle!} iconType="snippetPage" />
         </div>
       </div>
-
-      <div className="prose prose-invert prose-slate  max-w-2xl  w-full md:prose-lg"></div>
+      <div className="w-full max-w-2xl mt-4 prose  prose-invert  md:prose-lg">
+        <PortableText
+          value={snippet.body}
+          onMissingComponent={false}
+          // @ts-ignore
+          components={PTComponents}
+        />
+      </div>{' '}
     </article>
   );
 }

@@ -5,13 +5,13 @@ import { PortableTextBlock } from '@sanity/types';
 
 export const sanityClient = createClient({
   apiVersion: process.env.SANITY_API_VERSION || '2023-12-12',
-  dataset: process.env.SANITY_STUDIO_DATASET,
+  dataset: process.env.SANITY_DATASET,
   projectId: process.env.SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV !== 'production'
 });
 
 const imageBuilder = createImageUrlBuilder({
-  dataset: process.env.SANITY_STUDIO_DATASET!,
+  dataset: process.env.SANITY_DATASET!,
   projectId: process.env.SANITY_PROJECT_ID!
 });
 

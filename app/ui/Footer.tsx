@@ -8,7 +8,7 @@ export default function Footer() {
       <hr className="w-full border-1  border-gray-800 mb-4" />
       <Suspense
         fallback={
-          <p className=" dark:text-gray-200  text-sm text-left items-start">
+          <p className="text-gray-300  text-sm text-left items-start">
             Loading player...
           </p>
         }
