@@ -10,3 +10,4 @@ node_modules
 out
 .env*.local
 .turbo
+.dist

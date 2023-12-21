@@ -23,13 +23,38 @@ export const getAccessToken = async () => {
   }
 };
 
-export const getNowPlaying = async (token: string) => {
-  const data = fetch(process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    },
-    // next: { revalidate: 1 }
-    cache: 'no-cache'
-  });
-  return data;
+export const getNowPlaying = async () => {
+  const { access_token } = await getAccessToken();
+  // console.log('access token is: ', access_token);
+
+  const spotifyResponse = await fetch(
+    process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`
+      },
+      next: { revalidate: 1 }
+      // cache: 'no-cache'
+    }
+  );
+  const data = await spotifyResponse.json();
+  if (data.error?.status || data?.is_playing === false) {
+    console.log(data.error);
+    return {
+      is_playing: false
+    };
+  }
+  console.log('spotify data is: ', data);
+  const title = data?.item.name;
+  const artist = data?.item.artists
+    .map((_artist: { name: string }) => _artist.name)
+    .join(', ');
+  const songUrl = data?.item.external_urls.spotify;
+  // TODO: IMPORTANT - process not-playing case
+  return {
+    title,
+    artist,
+    songUrl,
+    is_playing: data.is_playing
+  };
 };

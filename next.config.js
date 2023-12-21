@@ -12,9 +12,6 @@ module.exports = {
     ]
     // formats: ['image/webp']
   },
-  experimental: {
-    ppr: true
-  },
   async headers() {
     return [
       {

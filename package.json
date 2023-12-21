@@ -22,7 +22,7 @@
     "@sanity/webhook": "^4.0.0",
     "@vercel/speed-insights": "^1.0.2",
     "clsx": "^2.0.0",
-    "next": "14.0.4",
+    "next": "^14",
     "next-sanity": "^7.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

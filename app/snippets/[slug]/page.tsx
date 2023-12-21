@@ -1,7 +1,7 @@
 import { StackIcon } from '@/app/ui/Icons';
 import { getSnippet, getSnippetSlugs } from '@/app/lib/sanity';
 import { PortableText } from '@portabletext/react';
-
+import { PTComponents } from '@/app/ui/PortableText';
 export default async function SnippetsPage({
   params
 }: {
