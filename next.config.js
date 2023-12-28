@@ -11,15 +11,15 @@ module.exports = {
       }
     ]
     // formats: ['image/webp']
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
-      }
-    ];
   }
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: securityHeaders
+  //     }
+  //   ];
+  // }
 };
 
 const ContentSecurityPolicy = `

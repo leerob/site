@@ -53,6 +53,8 @@ export const postQuery = groq`
       }
     },
     "readingTime": round(length(pt::text(content)) / 5 / 180 ),
+    "headings": body[length(style) == 2 && string::startsWith(style, "h")],
+
     ${postFields}
   }
 }`;

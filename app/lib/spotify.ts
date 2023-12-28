@@ -23,10 +23,15 @@ export const getAccessToken = async () => {
   }
 };
 
-export const getNowPlaying = async () => {
-  const { access_token } = await getAccessToken();
-  // console.log('access token is: ', access_token);
+interface IcurrentlyPlaying {
+  is_playing?: boolean;
+  title?: string;
+  artist?: string;
+  songUrl?: string;
+}
 
+export const getNowPlaying = async (): Promise<IcurrentlyPlaying> => {
+  const { access_token } = await getAccessToken();
   const spotifyResponse = await fetch(
     process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!,
     {
@@ -44,7 +49,6 @@ export const getNowPlaying = async () => {
       is_playing: false
     };
   }
-  console.log('spotify data is: ', data);
   const title = data?.item.name;
   const artist = data?.item.artists
     .map((_artist: { name: string }) => _artist.name)

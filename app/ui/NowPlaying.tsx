@@ -1,17 +1,12 @@
 import { getNowPlaying } from '@/app/lib/spotify';
-interface IcurrentlyPlaying {
-  is_playing?: boolean;
-  title: string;
-  artist: string;
-  spotify: string;
-}
+
 export async function NowPlaying() {
   const spotifyResponse = await getNowPlaying();
   // const data = await spotifyResponse.json();
-  const { is_playing, title, artist, songUrl } = spotifyResponse;
-  if (!is_playing) {
+  if (!spotifyResponse.is_playing) {
     return <SpotifyStopped />;
   }
+  const { title, artist, songUrl } = spotifyResponse;
 
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
