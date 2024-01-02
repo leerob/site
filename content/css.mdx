@@ -1,0 +1,124 @@
+---
+title: "How I'm Writing CSS in 2024"
+publishedAt: '2024-01-01'
+summary: 'TODO'
+---
+
+CSS in 2024 is amazing.
+
+- Cross-browser support for [variables](https://caniuse.com/css-nesting), [nesting](https://caniuse.com/css-variables), [:has()](https://caniuse.com/css-has), [container queries](https://caniuse.com/css-container-queries), and more
+- [Powerful](https://stylexjs.com/) and [fast](https://lightningcss.dev/) new CSS tools
+- Many frameworks and compilers to help optimize CSS loading performance
+
+This post will be a collection of my notes and thoughts about the CSS ecosystem and the tools I'm currently using. If you have different opinions, [I'd love to hear what you think](https://twitter.com/leeerob).
+
+## Design Constraints
+
+### User Experience
+
+What does a great experience look like loading stylesheets when visiting a website?
+
+- Stylesheets should load as fast as possible (small file sizes)
+- Stylesheets should never need to re-download unless changed (proper caching headers)
+- The page content should have minimal or no layout shift
+- Fonts should load as fast as possible and minimize layout shift
+
+### Developer Experience
+
+Our tools must help us create better user experiences. The developer experience, while important, can't come before the user experience.
+
+How can the DX of the styling tools we use help us create a better UX?
+
+- Generate hashed file names to enable safe, immutable caching
+- Prune unused styles, minify, and compress CSS for smaller file sizes
+- Bundler CSS files together to make fewer network requests
+- Prevent naming collisions to avoid visual regressions
+
+There are also requirements that, while they don't directly impact the UX, help us write more maintainable, enjoyable CSS:
+
+- Easy to delete styles when deleting corresponding UI code
+- Easy to adhere to a design system or set of themes
+- Editor feedback with TypeScript support, autocompletion, and linting
+- Receive tooling feedback in-editor to prevent errors (type checking, linting)
+
+## CSS in 2024
+
+It's never been easier to write great styles without any additional tooling.
+
+<LiveCode example="html" />
+
+Does that mean the tooling is no longer necessary? For some people, yes.
+
+### Build Steps
+
+It's impossible to meet all of the design constraints above without having a build step.
+
+- It's unlikely all your users are on the latest browser versions
+- There will always be newer syntax that isn't yet supported cross-browser
+
+You probably want to specify a supported [browserslist](https://browsersl.ist/) and have [syntax lowering](https://lightningcss.dev/transpilation.html) to compile modern CSS features to work with your target browsers.
+
+Even if you didn't want to bundle for personal reasons, you're trading off UX design constraints (e.g. getting smaller file sizes) for DX. This might be okay for your personal site, but I would recommend this for real products.
+
+### Compilation
+
+Rather than leaving the CSS optimization to humans, [why not let the machines handle it](https://csswizardry.com/2023/10/the-three-c-concatenate-compress-cache/)?
+
+Compilers make the following workflow easy:
+
+1. Automatically remove any unused styles, bundle files together to make fewer network requests, and minify the output by removing white spaces and comments
+2. Automatically generate unique file names, allowing frameworks to set caching headers like `immutable` signaling to browsers the content will never change
+
+### Streaming CSS
+
+TODO
+
+## My Recommendations
+
+### CSS Modules
+
+CSS Modules are a small but impactful enhancement on top of vanilla CSS.
+
+They achieve our desired UX constraints and most (but not all) of our DX constraints. They're available in [almost every modern bundler or framework](https://github.com/css-modules/css-modules/blob/master/docs/get-started.md). You can copy / paste existing CSS selectors and they'll work in a CSS Module without any changes.
+
+They can't generate atomic styles. They don't support using many themes (just CSS variables). There also isn't advanced TypeScript support. But those constraints might be fine for you.
+
+<Callout emoji="💡">
+
+[Lightning CSS](https://lightningcss.dev/), which supports CSS Modules, is used by Vite, and [soon by Tailwind](https://medium.com/@bomber.marek/whats-tailwind-oxide-engine-the-next-evolution-of-tailwind-css-32e7ef8e19a1) and [Next.js](https://twitter.com/leeerob/status/1740124461683409042). Tools like `postcss` and `autoprefixer` are being replaced by faster, [all-in-one Rust toolchains](https://leerob.io/blog/rust).
+
+</Callout>
+
+### Tailwind CSS
+
+Tailwind uses a compiler to prune unused styles. So while the utility CSS framework contains _many_ possible class names, only the classes used (e.g. `font-bold text-2xl`) will be included in the single, compiled CSS file.
+
+Assuming you only write Tailwind code, your bundle will never be larger than the total set of used Tailwind classes. It's extremely unlikely you would use them _all_. This means you have a fixed upper bound on the size of the generated CSS file, which is then minified, compressed, and cached for the best performance.
+
+You don't have to _only_ write Tailwind styles. Tailwind classes are just utilities for normal CSS that adhere to a design system. You can mix and match Tailwind with CSS Modules, for example.
+
+Tailwind doesn't come without tradeoffs. There's usually a bucket of tools that pair with Tailwind:
+
+- [VSCode integration](https://tailwindcss.com/docs/editor-setup#intelli-sense-for-vs-code) for autocompletion, linting, syntax highlighting, and more
+- [Prettier integration](https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier) for automatic sorting of class names
+
+The most controversial part about Tailwind is the syntax. It's both loved and hated. I didn't appreciate Tailwind until I built something with it, so I'd recommend trying that if your initial reaction is adverse.
+
+<LiveCode example="tailwind" />
+
+### StyleX
+
+There are two issues with most CSS-in-JS libraries:
+
+- **Performance:** Components must convert the styles written in JS into CSS to be inserted into the document when rendering. This can have a [significant](https://dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b) cost and is why [libraries](https://panda-css.com/docs/overview/why-panda) are moving to “zero runtime” libraries like StyleX.
+- **Compatibility:** Many existing CSS-in-JS libraries have added support for React's streaming server-rendering, but are still incompatible with other performance optimizations like moving parts of your application to [React Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components).
+
+To solve these issues, “zero runtime” CSS-in-JS libraries like [Vanilla Extract](https://vanilla-extract.style/) have been created.
+
+StyleX is the latest CSS-in-JS library, which [solves these problems and more](https://stylexjs.com/docs/learn/thinking-in-stylex/). I'd recommend reading through [“Thinking in StyleX”](https://stylexjs.com/docs/learn/thinking-in-stylex/) if you want to dig in.
+
+Creating the example below was my first time using StyleX. While it's still new to open-source (and the ecosystem reflects that), it's _not_ a new library. It powers all the Meta sites: Facebook, Instagram, WhatsApp, and Threads.
+
+You still have to name things though 🫠 Enter `buttonWrapperContainer`.
+
+<LiveCode example="stylex" />
