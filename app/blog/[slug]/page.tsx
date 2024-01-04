@@ -73,7 +73,7 @@ function formatDate(date: string) {
     return `${fullDate} ${weeksAgo}w ago`;
   } else if (daysAgo < 365) {
     const monthsAgo = Math.floor(daysAgo / 30)
-    return `${fullDate} ${monthsAgo}m ago`;
+    return `${fullDate} ${monthsAgo}mo ago`;
   } else {
     const yearsAgo = Math.floor(daysAgo / 365)
     return `${fullDate} ${yearsAgo}y ago`;
