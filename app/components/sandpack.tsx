@@ -10,6 +10,7 @@ import {
   stylexViteConfig,
   stylexTokens,
 } from './sandpack-files';
+import { Suspense } from 'react';
 
 export function LiveCode({ example }: { example: string }) {
   let files;
@@ -28,32 +29,38 @@ export function LiveCode({ example }: { example: string }) {
     };
   } else if (example === 'stylex') {
     return (
-      <Sandpack
-        theme="auto"
-        files={{
-          'App.tsx': {
-            code: stylexApp,
-            active: true,
-          },
-          '/tokens.stylex.js': stylexTokens,
-          '/vite.config.ts': stylexViteConfig,
-          '/index.html': {
-            code: stylexIndex,
-            hidden: true,
-          },
-        }}
-        template="vite-react-ts"
-        customSetup={{
-          dependencies: {
-            '@stylexjs/stylex': '^0.3.0',
-          },
-          devDependencies: {
-            'vite-plugin-stylex-dev': 'latest',
-          },
-        }}
-      />
+      <Suspense fallback={null}>
+        <Sandpack
+          theme="auto"
+          files={{
+            'App.tsx': {
+              code: stylexApp,
+              active: true,
+            },
+            '/tokens.stylex.js': stylexTokens,
+            '/vite.config.ts': stylexViteConfig,
+            '/index.html': {
+              code: stylexIndex,
+              hidden: true,
+            },
+          }}
+          template="vite-react-ts"
+          customSetup={{
+            dependencies: {
+              '@stylexjs/stylex': '^0.3.0',
+            },
+            devDependencies: {
+              'vite-plugin-stylex-dev': 'latest',
+            },
+          }}
+        />
+      </Suspense>
     );
   }
 
-  return <Sandpack theme="auto" template="static" files={files} />;
+  return (
+    <Suspense fallback={null}>
+      <Sandpack theme="auto" template="static" files={files} />
+    </Suspense>
+  );
 }
