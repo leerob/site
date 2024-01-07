@@ -8,7 +8,7 @@
     "setup": "node ./setup.mjs"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.10.0",
+    "@codesandbox/sandpack-react": "2.11.0",
     "@googleapis/youtube": "^13.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "20.10.0",
