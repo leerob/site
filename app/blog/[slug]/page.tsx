@@ -6,6 +6,7 @@ import { getViewsCount } from 'app/db/queries';
 import { getBlogPosts } from 'app/db/blog';
 import ViewCounter from '../view-counter';
 import { increment } from 'app/db/actions';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export async function generateMetadata({
   params,
@@ -50,6 +51,7 @@ export async function generateMetadata({
 }
 
 function formatDate(date: string) {
+  noStore();
   let currentDate = new Date();
   if (!date.includes('T')) {
     date = `${date}T00:00:00`;
@@ -116,9 +118,11 @@ export default function Blog({ params }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
+        <Suspense fallback={<p className="h-5" />}>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
+        </Suspense>
         <Suspense fallback={<p className="h-5" />}>
           <Views slug={post.slug} />
         </Suspense>
