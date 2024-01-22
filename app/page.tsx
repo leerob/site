@@ -11,6 +11,7 @@ import meetups from 'public/images/home/meetups.jpg';
 import vercel from 'public/images/home/vercel.jpg';
 import avatar from 'app/avatar.jpg';
 import ViewCounter from 'app/blog/view-counter';
+import { PreloadResources } from 'app/preload';
 import {
   getLeeYouTubeSubs,
   getVercelYouTubeSubs,
@@ -133,6 +134,7 @@ async function Views({ slug }: { slug: string }) {
 export default function Page() {
   return (
     <section>
+      <PreloadResources />
       <h1 className="font-medium text-2xl mb-8 tracking-tighter">
         hey, I'm leerob 👋
       </h1>
