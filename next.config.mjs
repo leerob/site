@@ -1,4 +1,8 @@
-import { sql } from '@vercel/postgres';
+import postgres from 'postgres';
+
+export const sql = postgres(process.env.POSTGRES_URL, {
+  ssl: 'allow',
+});
 
 const nextConfig = {
   experimental: {
@@ -10,7 +14,7 @@ const nextConfig = {
       return [];
     }
 
-    const { rows: redirects } = await sql`
+    let redirects = await sql`
       SELECT source, destination, permanent
       FROM redirects;
     `;
@@ -39,6 +43,7 @@ const ContentSecurityPolicy = `
     media-src 'none';
     connect-src *;
     font-src 'self' data:;
+    frame-src 'self' *.codesandbox.io vercel.live;
 `;
 
 const securityHeaders = [
