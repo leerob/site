@@ -60,7 +60,7 @@ function formatDate(date: string) {
   let timeDifference = Math.abs(currentDate - targetDate);
   let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   
-  let fullDate = targetDate.toLocaleString('en-us', {
+  let fullDate = new Date(date).toLocaleString('en-us', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
