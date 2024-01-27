@@ -52,11 +52,11 @@ export async function generateMetadata({
 
 function formatDate(date: string) {
   noStore();
-  let currentDate = new Date().getDate();
+  let currentDate = new Date().getTime();
   if (!date.includes('T')) {
     date = `${date}T00:00:00`;
   }
-  let targetDate = new Date(date).getDate();
+  let targetDate = new Date(date).getTime();
   let timeDifference = Math.abs(currentDate - targetDate);
   let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   
