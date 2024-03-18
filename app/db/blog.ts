@@ -56,5 +56,10 @@ function getMDXData(dir) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'content'));
+  const contents = getMDXData(path.join(process.cwd(), 'content'));
+  if (process.env.NODE_ENV === 'production') {
+    return contents;
+  }
+  const drafts = getMDXData(path.join(process.cwd(), 'content/drafts'));
+  return [...contents, ...drafts]; 
 }
