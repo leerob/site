@@ -1,22 +1,22 @@
-import { Suspense } from "react";
-import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
-import Image from "next/image";
-import smashing from "public/images/home/smashing.jpg";
-import summit from "public/images/home/summit.jpg";
-import reactathon from "public/images/home/reactathon.jpg";
-import ship from "public/images/home/ship.jpg";
-import filming from "public/images/home/filming.jpg";
-import meetups from "public/images/home/meetups.jpg";
-import vercel from "public/images/home/vercel.jpg";
-import avatar from "app/avatar.jpg";
-import ViewCounter from "app/blog/view-counter";
-import { PreloadResources } from "app/preload";
+import { Suspense } from 'react';
+import { unstable_noStore as noStore } from 'next/cache';
+import Link from 'next/link';
+import Image from 'next/image';
+import smashing from 'public/images/home/smashing.jpg';
+import summit from 'public/images/home/summit.jpg';
+import reactathon from 'public/images/home/reactathon.jpg';
+import ship from 'public/images/home/ship.jpg';
+import filming from 'public/images/home/filming.jpg';
+import meetups from 'public/images/home/meetups.jpg';
+import vercel from 'public/images/home/vercel.jpg';
+import avatar from 'app/avatar.jpg';
+import ViewCounter from 'app/blog/view-counter';
+import { PreloadResources } from 'app/preload';
 import {
   getLeeYouTubeSubs,
   getVercelYouTubeSubs,
   getViewsCount,
-} from "app/db/queries";
+} from 'app/db/queries';
 
 function Badge(props) {
   return (
@@ -90,7 +90,7 @@ function ChannelLink({ img, link, name }) {
 async function Subs({ name }: { name: string }) {
   noStore();
   let subscribers;
-  if (name === "@leerob") {
+  if (name === '@leerob') {
     subscribers = await getLeeYouTubeSubs();
   } else {
     subscribers = await getVercelYouTubeSubs();
@@ -325,8 +325,8 @@ export default function Page() {
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I've worked with and advised companies on{" "}
-          <Link href="/blog/developer-marketing">developer marketing</Link>,{" "}
+          I've worked with and advised companies on{' '}
+          <Link href="/blog/developer-marketing">developer marketing</Link>,{' '}
           <Link href="/blog/devrel-at-vercel">developer relations</Link>,
           building open-source communities, product-led growth, and more.
         </p>
