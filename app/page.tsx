@@ -23,7 +23,7 @@ function Badge(props) {
     <a
       {...props}
       target="_blank"
-      className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm inline-flex items-center leading-4 text-neutral-900 dark:text-neutral-100 no-underline"
+      className="inline-flex items-center rounded border border-neutral-200 bg-neutral-50 p-1 text-sm leading-4 text-neutral-900 no-underline dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
     />
   );
 }
@@ -51,7 +51,7 @@ function ChannelLink({ img, link, name }) {
       <a
         href={link}
         target="_blank"
-        className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4 w-full"
+        className="flex w-full items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
       >
         <div className="flex items-center space-x-3">
           <div className="relative h-16">
@@ -61,10 +61,10 @@ function ChannelLink({ img, link, name }) {
               height={64}
               width={64}
               sizes="33vw"
-              className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
+              className="h-16 w-16 rounded-full border border-neutral-200 dark:border-neutral-700"
               priority
             />
-            <div className="border border-neutral-200 dark:border-neutral-700 rounded-full bg-white inline-flex p-1 relative h-6 w-6 items-center -top-6 -right-10">
+            <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-200 bg-white p-1 dark:border-neutral-700">
               <svg width="15" height="11" role="img" aria-label="YouTube logo">
                 <use href="/sprite.svg#youtube" />
               </svg>
@@ -79,7 +79,7 @@ function ChannelLink({ img, link, name }) {
             </Suspense>
           </div>
         </div>
-        <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12">
+        <div className="transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
           <ArrowIcon />
         </div>
       </a>
@@ -108,7 +108,7 @@ function BlogLink({ slug, name }) {
     <div className="group">
       <a
         href={`/blog/${slug}`}
-        className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4 w-full"
+        className="flex w-full items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
       >
         <div className="flex flex-col">
           <p className="font-medium text-neutral-900 dark:text-neutral-100">
@@ -118,7 +118,7 @@ function BlogLink({ slug, name }) {
             <Views slug={slug} />
           </Suspense>
         </div>
-        <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12">
+        <div className="transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
           <ArrowIcon />
         </div>
       </a>
@@ -135,7 +135,7 @@ export default function Page() {
   return (
     <section>
       <PreloadResources />
-      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
+      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
         hey, I'm leerob 👋
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
@@ -149,7 +149,7 @@ export default function Page() {
               height="11"
               role="img"
               aria-label="Vercel logo"
-              className="inline-flex mr-1"
+              className="mr-1 inline-flex"
             >
               <use href="/sprite.svg#vercel" />
             </svg>
@@ -182,8 +182,8 @@ export default function Page() {
         </Badge>
         .
       </p>
-      <div className="columns-2 sm:columns-3 gap-4 my-8">
-        <div className="relative h-40 mb-4">
+      <div className="my-8 columns-2 gap-4 sm:columns-3">
+        <div className="relative mb-4 h-40">
           <Image
             alt="Me speaking on stage at React Summit about the future of Next.js"
             src={summit}
@@ -193,7 +193,7 @@ export default function Page() {
             className="rounded-lg object-cover"
           />
         </div>
-        <div className="relative h-80 mb-4 sm:mb-0">
+        <div className="relative mb-4 h-80 sm:mb-0">
           <Image
             alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
             src={filming}
@@ -203,7 +203,7 @@ export default function Page() {
             className="rounded-lg object-cover object-[-16px] sm:object-center"
           />
         </div>
-        <div className="relative h-40 sm:h-80 sm:mb-4">
+        <div className="relative h-40 sm:mb-4 sm:h-80">
           <Image
             alt="Me standing on stage at Reactathon delivering the keynote"
             src={reactathon}
@@ -213,7 +213,7 @@ export default function Page() {
             className="rounded-lg object-cover object-top sm:object-center"
           />
         </div>
-        <div className="relative h-40 mb-4 sm:mb-0">
+        <div className="relative mb-4 h-40 sm:mb-0">
           <Image
             alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
             src={smashing}
@@ -223,7 +223,7 @@ export default function Page() {
             className="rounded-lg object-cover"
           />
         </div>
-        <div className="relative h-40 mb-4">
+        <div className="relative mb-4 h-40">
           <Image
             alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
             src={ship}
@@ -252,7 +252,7 @@ export default function Page() {
           and workshops. You can watch some of my favorites below.
         </p>
       </div>
-      <div className="my-8 flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 w-full">
+      <div className="my-8 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
         <ChannelLink
           img={avatar}
           name="@leerob"
@@ -272,7 +272,7 @@ export default function Page() {
           career, sharing knowledge along the way.
         </p>
       </div>
-      <div className="my-8 flex flex-col space-y-4 w-full">
+      <div className="my-8 flex w-full flex-col space-y-4">
         <BlogLink
           name="What Makes A Great Developer Experience?"
           slug="developer-experience-examples"
@@ -286,36 +286,36 @@ export default function Page() {
           for developers.
         </p>
       </div>
-      <div className="my-8 flex flex-row space-x-2 w-full h-14 overflow-x-auto">
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+      <div className="my-8 flex h-14 w-full flex-row space-x-2 overflow-x-auto">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://linear.app">
             <svg width="78" height="20" role="img" aria-label="Linear logo">
               <use href="/sprite.svg#linear" />
             </svg>
           </a>
         </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://supabase.com">
             <svg width="100" height="19" role="img" aria-label="Supabase logo">
               <use href="/sprite.svg#supabase" />
             </svg>
           </a>
         </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://www.makeswift.com/blog/makeswift-is-joining-bigcommerce">
             <svg width="96" height="19" role="img" aria-label="Makeswift logo">
               <use href="/sprite.svg#makeswift" />
             </svg>
           </a>
         </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://resend.com">
             <svg width="70" height="17" role="img" aria-label="Resend logo">
               <use href="/sprite.svg#resend" />
             </svg>
           </a>
         </div>
-        <div className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://bun.sh">
             <svg width="35" height="27" role="img" aria-label="Bun logo">
               <use href="/sprite.svg#bun" />
@@ -325,32 +325,33 @@ export default function Page() {
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I've worked with and advised companies on developer marketing,{' '}
+          I've worked with and advised companies on{' '}
+          <Link href="/blog/developer-marketing">developer marketing</Link>,{' '}
           <Link href="/blog/devrel-at-vercel">developer relations</Link>,
           building open-source communities, product-led growth, and more.
         </p>
       </div>
-      <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
+      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li>
           <a
-            className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href="https://twitter.com/leeerob"
           >
             <ArrowIcon />
-            <p className="h-7 ml-2">follow me</p>
+            <p className="ml-2 h-7">follow me</p>
           </a>
         </li>
         <li>
           <a
-            className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href="https://leerob.substack.com"
           >
             <ArrowIcon />
-            <p className="h-7 ml-2">get email updates</p>
+            <p className="ml-2 h-7">get email updates</p>
           </a>
         </li>
       </ul>
