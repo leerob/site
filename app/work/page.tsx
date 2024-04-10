@@ -20,9 +20,9 @@ export default function WorkPage() {
       <div className="prose prose-neutral dark:prose-invert">
         <p>
           On a mission to build products developers{' '}
-          <Link href="/blog/developer-experience-examples">love</Link>, and
-          along the way, teach the next generation of developers. Here's a
-          summary of my work so far.
+          <Link href="/blog/developer-experience">love</Link>, and along the
+          way, teach the next generation of developers. Here's a summary of my
+          work so far.
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
         <h2 className="font-medium text-xl mb-1 tracking-tighter">Vercel</h2>

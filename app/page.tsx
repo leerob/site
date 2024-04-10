@@ -275,9 +275,9 @@ export default function Page() {
       <div className="my-8 flex w-full flex-col space-y-4">
         <BlogLink
           name="What Makes A Great Developer Experience?"
-          slug="developer-experience-examples"
+          slug="developer-experience"
         />
-        <BlogLink name="What is Developer Relations?" slug="devrel-at-vercel" />
+        <BlogLink name="What is Developer Relations?" slug="devrel" />
         <BlogLink name="The Story of Heroku" slug="heroku" />
       </div>
       <div className="prose prose-neutral dark:prose-invert">
@@ -327,8 +327,8 @@ export default function Page() {
         <p>
           I've worked with and advised companies on{' '}
           <Link href="/blog/developer-marketing">developer marketing</Link>,{' '}
-          <Link href="/blog/devrel-at-vercel">developer relations</Link>,
-          building open-source communities, product-led growth, and more.
+          <Link href="/blog/devrel">developer relations</Link>, building
+          open-source communities, product-led growth, and more.
         </p>
       </div>
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
