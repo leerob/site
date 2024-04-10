@@ -8,6 +8,7 @@ const nextConfig = {
   experimental: {
     ppr: true,
   },
+  transpilePackages: ['next-mdx-remote'],
   async redirects() {
     if (!process.env.POSTGRES_URL) {
       return [];
