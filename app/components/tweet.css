@@ -8,9 +8,9 @@
   /* Light colors */
   --tweet-bg-color: #fff;
   --tweet-bg-color-hover: var(--tweet-bg-color);
-  --tweet-color-blue-secondary: theme('colors.gray.600');
-  --tweet-color-blue-secondary-hover: theme('colors.gray.100');
-  --tweet-font-color-secondary: theme('colors.gray.500');
+  --tweet-color-blue-secondary: theme("colors.gray.600");
+  --tweet-color-blue-secondary-hover: theme("colors.gray.100");
+  --tweet-font-color-secondary: theme("colors.gray.500");
 
   /* Common properties for both themes */
   --tweet-quoted-bg-color-hover: rgba(0, 0, 0, 0.03);
@@ -42,9 +42,9 @@
     --tweet-bg-color-hover: var(--tweet-bg-color);
     --tweet-quoted-bg-color-hover: rgba(255, 255, 255, 0.03);
     --tweet-border: 1px solid #333;
-    --tweet-color-blue-secondary: theme('colors.white');
+    --tweet-color-blue-secondary: theme("colors.white");
     --tweet-color-blue-secondary-hover: #333;
-    --tweet-font-color-secondary: theme('colors.gray.400');
+    --tweet-font-color-secondary: theme("colors.gray.400");
   }
 }
 
@@ -55,13 +55,13 @@
 }
 
 .tweet .react-tweet-theme p a {
-  @apply border-b transition-[border-color] border-gray-300 hover:border-gray-600;
+  @apply border-b border-gray-300 transition-[border-color] hover:border-gray-600;
 }
 
 /* Dark theme link styles */
 @media (prefers-color-scheme: dark) {
   .tweet .react-tweet-theme p a {
-    @apply text-white border-gray-500 hover:border-white;
+    @apply border-gray-500 text-white hover:border-white;
   }
 }
 
@@ -72,4 +72,8 @@
 
 .tweet a div {
   @apply font-medium tracking-tight;
+}
+
+.tweet div[class*="mediaWrapper"] {
+  max-height: 250px;
 }

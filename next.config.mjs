@@ -7,8 +7,13 @@ export const sql = postgres(process.env.POSTGRES_URL, {
 const nextConfig = {
   experimental: {
     ppr: true,
-    useLightningcss: true,
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  transpilePackages: ['next-mdx-remote'],
   async redirects() {
     if (!process.env.POSTGRES_URL) {
       return [];
