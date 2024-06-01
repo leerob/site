@@ -16,102 +16,128 @@ async function Stars() {
 export default function WorkPage() {
   return (
     <section>
-      <h1 className="font-medium text-2xl mb-8 tracking-tighter">my work</h1>
+      <h1 className="font-medium text-2xl mb-8 tracking-tighter">My work</h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          On a mission to build products developers{' '}
-          <Link href="/blog/developer-experience">love</Link>, and along the
-          way, teach the next generation of developers. Here's a summary of my
-          work so far.
+          On a mission to build products that make a difference.
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-medium text-xl mb-1 tracking-tighter">Vercel</h2>
+        <h2 className="font-medium text-xl mb-1 tracking-tighter">Timeswap</h2>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-          VP of Product
+          Full Stack Developer
         </p>
         <p>
-          I joined <a href="https://vercel.com/home">Vercel</a> early to grow{' '}
-          <a href="https://nextjs.org">Next.js</a> and our developer community.
-          I built our Developer Relations team to teach our community about our
-          products.
+          I joined <a href="https://timeswap.io">Timeswap Labs</a> during the early stages
+          of V2 development and have proudly contributed to our growth,
+          helping us reach $100 million in volume. Working at Timeswap Labs
+          has been a transformative experience, immersing me in blockchain
+          technology and decentralized finance (DeFi).
         </p>
         <ul>
           <li>
-            In 2021, I was promoted to Director of DevRel. We{' '}
-            <a href="https://twitter.com/kelseyhightower/status/1105985400110112768">
-              translated customer pain
-            </a>{' '}
-            back into the product roadmap. We spoke at{' '}
-            <Link href="/blog/nextjs-conf-2022-recap">conferences</Link>, wrote
-            blog posts, and created videos. We built open-source examples and
-            contributed back to the product.
+            <p className='font-bold'>Key Contributions and Achievements</p>
+            <ul>
+              <li>
+                <p>Smart Contracts:</p>
+                <p>Developed quoter Smart Contracts using callstatic calls, focusing on test-driven development and testing functions with Foundry (Forge).</p>
+              </li>
+              <li>
+                <p>SDK Re-engineering:</p>
+                <p>Re-engineered the Protocol Interaction SDK from ethersV5 to viemV2, enhancing types, transaction speed, and integration independence.</p>
+              </li>
+              <li>
+                <p>Frontend Restructuring:</p>
+                <p>Restructured the frontend using Redux, React Query, and MVU architecture, significantly improving state management and website stability.</p>
+              </li>
+              <li>
+                <p>Optimized RPCs:</p>
+                <p>Implemented multi-call algorithms, achieving 70% faster blockchain data retrieval, thereby enhancing user experience.</p>
+              </li>
+            </ul>
           </li>
+        </ul>
+        <ul>
           <li>
-            In 2022, I was promoted to VP of Developer Experience, now also
-            leading our product documentation team. My team created a{' '}
-            <a href="https://nextjs.org/learn">new free course</a> to teach
-            Next.js, which had 17 million page views that year.{' '}
-            <a href="https://twitter.com/leeerob/status/1608900031859527682">
-              I shipped.
-            </a>{' '}
-            I partnered with our open-source community, collaborating with
-            frameworks like{' '}
-            <a href="https://vercel.com/docs/frameworks/nuxt">Nuxt</a> and{' '}
-            <a href="https://astro.build/blog/vercel-official-hosting-partner/">
-              Astro
-            </a>{' '}
-            and sponsoring individuals and projects.
-          </li>
-          <li>
-            In 2023, I was promoted to VP of Product, now also leading Product
-            Management.
+            <p className='font-bold'>Skills and Responsibilities</p>
+            <ul>
+              <li>
+                <p>Blockchain Technology:</p>
+                <p>Gained deep exposure to financial concepts such as option trading, leverage, and yield, essential for shaping DeFi and CeFi protocols.</p>
+              </li>
+              <li>
+                <p>Product Development:</p>
+                <p>Took on responsibilities for product implementation, making product-first decisions, and contributing to all codebases, including Smart Contract writing and deployment, building the JS Interaction SDK, and developing the Frontend Dapp.</p>
+              </li>
+              <li>
+                <p>Team Collaboration:</p>
+                <p>Worked in teams, taking architectural decisions that shaped the product, debugging production issues in real time, and providing immediate solutions.</p>
+              </li>
+            </ul>
           </li>
         </ul>
         <p>
-          Since I joined Vercel in 2020, Next.js active developers have grown
-          1000%, now at ~900k. Next.js is now a top 10 software project on
-          GitHub with <Stars />. It's used by Walmart, ChatGPT, Starbucks, Okta,
-          Datastax, Notion, and <a href="https://nextjs.org/showcase">more</a>.
+          {/* TODO : add linkedins */}
+          Under the guidance of Ricsson Ngo, Ameeth Devadas,
+          and colleagues like Puneet Kaura, Sharath Nair,
+          and Kumar Satyarth, I have learned and grown immensely.
+          Their mentorship has been instrumental in my development,
+          from technical skills to product-building expertise.
         </p>
+        <p>
+          During my tenure at Timeswap Labs, I have honed
+          my skills in full-stack development,
+          particularly in the context of DeFi,
+          and have made substantial
+          contributions to our community and product.
+        </p>
+
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-medium text-xl mb-1 tracking-tighter">Hy-Vee</h2>
+        <h2 className="font-medium text-xl mb-1 tracking-tighter">Foodoscope</h2>
         <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-          Senior Software Engineer, 2018 — 2020
+          Product Lead
         </p>
         <p>
-          Hy-Vee, an almost 100-year-old grocery chain in the United States,
-          wanted to build a new version of their digital storefront. I joined a
-          team of <Link href="/blog/product-engineers">product engineers</Link>{' '}
-          working across web and mobile to rebuild their legacy .NET application
-          (~500k MAU) with React and React Native.
+          At  <a href="https://foodoscope.com">Foodoscope</a>, I led a talented team of 8 students to
+          revamp and enhance our backend infrastructure. Our mission
+          was to transition a fragmented set of services into a cohesive
+          and scalable cloud-based solution, supporting a massive database
+          of recipes and flavors meticulously curated over 8 years.
         </p>
+        <ul>
+          <li>
+            <p className='font-bold'>Key achievements and responsibilities</p>
+            <ul>
+              <li>
+                <p>Backend Restructuring and Cloud Migration:</p>
+                <p>Managed the reorganization of multiple backends developed in Node.js, Spring Boot, and Django. We migrated these from IIITD's internal servers to AWS, establishing robust CI/CD pipelines and leveraging AWS CloudWatch for cost management.</p>
+              </li>
+              <li>
+                <p>Architectural Overhaul:</p>
+                <p>Converted three Node.js-based backends from a microservice architecture to a monolithic structure to improve efficiency and maintainability.</p>
+              </li>
+              <li>
+                <p>Elasticsearch Deployment:</p>
+                <p>Spearheaded the deployment of Elasticsearch to handle high indexing and searching demands, ensuring optimal database performance and management.</p>
+              </li>
+              <li>
+                <p>Leadership and Team Coordination:</p>
+                <p>Transitioned from a sole developer to a product lead, where I honed my skills in coordinating with team members, setting realistic deadlines, and making critical project decisions.</p>
+              </li>
+              <li>
+                <p>AWS Cost Management:</p>
+                <p>Collaborated with the AWS support team to rectify an initial 10X spike in deployment costs, learning valuable lessons in resource optimization and cost control.</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
         <p>
-          On the frontend, I led our move from a custom webpack and React
-          configuration to Next.js and the latest React patterns. In the
-          process, I shared my learnings online, helping educate members of the
-          React and Next.js community by creating courses.
+          This project was a pivotal experience, enhancing my skills
+          in cloud computing, backend development, and team leadership.
+          It demonstrated the importance of meticulous planning, collaborative
+          problem-solving, and strategic decision-making in successfully
+          executing complex technical projects.
         </p>
-        <p>
-          Throughout my two years, I was able to work on some hard problems:
-          decoupling a decade old monolith into microservices, working with a
-          federated GraphQL API, learning and occasionally managing a Kubernetes
-          cluster, building and implementing a design system, incrementally
-          migrating individual components and routes to a new framework and
-          infrastructure, and more.
-        </p>
-        <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
-        <h2 className="font-medium text-xl mb-1 tracking-tighter">Workiva</h2>
-        <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-          Software Engineer, 2015 — 2018
-        </p>
-        <p>
-          Workiva ($WK) is a cloud platform for data reporting and compliance.
-          During my time at Workiva, I gained my first production experience
-          using React. I worked on tooling to help predict and alert and
-          regressions in our SaaS platform, building a product similar to
-          open-source tools like Sentry.
-        </p>
-      </div>
+        </div>  
     </section>
   );
 }

@@ -12,12 +12,11 @@ import meExplainingWeb3 from 'public/images/home/meExplainingWeb3.jpg';
 import TLEEliminators_LogoText from 'public/images/TLEEliminators_LogoText.png';
 import Foodoscope_LogoText from 'public/images/Foodoscope_LogoText.png';
 
-
 import DexyAI_LogoText from 'public/images/DexyAI_LogoText.svg';
 import Timeswap_LogoText from 'public/images/Timeswap_LogoText.svg';
 import vercel from 'public/images/home/vercel.jpg';
 import avatar from 'app/avatar.jpg';
-import ViewCounter from 'app/blog/view-counter';
+import ViewCounter from 'app/utils/blog/view-counter';
 import { PreloadResources } from 'app/preload';
 import {
   getViewsCount,
@@ -155,7 +154,7 @@ export default function Page() {
               aria-label="Timeswap logo"
               className="mr-1 inline-flex"
             >
-              <use href="/sprite.svg#timeswap" />
+              <use href="/sprite.svg#youtube" />
             </svg>
             Timeswap
           </Badge>
@@ -330,7 +329,7 @@ export default function Page() {
             <p className="ml-2 h-7">follow me</p>
           </a>
         </li>
-        <li>
+        {/* <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -340,7 +339,7 @@ export default function Page() {
             <ArrowIcon />
             <p className="ml-2 h-7">get email updates</p>
           </a>
-        </li>
+        </li> */}
       </ul>
     </section>
   );

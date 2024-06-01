@@ -5,7 +5,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Navbar } from './components/nav';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { SandpackCSS } from './blog/[slug]/sandpack';
+import { SandpackCSS } from './utils/blog/[slug]/sandpack';
 import { getWebAddress } from './utils/helpers';
 
 export const metadata: Metadata = {
