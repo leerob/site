@@ -6,19 +6,20 @@ import { Navbar } from './components/nav';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SandpackCSS } from './blog/[slug]/sandpack';
+import { getWebAddress } from './utils/helpers';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://leerob.io'),
+  metadataBase: new URL(getWebAddress()),
   title: {
-    default: 'Lee Robinson',
-    template: '%s | Lee Robinson',
+    default: 'Heemank Verma',
+    template: '%s | Heemank Verma',
   },
-  description: 'Developer, writer, and creator.',
+  description: 'Defi Developer, optimist and explorer.',
   openGraph: {
-    title: 'Lee Robinson',
-    description: 'Developer, writer, and creator.',
-    url: 'https://leerob.io',
-    siteName: 'Lee Robinson',
+    title: 'Heemank Verma',
+    description: 'Defi Developer, optimist and explorer.',
+    url: 'getWebAddress()',
+    siteName: 'Heemank Verma',
     locale: 'en_US',
     type: 'website',
   },
@@ -34,10 +35,11 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: 'Lee Robinson',
+    title: 'Heemank Verma',
     card: 'summary_large_image',
   },
   verification: {
+    // TODO: Add your Google and Yandex verification codes
     google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
     yandex: '14d2e73487fa6c71',
   },

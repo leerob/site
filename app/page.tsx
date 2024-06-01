@@ -2,19 +2,24 @@ import { Suspense } from 'react';
 import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 import Image from 'next/image';
-import smashing from 'public/images/home/smashing.jpg';
-import summit from 'public/images/home/summit.jpg';
-import reactathon from 'public/images/home/reactathon.jpg';
-import ship from 'public/images/home/ship.jpg';
-import filming from 'public/images/home/filming.jpg';
-import meetups from 'public/images/home/meetups.jpg';
+import meAttendingEchai from 'public/images/home/meAttendingEchai.jpg';
+import ethIndiaTimeswapTeamPhoto from 'public/images/home/ethIndiaTimeswapTeamPhoto.jpg';
+import meExplainingTechPhoto from 'public/images/home/meExplainingTechPhoto.jpg';
+import meAtWorldStartupConvention from 'public/images/home/meAtWorldStartupConvention.jpg';
+import meAtIIITD from 'public/images/home/meAtIIITD.jpg';
+import meExplainingWeb3 from 'public/images/home/meExplainingWeb3.jpg';
+
+import TLEEliminators_LogoText from 'public/images/TLEEliminators_LogoText.png';
+import Foodoscope_LogoText from 'public/images/Foodoscope_LogoText.png';
+
+
+import DexyAI_LogoText from 'public/images/DexyAI_LogoText.svg';
+import Timeswap_LogoText from 'public/images/Timeswap_LogoText.svg';
 import vercel from 'public/images/home/vercel.jpg';
 import avatar from 'app/avatar.jpg';
 import ViewCounter from 'app/blog/view-counter';
 import { PreloadResources } from 'app/preload';
 import {
-  getLeeYouTubeSubs,
-  getVercelYouTubeSubs,
   getViewsCount,
 } from 'app/db/queries';
 
@@ -45,63 +50,62 @@ function ArrowIcon() {
   );
 }
 
-function ChannelLink({ img, link, name }) {
-  return (
-    <div className="group flex w-full">
-      <a
-        href={link}
-        target="_blank"
-        className="flex w-full items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
-      >
-        <div className="flex items-center space-x-3">
-          <div className="relative h-16">
-            <Image
-              alt={name}
-              src={img}
-              height={64}
-              width={64}
-              sizes="33vw"
-              className="h-16 w-16 rounded-full border border-neutral-200 dark:border-neutral-700"
-              priority
-            />
-            <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-200 bg-white p-1 dark:border-neutral-700">
-              <svg width="15" height="11" role="img" aria-label="YouTube logo">
-                <use href="/sprite.svg#youtube" />
-              </svg>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <p className="font-medium text-neutral-900 dark:text-neutral-100">
-              {name}
-            </p>
-            <Suspense fallback={<p className="h-6" />}>
-              <Subs name={name} />
-            </Suspense>
-          </div>
-        </div>
-        <div className="transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
-          <ArrowIcon />
-        </div>
-      </a>
-    </div>
-  );
-}
+// function ChannelLink({ img, link, name }) {
+//   return (
+//     <div className="group flex w-full">
+//       <a
+//         href={link}
+//         target="_blank"
+//         className="flex w-full items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
+//       >
+//         <div className="flex items-center space-x-3">
+//           <div className="relative h-16">
+//             <Image
+//               alt={name}
+//               src={img}
+//               height={64}
+//               width={64}
+//               sizes="33vw"
+//               className="h-16 w-16 rounded-full border border-neutral-200 dark:border-neutral-700"
+//               priority
+//             />
+//             <div className="relative -right-10 -top-6 inline-flex h-6 w-6 items-center rounded-full border border-neutral-200 bg-white p-1 dark:border-neutral-700">
+//               <svg width="15" height="11" role="img" aria-label="YouTube logo">
+//                 <use href="/sprite.svg#youtube" />
+//               </svg>
+//             </div>
+//           </div>
+//           <div className="flex flex-col">
+//             <p className="font-medium text-neutral-900 dark:text-neutral-100">
+//               {name}
+//             </p>
+//             <Suspense fallback={<p className="h-6" />}>
+//             </Suspense>
+//           </div>
+//         </div>
+//         <div className="transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
+//           <ArrowIcon />
+//         </div>
+//       </a>
+//     </div>
+//   );
+// }
 
-async function Subs({ name }: { name: string }) {
-  noStore();
-  let subscribers;
-  if (name === '@leerob') {
-    subscribers = await getLeeYouTubeSubs();
-  } else {
-    subscribers = await getVercelYouTubeSubs();
-  }
+// async function Subs({ name }: { name: string }) {
+//   noStore();
+//   let subscribers;
+//   if (name === '@leerob') {
+//     subscribers = await getLeeYouTubeSubs();
+//   } else {
+//     subscribers = await getVercelYouTubeSubs();
+//   }
 
-  return (
-    <p className="text-neutral-600 dark:text-neutral-400">
-      {subscribers} subscribers
-    </p>
-  );
-}
+//   return (
+//     <p className="text-neutral-600 dark:text-neutral-400">
+//       {subscribers} subscribers
+//     </p>
+//   );
+// }
 
 function BlogLink({ slug, name }) {
   return (
@@ -136,57 +140,32 @@ export default function Page() {
     <section>
       <PreloadResources />
       <h1 className="mb-8 text-2xl font-medium tracking-tighter">
-        hey, I'm leerob 👋
+        Hey, I'm Heemank Verma 👋
       </h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a frontend developer, optimist, and community builder. I currently `}
+        {`I'm a defi full stack developer, startup nerd, and optimist. I currently `}
         <Link href="/work">work</Link>
-        {` as the VP of Product at `}
+        {` as the Full Stack Dev at `}
         <span className="not-prose">
-          <Badge href="https://vercel.com/home">
+          <Badge href="https://timeswap.io">
             <svg
-              width="13"
+              width="15"
               height="11"
-              role="img"
-              aria-label="Vercel logo"
+              aria-label="Timeswap logo"
               className="mr-1 inline-flex"
             >
-              <use href="/sprite.svg#vercel" />
+              <use href="/sprite.svg#timeswap" />
             </svg>
-            Vercel
+            Timeswap
           </Badge>
         </span>
-        {`, where I help teach the `}
-        <Badge href="https://nextjs.org">
-          <img
-            alt="Next.js logomark"
-            src="/next-logo.svg"
-            className="!mr-1"
-            width="14"
-            height="14"
-          />
-          Next.js
-        </Badge>
-        {` community, an open-source web framework built with `}
-        <Badge href="https://react.dev">
-          <svg
-            width="14"
-            height="14"
-            role="img"
-            aria-label="React logo"
-            className="!mr-1"
-          >
-            <use href="/sprite.svg#react" />
-          </svg>
-          React
-        </Badge>
         .
       </p>
       <div className="grid grid-cols-2 grid-rows-4 sm:grid-rows-3 sm:grid-cols-3 gap-4 my-8">
         <div className="relative h-40">
           <Image
-            alt="Me speaking on stage at React Summit about the future of Next.js"
-            src={summit}
+            alt="Me with the Timeswap Team at the EthIndia 2022 Hackathon."
+            src={ethIndiaTimeswapTeamPhoto}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -195,8 +174,8 @@ export default function Page() {
         </div>
         <div className="relative sm:row-span-2 row-span-1">
           <Image
-            alt="Me standing on stage at Reactathon delivering the keynote"
-            src={reactathon}
+            alt="Giving Symposym Presentation about Foodoscope.com"
+            src={meExplainingTechPhoto}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -205,8 +184,8 @@ export default function Page() {
         </div>
         <div className="relative">
           <Image
-            alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
-            src={ship}
+            alt="Attending World zStartup Convention in 2023."
+            src={meAtWorldStartupConvention}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -215,8 +194,8 @@ export default function Page() {
         </div>
         <div className="relative row-span-2">
           <Image
-            alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
-            src={filming}
+            alt="Me at IIITD, New Delhi, India."
+            src={meAtIIITD}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -225,8 +204,8 @@ export default function Page() {
         </div>
         <div className="relative row-span-2">
           <Image
-            alt="My badge on top of a pile of badges from a Vercel meetup we held"
-            src={meetups}
+            alt="Me explaining Web3 at a conference."
+            src={meExplainingWeb3}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -235,8 +214,8 @@ export default function Page() {
         </div>
         <div className="relative h-40">
           <Image
-            alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
-            src={smashing}
+            alt="Me attending Echai, a startup event."
+            src={meAttendingEchai}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
@@ -246,13 +225,12 @@ export default function Page() {
       </div>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I create educational content for developers, teaching them about web
-          development, JavaScript and TypeScript, React and Next.js, and more.
-          This comes in all forms: blog posts, videos, tweets, conference talks,
-          and workshops. You can watch some of my favorites below.
+          I like to work on projects that are challenging and have a positive business impact.
+          I'm passionate about building products that solve real-world problems
+          and have a positive impact on society.
         </p>
       </div>
-      <div className="my-8 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+      {/* <div className="my-8 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
         <ChannelLink
           img={avatar}
           name="@leerob"
@@ -263,73 +241,81 @@ export default function Page() {
           name="@vercel"
           link="https://www.youtube.com/@vercelhq"
         />
-      </div>
+      </div> */}
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          Over the past decade, I've written content on my blog and newsletter.
-          I try to keep things simple. You'll find writing about technologies
-          I'm interested in at the time, or how I'm learning and growing in my
-          career, sharing knowledge along the way.
+          Over the past 4 years,
+          I completed my B.Tech in Computer Science from IIITD, New Delhi, India.
+        </p>
+        <p>
+           I've written code, built products, and led
+          teams. I've been fortunate to work with some amazing people and
+          companies.
+
+          I've worked with and advised companies on building scalable web applications,
+          building open-source communities, product-led growth, and more.
+         
         </p>
       </div>
-      <div className="my-8 flex w-full flex-col space-y-4">
+      {/* <div className="my-8 flex w-full flex-col space-y-4">
         <BlogLink
           name="What Makes A Great Developer Experience?"
           slug="developer-experience"
         />
         <BlogLink name="What is Developer Relations?" slug="devrel" />
         <BlogLink name="The Story of Heroku" slug="heroku" />
-      </div>
+      </div> */}
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          I invest small angel checks into early stage startups building tools
-          for developers.
+          I'm always open to new opportunities and challenges. If you're working
+          on something cool,{' '}
+          {/* TODO: make contact page */}
+          <Link href="/contact">get in touch</Link>!
         </p>
       </div>
       <div className="my-8 flex h-14 w-full flex-row space-x-2 overflow-x-auto">
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://linear.app">
-            <svg width="78" height="20" role="img" aria-label="Linear logo">
-              <use href="/sprite.svg#linear" />
-            </svg>
+          <a href="https://timeswap.io">
+            <Image
+              width={100}
+              height={100}
+            src={Timeswap_LogoText} alt="Timeswap Logo" />
           </a>
         </div>
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://supabase.com">
-            <svg width="100" height="19" role="img" aria-label="Supabase logo">
-              <use href="/sprite.svg#supabase" />
-            </svg>
+          <a href="https://www.tle-eliminators.com/">
+            <span className='flex items-center gap-x-1 font-bold text-sm'>
+            <Image src={TLEEliminators_LogoText}
+              width={24}
+              height={60}
+            alt="TLE Eliminators Logo" /> 
+            TLE Eliminators
+            </span>
           </a>
         </div>
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://www.makeswift.com/blog/makeswift-is-joining-bigcommerce">
-            <svg width="96" height="19" role="img" aria-label="Makeswift logo">
-              <use href="/sprite.svg#makeswift" />
-            </svg>
+          <a href="https://meetdexy.ai/">
+            <Image
+              width={90}
+              height={90}
+              className='pt-2'
+            src={DexyAI_LogoText} alt="Dexy AI Logo" />
           </a>
         </div>
+       
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://resend.com">
-            <svg width="70" height="17" role="img" aria-label="Resend logo">
-              <use href="/sprite.svg#resend" />
-            </svg>
-          </a>
-        </div>
-        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://bun.sh">
-            <svg width="35" height="27" role="img" aria-label="Bun logo">
-              <use href="/sprite.svg#bun" />
-            </svg>
+        <a href="https://www.foodoscope.com/">
+            <span className='flex items-center gap-x-1 font-bold'>
+            <Image
+              width={100}
+              height={90}
+            src={Foodoscope_LogoText} alt="Foodoscope Logo" /> 
+            </span>
           </a>
         </div>
       </div>
       <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          I've worked with and advised companies on{' '}
-          <Link href="/blog/developer-marketing">developer marketing</Link>,{' '}
-          <Link href="/blog/devrel">developer relations</Link>, building
-          open-source communities, product-led growth, and more.
-        </p>
+      
       </div>
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li>
