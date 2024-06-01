@@ -7,9 +7,9 @@ export default async function sitemap() {
   // }));
 
   let routes = ['', '/guestbook', '/uses', '/work'].map((route) => ({
-    url: `https://leerob.io${route}`,
+    url: `https://heemankv.dev${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }));
 
-  return [...routes, ...blogs];
+  return [...routes];
 }
