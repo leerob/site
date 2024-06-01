@@ -4,5 +4,10 @@ function getWebAddress() : string {
 }
 
 
+const SOCIAL_MEDIA = {
+  twitter: "https://twitter.com/heemankv",
+  linkedin: "https://www.linkedin.com/in/heemankv",
+  github: "https://github.com/heemankv",
+}
 
-export { getWebAddress };
+export { getWebAddress, SOCIAL_MEDIA };

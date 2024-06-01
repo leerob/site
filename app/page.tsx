@@ -22,6 +22,7 @@ import { PreloadResources } from 'app/preload';
 import {
   getViewsCount,
 } from 'app/db/queries';
+import { SOCIAL_MEDIA } from './utils/helpers';
 
 function Badge(props) {
   return (
@@ -323,7 +324,7 @@ export default function Page() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://twitter.com/leeerob"
+            href={SOCIAL_MEDIA.twitter}
           >
             <ArrowIcon />
             <p className="ml-2 h-7">follow me</p>
