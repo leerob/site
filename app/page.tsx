@@ -8,7 +8,7 @@ import meExplainingTechPhoto from 'public/images/home/meExplainingTechPhoto.jpg'
 import meAtWorldStartupConvention from 'public/images/home/meAtWorldStartupConvention.jpg';
 import meAtIIITD from 'public/images/home/meAtIIITD.jpg';
 import meExplainingWeb3 from 'public/images/home/meExplainingWeb3.jpg';
-
+import timeswap_logo from 'public/timeswap.svg';
 import TLEEliminators_LogoText from 'public/images/TLEEliminators_LogoText.png';
 import Foodoscope_LogoText from 'public/images/Foodoscope_LogoText.png';
 
@@ -146,20 +146,14 @@ export default function Page() {
         {`I'm a defi full stack developer, startup nerd, and optimist. I currently `}
         <Link href="/work">work</Link>
         {` as the Full Stack Dev at `}
-        <span className="not-prose">
-          <Badge href="https://timeswap.io">
-            <svg
-              width="15"
-              height="11"
-              aria-label="Timeswap logo"
-              className="mr-1 inline-flex"
-            >
-              <use href="/sprite.svg#youtube" />
-            </svg>
-            Timeswap
-          </Badge>
-        </span>
-        .
+        <Badge href="https://timeswap.io" >
+          <Image
+            width={20}
+            height={20}
+            src={timeswap_logo} alt="Timeswap Logo" />
+          <p className='m-0 p-0'>Timeswap</p>
+      </Badge>
+      .
       </p>
       <div className="grid grid-cols-2 grid-rows-4 sm:grid-rows-3 sm:grid-cols-3 gap-4 my-8">
         <div className="relative h-40">
@@ -274,7 +268,7 @@ export default function Page() {
         </p>
       </div>
       <div className="my-8 flex h-14 w-full flex-row space-x-2 overflow-x-auto">
-        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://timeswap.io">
             <Image
               width={100}
@@ -282,18 +276,18 @@ export default function Page() {
             src={Timeswap_LogoText} alt="Timeswap Logo" />
           </a>
         </div>
-        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://www.tle-eliminators.com/">
-            <span className='flex items-center gap-x-1 font-bold text-sm'>
-            <Image src={TLEEliminators_LogoText}
-              width={24}
-              height={60}
-            alt="TLE Eliminators Logo" /> 
-            TLE Eliminators
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
+        <a href="https://www.foodoscope.com/">
+            <span className='flex items-center gap-x-1 font-bold'>
+            <Image
+              width={100}
+              height={90}
+            src={Foodoscope_LogoText} alt="Foodoscope Logo" /> 
             </span>
           </a>
         </div>
-        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
+        
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
           <a href="https://meetdexy.ai/">
             <Image
               width={90}
@@ -303,13 +297,14 @@ export default function Page() {
           </a>
         </div>
        
-        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800">
-        <a href="https://www.foodoscope.com/">
-            <span className='flex items-center gap-x-1 font-bold'>
-            <Image
-              width={100}
-              height={90}
-            src={Foodoscope_LogoText} alt="Foodoscope Logo" /> 
+        
+        <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
+          <a href="https://www.tle-eliminators.com/">
+            <span className='flex items-center gap-x-1 font-bold text-sm'>
+            <Image src={TLEEliminators_LogoText}
+              width={24}
+              height={60}
+            alt="TLE Eliminators Logo" /> 
             </span>
           </a>
         </div>
