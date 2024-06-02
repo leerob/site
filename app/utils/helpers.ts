@@ -5,7 +5,7 @@ function getWebAddress() : string {
 
 
 const SOCIAL_MEDIA = {
-  twitter: "https://twitter.com/heemankv",
+  twitter: "https://x.com/heemankv",
   linkedin: "https://www.linkedin.com/in/heemankv",
   github: "https://github.com/heemankv",
 }

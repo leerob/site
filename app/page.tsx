@@ -269,7 +269,10 @@ export default function Page() {
       </div>
       <div className="my-8 flex h-14 w-full flex-row space-x-2 overflow-x-auto">
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://timeswap.io">
+          <a href="https://timeswap.io"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <Image
               width={100}
               height={100}
@@ -277,7 +280,10 @@ export default function Page() {
           </a>
         </div>
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
-        <a href="https://www.foodoscope.com/">
+        <a href="https://www.foodoscope.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
             <span className='flex items-center gap-x-1 font-bold'>
             <Image
               width={100}
@@ -288,7 +294,10 @@ export default function Page() {
         </div>
         
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://meetdexy.ai/">
+          <a href="https://meetdexy.ai/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <Image
               width={90}
               height={90}
@@ -299,7 +308,10 @@ export default function Page() {
        
         
         <div className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-2 md:px-3 md:py-4 dark:border-neutral-700 dark:bg-neutral-800">
-          <a href="https://www.tle-eliminators.com/">
+          <a href="https://www.tle-eliminators.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span className='flex items-center gap-x-1 font-bold text-sm'>
             <Image src={TLEEliminators_LogoText}
               width={24}
@@ -310,7 +322,6 @@ export default function Page() {
         </div>
       </div>
       <div className="prose prose-neutral dark:prose-invert">
-      
       </div>
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li>
@@ -321,7 +332,18 @@ export default function Page() {
             href={SOCIAL_MEDIA.twitter}
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">follow me</p>
+            <p className="ml-2 h-7">follow me on X</p>
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href={SOCIAL_MEDIA.linkedin}
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">follow me on Linkedin</p>
           </a>
         </li>
         {/* <li>
