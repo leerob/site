@@ -1,3 +1,4 @@
+import { getEnv } from '@vercel/functions';
 import { saveSession } from 'app/auth';
 
 export async function GET(request: Request) {
@@ -37,18 +38,22 @@ export async function GET(request: Request) {
 
     response = await fetch('https://api.vercel.com/v2/user', {
       headers: {
-        Authorization: `Bearer ${data.auth_token}`,
+        Authorization: `Bearer ${data.access_token}`,
       },
     });
 
     data = await response.json();
 
-    console.log('data', data);
+    await saveSession({
+      email: data.user.email,
+      name: data.user.name || data.user.username,
+    });
 
-    await saveSession({ email: data.email, name: data.name || data.username });
-
-    return Response.redirect('/guestbook');
+    return Response.redirect(
+      `${getEnv().VERCEL_PROJECT_PRODUCTION_URL}/guestbook`
+    );
   } catch (error) {
+    console.error('Error logging in with Vercel', error);
     return Response.json(
       { error: 'Failed to exchange token' },
       { status: 500 }
