@@ -3,7 +3,6 @@ import { parseISO, format } from 'date-fns';
 
 import Container from '@/components/Container';
 import Subscribe from '@/components/Subscribe';
-import ViewCounter from '@/components/ViewCounter';
 
 const editUrl = (slug) =>
   `https://github.com/leerob/joaogarin.com/edit/main/data/blog/${slug}.mdx`;
@@ -42,8 +41,6 @@ export default function BlogLayout({ children, frontMatter }) {
           </div>
           <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             {frontMatter.readingTime.text}
-            {` • `}
-            <ViewCounter slug={frontMatter.slug} />
           </p>
         </div>
         <div className="prose dark:prose-dark max-w-none w-full">
