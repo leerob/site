@@ -52,7 +52,7 @@ const deleteFolderRecursive = async (path) => {
 
   if (process.env.IS_TEMPLATE === 'false') {
     // This means it's not the template, it's my legit site
-    // I orderride the env variable for my site. This means that when
+    // I override the env variable for my site. This means that when
     // folks clone this repo for the first time, it will delete my personal content
     return;
   }
