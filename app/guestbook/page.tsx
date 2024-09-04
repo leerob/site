@@ -13,7 +13,7 @@ export default function GuestbookPage() {
       <h1 className="font-medium text-2xl mb-8 tracking-tighter">
         sign my guestbook
       </h1>
-      <Suspense fallback="h-[70px]">
+      <Suspense fallback={<div className="h-[70px]" />}>
         <Form />
       </Suspense>
       <GuestbookEntries />
