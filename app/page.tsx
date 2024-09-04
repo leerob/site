@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 import Image from 'next/image';
 import smashing from 'public/images/home/smashing.jpg';
@@ -88,7 +87,6 @@ function ChannelLink({ img, link, name }) {
 }
 
 async function Subs({ name }: { name: string }) {
-  noStore();
   let subscribers;
   if (name === '@leerob') {
     subscribers = await getLeeYouTubeSubs();
