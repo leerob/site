@@ -3,10 +3,9 @@
 import { auth } from 'app/auth';
 import { type Session } from 'next-auth';
 import { sql } from './postgres';
-import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 
 export async function increment(slug: string) {
-  noStore();
   await sql`
     INSERT INTO views (slug, count)
     VALUES (${slug}, 1)

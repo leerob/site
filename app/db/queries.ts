@@ -2,10 +2,7 @@
 
 import { auth, youtube } from '@googleapis/youtube';
 import { sql } from './postgres';
-import {
-  unstable_cache as cache,
-  unstable_noStore as noStore,
-} from 'next/cache';
+import { unstable_cache as cache } from 'next/cache';
 
 let googleAuth = new auth.GoogleAuth({
   credentials: {
@@ -25,7 +22,6 @@ export async function getBlogViews() {
     return [];
   }
 
-  noStore();
   let views = await sql`
     SELECT count
     FROM views
@@ -41,7 +37,6 @@ export async function getViewsCount(): Promise<
     return [];
   }
 
-  noStore();
   return sql`
     SELECT slug, count
     FROM views
@@ -61,7 +56,7 @@ export const getLeeYouTubeSubs = cache(
   ['leerob-youtube-subs'],
   {
     revalidate: 3600,
-  }
+  },
 );
 
 export const getVercelYouTubeSubs = cache(
@@ -77,19 +72,21 @@ export const getVercelYouTubeSubs = cache(
   ['vercel-youtube-subs'],
   {
     revalidate: 3600,
-  }
+  },
 );
 
-export async function getGuestbookEntries() {
-  if (!process.env.POSTGRES_URL) {
-    return [];
-  }
+export const getGuestbookEntries = cache(
+  async () => {
+    if (!process.env.POSTGRES_URL) {
+      return [];
+    }
 
-  noStore();
-  return sql`
-    SELECT id, body, created_by, updated_at
-    FROM guestbook
-    ORDER BY created_at DESC
-    LIMIT 100
-  `;
-}
+    return sql`
+      SELECT id, body, created_by, updated_at
+      FROM guestbook
+      ORDER BY created_at DESC
+      LIMIT 100
+    `;
+  },
+  ['guestbook']
+)
