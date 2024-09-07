@@ -51,8 +51,8 @@ const components: MDXComponents = {
     }
     return <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>{children}</a>
   },
-  code: (props: ComponentPropsWithoutRef<'code'>) => {
-    const codeHTML = highlight(props.children as string)
+  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
+    const codeHTML = highlight(children as string)
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
   },
   Table: ({ data }: { data: { headers: string[], rows: string[][] } }) => (
