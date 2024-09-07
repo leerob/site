@@ -1,54 +1,61 @@
-import React from 'react'
+import React, { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
 import { highlight } from 'sugar-high'
 
-const components = {
-  h1: ({ children }) => (
-    <h1 className="font-medium pt-12 mb-0 fade-in">{children}</h1>
+type HeadingProps = ComponentPropsWithoutRef<'h1'>
+type ParagraphProps = ComponentPropsWithoutRef<'p'>
+type ListProps = ComponentPropsWithoutRef<'ul'>
+type ListItemProps = ComponentPropsWithoutRef<'li'>
+type AnchorProps = ComponentPropsWithoutRef<'a'>
+type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>
+
+const components: MDXComponents = {
+  h1: (props: HeadingProps) => (
+    <h1 className="font-medium pt-12 mb-0 fade-in" {...props} />
   ),
-  h2: ({ children }) => (
-    <h2 className="text-gray-800 font-medium mt-8 mb-3">{children}</h2>
+  h2: (props: HeadingProps) => (
+    <h2 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
   ),
-  h3: ({ children }) => (
-    <h3 className="text-gray-800 font-medium mt-8 mb-3">{children}</h3>
+  h3: (props: HeadingProps) => (
+    <h3 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
   ),
-  h4: ({ children }) => (
-    <h4 className="font-medium">{children}</h4>
+  h4: (props: HeadingProps) => (
+    <h4 className="font-medium" {...props} />
   ),
-  p: ({ children }) => (
-    <p className="text-gray-800 leading-snug">{children}</p>
+  p: (props: ParagraphProps) => (
+    <p className="text-gray-800 leading-snug" {...props} />
   ),
-  ol: ({ children }) => (
-    <ol className="text-gray-800 list-decimal pl-5 space-y-2">{children}</ol>
+  ol: (props: ListProps) => (
+    <ol className="text-gray-800 list-decimal pl-5 space-y-2" {...props} />
   ),
-  ul: ({ children }) => (
-    <ul className="text-gray-800 list-disc pl-5 space-y-1">{children}</ul>
+  ul: (props: ListProps) => (
+    <ul className="text-gray-800 list-disc pl-5 space-y-1" {...props} />
   ),
-  li: ({ children }) => (
-    <li className="pl-1">{children}</li>
+  li: (props: ListItemProps) => (
+    <li className="pl-1" {...props} />
   ),
-  em: ({ children }) => (
-    <em className="font-medium">{children}</em>
+  em: (props: ComponentPropsWithoutRef<'em'>) => (
+    <em className="font-medium" {...props} />
   ),
-  strong: ({ children }) => (
-    <strong className="font-medium">{children}</strong>
+  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
+    <strong className="font-medium" {...props} />
   ),
-  a: ({ href, children, ...props }) => {
+  a: ({ href, children, ...props }: AnchorProps) => {
     const className = "text-blue-500 hover:text-blue-700"
     if (href?.startsWith('/')) {
-      return <Link href={href} className={className}>{children}</Link>
+      return <Link href={href} className={className} {...props}>{children}</Link>
     }
     if (href?.startsWith('#')) {
       return <a href={href} className={className} {...props}>{children}</a>
     }
     return <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>{children}</a>
   },
-  code: ({ children, ...props }) => {
-    const codeHTML = highlight(children as string)
+  code: (props: ComponentPropsWithoutRef<'code'>) => {
+    const codeHTML = highlight(props.children as string)
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
   },
-  Table: ({ data }) => (
+  Table: ({ data }: { data: { headers: string[], rows: string[][] } }) => (
     <table>
       <thead>
         <tr>
@@ -68,8 +75,8 @@ const components = {
       </tbody>
     </table>
   ),
-  blockquote: ({ children }) => (
-    <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700">{children}</blockquote>
+  blockquote: (props: BlockquoteProps) => (
+    <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700" {...props} />
   ),
 }
 
