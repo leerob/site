@@ -4,51 +4,51 @@ import type { MDXComponents } from 'mdx/types'
 import { highlight } from 'sugar-high'
 
 const components = {
-  h1: ({ children }: { children: React.ReactNode }) => (
+  h1: ({ children }) => (
     <h1 className="font-medium pt-12 mb-0 fade-in">{children}</h1>
   ),
-  h2: ({ children }: { children: React.ReactNode }) => (
+  h2: ({ children }) => (
     <h2 className="text-gray-800 font-medium mt-8 mb-3">{children}</h2>
   ),
-  h3: ({ children }: { children: React.ReactNode }) => (
+  h3: ({ children }) => (
     <h3 className="text-gray-800 font-medium mt-8 mb-3">{children}</h3>
   ),
-  h4: ({ children }: { children: React.ReactNode }) => (
+  h4: ({ children }) => (
     <h4 className="font-medium">{children}</h4>
   ),
-  p: ({ children }: { children: React.ReactNode }) => (
+  p: ({ children }) => (
     <p className="text-gray-800 leading-snug">{children}</p>
   ),
-  ol: ({ children }: { children: React.ReactNode }) => (
+  ol: ({ children }) => (
     <ol className="text-gray-800 list-decimal pl-5 space-y-2">{children}</ol>
   ),
-  ul: ({ children }: { children: React.ReactNode }) => (
+  ul: ({ children }) => (
     <ul className="text-gray-800 list-disc pl-5 space-y-1">{children}</ul>
   ),
-  li: ({ children }: { children: React.ReactNode }) => (
+  li: ({ children }) => (
     <li className="pl-1">{children}</li>
   ),
-  em: ({ children }: { children: React.ReactNode }) => (
+  em: ({ children }) => (
     <em className="font-medium">{children}</em>
   ),
-  strong: ({ children }: { children: React.ReactNode }) => (
+  strong: ({ children }) => (
     <strong className="font-medium">{children}</strong>
   ),
-  a: ({ href, children }: { href: string; children: React.ReactNode }) => {
+  a: ({ href, children, ...props }) => {
     const className = "text-blue-500 hover:text-blue-700"
-    if (href.startsWith('/')) {
+    if (href?.startsWith('/')) {
       return <Link href={href} className={className}>{children}</Link>
     }
-    if (href.startsWith('#')) {
-      return <a href={href} className={className}>{children}</a>
+    if (href?.startsWith('#')) {
+      return <a href={href} className={className} {...props}>{children}</a>
     }
-    return <a href={href} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>
+    return <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>{children}</a>
   },
-  code: ({ children, ...props }: { children: string }) => {
-    const codeHTML = highlight(children)
+  code: ({ children, ...props }) => {
+    const codeHTML = highlight(children as string)
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
   },
-  Table: ({ data }: { data: { headers: string[], rows: string[][] } }) => (
+  Table: ({ data }) => (
     <table>
       <thead>
         <tr>
@@ -68,7 +68,7 @@ const components = {
       </tbody>
     </table>
   ),
-  blockquote: ({ children }: { children: React.ReactNode }) => (
+  blockquote: ({ children }) => (
     <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700">{children}</blockquote>
   ),
 }
