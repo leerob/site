@@ -1,5 +1,5 @@
-import type { NextConfig } from "next";
-import createMDX from '@next/mdx'
+import type { NextConfig } from 'next';
+import createMDX from '@next/mdx';
 import postgres from 'postgres';
 
 export const sql = postgres(process.env.POSTGRES_URL!, {
@@ -27,8 +27,8 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
   },
-}
+};
 
-const withMDX = createMDX({})
+const withMDX = createMDX({});
 
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

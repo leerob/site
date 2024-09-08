@@ -1,8 +1,8 @@
-import { AnimatedName } from '../animated-name.tsx'
+import { AnimatedName } from '../animated-name.tsx';
 
 export const metadata = {
   title: 'On Developer Experience',
-}
+};
 
 # On Developer Experience
 
@@ -33,4 +33,3 @@ Here's what I believe creates a great Developer Experience (DX):
 
 - **Don't break API workflows:** API versioning should be intentional and explicit. Err on the side of over-communication when making changes to APIs and give developers plenty of time to update to new versions. I've personally enjoyed Stripe's API versioning – they have [an excellent post](https://stripe.com/blog/api-versioning) if you want to learn more. I've seen some instances where AWS sends a deprecation email about an API that's been stable for years, plus gives them years of upgrade time.
 - **Let me try out APIs quickly:** Some of my favorite API documentation allows you to generate an API key and try out endpoints in a few seconds. Some even recognize that you're already logged in and personalize the page based on your account information. [Square does this well](https://developer.squareup.com/explorer/square). I also like GraphiQL for this – you view the entire graph schema, make requests, run mutations, format your code, and more.
-
