@@ -1,0 +1,137 @@
+import { AnimatedName } from '../animated-name.tsx';
+
+export const metadata = {
+  title: 'My Stack',
+};
+
+# My Stack
+
+<AnimatedName />
+
+Here's where I'm currently most productive:
+
+## 1. Framework (Next.js and React)
+
+I’ve been working with Next.js since 2018 (and React since 2015) so I'm most productive here. I start all my projects with TypeScript.
+
+For data fetching, I use newer React patterns:
+
+<details className="mb-1 -mt-2">
+  <summary className="text-gray-600 text-[15px] mb-2">Majority: Server Components</summary>
+  
+    Most of the time, I fetch data in a Server Component (like a `page` or `layout`). Occasionally, I'll still use an external library for client-fetches (e.g. `swr`) when working with existing codebases.
+    
+    ```jsx
+    export default async function Page() {
+      let data = await fetch('https://api.vercel.app/blog')
+      let posts = await data.json()
+      return (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      )
+    }
+    ```
+
+</details>
+
+<details className="mb-1 [&[open]]:mb-4 [&[open]]:border-b [&[open]]:border-gray-100">
+  <summary className="text-gray-600 text-[15px] mb-2">Occasionally: React `use` + Context</summary>
+  
+    A newer pattern I've started using is forwarding Promises to a Context provider, and then "unwrapping" the Promise with React’s `use`.
+    
+    ```jsx
+    import React, { createContext, useContext } from 'react'
+    
+    const BlogContext = createContext(null)
+    
+    export function BlogProvider({ children }) {
+      let blogPromise = fetch('https://api.vercel.app/blog').then(res => res.json())
+    
+      return (
+        <BlogContext.Provider value={{ blogPromise }}>
+          {children}
+        </BlogContext.Provider>
+      )
+    }
+    
+    export function useBlogContext() {
+      let context = useContext(BlogContext)
+      if (!context) {
+        throw new Error('useBlogContext must be used within a BlogProvider')
+      }
+      return context
+    }
+    ```
+    
+    The data can then be used from a hook in any client component.
+    
+    ```jsx
+    'use client'
+    
+    import { use } from 'react'
+    import { useBlogContext } from 'app/context'
+    
+    export function BlogPosts() {
+      let { blogPromise } = useBlogContext()
+      let posts = use(blogPromise)
+    
+      return (
+        <ul>
+          {posts.map(post => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      )
+    }
+    ```
+    
+    This can work well if you have global data you need to use deep in the component tree (especially if there are lots of client components).
+ 
+    <div className="h-4" />
+</details>
+
+For forms, I use React 19 features like Server Actions and `useActionState`. I’ll also use Zod to validate objects inside my actions.
+
+## 2. Styling (Tailwind CSS and shadcn/ui)
+
+Building flexible, accessible components is difficult. You either use (and extend) a component library, or build your own. This is why I now use [shadcn/ui](https://ui.shadcn.com/).
+
+It provides well-designed and extensible components, built on top of accessible, unstyled primitives. This includes basics like buttons and inputs, but also icons, charts, and even custom themes.
+
+Components are styled with Tailwind CSS—the most AI-friendly CSS library. Why? You can easily [colocate your styles](https://adamwathan.me/css-utility-classes-and-separation-of-concerns) with your markup. This makes generating and editing code with AI tools much easier.
+
+<details className="space-y-6">
+  <summary className="text-gray-600 text-[15px] mb-2">Why Tailwind?</summary>
+  
+  Tailwind uses a compiler to generate only the classes used. So while the utility CSS framework contains many possible class names, only the classes used will be included in the single, compiled CSS file.
+  
+  Assuming you only write Tailwind code, your bundle will never be larger than the total set of used Tailwind classes. It's extremely unlikely you would use them all. This means you have a fixed upper bound on the size of the generated CSS file, which is then minified, compressed, and cached for the best performance.
+  
+  You don't have to *only* write Tailwind styles. Tailwind classes are just utilities that adhere to a design system and work alongside normal CSS. You can mix and match Tailwind with CSS Modules, for example.
+
+</details>
+
+## 3. Database (Postgres and Drizzle)
+
+Postgres is my go-to database. Drizzle makes working with Postgres easy, type-safe, and fun. I can view and modify my data using Drizzle Studio and run migrations with Drizzle Kit.
+
+The best part? Drizzle works [perfectly](https://github.com/vercel-labs/book-inventory) with TypeScript.
+
+## 4. AI (v0)
+
+[v0](https://v0.dev/chat) helps me edit, refactor, and debug code.
+
+It’s especially helpful for more tedious refactors, or restructuring/reformatting code. Since it has up-to-date knowledge of Next.js, React, Drizzle, and other web tools, it helps give me great code suggestions.
+
+AI tools aren’t perfect yet, but they’re a huge time saver.
+
+## 5. Coding Patterns
+
+- `let` > `const` [most of the time](https://overreacted.io/on-let-vs-const/)
+- Larger files > many small components
+- Colocate code that changes often close together
+- Copy/paste is better than the wrong abstraction
+- You might not want [SVGs in your JSX](https://kurtextrem.de/posts/svg-in-js) (explore [sprites](https://benadam.me/thoughts/react-svg-sprites/))

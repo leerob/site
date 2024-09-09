@@ -44,7 +44,7 @@ export default function Home() {
             Vercel
           </Link>
           , where I teach the{' '}
-          <Link href="/work" className="text-blue-500 hover:text-blue-700">
+          <Link href="/n/stack" className="text-blue-500 hover:text-blue-700">
             Next.js
           </Link>{' '}
           community, an open-source web framework built with React.
