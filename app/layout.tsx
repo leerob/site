@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://leerob.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: 'Lee Robinson',
     template: '%s | Lee Robinson',
