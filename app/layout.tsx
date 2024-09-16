@@ -7,7 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://leerob.io'),
+  metadataBase: new URL('https://leerob.com'),
   title: {
     default: 'Lee Robinson',
     template: '%s | Lee Robinson',
@@ -22,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={`${inter.className} [scrollbar-gutter:stable]`}>
+      <html
+        lang="en"
+        className={`${inter.className} [scrollbar-gutter:stable]`}
+      >
         <body className="antialiased tracking-tight">
           <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 bg-white text-gray-900">
             <main className="max-w-[60ch] mx-auto w-full space-y-6">
