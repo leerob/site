@@ -9,23 +9,23 @@
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "15.0.0-canary.143",
-    "@tailwindcss/postcss": "4.0.0-alpha.23",
+    "@next/mdx": "^15.0.0-canary.167",
+    "@tailwindcss/postcss": "^4.0.0-alpha.25",
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.3.1",
-    "next": "15.0.0-canary.143",
-    "next-view-transitions": "^0.3.0",
+    "next": "^15.0.0-canary.167",
+    "next-view-transitions": "^0.3.2",
     "postgres": "^3.4.4",
-    "react": "19.0.0-rc-7771d3a7-20240827",
-    "react-dom": "19.0.0-rc-7771d3a7-20240827",
+    "react": "19.0.0-rc-04bd67a4-20240924",
+    "react-dom": "19.0.0-rc-04bd67a4-20240924",
     "sugar-high": "^0.7.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "4.0.0-alpha.23",
-    "typescript": "^5"
+    "@types/node": "^22.6.2",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^4.0.0-alpha.25",
+    "typescript": "^5.6.2"
   }
 }
