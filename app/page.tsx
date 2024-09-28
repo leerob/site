@@ -51,8 +51,11 @@ export default function Home() {
         </p>
         <p>
           I create educational content for developers, teaching them about
-          TypeScript, React and Next.js, and more. I've worked with and advised
-          companies on{' '}
+          TypeScript, React and Next.js, and more. I write about{' '}
+          <Link href="/n/dx" className="text-blue-500 hover:text-blue-700">
+            developer experience
+          </Link>
+          ,{' '}
           <Link
             href="/n/developer-marketing"
             className="text-blue-500 hover:text-blue-700"
