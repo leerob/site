@@ -1,0 +1,195 @@
+---
+title: 'Using AI to assist in visual testing'
+publishedAt: '2024-10-04'
+summary: 'Experiments with visual testing in the world of AI'
+image: '/static/images/posts/robot.jpg'
+tags: [yearreview, reading, personal]
+---
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/robot.jpg`}
+  width={1200}
+  height={630}
+  priority
+/>
+
+In 2022 I built [Bruni](https://www.brunivisual.com/) as a side project, an idea that I had been dabbling with for a while in my head due to some of the experiences I had running an agency, theming websites, doing rebranding or just taking photoshop/sketch/figma files to web and ending up always in a trio of friction between developers, designers and clients.
+
+The idea was heavily inspired by visual testing tools such as [chromatic](https://www.chromatic.com/), [lost-pixel](https://www.lost-pixel.com/) or [Percy](https://percy.io/). It's somewhat simple and consists of basically 4 steps :
+
+1. Download an image of the figma file (or any other tool)
+2. Take a screenshot (full page) or a URL
+3. Run a diff of these 2 images
+4. Present the results (overlay the diff over the original image which gives a good sense on where changes are occurring and how)
+
+All of this bundled with some nice dashboards, you can create projects etc etc, but the main idea of what goes under the hood are these 4 things.
+
+This seems like it could work, but in reality (and not unlike other visual tools which are more used for page visual regression testing) what I noticed trying it out myself and giving it to some people to try it is that it always ended up in a overwhelming amount of false positives for a million reasons amongst which :
+
+### The design uses lorem ipsum
+
+The most consistent feedback I got was that the tool was basically irrelevant when the design had different content or just used [Lorem ipsum](https://www.lipsum.com/) instead of actual text, and when the site url had actual content the tool just started treating all of this has “changes” (which they are) and became almost impossible to distinguish what’s important and what’s not.
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/example-diff1.png`}
+  width={1200}
+  height={630}
+/>
+
+The picture above is a small illustration of this, it seems small and insignificant (the images are actually the same if they weren't this would basically be a green image), but in a highly dynamic team making a lot of changes and getting constant fails in CI because of things like this becomes very quickly impossible to manage.
+
+### One small change in the header affects the whole page downwards
+
+Another pretty hard thing to fix was that if you have a change in the header of the page which affects height everything down from there will be different.
+
+This is a pretty big limitation on all visual testing tools that I have tried (and why they are often not used) and usually people end up visually testing components using tools like [chromatic](https://www.chromatic.com/) to test storybook components.
+
+You might actually want that header change, but at that point you have to believe that it is actual the header that is causing all the changes bellow (and if you have other changes that could affect e.g. the footer you will just miss them)
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/example-diff2.png`}
+  width={1200}
+  height={630}
+/>
+
+This is what happens when your marketing team decides to put a simple banner on the top of the site with the promo for a new product.
+
+Some tools will "prevent" this by not allowing to match pictures with different sizes, but still that still needs to be handled and most likely what's going to happen is the tool will report a fail (even if there is no actual fail).
+
+## I still believe in visually testing the finished page
+
+I am kind of bullish on visual testing, but I do understand the limitations and drawbacks of these tools. I myself do exactly what I mentioned above, I test components in isolation and pray that all of them together will be “ok” when combined in the final actual page the user will see and interact with. And that's
+100% better than not doing anything.
+
+But I don’t actually do any visual testing in the finished page. A tool like [Percy](https://percy.io/) could be used for this and I have tried it several times but ended up with very similar problems.
+
+## Can AI help?
+
+When I heard about models from open getting visual capabilities (and coding capabilities but maybe for another blog post later) my attention immediately went to visual testing.
+
+Just recently I actually ran some tests to challenge these ideas, and I think the results where quite promising and I expect movement to happen in this space and visual testing to gain more capabilities with the assistance of AI, specifically around helping mitigate some of these limitations.
+
+Lets review the problems stated above but now with AI assisting in analyzing the diff of the images for better context and more accurate understanding of what’s actually happening on the site.
+
+### The design content is not actual content
+
+Here we can use AI to assist in ruling out content changes, we can even say that it can ignore completely changes like new menus being added, changes in headlines, updated product descriptions etc..
+
+This is very simply done by injecting some basic information on the prompt like this :
+
+```javascript
+{
+  role: "system",
+  content: ` You are a system to help identify changes in websites for visual testing purposes.
+  …
+  Make sure to detect if the changes represent only changes in content Following some examples of false positives:
+  - Changes in text
+  - Changes in menus
+  - Headline changes
+  All of these should be interpreted as non-significant changes and therefore do not affect the experience of the user.
+  `,
+}
+```
+
+While the "mathematical" diff will probably not change, it can be enhanced with AI or even adjusted (depends on how a tool would approach this). But what I did was analyse the image above (the diff) with openai to get a
+sense if the changes are worth reporting or not. Here is a very simple idea of what we can use an openai model to interpret the diff image and provide better context :
+
+```javascript
+{
+  index: 0,
+  message: {
+    role: 'assistant',
+    content:
+      {
+        "pass": true,
+        "confidence_level": "low",
+        "layout_changes": false,
+        "menu_changes": false,
+        "text_changes": true,
+        "summary": "The changes are primarily text changes (product name and price), which are not considered significant. These changes are visible in the green highlights on the diff image, specifically highlighting the product name and price change. Since they do not affect the structure or layout of the page, the result is a pass."
+      },
+  },
+}
+```
+
+This was a simple script (and I admit it took a few tweaking of the prompt) I was able to use openai to provide context on what would usually be a
+direct fail (and a build fail most likely) and give better context and more nuance into what the changes are.
+
+### One small change in the header affects the whole page downwards
+
+Here we need to give AI a bit of a nudge here so that it understands that changes in above sections that affect their height will also affect the section and elements bellow in the same amount.
+
+To better illustrate what was actually added above to generate that big diff (in green) here are all the images
+
+1. The baseline
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/nike-height1.png`}
+  width={1200}
+  height={630}
+/>
+
+This is how the page was initially.
+
+2. The new version
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/nike-height2.png`}
+  width={1200}
+  height={630}
+/>
+
+This is what the new page looks like, the marketing team has added that nice looking red banner on the top and it just flagged the whole page has broken (which it wasn't, not really)
+
+3. The diff
+
+We already saw it but lets look at the diff again
+
+<Image
+  alt={`Robot`}
+  src={`/static/images/posts/example-diff2.png`}
+  width={1200}
+  height={630}
+/>
+
+### AI Assistance
+
+Lets look at what openai can return in order to provide more insight into this because analyzing just the diff can be time consuming and quite difficult especially in large pages like nike.com where I did these examples
+
+```javascript
+{
+  "index": 0,
+  "message": {
+    "role": "assistant",
+    "content": "Based on the analysis of the provided images and the pixel diff highlighting significant changes, here is the result in JSON format."
+  },
+  "result": {
+    "pass": false,
+    "confidence_level": "high",
+    "layout_changes": true,
+    "affects_elements_below": true
+  },
+  "explanation": {
+    "changes_exist": "The diff highlights significant changes, particularly the new section added at the top.",
+    "layout_changes": "The addition of a new section (red background) indicates a layout change.",
+    "affects_elements_below": "The introduction of the new section likely affects the positioning of elements below it."
+  },
+  "logprobs": null,
+  "finish_reason": "stop"
+}
+```
+
+(I cleaned up the output a bit because it was a bit hard to read e.g. the explanation and result where actually inside the content as string json)
+
+## Bundling this into a visual testing tool
+
+Now this is nice, but how would this work? I think the end result could very well be a combiation of what tools like the ones mentioned already are doing (adding comments in PRs, asking for someone to review the visual changes when there are some etc) with more
+contextual information and better insight so that developers loose less time fixing these issues, or at some point perhaps even completely bypassing them if AI is confident enough (or we are confident int it) to completely ignore
+false positives like this.
+
+This is a problem I am deeply fascinated with, if you have a tool that does something like this, or tried a tool that does it or just want to bounce ideas off hit me a line in some of the places I am in.
