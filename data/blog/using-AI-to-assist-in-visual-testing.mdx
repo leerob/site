@@ -27,7 +27,7 @@ All of this bundled with some nice dashboards, you can create projects etc etc, 
 
 This seems like it could work, but in reality (and not unlike other visual tools which are more used for page visual regression testing) what I noticed trying it out myself and giving it to some people to try it is that it always ended up in a overwhelming amount of false positives for a million reasons amongst which :
 
-### The design uses lorem ipsum
+## The design uses lorem ipsum
 
 The most consistent feedback I got was that the tool was basically irrelevant when the design had different content or just used [Lorem ipsum](https://www.lipsum.com/) instead of actual text, and when the site url had actual content the tool just started treating all of this has “changes” (which they are) and became almost impossible to distinguish what’s important and what’s not.
 
@@ -40,7 +40,7 @@ The most consistent feedback I got was that the tool was basically irrelevant wh
 
 The picture above is a small illustration of this, it seems small and insignificant (the images are actually the same if they weren't this would basically be a green image), but in a highly dynamic team making a lot of changes and getting constant fails in CI because of things like this becomes very quickly impossible to manage.
 
-### One small change in the header affects the whole page downwards
+## One small change in the header affects the whole page downwards
 
 Another pretty hard thing to fix was that if you have a change in the header of the page which affects height everything down from there will be different.
 
@@ -74,7 +74,7 @@ Just recently I actually ran some tests to challenge these ideas that have been 
 
 Lets review the problems stated above but now with AI assisting in analyzing the diff of the images for better context and more accurate understanding of what’s actually happening on the site.
 
-### The design content is not actual content
+### The design uses lorem ipsum
 
 Here we can use AI to assist in ruling out content changes, we can even say that it can ignore completely changes like new menus being added, changes in headlines, updated product descriptions etc (unless they significantly affect the layout of the page).
 
@@ -118,7 +118,7 @@ sense if the changes are worth reporting or not. Here is a very simple idea of w
 This was a simple script (and I admit it took a few tweaking of the prompt) I was able to use openai to provide context on what would usually be a
 direct fail (and a build fail most likely) and give better context and more nuance into what the changes are.
 
-### One small change in the header affects the whole page downwards
+## One small change in the header affects the whole page downwards
 
 Here we need to give AI a bit of a nudge so that it understands that changes in above sections that affect their height will also affect the section and elements bellow in the same amount.
 
@@ -157,7 +157,7 @@ We already saw it but lets look at the diff again
   height={630}
 />
 
-### AI Assistance
+## AI Assistance
 
 Lets look at how openai can help, providing us with more insight into this because analyzing just the diff can be time consuming and quite difficult especially in large pages like nike.com where I did these examples
 
