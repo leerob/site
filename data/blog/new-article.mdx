@@ -1,0 +1,55 @@
+---
+title: 'The cost of flexibility: Navigating Drupal’s power'
+publishedAt: '2024-10-18'
+summary: 'Balancing Flexibility and Focus: Navigating Drupal’s Potential Without Sacrificing UX and Maintainability'
+image: '/static/images/posts/robot.jpg'
+tags: [yearreview, reading, personal]
+---
+
+import { Quote } from '@components/Quote';
+
+In my experience, especially when working with Drupal, the term “flexibility” is often invoked to explain design choices that may lead to less-than-ideal patterns or product decisions, including user experience challenges. It frequently follows the word “but”, which is often the signal that something might be going off track (you shouldn't be trading your user's experience for flexibility).
+
+Now, I don’t mean this in the sense that Drupal has a poor architecture or leads just by itself to bad product decisions, I actually don’t think that at all but to analyze why Drupal has some of the features and also escape hatches that it has its important to understand Drupal’s scope.
+
+Drupal has a really large, arguably too large, scope. It is a CMS for small bloggers, wine shops, startups, agencies, enterprise and everything else in between.
+
+In order to serve all of these use cases, and serve them well, it needs to have a lot of “possibilities” and ways to override defaults, change anything that could ever possibly be needed to change..and it does, it has all of that.
+
+And that is great, having possibilities is always good, optionality is always good! But it often leads teams towards paths that are undesirable, especially when we are talking about maintainability, UX, and complexity. Because not everyone "is Drupal", and they shouldn’t be. Their scope is and should be much smaller and that should be embraced, because being small is a really big advantage.
+
+Many teams end up embodying this “I am everything for everyone” and “anything can be changed” sort of mantra, and that sometimes doesn’t go as well as it sounds or as initially planned.
+
+But then we shout from the mountains _“Drupal is so flexible”_ and it is, but that flexibility comes at a cost. That cost maybe Drupal can pay, but can you?
+
+That manifests itself usually in having too many projects that are too different from each other, too many snow flakes, all kinds of bells and whistles that are unused (hence only contributing with noise), but no-one is very sure which ones. Things aren’t really going through “code” and there is lack of visibility (on what is changed when), confusing users, or just bad or inconsistent UX, too much customization etc etc..
+
+Lets take 2 small examples :
+
+### The page with a million settings
+
+If you give a user a page with a thousand nobs (when they really only needed 2 or 3) because “that’s how the module is done", but hey “this is super flexible, you can do anything“ ( including breaking the whole site) that’s ultimately not a poor decision on Drupal’s part (or the module) but on that teams decision to take that module as it is..to take the page as it is.
+
+Of course this is very tempting when you can just slap on a module and call it a day, but probably you should more often than not be doing way more than just installing the module.
+
+### This email you change here, that one you change there and that third one, its over there on the right please
+
+If you have 2 similar things (or 3) but they are on totally different menus and pages and have totally different UX because “it comes from different modules”, again, that’s ultimately not a poor decision on Drupal’s part (or the module or modules) but on that teams decision to take the module(s) as is..to take the page as it is.
+
+### We need a UX person to fix this
+
+If your thoughts reading this is that you need a UX person to solve these kinds of issues, what you need is a refresher that :
+
+<Quote>UX is a team sport</Quote>
+
+Everyone, from backend and frontend developers to DevOps engineers, CSM professionals, and project managers, plays a role in shaping the user experience—whether positively or negatively. Relying on a single person to keep up with the work and decisions of so many different contributors is nearly impossible and creates an unsustainable, frustrating situation.
+
+### Final words
+
+I realize that this applies mostly to people using Drupal to build products, and that’s maybe not the majority of us (but we are out there) but good products take a lot more effort than just installing the module. They require tremendous user empathy, an understanding that sometimes removing things is what it takes to achieve that little bit of “wow” effect. Quality is not quantity. It never will be.
+
+To ensure good UX in a backend and consistency across different parts of a big backend it will probably take more than the simple “there is a module for that” approach.
+
+I love Drupal, I owe a lot to it and I have learned a ton from it and its community over the years and I will probably work with it for a very long time. But I love great products just as much, and sometimes I do want to see that next level world changing product built on top of Drupal. I think it takes a lot of get there, but its possible.
+
+I hope this does not come across as a harsh critic on Drupal itself but more on behaviors we (teams working with Drupal, myself very much included) sometimes fall victim of, in order to rush through things due to pressure, timings etc
