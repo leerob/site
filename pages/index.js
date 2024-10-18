@@ -47,19 +47,19 @@ export default function Home({ videos }) {
           Latest articles
         </h3>
         <BlogPost
+          title="The cost of flexibility in Drupal"
+          summary="Balancing flexibility and focus: Navigating Drupal’s potential without sacrificing UX and maintainability"
+          slug="the-cost-of-flexibility-in-drupal"
+        />
+        <BlogPost
+          title="Using AI to assist in visual testing"
+          summary="Experiments with visual testing in the world of AI"
+          slug="using-AI-to-assist-in-visual-testing"
+        />
+        <BlogPost
           title="On decisions that last"
           summary="The best things, the best products and experiences last for a long time."
           slug="long-choices"
-        />
-        <BlogPost
-          title="Decoupled multifrontends with Next.js and Drupal"
-          summary="How we leverage Next.js in combination with a Drupal backend to create multifrontend projects, allowing independent frontends managed by a single backend."
-          slug="multifrontends-with-nextjs-and-drupal"
-        />
-        <BlogPost
-          title="Finding the perfect side project stack"
-          summary="In this blog post I will document a recent research for a tech stack for my side projects, or really just how I would start a real project in July 2021."
-          slug="finding-the-perfetc-sidestack"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Latest projects
