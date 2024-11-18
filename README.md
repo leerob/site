@@ -40,3 +40,19 @@ CREATE TABLE redirects (
 3. Crediting the author is appreciated.
 
 Please remove all of my personal information by running `bun run delete`.
+https://mopost.medium.com/exploring-nordvpns-tunneling-protocol-unmatched-speed-and-security-c2864f46a01a
+https://mopost.medium.com/great-52dd611c575c
+https://mopost.medium.com/great-post-475cdfe025d6
+https://mopost.medium.com/list/reading-list
+https://mopost.medium.com/lists
+https://mopost.medium.com/naming-your-sustainable-fashion-brand-1ec1b7f5a1a3
+https://mopost.medium.com/sweet-heart-sweet-moments-1da96c054c61
+https://mopost.medium.com/the-challenges-facing-freelancers-in-pakistan-2478d62926c4
+https://mopost.medium.com/the-dynamics-of-choosing-bridesmaid-dresses-a-comprehensive-guide-5631de47a3df
+https://mopost.medium.com/the-impact-of-footwear-on-knee-health-understanding-the-risks-and-recommendations-4416fa667dfc
+https://mopost.medium.com/the-intersection-of-philosophy-and-music-a-historical-overview-151858466949
+https://mopost.medium.com/the-meaning-behind-a-jacket-what-does-it-really-say-01caaf4ed7a6
+https://mopost.medium.com/the-rise-of-pop-up-shops-creating-memorable-retail-experiences-22089fda1c72
+https://mopost.medium.com/the-ultimate-guide-to-choosing-workout-clothes-6f7c4d3e3136
+https://mopost.medium.com/the-ultimate-guide-to-costume-jewelry-trends-tips-and-top-brands-3c92a0627a33
+https://mopost.medium.com/the-ultimate-guide-to-men-s-t-shirts-style-brands-and-choices-bac54fae5a2f
