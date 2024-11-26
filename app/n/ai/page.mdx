@@ -1,9 +1,11 @@
 import { AnimatedName } from '../animated-name.tsx';
 import { Tokenization } from './tokenization.tsx';
+import { SelfAttention } from './self-attention.tsx';
 import { LLM } from './llm.tsx';
 
 export const metadata = {
   title: 'Understanding AI',
+  description: 'A brief overview on neural networks and language models.',
   alternates: {
     canonical: '/n/ai',
   },
@@ -19,24 +21,24 @@ This post will highlight what I’ve learned so far. It’s written for other en
 
 ## Machine Learning
 
-Most software is *deterministic*. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
+Software is *deterministic*. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
 
-AI models are not this way — they are *probabilistic*. Developers don’t have to explicitly program the instructions.
+Most AI models¹ are not this way — they are *probabilistic*. Developers don’t have to explicitly program the instructions.
 
-Machine learning teaches software to recognize patterns from data. Given some input, if you run the program again, you might *not* get the same output. AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
+[Machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) teaches software to recognize patterns from data. Given some input, you might *not* get the same output². AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
 
-Then, there’s an API or chat interface where you can talk to the model. Based on some input, it can predict and generate sentences, images, or audio as output.
+Then, there’s an API or chat interface where you can talk to the model. Based on some input, it can predict and generate sentences, images, or audio as output. You can think about machine learning as a subset of the broader AI category.
 
 ## Neural Networks
 
-AI models are built on [neural networks](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) — which are like a digital version of a brain.
+AI models are built on [neural networks](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) — think of them as a giant web of decision-making pathways that learn from examples. Neural networks can be used for anything, but I'll focus on language models.
 
 <LLM />
 
-These networks consist of multiple layers of interconnected _neurons_ that process information:
+These networks consist of layers of interconnected _neurons_ that process information:
 
 1.  An **input layer** where data enters the system. Input is converted into a numerical representation of words or *tokens* (more on tokens later).
-2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply *weight* to the input data and pass the result through an “activation function”. This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
+2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply *weights* to the input data and pass the result through an “activation function”. This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
 3.  An **output layer** which produces the final result, such as predicting the next word in a sentence. The outputs at this stage are often referred to as *logits*, which are raw scores that get transformed into probabilities.
 
 For example, if the input was “San”, there is likely an activation close to 1 for the next word of “Francisco”. A unrelated word like “kitten” would be close to 0.
@@ -47,23 +49,25 @@ A big takeaway for me is: it’s just math. You can build a neural network [from
 
 Deep learning is a subset of machine learning that involves neural networks with *many* layers—hence the term "deep." While a simple neural network may have just one or two hidden layers, deep learning models can have hundreds or even thousands of layers.
 
-These additional layers enable the network to learn complex patterns. In language models, for instance, deep networks can understand virtually every written language. You can ask a question in English, and get a response back in Japanese.
+These additional layers enable the network to learn complex patterns. For example, large language models have been trained on multi-language datasets. This allows them to understand, generate, and translate text in multiple languages.
+
+You can ask a question in English, and get a response back in Japanese.
 
 ## Tokenization
 
-Before a neural network can process text, the text must be converted into numerical data—a process known as **tokenization**.
+Before a neural network can process and understand text, the text must be converted into numerical data—a process known as **tokenization**.
 
-Tokenization breaks down text into smaller units called **tokens**. For example, the phrase "Hello, world!" might be tokenized into `["Hello", ",", "world", "!"]`. Each token is then mapped to a numerical value that the model can process.
+Tokenization breaks down text into smaller units called **tokens**. For example, the phrase `"Hello, world!"` might be tokenized into `["Hello", ",", "world", "!"]`. Each token is then mapped to a numerical value that the model can process.
 
 <Tokenization />
 
-To handle the complexity of human language—including rare words and misspellings—modern models use subword tokenization techniques like [**Byte Pair Encoding (BPE)**](https://www.perplexity.ai/search/what-is-byte-pair-encoding-bpe-MV_w_T17RWG6sZUqRl2pIA). BPE starts with individual characters and iteratively merges the most frequent pairs of symbols to form new tokens.
+To handle the complexity of human language—including rare words and misspellings—language models use subword tokenization techniques like [**Byte Pair Encoding (BPE)**](https://www.perplexity.ai/search/what-is-byte-pair-encoding-bpe-MV_w_T17RWG6sZUqRl2pIA). BPE starts with individual characters and iteratively merges the most frequent pairs of symbols to form new tokens.
 
-For instance, the word "unbelievable" might be tokenized into `["un", "believ", "able"]`. This allows the model to understand and generate words it has not explicitly seen during training. Newer models have also developed specialized tokenizers for processing math and code, since both have unique syntax and structure.
+For instance, the word "unbelievable" might be [tokenized](https://platform.openai.com/tokenizer) into `["un", "bel", "ievable"]`. This allows the model to understand and generate words it has not explicitly seen during training. Newer models have also developed specialized tokenizers for processing math and code, as both have unique syntax and structure.
 
-## Training
+## Pretraining
 
-Large Language Models (LLMs) are trained on vast amounts of internet data.
+Large Language Models (LLMs) are trained on vast amounts of data.
 
 Collecting and cleaning this data is [much more complex](https://www.youtube.com/watch?v=9vM4p9NN0Ts) than simply scraping websites. If you feed the model poor-quality data, you'll get poor-quality predictions in return. Garbage in, garbage out.
 
@@ -74,16 +78,40 @@ You can think of training like a big `for` loop that runs many times, each tim
 The training process involves several key steps:
 
 1.  **Forward Pass**: The network takes input data and passes it through its layers to produce an output. This is called the forward pass. During this step, the network makes a prediction based on its current weights and biases.
-2.  **Loss Function**: After obtaining the output, we need to measure how good or bad the prediction is. This is done using a **loss function**, which quantifies the difference between the network's prediction and the actual target output.
+2.  **Loss Function**: After obtaining the output, we need to measure how good or bad the prediction is. This is done using a **loss function**, which measures the prediction and gives us a value to try and minimize.
 3.  **Backward Pass (Backpropagation)**: To improve the network's performance, we need to adjust the weights and biases to reduce the loss. This involves computing the **gradient** of the loss function with respect to each weight and bias. The gradients indicate the direction and magnitude by which to adjust the parameters to minimize the loss.
 4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called **gradient descent**, an optimization algorithm that iteratively adjusts the parameters to minimize the loss function.
+
+<details className="mb-4 -mt-2">
+  <summary className="text-gray-600 text-[15px] mb-2">Training Pseudocode</summary>
+
+```python
+weights, biases = init_random_parameters()
+
+epochs = 10
+learning_rate = 0.01
+
+for epoch in range(epochs):
+  for input_data, target in training_dataset:
+    predictions = forward_pass(input_data, weights, biases)
+    loss = loss_function(predictions, target)
+    gradients = backpropagation(loss, weights, biases)
+
+    # Step 4: Gradient Descent (Parameter Update)
+    weights -= learning_rate * gradients["weights"]
+    biases -= learning_rate * gradients["biases"]
+
+  print(f"Epoch {epoch + 1}/{epochs}, Loss: {loss}")
+```
+
+</details>
 
 By repeatedly performing these steps over many epochs, the network learns to make better predictions. It uses the gradients calculated during backpropagation to adjust its internal parameters, effectively minimizing the loss function and improving its performance over time.
 
 <details className="mb-1 -mt-2">
   <summary className="text-gray-600 text-[15px] mb-2">Aside: What are scaling laws?</summary>
     
-    You might hear people talk about **scaling laws** in the context of training large language models.In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
+    You might hear people talk about **scaling laws** in the context of training large language models. In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
     
   <br/>
   
@@ -97,15 +125,19 @@ One paper changed the course of AI: [_"Attention Is All You Need"_](https://arx
 
 Before processing, words are converted into numerical vectors called **embeddings**. These embeddings capture semantic information, meaning that similar words are represented by similar vectors in a high-dimensional space.
 
-The core innovation of transformers is the use of **attention mechanisms**, specifically **self-attention**. Unlike previous models that read sequences word by word, transformers can consider the entire input sequence at once. This allows the model to focus on different parts of the input when generating each part of the output, much like how a human understands language by considering the context of a sentence or paragraph.
+Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the *entire* input sequence at once.
+
+This allows the model to focus on different parts of the input when generating each part of the output, much like how a human understands language by considering the context of a sentence or paragraph.
 
 For example, in the sentence "The cat sat on the mat because it was tired," the word "it" refers to "cat." Self-attention helps the model establish this connection by assigning higher weights to related words, enabling it to understand that "it" refers to "cat" and not "mat."
 
+<SelfAttention />
+
 By utilizing self-attention, transformers can process entire sequences of data in parallel rather than one element at a time, making training faster and more efficient—especially when leveraging GPUs.
 
-## Fine Tuning
+## Fine-tuning
 
-After pretraining, the model may need to be adapted for specific tasks or aligned with human values. **Fine-tuning** is the process of adjusting a pretrained model to perform well on a particular task or within a specific domain.
+After pretraining, the model may need to be adapted for specific tasks or aligned with human values. **Fine-tuning** is the process of adjusting a pretrained model to have a unique style or perform well in a specific domain.
 
 Fine-tuning involves using a smaller, high-quality dataset relevant to the specific task. This data is often human-reviewed to ensure quality and alignment with the desired outcomes. During fine-tuning, the model's parameters—the weights and biases we've discussed earlier—are adjusted slightly to improve performance on this new dataset.
 
@@ -116,7 +148,7 @@ To further improve the model's usefulness and ensure it behaves in desirable way
 3.  Using the human rankings, a separate model called a "reward model" is trained to predict the quality of responses.
 4.  The original AI model is then fine-tuned using reinforcement learning techniques guided by the reward model.
 
-For example, if you want a language model for customer support, you might fine-tune it on transcripts of customer service interactions and then use RLHF to ensure it responds politely and effectively resolves customer issues. Increasingly, AI is used to generate initial content, and humans help refine it through this feedback loop, enhancing the model's performance in real-world applications.
+For example, if you want a language model for customer support, you might fine-tune it on transcripts of customer service interactions and then use RLHF to ensure it responds politely and effectively resolves customer issues. Increasingly, AI is used to generate initial content and humans help refine it through this feedback loop, enhancing the model's performance in real-world applications.
 
 ## Resources
 
@@ -126,3 +158,16 @@ Still interested? There's so much more to learn. Hopefully I have piqued your in
 - [3Blue1Brown on Neural Nets](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
 - [Machine Learning for Web Developers](https://www.youtube.com/playlist?list=PLOU2XLYxmsILr3HQpqjLAUkIPa5EaZiui)
 - [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch?tab=readme-ov-file)
+
+---
+
+<small>
+  ¹: Some older AI models were not this way – see the first chatbot
+  [ELIZA](https://en.wikipedia.org/wiki/ELIZA) from _1964_.
+</small>
+<br />
+<small>
+  ²: This is where "evals" come in, which you can think of like [end-to-end
+  tests for
+  AI](https://vercel.com/blog/eval-driven-development-build-better-ai-faster).
+</small>

@@ -193,10 +193,10 @@ export function Tokenization() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-2xl md:text-xl font-mono text-center flex items-center justify-center"
+            className="text-lg md:text-xl font-mono text-center flex flex-col sm:flex-row gap-y-1 sm:gap-y-0 items-center justify-center"
           >
             <svg
-              className="w-6 h-6 mr-2"
+              className="size-6 mr-2 min-w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
