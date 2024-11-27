@@ -21,11 +21,11 @@ This post will highlight what I’ve learned so far. It’s written for other en
 
 ## Machine Learning
 
-Software is *deterministic*. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
+Software is *deterministic*. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
 
-Most AI models¹ are not this way — they are *probabilistic*. Developers don’t have to explicitly program the instructions.
+Most AI models¹ are not this way — they are *probabilistic*. Developers don’t have to explicitly program the instructions.
 
-[Machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) teaches software to recognize patterns from data. Given some input, you might *not* get the same output². AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
+[Machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) teaches software to recognize patterns from data. Given some input, you might *not* get the same output². AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
 
 Then, there’s an API or chat interface where you can talk to the model. Based on some input, it can predict and generate sentences, images, or audio as output. You can think about machine learning as a subset of the broader AI category.
 
@@ -37,17 +37,17 @@ AI models are built on [neural networks](https://www.youtube.com/watch?v=aircAru
 
 These networks consist of layers of interconnected _neurons_ that process information:
 
-1.  An **input layer** where data enters the system. Input is converted into a numerical representation of words or *tokens* (more on tokens later).
-2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply *weights* to the input data and pass the result through an “activation function”. This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
-3.  An **output layer** which produces the final result, such as predicting the next word in a sentence. The outputs at this stage are often referred to as *logits*, which are raw scores that get transformed into probabilities.
+1.  An **input layer** where data enters the system. Input is converted into a numerical representation of words or *tokens* (more on tokens later).
+2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply *weights* (also known as **parameters**) to the input data and pass the result through an **activation function³**. This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
+3.  An **output layer** which produces the final result, such as predicting the next word in a sentence. The outputs at this stage are often referred to as *logits*, which are raw scores that get transformed into probabilities.
 
 For example, if the input was “San”, there is likely an activation close to 1 for the next word of “Francisco”. A unrelated word like “kitten” would be close to 0.
 
-A big takeaway for me is: it’s just math. You can build a neural network [from first principles](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) using linear algebra, calculus, and statistics. You likely *won’t* do this when there’s helpful abstractions like PyTorch, but it’s helpful for me to demystify what is happening under the hood.
+A big takeaway for me is: it’s just math. You can build a neural network [from first principles](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) using linear algebra, calculus, and statistics. You likely *won’t* do this when there’s helpful abstractions like PyTorch, but it’s helpful for me to demystify what is happening under the hood.
 
 ## Deep Learning
 
-Deep learning is a subset of machine learning that involves neural networks with *many* layers—hence the term "deep." While a simple neural network may have just one or two hidden layers, deep learning models can have hundreds or even thousands of layers.
+Deep learning is a subset of machine learning that involves neural networks with *many* layers—hence the term "deep." While a simple neural network may have just one or two hidden layers, deep learning models can have hundreds or even thousands of layers.
 
 These additional layers enable the network to learn complex patterns. For example, large language models have been trained on multi-language datasets. This allows them to understand, generate, and translate text in multiple languages.
 
@@ -55,32 +55,36 @@ You can ask a question in English, and get a response back in Japanese.
 
 ## Tokenization
 
-Before a neural network can process and understand text, the text must be converted into numerical data—a process known as **tokenization**.
+Before a neural network can process text, the text must be converted into numerical data—a process known as **tokenization**.
 
-Tokenization breaks down text into smaller units called **tokens**. For example, the phrase `"Hello, world!"` might be tokenized into `["Hello", ",", "world", "!"]`. Each token is then mapped to a numerical value that the model can process.
+1. Tokenization breaks down text into smaller units called **tokens**.
+2. Each token is then mapped to a numerical value that the model can process.
+3. Models learn to understand the statistical relationships between these tokens, which helps them predict and produce the next token in a given sequence.
+
+To handle the complexity of human language—including rare words and misspellings—models use _subword_ tokenization techniques like [**Byte Pair Encoding (BPE)**](https://www.perplexity.ai/search/what-is-byte-pair-encoding-bpe-MV_w_T17RWG6sZUqRl2pIA). BPE starts with individual characters and iteratively merges the most frequent pairs of symbols to form new tokens.
 
 <Tokenization />
 
-To handle the complexity of human language—including rare words and misspellings—language models use subword tokenization techniques like [**Byte Pair Encoding (BPE)**](https://www.perplexity.ai/search/what-is-byte-pair-encoding-bpe-MV_w_T17RWG6sZUqRl2pIA). BPE starts with individual characters and iteratively merges the most frequent pairs of symbols to form new tokens.
-
-For instance, the word "unbelievable" might be [tokenized](https://platform.openai.com/tokenizer) into `["un", "bel", "ievable"]`. This allows the model to understand and generate words it has not explicitly seen during training. Newer models have also developed specialized tokenizers for processing math and code, as both have unique syntax and structure.
+For instance, the word "unbelievable" might be [tokenized](https://platform.openai.com/tokenizer) into `["un", "believ","able"]`. This allows the model to understand and generate words it has not explicitly seen during training. Newer models have also developed specialized tokenizers for processing math and code, as both have unique syntax and structure.
 
 ## Pretraining
 
-Large Language Models (LLMs) are trained on vast amounts of data.
+Large Language Models ([LLMs](https://www.youtube.com/watch?v=LPZh9BOjkQs&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=5)) are trained on vast amounts of data.
 
-Collecting and cleaning this data is [much more complex](https://www.youtube.com/watch?v=9vM4p9NN0Ts) than simply scraping websites. If you feed the model poor-quality data, you'll get poor-quality predictions in return. Garbage in, garbage out.
+Collecting and cleaning this data is [much more complex](https://www.youtube.com/watch?v=9vM4p9NN0Ts) than simply scraping websites. If you feed the model poor-quality data, you'll get poor-quality predictions in return. Garbage in, garbage out.
 
-**Training**, also called **pretraining**, is the process of teaching the network to recognize patterns in the input data. Essentially, we're taking large chunks of internet text and compressing them into the model's internal parameters, known as *weights* and *biases* (you might have heard of "open weight" models like [Llama](https://www.llama.com)).
+**Training**, also called **pretraining**, is the process of teaching the network to recognize patterns in the input data. Essentially, we're taking large chunks of internet text and compressing them into knobs the model can tune, known as *weights* and *biases* (collectively called **parameters**).
 
-You can think of training like a big `for` loop that runs many times, each time adjusting the weights and biases slightly. Each complete pass through the entire training dataset is called an **epoch**. But how does the network know *how* to adjust these values?
+The number of parameters is often used as a measure of a model's power. For example, open-source models like [Llama](https://www.llama.com) have a 7 billion and 70 billion parameter version (with the later being more powerful).
+
+You can think of training like a big `for` loop that runs many times, each time adjusting the weights and biases slightly. Each complete pass through the entire training dataset is called an **epoch**. But how does the network know *how* to adjust these values?
 
 The training process involves several key steps:
 
 1.  **Forward Pass**: The network takes input data and passes it through its layers to produce an output. This is called the forward pass. During this step, the network makes a prediction based on its current weights and biases.
-2.  **Loss Function**: After obtaining the output, we need to measure how good or bad the prediction is. This is done using a **loss function**, which measures the prediction and gives us a value to try and minimize.
-3.  **Backward Pass (Backpropagation)**: To improve the network's performance, we need to adjust the weights and biases to reduce the loss. This involves computing the **gradient** of the loss function with respect to each weight and bias. The gradients indicate the direction and magnitude by which to adjust the parameters to minimize the loss.
-4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called **gradient descent**, an optimization algorithm that iteratively adjusts the parameters to minimize the loss function.
+2.  **Loss Function**: After obtaining the output, we need to measure how good or bad the prediction is. This is done using a **loss function**, which measures the prediction and gives us a value to try and minimize.
+3.  **Backward Pass (Backpropagation)**: To improve the network's performance, we need to [adjust the weights and biases](https://www.youtube.com/watch?v=Ilg3gGewQ5U&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=3) to reduce the loss. This involves computing the **gradient** of the loss function with respect to each weight and bias. The gradients indicate the direction and magnitude by which to adjust the parameters to minimize the loss.
+4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called [**gradient descent**](https://www.youtube.com/watch?v=IHZwWFHWa-w), an optimization algorithm that iteratively adjusts the parameters to minimize the loss function.
 
 <details className="mb-4 -mt-2">
   <summary className="text-gray-600 text-[15px] mb-2">Training Pseudocode</summary>
@@ -110,22 +114,22 @@ By repeatedly performing these steps over many epochs, the network learns to mak
 
 <details className="mb-1 -mt-2">
   <summary className="text-gray-600 text-[15px] mb-2">Aside: What are scaling laws?</summary>
-    
-    You might hear people talk about **scaling laws** in the context of training large language models. In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
-    
+
+    You might hear people talk about **scaling laws** in the context of training large language models. In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
+
   <br/>
-  
-    Essentially, by throwing more compute at the problem and building bigger models, we've been able to achieve better and better results. However, there's [ongoing debate](https://podcasts.apple.com/us/podcast/model-plateaus-and-enterprise-ai-adoption-with/id1668002688?i=1000677761317) about whether we're approaching a limit to this approach. Some experts suggest that we might be ”hitting a wall”, meaning increasing model size and compute may *not* continue to yield substantial improvements. But the verdict is still out.
+
+    Essentially, by throwing more compute at the problem and building bigger models, we've been able to achieve better and better results. However, there's [ongoing debate](https://podcasts.apple.com/us/podcast/model-plateaus-and-enterprise-ai-adoption-with/id1668002688?i=1000677761317) about whether we're approaching a limit to this approach. Some experts suggest that we might be ”hitting a wall”, meaning increasing model size and compute may *not* continue to yield substantial improvements. But the verdict is still out.
 
 </details>
 
 ## Transformers
 
-One paper changed the course of AI: [_"Attention Is All You Need"_](https://arxiv.org/abs/1706.03762). It introduced the **transformer** architecture, a more efficient and powerful way of building language models.
+One paper changed the course of AI: [_"Attention Is All You Need"_](https://arxiv.org/abs/1706.03762). It introduced the **transformer** architecture, a more efficient and powerful way of building language models.
 
-Before processing, words are converted into numerical vectors called **embeddings**. These embeddings capture semantic information, meaning that similar words are represented by similar vectors in a high-dimensional space.
+Before processing, words are converted into numerical vectors called **embeddings**. These embeddings capture semantic information, meaning that similar words are represented by similar vectors in a high-dimensional space.
 
-Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the *entire* input sequence at once.
+Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the *entire* input sequence at once.
 
 This allows the model to focus on different parts of the input when generating each part of the output, much like how a human understands language by considering the context of a sentence or paragraph.
 
@@ -137,11 +141,11 @@ By utilizing self-attention, transformers can process entire sequences of data i
 
 ## Fine-tuning
 
-After pretraining, the model may need to be adapted for specific tasks or aligned with human values. **Fine-tuning** is the process of adjusting a pretrained model to have a unique style or perform well in a specific domain.
+After pretraining, the model may need to be adapted for specific tasks or aligned with human values. **Fine-tuning** is the process of adjusting a pretrained model to have a unique style or perform well in a specific domain.
 
 Fine-tuning involves using a smaller, high-quality dataset relevant to the specific task. This data is often human-reviewed to ensure quality and alignment with the desired outcomes. During fine-tuning, the model's parameters—the weights and biases we've discussed earlier—are adjusted slightly to improve performance on this new dataset.
 
-To further improve the model's usefulness and ensure it behaves in desirable ways, a technique called **Reinforcement Learning from Human Feedback (RLHF)** is used. RLHF involves a few steps:
+To further improve the model's usefulness and ensure it behaves in desirable ways, a technique called **Reinforcement Learning from Human Feedback (RLHF)** is used. RLHF involves a few steps:
 
 1.  The AI model generates several possible responses to a given input or question.
 2.  Human reviewers compare these responses and rank them from best to worst based on criteria like accuracy, helpfulness, and alignment.
@@ -155,7 +159,7 @@ For example, if you want a language model for customer support, you might fine-t
 Still interested? There's so much more to learn. Hopefully I have piqued your interest. If you have other resources, please reach out and I'll add them here.
 
 - [Andrej Karpathy on Neural Nets](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)
-- [3Blue1Brown on Neural Nets](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+- [3Blue1Brown on Neural Nets](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
 - [Machine Learning for Web Developers](https://www.youtube.com/playlist?list=PLOU2XLYxmsILr3HQpqjLAUkIPa5EaZiui)
 - [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch?tab=readme-ov-file)
 
@@ -167,7 +171,11 @@ Still interested? There's so much more to learn. Hopefully I have piqued your in
 </small>
 <br />
 <small>
-  ²: This is where "evals" come in, which you can think of like [end-to-end
+  ²: This is where **evals** come in to add predictability, which you can think of like [end-to-end
   tests for
-  AI](https://vercel.com/blog/eval-driven-development-build-better-ai-faster).
+  AI](https://vercel.com/blog/eval-driven-development-build-better-ai-faster). You can also change the **temperature** of the model. A lower temperature makes the output more deterministic and focused on the most probable responses, while a higher temperature increases randomness, allowing for more creative outputs.
+</small>
+<br />
+<small>
+  ³: An activation function decides how much information a neuron should pass along to the next layer, often squashing the values to a range like 0 to 1 (or -1 to 1). Think of it like a light switch or dimmer that controls how "on" or "off" a neuron is. For example, [ReLU (Rectified Linear Unit)](https://www.perplexity.ai/search/what-is-a-rectified-linear-uni-_URjYJjbSZ2NokOTP0ClEw) and [sigmoid functions](https://www.perplexity.ai/search/what-is-a-sigmoid-functions-in-q04x5dNRQyGVM7tJ_V_SkQ).
 </small>
