@@ -10,10 +10,10 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "15.0.3",
-    "@tailwindcss/postcss": "^4.0.0-alpha.35",
+    "@tailwindcss/postcss": "^4.0.0-beta.4",
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.4.1",
-    "framer-motion": "^11.11.17",
+    "framer-motion": "^11.12.0",
     "next": "^15.0.3",
     "next-view-transitions": "^0.3.2",
     "postgres": "^3.4.5",
@@ -22,12 +22,12 @@
     "sugar-high": "^0.7.5"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.10.1",
     "@types/react": "^19.0.0-rc.1",
     "@types/react-dom": "^19.0.0-rc.1",
     "postcss": "^8.4.49",
-    "tailwindcss": "^4.0.0-alpha.35",
-    "typescript": "^5.6.3"
+    "tailwindcss": "^4.0.0-beta.4",
+    "typescript": "^5.7.2"
   },
   "overrides": {
     "@types/react": "npm:types-react@19.0.0-rc.1",
