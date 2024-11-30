@@ -2,6 +2,8 @@ import { AnimatedName } from '../animated-name.tsx';
 import { Tokenization } from './tokenization.tsx';
 import { SelfAttention } from './self-attention.tsx';
 import { LLM } from './llm.tsx';
+import Image from 'next/image';
+import embeddings from './embeddings.jpg';
 
 export const metadata = {
   title: 'Understanding AI',
@@ -84,7 +86,7 @@ The training process involves several key steps:
 1.  **Forward Pass**: The network takes input data and passes it through its layers to produce an output. This is called the forward pass. During this step, the network makes a prediction based on its current weights and biases.
 2.  **Loss Function**: After obtaining the output, we need to measure how good or bad the prediction is. This is done using a **loss function**, which measures the prediction and gives us a value to try and minimize.
 3.  **Backward Pass (Backpropagation)**: To improve the network's performance, we need to [adjust the weights and biases](https://www.youtube.com/watch?v=Ilg3gGewQ5U&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=3) to reduce the loss. This involves computing the **gradient** of the loss function with respect to each weight and bias. The gradients indicate the direction and magnitude by which to adjust the parameters to minimize the loss.
-4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called [**gradient descent**](https://www.youtube.com/watch?v=IHZwWFHWa-w), an optimization algorithm that iteratively adjusts the parameters to minimize the loss function.
+4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called [**gradient descent**](https://www.youtube.com/watch?v=IHZwWFHWa-w), an optimization algorithm[⁴](#footnotes) that iteratively adjusts the parameters to minimize the loss function.
 
 <details className="mb-4 -mt-2">
   <summary className="text-gray-600 text-[15px] mb-2">Training Pseudocode</summary>
@@ -93,7 +95,7 @@ The training process involves several key steps:
 weights, biases = init_random_parameters()
 
 epochs = 10
-learning_rate = 0.01
+learning_rate = 0.01 # See ⁴
 
 for epoch in range(epochs):
   for input_data, target in training_dataset:
@@ -127,7 +129,13 @@ By repeatedly performing these steps over many epochs, the network learns to mak
 
 One paper changed the course of AI: [_"Attention Is All You Need"_](https://arxiv.org/abs/1706.03762). It introduced the **transformer** architecture, a more efficient and powerful way of building language models.
 
-Before processing, words are converted into numerical vectors called **embeddings**. These embeddings capture semantic information, meaning that similar words are represented by similar vectors in a high-dimensional space.
+Before processing, words are converted into numerical vectors called [**embeddings**](https://youtu.be/wjZofJX0v4M?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&t=748). These embeddings capture semantic information, meaning that similar words are represented by similar vectors in a high-dimensional space.
+
+For example, the relationship between "king" and "queen" is similar to that of "man" and "woman". If you subtract the vector for "man" from "king" and add "woman", you get a result close to "queen".
+
+<div className="border border-gray-200 rounded-md p-4">
+  <Image src={embeddings} alt="Word Embeddings" />
+</div>
 
 Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the *entire* input sequence at once.
 
@@ -178,4 +186,8 @@ Still interested? There's so much more to learn. Hopefully I have piqued your in
 <br />
 <small>
   ³: An activation function decides how much information a neuron should pass along to the next layer, often squashing the values to a range like 0 to 1 (or -1 to 1). Think of it like a light switch or dimmer that controls how "on" or "off" a neuron is. For example, [ReLU (Rectified Linear Unit)](https://www.perplexity.ai/search/what-is-a-rectified-linear-uni-_URjYJjbSZ2NokOTP0ClEw) and [sigmoid functions](https://www.perplexity.ai/search/what-is-a-sigmoid-functions-in-q04x5dNRQyGVM7tJ_V_SkQ).
+</small>
+<br />
+<small>
+  ⁴: In basic gradient descent, a fixed **learning rate** determines the size of the steps we take towards minimizing the loss function. Setting this learning rate can be tricky—a rate that's too high might cause the model to overshoot the minimum, while a rate that's too low can make training painfully slow. [More advanced](https://www.perplexity.ai/search/what-is-adam-optimization-4LGUEuLPT12YC.aoPvpiWA) optimization algorithms adjust the learning rate on the fly for you, taking larger steps at the beginning and smaller steps later on.
 </small>
