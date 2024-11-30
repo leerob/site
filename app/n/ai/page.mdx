@@ -23,11 +23,11 @@ This post will highlight what I’ve learned so far. It’s written for other en
 
 ## Machine Learning
 
-Software is *deterministic*. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
+Software is _deterministic_. Given some input, if you run the program again, you will get the same output. A developer has explicitly written code to handle each case.
 
-Most AI models[¹](#footnotes) are not this way — they are *probabilistic*. Developers don’t have to explicitly program the instructions.
+Most AI models[¹](#footnotes) are not this way — they are _probabilistic_. Developers don’t have to explicitly program the instructions.
 
-[Machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) teaches software to recognize patterns from data. Given some input, you might *not* get the same output[²](#footnotes). AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
+[Machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) teaches software to recognize patterns from data. Given some input, you might _not_ get the same output[²](#footnotes). AI models like GPT (from OpenAI), Claude (from Anthropic), and Gemini (from Google) are “trained” on a large chunk of internet documents. These models learn patterns during training.
 
 Then, there’s an API or chat interface where you can talk to the model. Based on some input, it can predict and generate sentences, images, or audio as output. You can think about machine learning as a subset of the broader AI category.
 
@@ -39,17 +39,17 @@ AI models are built on [neural networks](https://www.youtube.com/watch?v=aircAru
 
 These networks consist of layers of interconnected _neurons_ that process information:
 
-1.  An **input layer** where data enters the system. Input is converted into a numerical representation of words or *tokens* (more on tokens later).
-2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply *weights* (also known as **parameters**) to the input data and pass the result through an **activation function**[³](#footnotes). This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
-3.  An **output layer** which produces the final result, such as predicting the next word in a sentence. The outputs at this stage are often referred to as *logits*, which are raw scores that get transformed into probabilities.
+1.  An **input layer** where data enters the system. Input is converted into a numerical representation of words or _tokens_ (more on tokens later).
+2.  Many **hidden layers** that create an understanding of patterns in the system. Neurons inside the layer apply _weights_ (also known as **parameters**) to the input data and pass the result through an **activation function**[³](#footnotes). This function outputs a value, often between 0 and 1, representing the neuron's level of activation.
+3.  An **output layer** which produces the final result, such as predicting the next word in a sentence. The outputs at this stage are often referred to as _logits_, which are raw scores that get transformed into probabilities.
 
 For example, if the input was “San”, there is likely an activation close to 1 for the next word of “Francisco”. A unrelated word like “kitten” would be close to 0.
 
-A big takeaway for me is: it’s just math. You can build a neural network [from first principles](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) using linear algebra, calculus, and statistics. You likely *won’t* do this when there’s helpful abstractions like PyTorch, but it’s helpful for me to demystify what is happening under the hood.
+A big takeaway for me is: it’s just math. You can build a neural network [from first principles](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) using linear algebra, calculus, and statistics. You likely _won’t_ do this when there’s helpful abstractions like PyTorch, but it’s helpful for me to demystify what is happening under the hood.
 
 ## Deep Learning
 
-Deep learning is a subset of machine learning that involves neural networks with *many* layers—hence the term "deep." While a simple neural network may have just one or two hidden layers, deep learning models can have hundreds or even thousands of layers.
+Deep learning is a subset of machine learning that involves neural networks with _many_ layers—hence the term "deep." While a simple neural network may have just one or two hidden layers, deep learning models can have hundreds or even thousands of layers.
 
 These additional layers enable the network to learn complex patterns. For example, large language models have been trained on multi-language datasets. This allows them to understand, generate, and translate text in multiple languages.
 
@@ -75,11 +75,11 @@ Large Language Models ([LLMs](https://www.youtube.com/watch?v=LPZh9BOjkQs&list=P
 
 Collecting and cleaning this data is [much more complex](https://www.youtube.com/watch?v=9vM4p9NN0Ts) than simply scraping websites. If you feed the model poor-quality data, you'll get poor-quality predictions in return. Garbage in, garbage out.
 
-**Training**, also called **pretraining**, is the process of teaching the network to recognize patterns in the input data. Essentially, we're taking large chunks of internet text and compressing them into knobs the model can tune, known as *weights* and *biases* (collectively called **parameters**).
+**Training**, also called **pretraining**, is the process of teaching the network to recognize patterns in the input data. Essentially, we're taking large chunks of internet text and compressing them into knobs the model can tune, known as _weights_ and _biases_ (collectively called **parameters**).
 
 The number of parameters is often used as a measure of a model's power. For example, open-source models like [Llama](https://www.llama.com) have a 7 billion and 70 billion parameter version (with the latter being more powerful).
 
-You can think of training like a big `for` loop that runs many times, each time adjusting the weights and biases slightly. Each complete pass through the entire training dataset is called an **epoch**. But how does the network know *how* to adjust these values?
+You can think of training like a big `for` loop that runs many times, each time adjusting the weights and biases slightly. Each complete pass through the entire training dataset is called an **epoch**. But how does the network know _how_ to adjust these values?
 
 The training process involves several key steps:
 
@@ -119,7 +119,7 @@ By repeatedly performing these steps over many epochs, the network learns to mak
 
     You might hear people talk about **scaling laws** in the context of training large language models. In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
 
-  <br/>
+    <br />
 
     Essentially, by throwing more compute at the problem and building bigger models, we've been able to achieve better and better results. However, there's [ongoing debate](https://x.com/sama/status/1856941766915641580) about whether we're approaching a limit to this approach. Some experts suggest that we might be ”hitting a wall”, meaning increasing model size and compute may *not* continue to yield substantial improvements. But the verdict is still out.
 
@@ -137,7 +137,7 @@ For example, the relationship between "king" and "queen" is similar to that of "
   <Image src={embeddings} alt="Word Embeddings" />
 </div>
 
-Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the *entire* input sequence at once.
+Transformers use **attention mechanisms**, specifically **self-attention**. While attention had been used in [previous papers](https://arxiv.org/abs/1409.0473) and models, it only read sequences word by word. Transformers can consider the _entire_ input sequence at once.
 
 This allows the model to focus on different parts of the input when generating each part of the output, much like how a human understands language by considering the context of a sentence or paragraph.
 
@@ -162,6 +162,12 @@ To further improve the model's usefulness and ensure it behaves in desirable way
 
 For example, if you want a language model for customer support, you might fine-tune it on transcripts of customer service interactions and then use RLHF to ensure it responds politely and effectively resolves customer issues. Increasingly, AI is used to generate initial content and humans help refine it through this feedback loop, enhancing the model's performance in real-world applications.
 
+## Inference
+
+After training and fine-tuning, the model is ready for **inference**—the process of making predictions or generating outputs from new inputs. During inference, the model applies what it has learned to produce responses. The model may support **multimodal** input (text, images, audio, etc) and output.
+
+Modern language models can perform [complex reasoning](https://openai.com/index/learning-to-reason-with-llms/) tasks using techniques like **chain of thought**. This involves the model generating intermediate reasoning steps before arriving at a final answer, much like how you might work through a math problem step by step.
+
 ## Resources
 
 Still interested? There's so much more to learn. Hopefully I have piqued your interest. If you have other resources, please reach out and I'll add them here.
@@ -179,15 +185,32 @@ Still interested? There's so much more to learn. Hopefully I have piqued your in
 </small>
 <br />
 <small>
-  ²: This is where **evals** come in to add predictability, which you can think of like [end-to-end
-  tests for
-  AI](https://vercel.com/blog/eval-driven-development-build-better-ai-faster). You can also change the **temperature** of the model. A lower temperature makes the output more deterministic and focused on the most probable responses, while a higher temperature increases randomness, allowing for more creative outputs.
+  ²: This is where **evals** come in to add predictability, which you can think
+  of like [end-to-end tests for
+  AI](https://vercel.com/blog/eval-driven-development-build-better-ai-faster).
+  You can also change the **temperature** of the model. A lower temperature
+  makes the output more deterministic and focused on the most probable
+  responses, while a higher temperature increases randomness, allowing for more
+  creative outputs.
 </small>
 <br />
 <small>
-  ³: An activation function decides how much information a neuron should pass along to the next layer, often squashing the values to a range like 0 to 1 (or -1 to 1). Think of it like a light switch or dimmer that controls how "on" or "off" a neuron is. For example, [ReLU (Rectified Linear Unit)](https://www.perplexity.ai/search/what-is-a-rectified-linear-uni-_URjYJjbSZ2NokOTP0ClEw) and [sigmoid functions](https://www.perplexity.ai/search/what-is-a-sigmoid-functions-in-q04x5dNRQyGVM7tJ_V_SkQ).
+  ³: An activation function decides how much information a neuron should pass
+  along to the next layer, often squashing the values to a range like 0 to 1 (or
+  -1 to 1). Think of it like a light switch or dimmer that controls how "on" or
+  "off" a neuron is. For example, [ReLU (Rectified Linear
+  Unit)](https://www.perplexity.ai/search/what-is-a-rectified-linear-uni-_URjYJjbSZ2NokOTP0ClEw)
+  and [sigmoid
+  functions](https://www.perplexity.ai/search/what-is-a-sigmoid-functions-in-q04x5dNRQyGVM7tJ_V_SkQ).
 </small>
 <br />
 <small>
-  ⁴: In basic gradient descent, a fixed **learning rate** determines the size of the steps we take towards minimizing the loss function. Setting this learning rate can be tricky—a rate that's too high might cause the model to overshoot the minimum, while a rate that's too low can make training painfully slow. [More advanced](https://www.perplexity.ai/search/what-is-adam-optimization-4LGUEuLPT12YC.aoPvpiWA) optimization algorithms adjust the learning rate on the fly for you, taking larger steps at the beginning and smaller steps later on.
+  ⁴: In basic gradient descent, a fixed **learning rate** determines the size of
+  the steps we take towards minimizing the loss function. Setting this learning
+  rate can be tricky—a rate that's too high might cause the model to overshoot
+  the minimum, while a rate that's too low can make training painfully slow.
+  [More
+  advanced](https://www.perplexity.ai/search/what-is-adam-optimization-4LGUEuLPT12YC.aoPvpiWA)
+  optimization algorithms adjust the learning rate on the fly for you, taking
+  larger steps at the beginning and smaller steps later on.
 </small>
