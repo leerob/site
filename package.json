@@ -7,12 +7,12 @@
     "delete": "rm -rf app/n"
   },
   "dependencies": {
-    "@next/mdx": "15.0.3",
-    "@tailwindcss/postcss": "^4.0.0-beta.5",
+    "@next/mdx": "15.1.2",
+    "@tailwindcss/postcss": "^4.0.0-beta.8",
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.4.1",
-    "framer-motion": "^11.13.1",
-    "next": "^15.0.3",
+    "framer-motion": "^11.15.0",
+    "next": "^15.1.2",
     "next-view-transitions": "^0.3.4",
     "postgres": "^3.4.5",
     "react": "19.0.0",
@@ -20,11 +20,11 @@
     "sugar-high": "^0.7.5"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "postcss": "^8.4.49",
-    "tailwindcss": "^4.0.0-beta.5",
+    "tailwindcss": "^4.0.0-beta.8",
     "typescript": "^5.7.2"
   }
 }
