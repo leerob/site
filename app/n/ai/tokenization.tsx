@@ -81,7 +81,7 @@ export function Tokenization() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="text-4xl md:text-3xl font-mono text-center"
+          className="text-4xl md:text-3xl font-mono text-center text-gray-800"
         >
           {step.text}
         </motion.div>
@@ -92,7 +92,7 @@ export function Tokenization() {
       return (
         <motion.div
           key={step.id}
-          className="text-4xl md:text-3xl font-mono text-center"
+          className="text-4xl md:text-3xl font-mono text-center text-gray-800"
         >
           San
           <motion.span
@@ -123,7 +123,7 @@ export function Tokenization() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: index * 0.1 }}
-              className="border-2 border-blue-600 rounded p-2 text-2xl md:text-xl font-mono"
+              className="border-2 border-blue-600 rounded p-2 text-2xl md:text-xl font-mono text-gray-800"
             >
               {token}
             </motion.div>
@@ -141,7 +141,7 @@ export function Tokenization() {
           exit={{ opacity: 0 }}
           className="w-full"
         >
-          <div className="flex justify-center space-x-4 mb-8">
+          <div className="flex justify-center space-x-4 mb-8 text-gray-800">
             {step.tokens?.map((token, index) => (
               <div
                 key={
@@ -193,7 +193,7 @@ export function Tokenization() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-lg md:text-xl font-mono text-center flex flex-col sm:flex-row gap-y-1 sm:gap-y-0 items-center justify-center"
+            className="text-lg md:text-xl font-mono text-center flex flex-col sm:flex-row gap-y-1 sm:gap-y-0 items-center justify-center text-gray-800"
           >
             <svg
               className="size-6 mr-2 min-w-6"
@@ -241,7 +241,7 @@ export function Tokenization() {
 
       <div className="absolute bottom-4 right-4 flex items-center space-x-1">
         <button
-          className="p-[2px] rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="p-[2px] rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-800"
           onClick={() => setIsPlaying(!isPlaying)}
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >

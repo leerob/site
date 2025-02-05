@@ -20,10 +20,10 @@ I’ve been working with Next.js since 2018 (and React since 2015) so I'm most p
 For data fetching, I use newer React patterns:
 
 <details className="mb-1 -mt-2">
-  <summary className="text-gray-600 text-[15px] mb-2">Majority: Server Components</summary>
-  
+  <summary className="text-gray-600 dark:text-gray-400 text-[15px] mb-2">Majority: Server Components</summary>
+
     Most of the time, I fetch data in a Server Component (like a `page` or `layout`). Occasionally, I'll still use an external library for client-fetches (e.g. `swr`) when working with existing codebases.
-    
+
     ```jsx
     export default async function Page() {
       let data = await fetch('https://api.vercel.app/blog')
@@ -41,25 +41,25 @@ For data fetching, I use newer React patterns:
 </details>
 
 <details className="mb-1 [&[open]]:mb-4 [&[open]]:border-b [&[open]]:border-gray-100">
-  <summary className="text-gray-600 text-[15px] mb-2">Occasionally: React `use` + Context</summary>
-  
+  <summary className="text-gray-600 dark:text-gray-400 text-[15px] mb-2">Occasionally: React `use` + Context</summary>
+
     A newer pattern I've started using is forwarding Promises to a Context provider, and then "unwrapping" the Promise with React’s `use`.
-    
+
     ```jsx
     import React, { createContext, useContext } from 'react'
-    
+
     const BlogContext = createContext(null)
-    
+
     export function BlogProvider({ children }) {
       let blogPromise = fetch('https://api.vercel.app/blog').then(res => res.json())
-    
+
       return (
         <BlogContext.Provider value={{ blogPromise }}>
           {children}
         </BlogContext.Provider>
       )
     }
-    
+
     export function useBlogContext() {
       let context = useContext(BlogContext)
       if (!context) {
@@ -68,19 +68,19 @@ For data fetching, I use newer React patterns:
       return context
     }
     ```
-    
+
     The data can then be used from a hook in any client component.
-    
+
     ```jsx
     'use client'
-    
+
     import { use } from 'react'
     import { useBlogContext } from 'app/context'
-    
+
     export function BlogPosts() {
       let { blogPromise } = useBlogContext()
       let posts = use(blogPromise)
-    
+
       return (
         <ul>
           {posts.map(post => (
@@ -90,10 +90,11 @@ For data fetching, I use newer React patterns:
       )
     }
     ```
-    
+
     This can work well if you have global data you need to use deep in the component tree (especially if there are lots of client components).
- 
+
     <div className="h-4" />
+
 </details>
 
 For forms, I use React 19 features like Server Actions and `useActionState`. I’ll also use Zod to validate objects inside my actions. [Here's one example](https://github.com/leerob/next-saas-starter) of this pattern.
@@ -107,13 +108,13 @@ It provides well-designed and extensible components, built on top of accessible,
 Components are styled with Tailwind CSS—the most AI-friendly CSS library. Why? You can easily [colocate your styles](https://adamwathan.me/css-utility-classes-and-separation-of-concerns) with your markup. This makes generating and editing code with AI tools much easier.
 
 <details className="space-y-6">
-  <summary className="text-gray-600 text-[15px] mb-2">Why Tailwind?</summary>
-  
-  Tailwind uses a compiler to generate only the classes used. So while the utility CSS framework contains many possible class names, only the classes used will be included in the single, compiled CSS file.
-  
-  Assuming you only write Tailwind code, your bundle will never be larger than the total set of used Tailwind classes. It's extremely unlikely you would use them all. This means you have a fixed upper bound on the size of the generated CSS file, which is then minified, compressed, and cached for the best performance.
-  
-  You don't have to *only* write Tailwind styles. Tailwind classes are just utilities that adhere to a design system and work alongside normal CSS. You can mix and match Tailwind with CSS Modules, for example.
+  <summary className="text-gray-600 dark:text-gray-400 text-[15px] mb-2">Why Tailwind?</summary>
+
+Tailwind uses a compiler to generate only the classes used. So while the utility CSS framework contains many possible class names, only the classes used will be included in the single, compiled CSS file.
+
+Assuming you only write Tailwind code, your bundle will never be larger than the total set of used Tailwind classes. It's extremely unlikely you would use them all. This means you have a fixed upper bound on the size of the generated CSS file, which is then minified, compressed, and cached for the best performance.
+
+You don't have to *only* write Tailwind styles. Tailwind classes are just utilities that adhere to a design system and work alongside normal CSS. You can mix and match Tailwind with CSS Modules, for example.
 
 </details>
 

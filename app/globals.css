@@ -74,6 +74,20 @@ code:not(pre code) span {
   color: black !important;
 }
 
+@media (prefers-color-scheme: dark) {
+  code {
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+    background-color: var(--color-zinc-800);
+  }
+
+  code:not(pre code) span {
+    color: var(--color-zinc-100) !important;
+  }
+}
+
 pre code span {
   font-weight: 500;
 }

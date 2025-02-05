@@ -9,8 +9,8 @@ export const metadata = {
   title: 'Understanding AI',
   description: 'A brief overview on neural networks and language models.',
   alternates: {
-    canonical: '/n/ai',
-  },
+    canonical: '/n/ai'
+  }
 };
 
 # Understanding AI
@@ -89,7 +89,7 @@ The training process involves several key steps:
 4.  **Gradient Descent**: Using the calculated gradients, we update the weights and biases. This process is called [**gradient descent**](https://www.youtube.com/watch?v=IHZwWFHWa-w), an optimization algorithm[⁴](#footnotes) that iteratively adjusts the parameters to minimize the loss function.
 
 <details className="mb-4 -mt-2">
-  <summary className="text-gray-600 text-[15px] mb-2">Training Pseudocode</summary>
+  <summary className="text-gray-600 dark:text-gray-400 text-[15px] mb-2">Training Pseudocode</summary>
 
 ```python
 weights, biases = init_random_parameters()
@@ -115,7 +115,7 @@ for epoch in range(epochs):
 By repeatedly performing these steps over many epochs, the network learns to make better predictions. It uses the gradients calculated during backpropagation to adjust its internal parameters, effectively minimizing the loss function and improving its performance over time.
 
 <details className="mb-1 -mt-2">
-  <summary className="text-gray-600 text-[15px] mb-2">Aside: What are scaling laws?</summary>
+  <summary className="text-gray-600 dark:text-gray-400 text-[15px] mb-2">Aside: What are scaling laws?</summary>
 
     You might hear people talk about **scaling laws** in the context of training large language models. In *"*[_Scaling Laws for Neural Language Models_](https://arxiv.org/abs/2001.08361)_"_, researchers at OpenAI showed that as we make models larger and train them with more data and compute power, their performance tends to improve in predictable ways.
 
@@ -133,7 +133,7 @@ Before processing, words are converted into numerical vectors called [**embeddin
 
 For example, the relationship between "king" and "queen" is similar to that of "man" and "woman". If you subtract the vector for "man" from "king" and add "woman", you get a result close to "queen".
 
-<div className="border border-gray-200 rounded-md p-4">
+<div className="border border-gray-200 rounded-md p-4 bg-white">
   <Image src={embeddings} alt="Word Embeddings" />
 </div>
 

@@ -94,7 +94,7 @@ export function SelfAttention() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="w-full"
+        className="w-full text-gray-800"
       >
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {step.tokens.map((token, index) => (
@@ -160,7 +160,7 @@ export function SelfAttention() {
 
       <div className="absolute bottom-4 right-4 flex items-center space-x-1">
         <button
-          className="p-[2px] rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="p-[2px] rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-800"
           onClick={() => setIsPlaying(!isPlaying)}
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >

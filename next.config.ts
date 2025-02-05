@@ -3,7 +3,7 @@ import createMDX from '@next/mdx';
 import postgres from 'postgres';
 
 export const sql = postgres(process.env.POSTGRES_URL!, {
-  ssl: 'allow',
+  ssl: 'allow'
 });
 
 const nextConfig: NextConfig = {
@@ -21,14 +21,16 @@ const nextConfig: NextConfig = {
     return redirects.map(({ source, destination, permanent }) => ({
       source,
       destination,
-      permanent: !!permanent,
+      permanent: !!permanent
     }));
   },
   // Note: Using the Rust compiler means we cannot use
   // rehype or remark plugins. For my app, this is fine.
   experimental: {
     mdxRs: true,
-  },
+    viewTransition: true,
+    newDevOverlay: true
+  }
 };
 
 const withMDX = createMDX({});

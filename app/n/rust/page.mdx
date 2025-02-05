@@ -42,11 +42,11 @@ On top of the companies mentioned above, Rust is also being used for popular ope
 
 JavaScript is the most widely used programming language, operating on every device with a web browser. Over the past ten years, a massive ecosystem has been built around JavaScript:
 
-- **Webpack:** developers wanted to bundle multiple JavaScript files into one.
-- **Babel:** developers wanted to write modern JavaScript while supporting older browsers.
-- **Terser:** developers wanted to generate the smallest possible file sizes.
-- **Prettier:** developers wanted an opinionated code formatter that just worked.
-- **ESLint:** developers wanted to find issues with their code before deploying.
+- **Webpack:** bundle multiple JavaScript files into one.
+- **Babel:** write modern JavaScript while supporting older browsers.
+- **Terser:** generate the smallest possible file sizes.
+- **Prettier:** format code in an opinionated way.
+- **ESLint:** find issues with their code before deploying.
 
 Millions of lines of code have been written and even more bugs have been fixed to create the bedrock for shipping web applications of today. All of these tools are written with JavaScript or TypeScript. This has worked well, but we've reached peak optimization with JS. This has inspired a new class of tools, designed to drastically improve the performance of building for the web.
 
@@ -96,7 +96,7 @@ You can build a Rust module that can be called directly from Node.js, without ne
 
 ## Rust + WebAssembly
 
-[WebAssembly](https://webassembly.org/docs/use-cases/) *(*WASM*)* is a portable low-level language that Rust can compile to. It runs in the browser, is interoperable with JavaScript, and is supported in all major modern browsers.
+[WebAssembly](https://webassembly.org/docs/use-cases/) (WASM) is a portable low-level language that Rust can compile to. It runs in the browser, is interoperable with JavaScript, and is supported in all major modern browsers.
 
 > WASM is definitely a lot faster than JS, but not quite native speed. In our tests, Parcel runs 10-20x slower when compiled to WASM than with native binaries. – [Devon Govett](https://twitter.com/devongovett)
 
