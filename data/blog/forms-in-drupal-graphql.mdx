@@ -10,7 +10,7 @@ Most websites use forms. If you are building the type of sites that use one two 
 
 I will try to demonstrate how we have been using forms in decoupled using the [drupal graphql](https://www.drupal.org/project/graphql) module and [Next.Js](https://nextjs.org/) (but the concept would apply to any other framework as well) and describe the component and integration between React and Drupal that we have made to generate forms automatically based on any Entity from Drupal.
 
-### The idea / motivation
+## The idea / motivation
 
 We have a lot of repositories and most of them share a lot of the code.This means that we re-use a lot of code for a lot of different purposes (for good and / or bad). When going into decoupled (way back in 2018 when there was barely anything around) we knew forms was going to be a challenge and something we needed to solve.
 
@@ -22,7 +22,7 @@ So if we are looking at 100 repositories, many of them with custom fields, custo
 
 We had the form API before going into decoupled, that had its own set of issues but for this particular problem it had served us pretty well. We wanted something like that, or better.
 
-### The API
+## The API
 
 When working with decoupled one of the things I love the most (there are a lot of things I love about it) is the ability to think about the API (especially when doing things like this where your target group are fellow developers) and then walking backwards from the type of API you want (by API I mean more how the DX looks like for other developers to use) to understand what you have to build to make that work.
 
@@ -46,13 +46,37 @@ Going back to our probably now over 100 hundred repositories, this saved thousan
 
 We don’t duplicate forms, ever. Even when we need custom fields and sometimes even in registration forms we use custom fields (some sites have e.g. a email / password only form but some have 4/5/6 custom fields..and they use the same “form” its just altered by a custom module)
 
-### Drupal Entity definition query
+## Drupal Entity definition query
 
 So we started working on this, we (shout out to Rado who worked on this closely with me about 4 years ago oh such fun memories) created (initially in a custom module then ported to the official graphql module) the [EntityDefinition](https://git.drupalcode.org/project/graphql/-/commit/bbe602a36c68a07f1ee3cb91090a3ec8f202b888) query which main purpose was to retrieve all necessary information from any Entity, this includes everything from fields, to each field’s form settings and anything that’s necessary to build a form.
 
-From here we knew technically this was now possible.
+This is what this query looks like :
 
-### The entity form component
+```graphql
+query EntityDefinition(
+  $name: String!
+  $bundle: String
+) {
+  entityDefinition(
+    entity_type: $name
+    bundle: $bundle
+  ) {
+    label
+    fields {
+      id
+      label
+      required
+      multiple
+      maxNumItems
+      ...
+    }
+  }
+}
+```
+
+From here we knew technically this was now possible. We had all the information about how to render a form for this entity.
+
+## The entity form component
 
 The entity form component unfortunately was never open sourced (the idea was thrown around a couple of times) but our implementation of it has its own quirks and custom things inside (they always do) but its implementation is way simpler than what it seems.
 
@@ -91,16 +115,18 @@ switch (field.type) {
 
 So essentially this component has a few jobs :
 
-1 ) Run a query to get information about the entity
-2 ) Check the fields returned by the entity
-3 ) for each field render the appropriate widget (component)
-4 ) Do some data massaging for preparing data for submission (this is only necessary because in GraphQL fields can use their own names so you need some mapping between api fields and actual field machine names, more on this later)
+1. Run a query to get information about the entity
+2. Check the fields returned by the entity
+3. for each field render the appropriate widget (component)
+4. Do some data massaging for preparing data for submission (this is only necessary because in GraphQL fields can use their own names so you need some mapping between api fields and actual field machine names, more on this later)
 
 ### Field Rules
 
 In some situations fields only make sense based on previous data / selection. This is usually done in Drupal’s Form API using the [#states property](https://www.drupal.org/docs/drupal-apis/form-api/conditional-form-fields) of form elements.
 
-We have a similar system baked into this EntityForm component where we configure fieldRules in a similar way and we can pass those when needed to the EntityForm
+We have a similar system baked into this EntityForm component where we configure fieldRules in a similar way and we can pass those when needed to the EntityForm.
+
+We use them for hiding, disabling, making fields required or even hiding parts of the taxonomy tree when certain rules (values of other fields) are met
 
 ```javascript
 field_salutation: {
@@ -131,17 +157,61 @@ So we can make forms but what about submissions? Mutations are a bit more compli
 
 We use GraphQL and this whole article is based on that even thought I would think this would be possible with JSON API as well.
 
-One of the things with GraphQL that’s relevant is that we don’t use the field names from Drupal. That’s both a blessing and a curse here, but. Because of this we need some mapping of the field names in the GraphQL API and the drupal machine names.
+One of the important aspects with GraphQL that’s relevant is that we don’t use the field names from Drupal. That’s both a blessing and a curse here. Because of this we need some mapping of the field names in the GraphQL API and the drupal machine names.
 
 What we do is in the same place where we configure field rules, what fields we want to use (which can be different per site) we also provide the mapping for the fields (the api name and drupal name). Our configuration can look a bit like this :
 
-{PROVIDE EXAMPLE OF CONFIG}
+Here is what e.g. a section of the resume shown above can look like in terms of configuration :
 
-#### Field structure and types
+```javascript
+job_preferences: {
+  key: 'job_preferences',
+  name: 'Enter your Job preferences',
+  description: `Provide the recruiters more information about your job preferences.`,
+  fields: {
+    field_resume_title: 'title',
+    field_resume_job_pref_occupation: 'desiredOccupation',
+    field_resume_employment_type: 'employmentType',
+    field_resume_pref_location: 'desiredLocation',
+    ...
+  },
+  fieldRules: {
+    ...
+  },
+},
+```
 
-In order for this to work we do need to make sure we stick to some level of consistency on fields
+The important part here is the `fields` object which is a mapping of api field name to drupal machine name and also the fieldRules as I described above.
 
-If we have a term field with id and termId we need to make sure that all terms follow this pattern (which is a good idea anyway) so we make a Term type in GraphQL and use that..and so whenever we have a term we know the structure of it. We also use [GraphQL codegen](https://the-guild.dev/graphql/codegen) which means we have access to the GraphQL schema in typescript so we would know if something changes that would break this.
+What this accomplishes is that we can automatically on the `EntityForm` component generate a form based on the configuration we have provided and also provide the submission data
+in the right format.
+
+```typescript
+<EntityForm
+  name="profile"
+  bundle="resume"
+  onSubmit={(formData) => {
+    // formData is now in the format Drupal expects.
+    callMutation({
+      variables: {
+        input: formData
+      }
+    });
+  }}
+/>
+```
+
+#### A note on the structure of fields in GraphQL, Inputs and types
+
+In order for this to work we do need to make sure we stick to some level of consistency on fields across all the different types and entities we use. A taxonomy field should use the
+Term type (GraphQL type) and a TermInput (Input type). This was never an issue because we never intended to do it differently, but its a good thing to keep in mind.
+
+If we have a term field with `tid` and `label` (a taxonomy reference) we need to make sure that all terms follow this pattern (which is a good idea anyway) so we make a `Term` type in GraphQL and use that (same for the Input)..
+and so whenever we have a term we know the structure of it.
+
+We also use [GraphQL codegen](https://the-guild.dev/graphql/codegen) which means we have access to the GraphQL schema in typescript so we would know if something changes that would break this.
+
+## Closing remarks
 
 ————————
 
