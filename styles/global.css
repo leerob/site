@@ -72,11 +72,15 @@ html {
 }
 
 .prose pre {
-  @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900;
+  @apply border border-gray-200 bg-gray-800 dark:border-gray-700 dark:bg-gray-900;
 }
 
 .prose code {
   @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 border border-gray-100 dark:border-gray-800 rounded-md bg-gray-100 dark:bg-gray-900;
+}
+
+.language-typescript {
+  @apply text-white;
 }
 
 .prose img {
@@ -98,7 +102,7 @@ html {
 }
 
 .token.punctuation {
-  @apply text-gray-700 dark:text-gray-300;
+  @apply text-gray-400 dark:text-gray-300;
 }
 
 .token.property,
@@ -117,7 +121,7 @@ html {
 .token.char,
 .token.builtin,
 .token.inserted {
-  @apply text-purple-500;
+  @apply text-yellow-400;
 }
 
 .token.operator,
@@ -135,6 +139,7 @@ html {
 }
 
 .token.function,
+.token.maybe-class-name,
 .token.class-name {
   @apply text-pink-500;
 }
@@ -147,7 +152,7 @@ html {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply text-gray-800 dark:text-gray-50;
+  @apply text-gray-300 dark:text-gray-50;
 }
 
 pre::-webkit-scrollbar {

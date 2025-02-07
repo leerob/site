@@ -1,0 +1,160 @@
+---
+title: 'Forms in Drupal & GraphQL'
+publishedAt: '2025-02-07'
+summary: 'How to use Drupal GraphQL module to generate forms in React'
+image: '/static/images/posts/forms.jpg'
+tags: [product, development]
+---
+
+Most websites use forms. If you are building the type of sites that use one two forms, this might be less important than if you are building an application type site (with logins and users doing things) and so if that’s the case this post might not be for you, unless you are interested in the technical part of this (which I would argue, its pretty cool :P)
+
+I will try to demonstrate how we have been using forms in decoupled using the [drupal graphql](https://www.drupal.org/project/graphql) module and [Next.Js](https://nextjs.org/) (but the concept would apply to any other framework as well) and describe the component and integration between React and Drupal that we have made to generate forms automatically based on any Entity from Drupal.
+
+### The idea / motivation
+
+We have a lot of repositories and most of them share a lot of the code.This means that we re-use a lot of code for a lot of different purposes (for good and / or bad). When going into decoupled (way back in 2018 when there was barely anything around) we knew forms was going to be a challenge and something we needed to solve.
+
+At this point you might be asking as to why that is.
+
+One of the most important part in our platform is custom fields. And the ability to have custom fields (and rules inside fields) per project in not just one but multiple entities.
+
+So if we are looking at 100 repositories, many of them with custom fields, custom logic etc we need a way to do this in a maintainable / sane way. We can’t just build forms after forms in all these repos, in no time we would be looking at dozens and dozens of these.. and maintaining this with a small team would be close to impossible.
+
+We had the form API before going into decoupled, that had its own set of issues but for this particular problem it had served us pretty well. We wanted something like that, or better.
+
+### The API
+
+When working with decoupled one of the things I love the most (there are a lot of things I love about it) is the ability to think about the API (especially when doing things like this where your target group are fellow developers) and then walking backwards from the type of API you want (by API I mean more how the DX looks like for other developers to use) to understand what you have to build to make that work.
+
+This is something that I always thought the React team did a great job with, they are thoughtful about the APIs they build and I think a lot of React’s success stems exactly from this ability to design good reusable APIs.
+
+I remember looking at [React JSON schema form](https://github.com/rjsf-team/react-jsonschema-form) and thinking “this is really cool, and quite close to what we need”. But even then it looked too complex, because I know the Drupal entity (the name and bundle) and from there I should be able to get the information about all the fields, which ones are required, what are the default values, placeholders etc etc. So providing again everything about it seems unnecessarily complicated.
+
+So what could this look like for a developer to use in its simplest form?
+
+Something that not only respects but takes inspiration from the elegancy of good React (and component based) api’s and this is what I thought was a good API for a component like this :
+
+```typescript
+<EntityForm name="node bundle="article" />
+```
+
+This is a really simple component to use, and if It generates a full blown form (we will take about the submission part later), it seems pretty nice. Dump this on any page or component, and you automatically get a form that respects the fields, and settings of that Entity.
+
+One of the nice things about this is that we can develop custom modules that alter fields, add new fields, etc etc and all of this automatically gets reflected without any need to further changes in the frontend (what this means is we can essentially reconfigure forms from the database or configuration via Drupal)
+
+Going back to our probably now over 100 hundred repositories, this saved thousands and thousand of lines of code for us and a lot of nightmares.
+
+We don’t duplicate forms, ever. Even when we need custom fields and sometimes even in registration forms we use custom fields (some sites have e.g. a email / password only form but some have 4/5/6 custom fields..and they use the same “form” its just altered by a custom module)
+
+### Drupal Entity definition query
+
+So we started working on this, we (shout out to Rado who worked on this closely with me about 4 years ago oh such fun memories) created (initially in a custom module then ported to the official graphql module) the [EntityDefinition](https://git.drupalcode.org/project/graphql/-/commit/bbe602a36c68a07f1ee3cb91090a3ec8f202b888) query which main purpose was to retrieve all necessary information from any Entity, this includes everything from fields, to each field’s form settings and anything that’s necessary to build a form.
+
+From here we knew technically this was now possible.
+
+### The entity form component
+
+The entity form component unfortunately was never open sourced (the idea was thrown around a couple of times) but our implementation of it has its own quirks and custom things inside (they always do) but its implementation is way simpler than what it seems.
+
+It is a lot of code, but not a a lot of complicated code. In its core it’s a component with a big switch statement checking the field type (integer, dates, boolean, term, address, etc etc..and also cardinality etc) and then returning a component such as an input, a select etc (or multiple).
+
+(The code bellow is pseudo code)
+
+```typescript
+switch (field.type) {
+    case 'text_long':
+      return (
+        <TextLongWidget entityField={field} fieldRules={fieldRules} />
+      );
+    case 'string_long':
+      return (
+        <StringLongWidget
+          entityField={field}
+          fieldRules={fieldRules}
+        />
+      );
+    case 'string':
+      return (
+        <StringWidget entityField={field} fieldRules={fieldRules} />
+      );
+    case 'datetime':
+      return (
+        <DateSingeWidget
+          entityField={field}
+        />
+      );
+    default:
+      return null;
+  }
+}
+```
+
+So essentially this component has a few jobs :
+
+1 ) Run a query to get information about the entity
+2 ) Check the fields returned by the entity
+3 ) for each field render the appropriate widget (component)
+4 ) Do some data massaging for preparing data for submission (this is only necessary because in GraphQL fields can use their own names so you need some mapping between api fields and actual field machine names, more on this later)
+
+### Field Rules
+
+In some situations fields only make sense based on previous data / selection. This is usually done in Drupal’s Form API using the [#states property](https://www.drupal.org/docs/drupal-apis/form-api/conditional-form-fields) of form elements.
+
+We have a similar system baked into this EntityForm component where we configure fieldRules in a similar way and we can pass those when needed to the EntityForm
+
+```javascript
+field_salutation: {
+  hidden: {
+    title: 'Salutation hide'
+  }
+},
+```
+
+This will either make the salutation field hidden or not based on the value of the title field.
+
+<Image
+  alt={`Edit Resume`}
+  src={`/static/images/posts/resume-edit.avif`}
+  width={800}
+  height={408}
+/>
+
+We use Entity forms for the whole Resume editing which is a page with multiple sections, and uses the Profile module, like this :
+
+```typescript
+<EntityForm name="profile" bundle="resume" />
+```
+
+### Mutations
+
+So we can make forms but what about submissions? Mutations are a bit more complicated but it can also be somewhat automated, even though we never really did fully automate this we got it to a pretty good point.
+
+We use GraphQL and this whole article is based on that even thought I would think this would be possible with JSON API as well.
+
+One of the things with GraphQL that’s relevant is that we don’t use the field names from Drupal. That’s both a blessing and a curse here, but. Because of this we need some mapping of the field names in the GraphQL API and the drupal machine names.
+
+What we do is in the same place where we configure field rules, what fields we want to use (which can be different per site) we also provide the mapping for the fields (the api name and drupal name). Our configuration can look a bit like this :
+
+{PROVIDE EXAMPLE OF CONFIG}
+
+#### Field structure and types
+
+In order for this to work we do need to make sure we stick to some level of consistency on fields
+
+If we have a term field with id and termId we need to make sure that all terms follow this pattern (which is a good idea anyway) so we make a Term type in GraphQL and use that..and so whenever we have a term we know the structure of it. We also use [GraphQL codegen](https://the-guild.dev/graphql/codegen) which means we have access to the GraphQL schema in typescript so we would know if something changes that would break this.
+
+————————
+
+Accessibility
+
+Refactoring (multiple versions of forms)
+
+Field Rules (show example of aviationcv)
+
+Mutations
+
+Open source ?
+
+```
+
+```
