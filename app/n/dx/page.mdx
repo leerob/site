@@ -3,36 +3,65 @@ import { AnimatedName } from '../animated-name.tsx';
 export const metadata = {
   title: 'On Developer Experience',
   alternates: {
-    canonical: '/n/dx',
-  },
+    canonical: '/n/dx'
+  }
 };
 
 # On Developer Experience
 
 <AnimatedName />
 
-Here's what I believe creates a great Developer Experience (DX):
+Developer Experience (DX) is about building products developers [_love_](/n/devtools) to use. I’ve officially been doing DX work since 2020, but it’s been something I’ve cared about my whole career.
 
-### Frameworks and Libraries
+> **Note:** I gave this as a meetup talk in 2025. You can view the [recording here](https://www.youtube.com/watch?v=PfJMy0RxvaE).
 
-- **Make onboarding fast:** You should be able to try a new tool in one command. For example, `npx create-next-app` or `brew install bat`. Then, should it quick to iterate and see the value of the tool, with fast feedback loops to the developer.
-- **Make upgrading easy:** When making a major version change, limit the “blast radius” of the changes to make it easy for folks to update dependencies. Ideally, changes should start out opt-in with many months of lead time before landing in a major version. Then, major versions should include codemods – scripts that run code transforms to help automatically migrate code and fix breaking changes.
-- **Helpful error messages:** When applicable, include hyperlinks in error messages to provide more context on how to solve the error. Your tools should be providing you feedback as you type. The faster, the better (e.g. type checking, linting) before runtime or compilation errors. [Don't make me think](https://www.swyx.io/write-errors-that-don-t-make-me-think-24hg).
-- **Strong defaults and conventions:** Have an opinion about “the right way” to build software. For example, don't make me think about setting up routing, just use the file-system-based routing with Next.js. Don't make me configure compilation and bundling, just set up good defaults for me with webpack/swc/vite/esbuild.
-- **Provide escape hatches:** The counter to strong defaults is to make sure there are escape hatches when the developer wants to break from the standard configuration. One reason Next.js was successful in the beginning was being able to easily override webpack _without_ leaving the framework, whereas CRA required something like [craco](https://github.com/gsoft-inc/craco) after ejecting.
-- **Reduce risk with dependencies:** When you `npm i next`, you only install 13 dependencies from npm. The rest of the dependencies are inlined into Next.js to have faster installation times and improved security. In the future, we'd like to turn Next.js into a [single binary](/blog/rust) you can install.
+## 1. Documentation
 
-### Documentation
+Docs make or break [developer products](/n/devtools).
 
-- **Lead with code:** Developers want to write code. Give them code examples as starting blocks. Don't bury the lede.
-- **Make it easy to find answers:** Developers come to docs to learn the answer to a question, challenge, or problem they're trying to resolve. Give them the answer through multiple methods (video, text, tutorials, guides, etc.). Provide an AI-powered search which is indexed on the entirety of your docs content.
-- **Automated documentation:** When documenting an API, it's helpful to generate the docs from the source of truth (code) to ensure they remain in sync. For example, Vercel's API docs are auto-generated from its [OpenAPI spec](https://swagger.io/specification/).
-- **Not just the happy path:** The documentation is a reference guide for developers trying to get work done. Often, this means searching for an error and looking for a solution they can copy/paste. It's important to document the workaround and hacks, too. I'd rather acknowledge a gap in the product and _unblock_ the developer rather than leave them frustrated.
-- **Optimize for skimming:** We all skim, especially when reading dense technical documentation. My eyes jump directly to code blocks, trying to find the solution to my given problem. Consider adding helpful code comments in the code snippets and showing multiple options or permutations of the desired feature/API.
-- **Be precise:** Avoid technical jargon and idioms. If you're using an acronym, spell it out the first time and don't assume the reader knows what it is. Your docs should be accessible for both beginners and experts. Consider putting content that's helpful for experts but not critical for the happy path in collapsible deep dive sections.
-- **Progressively expose complexity:** Keep the first-time experience simple while progressively disclosing more complex features as they continue building. It's not feasible to expect developers to learn about the entirety of the platform at the start.
+They must be high-quality and available everywhere: on your website, in their editor, and inside [AI chatbots](https://v0.dev/). Your goal is write content beginners can understand and experts appreciate.
 
-### APIs
+Great docs are a product themselves. They need constant updates and polish. New product features can’t ship without the reference docs.
 
-- **Don't break API workflows:** API versioning should be intentional and explicit. Err on the side of over-communication when making changes to APIs and give developers plenty of time to update to new versions. I've personally enjoyed Stripe's API versioning – they have [an excellent post](https://stripe.com/blog/api-versioning) if you want to learn more. I've seen some instances where AWS sends a deprecation email about an API that's been stable for years, plus gives them years of upgrade time.
-- **Let me try out APIs quickly:** Some of my favorite API documentation allows you to generate an API key and try out endpoints in a few seconds. Some even recognize that you're already logged in and personalize the page based on your account information. [Square does this well](https://developer.squareup.com/explorer/square). I also like GraphiQL for this – you view the entire graph schema, make requests, run mutations, format your code, and more.
+**_Suggestions_**
+
+1. Ensure docs have many code examples you can copy/paste or [run](https://ui.shadcn.com/docs/v0).
+2. Optimize for skimming (good use of **bold**, _italic_, lists, headings, images, etc).
+3. With writing, be both precise and concise – avoid technical jargon and idioms.
+4. Keep the first-time experience simple and slowly reveal complexity.
+5. You should still document workarounds even if it’s a product gap.
+6. [Use AI](https://github.com/aidar-freeed/ai-codereviewer/blob/a9a064dfa1db8c83f40ef63f6e247fa09c935ed6/src/main.ts) to automate reviews on docs for spelling, grammar, and brevity.
+7. Make it easy for developers to leave feedback on docs (e.g. typos).
+8. Embed docs directly in the code for in-editor feedback (e.g. [JSDoc](https://v0.dev/chat/jsd-oc-explanation-bz59neoxb8v)).
+9. Add automated checks for broken links on git pushes ([example](https://github.com/vercel/next.js/tree/canary/.github/actions/validate-docs-links)).
+
+## 2. Community
+
+Building community is a long-term investment. It must be in your company DNA.
+
+It’s _not_ a collection of developers you are trying to sell your product to. It’s an [exchange](/n/moderation). They share bugs, _you fix them_. They submit pull requests, _you merge and encourage them_.
+
+This is how you understand what’s working (or not working) with your product. Their feedback shapes the product direction and roadmap.
+
+A community forms around a product when developers feel heard. They share their wins and frustrations, and you respond by improving the product or clarifying the docs. You must meet developers where they already are: GitHub, X, Reddit, Slack, or at meetups.
+
+**_Suggestions_**
+
+- You can’t spend too much time talking to developers in the community.
+- Make yourself accessible to answer questions (e.g. host an [AMA](https://x.com/leeerob/status/1890405718227837261)).
+- Monitor feedback on social media to understand community sentiment.
+- Use a Slackbot to send realtime user feedback to product teams.
+- Invest in high-quality swag for your top community members.
+- Everybody loves stickers — and they’re pretty cheap — create a bunch!
+
+## 3. Education
+
+Education is the best form of [marketing](/n/developer-marketing), second only to customer testimonials.
+
+Good education not only shows people _how_ to use your product but _why_ it exists and _what_ they can accomplish with it. It’s part storytelling, part technical guide, part product demo.
+
+**_Suggestions_**
+
+- Build [demos](https://x.com/leeerob/status/1874891166585651626) that show [real-world](https://x.com/leeerob/status/1708280997488333078) usage of your product (not just hello world).
+- If you answer the same question multiple times, turn it into a guide.
+- You need both reference material (docs) and structured learning ([courses](https://nextjs.org/learn)).
