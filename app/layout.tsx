@@ -9,17 +9,17 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://leerob.com'),
   alternates: {
-    canonical: '/',
+    canonical: '/'
   },
   title: {
     default: 'Lee Robinson',
-    template: '%s | Lee Robinson',
+    template: '%s | Lee Robinson'
   },
-  description: 'Frontend developer, optimist, community builder.',
+  description: 'Frontend developer, optimist, community builder.'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -40,10 +40,10 @@ export default function RootLayout({
 
 function Footer() {
   const links = [
-    { name: '@leerob', url: 'https://x.com/leeerob' },
+    { name: '@leerob', url: 'https://x.com/leerob' },
     { name: 'youtube', url: 'https://www.youtube.com/@leerob' },
     { name: 'linkedin', url: 'https://www.linkedin.com/in/leeerob' },
-    { name: 'github', url: 'https://github.com/leerob' },
+    { name: 'github', url: 'https://github.com/leerob' }
   ];
 
   return (
