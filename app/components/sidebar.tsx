@@ -94,7 +94,10 @@ export function Sidebar() {
       // Remove highlight from any previously highlighted elements
       const previouslyHighlighted = document.querySelectorAll(".bg-blue-500\\/20")
       previouslyHighlighted.forEach((el) => {
-        el.classList.remove("bg-blue-500/20", "transition-colors", "duration-300")
+        if (el instanceof HTMLElement) {
+          el.style.transition = "background-color 0.3s ease-in-out"
+          el.classList.remove("bg-blue-500/20")
+        }
       })
 
       // Set manual click state immediately using ref for instant effect
@@ -105,17 +108,29 @@ export function Sidebar() {
 
       // Add temporary highlight styling to new element
       const originalClasses = element.className
-      element.classList.add("bg-blue-500/20", "transition-colors", "duration-300")
+      if (element instanceof HTMLElement) {
+        element.style.transition = "background-color 0.3s ease-in-out"
+        // Small delay to ensure transition is applied before adding the class
+        requestAnimationFrame(() => {
+          element.classList.add("bg-blue-500/20")
+        })
+      }
 
       // Scroll to element
       element.scrollIntoView({ behavior: "smooth" })
 
-      // Remove highlight after 5 seconds and allow scroll tracking again
+      // Remove highlight after 1 second and allow scroll tracking again
       timeoutRef.current = setTimeout(() => {
-        element.classList.remove("bg-blue-500/20", "transition-colors", "duration-300")
-        element.className = originalClasses
-        manuallyClickedRef.current = "" // Clear manual click state to re-enable scroll tracking
-      }, 5000)
+        if (element instanceof HTMLElement) {
+          element.style.transition = "background-color 0.3s ease-in-out"
+          element.classList.remove("bg-blue-500/20")
+          // Wait for transition to complete before restoring original classes
+          setTimeout(() => {
+            element.className = originalClasses
+            manuallyClickedRef.current = "" // Clear manual click state to re-enable scroll tracking
+          }, 300) // Match transition duration
+        }
+      }, 1000)
     }
   }
 
@@ -160,7 +175,7 @@ export function Sidebar() {
             isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
           }`}
         >
-          <div className="w-64 rounded-lg border bg-card text-card-foreground shadow-lg border-gray-200 dark:border-gray-800 ">
+          <div className="w-64 rounded-lg border bg-card text-card-foreground shadow-lg border-gray-200 dark:border-white/10 ">
             <div className="p-4">
               <nav className="space-y-1">
                 {headings.map((heading) => (
