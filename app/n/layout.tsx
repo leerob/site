@@ -1,5 +1,5 @@
 import { unstable_ViewTransition as ViewTransition } from 'react';
-import { Sidebar } from '../components/sidebar';
+import { Sidebar } from './sidebar';
 
 export default function BlogLayout({
   children,
