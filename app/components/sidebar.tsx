@@ -144,7 +144,7 @@ export function Sidebar() {
   }, [])
 
   return (
-    <div className="w-64 fixed right-0 top-0 h-screen p-6">
+    <div className="w-64 fixed right-0 top-[10%] h-screen p-6">
       <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         {/* Collapsed State - Bars */}
         <div className={`transition-opacity duration-200 ${isHovered ? "opacity-0" : "opacity-100"}`}>
@@ -152,7 +152,7 @@ export function Sidebar() {
             {headings.map((heading) => (
               <div
                 key={heading.id}
-                className={`h-0.5 w-6 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`h-0.5 w-8 rounded-full transition-all duration-200 cursor-pointer ${
                   activeHeading === heading.id
                     ? "bg-black shadow-[0_0_8px_rgba(0,0,0,0.3)] dark:bg-white dark:shadow-[0_0_8px_rgba(255,255,255,0.3)]"
                     : "bg-gray-300 dark:bg-white/10 "
