@@ -25,10 +25,10 @@ const nextConfig: NextConfig = {
     }));
   },
   // Note: Using the Rust compiler means we cannot use
-  // rehype or remark plugins. For my app, this is fine.
+  // rehype or remark plugins. If you need them, remove
+  // the `experimental.mdxRs` flag.
   experimental: {
-    mdxRs: true,
-    viewTransition: true
+    mdxRs: true
   }
 };
 

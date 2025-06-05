@@ -1,10 +1,12 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
+const SITE_URL = 'https://next-mdx-blog.vercel.app';
+
 async function getNoteSlugs(dir: string) {
   const entries = await fs.readdir(dir, {
     recursive: true,
-    withFileTypes: true,
+    withFileTypes: true
   });
   return entries
     .filter((entry) => entry.isFile() && entry.name === 'page.mdx')
@@ -23,13 +25,13 @@ export default async function sitemap() {
   const slugs = await getNoteSlugs(notesDirectory);
 
   const notes = slugs.map((slug) => ({
-    url: `https://leerob.com/n/${slug}`,
-    lastModified: new Date().toISOString(),
+    url: `${SITE_URL}/n/${slug}`,
+    lastModified: new Date().toISOString()
   }));
 
   const routes = ['', '/work'].map((route) => ({
-    url: `https://leerob.com${route}`,
-    lastModified: new Date().toISOString(),
+    url: `${SITE_URL}${route}`,
+    lastModified: new Date().toISOString()
   }));
 
   return [...routes, ...notes];

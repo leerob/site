@@ -1,0 +1,66 @@
+export const metadata = {
+  title: '5 Tiny CLI Tricks You (Probably) Didn’t Know',
+  alternates: {
+    canonical: '/n/1',
+  },
+};
+
+# 5 Tiny CLI Tricks You (Probably) Didn’t Know
+
+<br />
+
+A lightning-round of command-line nuggets to level-up your dev workflow.
+
+## 1. **`history | grep` + `fzf` = instant recall**
+
+Fish out that elusive command you ran last Tuesday:
+
+```bash
+history | grep docker | fzf
+````
+
+Hit **Enter** and it pastes right back to your prompt like magic.
+
+---
+
+## 2. **Reverse-search a Git log by file *content***
+
+Combine `git log` with `-S` (search diff) to find when a string first appeared:
+
+```bash
+git log -S"resizeObserver" --oneline -- src/components/Layout.tsx
+```
+
+---
+
+## 3. **JSON-pretty print … with zero dependencies**
+
+Mac & Linux already ship with `python3`:
+
+```bash
+cat response.json | python3 -m json.tool | less
+```
+
+---
+
+## 4. **One-liner port-forwarding for quick demos**
+
+Need to expose `localhost:3000`? Use SSH—no ngrok token needed.
+
+```bash
+ssh -R 80:localhost:3000 ssh.localhost.run
+```
+
+Now share the generated URL on Slack and watch eyebrows rise.
+
+---
+
+## 5. **Measure *anything* with `time` + subshell**
+
+How long does your linter actually take?
+
+```bash
+time (npm run lint > /dev/null)
+```
+
+> 💡 *Pro-tip:* wrap this in a `pre-push` hook so slow commands get caught early.
