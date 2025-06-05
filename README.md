@@ -21,9 +21,9 @@ pnpm install
 pnpm dev
 ```
 
-Optional: Create a `.env.local` file with your `POSTGRES_URL` environment variable to store redirects.
+## Database (Optional)
 
-## Database Schema
+Create a `.env.local` file with your `POSTGRES_URL` environment variable to store redirects.
 
 ```sql
 CREATE TABLE redirects (
