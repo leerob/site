@@ -29,7 +29,9 @@ const nextConfig: NextConfig = {
   // the `experimental.mdxRs` flag.
   experimental: {
     mdxRs: true
-  }
+  },
+
+  output: 'standalone'
 };
 
 const withMDX = createMDX({});
