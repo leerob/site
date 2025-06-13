@@ -21,6 +21,12 @@ pnpm install
 pnpm dev
 ```
 
+## Running For Production
+
+Check out the Next.js documentation on options for running this.
+https://nextjs.org/docs/pages/getting-started/deploying  
+Alternatively, use the provided [Containerfile](Containerfile).
+
 ## Database (Optional)
 
 Create a `.env.local` file with your `POSTGRES_URL` environment variable to store redirects.
